@@ -1,0 +1,32 @@
+{
+  "name": "rq-ui",
+  "version": "0.0.1",
+  "description": "A Component Library for Ricequant.",
+  "main": "src/index.js",
+  "browserslist": [
+    "last 3 Chrome versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ],
+  "scripts": {
+    "dev": "parcel watch ./test/index.html --no-autoinstall"
+  },
+  "keywords": [
+    "vue"
+  ],
+  "author": "zhao.honghua <zhao.honghua@ricequant.com>",
+  "private": true,
+  "license": "ISC",
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.0",
+    "normalize.css": "^8.0.1",
+    "parcel": "^1.12.3",
+    "sass": "^1.22.8",
+    "vue": "^2.6.10",
+    "vue-hot-reload-api": "^2.3.3",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
+}

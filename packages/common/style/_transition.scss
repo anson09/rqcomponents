@@ -1,0 +1,14 @@
+$transition-distance: .3s;
+
+.rq-zoom-in-top-enter-active,
+.rq-zoom-in-top-leave-active {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: $transition-distance;
+  transform-origin: center top;
+}
+.rq-zoom-in-top-enter,
+.rq-zoom-in-top-leave-active {
+  opacity: 0;
+  transform: scaleY(0);
+}
