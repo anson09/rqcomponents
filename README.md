@@ -1,5 +1,6 @@
 usage:
 ```js
-import RqHeader from "@rqjs/rqcomponents/packages/header/index.js";
+import { RqHeader } from "@rqjs/rqcomponents";
+
 Vue.use(RqHeader);
 ```

@@ -1,8 +1,8 @@
 {
   "name": "@rqjs/rqcomponents",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "A Component Library for Ricequant.",
-  "main": "dist/index.js",
+  "main": "./packages/header/index.js",
   "browserslist": [
     "last 3 Chrome versions",
     "last 2 Safari versions",

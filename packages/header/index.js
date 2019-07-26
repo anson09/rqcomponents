@@ -6,4 +6,4 @@ RqHeader.install = function(Vue) {
   Vue.component(RqHeader.name, RqHeader);
 };
 
-export default RqHeader;
+export { RqHeader };
