@@ -1,5 +1,5 @@
 import "../common/style";
-import RqHeader from './src/Header';
+import RqHeader from "./src/Header";
 
 /* istanbul ignore next */
 RqHeader.install = function(Vue) {

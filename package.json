@@ -1,15 +1,16 @@
 {
   "name": "@rqjs/rqcomponents",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Component Library for Ricequant.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "browserslist": [
     "last 3 Chrome versions",
     "last 2 Safari versions",
     "last 2 Edge versions"
   ],
   "scripts": {
-    "dev": "parcel watch ./test/index.html --no-autoinstall"
+    "dev": "parcel watch ./test/index.html --no-autoinstall",
+    "build": "parcel build ./packages/header/index.js"
   },
   "keywords": [
     "vue"
