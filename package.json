@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "dev": "parcel watch ./test/index.html --no-autoinstall",
-    "build": "parcel build ./packages/header/index.js"
+    "build": "parcel build ./packages/header/index.js",
+    "clean": "rm -rf .cache dist"
   },
   "keywords": [
     "vue"

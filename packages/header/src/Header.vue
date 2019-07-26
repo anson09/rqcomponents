@@ -5,11 +5,12 @@
       <div
         v-for="(btn, idx) in btnConfig"
         :key="idx"
-        :class="['rqheader-btn', {header: btn.type === 'header', active: btn.active}]"
+        :class="['rqheader-btn', {header: btn.type === 'header', active: btn.active, active: btn.active}]"
         @click= "openDropdown(idx)"
+        @mouseleave= "closeDropdown(idx)"
       >
         <span v-if="btn.label" class="rqheader-btn__label">{{btn.label}}</span>
-        <img v-if="avatar && btn.type === 'header'" :src="avatar" alt="">
+        <img v-if="btn.type === 'header'" :src="avatar" alt="">
         <span v-if="btn.links && !btn.type" class="arrow">
           <i class="rq-icons icon-arrow-down"></i>
         </span>
@@ -38,7 +39,7 @@ export default {
   data() {
     return {
       images,
-      avatar: null,
+      avatar: images['header'],
       btnConfig: headerBtns
     }
   },
@@ -46,12 +47,22 @@ export default {
     //mock cookie
     // sid: a2c39e88-5151-4c68-a69f-5c45a26ce396|8058e3ada2f16fbbd90231c145795e7e92a03f2f72690c79eaf6c38a2db391a4f28d81e9a12ee90833d58ed8f59c9649feb951f5824871c40b330637afffe606
     const {avatar} = await getAccount()
-    this.avatar = avatar
+    if (avatar) {
+      this.avatar = avatar
+    }
   },
   methods: {
     openDropdown(idx) {
-      console.log(this)
+      if (!this.btnConfig[idx].links) {
+        return;
+      }
       this.$set(this.btnConfig[idx], 'active', !this.btnConfig[idx].active);
+    },
+    closeDropdown(idx) {
+      if (!this.btnConfig[idx].links) {
+        return;
+      }
+      this.$set(this.btnConfig[idx], 'active', false);
     }
   }
 };
@@ -81,6 +92,7 @@ export default {
     align-items: center;
     transition: all .3s;
     @include text;
+    @include hover;
     * {
       transition: all .3s;
     }

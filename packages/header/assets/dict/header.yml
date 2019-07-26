@@ -24,6 +24,9 @@
  img: avator
  links:
   -
+   label: 设置
+   href: "/"
+  -
    label: 首页
    href: "/"
   -
