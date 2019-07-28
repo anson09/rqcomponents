@@ -16,7 +16,6 @@
   "keywords": [
     "vue"
   ],
-  "author": "zhao.honghua <zhao.honghua@ricequant.com>",
   "license": "ISC",
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.0.0",
