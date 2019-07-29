@@ -21,7 +21,7 @@
  herf: "/"
 -
  type: header
- img: avator
+ img: avatar
  links:
   -
    label: 设置

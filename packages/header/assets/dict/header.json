@@ -1,0 +1,49 @@
+[
+  {
+    "label": "帮助文档",
+    "links": [
+      {
+        "label": "系统文档",
+        "href": "/"
+      },
+      {
+        "label": "研究文档",
+        "href": "/"
+      },
+      {
+        "label": "API文档",
+        "href": "/"
+      },
+      {
+        "label": "数据文档",
+        "href": "/"
+      },
+      {
+        "label": "常见问题特殊情况",
+        "href": "/"
+      }
+    ]
+  },
+  {
+    "label": "社区",
+    "herf": "/"
+  },
+  {
+    "type": "header",
+    "img": "avator",
+    "links": [
+      {
+        "label": "设置",
+        "href": "/"
+      },
+      {
+        "label": "首页",
+        "href": "/"
+      },
+      {
+        "label": "登出",
+        "href": "/"
+      }
+    ]
+  }
+]

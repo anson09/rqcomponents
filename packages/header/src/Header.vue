@@ -30,16 +30,20 @@
 </template>
 
 <script>
-import images from "../assets/img/*.png";
-import headerBtns from "../assets/dict/header";
+import logo from "../assets/img/logo.png";
+import header from "../assets/img/header.png";
+import headerBtns from "../assets/dict/header.json";
 import { getAccount } from "../api";
 
 export default {
   name: "RqHeader",
   data() {
     return {
-      images,
-      avatar: images['header'],
+      images: {
+        logo,
+        header
+      },
+      avatar: header,
       btnConfig: headerBtns
     }
   },
