@@ -9,5 +9,6 @@ const install = function(Vue, opt = {}) {
 };
 
 export default {
-  install
+  install,
+  RqHeader
 };

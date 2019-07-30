@@ -30,16 +30,20 @@
 </template>
 
 <script>
-import images from "../assets/img/*.png";
-import headerBtns from "../assets/dict/header";
+import logo from "../assets/img/logo.png";
+import header from "../assets/img/header.png";
+import headerBtns from "../assets/dict/header.json"
 import { getAccount } from "../api";
 
 export default {
   name: "RqHeader",
   data() {
     return {
-      images,
-      avatar: images['header'],
+      images: {
+        logo,
+        header
+      },
+      avatar: header,
       btnConfig: headerBtns
     }
   },
@@ -102,7 +106,7 @@ export default {
       top: 0;
       width: 100%;
       height: 4px;
-      background: transparent; 
+      background: transparent;
       transition: background .3s;
     }
     &__label {
@@ -147,7 +151,7 @@ export default {
         transform: rotate(180deg);
       }
       &::after {
-        background: $highlight; 
+        background: $highlight;
       }
     }
     &.header {
