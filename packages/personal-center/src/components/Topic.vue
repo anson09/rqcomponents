@@ -9,7 +9,7 @@
           <p class="topic__title">
             {{info.name}}
           </p>
-          <p><a class="highlight">{{info.author.name}}</a>{{labels.createAt}}{{info.createAt}}</p>
+          <p><a class="highlight" @click.stop="redirectAuthor">{{info.author.name}}</a>{{labels.createAt}}{{info.createAt}}</p>
           <p>{{labels.lastRepeat}}{{info.lastRepeat}}</p>
         </div>
       </div>
@@ -46,6 +46,9 @@ export default {
   methods: {
     redirect() {
       this.$emit("redirect", "community", "topic", this.info.tid);
+    },
+    redirectAuthor() {
+      this.$emit("redirect", "profile", this.info.author.uid);
     }
   }
 };
