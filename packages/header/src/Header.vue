@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../common/style/common/index.scss";
+@import "../../common/style/common";
 
 .rqheader {
   position: relative;

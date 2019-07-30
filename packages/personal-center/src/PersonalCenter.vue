@@ -67,10 +67,10 @@
 </template>
 
 <script>
-import Card from "./components/Card";
-import Topic from "./components/Topic";
-import Follow from "./components/Follow";
-import Empty from "./components/Empty";
+import Card from "./components/Card.vue";
+import Topic from "./components/Topic.vue";
+import Follow from "./components/Follow.vue";
+import Empty from "./components/Empty.vue";
 import {
   getAccount,
   getSubscribe,
@@ -242,9 +242,9 @@ export default {
             avatar: e.picture,
             uid: e.uid
           }
-        }); 
+        });
       });
-      
+
       getFollow(uid).then(({users}) => {
         this.info.follow = users.map(e => {
           return {
@@ -252,7 +252,7 @@ export default {
             avatar: e.picture,
             uid: e.uid
           }
-        });  
+        });
       });
     },
     async loadShareData(uid) {
