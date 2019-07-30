@@ -114,9 +114,6 @@ export default {
     &__label {
       padding-left:20px;
     }
-    img {
-      padding-left:20px;
-    }
     &__label + .arrow {
       margin-left: 10px;
     }
@@ -160,6 +157,7 @@ export default {
       position: relative;
       height: 100%;
       img {
+        margin-left:20px;
         width: 34px
       }
       &.active {
