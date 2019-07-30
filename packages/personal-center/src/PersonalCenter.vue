@@ -67,7 +67,6 @@
 </template>
 
 <script>
-import images from "../assets/img/*.png";
 import headerBtns from "../assets/dict/header";
 import Card from "./components/Card";
 import Topic from "./components/Topic";
@@ -99,7 +98,6 @@ export default {
   },
   data() {
     return {
-      images,
       banner: require("../assets/img/banner.png"),
       contentKeys: {
         subscribe: {
