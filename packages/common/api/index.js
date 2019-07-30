@@ -16,7 +16,7 @@ function queryStringify(data) {
 }
 
 async function urlencodePost(url, params) {
-  const { data } = await axios({
+  const data = await axios({
     url,
     method: "post",
     headers: {

@@ -12,3 +12,18 @@ $transition-distance: .3s;
   opacity: 0;
   transform: translateY(-10%) scaleY(0);
 }
+
+.rq-fade-in-linear-item {
+  transition: all 1s;
+  display: inline-block;
+}
+.rq-fade-in-linear-enter-active,
+.rq-fade-in-linear-leave-active {
+  transition: all $transition-distance;
+}
+.rq-fade-in-linear-enter,
+.rq-fade-in-linear-leave,
+.rq-fade-in-linear-leave-active,
+.rq-fade-in-item-move {
+  opacity: 0;
+}
