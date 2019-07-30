@@ -156,8 +156,8 @@ export default {
     &.header {
       position: relative;
       height: 100%;
-      padding-left:20px;
       img {
+        margin-left:20px;
         width: 34px
       }
       &.active {
