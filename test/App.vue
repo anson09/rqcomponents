@@ -22,6 +22,6 @@ export default {
 <style lang="scss" scoped>
 * {
   font-family: sans-serif;
-
+  box-sizing: inherit;
 }
 </style>

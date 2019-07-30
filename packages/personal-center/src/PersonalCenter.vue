@@ -67,7 +67,6 @@
 </template>
 
 <script>
-import headerBtns from "../assets/dict/header";
 import Card from "./components/Card";
 import Topic from "./components/Topic";
 import Follow from "./components/Follow";
