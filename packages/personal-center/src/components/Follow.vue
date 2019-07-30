@@ -1,6 +1,6 @@
 <template>
   <div class="follow__wrapper">
-    <div class="follow">
+    <div class="follow" @click="redirect">
       <div class="avatar">
         <img :src="info.avatar" alt="">
       </div>
@@ -18,6 +18,11 @@ export default {
       required: true,
       type: Object
     }
+  },
+  methods: {
+    redirect() {
+      this.$emit("redirect", "profile", this.info.uid);
+    }
   }
 };
 </script>
@@ -30,6 +35,7 @@ export default {
   padding: 24px;
   background: $bg-white;
   border-radius: 8px;
+  @include hover-scale;
   &__wrapper {
     @include flex-item;
   }

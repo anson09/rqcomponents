@@ -2,17 +2,19 @@
   <div class="personal-center">
     <div class="banner">
       <div class="bg">
-        <img :src="testImage" alt="">
+        <img :src="banner" alt="">
       </div>
       <div class="personal-center__block">
         <div class="avatar">
-          <img :src="testImage" alt="">
+          <transition name="rq-fade-in-linear">
+            <img v-if="account.avatar" :src="account.avatar" alt="">
+          </transition>
         </div>
         <div class="content">
           <p class="title">
             {{account.name}}
-            <i v-if="account.isFollow" class="rq-icons icon-heart"> </i>
-            <i v-else class="rq-icons icon-follow"> </i>
+            <i v-if="account.isFollow" class="rq-icons icon-heart" @click="follow(true)"></i>
+            <i v-else class="rq-icons icon-follow" @click="follow(false)"></i>
           </p>
           <p>
             <span>{{labels.follow}}: </span>
@@ -24,8 +26,15 @@
             {{account.descrition}}
           </p>
         </div>
-        <div class="else">
-          <img :src="testImage" alt="">
+        <div class="level">
+          <transition-group name="rq-fade-in-linear">
+            <img
+              class="level-img"
+              v-for="(level, idx) in labels.level"
+              v-show="idx === account.level - 1"
+              :key="level.label"
+              :src="level.image" alt="">
+          </transition-group>
         </div>
       </div>
     </div>
@@ -37,21 +46,22 @@
         {{labels[key]}}
         <a href="">{{labels.more}}</a>
       </div>
-      <div
-        v-if="info[key].length !== 0"
-        class="card-list">
-        <Component
-          v-for="(item, idx) in info[key]"
-          :class="'col-' + val.col"
-          :key="idx"
-          :is="val.component"
-          :info="item"
-        ></Component>
-      </div>
-      <Empty
-        v-else
-        :emptyLabel="labels[key]"
-      ></Empty>
+        <div
+          v-if="info[key].length !== 0"
+          class="card-list">
+            <Component
+              v-for="(item, idx) in info[key]"
+              :class="'col-' + val.col"
+              :key="idx"
+              :is="val.component"
+              :info="item"
+              @redirect="redirect"
+            ></Component>
+        </div>
+        <Empty
+          v-else
+          :emptyLabel="labels[key]"
+        ></Empty>
     </div>
   </div>
 </template>
@@ -63,7 +73,15 @@ import Card from "./components/Card";
 import Topic from "./components/Topic";
 import Follow from "./components/Follow";
 import Empty from "./components/Empty";
-import { getAccount } from "../api";
+import {
+  getAccount,
+  getSubscribe,
+  getShare,
+  getTopic,
+  getFollow,
+  getFans
+} from "../api";
+import { fmtDate, fmtDatetime } from "../../common/util";
 
 export default {
   name: "RqPersonalCenter",
@@ -73,10 +91,16 @@ export default {
     Follow,
     Empty
   },
+  props: {
+    uid: {
+      required: true,
+      type: Number
+    }
+  },
   data() {
     return {
       images,
-      testImage: "https://images.alphacoders.com/499/thumb-1920-499786.png",
+      banner: require("../assets/img/banner.png"),
       contentKeys: {
         subscribe: {
           col: 3,
@@ -105,212 +129,162 @@ export default {
         more: "更多 >",
         subscribe: "我的订阅",
         share: "分享的订阅",
-        topic: "发表的主题"
+        topic: "发表的主题",
+        level: [{
+          label: "青铜韭菜",
+          image: require("../assets/img/bronze.png")
+        }, {
+          label: "黄金矿工",
+          image: require("../assets/img/gold.png")
+        }, {
+          label: "钻石强者",
+          image: require("../assets/img/diamond.png")
+        }, {
+          label: "量化王者",
+          image: require("../assets/img/king.png")
+        }]
       },
       account: {
         name: "金尾巴",
+        avatar: "",
         follow: 2,
         fans: 300,
-        isFollow: true,
+        isFollow: false,
         descrition: "这家伙很懒，什么也没有留下",
-        level: 0
+        level: 1
       },
       info: {
-        subscribe: [{
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }, {
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }, {
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }, {
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }, {
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }, {
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }],
-        share: [{
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }, {
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }, {
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }, {
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }, {
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }, {
-          name: "这变成综合交易策略了",
-          total: "16.07",
-          year: "52.89",
-          retracement: "21.11",
-          startAt: "2019-10-10"
-        }],
-        topic: [{
-          name: "抢跑者的脚步声--基于价量互动的选股因子",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png",
-          author: {
-            name: "HooH",
-            uid: ""
-          },
-          // 发表于
-          createAt: "2018-02-10 18.03.01",
-          lastRepeat: "2018-02-10 18.03.01",
-          chat: 3,
-          view: 3546,
-          like: 5,
-          chart: 233
-        }, {
-          name: "抢跑者的脚步声--基于价量互动的选股因子",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png",
-          author: {
-            name: "HooH",
-            uid: ""
-          },
-          // 发表于
-          createAt: "2018-02-10 18.03.01",
-          lastRepeat: "2018-02-10 18.03.01",
-          chat: 3,
-          view: 3546,
-          like: 5,
-          chart: 233
-        }, {
-          name: "抢跑者的脚步声--基于价量互动的选股因子",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png",
-          author: {
-            name: "HooH",
-            uid: ""
-          },
-          // 发表于
-          createAt: "2018-02-10 18.03.01",
-          lastRepeat: "2018-02-10 18.03.01",
-          chat: 3,
-          view: 3546,
-          like: 5,
-          chart: 233
-        }, {
-          name: "抢跑者的脚步声--基于价量互动的选股因子",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png",
-          author: {
-            name: "HooH",
-            uid: ""
-          },
-          // 发表于
-          createAt: "2018-02-10 18.03.01",
-          lastRepeat: "2018-02-10 18.03.01",
-          chat: 3,
-          view: 3546,
-          like: 5,
-          chart: 233
-        }],
-        follow: [{
-          name: "Michael Shi",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png" 
-        }, {
-          name: "Michael Shi",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png" 
-        }, {
-          name: "Michael Shi",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png" 
-        }, {
-          name: "Michael Shi",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png" 
-        }],
-        fans: [{
-          name: "Michael Shi",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png" 
-        }, {
-          name: "Michael Shi",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png" 
-        }, {
-          name: "Michael Shi",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png" 
-        }, {
-          name: "Michael Shi",
-          avatar: "https://images.alphacoders.com/499/thumb-1920-499786.png" 
-        }]
+        subscribe: [],
+        share: [],
+        topic: [],
+        follow: [],
+        fans: []
       }
     }
   },
   async mounted() {
-    const {code, userData} = await getAccount(391952);
-    if (code === 0) {
-      this.account.name = userData.username,
-      this.account.avatar = userData.picture,
-      this.account.descrition = userData.signature,
-      this.account.isFollow = userData.isFollowing,
-      this.account.level = userData.level
+    this.loadData(this.uid);
+  },
+  watch: {
+    uid: {
+      handler(val) {
+        this.loadData(val);
+      }
     }
   },
   methods: {
-    openDropdown(idx) {
-      if (!this.btnConfig[idx].links) {
-        return;
-      }
-      this.$set(this.btnConfig[idx], 'active', !this.btnConfig[idx].active);
+    loadData(uid) {
+      this.loadAccountData(uid);
+      this.loadSubscribeData();
+      this.loadShareData(uid);
+      this.loadTopicData(uid);
+      this.loadFansAndFollowData(uid);
     },
-    closeDropdown(idx) {
-      if (!this.btnConfig[idx].links) {
-        return;
+    initAlgoData(key, data) {
+      const fmtPercent = num => (num * 100).toFixed(2);
+      this.info[key] = data.map(e => ({
+          algoId: e["algo-id"],
+          name: e.title,
+          year: fmtPercent(e.annualizedReturn),
+          total: fmtPercent(e.totalReturn),
+          retracement: fmtPercent(e.maximumDrawdown),
+          startAt: fmtDate(e.runStartTimestamp)
+      }));
+    },
+    async loadAccountData(uid) {
+      const paramsList = {
+        name: ["userInfo", "username"],
+        avatar: ["userInfo", "picture"],
+        descrition: ["userInfo", "signature"],
+        follow: ["userInfo", "followingCount"],
+        fans: ["userInfo", "followerCount"],
+        isFollow: ["userInfo", "isFollowing"],
+        level: ["level"],
       }
-      this.$set(this.btnConfig[idx], 'active', false);
+      const { data: {code, userData} } = await getAccount(132782);
+      if (code === 0) {
+        Object.entries(paramsList).map(([key, path]) => {
+          const val = path.length === 1 ?
+            userData[path[0]]
+            : path.reduce((a, b) => {
+              if (typeof a === "string") {
+                return userData[a][b];
+              } else {
+                return a[b];
+              }
+            });
+          this.account[key] = val !== ""  ? val : this.account[key];
+        })
+      }
+    },
+    async loadTopicData(uid) {
+      const {topics} = await getTopic(uid);
+      this.info.topic = topics.map(e => {
+        return {
+          tid: e.tid,
+          createAt: fmtDatetime(e.timestamp),
+          lastRepeat: fmtDatetime(e.relativeTime),
+          name: e.title,
+          author: {
+            name: e.user.username,
+            avatar: e.user.picture,
+            uid: e.user.uid
+          },
+          chat: e.postcount,
+          view: e.viewcount,
+          like: e.votes,
+          chart: e.clone
+        }
+      });
+    },
+    async loadFansAndFollowData(uid) {
+      getFans(uid).then(({users}) => {
+        this.info.fans = users.map(e => {
+          return {
+            name: e.username,
+            avatar: e.picture,
+            uid: e.uid
+          }
+        }); 
+      });
+      
+      getFollow(uid).then(({users}) => {
+        this.info.follow = users.map(e => {
+          return {
+            name: e.username,
+            avatar: e.picture,
+            uid: e.uid
+          }
+        });  
+      });
+    },
+    async loadShareData(uid) {
+      const {data} = await getShare(uid);
+      this.initAlgoData("share", data);
+    },
+    async loadSubscribeData() {
+      const {data} = await getSubscribe();
+      this.initAlgoData("subscribe", data);
+    },
+    follow(follow=true) {
+      this.$emit("follow", this.uid, follow);
+      this.account.isFollow = follow;
+    },
+    redirect(...path) {
+      this.$emit("redirect", ...path);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../common/style/common";
+@import "../../common/style/common/index.scss";
 
 ::v-deep {
   // @include debug;
 }
 .personal-center {
-  width: 100vw;
+  width: 100%;
   min-width: $min-vw;
   @include f-column;
   background: $container-bg;
@@ -359,11 +333,18 @@ export default {
         @include text($text-white);
         &.title {
           @include h3($text-white);
+          margin-left: 0;
           vertical-align: center;
           & + p {
             margin-top: 24px;
           }
+          i {
+            @include hover-scale;
+          }
         }
+      }
+      span:nth-child(2n) {
+        margin-right: 14px;
       }
       p + p {
         margin-top: 12px;
@@ -375,11 +356,12 @@ export default {
         }
       }
     }
-    .else {
-      width: 160px;
+    .level {
+      width: 170px;
       height: 170px;
       overflow: hidden;
-      img {
+      @include hover-scale;
+      .level-img {
         @include img-center;
       }
     }

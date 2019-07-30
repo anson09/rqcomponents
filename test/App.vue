@@ -1,20 +1,27 @@
 <template>
   <div id="app">
-    <RqHeader/>
+    <RqHeader></RqHeader>  
+    <RqPersonalCenter
+      :uid="132782"
+      @follow="log"
+      @redirect="log"
+    ></RqPersonalCenter>
   </div>
 </template>
 
 <script>
 export default {
-  name: "App"
+  name: "App",
+  methods: {
+    log(...params) {
+      console.log(params)
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
 * {
   font-family: sans-serif;
 
-}
-#app {
-  width: 100vw;
 }
 </style>

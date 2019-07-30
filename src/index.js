@@ -1,6 +1,10 @@
-import { RqHeader } from "../packages/header";
+import RqHeader from "../packages/header";
+import RqPersonalCenter from "../packages/personal-center";
 
-const components = [RqHeader];
+const components = [
+  RqHeader,
+  RqPersonalCenter
+];
 
 const install = function(Vue, opt = {}) {
   components.forEach(component => {

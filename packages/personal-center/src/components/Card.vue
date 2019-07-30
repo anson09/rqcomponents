@@ -1,6 +1,6 @@
 <template>
   <div class="card__wrapper">
-    <div class="card">
+    <div class="card" @click="redirect">
       <p class="card__title">
         {{info.name}}
       </p>
@@ -43,6 +43,11 @@ export default {
         startAt: "开始时间"
       }
     }
+  },
+  methods: {
+    redirect() {
+      this.$emit("redirect", "scrafts", this.info.algoId);
+    }
   }
 };
 </script>
@@ -53,6 +58,7 @@ export default {
   padding: 26px;
   background: $bg-white;
   border-radius: 8px;
+  @include hover-scale;
   .label {
     @include mini-text;
   }

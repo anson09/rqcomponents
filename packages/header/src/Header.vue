@@ -30,10 +30,10 @@
 </template>
 
 <script>
-import logo from "../assets/img/logo.png";
-import header from "../assets/img/header.png";
 import headerBtns from "../assets/dict/header.json";
 import { getAccount } from "../api";
+const logo = require("../assets/img/logo.png");
+const header = require("../assets/img/header.png");
 
 export default {
   name: "RqHeader",
@@ -50,9 +50,9 @@ export default {
   async mounted() {
     //mock cookie
     // sid: a2c39e88-5151-4c68-a69f-5c45a26ce396|8058e3ada2f16fbbd90231c145795e7e92a03f2f72690c79eaf6c38a2db391a4f28d81e9a12ee90833d58ed8f59c9649feb951f5824871c40b330637afffe606
-    const {avatar} = await getAccount()
+    const {avatar} = await getAccount();
     if (avatar) {
-      this.avatar = avatar
+      this.avatar = avatar;
     }
   },
   methods: {
@@ -73,9 +73,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../common/style/common";
+@import "../../common/style/common/index.scss";
 
 .rqheader {
+  position: relative;
   display: flex;
   box-sizing: border-box;
   align-items: center;
@@ -83,7 +84,8 @@ export default {
   height: 70px;
   padding-left: 40px;
   padding-right: 20px;
-  background: $header-bg;
+  background: $bg-white;
+  z-index: 1;
   &__logo {
     display: block;
     width: 136px;
@@ -131,7 +133,7 @@ export default {
       top: 70px;
       padding: 0 20px;
       box-shadow: 0px 8px 12px 0px rgba(45,54,158,0.08);
-      background: $header-bg-active;
+      background: $bg-white;
       z-index: -1;
       border-radius: 0 0 12px 12px;
       &--item {
@@ -144,7 +146,7 @@ export default {
       }
     }
     &.active {
-      background: $header-bg-active;
+      background: $bg-white;
       color: $highlight;
       box-shadow: 0px -8px 12px 0px rgba(45,54,158,0.08);
       .arrow {
@@ -161,7 +163,7 @@ export default {
         width: 34px
       }
       &.active {
-        background: $header-bg-active;
+        background: $bg-white;
         box-shadow: 0px -8px 12px 0px rgba(45,54,158,0.08);
       }
       .rqheader-btn__dropdown {

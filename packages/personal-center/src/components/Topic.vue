@@ -1,9 +1,9 @@
 <template>
   <div class="topic__wrapper">
-    <div class="topic">
+    <div class="topic" @click="redirect">
       <div class="topic__content">
         <div class="left avatar">
-          <img :src="info.avatar" alt="">
+          <img :src="info.author.avatar" alt="">
         </div>
         <div class="right">
           <p class="topic__title">
@@ -18,7 +18,7 @@
         <span>{{info.chat}}</span>
         <i class="rq-icons icon-view"> </i>
         <span>{{info.view}}</span>
-        <i class="rq-icons icon-head"> </i>
+        <i class="rq-icons icon-heart"> </i>
         <span>{{info.like}}</span>
         <i class="rq-icons icon-chart highlight"> </i>
         <span>{{info.chart}}</span>
@@ -42,6 +42,11 @@ export default {
         lastRepeat: "最后回复于"
       }
     }
+  },
+  methods: {
+    redirect() {
+      this.$emit("redirect", "community", "topic", this.info.tid);
+    }
   }
 };
 </script>
@@ -52,6 +57,7 @@ export default {
   padding: 24px;
   background: $bg-white;
   border-radius: 8px;
+  @include hover-scale;
   &__wrapper {
     @include flex-item;
   }
@@ -96,7 +102,7 @@ export default {
     span {
       &:last-child {
         position: relative;
-        padding: 2px;
+        padding: 2px 6px;
         background: $highlight;
         color: $text-white;
         border-radius: 2px;
