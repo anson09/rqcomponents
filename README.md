@@ -1,6 +1,23 @@
-usage:
+# usage:
+
+## Full
+
 ```js
-import RqHeader from "@rqjs/rqcomponents";
+import UI from "@rqjs/rqcomponents";
+
+Vue.use(UI);
+
+new Vue({
+    el: "#rq-header",
+    template: "<RqHeader></RqHeader>"
+})
+```
+
+## Package
+
+
+```js
+import {RqHeader} from "@rqjs/rqcomponents";
 
 Vue.use(RqHeader);
 
@@ -9,6 +26,7 @@ new Vue({
     template: "<RqHeader></RqHeader>"
 })
 ```
+
 
 # TODO
 

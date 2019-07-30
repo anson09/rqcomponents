@@ -32,8 +32,8 @@
 <script>
 import headerBtns from "../assets/dict/header.json";
 import { getAccount } from "../api";
-const logo = require("../assets/img/logo.png");
-const header = require("../assets/img/header.png");
+import logo from "../assets/img/logo.png";
+import header from "../assets/img/header.png";
 
 export default {
   name: "RqHeader",

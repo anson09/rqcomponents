@@ -71,6 +71,11 @@ import Card from "./components/Card.vue";
 import Topic from "./components/Topic.vue";
 import Follow from "./components/Follow.vue";
 import Empty from "./components/Empty.vue";
+import bannerImage from "../assets/img/banner.png";
+import bronzeImage from "../assets/img/bronze.png";
+import goldImage from "../assets/img/gold.png";
+import diamondImage from "../assets/img/diamond.png";
+import kingImage from "../assets/img/king.png";
 import {
   getAccount,
   getSubscribe,
@@ -97,7 +102,7 @@ export default {
   },
   data() {
     return {
-      banner: require("../assets/img/banner.png"),
+      banner: bannerImage,
       contentKeys: {
         subscribe: {
           col: 3,
@@ -129,16 +134,16 @@ export default {
         topic: "发表的主题",
         level: [{
           label: "青铜韭菜",
-          image: require("../assets/img/bronze.png")
+          image: bronzeImage
         }, {
           label: "黄金矿工",
-          image: require("../assets/img/gold.png")
+          image: goldImage
         }, {
           label: "钻石强者",
-          image: require("../assets/img/diamond.png")
+          image: diamondImage
         }, {
           label: "量化王者",
-          image: require("../assets/img/king.png")
+          image: kingImage
         }]
       },
       account: {

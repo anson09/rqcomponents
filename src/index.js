@@ -12,7 +12,8 @@ const install = function(Vue, opt = {}) {
   });
 };
 
+export {RqHeader, RqPersonalCenter};
+
 export default {
   install,
-  RqHeader
 };
