@@ -1,5 +1,5 @@
 import Vue from "vue";
-import Rqui from "../dist/rqcomponents.cjs";
+import Rqui from "../src";
 import App from "./App.vue";
 import "/../node_modules/normalize.css";
 

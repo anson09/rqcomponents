@@ -4,29 +4,29 @@
     "links": [
       {
         "label": "系统文档",
-        "href": "/"
+        "href": "/site/api/python/chn"
       },
       {
         "label": "研究文档",
-        "href": "/"
+        "href": "/site/api/research/chn"
       },
       {
         "label": "API文档",
-        "href": "/"
+        "href": "/site/api/python/chn"
       },
       {
         "label": "数据文档",
-        "href": "/"
+        "href": "/site/fundamentals"
       },
       {
         "label": "常见问题特殊情况",
-        "href": "/"
+        "href": "/site/faq"
       }
     ]
   },
   {
     "label": "社区",
-    "herf": "/"
+    "href": "/site/community"
   },
   {
     "type": "header",
@@ -34,7 +34,7 @@
     "links": [
       {
         "label": "设置",
-        "href": "/"
+        "href": "/site/profile"
       },
       {
         "label": "首页",
@@ -42,7 +42,7 @@
       },
       {
         "label": "登出",
-        "href": "/"
+        "event": ["logout"]
       }
     ]
   }

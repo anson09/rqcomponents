@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <RqHeader></RqHeader>  
+    <RqHeader
+      @logout="log"
+    ></RqHeader>  
     <RqPersonalCenter
       :uid="132782"
       @follow="log"

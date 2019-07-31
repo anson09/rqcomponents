@@ -14,7 +14,7 @@
     "dev:lib": "rollup -w -c",
     "dev": "parcel watch ./demo/index.html --no-autoinstall --out-dir demo/dist",
     "build": "npm run clean && rollup -c",
-    "clean": "rm -rf .cache dist"
+    "clean": "rm -rf .cache dist demo/dist"
   },
   "keywords": [
     "vue"

@@ -9,7 +9,7 @@
         @click= "openDropdown(idx)"
         @mouseleave= "closeDropdown(idx)"
       >
-        <span v-if="btn.label" class="rqheader-btn__label">{{btn.label}}</span>
+        <span v-if="btn.label" class="rqheader-btn__label" @click="clickHandler(btn)">{{btn.label}}</span>
         <img v-if="btn.type === 'header'" :src="avatar" alt="">
         <span v-if="btn.links && !btn.type" class="arrow">
           <i class="rq-icons icon-arrow-down"></i>
@@ -20,7 +20,7 @@
               v-for="(link, linkIdx) in btn.links"
               :key="linkIdx"
             >
-              <span>{{link.label}}</span>
+              <span @click="clickHandler(link)">{{link.label}}</span>
             </div>
           </div>
         </transition>
@@ -48,8 +48,6 @@ export default {
     }
   },
   async mounted() {
-    //mock cookie
-    // sid: a2c39e88-5151-4c68-a69f-5c45a26ce396|8058e3ada2f16fbbd90231c145795e7e92a03f2f72690c79eaf6c38a2db391a4f28d81e9a12ee90833d58ed8f59c9649feb951f5824871c40b330637afffe606
     const {avatar} = await getAccount();
     if (avatar) {
       this.avatar = avatar;
@@ -60,13 +58,25 @@ export default {
       if (!this.btnConfig[idx].links) {
         return;
       }
-      this.$set(this.btnConfig[idx], 'active', !this.btnConfig[idx].active);
+      this.$set(this.btnConfig[idx], "active", !this.btnConfig[idx].active);
     },
     closeDropdown(idx) {
       if (!this.btnConfig[idx].links) {
         return;
       }
-      this.$set(this.btnConfig[idx], 'active', false);
+      this.$set(this.btnConfig[idx], "active", false);
+    },
+    clickHandler(cfg) {
+      if (cfg.href) {
+        return redirect(cfg.href)
+      } else if (cfg.event) {
+        this.$emit(...cfg.event)
+      }
+    },
+    redirect({href}) {
+      if (href) {
+        window.location.href = href;
+      }
     }
   }
 };
@@ -99,9 +109,6 @@ export default {
     transition: all .3s;
     @include text;
     @include hover;
-    * {
-      transition: all .3s;
-    }
     &::after {
       content: "";
       position: absolute;
