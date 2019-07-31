@@ -68,12 +68,12 @@ export default {
     },
     clickHandler(cfg) {
       if (cfg.href) {
-        return redirect(cfg.href)
+        return this.redirect(cfg.href)
       } else if (cfg.event) {
         this.$emit(...cfg.event)
       }
     },
-    redirect({href}) {
+    redirect(href) {
       if (href) {
         window.location.href = href;
       }
