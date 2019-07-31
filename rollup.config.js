@@ -53,7 +53,7 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
         ),
         plugins: [
             url({
-                limit: 10 * 1024,
+                limit: 1024 * 1024,
                 include: ['**/*.eot', '**/*.woff', '**/*.woff2', '**/*.ttf', '**/*.svg', '**/*.png'],
                 emitFiles: true
             }),
