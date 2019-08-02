@@ -10,7 +10,7 @@
           :key="idx"
           class="card__content--item">
             <p class="label">{{labels[key]}}</p>
-            <p class="value">{{info[key]}}%</p>
+            <p :class="'value ' + info[key].type">{{info[key].val}}%</p>
           </div>
       </div>
        <div class="card__footer">

@@ -4,7 +4,7 @@
       @logout="log"
     ></RqHeader>  
     <RqPersonalCenter
-      :uid="132782"
+      :uid="268871"
       @follow="log"
       @redirect="log"
     ></RqPersonalCenter>

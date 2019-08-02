@@ -1,5 +1,5 @@
 const dataFormater = (str) => {
-  const date = new Date(str);
+  const date = isNaN(str) ? new Date(str) : new Date(parseInt(str));
   const twoBit = data => data.toString().padStart(0, 2);
   Object.assign(date, {
     y: date.getFullYear().toString(),

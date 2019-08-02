@@ -44,19 +44,33 @@
       class="personal-center__block">
       <div class="title">
         {{labels[key]}}
-        <a href="">{{labels.more}}</a>
       </div>
         <div
           v-if="info[key].length !== 0"
-          class="card-list">
-            <Component
-              v-for="(item, idx) in info[key]"
-              :class="'col-' + val.col"
+          class="wrapper">
+          <div
+            class="card-list">
+              <Component
+                v-for="(item, idx) in info[key]"
+                :class="'col-' + val.col"
+                :key="idx"
+                :is="val.component"
+                :info="item"
+                @redirect="redirect"
+              ></Component>
+          </div>
+          <div class="card-pagination" 
+            v-if="contentKeys[key].pages >= 1"
+          >
+            <div
+              v-for="(page, idx) in
+                createPagination(contentKeys[key].page, contentKeys[key].pages)"
               :key="idx"
-              :is="val.component"
-              :info="item"
-              @redirect="redirect"
-            ></Component>
+              @click="pageChange(key, page)"
+              :class="['card-pagination-item', {active: contentKeys[key].page === page}]">
+              {{page}}
+            </div>
+          </div>
         </div>
         <Empty
           v-else
@@ -105,30 +119,49 @@ export default {
       banner: bannerImage,
       contentKeys: {
         subscribe: {
+          pages: 0,
+          page: 1,
           col: 3,
-          component: "Card"
+          component: "Card",
+          handler: "loadSubscribeData",
+          api: getSubscribe
         },
         share: {
+          pages: 0,
+          page: 1,
           col: 3,
-          component: "Card"
+          component: "Card",
+          handler: "loadShareData",
+          api: getShare
         },
         topic: {
+          pages: 0,
+          page: 1,
           col: 2,
-          component: "Topic"
+          component: "Topic",
+          handler: "loadTopicData",
+          api: getTopic
         },
         follow: {
+          pages: 0,
+          page: 1,
           col: 4,
-          component: "Follow"
+          component: "Follow",
+          handler: "loadFollowData",
+          api: getFollow
         },
         fans: {
+          pages: 0,
+          page: 1,
           col: 4,
-          component: "Follow"
+          component: "Follow",
+          handler: "loadFansData",
+          api: getFans
         }
       },
       labels: {
         follow: "关注",
         fans: "粉丝",
-        more: "更多 >",
         subscribe: "我的订阅",
         share: "分享的订阅",
         topic: "发表的主题",
@@ -175,21 +208,58 @@ export default {
     }
   },
   methods: {
+    createPagination(now, total) {
+      if (total <= 1) {
+        return [];
+      }
+      let count = now - 3;
+      const res = [];
+      for (let i = 1; i <= 5; i++) {
+        const point = count + i;
+        if (point > 1 && point < total) {
+          res.push(point);
+        }
+      }
+      if (res.includes(2)) {
+        res.unshift(1);
+      } else {
+        res.unshift(1, '...');
+      }
+      if (res.includes(total - 1)) {
+        res.push(total);
+      } else {
+        res.push('...', total);
+      }
+      return res;
+    },
+    pageChange(key, nextPage) {
+      const { page, handler } = this.contentKeys[key];
+      if (!isNaN(nextPage) && (nextPage) !== page) {
+        this[handler](this.uid, nextPage);
+      }
+    },
     loadData(uid) {
       this.loadAccountData(uid);
-      this.loadSubscribeData();
+      this.loadSubscribeData(uid);
       this.loadShareData(uid);
       this.loadTopicData(uid);
-      this.loadFansAndFollowData(uid);
+      this.loadFansData(uid);
+      this.loadFollowData(uid);
     },
-    initAlgoData(key, data) {
-      const fmtPercent = num => (num * 100).toFixed(2);
+    initAlgoData(key, {count, data}) {
+      const fmtPercent = num => ({
+        type: num >= 0 ? 'red' : 'green',
+        val: (num * 100).toFixed(2)
+      });
+      if (count) {
+        this.contentKeys[key].pages = Math.ceil(count / (this.contentKeys[key].col * 3));
+      }
       this.info[key] = data.map(e => ({
           algoId: e["algo-id"],
           name: e.title,
           year: fmtPercent(e.annualizedReturn),
           total: fmtPercent(e.totalReturn),
-          retracement: fmtPercent(e.maximumDrawdown),
+          retracement: {...fmtPercent(e.maximumDrawdown), type: 'default'},
           startAt: fmtDate(e.runStartTimestamp)
       }));
     },
@@ -203,7 +273,7 @@ export default {
         isFollow: ["userInfo", "isFollowing"],
         level: ["level"],
       }
-      const { data: {code, userData} } = await getAccount(132782);
+      const { data: {code, userData} } = await getAccount(uid);
       if (code === 0) {
         Object.entries(paramsList).map(([key, path]) => {
           const val = path.length === 1 ?
@@ -219,8 +289,15 @@ export default {
         })
       }
     },
-    async loadTopicData(uid) {
-      const {topics} = await getTopic(uid);
+    pageUpdate(key, page, count) {
+      this.contentKeys[key].page = page;
+      this.contentKeys[key].pages = Math.ceil(count / (this.contentKeys[key].col * 3));
+    },
+    async loadTopicData(uid, page=1) {
+      const key = "topic";
+      const { col, api } = this.contentKeys[key];
+      const {topics, count} = await api(uid, page, col * 3);
+      this.pageUpdate(key, page, count);
       this.info.topic = topics.map(e => {
         return {
           tid: e.tid,
@@ -239,19 +316,11 @@ export default {
         }
       });
     },
-    async loadFansAndFollowData(uid) {
-      getFans(uid).then(({users}) => {
-        this.info.fans = users.map(e => {
-          return {
-            name: e.username,
-            avatar: e.picture,
-            uid: e.uid
-          }
-        });
-      });
-
-      getFollow(uid).then(({users}) => {
-        this.info.follow = users.map(e => {
+    initFollowingData(key, uid, countKey, page=1) {
+      const { col, api } = this.contentKeys[key];
+      return api(uid, page, col * 3).then((res) => {
+        this.pageUpdate(key, page, res[countKey]);
+        this.info[key] = res.users.map(e => {
           return {
             name: e.username,
             avatar: e.picture,
@@ -260,12 +329,20 @@ export default {
         });
       });
     },
-    async loadShareData(uid) {
-      const {data} = await getShare(uid);
+    loadFollowData(uid, page=1) {
+      const key = "follow";
+      this.initFollowingData(key, uid, "followingCount", page);
+    },
+    loadFansData(uid, page=1) {
+      const key = "fans";
+      this.initFollowingData(key, uid, "followerCount", page);
+    },
+    async loadShareData(uid, page) {
+      const data = await getShare(uid, page);
       this.initAlgoData("share", data);
     },
-    async loadSubscribeData() {
-      const {data} = await getSubscribe();
+    async loadSubscribeData(uid, page) {
+      const data = await getSubscribe(uid, page);
       this.initAlgoData("subscribe", data);
     },
     follow(follow=true) {
@@ -371,15 +448,32 @@ export default {
   .title {
     @include h3;
     margin-left: 6px;
-    a {
-      margin-left: 14px;
-      text-decoration: none;
-      @include text;
-    }
   }
-  .card-list {
-    display: flex;
-    flex-wrap: wrap;
+  .card{
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &-pagination {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin-top: 30px;
+      margin-bottom: 46px;
+      &-item {
+        color: $highlight;
+        width: 32px;
+        height: 32px;
+        text-align:center;
+        line-height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        &.active {
+          background: $highlight;
+          color: $bg-white;
+        }
+      }
+    }
   }
 }
 </style>

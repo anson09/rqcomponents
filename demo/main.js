@@ -1,7 +1,7 @@
 import Vue from "vue";
-import Rqui from "../dist/rqcomponents.cjs";
+// import Rqui from "../dist/rqcomponents.cjs";
 // dev
-// import Rqui from "../src";
+import Rqui from "../src";
 import App from "./App.vue";
 import "/../node_modules/normalize.css";
 

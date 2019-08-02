@@ -24,28 +24,27 @@ const getShare = async (uid) => {
 }
 
 
-const communityApi = async (uid, key, count=4) => {
+const communityApi = async (uid, key, page=1, count=4) => {
   const url = `community/api/user/${uid}/${key}`;
   const params = {
     uid,
-    page: 1,
+    page,
     count
   };
   const { data } = await axios.get(url, {params});
   return data;
 }
 
-const getTopic = (uid) => {
-  return communityApi(uid, 'topics', 6);
+const getTopic = (uid, page=1, count=6) => {
+  return communityApi(uid, 'topics', page, count);
 }
 
-const getFollow = (uid) => {
-  return communityApi(uid, 'following');
+const getFollow = (uid, page=1, count=6) => {
+  return communityApi(uid, 'following', page, count);
 }
 
-
-const getFans = (uid) => {
-  return communityApi(uid, 'followers');
+const getFans = (uid, page=1, count=6) => {
+  return communityApi(uid, 'followers', page, count);
 }
 
 export { getAccount, getSubscribe, getShare, getTopic, getFollow, getFans }
