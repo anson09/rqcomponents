@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     redirect() {
-      this.$emit("redirect", "scrafts", this.info.algoId);
+      this.$emit("redirect", "scrafts", this.info.strategyRunID);
     }
   }
 };

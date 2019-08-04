@@ -34,7 +34,7 @@
     "links": [
       {
         "label": "设置",
-        "href": "/site/profile"
+        "href": "/welcome/profile"
       },
       {
         "label": "首页",
@@ -42,7 +42,7 @@
       },
       {
         "label": "登出",
-        "event": ["logout"]
+        "event": "logout"
       }
     ]
   }

@@ -32,7 +32,7 @@
 
 <script>
 import headerBtns from "../assets/dict/header.json";
-import { getAccount } from "../api";
+import { getAccount, logout } from "../api";
 import logo from "../assets/img/logo.png";
 import header from "../assets/img/header.png";
 
@@ -68,11 +68,14 @@ export default {
       }
       this.$set(this.btnConfig[idx], "active", false);
     },
-    clickHandler(cfg) {
+    async clickHandler(cfg) {
       if (cfg.href) {
         return this.redirect(cfg.href)
-      } else if (cfg.event) {
-        this.$emit(...cfg.event)
+      } else if (cfg.event === "logout") {
+        const {code} = await logout();
+        if (code === 0) {
+          return this.redirect("/")
+        }
       }
     },
     redirect(href) {

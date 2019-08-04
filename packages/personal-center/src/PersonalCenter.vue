@@ -83,7 +83,7 @@
 <script>
 import "element-ui/lib/theme-chalk/base.css";
 import "element-ui/lib/theme-chalk/notification.css";
-import { Notification } from 'element-ui';
+import Notification from "element-ui/lib/notification";
 import Card from "./components/Card.vue";
 import Topic from "./components/Topic.vue";
 import Follow from "./components/Follow.vue";
@@ -194,10 +194,10 @@ export default {
         }]
       },
       account: {
-        name: "金尾巴",
+        name: "",
         avatar: "",
-        follow: 2,
-        fans: 300,
+        follow: 0,
+        fans: 0,
         isFollow: false,
         descrition: "这家伙很懒，什么也没有留下",
         level: 1
@@ -211,9 +211,6 @@ export default {
         fans: []
       }
     }
-  },
-  mounted() {
-   
   },
   watch: {
     uid: {
@@ -270,7 +267,7 @@ export default {
         this.contentKeys[key].pages = Math.ceil(count / (this.contentKeys[key].col * 3));
       }
       this.info[key] = data.map(e => ({
-          algoId: e["algo-id"],
+          strategyRunID: e.strategyRunID,
           name: e.title,
           year: fmtPercent(e.annualizedReturn),
           total: fmtPercent(e.totalReturn),
@@ -300,7 +297,7 @@ export default {
                 return a[b];
               }
             });
-          this.account[key] = val !== ""  ? val : this.account[key];
+          this.account[key] = val !== "" && val !== undefined ? val : this.account[key];
         })
       }
     },
@@ -384,11 +381,14 @@ export default {
       this.initAlgoData("subscribe", data);
     },
     async follow(follow=true) {
-      const text = follow ? "关注" : "取消关注"
-      const type = follow ? "follow" : "unfollow"
+      const text = follow ? "关注" : "取消关注";
+      const type = follow ? "follow" : "unfollow";
+      const increase = follow ? 1 : -1;
       toggleFollow(this.uid, type).then(({data:{code}}) => {
         if (code === 0) {
+          this.account.fans = (parseInt(this.account.fans) + increase).toString();
           this.account.isFollow = follow;
+          this.loadFansData(this.uid, this.contentKeys.fans.page);
           Notification.success(text + "成功");
         }
       }).catch((err) => {
@@ -398,11 +398,6 @@ export default {
           message
         });
       });
-      // if (code === 0) {
-      //   this.account.isFollow = follow;
-      //   this.$notify.success("关注成功");
-      // } else {
-      // }
     },
     redirect(...path) {
       this.$emit("redirect", ...path);

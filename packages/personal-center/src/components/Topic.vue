@@ -59,10 +59,13 @@ export default {
 @import "../../../common/style/common";
 
 .topic {
+  box-sizing: border-box;
   padding: 24px;
   background: $bg-white;
   border-radius: 8px;
   @include hover-scale;
+  height: 100%;
+  margin-bottom: 24px;
   &__wrapper {
     @include flex-item;
   }
