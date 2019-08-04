@@ -5,12 +5,13 @@
       <div
         v-for="(btn, idx) in btnConfig"
         :key="idx"
-        :class="['rqheader-btn', {header: btn.type === 'header', active: btn.active, active: btn.active}]"
+        :class="['rqheader-btn', {avatar: btn.type === 'avatar', active: btn.active, active: btn.active}]"
         @click= "openDropdown(idx)"
         @mouseleave= "closeDropdown(idx)"
       >
         <span v-if="btn.label" class="rqheader-btn__label" @click="clickHandler(btn)">{{btn.label}}</span>
-        <img v-if="btn.type === 'header'" :src="avatar" alt="">
+        <img v-if="btn.type === 'avatar' && !avatar" :src="baseAvatar" alt="">
+        <img v-if="btn.type === 'avatar' && avatar" :src="avatar" alt="">
         <span v-if="btn.links && !btn.type" class="arrow">
           <i class="rq-icons icon-arrow-down"></i>
         </span>
@@ -43,12 +44,13 @@ export default {
         logo,
         header
       },
-      avatar: header,
+      baseAvatar: header,
+      avatar: "",
       btnConfig: headerBtns
     }
   },
   async mounted() {
-    const {avatar} = await getAccount();
+    const {data: {avatar}} = await getAccount();
     if (avatar) {
       this.avatar = avatar;
     }
@@ -160,12 +162,13 @@ export default {
         background: $highlight;
       }
     }
-    &.header {
+    &.avatar {
       position: relative;
       height: 100%;
       img {
         margin-left:20px;
-        width: 34px
+        width: 34px;
+        border-radius: 50%;
       }
       &.active {
         background: $bg-white;

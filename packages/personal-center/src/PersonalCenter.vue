@@ -60,7 +60,7 @@
               ></Component>
           </div>
           <div class="card-pagination" 
-            v-if="contentKeys[key].pages >= 1"
+            v-if="contentKeys[key].pages > 1"
           >
             <div
               v-for="(page, idx) in
@@ -81,6 +81,9 @@
 </template>
 
 <script>
+import "element-ui/lib/theme-chalk/base.css";
+import "element-ui/lib/theme-chalk/notification.css";
+import { Notification } from 'element-ui';
 import Card from "./components/Card.vue";
 import Topic from "./components/Topic.vue";
 import Follow from "./components/Follow.vue";
@@ -96,7 +99,9 @@ import {
   getShare,
   getTopic,
   getFollow,
-  getFans
+  getFans,
+  getCollection,
+  toggleFollow
 } from "../api";
 import { fmtDate, fmtDatetime } from "../../common/util";
 
@@ -142,6 +147,14 @@ export default {
           handler: "loadTopicData",
           api: getTopic
         },
+        collection: {
+          pages: 0,
+          page: 1,
+          col: 2,
+          component: "Topic",
+          handler: "loadCollectionData",
+          api: getCollection
+        },
         follow: {
           pages: 0,
           page: 1,
@@ -165,6 +178,7 @@ export default {
         subscribe: "我的订阅",
         share: "分享的订阅",
         topic: "发表的主题",
+        collection: "收藏的帖子",
         level: [{
           label: "青铜韭菜",
           image: bronzeImage
@@ -192,19 +206,21 @@ export default {
         subscribe: [],
         share: [],
         topic: [],
+        collection: [],
         follow: [],
         fans: []
       }
     }
   },
-  async mounted() {
-    this.loadData(this.uid);
+  mounted() {
+   
   },
   watch: {
     uid: {
       handler(val) {
         this.loadData(val);
-      }
+      },
+      immediate: true
     }
   },
   methods: {
@@ -240,11 +256,10 @@ export default {
     },
     loadData(uid) {
       this.loadAccountData(uid);
-      this.loadSubscribeData(uid);
-      this.loadShareData(uid);
-      this.loadTopicData(uid);
-      this.loadFansData(uid);
-      this.loadFollowData(uid);
+      Object.values(this.contentKeys).forEach((ctx) => {
+        const {handler} = ctx;
+        this[handler](uid);
+      })
     },
     initAlgoData(key, {count, data}) {
       const fmtPercent = num => ({
@@ -270,7 +285,7 @@ export default {
         descrition: ["userInfo", "signature"],
         follow: ["userInfo", "followingCount"],
         fans: ["userInfo", "followerCount"],
-        isFollow: ["userInfo", "isFollowing"],
+        isFollow: ["isFollowing"],
         level: ["level"],
       }
       const { data: {code, userData} } = await getAccount(uid);
@@ -298,7 +313,7 @@ export default {
       const { col, api } = this.contentKeys[key];
       const {topics, count} = await api(uid, page, col * 3);
       this.pageUpdate(key, page, count);
-      this.info.topic = topics.map(e => {
+      this.info[key] = topics.map(e => {
         return {
           tid: e.tid,
           createAt: fmtDatetime(e.timestamp),
@@ -313,6 +328,29 @@ export default {
           view: e.viewcount,
           like: e.votes,
           chart: e.clone
+        }
+      });
+    },
+    async loadCollectionData(uid, page=1) {
+      const key = "collection";
+      const { col, api } = this.contentKeys[key];
+      const {posts, count} = await api(uid, page, col * 3);
+      this.pageUpdate(key, page, count);
+      this.info[key] = posts.map(e => {
+        return {
+          tid: e.topic.tid,
+          createAt: fmtDatetime(e.timestamp),
+          lastRepeat: fmtDatetime(e.relativeTime),
+          name: e.topic.title,
+          author: {
+            name: e.user.username,
+            avatar: e.user.picture,
+            uid: e.user.uid
+          },
+          chat: e.topic.postcount,
+          view: e.topic.viewcount,
+          like: e.votes,
+          chart: e.topic.clone
         }
       });
     },
@@ -345,9 +383,26 @@ export default {
       const data = await getSubscribe(uid, page);
       this.initAlgoData("subscribe", data);
     },
-    follow(follow=true) {
-      this.$emit("follow", this.uid, follow);
-      this.account.isFollow = follow;
+    async follow(follow=true) {
+      const text = follow ? "关注" : "取消关注"
+      const type = follow ? "follow" : "unfollow"
+      toggleFollow(this.uid, type).then(({data:{code}}) => {
+        if (code === 0) {
+          this.account.isFollow = follow;
+          Notification.success(text + "成功");
+        }
+      }).catch((err) => {
+        const {data: {message}} = err.response;
+        Notification.error({
+          title: text + "失败",
+          message
+        });
+      });
+      // if (code === 0) {
+      //   this.account.isFollow = follow;
+      //   this.$notify.success("关注成功");
+      // } else {
+      // }
     },
     redirect(...path) {
       this.$emit("redirect", ...path);

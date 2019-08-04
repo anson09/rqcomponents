@@ -48,13 +48,6 @@ new Vue({
 
 ### Event
 
-- follow
-
-  #### params
-
-  - uid: Number, user uid
-  - follow: Boolean
-
 - redirect
 
   #### params

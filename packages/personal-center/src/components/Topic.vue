@@ -20,8 +20,10 @@
         <span>{{info.view}}</span>
         <i class="rq-icons icon-heart"> </i>
         <span>{{info.like}}</span>
-        <i class="rq-icons icon-chart highlight"> </i>
-        <span>{{info.chart}}</span>
+        <template v-if="info.chart">
+          <i class="rq-icons icon-chart highlight"> </i>
+          <span class="chart">{{info.chart}}</span>
+        </template>
       </div>
     </div>
   </div>
@@ -103,7 +105,7 @@ export default {
       margin-right: 10px;
     }
     span {
-      &:last-child {
+      &.chart {
         position: relative;
         padding: 2px 6px;
         background: $highlight;
