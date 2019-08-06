@@ -1,6 +1,6 @@
 {
   "name": "@rqjs/rqcomponents",
-  "version": "0.0.5-alpha.30",
+  "version": "0.0.5-alpha.31",
   "description": "A Component Library for Ricequant.",
   "main": "./dist/rqcomponents.cjs.js",
   "module": "./dist/rqcomponents.esm.js",
@@ -22,6 +22,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@vue/component-compiler-utils": "^3.0.0",

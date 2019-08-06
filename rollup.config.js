@@ -71,6 +71,9 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
                     [
                         '@babel/transform-runtime',
                         {useESModules: output.format !== 'cjs'}
+                    ],
+                    [
+                        "@babel/plugin-proposal-object-rest-spread",
                     ]
                 ]
             }),

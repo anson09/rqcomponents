@@ -29,21 +29,34 @@ export default {
     }
   },
   data() {
+    let localStorageAcount;
+    try {
+      localStorageAcount = JSON.parse(localStorage.rqAccount);
+    } catch (err) {
+      localStorageAcount = {};
+    }
+    const { isLogin=false, avatar=""} = localStorageAcount;
     return {
       defaultMode: "default",
-      isLogin: false,
-      avatar: ""
+      isLogin,
+      avatar
     }
   },
   async mounted() {
     const {data: {avatar}} = await getAccount();
     if (avatar) {
+      localStorage.setItem("rqAccount", JSON.stringify({
+        isLogin: true,
+        avatar
+      }));
       this.isLogin = true;
       this.avatar = avatar;
     } else {
       this.isLogin = false;
       this.avatar = "";
+      localStorage.removeItem("rqAccount");
     }
+    
   }
 };
 </script>

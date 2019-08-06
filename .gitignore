@@ -2,4 +2,5 @@
 .vscode
 node_modules
 demo/dist
+dist
 .cache

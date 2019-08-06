@@ -1,7 +1,7 @@
 import Vue from "vue";
-import {RqHeader} from "../dist/rqcomponents.cjs";
+// import {RqHeader} from "../dist/rqcomponents.cjs";
 // dev
-// import {RqHeader} from "../src";
+import {RqHeader} from "../src";
 import App from "./App.vue";
 import "/../node_modules/normalize.css";
 import VueRouter from "vue-router";
