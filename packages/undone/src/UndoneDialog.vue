@@ -25,7 +25,7 @@
         </span>
       </div>
       <div class="base__body--close" @click="closeBtn">
-        <i class="rq-icons icon-close-pane"></i>
+        <i class="rq-icons rq-icon-close-pane"></i>
       </div>
     </div>
   </el-dialog>
@@ -105,12 +105,12 @@ export default {
     padding: 0;
     &--title {
       text-align: center;
-      @include h1($text-gray-light);
+      @include h1($text-gray-lighter);
     }
     &--content {
       @include m-center-horizontal;
       text-align: center;
-      @include text($text-gray-light);
+      @include text($text-gray-lighter);
     }
     &--close {
       @include m-center-horizontal;
@@ -140,12 +140,16 @@ export default {
     }
   }
   &__body {
+    &--title {
+      margin-top: rem-real-vw(30px);
+      margin-bottom: rem-real-vw(80px);
+    }
     img {
       width: rem-real-vw(582px);
     }
     &--content {
       width: rem-real-vw(334px);
-      margin-bottom: rem-real-vw(60px);
+      margin-bottom: rem-real-vw(40px);
     }
     &--close {
       width: rem-real-vw(32px);

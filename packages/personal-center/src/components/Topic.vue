@@ -14,14 +14,14 @@
         </div>
       </div>
        <div class="topic__footer">
-        <i class="rq-icons icon-chat"> </i>
+        <i class="rq-icons rq-icon-chat"> </i>
         <span>{{info.chat}}</span>
-        <i class="rq-icons icon-view"> </i>
+        <i class="rq-icons rq-icon-view"> </i>
         <span>{{info.view}}</span>
-        <i class="rq-icons icon-heart"> </i>
+        <i class="rq-icons rq-icon-heart"> </i>
         <span>{{info.like}}</span>
         <template v-if="info.chart">
-          <i class="rq-icons icon-chart highlight"> </i>
+          <i class="rq-icons rq-icon-chart highlight"> </i>
           <span class="chart">{{info.chart}}</span>
         </template>
       </div>

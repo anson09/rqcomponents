@@ -1,6 +1,6 @@
 <template>
   <transition name="expand-menu">
-    <div v-show="activeLabel" class="expand-menu">
+    <div v-show="Boolean(activeLabel)" class="expand-menu">
       <div class="expand-menu__bg">
         <div class="expand-menu__supportBg" ></div>
         <div class="expand-menu__content">
@@ -42,7 +42,7 @@
                 >
                   <i
                     v-if="!contact.qrcode"
-                    :class="'rq-icons icon-' + contact.icon"
+                    :class="'rq-icons rq-icon-' + contact.icon"
                     @click="clickHandle(contact)"
                   ></i>
                   <el-popover
@@ -54,7 +54,7 @@
                     <img :src="qrcodeImg" />
                     <i
                       slot="reference"
-                      :class="'rq-icons icon-' + contact.icon"
+                      :class="'rq-icons rq-icon-' + contact.icon"
                     ></i>
                   </el-popover>
                 </span>
@@ -159,9 +159,7 @@ export default {
   opacity: 0;
   transform: translateY(-100%);
 }
-.activePage {
-  color: $highlight;
-}
+
 .expand-menu {
   position: absolute;
   top: 70px;
@@ -195,10 +193,10 @@ export default {
     width: $article-width;
     .expand-menu__links {
       padding: 30px 40px 0 0;
-      @include text($text-disabled);
       a,
       p,
       i {
+        @include text($text-disabled);
         transition: color 0.3s;
       }
       a {
@@ -220,7 +218,14 @@ export default {
         line-height: 1;
       }
       &.active {
-        color: $text-hard;
+        a,
+        p,
+        i {
+          &.activePage {
+            color: $highlight;
+          }
+          color: $text-hard;
+        }
         img {
           filter: none;
         }

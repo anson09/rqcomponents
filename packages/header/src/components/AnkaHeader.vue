@@ -208,6 +208,8 @@ export default {
     align-items: center;
     width: $article-width;
     height: 100%;
+    box-shadow: none;
+    background: $bg-white;
     @include m-center-horizontal;
     @include f-center;
     .nav__logo {

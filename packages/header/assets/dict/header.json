@@ -28,14 +28,14 @@
           "label": "数据文档",
           "link": {
             "newBlock": true,
-            "href": "/site/fundamentals"
+            "href": "/doc/fundamentals"
           }
         },
         {
           "label": "常见问题特殊情况",
           "link": {
             "newBlock": true,
-            "href": "/site/faq"
+            "href": "/doc/faq"
           }
         }
       ]

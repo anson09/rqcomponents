@@ -16,7 +16,7 @@
         <img v-if="btn.type === 'avatar' && !avatar" :src="baseAvatar" alt="">
         <img v-if="btn.type === 'avatar' && avatar" :src="avatar" alt="">
         <span v-if="btn.links && !btn.type" class="arrow">
-          <i class="rq-icons icon-arrow-down"></i>
+          <i class="rq-icons rq-icon-arrow-down"></i>
         </span>
         <transition name="rq-zoom-in-top">
           <div class="logged-header-btn__dropdown" v-if="btn.links && btn.active">

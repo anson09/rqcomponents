@@ -1,7 +1,7 @@
 <template>
   <div class="empty">
     <p class="empty__logo">
-      <i class="rq-icons icon-empty"></i>
+      <i class="rq-icons rq-icon-empty"></i>
     </p>
     <p class="empty__title">
       {{emptyText}}

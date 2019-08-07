@@ -13,8 +13,8 @@
         <div class="content">
           <p class="title">
             {{account.name}}
-            <i v-if="account.isFollow" class="rq-icons icon-heart" @click="follow(false)"></i>
-            <i v-else class="rq-icons icon-follow" @click="follow(true)"></i>
+            <i v-if="account.isFollow" class="rq-icons rq-icon-heart" @click="follow(false)"></i>
+            <i v-else class="rq-icons rq-icon-follow" @click="follow(true)"></i>
           </p>
           <p>
             <span>{{labels.follow}}: </span>
