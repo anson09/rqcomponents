@@ -12,7 +12,10 @@ Vue.use(VueRouter);
 //     router: true
 //   }
 // });
-Vue.use(RqHeader);
+Vue.use(RqHeader,  {
+  router: true,
+  admin: true
+});
 
 /* eslint-disable-next-line no-new */
 new Vue({

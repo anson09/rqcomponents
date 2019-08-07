@@ -31,7 +31,6 @@ function methodConstructor(cfg)  {
       }
     },
     handleEvent(event) {
-      console.log(event)
       const dialogModes = ["login", "forget", "register"];
       if (!dialogModes.includes(event)) {
         return;

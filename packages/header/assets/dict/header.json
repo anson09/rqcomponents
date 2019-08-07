@@ -53,7 +53,7 @@
       "links": [
         {
           "label": "设置",
-          "link": "/profile"
+          "link": "/welcome/profile"
         },
         {
           "label": "首页",

@@ -1,6 +1,8 @@
 <template>
   <header class="logged-header">
-    <img :src="images.logo" alt="logo" class="logged-header__logo">
+    <a href="/" class="logged-header__logo"
+      ><img src="../../assets/img/logo.png"
+    /></a>
     <div class="logged-header-btns">
       <div
         v-for="(btn, idx) in btnConfig"
@@ -100,7 +102,9 @@ export default {
   z-index: 1;
   &__logo {
     display: block;
-    width: 136px;
+    img {
+      width: 136px;
+    }
   }
   &-btn {
     a {
@@ -144,15 +148,19 @@ export default {
       box-sizing: border-box;
       width: 100%;
       top: 70px;
-      padding: 0 20px;
       box-shadow: 0px 8px 12px 0px rgba(45,54,158,0.08);
       background: $bg-white;
       z-index: -1;
       border-radius: 0 0 12px 12px;
       &--item {
+        padding: 0 20px;
         padding-top: 18px;
-        @include hover;
         @include text;
+        &:hover {
+          a, span {
+            color: $highlight;
+          }
+        }
         &:last-child {
           padding-bottom: 20px;
         }

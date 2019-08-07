@@ -2,9 +2,9 @@
   <div class="anka-header">
     <div :class="isInProduce" />
     <nav>
-      <router-link to="/" class="nav__logo" tag="a"
+      <a href="/" class="nav__logo"
         ><img src="../../assets/img/logo.png"
-      /></router-link>
+      /></a>
       <div class="nav__buttons">
         <NavButton
           v-for="(button, idx) in buttons"

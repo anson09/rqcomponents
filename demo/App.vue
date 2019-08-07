@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <RqHeader></RqHeader>
+  <div id="app" >
+    <RqHeader @auth="log" ></RqHeader>
     <!-- <RqPersonalCenter :uid="196300" @redirect="log"></RqPersonalCenter> -->
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
   mounted() {},
   methods: {
     log(...params) {
-      console.log(params);
+      console.log('111', params);
     }
   }
 };
