@@ -49,6 +49,7 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
                 name: 'rqcomponent',
                 exports: 'named',
                 sourcemap: true,
+                amd:{id: "rqcomponents"}
             })
         ),
         plugins: [
@@ -63,7 +64,10 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
                 sourceMap: true,
                 process: processSass,
             }),
-            resolve(),
+            resolve({
+                preferBuiltins: false,
+                browser: true
+            }),
             babel({
                 exclude: 'node_modules/**',
                 runtimeHelpers: true,
@@ -92,12 +96,12 @@ const configs = {
     esm: {
         output: {file: pkg.module, format: 'esm'}
     },
-    umd_prod: {
+    umd: {
         output: {file: pkg.unpkg.replace(/\.min\.js$/, '.js'), format: 'umd'},
         umd: true,
         env: 'development'
     },
-    umd: {
+    umd_prod: {
         output: {file: pkg.unpkg, format: 'umd'},
         umd: true,
         env: 'production'
