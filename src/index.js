@@ -1,9 +1,9 @@
 import RqHeader from "../packages/header";
-import RqPersonalCenter from "../packages/personal-center";
+import UndoneDialog from "../packages/undone";
 
 const components = [
   RqHeader,
-  RqPersonalCenter
+  UndoneDialog
 ];
 
 const install = function(Vue, opt = {}) {
@@ -12,7 +12,7 @@ const install = function(Vue, opt = {}) {
   });
 };
 
-export {RqHeader, RqPersonalCenter};
+export {RqHeader, UndoneDialog};
 
 export default {
   install,

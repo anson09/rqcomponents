@@ -1,7 +1,6 @@
 <template>
   <div id="app" >
     <RqHeader @auth="log" ></RqHeader>
-    <RqPersonalCenter :uid="196300" @redirect="log"></RqPersonalCenter>
   </div>
 </template>
 
