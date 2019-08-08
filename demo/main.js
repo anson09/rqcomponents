@@ -1,7 +1,7 @@
 import Vue from "vue";
 // import {RqHeader} from "../dist/rqcomponents.cjs";
 // dev
-import {RqHeader} from "../src";
+import {RqHeader, RqPersonalCenter} from "../src";
 import App from "./App.vue";
 import "/../node_modules/normalize.css";
 import VueRouter from "vue-router";
@@ -12,6 +12,7 @@ Vue.use(VueRouter);
 //     router: true
 //   }
 // });
+Vue.use(RqPersonalCenter);
 Vue.use(RqHeader,  {
   router: true,
   admin: true
