@@ -1,6 +1,6 @@
 <template>
   <el-button
-    :class="['common-button', { plain, disabled }]"
+    :class="['common-button', { plain, disabled, light }]"
     @click="clickHandler"
   >
     <span class="label">{{ label }}</span>
@@ -17,6 +17,10 @@ export default {
       required: true
     },
     plain: {
+      type: Boolean,
+      default: false
+    },
+    light: {
       type: Boolean,
       default: false
     },
@@ -90,6 +94,14 @@ export default {
     color: $highlight;
     background: transparent;
     border: 1px solid $highlight;
+
+    &.light {
+      color: $text-white-dark;
+      border-color: $text-white-dark;
+      &:hover {
+        background: rgba( $button-gray, .8 );
+      }
+    }
 
     &.disabled {
       color: $text-disabled;

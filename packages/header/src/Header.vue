@@ -5,6 +5,7 @@
         v-if="mode === defaultMode && isLogin"
         :avatar="avatar"></LoggedHeader>
       <AnkaHeader v-else
+        :opacity="opacity"
         :isLogin="isLogin"
       ></AnkaHeader>
     </Transition>
@@ -26,6 +27,10 @@ export default {
     mode: {
       default: "default",
       type: String
+    },
+    opacity: {
+      default: false,
+      type: Boolean
     }
   },
   data() {

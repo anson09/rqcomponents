@@ -4,17 +4,10 @@
       "label": "帮助文档",
       "links": [
         {
-          "label": "系统文档",
+          "label": "RQData使用文档",
           "link": {
-            "newBlock": true,
-            "href": "/doc/api/python/chn"
-          }
-        },
-        {
-          "label": "研究文档",
-          "link": {
-            "newBlock": true,
-            "href": "/doc/api/research/chn"
+            "outer": true,
+            "href": "/doc/rqdata-institutional#research-version"
           }
         },
         {
@@ -22,20 +15,6 @@
           "link": {
             "newBlock": true,
             "href": "/doc/api/python/chn"
-          }
-        },
-        {
-          "label": "数据文档",
-          "link": {
-            "newBlock": true,
-            "href": "/doc/fundamentals"
-          }
-        },
-        {
-          "label": "常见问题特殊情况",
-          "link": {
-            "newBlock": true,
-            "href": "/doc/faq"
           }
         }
       ]

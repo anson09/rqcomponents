@@ -1,41 +1,48 @@
 <template>
   <div class="anka-header">
-    <div :class="isInProduce" />
-    <nav>
-      <a href="/" class="nav__logo"
-        ><img src="../../assets/img/logo.png"
-      /></a>
-      <div class="nav__buttons">
-        <NavButton
-          v-for="(button, idx) in buttons"
-          :key="idx"
-          :label="button.label"
-          :active="button.active"
-          :more="button.more"
-          @click="clickHandler"
-          @hover="hoverHandler"
-          @close="closeChildNav"
-        ></NavButton>
-      </div>
-      <transition name="fade">
-        <div class="nav__buttons login">
-          <CommonButton
-            v-for="(cfg, idx) in loginButtons"
+    <div :class="isInProduce"> 
+      <nav>
+        <a href="/" class="nav__logo"
+          >
+          <transition name="fade">
+            <img v-if="light" src="../../assets/img/logo-white.png"/>
+            <img v-else src="../../assets/img/logo.png"/>
+          </transition>
+        </a>
+        <div class="nav__buttons">
+          <NavButton
+            v-for="(button, idx) in buttons"
             :key="idx"
-            :label="cfg.label"
-            :plain="cfg.plain"
-            @click="cfg.click"
-          ></CommonButton> 
+            :label="button.label"
+            :active="button.active"
+            :light="light"
+            :more="button.more"
+            @click="clickHandler"
+            @hover="hoverHandler"
+            @close="closeChildNav"
+          ></NavButton>
         </div>
-      </transition>
-    </nav>
-    <ExpandMenu
-      :active-label="activeLabel"
-      :menu-icon-light.sync="menuIconLight"
-      @hover="expandMenuHoverHandler"
-      @redirect="redirect"
-      @close="closeChildNav"
-    ></ExpandMenu>
+        <transition name="fade">
+          <div class="nav__buttons login">
+            <CommonButton
+              v-for="(cfg, idx) in loginButtons"
+              :key="idx"
+              :label="cfg.label"
+              :plain="cfg.plain"
+              :light="light"
+              @click="cfg.click"
+            ></CommonButton> 
+          </div>
+        </transition>
+      </nav>
+      <ExpandMenu
+        :active-label="activeLabel"
+        :menu-icon-light.sync="menuIconLight"
+        @hover="expandMenuHoverHandler"
+        @redirect="redirect"
+        @close="closeChildNav"
+      ></ExpandMenu>
+    </div>
     <transition name="rq-fade-in-linear">
       <div v-show="activeLabel !== '' || openDialog" class="mask" @mouseover="closeChildNav" />
     </transition>
@@ -62,6 +69,10 @@ export default {
     isLogin: {
       default: false,
       type: Boolean
+    },
+    opacity: {
+      default: false,
+      type: Boolean
     }
   },
   data() {
@@ -72,6 +83,23 @@ export default {
     };
   },
   computed: {
+    secondHeaderOpen() {
+      const producePageLink = ["/rqdata", "/rqpro"];
+      if (producePageLink.includes(this.getPath()) && !Boolean(this.activeLabel)) {
+        return true;
+      }
+      return false;
+    },
+    light() {
+      const producePageLink = ["/rqdata", "/rqpro"];
+      if (this.secondHeaderOpen) {
+        return false;
+      }
+      if (!Boolean(this.activeLabel) && this.opacity) {
+        return true;
+      }
+      return false;
+    },
     loginButtons() {
       if (this.isLogin) {
         return [
@@ -118,10 +146,13 @@ export default {
       });
     },
     isInProduce() {
-      const producePageLink = ["/rqdata", "/rqpro"];
-      return !producePageLink.includes(this.getPath()) || this.activeLabel
-        ? "header__bg"
-        : "header__bg__produce";
+      if (this.secondHeaderOpen) {
+        return "header__bg__produce";
+      }
+      if (this.opacity && !Boolean(this.activeLabel)) {
+        return "header__bg opacity";
+      }
+      return "header__bg";
     },
     isNotPageMore() {
       return (
@@ -194,6 +225,9 @@ export default {
     width: 100%;
     height: 100%;
     background: $bg-white;
+    &.opacity {
+      background: transparent;
+    }
   }
   .header__bg__produce {
     position: absolute;
@@ -239,6 +273,7 @@ export default {
     width: 100vw;
     height: 100vh;
     background: $mask-bg;
+    z-index: 1;
   }
 }
 </style>

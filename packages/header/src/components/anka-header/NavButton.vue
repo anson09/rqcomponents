@@ -2,7 +2,7 @@
   <div class="nav-button__wrapper" @mouseover="hoverHandler">
     <el-button
       type="text"
-      :class="['nav-button', { active }]"
+      :class="['nav-button', { active, light }]"
       @click="clickHandler"
     >
       <span>{{ label }}</span>
@@ -20,6 +20,10 @@ import elButton from "element-ui/lib/button";
 export default {
   name: "NavButton",
   props: {
+    light: {
+      type: Boolean,
+      default: false
+    },
     label: {
       type: String,
       required: true
@@ -51,18 +55,30 @@ export default {
 @import "../../../../common/style/common";
 
 .nav-button {
-  position: relative;
-  padding: 4px 14px;
-  margin: 0;
   @include text;
-  &__wrapper {
-    display: inline-block;
-  }
   &:hover {
     background: $button-gray;
   }
   &.active {
     color: $highlight;
+  }
+  &.light {
+    color: $text-white-dark;
+    &:hover {
+      color: $text;
+    }
+    &.active {
+      color: $highlight;
+    }
+  }
+}
+
+.nav-button {
+  position: relative;
+  padding: 4px 14px;
+  margin: 0;
+  &__wrapper {
+    display: inline-block;
   }
 }
 </style>
