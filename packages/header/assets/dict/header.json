@@ -6,7 +6,7 @@
         {
           "label": "RQData使用文档",
           "link": {
-            "outer": true,
+            "newBlock": true,
             "href": "/doc/rqdata-institutional#research-version"
           }
         },
