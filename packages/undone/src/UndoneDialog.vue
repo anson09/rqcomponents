@@ -126,11 +126,11 @@ export default {
 }
 
 @function rem-min($px) {
-  @return $px/$max-vw * $min-vw;
+  @return $px/$max-vh * 800px;
 }
 
 @function rem-real-vw($px) {
-  @return $px/$max-vw * 100vw;
+  @return $px/$max-vh * 100vh;
 }
 
 @function rem-max($px) {
@@ -166,7 +166,7 @@ export default {
     }
   }
 }
-@media screen and (min-width: $min-vw) {
+@media screen and (min-height: $min-vh) {
   ::v-deep .base {
     padding: rem-real-vw(30px) rem-real-vw(120px);
     padding-top: rem-real-vw(188px);
@@ -198,7 +198,7 @@ export default {
     }
   }
 }
-@media screen and (min-width: $max-vw) {
+@media screen and (min-height: $max-vh) {
   ::v-deep .base {
     padding: rem-max(30px) rem-max(120px);
     padding-top: rem-max(188px);
