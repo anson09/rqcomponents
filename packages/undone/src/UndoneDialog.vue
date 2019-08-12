@@ -69,7 +69,6 @@ export default {
     }
   }
 };
-
 </script>
 <style lang="scss">
 @import "../../common/style/common";
@@ -126,36 +125,107 @@ export default {
   }
 }
 
-@function rem-real-vw($px) {
-  @return $px;
+@function rem-min($px) {
+  @return $px/$max-vw * $min-vw;
 }
 
+@function rem-real-vw($px) {
+  @return $px/$max-vw * 100vw;
+}
+
+@function rem-max($px) {
+  @return $px;
+}
 ::v-deep .base {
-  padding: rem-real-vw(30px) rem-real-vw(120px);
-  padding-top: rem-real-vw(188px);
+  padding: rem-min(30px) rem-min(120px);
+  padding-top: rem-min(188px);
   &__header {
     img {
-      top: rem-real-vw(-92px);
-      width: rem-real-vw(210px);
+      top: rem-min(-92px);
+      width: rem-min(210px);
     }
   }
   &__body {
     &--title {
-      margin-top: rem-real-vw(30px);
-      margin-bottom: rem-real-vw(80px);
+      margin-top: rem-min(30px);
+      margin-bottom: rem-min(80px);
     }
     img {
-      width: rem-real-vw(582px);
+      width: rem-min(582px);
     }
     &--content {
-      width: rem-real-vw(334px);
-      margin-bottom: rem-real-vw(40px);
+      width: rem-min(334px);
+      margin-bottom: rem-min(40px);
     }
     &--close {
-      width: rem-real-vw(32px);
-      height: rem-real-vw(32px);
+      width: rem-min(32px);
+      height: rem-min(32px);
       i {
-        font-size: rem-real-vw(32px);
+        font-size: rem-min(32px);
+      }
+    }
+  }
+}
+@media screen and (min-width: $min-vw) {
+  ::v-deep .base {
+    padding: rem-real-vw(30px) rem-real-vw(120px);
+    padding-top: rem-real-vw(188px);
+    &__header {
+      img {
+        top: rem-real-vw(-92px);
+        width: rem-real-vw(210px);
+      }
+    }
+    &__body {
+      &--title {
+        margin-top: rem-real-vw(30px);
+        margin-bottom: rem-real-vw(80px);
+      }
+      img {
+        width: rem-real-vw(582px);
+      }
+      &--content {
+        width: rem-real-vw(334px);
+        margin-bottom: rem-real-vw(40px);
+      }
+      &--close {
+        width: rem-real-vw(32px);
+        height: rem-real-vw(32px);
+        i {
+          font-size: rem-real-vw(32px);
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: $max-vw) {
+  ::v-deep .base {
+    padding: rem-max(30px) rem-max(120px);
+    padding-top: rem-max(188px);
+    &__header {
+      img {
+        top: rem-max(-92px);
+        width: rem-max(210px);
+      }
+    }
+    &__body {
+      &--title {
+        margin-top: rem-max(30px);
+        margin-bottom: rem-max(80px);
+      }
+      img {
+        width: rem-max(582px);
+      }
+      &--content {
+        width: rem-max(334px);
+        margin-bottom: rem-max(40px);
+      }
+      &--close {
+        width: rem-max(32px);
+        height: rem-max(32px);
+        i {
+          font-size: rem-max(32px);
+        }
       }
     }
   }
