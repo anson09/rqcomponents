@@ -11,7 +11,7 @@
           }
         },
         {
-          "label": "API文档",
+          "label": "量化平台文档",
           "link": {
             "newBlock": true,
             "href": "/doc/api/python/chn"
@@ -32,7 +32,7 @@
       "links": [
         {
           "label": "设置",
-          "link": "/dashboard/profile"
+          "link": "/dasHboard/profile"
         },
         {
           "label": "首页",
