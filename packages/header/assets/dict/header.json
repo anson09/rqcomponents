@@ -32,7 +32,7 @@
       "links": [
         {
           "label": "设置",
-          "link": "/dasHboard/profile"
+          "link": "/dashboard/profile"
         },
         {
           "label": "首页",

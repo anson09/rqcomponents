@@ -114,14 +114,15 @@ export default {
         @include text;
       }
     }
+    span, a {
+      @include text;
+    }
     position: relative;
     box-sizing: border-box;
     display: flex;
     padding-right: 20px;
     align-items: center;
     transition: all .3s;
-    @include text;
-    @include hover;
     &::after {
       content: "";
       position: absolute;
@@ -132,10 +133,14 @@ export default {
       transition: background .3s;
     }
     &__label {
-      padding-left:20px;
+      padding-left: 20px;
+      cursor: pointer;
     }
     &__label + .arrow {
       margin-left: 10px;
+    }
+    &:hover &__label{
+      color: $highlight;
     }
     .arrow {
       display: inline-block;
@@ -168,7 +173,6 @@ export default {
     }
     &.active {
       background: $bg-white;
-      color: $highlight;
       box-shadow: 0px -8px 12px 0px rgba(45,54,158,0.08);
       .arrow {
         transform: rotate(180deg);
