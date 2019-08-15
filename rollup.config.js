@@ -59,7 +59,7 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
             postcss({
                 extract: false,
                 minimize: min,
-                sourceMap: false,
+                sourceMap: !min,
                 process: processSass,
             }),
             resolve({
@@ -73,7 +73,7 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
                     [
                         '@babel/preset-env',
                         {
-                            corejs: 3,
+                            corejs: 2,
                             modules: false,
                             useBuiltIns: 'usage',
                             targets: {
