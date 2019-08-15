@@ -5,6 +5,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss';
 import url from 'rollup-plugin-url';
 import json from 'rollup-plugin-json';
+import { terser } from "rollup-plugin-terser";
 import sass from 'node-sass';
 import pkg from './package.json';
 
@@ -15,9 +16,6 @@ const external = Object.keys(pkg.peerDependencies || {});
 const allExternal = external.concat(Object.keys(pkg.dependencies || {}));
 
 const makeExternalPredicate = externalArr => {
-
-
-
     if (externalArr.length === 0) {
         return () => false;
     }
@@ -61,7 +59,7 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
             postcss({
                 extract: false,
                 minimize: min,
-                sourceMap: true,
+                sourceMap: false,
                 process: processSass,
             }),
             resolve({
@@ -71,11 +69,20 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
             babel({
                 exclude: 'node_modules/**',
                 runtimeHelpers: true,
-                plugins: [
+                presets: [
                     [
-                        '@babel/transform-runtime',
-                        {useESModules: output.format !== 'cjs'}
+                        '@babel/preset-env',
+                        {
+                            corejs: 3,
+                            modules: false,
+                            useBuiltIns: 'usage',
+                            targets: {
+                                ie: '11',
+                            },
+                        },
                     ],
+                ],
+                plugins: [
                     [
                         "@babel/plugin-proposal-object-rest-spread",
                     ]
@@ -83,7 +90,10 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
             }),
             commonjs(),
             vue(),
-            json()
+            json(),
+            terser({
+                include: [/^.+\.min\.js$/],
+            }),
         ].filter(Boolean),
         external: makeExternalPredicate(umd ? external : allExternal)
     };
