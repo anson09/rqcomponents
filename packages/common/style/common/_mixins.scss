@@ -27,6 +27,11 @@
   font-weight: 500;
 }
 
+@mixin h2($color: $text) {
+  @include text($color, 26);
+  font-weight: 400;
+}
+
 @mixin h3($color: $text) {
   @include text($color, 24);
   font-weight: 500;

@@ -1,39 +1,43 @@
 <template>
   <div class="anka-header">
-    <div :class="isInProduce"> 
+    <div :class="isInProduce">
       <nav>
-        <a href="/" class="nav__logo"
-          >
+        <a href="/" class="nav__logo">
           <transition name="fade">
-            <img v-if="light" src="../../assets/img/logo-white.png"/>
-            <img v-else src="../../assets/img/logo.png"/>
+            <img v-if="light" src="../../assets/img/logo-white.png" />
+            <img v-else src="../../assets/img/logo.png" />
           </transition>
         </a>
-        <div class="nav__buttons">
-          <NavButton
-            v-for="(button, idx) in buttons"
-            :key="idx"
-            :label="button.label"
-            :active="button.active"
-            :light="light"
-            :more="button.more"
-            @click="clickHandler"
-            @hover="hoverHandler"
-            @close="closeChildNav"
-          ></NavButton>
+        <div v-if="Boolean(topic)" :class="['nav__topic', { light }]">
+          <p>{{ topic }}</p>
         </div>
-        <transition name="fade">
-          <div class="nav__buttons login">
-            <CommonButton
-              v-for="(cfg, idx) in loginButtons"
+        <template v-else>
+          <div class="nav__buttons">
+            <NavButton
+              v-for="(button, idx) in buttons"
               :key="idx"
-              :label="cfg.label"
-              :plain="cfg.plain"
+              :label="button.label"
+              :active="button.active"
               :light="light"
-              @click="cfg.click"
-            ></CommonButton> 
+              :more="button.more"
+              @click="clickHandler"
+              @hover="hoverHandler"
+              @close="closeChildNav"
+            ></NavButton>
           </div>
-        </transition>
+          <transition name="fade">
+            <div class="nav__buttons login">
+              <CommonButton
+                v-for="(cfg, idx) in loginButtons"
+                :key="idx"
+                :label="cfg.label"
+                :plain="cfg.plain"
+                :light="light"
+                @click="cfg.click"
+              ></CommonButton>
+            </div>
+          </transition>
+        </template>
       </nav>
       <ExpandMenu
         :active-label="activeLabel"
@@ -44,7 +48,11 @@
       ></ExpandMenu>
     </div>
     <transition name="rq-fade-in-linear">
-      <div v-show="activeLabel !== '' || openDialog" class="mask" @mouseover="closeChildNav" />
+      <div
+        v-show="activeLabel !== '' || openDialog"
+        class="mask"
+        @mouseover="closeChildNav"
+      />
     </transition>
     <SecondHeader></SecondHeader>
   </div>
@@ -73,6 +81,10 @@ export default {
     opacity: {
       default: false,
       type: Boolean
+    },
+    topic: {
+      default: "",
+      type: String
     }
   },
   data() {
@@ -85,7 +97,10 @@ export default {
   computed: {
     secondHeaderOpen() {
       const producePageLink = ["/rqdata", "/rqpro"];
-      if (producePageLink.includes(this.getPath()) && !Boolean(this.activeLabel)) {
+      if (
+        producePageLink.includes(this.getPath()) &&
+        !Boolean(this.activeLabel)
+      ) {
         return true;
       }
       return false;
@@ -119,14 +134,14 @@ export default {
         {
           label: "登录",
           plain: true,
-          click: () => { 
-            this.redirect({event: "login"});
+          click: () => {
+            this.redirect({ event: "login" });
           }
         },
         {
           label: "注册",
-          click: () => { 
-            this.redirect({event: "register"});
+          click: () => {
+            this.redirect({ event: "register" });
           }
         }
       ];
@@ -246,23 +261,35 @@ export default {
     background: transparent;
     @include m-center-horizontal;
     @include f-center;
-    .nav__logo {
-      margin-right: 40px;
-      img {
-        width: 136px;
-      }
-    }
-    .nav__buttons {
-      display: inline-block;
-      flex: 1;
-      div {
-        margin-right: 10px;
-        &:last-child {
-          margin-right: 0;
+    .nav {
+      &__logo {
+        img {
+          width: 136px;
         }
       }
-      &.login {
-        flex: unset;
+      &__topic {
+        margin-left: 30px;
+        flex: 1;
+        p {
+          @include h2($text-dark);
+        }
+        &.light p {
+          color: $text-white-dark;
+        }
+      }
+      &__buttons {
+        display: inline-block;
+        margin-left: 40px;
+        flex: 1;
+        div {
+          margin-right: 10px;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+        &.login {
+          flex: unset;
+        }
       }
     }
   }
