@@ -31,15 +31,22 @@
       "img": "avator",
       "links": [
         {
-          "label": "设置",
+          "label": "个人主页",
           "link": "/dashboard/profile"
         },
         {
-          "label": "首页",
+          "label": "账号中心",
+          "link": {
+            "outer": true,
+            "href": "/site/account"
+          }
+        },
+        {
+          "label": "回到首页",
           "link": "/"
         },
         {
-          "label": "登出",
+          "label": "登出账号",
           "event": "logout"
         }
       ]

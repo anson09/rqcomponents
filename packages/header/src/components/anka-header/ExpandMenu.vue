@@ -2,7 +2,7 @@
   <transition name="expand-menu">
     <div v-show="Boolean(activeLabel)" class="expand-menu">
       <div class="expand-menu__bg">
-        <div class="expand-menu__supportBg" ></div>
+        <div class="expand-menu__supportBg"></div>
         <div class="expand-menu__content">
           <div
             v-for="(cfg, idx) in configs"
@@ -17,14 +17,16 @@
               <a
                 v-for="(link, linkIdx) in cfg.links"
                 :key="linkIdx"
-                :class="
-                  menuIconLight && hoverPage === link.label ? 'activePage' : ''
-                "
+                :class="activeClass(link)"
                 @click="clickHandle(link)"
                 @mouseenter="handleMouseEnter(link)"
                 @mouseleave="handleMouseLeave()"
               >
-                <img v-if="link.iconImg" :src="link.iconImg" />
+                <img
+                  v-if="link.iconImg"
+                  :class="activeClass(link)"
+                  :src="link.iconImg"
+                />
                 {{ link.label }}
               </a>
             </div>
@@ -119,6 +121,9 @@ export default {
     }
   },
   methods: {
+    activeClass({ label }) {
+      return this.menuIconLight && this.hoverPage === label ? "activePage" : "";
+    },
     hoverHandler(label) {
       this.$emit("hover", label);
     },
@@ -172,6 +177,7 @@ export default {
     position: absolute;
     @include t-center-horizontal;
     width: 3000px;
+    min-width: 100%;
     height: 310px;
     overflow: hidden;
     background: #fff;
@@ -196,6 +202,7 @@ export default {
       a,
       p,
       i {
+        position: relative;
         @include text($text-disabled);
         transition: color 0.3s;
       }
@@ -223,11 +230,24 @@ export default {
         i {
           &.activePage {
             color: $highlight;
+            &:before {
+              position: absolute;
+              top: 4px;
+              left: -20px;
+              width: 10px;
+              height: 10px;
+              content: "";
+              background: $success;
+              border-radius: 50%;
+            }
           }
+          font-weight: 700;
           color: $text-hard;
         }
         img {
-          filter: none;
+          &.activePage {
+            filter: none;
+          }
         }
         &.expand-menu__links {
           p.title {

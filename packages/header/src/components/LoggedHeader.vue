@@ -184,8 +184,9 @@ export default {
     &.avatar {
       position: relative;
       height: 100%;
+      padding-right:40px;
       img {
-        margin-left:20px;
+        margin-left:40px;
         width: 34px;
         border-radius: 50%;
       }
