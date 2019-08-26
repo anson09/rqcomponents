@@ -63,7 +63,7 @@ export default {
       if (!this.btnConfig[idx].links) {
         return;
       }
-      this.$set(this.btnConfig[idx], "active", !this.btnConfig[idx].active);
+      this.$set(this.btnConfig[idx], "active", true);
     },
     closeDropdown(idx) {
       if (!this.btnConfig[idx].links) {
@@ -158,9 +158,14 @@ export default {
       z-index: -1;
       border-radius: 0 0 12px 12px;
       &--item {
-        padding: 0 20px;
-        padding-top: 18px;
-        @include text;
+        margin-top: 18px;
+        a, span {
+          box-sizing: border-box;
+          display: inline-block;
+          width: 100%;
+          @include text;
+          padding: 0 20px;
+        }
         &:hover {
           a, span {
             color: $highlight;
@@ -188,6 +193,8 @@ export default {
       img {
         margin-left:40px;
         width: 34px;
+        height: 34px;
+        object-fit: cover;
         border-radius: 50%;
       }
       &.active {
@@ -198,7 +205,6 @@ export default {
         padding: 0;
         &--item {
           text-align: center;
-          padding-top: 18px;
           &:last-child {
             padding-bottom: 20px;
           }

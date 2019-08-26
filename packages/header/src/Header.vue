@@ -53,20 +53,25 @@ export default {
     }
   },
   async mounted() {
-    const {data: {avatar}} = await getAccount();
-    if (avatar) {
-      localStorage.setItem("rqAccount", JSON.stringify({
-        isLogin: true,
-        avatar
-      }));
-      this.isLogin = true;
-      this.avatar = avatar;
-    } else {
+    try {
+      const {data: {code, avatar, phone}} = await getAccount();
+      if (code === 0) {
+        localStorage.setItem("rqAccount", JSON.stringify({
+          isLogin: true,
+          avatar
+        }));
+        this.isLogin = true;
+        this.avatar = avatar;
+      } else {
+        this.isLogin = false;
+        this.avatar = "";
+        localStorage.removeItem("rqAccount");
+      }
+    } catch {
       this.isLogin = false;
       this.avatar = "";
       localStorage.removeItem("rqAccount");
     }
-    
   }
 };
 </script>
