@@ -118,8 +118,8 @@
           },
           {
             "label": "AMS（投资组合管理）",
-            "undone": "AMS",
-            "icon": "ra"
+            "icon": "ra",
+	    "link": "/rqams"
           }
         ]
       },

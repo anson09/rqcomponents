@@ -160,6 +160,7 @@ export default {
       &--item {
         margin-top: 18px;
         a, span {
+          cursor: pointer;
           box-sizing: border-box;
           display: inline-block;
           width: 100%;

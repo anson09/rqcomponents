@@ -27,19 +27,23 @@ import throttle from "lodash/throttle";
 import CommonButton from "./CommonButton.vue";
 import rdHuge from "../../../assets/img/rdHuge.png";
 import rpHuge from "../../../assets/img/rpHuge.png";
+import raHuge from "../../../assets/img/rpHuge.png";
 
 const path2config = {
   "/rqdata": {
     icon: rdHuge,
     mainTitle: "RQData",
-    secondTitle: "金融数据",
-    product: "rqdataCloud"
+    secondTitle: "金融数据"
   },
   "/rqpro": {
     icon: rpHuge,
     mainTitle: "RQPro",
-    secondTitle: "量化投研终端",
-    product: "rqproCloud"
+    secondTitle: "量化投研终端"
+  },
+  "/rqams": {
+    icon: rpHuge,
+    mainTitle: "RQAms",
+    secondTitle: "投资组合管理"
   }
 };
 
@@ -49,7 +53,7 @@ export default {
   props: {},
   data() {
     return {
-      usePageLink: ["/rqdata", "/rqpro"], // 产品的几个页面在路由页中的path
+      usePageLink: ["/rqdata", "/rqpro", "/rqams"], // 产品的几个页面在路由页中的path
       scrollFn: null,
       scrollY: 0
     };
