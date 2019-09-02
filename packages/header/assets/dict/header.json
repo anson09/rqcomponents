@@ -1,57 +1,72 @@
 {
-  "logged": [
-    {
-      "label": "帮助文档",
-      "links": [
-        {
-          "label": "RQData使用文档",
-          "link": {
-            "newBlock": true,
-            "href": "/doc/rqdata-institutional#research-version"
+  "logged": {
+    "left": [{
+      "label": "AMS",
+      "link": "/ams"
+    }, {
+      "label": "量化",
+      "link": "/quant"
+    }],
+    "right": [
+      {
+        "label": "帮助文档",
+        "links": [
+          {
+            "label": "RQData使用文档",
+            "link": {
+              "newBlock": true,
+              "href": "/doc/rqdata-institutional#research-version"
+            }
+          },
+          {
+            "label": "量化平台文档",
+            "link": {
+              "newBlock": true,
+              "href": "/doc/api/python/chn"
+            }
+          },
+	  {
+            "label": "RQAMS使用文档",
+            "link": {
+              "newBlock": true,
+              "href": "/doc/rqams"
+            }
           }
-        },
-        {
-          "label": "量化平台文档",
-          "link": {
-            "newBlock": true,
-            "href": "/doc/api/python/chn"
-          }
+        ]
+      },
+      {
+        "label": "社区",
+        "link": {
+          "newBlock": true,
+          "href": "/community"
         }
-      ]
-    },
-    {
-      "label": "社区",
-      "link": {
-        "newBlock": true,
-        "href": "/community"
+      },
+      {
+        "type": "avatar",
+        "img": "avator",
+        "links": [
+          {
+            "label": "个人主页",
+            "link": "/dashboard/profile"
+          },
+          {
+            "label": "账号中心",
+            "link": {
+              "outer": true,
+              "href": "/site/account"
+            }
+          },
+          {
+            "label": "回到首页",
+            "link": "/"
+          },
+          {
+            "label": "登出账号",
+            "event": "logout"
+          }
+        ]
       }
-    },
-    {
-      "type": "avatar",
-      "img": "avator",
-      "links": [
-        {
-          "label": "个人主页",
-          "link": "/dashboard/profile"
-        },
-        {
-          "label": "账号中心",
-          "link": {
-            "outer": true,
-            "href": "/site/account"
-          }
-        },
-        {
-          "label": "回到首页",
-          "link": "/"
-        },
-        {
-          "label": "登出账号",
-          "event": "logout"
-        }
-      ]
-    }
-  ],
+    ]},
   "anka": {
     "header": {
       "default": [
@@ -119,7 +134,7 @@
           {
             "label": "AMS（投资组合管理）",
             "icon": "ra",
-	    "link": "/rqams"
+	    "link": "/ams"
           }
         ]
       },

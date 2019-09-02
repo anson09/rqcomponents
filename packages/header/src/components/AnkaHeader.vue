@@ -229,7 +229,7 @@ export default {
 @import "../../../common/style/common";
 
 .anka-header {
-  position: absolute;
+  position: relative;
   z-index: 10;
   box-sizing: border-box;
   height: 70px;

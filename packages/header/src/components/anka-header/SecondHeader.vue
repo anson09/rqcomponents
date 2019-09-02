@@ -16,7 +16,7 @@
           class="nav__button"
           :plain="scrollY < 70"
           label="免费试用"
-          @click="$router.push('/pricing')"
+          @click="$router.push(redirect)"
         ></CommonButton>
       </div>
     </nav>
@@ -33,17 +33,20 @@ const path2config = {
   "/rqdata": {
     icon: rdHuge,
     mainTitle: "RQData",
-    secondTitle: "金融数据"
+    secondTitle: "金融数据",
+    product: "rqdata"
   },
   "/rqpro": {
     icon: rpHuge,
     mainTitle: "RQPro",
-    secondTitle: "量化投研终端"
+    secondTitle: "量化投研终端",
+    product: "rqpro"
   },
   "/rqams": {
     icon: rpHuge,
-    mainTitle: "RQAms",
-    secondTitle: "投资组合管理"
+    mainTitle: "RQAMS",
+    secondTitle: "投资组合管理",
+    product: "rqams"
   }
 };
 
@@ -73,6 +76,9 @@ export default {
     },
     secondTitle() {
       return this.findInConfig("secondTitle");
+    },
+    redirect() {
+      return `/pricing#${this.findInConfig("product")}`;
     }
   },
   watch: {},
