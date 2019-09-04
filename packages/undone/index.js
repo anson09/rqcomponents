@@ -3,6 +3,9 @@ import "element-ui/lib/theme-chalk/dialog.css";
 import UndoneDialog from "./src/UndoneDialog.vue";
 
 UndoneDialog.install = function(Vue, option) {
+  if (Vue.prototype.$undone)  {
+    return;
+  }
   Object.defineProperty(Vue.prototype, "$undone", {
     get() {
       const dialog = function(params) {

@@ -75,6 +75,8 @@ import rp from "../../../assets/img/rp.png";
 import rd from "../../../assets/img/rd.png";
 import { anka } from "../../../assets/dict/header.json";
 import qrcodeImg from "../../../assets/img/qrcodeImg.jpg";
+import titleIcon from "../../../assets/img/ams/titleIcon.png";
+import headerIcon from "../../../assets/img/ams/headerIcon.png";
 import elPopover from "element-ui/lib/popover";
 
 export default {
@@ -109,6 +111,9 @@ export default {
           if (link.icon) {
             link.iconImg = logos[link.icon];
           }
+	  if (link.undone) {
+            link.undone = { titleIcon, headerIcon };
+          }
         });
         cfg.active = this.activeLabel === cfg.label;
         return cfg;
@@ -123,7 +128,11 @@ export default {
       this.$emit("hover", label);
     },
     clickHandle({ label, link, undone, qrcode }) {
-       if (link) {
+      if (undone) {
+        this.$undone(undone);
+        this.$emit("close");
+        return;
+      } else if (link) {
         this.$emit("redirect", link);
         if (!link.newBlock) {
           this.hoverPage = this.activePage = label;

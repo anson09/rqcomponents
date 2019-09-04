@@ -1,9 +1,6 @@
 {
   "logged": {
     "left": [{
-      "label": "AMS",
-      "link": "/ams"
-    }, {
       "label": "量化",
       "link": "/quant"
     }],
@@ -134,7 +131,7 @@
           {
             "label": "AMS（投资组合管理）",
             "icon": "ra",
-	    "link": "/ams"
+	    "undone": "ams"
           }
         ]
       },

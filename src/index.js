@@ -2,8 +2,8 @@ import RqHeader from "../packages/header";
 import UndoneDialog from "../packages/undone";
 
 const components = [
-  RqHeader,
-  UndoneDialog
+  UndoneDialog,
+  RqHeader
 ];
 
 const install = function(Vue, opt = {}) {
