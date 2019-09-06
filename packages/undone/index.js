@@ -20,7 +20,8 @@ UndoneDialog.install = function(Vue, option) {
           el: document.createElement("div"),
           data
         });
-        document.getElementById("app").appendChild(instance.$el);
+	const body = document.getElementById("app") || document.body;
+        body.appendChild(instance.$el);
       };
       return dialog;
     }

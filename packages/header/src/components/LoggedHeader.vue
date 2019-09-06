@@ -23,7 +23,7 @@
             active: btn.active
           }
         ]"
-        @click="openDropdown(idx)"
+        @mouseover="openDropdown(idx)"
         @mouseleave="closeDropdown(idx)"
       >
         <a
@@ -48,7 +48,11 @@
           <div
             class="logged-header-btn__dropdown"
             v-if="btn.links && btn.active"
-          >
+            >
+	    <p
+	      v-if="btn.type === 'avatar' && username"
+	      class="logged-header-btn__dropdown--username"
+	      >{{username}}</p>
             <div
               class="logged-header-btn__dropdown--item"
               v-for="({ label, link, event }, linkIdx) in btn.links"
@@ -80,6 +84,10 @@ export default {
   props: {
     avatar: {
       default: "",
+      type: String
+    },
+    username: {
+      required: true,
       type: String
     }
   },
@@ -145,11 +153,12 @@ export default {
   padding-right: 20px;
   background: $bg-white;
   z-index: 1;
+  box-shadow:0px 2px 4px 0px rgba(152,165,185,0.2);
   &__logo {
     display: block;
     img {
       display: block;
-      width: 136px;
+      width: 110px;
     }
   }
   &-btn {
@@ -253,8 +262,8 @@ export default {
       padding-right: 40px;
       img {
         margin-left: 40px;
-        width: 34px;
-        height: 34px;
+        width: 28px;
+        height: 28px;
         object-fit: cover;
         border-radius: 50%;
       }
@@ -264,6 +273,28 @@ export default {
       }
       .logged-header-btn__dropdown {
         padding: 0;
+        &--username {
+          position: relative;
+          @include text;
+          line-height: 1;
+          padding: 8px 10px 6px 16px;
+          text-align: center;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          border-bottom: 1px solid rgba(235,238,245,1);
+          &::before {
+            content: "";
+            position: absolute;
+            display: block;
+            @include m-center-vertical;
+            top: 2px;
+            left: 10px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: $success;
+          }
+        }
         &--item {
           text-align: center;
           &:last-child {

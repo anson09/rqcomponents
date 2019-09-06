@@ -183,6 +183,7 @@ export default {
       }
       img {
         width: rem-real-vw(582px);
+        height: rem-real-vw(120px);
       }
       &--content {
         width: rem-real-vw(334px);

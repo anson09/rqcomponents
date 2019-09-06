@@ -208,6 +208,14 @@ export default {
       if (this.activeLabel !== "") {
         this.expandMenuHoverHandler(label);
       }
+      const btn = this.getBtnConfig(label);
+      if (btn) {
+        if (btn.more) {
+          if (this.activeLabel !== label) {
+            this.activeLabel = label;
+          }
+        }
+      }
     },
     closeChildNav() {
       this.$nextTick(() => {
