@@ -64,7 +64,12 @@ export default {
     close(done) {
       done();
       setTimeout(() => {
-        this.$el.remove();
+        try {
+          this.$el.remove();
+        } catch (err) {
+          // ie
+          this.$el.parentNode.removeChild(this.$el);
+        }
       }, 500);
     }
   }

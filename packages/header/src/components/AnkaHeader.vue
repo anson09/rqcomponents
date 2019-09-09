@@ -296,7 +296,7 @@ export default {
           }
         }
         &.login {
-          flex: unset;
+          flex: none;
         }
       }
     }

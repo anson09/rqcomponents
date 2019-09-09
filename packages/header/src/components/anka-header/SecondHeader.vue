@@ -119,6 +119,8 @@ export default {
   .header__bg {
     position: absolute;
     z-index: -2;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background: $bg-white;
