@@ -1,3 +1,4 @@
+import path from "path";
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import vue from 'rollup-plugin-vue';
@@ -6,6 +7,8 @@ import postcss from 'rollup-plugin-postcss';
 import url from 'rollup-plugin-url';
 import json from 'rollup-plugin-json';
 import { terser } from "rollup-plugin-terser";
+import images from 'rollup-plugin-image-files'
+import ignoreImport from 'rollup-plugin-ignore-import';
 import sass from 'node-sass';
 import pkg from './package.json';
 
@@ -37,7 +40,7 @@ const processSass = function (context, payload) {
     })
 }
 
-const createConfig = ({output, browser = false, umd = false, env} = {}) => {
+const createConfig = ({output, umd = false, env} = {}) => {
     const min = env === 'production';
 
     return {
@@ -51,13 +54,18 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
             })
         ),
         plugins: [
-            url({
+            umd && url({
                 limit: 1024 * 1024,
                 include: ['**/*.eot', '**/*.woff', '**/*.woff2', '**/*.ttf', '**/*.svg', '**/*.png', '**/*.jpg'],
                 emitFiles: true
             }),
+            !umd && images(),
+            !umd && ignoreImport({
+                include: "**/iconfont.css",
+                body: ""
+            }),
             postcss({
-                extract: false,
+                extract: !umd,
                 minimize: min,
                 sourceMap: !min,
                 process: processSass,
@@ -72,13 +80,17 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
                 presets: [
                     [
                         '@babel/preset-env',
-                        {
+                        umd ? {
                             corejs: 2,
                             modules: false,
                             useBuiltIns: 'usage',
                             targets: {
                                 ie: '11',
                             },
+                        } : {
+                            targets:  {
+                                ie: '11',
+                            }
                         },
                     ],
                 ],
@@ -89,7 +101,9 @@ const createConfig = ({output, browser = false, umd = false, env} = {}) => {
                 ]
             }),
             commonjs(),
-            vue(),
+            vue(umd ? undefined : {
+                css: false
+            }),
             json(),
             terser({
                 include: [/^.+\.min\.js$/],
