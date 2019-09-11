@@ -1,5 +1,5 @@
 <template>
-  <header class="logged-header">
+  <div class="logged-header">
     <a href="/" class="logged-header__logo"
        >
       <img :src="images.logo" data-theme="light">
@@ -73,7 +73,7 @@
         </transition>
       </div>
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -153,7 +153,7 @@ export default {
 .theme {
   &-light {
     .logged-header {
-      --background-color: $bg-white;
+      --background-color: #{$bg-white};
       &__logo img[data-theme="light"]{
 	opacity: 1;
       }

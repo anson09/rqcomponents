@@ -25,6 +25,6 @@ export default {
 }
 #app {
   height: 100vh;
-         /* background: url(https://images.alphacoders.com/499/thumb-1920-499786.png); */
+  background: url(https://images.alphacoders.com/499/thumb-1920-499786.png);
 }
 </style>
