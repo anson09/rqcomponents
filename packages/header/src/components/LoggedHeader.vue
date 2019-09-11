@@ -19,7 +19,6 @@
           'logged-header-btn',
           {
             avatar: btn.type === 'avatar',
-            active: btn.active,
             active: btn.active
           }
         ]"
