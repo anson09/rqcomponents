@@ -1,8 +1,10 @@
 <template>
   <header class="logged-header">
     <a href="/" class="logged-header__logo"
-      ><img src="../../assets/img/logo.png"
-    /></a>
+       >
+      <img :src="images.logo" data-theme="light">
+      <img :src="images.logoWhite" data-theme="dark">
+    </a>
     <a
       v-for="(btn, idx) in btnConfigLeft"
       :class="['logged-header-btn__label left', { active: btn.active }]"
@@ -19,6 +21,7 @@
           'logged-header-btn',
           {
             avatar: btn.type === 'avatar',
+            theme: btn.type === 'theme',
             active: btn.active
           }
         ]"
@@ -36,8 +39,9 @@
           v-else-if="btn.label"
           class="logged-header-btn__label"
           @click="clickHandler(btn)"
-          >{{ btn.label }}</span
-        >
+          >{{ btn.label }}</span >
+	<ThemeSwitch v-else-if="btn.type === 'theme'"></ThemeSwitch>
+
         <img v-if="btn.type === 'avatar' && !avatar" :src="baseAvatar" alt="" />
         <img v-if="btn.type === 'avatar' && avatar" :src="avatar" alt="" />
         <span v-if="btn.links && !btn.type" class="arrow">
@@ -48,10 +52,10 @@
             class="logged-header-btn__dropdown"
             v-if="btn.links && btn.active"
             >
-	    <p
-	      v-if="btn.type === 'avatar' && username"
-	      class="logged-header-btn__dropdown--username"
-	      >{{username}}</p>
+            <p
+              v-if="btn.type === 'avatar' && username"
+              class="logged-header-btn__dropdown--username"
+              >{{username}}</p>
             <div
               class="logged-header-btn__dropdown--item"
               v-for="({ label, link, event }, linkIdx) in btn.links"
@@ -76,10 +80,15 @@
 import { logged } from "../../assets/dict/header.json";
 import { logout } from "../../api";
 import logo from "../../assets/img/logo.png";
+import logoWhite from "../../assets/img/logo-white.png";
 import header from "../../assets/img/header.png";
+import ThemeSwitch from "./logged-header/ThemeSwitch.vue";
 
 export default {
   name: "LoggedHeader",
+  components: {
+    ThemeSwitch
+  },
   props: {
     avatar: {
       default: "",
@@ -93,8 +102,8 @@ export default {
   data() {
     return {
       images: {
-        logo,
-        header
+	logo,
+	logoWhite
       },
       baseAvatar: header,
       btnConfigRight: logged.right
@@ -141,6 +150,21 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../common/style/common";
+.theme {
+  &-light {
+    .logged-header {
+      --background-color: $bg-white;
+      &__logo img[data-theme="light"]{
+	opacity: 1;
+      }
+    }
+  }
+  &-dark {
+    .logged-header__logo img[data-theme="dark"]{
+      opacity: 1;
+    }
+  }
+}
 .logged-header {
   position: relative;
   display: flex;
@@ -150,14 +174,18 @@ export default {
   height: 40px;
   padding-left: 40px;
   padding-right: 20px;
-  background: $bg-white;
+  background: var(--background-color);
   z-index: 1;
   box-shadow:0px 2px 4px 0px rgba(152,165,185,0.2);
   &__logo {
+    position: relative;
     display: block;
+    width: 110px;
+    height: 24px;
     img {
-      display: block;
-      width: 110px;
+      position: absolute;
+      width: 100%;
+      opacity: 0;
     }
   }
   &-btn {
@@ -165,12 +193,12 @@ export default {
       text-decoration: none;
       &:-webkit-any-link {
         @include hover;
-        @include text;
+        @include text(var(--text-color));
       }
     }
     span,
     a {
-      @include text;
+      @include text(var(--text-color));
     }
     position: relative;
     box-sizing: border-box;
@@ -191,14 +219,14 @@ export default {
       padding-left: 20px;
       cursor: pointer;
       &.left {
-        @include rg-text;
+        @include rg-text(var(--text-color));
         line-height: 1;
         margin-top: 10px;
         text-decoration: none;
         margin-left: 28px;
         padding: 0;
         &.active {
-          color: $highlight;
+          color: var(--hover-color);
         }
       }
     }
@@ -206,7 +234,7 @@ export default {
       margin-left: 10px;
     }
     &:hover &__label {
-      color: $highlight;
+      color: var(--hover-color);
     }
     .arrow {
       display: inline-block;
@@ -220,7 +248,7 @@ export default {
       width: 100%;
       top: 40px;
       box-shadow: 0px 8px 12px 0px rgba(45, 54, 158, 0.08);
-      background: $bg-white;
+      background: var(--background-color);
       z-index: -1;
       border-radius: 0 0 12px 12px;
       &--item {
@@ -231,13 +259,13 @@ export default {
           box-sizing: border-box;
           display: inline-block;
           width: 100%;
-          @include text;
+          @include text(var(--text-color));
           padding: 0 20px;
         }
         &:hover {
           a,
           span {
-            color: $highlight;
+            color: var(--hover-color);
           }
         }
         &:last-child {
@@ -246,14 +274,18 @@ export default {
       }
     }
     &.active {
-      background: $bg-white;
+      background: var(--background-color);
       box-shadow: 0px -8px 12px 0px rgba(45, 54, 158, 0.08);
       .arrow {
         transform: rotate(180deg);
+	color: var(--hover-color);
       }
       &::after {
-        background: $highlight;
+        background: var(--hover-color);
       }
+    }
+    &.theme {
+      padding: 0;
     }
     &.avatar {
       position: relative;
@@ -267,14 +299,15 @@ export default {
         border-radius: 50%;
       }
       &.active {
-        background: $bg-white;
+        background: var(--background-color);
         box-shadow: 0px -8px 12px 0px rgba(45, 54, 158, 0.08);
       }
       .logged-header-btn__dropdown {
         padding: 0;
+        background: var(--background-color);
         &--username {
           position: relative;
-          @include text;
+          @include text(var(--text-color));
           line-height: 1;
           padding: 8px 10px 6px 16px;
           text-align: center;

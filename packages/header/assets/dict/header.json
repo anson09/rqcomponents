@@ -39,6 +39,9 @@
         }
       },
       {
+	"type": "theme"
+      },
+      {
         "type": "avatar",
         "img": "avator",
         "links": [

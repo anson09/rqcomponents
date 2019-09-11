@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    top="0"
+    top="300px"
     custom-class="base"
     :show-close="false"
     :modal="false"
@@ -75,15 +75,6 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-@import "../../common/style/common";
-
-.el-dialog__wrapper {
-  @include f-column;
-  overflow: hidden;
-  background: $mask-bg-dark;
-}
-</style>
 
 <style lang="scss" scoped>
 @import "../../common/style/common";
