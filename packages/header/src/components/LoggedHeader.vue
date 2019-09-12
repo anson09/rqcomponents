@@ -151,19 +151,19 @@ export default {
 <style lang="scss" scoped>
 @import "../../../common/style/common";
 .theme {
-  &-light {
-    .logged-header {
-      --shadow-color: rgba(152,165,185,0.2);
-      --background-color: #{$bg-white};
-      &__logo img[data-theme="light"]{
-	opacity: 1;
-      }
-    }
-  }
   &-dark {
     .logged-header {
       --shadow-color: rgba(13,14,20,0.5);
       &__logo img[data-theme="dark"]{
+	opacity: 1;
+      }
+    }
+  }
+  &-light {
+    .logged-header {
+      --shadow-color: rgba(152,165,185,0.2);
+      --background-color: white;
+      &__logo img[data-theme="light"]{
 	opacity: 1;
       }
     }
@@ -180,7 +180,8 @@ export default {
   padding-right: 20px;
   background: var(--background-color);
   z-index: 1;
-  box-shadow:0px 2px 4px 0px var(--shadow-color);
+  box-shadow:0px 2px 4px 0px;
+  color: var(--shadow-color);
   &__logo {
     position: relative;
     display: block;
@@ -251,7 +252,9 @@ export default {
       box-sizing: border-box;
       width: 100%;
       top: 40px;
-      box-shadow: 0px 8px 12px 0px var(--shadow-color);
+      left: 0;
+      box-shadow: 0px 8px 12px 0px;
+      color: var(--shadow-color);
       background: var(--background-color);
       z-index: -1;
       border-radius: 0 0 12px 12px;
@@ -279,7 +282,8 @@ export default {
     }
     &.active {
       background: var(--background-color);
-      box-shadow: 0px -8px 12px 0px var(--shadow-color);
+      box-shadow: 0px -8px 12px 0px;
+      color: var(--shadow-color);
       .arrow {
         transform: rotate(180deg);
 	color: var(--hover-color);
@@ -304,7 +308,8 @@ export default {
       }
       &.active {
         background: var(--background-color);
-        box-shadow: 0px -8px 12px 0px var(--shadow-color);
+        box-shadow: 0px -8px 12px 0px;
+	color: var(--shadow-color);
       }
       .logged-header-btn__dropdown {
         padding: 0;

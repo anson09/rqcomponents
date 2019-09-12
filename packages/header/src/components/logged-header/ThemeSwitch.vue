@@ -1,5 +1,5 @@
 <template>
-<div class="theme-switch">
+<div class="theme-switch" v-if="isSupported">
     <el-tooltip
       v-model="active"
       placement="bottom"
@@ -30,7 +30,7 @@
 <script>
 import lightImg from "../../../assets/img/theme-light.png";
 import darkImg from "../../../assets/img/theme-dark.png";
-import { THEME_MODE, themeRender } from "../../../util"
+import { THEME_MODE, themeRender, isSupported } from "../../../util"
 import elButton from "element-ui/lib/button";
 import elTooltip from "element-ui/lib/tooltip";
 
@@ -43,7 +43,8 @@ export default {
   data () {
     return {
       value: "light",
-      active: false
+      active: false,
+      isSupported
     }
   },
   computed: {
@@ -65,9 +66,15 @@ export default {
     }
   },
   mounted() {
-    const theme = localStorage.theme;
-    this.value = THEME_MODE.includes(theme) ? theme : "light";
-    themeRender(this.value);
+    this.isSupported = isSupported();
+    console.log(this.isSupported)
+    if (this.isSupported) {
+      const theme = localStorage.theme;
+      this.value = THEME_MODE.includes(theme) ? theme : "light";
+      themeRender(this.value);
+    } else {
+      themeRender("light");
+    }
   },
   methods: {
     themeChange(theme) {

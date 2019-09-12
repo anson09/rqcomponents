@@ -71,8 +71,13 @@ const themeRender = (theme = "light") => {
     .map(className => bodyClassList.remove(className));
 };
 
+const isSupported = () => window.CSS &&
+      window.CSS.supports &&
+      window.CSS.supports('--a', 0);
+
 export {
   methodConstructor,
   THEME_MODE,
-  themeRender
+  themeRender,
+  isSupported
 }

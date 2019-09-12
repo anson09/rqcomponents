@@ -1,3 +1,4 @@
+import fs from "fs";
 import path from "path";
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
@@ -7,10 +8,28 @@ import postcss from 'rollup-plugin-postcss';
 import url from 'rollup-plugin-url';
 import json from 'rollup-plugin-json';
 import { terser } from "rollup-plugin-terser";
-import images from 'rollup-plugin-image-files'
+import images from 'rollup-plugin-image-files';
 import ignoreImport from 'rollup-plugin-ignore-import';
 import sass from 'node-sass';
 import pkg from './package.json';
+import lightJson from "@rqjs/rqthemes/light.json";
+
+function getCssVar() {
+
+  const source = fs.readFileSync(path.resolve(__dirname, `packages/header/src/components/LoggedHeader.vue`), "utf8");
+
+  const trans = source
+    .match(/--.*:[\s\S]*?;/g)
+    .join()
+    .replace(/(\s)/g, "")
+    .replace(/--(.*?):(.*?);/g, function(match, p1, p2) {
+      return `"--${p1}":"${p2}"`;
+    });
+
+  const json = `{${trans}}`;
+
+  return {...lightJson, ...JSON.parse(json)};
+}
 
 const ensureArray = maybeArr =>
     Array.isArray(maybeArr) ? maybeArr : [maybeArr];
@@ -34,10 +53,10 @@ const processSass = function (context, payload) {
             if (!err) {
                 resolve(result);
             } else {
-                reject(err)
+              reject(err);
             }
         });
-    })
+    });
 }
 
 const createConfig = ({output, umd = false, env} = {}) => {
@@ -65,10 +84,17 @@ const createConfig = ({output, umd = false, env} = {}) => {
                 body: ""
             }),
             postcss({
-                extract: !umd,
-                minimize: min,
-                sourceMap: !min,
-                process: processSass,
+              extract: !umd,
+	      plugins: [require("autoprefixer")({ grid: true })].concat(
+		require("postcss-css-variables")({
+		  preserve: true,
+		  preserveInjectedVariables: false,
+		  variables: getCssVar()
+		})
+	      ),
+              minimize: min,
+              sourceMap: !min,
+              process: processSass,
             }),
             resolve({
                 preferBuiltins: false,

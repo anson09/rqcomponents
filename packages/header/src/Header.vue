@@ -48,7 +48,8 @@ export default {
     } catch (err) {
       localStorageAcount = {};
     }
-    const { isLogin=false, avatar="", fullname: username="" } = localStorageAcount;
+    // const { isLogin=false, avatar="", fullname: username="" } = localStorageAcount;
+    const { isLogin=false, avatar="", fullname: username="" } = {"isLogin":true,"avatar":"https://qcdn.ricequant.com/img/avatar/2826c291-275b-4bea-9176-25e19e4ba6d4.png"};
     return {
       defaultMode: "default",
       isLogin,
@@ -57,7 +58,7 @@ export default {
     }
   },
   mounted() {
-    this.initAccount();
+    // this.initAccount();
   },
   methods: {
     async initAccount() {
