@@ -2,7 +2,7 @@
 <div class="theme-switch">
     <el-tooltip
       v-model="active"
-      placement="bottom-end"
+      placement="bottom"
       popper-class="theme-switch-toast"
     >
       <div slot="content">
@@ -111,6 +111,7 @@ export default {
   background: var(--background-color);
   border: 1px solid var(--border-hover-color);
   --arrow-color: var(--border-hover-color);
+  font-family: sans-serif;
   .popper__arrow {
     display: none;
   }
