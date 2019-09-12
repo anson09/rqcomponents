@@ -1,5 +1,5 @@
 <template>
-<div class="theme-switch" v-if="isSupported">
+<div class="theme-switch" v-if="show">
     <el-tooltip
       v-model="active"
       placement="bottom"
@@ -44,7 +44,7 @@ export default {
     return {
       value: "light",
       active: false,
-      isSupported
+      show: false
     }
   },
   computed: {
@@ -66,15 +66,18 @@ export default {
     }
   },
   mounted() {
-    this.isSupported = isSupported();
-    console.log(this.isSupported)
-    if (this.isSupported) {
-      const theme = localStorage.theme;
-      this.value = THEME_MODE.includes(theme) ? theme : "light";
-      themeRender(this.value);
-    } else {
-      themeRender("light");
+    if (isSupported()) {
+      const url = this.$parent.getPath();
+      if (["/ams", "/quant"].some(e => url.includes(e))) {
+	this.show = true;
+	const theme = localStorage.theme;
+	this.value = THEME_MODE.includes(theme) ? theme : "light";
+	themeRender(this.value);
+	return;
+      }
     }
+    this.show = false;
+    themeRender("light");
   },
   methods: {
     themeChange(theme) {

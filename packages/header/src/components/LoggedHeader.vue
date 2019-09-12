@@ -114,7 +114,7 @@ export default {
       const { left } = logged;
       return left.map(btn => ({
           ...btn,
-          active: this.$parent.getPath().includes(btn.link.href || btn.link)
+          active: this.getPath().includes(btn.link.href || btn.link)
         }));
     }
   },
@@ -143,6 +143,9 @@ export default {
     },
     redirect(params) {
       this.$parent.handleLink(params);
+    },
+    getPath() {
+      return this.$parent.getPath();
     }
   }
 };
@@ -215,6 +218,7 @@ export default {
       content: "";
       position: absolute;
       top: 0;
+      left: 0;
       width: 100%;
       height: 4px;
       background: transparent;
