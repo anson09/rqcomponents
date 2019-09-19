@@ -4,6 +4,7 @@
       v-model="active"
       placement="bottom"
       popper-class="theme-switch-toast"
+      :effect="value"
     >
       <div slot="content">
         <div
@@ -19,7 +20,7 @@
           <p>{{ mode.label }}</p>
         </div>
       </div>
-      <el-button class="theme-switch-button" size="mini">
+      <el-button class="theme-switch-button" size="mini" type="text">
         <i v-show="active" class="rq-icons rq-icon-theme-fills"></i>
         <i v-show="!active" class="rq-icons rq-icon-theme-border"></i>
       </el-button>
@@ -116,7 +117,7 @@ export default {
 </style>
 <style lang="scss">
 
-.el-tooltip__popper.is-dark.theme-switch-toast {
+.el-tooltip__popper.theme-switch-toast {
   color: var(--text-color);
   background: var(--background-color);
   border: 1px solid var(--border-hover-color);
