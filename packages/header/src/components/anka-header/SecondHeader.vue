@@ -27,7 +27,7 @@ import throttle from "lodash/throttle";
 import CommonButton from "./CommonButton.vue";
 import rdHuge from "../../../assets/img/rdHuge.png";
 import rpHuge from "../../../assets/img/rpHuge.png";
-import raHuge from "../../../assets/img/rpHuge.png";
+import raHuge from "../../../assets/img/raHuge.png";
 
 const path2config = {
   "/rqdata": {
@@ -42,7 +42,7 @@ const path2config = {
     secondTitle: "量化投研终端",
     product: "rqpro"
   },
-  "/rqams": {
+  "/ams": {
     icon: rpHuge,
     mainTitle: "RQAMS",
     secondTitle: "投资组合管理",
@@ -56,7 +56,7 @@ export default {
   props: {},
   data() {
     return {
-      usePageLink: ["/rqdata", "/rqpro", "/rqams"], // 产品的几个页面在路由页中的path
+      usePageLink: ["/rqdata", "/rqpro", "/ams"], // 产品的几个页面在路由页中的path
       scrollFn: null,
       scrollY: 0
     };

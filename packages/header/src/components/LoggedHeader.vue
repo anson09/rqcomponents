@@ -326,6 +326,7 @@ export default {
           text-align: center;
           overflow: hidden;
           text-overflow: ellipsis;
+	  white-space: nowrap;
           border-bottom: 1px solid rgba(235,238,245,1);
           &::before {
             content: "";

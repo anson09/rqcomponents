@@ -3,6 +3,9 @@
     "left": [{
       "label": "量化",
       "link": "/quant"
+    }, {
+      "label": "AMS",
+      "link": "/ams"
     }],
     "right": [
       {
@@ -48,13 +51,6 @@
           {
             "label": "个人主页",
             "link": "/dashboard/profile"
-          },
-          {
-            "label": "账号中心",
-            "link": {
-              "outer": true,
-              "href": "/site/account"
-            }
           },
           {
             "label": "回到首页",
@@ -134,7 +130,7 @@
           {
             "label": "AMS（投资组合管理）",
             "icon": "ra",
-	    "undone": "ams"
+	    "link": "/ams"
           }
         ]
       },

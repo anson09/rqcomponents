@@ -96,7 +96,7 @@ export default {
   },
   computed: {
     secondHeaderOpen() {
-      const producePageLink = ["/rqdata", "/rqpro"];
+      const producePageLink = ["/rqdata", "/rqpro", "/ams"];
       if (
         producePageLink.includes(this.getPath()) &&
         !Boolean(this.activeLabel)
