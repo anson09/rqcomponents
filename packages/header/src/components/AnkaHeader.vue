@@ -4,7 +4,7 @@
       <nav>
         <a href="/" class="nav__logo">
           <transition name="fade">
-            <img v-if="light" src="../../assets/img/logo-white.png" />
+            <img v-if="light" src="../../assets/img/logo-white-pure.png" />
             <img v-else src="../../assets/img/logo.png" />
           </transition>
         </a>
