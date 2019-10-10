@@ -1,12 +1,15 @@
 {
   "logged": {
-    "left": [{
-      "label": "量化",
-      "link": "/quant"
-    }, {
-      "label": "AMS",
-      "link": "/ams"
-    }],
+    "left": [
+      {
+        "label": "量化",
+        "link": "/quant"
+      },
+      {
+        "label": "AMS",
+        "link": "/ams"
+      }
+    ],
     "right": [
       {
         "label": "帮助文档",
@@ -25,7 +28,7 @@
               "href": "/doc/api/python/chn"
             }
           },
-	  {
+          {
             "label": "RQAMS使用文档",
             "link": {
               "newBlock": true,
@@ -42,7 +45,7 @@
         }
       },
       {
-	"type": "theme"
+        "type": "theme"
       },
       {
         "type": "avatar",
@@ -62,7 +65,8 @@
           }
         ]
       }
-    ]},
+    ]
+  },
   "anka": {
     "header": {
       "default": [
@@ -118,6 +122,11 @@
         "label": "产品",
         "links": [
           {
+            "label": "AMS（投资组合管理）",
+            "icon": "ra",
+            "link": "/ams"
+          },
+          {
             "label": "RQData（金融数据）",
             "icon": "rd",
             "link": "/rqdata"
@@ -126,11 +135,6 @@
             "label": "RQPro（投研交易）",
             "icon": "rp",
             "link": "/rqpro"
-          },
-          {
-            "label": "AMS（投资组合管理）",
-            "icon": "ra",
-	    "link": "/ams"
           }
         ]
       },
