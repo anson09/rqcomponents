@@ -107,6 +107,7 @@ export default {
       },
       baseAvatar: header,
       btnConfigRight: logged.right
+      // btnConfigRight: logged.right.map(e => ({...e, active: true}))
     };
   },
   computed: {
@@ -254,7 +255,7 @@ export default {
     &__dropdown {
       position: absolute;
       box-sizing: border-box;
-      width: 100%;
+      min-width: 100%;
       top: 40px;
       left: 0;
       box-shadow: 0px 8px 12px 0px;
@@ -269,7 +270,8 @@ export default {
           cursor: pointer;
           box-sizing: border-box;
           display: inline-block;
-          width: 100%;
+          min-width: 100%;
+	  white-space: nowrap;
           @include text(var(--text-color));
           padding: 0 20px;
         }

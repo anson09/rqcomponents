@@ -57,7 +57,7 @@
           },
           {
             "label": "账号中心",
-            "link": "/dashboard/account"
+            "link": "/dashboard/account#setting"
           },
           {
             "label": "回到首页",
