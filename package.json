@@ -59,7 +59,7 @@
     "vue": "2.x"
   },
   "dependencies": {
-    "@rqjs/rqthemes": "^0.7.1-alpha.1"
+    "@rqjs/rqthemes": "^0.7.4-beta.4"
   },
   "files": [
     "dist",
