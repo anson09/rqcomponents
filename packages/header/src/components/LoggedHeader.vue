@@ -202,12 +202,13 @@ export default {
       text-decoration: none;
       &:-webkit-any-link {
         @include hover;
-        @include text(var(--text-color));
+        @include rg-text(var(--text-color));
       }
     }
     span,
     a {
-      @include text(var(--text-color));
+      margin-top: 8px;
+      @include rg-text(var(--text-color));
     }
     position: relative;
     box-sizing: border-box;
@@ -231,7 +232,7 @@ export default {
       &.left {
         @include rg-text(var(--text-color));
         line-height: 1;
-        margin-top: 4px;
+        margin-top: 8px;
         text-decoration: none;
         margin-left: 28px;
         padding: 0;
@@ -252,7 +253,7 @@ export default {
       transition: transform 0.3s;
       transform-origin: center;
     }
-    &__dropdown {
+    & &__dropdown {
       position: absolute;
       box-sizing: border-box;
       min-width: 100%;
@@ -272,7 +273,7 @@ export default {
           display: inline-block;
           min-width: 100%;
 	  white-space: nowrap;
-          @include rg-text(var(--text-color));
+          @include text(var(--text-color));
           padding: 0 20px;
         }
         &:hover {
