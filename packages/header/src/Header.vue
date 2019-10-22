@@ -62,11 +62,14 @@ export default {
   methods: {
     async initAccount() {
       try {
-	const {data: {code, fullname, avatar, phone}} = await getAccount();
+	const {data: {code, fullname, avatar, phone, email}} = await getAccount();
 	if (code === 0) {
           localStorage.setItem("rqAccount", JSON.stringify({
             isLogin: true,
-            avatar
+	    fullname,
+            avatar,
+	    phone,
+	    email
           }));
           this.isLogin = true;
           this.avatar = avatar;
