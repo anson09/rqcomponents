@@ -1,6 +1,6 @@
 <template>
   <div id="app" >
-    <RqHeader @auth="log" :opacity="true"></RqHeader>
+    <RqHeader topic="sss" @auth="log" :opacity="false"></RqHeader>
   </div>
 </template>
 

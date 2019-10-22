@@ -231,7 +231,7 @@ export default {
       &.left {
         @include rg-text(var(--text-color));
         line-height: 1;
-        margin-top: 10px;
+        margin-top: 4px;
         text-decoration: none;
         margin-left: 28px;
         padding: 0;
@@ -272,7 +272,7 @@ export default {
           display: inline-block;
           min-width: 100%;
 	  white-space: nowrap;
-          @include text(var(--text-color));
+          @include rg-text(var(--text-color));
           padding: 0 20px;
         }
         &:hover {
@@ -324,6 +324,8 @@ export default {
           position: relative;
           @include text(var(--text-color));
           line-height: 1;
+	  box-sizing: border-box;
+	  width: 108px;
           padding: 8px 10px 6px 16px;
           text-align: center;
           overflow: hidden;

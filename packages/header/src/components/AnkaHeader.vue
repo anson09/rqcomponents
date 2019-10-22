@@ -1,5 +1,5 @@
 <template>
-  <div class="anka-header">
+  <div class="anka-header" :class="{'is-topic': Boolean(topic)}">
     <div :class="isInProduce">
       <nav>
         <a href="/" class="nav__logo">
@@ -31,7 +31,7 @@
                 v-for="(cfg, idx) in loginButtons"
                 :key="idx"
                 :label="cfg.label"
-                :plain="cfg.plain"
+                :plain="cfg.plain || light"
                 :light="light"
                 @click="cfg.click"
               ></CommonButton>
@@ -242,6 +242,16 @@ export default {
   box-sizing: border-box;
   height: 70px;
   @include full-vw;
+  &.is-topic {
+    @media screen and (max-width: $mobile-max-vw) {
+      height: 40px;
+      nav {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px 30px;
+      }
+    }
+  }
   .header__bg {
     position: absolute;
     z-index: 2;

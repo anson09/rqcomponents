@@ -43,9 +43,9 @@ const path2config = {
     product: "rqpro"
   },
   "/ams": {
-    icon: rpHuge,
+    icon: raHuge,
     mainTitle: "RQAMS",
-    secondTitle: "投资组合管理",
+    secondTitle: "米筐资产管理系统",
     product: "rqams"
   }
 };

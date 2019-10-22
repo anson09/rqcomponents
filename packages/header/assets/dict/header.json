@@ -126,7 +126,7 @@
         "label": "产品",
         "links": [
           {
-            "label": "AMS（投资组合管理）",
+            "label": "RQAMS（资产管理系统）",
             "icon": "ra",
             "link": "/ams"
           },

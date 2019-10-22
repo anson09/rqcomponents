@@ -68,7 +68,14 @@ export default {
       color: $text;
     }
     &.active {
-      color: $highlight;
+      color: $text-white;
+      span {
+	padding-bottom: 12px;
+	border-bottom: 1px solid $text-white;
+      }
+      &:hover {
+	color: $highlight;
+      }
     }
   }
 }
