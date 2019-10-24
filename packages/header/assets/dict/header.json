@@ -3,11 +3,11 @@
     "left": [
       {
         "label": "量化",
-        "link": "/quant"
+        "link": "/quant/"
       },
       {
         "label": "AMS",
-        "link": "/ams"
+        "link": "/ams/"
       }
     ],
     "right": [
