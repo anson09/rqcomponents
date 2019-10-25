@@ -59,6 +59,9 @@ export default {
   &:hover {
     background: $button-gray;
   }
+  &:focus {
+    color: $text;
+  }
   &.active {
     color: $highlight;
   }
