@@ -69,7 +69,7 @@ export default {
   mounted() {
     if (isSupported()) {
       const url = this.$parent.getPath();
-      if (["/ams"].some(e => url.includes(e))) {
+      if (["/ams", "/quant"].some(e => url.includes(e))) {
 	this.show = true;
 	const theme = localStorage.theme;
 	this.value = THEME_MODE.includes(theme) ? theme : "light";
