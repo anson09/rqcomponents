@@ -3,15 +3,15 @@
     <Transition name="rq-fade-in-linear">
       <LoggedHeader
         v-if="mode === defaultMode && isLogin"
-	:username="username"
+        :username="username"
         :avatar="avatar"
-	></LoggedHeader>
+      ></LoggedHeader>
       <AnkaHeader
-	v-else
+        v-else
         :topic="topic"
         :opacity="opacity"
         :isLogin="isLogin"
-	></AnkaHeader>
+      ></AnkaHeader>
     </Transition>
   </header>
 </template>
@@ -48,13 +48,17 @@ export default {
     } catch (err) {
       localStorageAcount = {};
     }
-    const { isLogin=false, avatar="", fullname: username="" } = localStorageAcount;
+    const {
+      isLogin = false,
+      avatar = "",
+      fullname: username = ""
+    } = localStorageAcount;
     return {
       defaultMode: "default",
       isLogin,
       username,
       avatar
-    }
+    };
   },
   mounted() {
     this.initAccount();
@@ -62,23 +66,29 @@ export default {
   methods: {
     async initAccount() {
       try {
-	const {data: {code, fullname, avatar, phone, email}} = await getAccount();
-	if (code === 0) {
-          localStorage.setItem("rqAccount", JSON.stringify({
-            isLogin: true,
-	    fullname,
-            avatar,
-	    phone,
-	    email
-          }));
+        const {
+          data: { code, fullname, avatar, phone, email, userId }
+        } = await getAccount();
+        if (code === 0) {
+          localStorage.setItem(
+            "rqAccount",
+            JSON.stringify({
+              isLogin: true,
+              fullname,
+              avatar,
+              phone,
+              email,
+              userId
+            })
+          );
           this.isLogin = true;
           this.avatar = avatar;
           this.username = fullname;
-	} else {
-	  this.reset();
-	}
+        } else {
+          this.reset();
+        }
       } catch {
-	this.reset();
+        this.reset();
       }
     },
     reset() {
