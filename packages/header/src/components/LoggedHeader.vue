@@ -1,9 +1,8 @@
 <template>
   <div class="logged-header">
-    <a href="/" class="logged-header__logo"
-       >
-      <img :src="images.logo" data-theme="light">
-      <img :src="images.logoWhite" data-theme="dark">
+    <a href="/" class="logged-header__logo">
+      <img :src="images.logo" data-theme="light" />
+      <img :src="images.logoWhite" data-theme="dark" />
     </a>
     <a
       v-for="(btn, idx) in btnConfigLeft"
@@ -39,8 +38,9 @@
           v-else-if="btn.label"
           class="logged-header-btn__label"
           @click="clickHandler(btn)"
-          >{{ btn.label }}</span >
-	<ThemeSwitch v-else-if="btn.type === 'theme'"></ThemeSwitch>
+          >{{ btn.label }}</span
+        >
+        <ThemeSwitch v-else-if="btn.type === 'theme'"></ThemeSwitch>
 
         <img v-if="btn.type === 'avatar' && !avatar" :src="baseAvatar" alt="" />
         <img v-if="btn.type === 'avatar' && avatar" :src="avatar" alt="" />
@@ -51,11 +51,13 @@
           <div
             class="logged-header-btn__dropdown"
             v-if="btn.links && btn.active"
-            >
+          >
             <p
               v-if="btn.type === 'avatar' && username"
               class="logged-header-btn__dropdown--username"
-              >{{username}}</p>
+            >
+              {{ username }}
+            </p>
             <div
               class="logged-header-btn__dropdown--item"
               v-for="({ label, link, event }, linkIdx) in btn.links"
@@ -102,8 +104,8 @@ export default {
   data() {
     return {
       images: {
-	logo,
-	logoWhite
+        logo,
+        logoWhite
       },
       baseAvatar: header,
       btnConfigRight: logged.right
@@ -114,9 +116,9 @@ export default {
     btnConfigLeft() {
       const { left } = logged;
       return left.map(btn => ({
-          ...btn,
-          active: this.getPath().includes(btn.link.href || btn.link)
-        }));
+        ...btn,
+        active: this.getPath().includes(btn.link.href || btn.link)
+      }));
     }
   },
   methods: {
@@ -136,7 +138,7 @@ export default {
       if (cfg.event === "logout") {
         const { code } = await logout();
         if (code === 0) {
-          localStorage.removeItem("rqAccount");
+          localStorage.removeItem("common_account");
           localStorage.removeItem("rq-saas-ams-vuex");
           return this.redirect("/");
         }
@@ -157,18 +159,18 @@ export default {
 .theme {
   &-dark {
     .logged-header {
-      --shadow-color: rgba(13,14,20,0.5);
-      &__logo img[data-theme="dark"]{
-	opacity: 1;
+      --shadow-color: rgba(13, 14, 20, 0.5);
+      &__logo img[data-theme="dark"] {
+        opacity: 1;
       }
     }
   }
   &-light {
     .logged-header {
-      --shadow-color: rgba(152,165,185,0.2);
+      --shadow-color: rgba(152, 165, 185, 0.2);
       --background-color: white;
-      &__logo img[data-theme="light"]{
-	opacity: 1;
+      &__logo img[data-theme="light"] {
+        opacity: 1;
       }
     }
   }
@@ -184,7 +186,7 @@ export default {
   padding-right: 20px;
   background: var(--background-color);
   z-index: 1;
-  box-shadow:0px 2px 4px 0px;
+  box-shadow: 0px 2px 4px 0px;
   color: var(--shadow-color);
   &__logo {
     position: relative;
@@ -272,7 +274,7 @@ export default {
           box-sizing: border-box;
           display: inline-block;
           min-width: 100%;
-	  white-space: nowrap;
+          white-space: nowrap;
           @include text(var(--text-color));
           padding: 0 20px;
         }
@@ -293,7 +295,7 @@ export default {
       color: var(--shadow-color);
       .arrow {
         transform: rotate(180deg);
-	color: var(--hover-color);
+        color: var(--hover-color);
       }
       &::after {
         background: var(--hover-color);
@@ -316,7 +318,7 @@ export default {
       &.active {
         background: var(--background-color);
         box-shadow: 0px -8px 12px 0px;
-	color: var(--shadow-color);
+        color: var(--shadow-color);
       }
       .logged-header-btn__dropdown {
         padding: 0;
@@ -325,14 +327,14 @@ export default {
           position: relative;
           @include text(var(--text-color));
           line-height: 1;
-	  box-sizing: border-box;
-	  width: 108px;
+          box-sizing: border-box;
+          width: 108px;
           padding: 8px 10px 6px 16px;
           text-align: center;
           overflow: hidden;
           text-overflow: ellipsis;
-	  white-space: nowrap;
-          border-bottom: 1px solid rgba(235,238,245,1);
+          white-space: nowrap;
+          border-bottom: 1px solid rgba(235, 238, 245, 1);
           &::before {
             content: "";
             position: absolute;

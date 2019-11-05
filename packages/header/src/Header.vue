@@ -44,7 +44,7 @@ export default {
   data() {
     let localStorageAcount;
     try {
-      localStorageAcount = JSON.parse(localStorage.rqAccount);
+      localStorageAcount = JSON.parse(localStorage.common_account);
     } catch (err) {
       localStorageAcount = {};
     }
@@ -71,7 +71,7 @@ export default {
         } = await getAccount();
         if (code === 0) {
           localStorage.setItem(
-            "rqAccount",
+            "common_account",
             JSON.stringify({
               isLogin: true,
               fullname,
@@ -95,7 +95,7 @@ export default {
       this.isLogin = false;
       this.avatar = "";
       this.username = "";
-      localStorage.removeItem("rqAccount");
+      localStorage.removeItem("common_account");
     }
   }
 };
