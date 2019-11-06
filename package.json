@@ -1,6 +1,6 @@
 {
   "name": "@rqjs/rqcomponents",
-  "version": "0.0.7-alpha.27",
+  "version": "0.0.7-alpha.28",
   "description": "A Component Library for Ricequant.",
   "main": "./dist/rqcomponents.cjs.js",
   "module": "./dist/rqcomponents.esm.js",
@@ -59,7 +59,7 @@
     "vue": "2.x"
   },
   "dependencies": {
-    "@rqjs/rqthemes": "^0.7.4-beta.10"
+    "@rqjs/rqthemes": "^0.7.4-beta.12"
   },
   "files": [
     "dist",
