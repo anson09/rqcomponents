@@ -87,22 +87,19 @@
           "more": true
         },
         {
+          "label": "教育专区",
+          "link": "/edu"
+        },
+	{
           "label": "量化平台",
           "link": "/quant"
         },
         {
-          "label": "策略大赛",
+          "label": "量化社区",
           "more": true
         },
         {
-          "label": "量化社区",
-          "link": {
-            "newBlock": true,
-            "href": "/community"
-          }
-        },
-        {
-          "label": "招聘",
+          "label": "加入我们",
           "more": true
         }
       ],
@@ -173,13 +170,14 @@
         ]
       },
       {
-        "label": "策略大赛",
+        "label": "量化社区",
         "links": [
-          {
-            "label": "策略英雄榜",
+	  {
+            "label": "量化社区",
             "link": {
+	      "newBlock": true,
               "outer": true,
-              "href": "/site/scrafts"
+              "href": "/community"
             }
           },
           {
@@ -188,11 +186,18 @@
               "outer": true,
               "href": "/site/tournaments"
             }
+          },
+          {
+            "label": "策略英雄榜",
+            "link": {
+              "outer": true,
+              "href": "/site/scrafts"
+            }
           }
         ]
       },
       {
-        "label": "招聘",
+        "label": "加入我们",
         "links": [
           {
             "label": "社会招聘",

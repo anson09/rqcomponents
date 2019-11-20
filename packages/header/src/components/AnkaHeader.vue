@@ -3,10 +3,8 @@
     <div :class="isInProduce">
       <nav>
         <a href="/" class="nav__logo">
-          <transition name="fade">
-            <img v-if="light" src="../../assets/img/logo-white-pure.png" />
-            <img v-else src="../../assets/img/logo.png" />
-          </transition>
+          <img v-show="light" data-logo-theme="light" src="../../assets/img/logo-white-pure.png" />
+          <img v-show="!light" data-logo-theme="dark" src="../../assets/img/logo.png" />
         </a>
         <div v-if="Boolean(topic)" :class="['nav__topic', { light }]">
           <p>{{ topic }}</p>

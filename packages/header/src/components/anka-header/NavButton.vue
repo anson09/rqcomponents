@@ -57,6 +57,7 @@ export default {
 .nav-button {
   @include text;
   &:hover {
+    color: $highlight;
     background: $button-gray;
   }
   &:focus {
