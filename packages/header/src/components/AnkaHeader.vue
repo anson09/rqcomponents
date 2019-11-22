@@ -6,8 +6,8 @@
           <img v-show="light" data-logo-theme="light" src="../../assets/img/logo-white-pure.png" />
           <img v-show="!light" data-logo-theme="dark" src="../../assets/img/logo.png" />
         </a>
-				<vnodes v-if="topicSlot" :vnodes="topicSlot"/>
-        <div v-else-if="Boolean(topic)" :class="['nav__topic', { light }]">
+	<vnodes v-if="topicSlot" :vnodes="topicSlot"></vnodes>
+        <div v-else-if="topic" :class="['nav__topic', { light }]">
           <p>{{ topic }}</p>
         </div>
         <template v-else>
@@ -99,8 +99,7 @@ export default {
   },
   computed: {
     topicSlot() {
-      console.log( this.$parent.$slots?.topic ?? null)
-      return this.$parent.$slots?.topic ?? null;
+      return this.$parent.$slots?.topic ?? false;
     },
     secondHeaderOpen() {
       const producePageLink = ["/rqdata", "/rqpro", "/ams"];
@@ -185,8 +184,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$slots)
-    console.log(this)
   },
   methods: {
     getBtnConfig(label) {
