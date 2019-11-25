@@ -100,22 +100,22 @@ export default {
     padding: 0;
     &--title {
       text-align: center;
-      @include h1($text-gray-lighter);
+      @include h1(rqthemify(text-gray-lighter));
     }
     &--content {
       @include m-center-horizontal;
       text-align: center;
-      @include text($text-gray-lighter);
+      @include text(rqthemify(text-gray-lighter));
     }
     &--close {
       @include m-center-horizontal;
-      color: $button-gray;
+      color: rqthemify(button-gray);
       cursor: pointer;
       &:hover {
-        color: $button-pink-light;
+        color: rqthemify(button-pink-light);
       }
       &:active {
-        color: $button-pink;
+        color: rqthemify(button-pink);
       }
     }
   }

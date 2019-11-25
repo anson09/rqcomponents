@@ -57,28 +57,28 @@ export default {
 .nav-button {
   @include text;
   &:hover {
-    color: $highlight;
-    background: $button-gray;
+    color: rqthemify(highlight);
+    background: rqthemify(button-gray);
   }
   &:focus {
-    color: $text;
+    color: rqthemify(text);
   }
   &.active {
-    color: $highlight;
+    color: rqthemify(highlight);
   }
   &.light {
-    color: $text-white-dark;
+    color: rqthemify(text-white-dark);
     &:hover {
-      color: $text;
+      color: rqthemify(text);
     }
     &.active {
-      color: $text-white;
+      color: rqthemify(text-white);
       span {
 	padding-bottom: 12px;
-	border-bottom: 1px solid $text-white;
+	border-bottom: 1px solid rqthemify(text-white);
       }
       &:hover {
-	color: $highlight;
+	color: rqthemify(highlight);
       }
     }
   }

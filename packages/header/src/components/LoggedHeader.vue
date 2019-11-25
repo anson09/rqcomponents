@@ -159,7 +159,6 @@ export default {
 .theme {
   &-dark {
     .logged-header {
-      --shadow-color: rgba(13, 14, 20, 0.5);
       &__logo img[data-theme="dark"] {
         opacity: 1;
       }
@@ -167,8 +166,6 @@ export default {
   }
   &-light {
     .logged-header {
-      --shadow-color: rgba(152, 165, 185, 0.2);
-      --background-color: white;
       &__logo img[data-theme="light"] {
         opacity: 1;
       }
@@ -184,10 +181,10 @@ export default {
   height: 40px;
   padding-left: 40px;
   padding-right: 20px;
-  background: var(--background-color);
+  background: rqthemify(background-color);
   z-index: 1;
   box-shadow: 0px 2px 4px 0px;
-  color: var(--shadow-color);
+  color: rqthemify(shadow-color);
   &__logo {
     position: relative;
     display: block;
@@ -204,13 +201,13 @@ export default {
       text-decoration: none;
       &:-webkit-any-link {
         @include hover;
-        @include rg-text(var(--text-color));
+        @include rg-text(rqthemify(text));
       }
     }
     span,
     a {
       margin-top: 8px;
-      @include rg-text(var(--text-color));
+      @include rg-text(rqthemify(text));
     }
     position: relative;
     box-sizing: border-box;
@@ -232,14 +229,14 @@ export default {
       padding-left: 20px;
       cursor: pointer;
       &.left {
-        @include rg-text(var(--text-color));
+        @include rg-text(rqthemify(text));
         line-height: 1;
         margin-top: 8px;
         text-decoration: none;
         margin-left: 28px;
         padding: 0;
         &.active {
-          color: var(--hover-color);
+          color: rqthemify(hover-color);
         }
       }
     }
@@ -247,7 +244,7 @@ export default {
       margin-left: 10px;
     }
     &:hover &__label {
-      color: var(--hover-color);
+      color: rqthemify(hover-color);
     }
     .arrow {
       display: inline-block;
@@ -262,8 +259,8 @@ export default {
       top: 40px;
       left: 0;
       box-shadow: 0px 8px 12px 0px;
-      color: var(--shadow-color);
-      background: var(--background-color);
+      color: rqthemify(shadow-color);
+      background: rqthemify(background-color);
       z-index: -1;
       border-radius: 0 0 12px 12px;
       &--item {
@@ -275,13 +272,13 @@ export default {
           display: inline-block;
           min-width: 100%;
           white-space: nowrap;
-          @include text(var(--text-color));
+          @include text(rqthemify(text));
           padding: 0 20px;
         }
         &:hover {
           a,
           span {
-            color: var(--hover-color);
+            color: rqthemify(hover-color);
           }
         }
         &:last-child {
@@ -290,15 +287,15 @@ export default {
       }
     }
     &.active {
-      background: var(--background-color);
+      background: rqthemify(background-color);
       box-shadow: 0px -8px 12px 0px;
-      color: var(--shadow-color);
+      color: rqthemify(shadow-color);
       .arrow {
         transform: rotate(180deg);
-        color: var(--hover-color);
+        color: rqthemify(hover-color);
       }
       &::after {
-        background: var(--hover-color);
+        background: rqthemify(hover-color);
       }
     }
     &.theme {
@@ -316,16 +313,16 @@ export default {
         border-radius: 50%;
       }
       &.active {
-        background: var(--background-color);
+        background: rqthemify(background-color);
         box-shadow: 0px -8px 12px 0px;
-        color: var(--shadow-color);
+        color: rqthemify(shadow-color);
       }
       .logged-header-btn__dropdown {
         padding: 0;
-        background: var(--background-color);
+        background: rqthemify(background-color);
         &--username {
           position: relative;
-          @include text(var(--text-color));
+          @include text(rqthemify(text));
           line-height: 1;
           box-sizing: border-box;
           width: 108px;
@@ -345,7 +342,7 @@ export default {
             width: 4px;
             height: 4px;
             border-radius: 50%;
-            background: $success;
+            background: rqthemify(success);
           }
         }
         &--item {

@@ -171,7 +171,7 @@ export default {
   z-index: 1;
   width: 100%;
   height: 340px;
-  border-top: 1px solid $button-gray;
+  border-top: 1px solid rqthemify(button-gray);
   overflow-x: hidden;
   &__bg {
     position: absolute;
@@ -189,7 +189,7 @@ export default {
     left: 65%;
     width: 35%;
     height: 310px;
-    background: $bg-gray;
+    background: rqthemify(bg-gray);
   }
   &__content {
     position: absolute;
@@ -203,7 +203,7 @@ export default {
       p,
       i {
         position: relative;
-        @include text($text-disabled);
+        @include text(rqthemify(text-disabled));
         transition: color 0.3s;
       }
       a {
@@ -229,7 +229,7 @@ export default {
         p,
         i {
           &.activePage {
-            color: $highlight;
+            color: rqthemify(highlight);
             &:before {
               position: absolute;
               top: 4px;
@@ -237,12 +237,12 @@ export default {
               width: 10px;
               height: 10px;
               content: "";
-              background: $success;
+              background: rqthemify(success);
               border-radius: 50%;
             }
           }
           font-weight: 700;
-          color: $text-hard;
+          color: rqthemify(text-hard);
         }
         img {
           &.activePage {
@@ -251,13 +251,13 @@ export default {
         }
         &.expand-menu__links {
           p.title {
-            color: $highlight;
+            color: rqthemify(highlight);
             &::after {
               position: absolute;
               top: -36px;
               width: 0;
               content: "";
-              border-top: 8px solid $highlight;
+              border-top: 8px solid rqthemify(highlight);
               border-right: 8px solid transparent;
               border-left: 8px solid transparent;
               @include m-center-horizontal;
@@ -271,7 +271,7 @@ export default {
           padding-left: 60px;
           margin-right: 0;
           margin-left: 80px;
-          background: $bg-gray;
+          background: rqthemify(bg-gray);
           @include text;
           .expand-menu__links {
             float: left;

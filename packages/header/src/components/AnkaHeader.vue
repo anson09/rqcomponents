@@ -265,7 +265,7 @@ export default {
     z-index: 2;
     width: 100%;
     height: 100%;
-    background: $bg-white;
+    background: rqthemify(bg-white);
     &.opacity {
       background: transparent;
     }
@@ -275,7 +275,7 @@ export default {
     z-index: 2;
     width: 100%;
     height: 100%;
-    background: $bg-gray;
+    background: rqthemify(bg-gray);
   }
   nav {
     position: absolute;
@@ -297,10 +297,10 @@ export default {
         margin-left: 30px;
         flex: 1;
         p {
-          @include h2($text-dark);
+          @include h2(rqthemify(text-dark));
         }
         &.light p {
-          color: $text-white-dark;
+          color: rqthemify(text-white-dark);
         }
       }
       &__buttons {
@@ -325,7 +325,7 @@ export default {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: $mask-bg;
+    background: rqthemify(mask-bg);
     z-index: 1;
   }
 }

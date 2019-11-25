@@ -123,7 +123,7 @@ export default {
     top: 0;
     width: 100%;
     height: 100%;
-    background: $bg-white;
+    background: rqthemify(bg-white);
     box-shadow: 0px 10px 11px 0px rgba(8, 25, 52, 0.1);
   }
 
@@ -149,11 +149,11 @@ export default {
       }
 
       .mainTitle {
-        @include h3($text-dark);
+        @include h3(rqthemify(text-dark));
       }
 
       .secondTitle {
-        @include rg-text($text-dark);
+        @include rg-text(rqthemify(text-dark));
         margin-left: 13px;
       }
     }

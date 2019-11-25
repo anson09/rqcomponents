@@ -47,7 +47,7 @@ export default {
   box-sizing: border-box;
   display: inline-block;
   padding: 10px 28px;
-  @include text($text-white);
+  @include text(rqthemify(text-white));
   background: linear-gradient(
     180deg,
     rgba(58, 152, 228, 1) 0%,
@@ -58,10 +58,10 @@ export default {
   transition: all 0.2s;
 
   &.disabled {
-    color: $text-disabled;
+    color: rqthemify(text-disabled);
     cursor: not-allowed;
-    background: $button-disabled;
-    border-color: $border-disabled;
+    background: rqthemify(button-disabled);
+    border-color: rqthemify(border-disabled);
     &:active {
       transform: none;
     }
@@ -72,7 +72,7 @@ export default {
   }
   &:hover,
   &:active {
-    color: $text-white;
+    color: rqthemify(text-white);
     background: linear-gradient(
       180deg,
       rgba(0, 133, 239, 1) 0%,
@@ -83,7 +83,7 @@ export default {
     transform: scale(1.1);
   }
   &:focus {
-    color: $text-white;
+    color: rqthemify(text-white);
     background: linear-gradient(
       180deg,
       rgba(58, 152, 228, 1) 0%,
@@ -91,35 +91,35 @@ export default {
     );
   }
   &.plain {
-    color: $highlight;
+    color: rqthemify(highlight);
     background: transparent;
-    border: 1px solid $highlight;
+    border: 1px solid rqthemify(highlight);
 
     &.light {
-      color: $text-white-dark;
-      border-color: $text-white-dark;
+      color: rqthemify(text-white-dark);
+      border-color: rqthemify(text-white-dark);
       &:hover {
-        background: rgba( $button-gray, .8 );
+        background: rqthemify(button-gray, .8 );
       }
     }
 
     &.disabled {
-      color: $text-disabled;
+      color: rqthemify(text-disabled);
       cursor: not-allowed;
-      background: $button-disabled;
-      border-color: $border-disabled;
+      background: rqthemify(button-disabled);
+      border-color: rqthemify(border-disabled);
       &:active {
         transform: none;
       }
     }
     &:focus,
     &:active {
-      color: $highlight;
-      background: $button-gray;
+      color: rqthemify(highlight);
+      background: rqthemify(button-gray);
     }
     &:hover {
-      color: $highlight;
-      background: $button-gray;
+      color: rqthemify(highlight);
+      background: rqthemify(button-gray);
     }
   }
 }

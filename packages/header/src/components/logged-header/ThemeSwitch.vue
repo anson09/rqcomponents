@@ -98,13 +98,13 @@ export default {
   margin: auto;
   &-button {
     padding: 0 10px;
-    color: var(--text-color);
+    color: rqthemify(text);
     background-color: inherit;
     border: none;
     .rq-icons {
       font-size: 20px;
       &.rq-icon-theme-fills {
-        color: var(--hover-color);
+        color: rqthemify(hover-color);
       }
     }
     &:active,
@@ -118,10 +118,10 @@ export default {
 <style lang="scss">
 
 .el-tooltip__popper.theme-switch-toast {
-  color: var(--text-color);
-  background: var(--background-color);
-  border: 1px solid var(--border-hover-color);
-  --arrow-color: var(--border-hover-color);
+  color: rqthemify(text);
+  background: rqthemify(background-color);
+  border: 1px solid rqthemify(border-hover);
+  --arrow-color: rqthemify(border-hover);
   font-family: sans-serif;
   .popper__arrow {
     display: none;
@@ -130,11 +130,11 @@ export default {
     position: relative;
     float: left;
     font-size: 14px;
-    color: var(--text-color);
+    color: rqthemify(text);
     text-align: center;
     cursor: pointer;
     &.is-active {
-      color: var(--hover-color);
+      color: rqthemify(hover-color);
       .theme-switch-toast__pic .rq-icons {
         opacity: 1;
       }
@@ -148,7 +148,7 @@ export default {
         left: 0;
         font-size: inherit;
         line-height: 100%;
-        color: var(--color-success);
+        color: rqthemify(success);
         text-align: center;
         opacity: 0;
         transform: translateY(-50%);

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" >
+  <div id="app">
     <RqHeader @auth="log" :opacity="false"></RqHeader>
   </div>
 </template>
