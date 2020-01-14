@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <RqHeader @auth="log" :opacity="false"></RqHeader>
+    <RqHeader @auth="log" :opacity="true"></RqHeader>
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
   box-sizing: inherit;
 }
 #app {
-  height: 100vh;
-  background: url(https://images.alphacoders.com/499/thumb-1920-499786.png);
+  height: 300vh;
+  background:black;
 }
 </style>

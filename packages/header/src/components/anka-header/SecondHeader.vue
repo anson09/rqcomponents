@@ -2,7 +2,7 @@
   <div
     v-if="isShow"
     class="second-header"
-    :style="{ transform: `translateY(${70 - scrollY}px)` }"
+    :style="{ transform: `translate(-${windowScrollX}px, ${scrollY}px)` }"
   >
     <div class="header__bg"></div>
     <nav>
@@ -23,7 +23,6 @@
   </div>
 </template>
 <script>
-import throttle from "lodash/throttle";
 import CommonButton from "./CommonButton.vue";
 import rdHuge from "../../../assets/img/rdHuge.png";
 import rpHuge from "../../../assets/img/rpHuge.png";
@@ -58,7 +57,8 @@ export default {
     return {
       usePageLink: ["/rqdata", "/rqpro", "/ams"], // 产品的几个页面在路由页中的path
       scrollFn: null,
-      scrollY: 0
+      windowScrollX: 0,
+      windowScrollY: 0
     };
   },
   computed: {
@@ -79,6 +79,9 @@ export default {
     },
     redirect() {
       return `/pricing#${this.findInConfig("product")}`;
+    },
+    scrollY() {
+      return this.windowScrollY <= 70 ? 70 - this.windowScrollY : 0;
     }
   },
   watch: {},
@@ -86,9 +89,10 @@ export default {
   mounted() {
     this.scrollFn = window.addEventListener(
       "scroll",
-      throttle(() => {
-        this.scrollY = window.scrollY <= 70 ? window.scrollY : 70;
-      }, 100)
+      () => {
+	this.windowScrollY = window.scrollY;
+	this.windowScrollX = window.scrollX;
+      }
     );
   },
   destroyed() {
@@ -110,7 +114,6 @@ export default {
 .second-header {
   position: fixed;
   top: 0;
-  z-index: -1;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -118,7 +121,7 @@ export default {
   @include full-vw;
   .header__bg {
     position: absolute;
-    z-index: -2;
+    z-index: -1;
     left: 0;
     top: 0;
     width: 100%;
@@ -131,7 +134,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: $article-width;
+    width: 100%;
+    padding: 0 50px;
     height: 100%;
 
     .nav__icon {

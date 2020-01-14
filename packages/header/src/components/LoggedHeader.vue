@@ -4,20 +4,27 @@
       <img :src="images.logo" data-theme="light" />
       <img :src="images.logoWhite" data-theme="dark" />
     </a>
-    <a
-      v-for="(btn, idx) in btnConfigLeft"
-      :class="['logged-header-btn__label left', { active: btn.active }]"
-      :key="idx"
-      :href="btn.link.href || btn.link"
-      :target="btn.link.newBlock && '_blank'"
-      >{{ btn.label }}</a
-    >
+    <div class="logged-header-btns left">
+      <div
+        v-for="(btn, idx) in btnConfigLeft"
+        :key="idx"
+        :class="['logged-header-btn',btn.className, { active: btn.active }]"
+      >
+        <a
+          class="logged-header-btn__label"
+          :href="btn.link.href || btn.link"
+          :target="btn.link.newBlock && '_blank'"
+          >{{ btn.label }}</a
+        >
+      </div>
+    </div>
     <div class="logged-header-btns">
       <div
         v-for="(btn, idx) in btnConfigRight"
         :key="idx"
         :class="[
           'logged-header-btn',
+	  btn.className,
           {
             avatar: btn.type === 'avatar',
             theme: btn.type === 'theme',
@@ -49,8 +56,8 @@
         </span>
         <transition name="rq-zoom-in-top">
           <div
-            class="logged-header-btn__dropdown"
             v-if="btn.links && btn.active"
+            class="logged-header-btn__dropdown"
           >
             <p
               v-if="btn.type === 'avatar' && username"
@@ -59,11 +66,12 @@
               {{ username }}
             </p>
             <div
-              class="logged-header-btn__dropdown--item"
               v-for="({ label, link, event }, linkIdx) in btn.links"
               :key="linkIdx"
+              class="logged-header-btn__dropdown--item"
             >
               <a
+                :class="isActiveLink(link.href || link)"
                 v-if="link"
                 :href="link.href || link"
                 :target="link.newBlock && '_blank'"
@@ -122,6 +130,11 @@ export default {
     }
   },
   methods: {
+    isActiveLink(link) {
+      return link.length > 2 && window.location.href.includes(link)
+        ? "active"
+        : "";
+    },
     openDropdown(idx) {
       if (!this.btnConfigRight[idx].links) {
         return;
@@ -143,6 +156,7 @@ export default {
           return this.redirect("/");
         }
       }
+      return false;
     },
     redirect(params) {
       this.$parent.handleLink(params);
@@ -156,18 +170,14 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../common/style/common";
+
 .theme {
-  &-dark {
-    .logged-header {
-      &__logo img[data-theme="dark"] {
-        opacity: 1;
-      }
-    }
-  }
-  &-light {
-    .logged-header {
-      &__logo img[data-theme="light"] {
-        opacity: 1;
+  @each $i in dark, light {
+    &-#{$i} {
+      .logged-header {
+        &__logo img[data-theme="#{$i}"] {
+          opacity: 1;
+        }
       }
     }
   }
@@ -188,33 +198,42 @@ export default {
   &__logo {
     position: relative;
     display: block;
-    width: 110px;
+    width: 98px;
     height: 24px;
+    margin-right: 16px;
     img {
       position: absolute;
       width: 100%;
       opacity: 0;
     }
   }
+  &-btns {
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-direction: row;
+    &.left {
+      flex: auto;
+    }
+  }
   &-btn {
+    padding: 0 16px;
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+    padding-top: 4px;
     a {
       text-decoration: none;
-      &:-webkit-any-link {
-        @include hover;
-        @include rg-text(rqthemify(text));
-      }
     }
     span,
     a {
-      margin-top: 8px;
-      @include rg-text(rqthemify(text));
+      @include text(rqthemify(text));
     }
-    position: relative;
-    box-sizing: border-box;
-    display: flex;
-    padding-right: 20px;
-    align-items: center;
-    transition: all 0.3s;
     &::after {
       content: "";
       position: absolute;
@@ -226,31 +245,37 @@ export default {
       transition: background 0.3s;
     }
     &__label {
-      padding-left: 20px;
       cursor: pointer;
-      &.left {
-        @include rg-text(rqthemify(text));
-        line-height: 1;
-        margin-top: 8px;
-        text-decoration: none;
-        margin-left: 28px;
-        padding: 0;
-        &.active {
-          color: rqthemify(hover-color);
-        }
-      }
     }
+
     &__label + .arrow {
-      margin-left: 10px;
+      margin-left: 4px;
     }
-    &:hover &__label {
-      color: rqthemify(hover-color);
+    &:hover {
+      background: rqthemify(active-background-color);
+      box-shadow: 0px 2px 4px 0px rgba(152, 165, 185, 0.2);
+      color: rqthemify(shadow-color);
+      .arrow {
+        transform: rotate(180deg) scale(0.5);
+        color: rqthemify(hover-color);
+      }
+      .logged-header-btn__label {
+        color: rqthemify(highlight);
+        font-weight: 600;
+      }
+      &::after {
+        background: rqthemify(hover-color);
+      }
     }
     .arrow {
       display: inline-block;
-      width: 16px;
+      width: 8px;
       transition: transform 0.3s;
-      transform-origin: center;
+      transform-origin: right;
+      transform: scale(0.5);
+      .rq-icons {
+        font-size: 16px;
+      }
     }
     & &__dropdown {
       position: absolute;
@@ -260,9 +285,9 @@ export default {
       left: 0;
       box-shadow: 0px 8px 12px 0px;
       color: rqthemify(shadow-color);
-      background: rqthemify(background-color);
-      z-index: -1;
-      border-radius: 0 0 12px 12px;
+      background: rqthemify(active-background-color);
+      z-index: 1;
+      border-radius: 0 0 2px 2px;
       &--item {
         margin-top: 18px;
         a,
@@ -274,6 +299,9 @@ export default {
           white-space: nowrap;
           @include text(rqthemify(text));
           padding: 0 20px;
+          &.active {
+            color: rqthemify(hover-color);
+          }
         }
         &:hover {
           a,
@@ -286,40 +314,54 @@ export default {
         }
       }
     }
-    &.active {
-      background: rqthemify(background-color);
-      box-shadow: 0px -8px 12px 0px;
-      color: rqthemify(shadow-color);
-      .arrow {
-        transform: rotate(180deg);
-        color: rqthemify(hover-color);
-      }
-      &::after {
-        background: rqthemify(hover-color);
-      }
+    &.active &__label {
+      color: rqthemify(hover-color);
     }
     &.theme {
+      margin-top: 4px;
       padding: 0;
+      font-size: 16px;
+    }
+    &.road-show {
+      height: auto;
+      padding: 2px 20px;
+      margin-top: 4px;
+      margin-right: 20px;
+      border: 1px solid rqthemify(highlight);
+      border-radius: 20px;
+      transition: all .3s;
+      a {
+        color: rqthemify(highlight);
+      }
+      &::after {
+	display: none;
+      }
+      &:hover,
+      &:active {
+	background: rqthemify(highlight);
+	a {
+	  color: white;
+	}
+      }
+	
     }
     &.avatar {
       position: relative;
       height: 100%;
-      padding-right: 40px;
       img {
-        margin-left: 40px;
         width: 28px;
         height: 28px;
         object-fit: cover;
         border-radius: 50%;
       }
       &.active {
-        background: rqthemify(background-color);
-        box-shadow: 0px -8px 12px 0px;
-        color: rqthemify(shadow-color);
+        background: rqthemify(active-background-color);
       }
       .logged-header-btn__dropdown {
+        left: auto;
+        right: 0;
         padding: 0;
-        background: rqthemify(background-color);
+        background: rqthemify(active-background-color);
         &--username {
           position: relative;
           @include text(rqthemify(text));
@@ -353,13 +395,6 @@ export default {
         }
       }
     }
-  }
-  &-btns {
-    margin-left: auto;
-    margin-right: 0;
-    display: flex;
-    height: 100%;
-    flex-direction: row;
   }
 }
 </style>

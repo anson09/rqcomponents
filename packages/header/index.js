@@ -6,9 +6,6 @@ import "../common/style";
 import RqHeader from "./src/Header.vue";
 import UndoneDialog from "../undone";
 import { methodConstructor } from "./util";
-import "@rqjs/rqthemes/src/light.scss";
-import "@rqjs/rqthemes/src/dark.scss";
-import "@rqjs/rqthemes/src/compatibility.scss";
 
 RqHeader.install = function(Vue, option) {
   const cfg = {

@@ -12,6 +12,13 @@
     ],
     "right": [
       {
+        "label": "预约路演",
+	"className": "road-show",
+        "link": {
+	  "href": "/welcome/trial/road-show"
+	}
+      },
+      {
         "label": "帮助文档",
         "links": [
           {

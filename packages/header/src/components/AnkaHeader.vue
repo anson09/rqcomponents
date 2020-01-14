@@ -29,6 +29,7 @@
               <CommonButton
                 v-for="(cfg, idx) in loginButtons"
                 :key="idx"
+		:class="[cfg.className, opacity]"
                 :label="cfg.label"
                 :plain="cfg.plain || light"
                 :light="light"
@@ -99,13 +100,14 @@ export default {
   },
   computed: {
     topicSlot() {
+      if (!this.topic) return false;
       return this.$parent.$slots?.topic ?? false;
     },
     secondHeaderOpen() {
       const producePageLink = ["/rqdata", "/rqpro", "/ams"];
       if (
         producePageLink.includes(this.getPath()) &&
-        !Boolean(this.activeLabel)
+          !Boolean(this.activeLabel)
       ) {
         return true;
       }
@@ -122,8 +124,17 @@ export default {
       return false;
     },
     loginButtons() {
+      const base = [
+        {
+          label: "预约路演",
+	  className: "road-show",
+          click: () => {
+            this.redirect("/welcome/trial/road-show");
+          }
+        }];
       if (this.isLogin) {
         return [
+	  ...base,
           {
             label: "进入平台",
             plain: true,
@@ -137,6 +148,7 @@ export default {
         ];
       }
       return [
+	...base,
         {
           label: "登录",
           plain: true,
@@ -146,6 +158,7 @@ export default {
         },
         {
           label: "注册",
+          plain: true,
           click: () => {
             this.redirect({ event: "register" });
           }
@@ -281,31 +294,33 @@ export default {
     position: absolute;
     z-index: 2;
     align-items: center;
-    width: $article-width;
+    width: 100%;
     height: 100%;
     box-shadow: none;
+    padding: 0 50px;
+    box-sizing: border-box;
     background: transparent;
     @include m-center-horizontal;
     @include f-center;
     .nav {
       &__logo {
+	margin-right: 48px;
         img {
           width: 136px;
         }
       }
       &__topic {
-        margin-left: 30px;
         flex: 1;
         p {
           @include h2(rqthemify(text-dark));
         }
-        &.light p {
+        &.light p {   
           color: rqthemify(text-white-dark);
         }
       }
       &__buttons {
-        display: inline-block;
-        margin-left: 40px;
+	display: flex;
+	flex-wrap: nowrap;
         flex: 1;
         div {
           margin-right: 10px;
@@ -313,6 +328,35 @@ export default {
             margin-right: 0;
           }
         }
+	.road-show {
+	  padding: 10px 24px;
+	  margin: 0 20px 0 40px;
+	  border-radius: 40px;
+	  background: rqthemify(highlight);
+	  border-color: transparent;
+	  border-width: 0;
+	  transition: background .3s;
+	  &:hover,
+	  &:active {
+	    filter: brightness(1.1);
+	  }
+	  &.light {
+	    background: linear-gradient(
+	      180deg,
+	      rgba(58, 152, 228, 1) 0%,
+	      rgba(27, 95, 196, 1) 100%
+	    );
+	    &:hover,
+	    &:active {
+	      color: rqthemify(text-white);
+	      background: linear-gradient(
+		180deg,
+		rgba(0, 133, 239, 1) 0%,
+		rgba(0, 70, 173, 1) 100%
+	      );
+	    }
+	  }
+	}
         &.login {
           flex: none;
         }

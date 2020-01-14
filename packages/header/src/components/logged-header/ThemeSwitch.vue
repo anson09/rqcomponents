@@ -1,9 +1,10 @@
 <template>
-<div class="theme-switch" v-if="show">
+<div v-if="show" class="theme-switch">
     <el-tooltip
       v-model="active"
-      placement="bottom"
+      placement="bottom-end"
       popper-class="theme-switch-toast"
+      transition="rq-zoom-in-top"
       :effect="value"
     >
       <div slot="content">
@@ -29,11 +30,11 @@
 </template>
 
 <script>
+import elButton from "element-ui/lib/button";
+import elTooltip from "element-ui/lib/tooltip";
 import lightImg from "../../../assets/img/theme-light.png";
 import darkImg from "../../../assets/img/theme-dark.png";
 import { THEME_MODE, themeRender, isSupported } from "../../../util"
-import elButton from "element-ui/lib/button";
-import elTooltip from "element-ui/lib/tooltip";
 
 export default {
   name: "ThemeSwitch",
@@ -71,7 +72,7 @@ export default {
       const url = this.$parent.getPath();
       if (["/ams", "/quant"].some(e => url.includes(e))) {
 	this.show = true;
-	const theme = localStorage.theme;
+	const {theme} = localStorage;
 	this.value = THEME_MODE.includes(theme) ? theme : "light";
 	themeRender(this.value);
 	return;
@@ -98,12 +99,13 @@ export default {
   margin: auto;
   &-button {
     padding: 0 10px;
+    width: 36px;
     color: rqthemify(text);
     background-color: inherit;
     border: none;
     .rq-icons {
-      font-size: 20px;
       &.rq-icon-theme-fills {
+	font-size: 14px;
         color: rqthemify(hover-color);
       }
     }
@@ -118,17 +120,20 @@ export default {
 <style lang="scss">
 
 .el-tooltip__popper.theme-switch-toast {
+  top: 38px !important;
+  margin: 0;
+  padding: 32px 14px;
+  padding-top: 16px;
   color: rqthemify(text);
-  background: rqthemify(background-color);
-  border: 1px solid rqthemify(border-hover);
-  --arrow-color: rqthemify(border-hover);
+  background: rqthemify(active-background-color);
   font-family: sans-serif;
+  border-radius: 0 0 2px 2px;
+  border: none;
   .popper__arrow {
     display: none;
   }
   .theme-switch-toast__side {
     position: relative;
-    float: left;
     font-size: 14px;
     color: rqthemify(text);
     text-align: center;
@@ -139,7 +144,11 @@ export default {
         opacity: 1;
       }
     }
+    + .theme-switch-toast__side {
+      margin-top: 20px;
+    }
     .theme-switch-toast__pic {
+      display: block;
       position: relative;
       & .rq-icons {
         position: absolute;
@@ -157,3 +166,4 @@ export default {
   }
 }
 </style>
+

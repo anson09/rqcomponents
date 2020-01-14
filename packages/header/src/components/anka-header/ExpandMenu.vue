@@ -14,21 +14,24 @@
               @mouseenter="hoverHandler(cfg.label)"
             >
               <p class="title">{{ cfg.label }}</p>
-              <a
+              <div
                 v-for="(link, linkIdx) in cfg.links"
                 :key="linkIdx"
-                :class="activeClass(link)"
-                @click="clickHandle(link)"
-                @mouseenter="handleMouseEnter(link)"
-                @mouseleave="handleMouseLeave()"
+                :class="['expand-menu__links-item', activeClass(link)]"
               >
                 <img
                   v-if="link.iconImg"
                   :class="activeClass(link)"
                   :src="link.iconImg"
                 />
-                {{ link.label }}
-              </a>
+                <a
+                  @click="clickHandle(link)"
+                  @mouseenter="handleMouseEnter(link)"
+                  @mouseleave="handleMouseLeave()"
+                >
+                  {{ link.label }}
+                </a>
+              </div>
             </div>
           </div>
           <div class="expand-menu__links--wapper support">
@@ -111,7 +114,7 @@ export default {
           if (link.icon) {
             link.iconImg = logos[link.icon];
           }
-	  if (link.undone) {
+          if (link.undone) {
             link.undone = { titleIcon, headerIcon };
           }
         });
@@ -186,8 +189,8 @@ export default {
   }
   &__supportBg {
     position: absolute;
-    left: 65%;
-    width: 35%;
+    left: calc(50% + 20vw);
+    width: 100%;
     height: 310px;
     background: rqthemify(bg-gray);
   }
@@ -196,9 +199,41 @@ export default {
     display: flex;
     @include m-center-horizontal;
     justify-content: space-between;
-    width: $article-width;
+    width: 100vw;
+    min-width: 1280px;
+    box-sizing: border-box;
+    padding-right: 50px;
+    padding-left: 232px;
     .expand-menu__links {
-      padding: 30px 40px 0 0;
+      padding: 30px 1vw 0 0;
+      &-item {
+        position: relative;
+        display: flex;
+        img {
+          width: 18px;
+          height: 14px;
+          margin: 4px;
+          margin-left: 0;
+          filter: grayscale(0.9);
+        }
+        & + .expand-menu__links-item {
+          margin-top: 16px;
+        }
+	
+          &:before {
+            position: absolute;
+            top: 4px;
+            left: -20px;
+            width: 10px;
+            height: 10px;
+            content: "";
+            border-radius: 50%;
+	    background: rqthemify(success);
+	    opacity: 0;
+	    transform: translateX(-4px);
+	    transition: all .3s;
+          }
+      }
       a,
       p,
       i {
@@ -209,13 +244,8 @@ export default {
       a {
         display: block;
         cursor: pointer;
-        img {
-          filter: grayscale(0.9);
-        }
       }
-      a + a {
-        margin-top: 16px;
-      }
+
       p.title {
         position: relative;
         display: inline-block;
@@ -228,25 +258,21 @@ export default {
         a,
         p,
         i {
-          &.activePage {
-            color: rqthemify(highlight);
-            &:before {
-              position: absolute;
-              top: 4px;
-              left: -20px;
-              width: 10px;
-              height: 10px;
-              content: "";
-              background: rqthemify(success);
-              border-radius: 50%;
-            }
-          }
           font-weight: 700;
           color: rqthemify(text-hard);
         }
-        img {
-          &.activePage {
+        .activePage {
+          a,
+          p,
+          i {
+            color: rqthemify(highlight);
+          }
+          img {
             filter: none;
+          }
+          &:before {
+	    transform: translateX(0);
+	    opacity: 1;
           }
         }
         &.expand-menu__links {
@@ -267,10 +293,14 @@ export default {
       }
       &--wapper {
         margin-right: 40px;
+	white-space: nowrap;
+	flex: 1;
+	&:nth-child(4n) {
+	  flex: 4;
+	}
         &.support {
-          padding-left: 60px;
-          margin-right: 0;
-          margin-left: 80px;
+          padding-left: 3vw;
+          margin-right: 20vw;
           background: rqthemify(bg-gray);
           @include text;
           .expand-menu__links {
@@ -291,5 +321,7 @@ export default {
       }
     }
   }
+}
+@media screan and  (max-width: 1440px) {
 }
 </style>

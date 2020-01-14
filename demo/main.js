@@ -1,12 +1,12 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import Vue from "vue";
-import {RqHeader} from "../dist/rqcomponents.cjs";
-import "../dist/rqcomponents.esm.css";
-import "../packages/common/assets/icon/iconfont.css";
+// import {RqHeader} from "../dist/rqcomponents.cjs";
+// import "../dist/rqcomponents.esm.css";
+// import "../packages/common/assets/icon/iconfont.css";
 
 // dev
-// import {RqHeader} from "../src";
+import {RqHeader} from "../src";
 import App from "./App.vue";
 import "/../node_modules/normalize.css";
 import VueRouter from "vue-router";

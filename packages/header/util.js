@@ -1,6 +1,7 @@
 function methodConstructor(cfg)  {
   return {
-    handleLink(link) {
+    handleLink(params) {
+      let link = params;
       if (typeof link === "string") {
         link = {href: link};
       }

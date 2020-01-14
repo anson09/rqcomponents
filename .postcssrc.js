@@ -34,6 +34,7 @@ const themifyOptions = {
       "mask-bg-dark": "#07112e47",
       "shadow-color": "rgba(152, 165, 185, 0.2)",
       "background-color": "white",
+      "active-background-color": "white",
 
       // theme
       "border-hover": "hsla(216, 76%, 44%, 0.8)",
@@ -43,9 +44,11 @@ const themifyOptions = {
     dark: {
       "boder-hover": "hsla(220, 100%, 65%, 0.8)",
       "text": "#a7b2be",
-      "shadow-color": "#0d0e1480",
+      "shadow-color": "rgba(0,0,0,0.2)",
       "hover-color": "#4575d3cc",
-      "background-color": "#15171e"
+      "highlight": "#4F89FF",
+      "background-color": "#1A1C25",
+      "active-background-color": "#282B35"
     }
   },
   classPrefix: "theme-"
@@ -57,3 +60,4 @@ module.exports = {
     require("./themify").themify(themifyOptions)
   ]
 };
+
