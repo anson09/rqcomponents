@@ -318,7 +318,7 @@ export default {
       color: rqthemify(hover-color);
     }
     &.theme {
-      margin-top: 4px;
+      padding-top: 4px;
       padding: 0;
       font-size: 16px;
     }
@@ -330,7 +330,7 @@ export default {
       border: 1px solid rqthemify(highlight);
       border-radius: 20px;
       transition: all .3s;
-      a {
+      .logged-header-btn__label {
         color: rqthemify(highlight);
       }
       &::after {
@@ -339,8 +339,8 @@ export default {
       &:hover,
       &:active {
 	background: rqthemify(highlight);
-	a {
-	  color: white;
+	.logged-header-btn__label {
+	  color: rqthemify(text-white);
 	}
       }
 	

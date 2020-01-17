@@ -1,5 +1,5 @@
 <template>
-<div v-if="show" class="theme-switch">
+  <div v-if="show" class="theme-switch">
     <el-tooltip
       v-model="active"
       placement="bottom-end"
@@ -16,7 +16,7 @@
         >
           <div class="theme-switch-toast__pic">
             <i class="rq-icons rq-icon-theme-choose"></i>
-            <img :src="mode.img" alt="">
+            <img :src="mode.img" alt="" />
           </div>
           <p>{{ mode.label }}</p>
         </div>
@@ -34,7 +34,7 @@ import elButton from "element-ui/lib/button";
 import elTooltip from "element-ui/lib/tooltip";
 import lightImg from "../../../assets/img/theme-light.png";
 import darkImg from "../../../assets/img/theme-dark.png";
-import { THEME_MODE, themeRender, isSupported } from "../../../util"
+import { THEME_MODE, themeRender, isSupported } from "../../../util";
 
 export default {
   name: "ThemeSwitch",
@@ -42,40 +42,40 @@ export default {
     elButton,
     elTooltip
   },
-  data () {
+  data() {
     return {
       value: "light",
       active: false,
       show: false
-    }
+    };
   },
   computed: {
     modeConfig() {
       return [
-	{
+        {
           label: "极致简洁",
           img: lightImg,
           value: "light",
           active: this.value === "light"
-	},
-	{
+        },
+        {
           label: "沉浸体验",
           img: darkImg,
           value: "dark",
           active: this.value === "dark"
-	}
-      ]; 
+        }
+      ];
     }
   },
   mounted() {
     if (isSupported()) {
       const url = this.$parent.getPath();
       if (["/ams", "/quant"].some(e => url.includes(e))) {
-	this.show = true;
-	const {theme} = localStorage;
-	this.value = THEME_MODE.includes(theme) ? theme : "light";
-	themeRender(this.value);
-	return;
+        this.show = true;
+        const { theme } = localStorage;
+        this.value = THEME_MODE.includes(theme) ? theme : "light";
+        themeRender(this.value);
+        return;
       }
     }
     this.show = false;
@@ -89,7 +89,7 @@ export default {
       this.value = theme;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -105,7 +105,7 @@ export default {
     border: none;
     .rq-icons {
       &.rq-icon-theme-fills {
-	font-size: 14px;
+        font-size: 14px;
         color: rqthemify(hover-color);
       }
     }
@@ -118,39 +118,42 @@ export default {
 }
 </style>
 <style lang="scss">
-
-.el-tooltip__popper.theme-switch-toast {
-  top: 38px !important;
-  margin: 0;
-  padding: 32px 14px;
-  padding-top: 16px;
-  color: rqthemify(text);
-  background: rqthemify(active-background-color);
-  font-family: sans-serif;
-  border-radius: 0 0 2px 2px;
-  border: none;
-  .popper__arrow {
-    display: none;
-  }
-  .theme-switch-toast__side {
-    position: relative;
-    font-size: 14px;
-    color: rqthemify(text);
-    text-align: center;
-    cursor: pointer;
-    &.is-active {
-      color: rqthemify(hover-color);
-      .theme-switch-toast__pic .rq-icons {
-        opacity: 1;
+.theme-switch {
+  &-toast {
+    &.el-tooltip__popper {
+      top: 38px !important;
+      margin: 0;
+      padding: 32px 14px;
+      padding-top: 16px;
+      color: rqthemify(text);
+      background: rqthemify(active-background-color);
+      font-family: sans-serif;
+      border-radius: 0 0 2px 2px;
+      border: none;
+      .popper__arrow {
+        display: none;
       }
     }
-    + .theme-switch-toast__side {
-      margin-top: 20px;
+    &__side {
+      position: relative;
+      font-size: 14px;
+      color: rqthemify(text);
+      text-align: center;
+      cursor: pointer;
+      &.is-active {
+        color: rqthemify(hover-color);
+        .theme-switch-toast__pic .rq-icons {
+          opacity: 1;
+        }
+      }
+      + & {
+        margin-top: 20px;
+      }
     }
-    .theme-switch-toast__pic {
+    &__pic {
       display: block;
       position: relative;
-      & .rq-icons {
+      .rq-icons {
         position: absolute;
         top: 50%;
         right: 0;
@@ -164,6 +167,8 @@ export default {
       }
     }
   }
+  &-button {
+    height: 40px;
+  }
 }
 </style>
-
