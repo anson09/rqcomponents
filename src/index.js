@@ -1,10 +1,6 @@
 import RqHeader from "../packages/header";
-import UndoneDialog from "../packages/undone";
 
-const components = [
-  UndoneDialog,
-  RqHeader
-];
+const components = [RqHeader];
 
 const install = function(Vue, opt = {}) {
   components.forEach(component => {
@@ -12,8 +8,8 @@ const install = function(Vue, opt = {}) {
   });
 };
 
-export {RqHeader, UndoneDialog};
+export { RqHeader };
 
 export default {
-  install,
+  install
 };

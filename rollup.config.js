@@ -93,13 +93,7 @@ const createConfig = ({ output, umd = false, env } = {}) => {
         plugins: [["@babel/plugin-proposal-object-rest-spread"]]
       }),
       commonjs(),
-      vue(
-        umd
-          ? undefined
-          : {
-              css: false
-            }
-      ),
+      vue({css: false}),
       json(),
       terser({
         include: [/^.+\.min\.js$/]

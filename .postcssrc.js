@@ -37,11 +37,13 @@ const themifyOptions = {
       "active-background-color": "white",
 
       // theme
+      "border": "#d7dbe5",
       "border-hover": "hsla(216, 76%, 44%, 0.8)",
       "background-color": "white",
       "hover-color": "hsla(216, 76%, 44%, 0.8)"
     },
     dark: {
+      "border": "#323d4e",
       "boder-hover": "hsla(220, 100%, 65%, 0.8)",
       "text": "#a7b2be",
       "shadow-color": "rgba(0,0,0,0.2)",

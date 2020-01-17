@@ -1,5 +1,7 @@
+
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import VueRouter from "vue-router";
 import Vue from "vue";
 // import {RqHeader} from "../dist/rqcomponents.cjs";
 // import "../dist/rqcomponents.esm.css";
@@ -9,7 +11,6 @@ import Vue from "vue";
 import {RqHeader} from "../src";
 import App from "./App.vue";
 import "/../node_modules/normalize.css";
-import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 // Vue.use(Rqui, {

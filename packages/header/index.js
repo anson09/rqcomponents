@@ -4,7 +4,6 @@ import "element-ui/lib/theme-chalk/tooltip.css";
 import "element-ui/lib/theme-chalk/popover.css";
 import "../common/style";
 import RqHeader from "./src/Header.vue";
-import UndoneDialog from "../undone";
 import { methodConstructor } from "./util";
 
 RqHeader.install = function(Vue, option) {
@@ -20,7 +19,6 @@ RqHeader.install = function(Vue, option) {
       }
     });
   }
-  UndoneDialog.install(Vue);
   RqHeader.methods = Object.assign(RqHeader.methods || {}, methodConstructor(cfg));
   Vue.component(RqHeader.name, RqHeader);
 };

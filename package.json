@@ -1,6 +1,6 @@
 {
   "name": "@rqjs/rqcomponents",
-  "version": "0.0.7-alpha.41",
+  "version": "0.0.7-alpha.49",
   "description": "A Component Library for Ricequant.",
   "main": "./dist/rqcomponents.cjs.js",
   "module": "./dist/rqcomponents.esm.js",
@@ -10,10 +10,19 @@
     "last 2 Safari versions",
     "last 2 Edge versions"
   ],
+  "config": {
+    "command": "echo  $npm_config_prefix",
+    "name": 111,
+    "configs": {
+      "name": 222
+    }
+  },
   "scripts": {
     "dev:lib": "rollup -w -c",
     "dev": " rm -rf demo/dist && parcel watch ./demo/index.html --no-autoinstall --out-dir demo/dist",
-    "build": "npm run clean && rollup -c",
+    "build": "rollup -c",
+    "log:1": "$npm_package_config_command",
+    "log:2": "$npm_package_config_command",
     "clean": "rm -rf .cache dist"
   },
   "keywords": [

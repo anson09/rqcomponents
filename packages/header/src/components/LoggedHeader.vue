@@ -373,7 +373,7 @@ export default {
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          border-bottom: 1px solid rgba(235, 238, 245, 1);
+          border-bottom: 1px solid rqthemify(border);
           &::before {
             content: "";
             position: absolute;
