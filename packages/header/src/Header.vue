@@ -2,16 +2,17 @@
   <div class="header-wrapper">
     <p class="header-warning" v-if="showWarning">
       <slot v-if="$slots.notification" name="notification"></slot>
-      <template  v-else>
-      {{ notification }}
+      <template v-else>
+        {{ notification }}
       </template>
     </p>
     <header>
       <Transition name="rq-fade-in-linear">
         <LoggedHeader
-          v-if="mode === defaultMode && isLogin"
+          v-if="mode === defaultMode && !isLogin"
           :username="username"
           :avatar="avatar"
+          :isVip="isVip"
         ></LoggedHeader>
         <AnkaHeader
           v-else
@@ -63,13 +64,15 @@ export default {
     const {
       isLogin = false,
       avatar = "",
-      fullname: username = ""
+      fullname: username = "",
+      isVip = false
     } = localStorageAcount;
     return {
       defaultMode: "default",
       isLogin,
       username,
-      avatar
+      avatar,
+      isVip
     };
   },
   computed: {
@@ -84,7 +87,7 @@ export default {
     async initAccount() {
       try {
         const {
-          data: { code, fullname, avatar, phone, email, userId }
+          data: { code, fullname, avatar, phone, email, userId, rank }
         } = await getAccount();
         if (code === 0) {
           localStorage.setItem(
@@ -95,12 +98,14 @@ export default {
               avatar,
               phone,
               email,
-              userId
+              userId,
+              rank
             })
           );
           this.isLogin = true;
           this.avatar = avatar;
           this.username = fullname;
+          this.isVip = rank && rank === 5;
         } else {
           this.reset();
         }
@@ -112,6 +117,7 @@ export default {
       this.isLogin = false;
       this.avatar = "";
       this.username = "";
+      this.isVip = false;
       localStorage.removeItem("common_account");
     }
   }
