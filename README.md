@@ -48,39 +48,5 @@ new Vue({
 
 ### RqHeader
 
-> Common Header for user logged.
+> Common Header.
 
-#### Events
-
-- logout
-
-### RqPersonalCenter
-
-> Personal center component.
-
-#### Props
-
-- uid: Number
-  - reqiured: true
-
-### Event
-
-- redirect
-
-  #### params
-
-  - pathParams: String
-
-  ```javascript
-  // example
-  @redirect="redirect"
-  
-  //methods
-  redirect(...path) {
-    doRedirect(path.join('/'))
-  }
-  ```
-
-# TODO
-
-- [ ] move all styles, fonts to theme

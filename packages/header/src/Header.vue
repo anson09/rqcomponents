@@ -1,19 +1,24 @@
 <template>
-  <header>
-    <Transition name="rq-fade-in-linear">
-      <LoggedHeader
-	v-if="mode === defaultMode && isLogin"
-        :username="username"
-        :avatar="avatar"
-      ></LoggedHeader>
-      <AnkaHeader
-        v-else
-        :topic="topic"
-        :opacity="opacity"
-        :isLogin="isLogin"
-      ></AnkaHeader>
-    </Transition>
-  </header>
+  <div class="header-wrapper">
+    <p class="header-warning">
+      {{ warning }}
+    </p>
+    <header>
+      <Transition name="rq-fade-in-linear">
+        <LoggedHeader
+          v-if="mode === defaultMode && isLogin"
+          :username="username"
+          :avatar="avatar"
+        ></LoggedHeader>
+        <AnkaHeader
+          v-else
+          :topic="topic"
+          :opacity="opacity"
+          :isLogin="isLogin"
+        ></AnkaHeader>
+      </Transition>
+    </header>
+  </div>
 </template>
 
 <script>
@@ -28,6 +33,10 @@ export default {
     AnkaHeader
   },
   props: {
+    warning: {
+      default: "",
+      type: String
+    },
     mode: {
       default: "default",
       type: String
@@ -102,9 +111,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-header {
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
+.header {
+  header {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  &-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  &-warning {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    color: rgb(0, 0, 0);
+    background: rgb(253, 208, 0);
+    font-size: 16px;
+    line-height: 1.5;
+    word-break: break-all;
+    z-index: 100;
+  }
 }
 </style>
