@@ -50,3 +50,19 @@ new Vue({
 
 > Common Header.
 
+#### props: 
+
+##### notification: string | slot
+
+Default: ""
+Raise a warning on the top of the header.
+
+##### opacity: boolean
+
+Default: false
+Set background opacity with white font-color; 
+
+##### topic: string
+
+Default: ""
+A clear header with a topic text only.

@@ -1,7 +1,10 @@
 <template>
   <div class="header-wrapper">
-    <p class="header-warning">
+    <p class="header-warning" v-if="showWarning">
+      <slot v-if="$slots.notification" name="notification"></slot>
+      <template  v-else>
       {{ notification }}
+      </template>
     </p>
     <header>
       <Transition name="rq-fade-in-linear">
@@ -24,7 +27,7 @@
 <script>
 import LoggedHeader from "./components/LoggedHeader.vue";
 import AnkaHeader from "./components/AnkaHeader.vue";
-import { getAccount, logout } from "../api";
+import { getAccount } from "../api";
 
 export default {
   name: "RqHeader",
@@ -68,6 +71,11 @@ export default {
       username,
       avatar
     };
+  },
+  computed: {
+    showWarning() {
+      return this.$slots.notification || this.notification;
+    }
   },
   mounted() {
     this.initAccount();
