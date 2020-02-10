@@ -1,7 +1,7 @@
 <template>
   <div class="header-wrapper">
     <p class="header-warning">
-      {{ warning }}
+      {{ notification }}
     </p>
     <header>
       <Transition name="rq-fade-in-linear">
@@ -33,7 +33,7 @@ export default {
     AnkaHeader
   },
   props: {
-    warning: {
+    notification: {
       default: "",
       type: String
     },
