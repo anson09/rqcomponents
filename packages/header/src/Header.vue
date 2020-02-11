@@ -9,7 +9,7 @@
     <header>
       <Transition name="rq-fade-in-linear">
         <LoggedHeader
-          v-if="mode === defaultMode && !isLogin"
+          v-if="mode === defaultMode && isLogin"
           :username="username"
           :avatar="avatar"
           :isVip="isVip"
