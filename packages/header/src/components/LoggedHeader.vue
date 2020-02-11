@@ -48,9 +48,13 @@
           >{{ btn.label }}</span
         >
         <ThemeSwitch v-else-if="btn.type === 'theme'"></ThemeSwitch>
-
-        <img v-if="btn.type === 'avatar' && !avatar" :src="baseAvatar" alt="" />
-        <img v-if="btn.type === 'avatar' && avatar" :src="avatar" alt="" />
+	<template v-if="btn.type === 'avatar'">
+          <img  v-if="!avatar" :src="baseAvatar" alt="" />
+          <img v-else :src="avatar" alt="" />
+	  <div v-if="isVip" class="avatar-vip">
+	    {{vipText}}
+	  </div>
+	</template>
         <span v-if="btn.links && !btn.type" class="arrow">
           <i class="rq-icons rq-icon-arrow-down"></i>
         </span>
@@ -107,10 +111,15 @@ export default {
     username: {
       required: true,
       type: String
+    },
+    isVip: {
+      default: false,
+      type: Boolean
     }
   },
   data() {
     return {
+      vipText: "企",
       images: {
         logo,
         logoWhite
@@ -353,6 +362,18 @@ export default {
         height: 28px;
         object-fit: cover;
         border-radius: 50%;
+      }
+      .avatar-vip {
+	position: absolute;
+	right: 16px;
+	bottom: 2px;
+	font-size: 16px;
+	padding: 4px;
+	transform-origin: right bottom;
+	transform: scale(.6);
+	background: #1B5FC4;
+	border-radius: 50%;
+	color: white;
       }
       &.active {
         background: rqthemify(active-background-color);

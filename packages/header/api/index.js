@@ -6,7 +6,7 @@ const getAccount = () => {
 
 const logout = async () => {
   const url = "api/user/logout.do";
-  const { data } = await axios.get(url);
+  const { data } = await axios.post(url);
   return data;
 };
 

@@ -48,39 +48,21 @@ new Vue({
 
 ### RqHeader
 
-> Common Header for user logged.
+> Common Header.
 
-#### Events
+#### props: 
 
-- logout
+##### notification: string | slot
 
-### RqPersonalCenter
+Default: ""
+Raise a warning on the top of the header.
 
-> Personal center component.
+##### opacity: boolean
 
-#### Props
+Default: false
+Set background opacity with white font-color; 
 
-- uid: Number
-  - reqiured: true
+##### topic: string
 
-### Event
-
-- redirect
-
-  #### params
-
-  - pathParams: String
-
-  ```javascript
-  // example
-  @redirect="redirect"
-  
-  //methods
-  redirect(...path) {
-    doRedirect(path.join('/'))
-  }
-  ```
-
-# TODO
-
-- [ ] move all styles, fonts to theme
+Default: ""
+A clear header with a topic text only.

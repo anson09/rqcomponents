@@ -1,25 +1,34 @@
 <template>
-  <header>
-    <Transition name="rq-fade-in-linear">
-      <LoggedHeader
-	v-if="mode === defaultMode && isLogin"
-        :username="username"
-        :avatar="avatar"
-      ></LoggedHeader>
-      <AnkaHeader
-        v-else
-        :topic="topic"
-        :opacity="opacity"
-        :isLogin="isLogin"
-      ></AnkaHeader>
-    </Transition>
-  </header>
+  <div class="header-wrapper">
+    <p class="header-warning" v-if="showWarning">
+      <slot v-if="$slots.notification" name="notification"></slot>
+      <template v-else>
+        {{ notification }}
+      </template>
+    </p>
+    <header>
+      <Transition name="rq-fade-in-linear">
+        <LoggedHeader
+          v-if="mode === defaultMode && isLogin"
+          :username="username"
+          :avatar="avatar"
+          :isVip="isVip"
+        ></LoggedHeader>
+        <AnkaHeader
+          v-else
+          :topic="topic"
+          :opacity="opacity"
+          :isLogin="isLogin"
+        ></AnkaHeader>
+      </Transition>
+    </header>
+  </div>
 </template>
 
 <script>
 import LoggedHeader from "./components/LoggedHeader.vue";
 import AnkaHeader from "./components/AnkaHeader.vue";
-import { getAccount, logout } from "../api";
+import { getAccount } from "../api";
 
 export default {
   name: "RqHeader",
@@ -28,6 +37,10 @@ export default {
     AnkaHeader
   },
   props: {
+    notification: {
+      default: "",
+      type: String
+    },
     mode: {
       default: "default",
       type: String
@@ -51,14 +64,21 @@ export default {
     const {
       isLogin = false,
       avatar = "",
-      fullname: username = ""
+      fullname: username = "",
+      isVip = false
     } = localStorageAcount;
     return {
       defaultMode: "default",
       isLogin,
       username,
-      avatar
+      avatar,
+      isVip
     };
+  },
+  computed: {
+    showWarning() {
+      return this.$slots.notification || this.notification;
+    }
   },
   mounted() {
     this.initAccount();
@@ -67,7 +87,7 @@ export default {
     async initAccount() {
       try {
         const {
-          data: { code, fullname, avatar, phone, email, userId }
+          data: { code, fullname, avatar, phone, email, userId, rank }
         } = await getAccount();
         if (code === 0) {
           localStorage.setItem(
@@ -78,12 +98,14 @@ export default {
               avatar,
               phone,
               email,
-              userId
+              userId,
+              rank
             })
           );
           this.isLogin = true;
           this.avatar = avatar;
           this.username = fullname;
+          this.isVip = rank && rank === 5;
         } else {
           this.reset();
         }
@@ -95,6 +117,7 @@ export default {
       this.isLogin = false;
       this.avatar = "";
       this.username = "";
+      this.isVip = false;
       localStorage.removeItem("common_account");
     }
   }
@@ -102,9 +125,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-header {
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
+.header {
+  header {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  &-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  &-warning {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    color: rgb(0, 0, 0);
+    background: rgb(253, 208, 0);
+    font-size: 16px;
+    line-height: 1.5;
+    word-break: break-all;
+    z-index: 100;
+  }
 }
 </style>
