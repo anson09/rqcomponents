@@ -369,6 +369,7 @@ export default {
 	bottom: 2px;
 	font-size: 16px;
 	padding: 4px;
+	line-height: 1;
 	transform-origin: right bottom;
 	transform: scale(.6);
 	background: #1B5FC4;
