@@ -1,6 +1,6 @@
 {
   "name": "@rqjs/rqcomponents",
-  "version": "0.0.7-alpha.65",
+  "version": "0.0.7-alpha.66",
   "description": "A Component Library for Ricequant.",
   "main": "./dist/rqcomponents.cjs.js",
   "module": "./dist/rqcomponents.esm.js",

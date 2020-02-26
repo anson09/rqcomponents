@@ -65,17 +65,20 @@ export default {
       isLogin = false,
       avatar = "",
       fullname: username = "",
-      isVip = false
+      rank = 0
     } = localStorageAcount;
     return {
       defaultMode: "default",
       isLogin,
       username,
       avatar,
-      isVip
+      rank
     };
   },
   computed: {
+    isVip() {
+      return this.rank && this.rank === 5;
+    },
     showWarning() {
       return this.$slots.notification || this.notification;
     }
@@ -105,7 +108,7 @@ export default {
           this.isLogin = true;
           this.avatar = avatar;
           this.username = fullname;
-          this.isVip = rank && rank === 5;
+          this.rank = rank;
         } else {
           this.reset();
         }
@@ -117,7 +120,7 @@ export default {
       this.isLogin = false;
       this.avatar = "";
       this.username = "";
-      this.isVip = false;
+      this.rank = 0;
       localStorage.removeItem("common_account");
     }
   }
