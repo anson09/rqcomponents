@@ -47,7 +47,7 @@
 <script>
 import elPopover from "element-ui/lib/popover";
 import elButton from "element-ui/lib/button";
-import DropdownMenu from "./DropdownMenu";
+import DropdownMenu from "./DropdownMenu.vue";
 
 export default {
   name: "NavButton",

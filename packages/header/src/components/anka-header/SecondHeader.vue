@@ -14,7 +14,7 @@
       <div class="nav__buttons">
         <CommonButton
           class="nav__button"
-          :plain="scrollY < 70"
+          :plain="true"
           label="免费试用"
           @click="$router.push(redirect)"
         ></CommonButton>
@@ -164,6 +164,9 @@ export default {
     .nav__button {
       padding: 12px 28px;
       line-height: 1;
+      border-color: #34A5AD;
+      color: #34A5AD;
+      border-radius: 8px;
     }
   }
 }
