@@ -1,13 +1,13 @@
 <template>
   <div
     v-if="isShow"
-    class="second-header"
+    :class="`second-header ${icon}`"
     :style="{ transform: `translate(-${windowScrollX}px, ${scrollY}px)` }"
   >
     <div class="header__bg"></div>
     <nav>
       <div class="nav__icon">
-        <img :src="icon" alt class="nav__icon__logo" />
+	<i :class="`rq-icons icon-${icon}`"></i>
         <span class="mainTitle">{{ mainTitle }}</span>
         <span class="secondTitle">{{ secondTitle }}</span>
       </div>
@@ -24,29 +24,32 @@
 </template>
 <script>
 import CommonButton from "./CommonButton.vue";
-import rdHuge from "../../../assets/img/rdHuge.png";
-import rpHuge from "../../../assets/img/rpHuge.png";
-import raHuge from "../../../assets/img/raHuge.png";
 
-const path2config = {
+export const path2config = {
   "/rqdata": {
-    icon: rdHuge,
+    icon: "rqdata",
     mainTitle: "RQData",
     secondTitle: "金融数据",
     product: "rqdata"
   },
   "/rqpro": {
-    icon: rpHuge,
+    icon: "rqpro",
     mainTitle: "RQPro",
     secondTitle: "量化投研终端",
     product: "rqpro"
   },
   "/ams": {
-    icon: raHuge,
+    icon: "rqams",
     mainTitle: "RQAMS",
     secondTitle: "米筐资产管理系统",
     product: "rqams"
-  }
+  },
+  "/rqoptimizer": {
+    icon: "rqoptimizer",
+    mainTitle: "RQOptimizer",
+    secondTitle: "米筐股票优化器",
+    product: "rqoptimizer"
+  }   
 };
 
 export default {
@@ -55,7 +58,7 @@ export default {
   props: {},
   data() {
     return {
-      usePageLink: ["/rqdata", "/rqpro", "/ams"], // 产品的几个页面在路由页中的path
+      usePageLink: Object.keys(path2config), // 产品的几个页面在路由页中的path
       scrollFn: null,
       windowScrollX: 0,
       windowScrollY: 0
@@ -129,7 +132,18 @@ export default {
     background: rqthemify(bg-white);
     box-shadow: 0px 10px 11px 0px rgba(8, 25, 52, 0.1);
   }
-
+  
+  
+  $products: rqdata, rqpro, rqams, rqoptimizer;
+  @each $product in $products {
+    &.#{$product} {
+      color: rqthemify($product);
+      .nav__button {
+	color: rqthemify($product);
+	border-color: rqthemify($product);
+      }
+    }
+  }
   nav {
     display: flex;
     align-items: center;
@@ -142,9 +156,8 @@ export default {
       display: flex;
       align-items: center;
 
-      &__logo {
-        width: 38px;
-        height: 29px;
+      .rq-icons {
+	font-size: 36px;
         margin-right: 13px;
       }
 
@@ -164,8 +177,6 @@ export default {
     .nav__button {
       padding: 12px 28px;
       line-height: 1;
-      border-color: #34A5AD;
-      color: #34A5AD;
       border-radius: 8px;
     }
   }

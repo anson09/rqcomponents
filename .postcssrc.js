@@ -13,13 +13,25 @@ const themifyOptions = {
       "text-white": "#ffffff",
       "text-white-dark": "#e7e9f1",
       "text-disabled": "#a3a3a3",
-
+      
       "rq-red": "#d74848",
       "rq-green": "#50bf80",
 
       "success": "#72cd26",
 
       "highlight": "#1b5fc4",
+
+      "rqams": "#4C469B",
+      "rqdata": "#1B60C6",
+      "rqpro": "#D35353",
+      "rqoptimizer": "#21A2AC",
+
+
+      "rqams-bg": "#e6e6f0",
+      "rqdata-bg": "#ebeef3",
+      "rqpro-bg": "#f1e7e7",
+      "rqoptimizer-bg": "#ebf3f4",
+
 
       "border-disabled": "#dcdfe6",
 

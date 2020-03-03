@@ -55,106 +55,6 @@
       ],
       "label": "支持"
     },
-    "expandHeader": [
-      {
-        "links": [
-          {
-            "link": "/ams",
-            "icon": "ra",
-            "label": "RQAMS（资产管理系统）"
-          },
-          {
-            "link": "/rqdata",
-            "icon": "rd",
-            "label": "RQData（金融数据）"
-          },
-          {
-            "link": "/rqpro",
-            "icon": "rp",
-            "label": "RQPro（投研交易）"
-          }
-        ],
-        "label": "产品"
-      },
-      {
-        "links": [
-          {
-            "link": {
-              "href": "/doc/rqdata-institutional#research-version",
-              "outer": true
-            },
-            "label": "RQData使用文档"
-          },
-          {
-            "link": "/pricing#rqpro",
-            "label": "RQPro试用咨询"
-          },
-          {
-            "link": {
-              "href": "/doc/api/python/chn",
-              "outer": true
-            },
-            "label": "量化平台使用文档"
-          },
-          {
-            "link": {
-              "href": "/site/courses",
-              "outer": true
-            },
-            "label": "米筐量化学院"
-          }
-        ],
-        "label": "支持"
-      },
-      {
-        "links": [
-          {
-            "link": {
-              "href": "/community",
-              "outer": true,
-              "newBlock": true
-            },
-            "label": "量化社区"
-          },
-          {
-            "link": {
-              "href": "/site/tournaments",
-              "outer": true
-            },
-            "label": "量化大赛"
-          },
-          {
-            "link": {
-              "href": "/site/scrafts",
-              "outer": true
-            },
-            "label": "策略英雄榜"
-          }
-        ],
-        "label": "量化社区"
-      },
-      {
-        "links": [
-          {
-            "link": {
-              "href": "/recruitment/social",
-              "inner": true,
-              "newBlock": true
-            },
-            "label": "社会招聘"
-          },
-          {
-            "link": {
-              "href": "/recruitment/school",
-              "inner": true,
-              "newBlock": true
-            },
-            "label": "校园招聘"
-          }
-        ],
-        "label": "加入我们"
-      }
-    ],
     "header": {
       "others": [
         {
@@ -187,6 +87,11 @@
               "link": "/rqpro",
               "icon": "rqpro",
               "label": "RQPro（投研交易）"
+            },
+            {
+              "link": "/rqoptimizer",
+              "icon": "rqoptimizer",
+              "label": "RQOptimizer ( 米筐股票优化器 )"
             }
           ],
           "more": true,

@@ -68,7 +68,7 @@
 <script>
 import CommonButton from "./anka-header/CommonButton.vue";
 import NavButton from "./anka-header/NavButton.vue";
-import SecondHeader from "./anka-header/SecondHeader.vue";
+import SecondHeader, { path2config } from "./anka-header/SecondHeader.vue";
 import MiniMenu from "./anka-header/MiniMenu.vue";
 import { anka } from "../../assets/dict/header.json";
 import elButton from "element-ui/lib/button";
@@ -114,7 +114,7 @@ export default {
       return this.$parent.$slots?.topic ?? false;
     },
     secondHeaderOpen() {
-      const producePageLink = ["/rqdata", "/rqpro", "/ams"];
+      const producePageLink = Object.keys(path2config);
       if (producePageLink.includes(this.getPath())) {
         return true;
       }

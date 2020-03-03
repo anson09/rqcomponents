@@ -3,8 +3,8 @@
     <div
       v-for="(link, linkIdx) in links"
       :key="linkIdx"
-      :class="['menu__links-item', { product: link.icon }]"
-       @click="clickHandle(link)"
+      :class="['menu__links-item', { product: link.icon }, link.icon]"
+      @click="clickHandle(link)"
     >
       <i :class="'rq-icons icon-' + link.icon"></i>
       <a>
@@ -17,6 +17,7 @@
           class="menu-support__links--item"
           v-for="(cfg, idx) in support.info"
           :key="idx"
+          @click="copy(cfg)"
         >
           {{ cfg.label }}: {{ cfg.value }}
         </p>
@@ -43,7 +44,7 @@
 
 <script>
 import elPopover from "element-ui/lib/popover";
-
+import Message from 'element-ui/lib/message';
 import qrcodeImg from "../../../assets/img/qrcodeImg.jpg";
 
 export default {
@@ -74,6 +75,27 @@ export default {
         this.$emit("redirect", link);
       }
       this.$emit("close");
+    },
+    copy(cfg) {
+      const textArea = document.createElement("textarea");
+      textArea.value = cfg.value;
+
+      textArea.style.top = "0";
+      textArea.style.left = "0";
+      textArea.style.position = "fixed";
+
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        document.execCommand("copy");
+	Message.success(`已成功复制到剪切板`);
+      } catch (err) {
+	Message.success(`复制失败`);
+      }
+
+      document.body.removeChild(textArea);
     }
   }
 };
@@ -88,7 +110,6 @@ export default {
     &-item {
       padding: 10px 20px;
       vertical-align: middle;
-      font-weight: bold;
       @include hover;
       .rq-icons {
         font-size: 20px;
@@ -96,15 +117,15 @@ export default {
       }
       &:hover {
         color: rqthemify(highlight);
+        font-weight: bold;
         background: #ecf0f4;
       }
-      $colors: #4c469b, #1b60c6, #d35353, #21a2ac;
-      $bgs: #e6e6f0, #ebeef3, #f1e7e7, #ebf3f4;
-      @for $i from 1 through length($colors) {
-        &.product:nth-child(#{$i}) {
+      $products: rqams, rqdata, rqpro, rqoptimizer;
+      @each $product in $products {
+        &.product.#{$product} {
           &:hover {
-            color: nth($colors, $i);
-            background: nth($bgs, $i);
+            color: rqthemify(#{$product});
+            background: rqthemify(#{$product}-bg);
           }
         }
       }
@@ -137,13 +158,17 @@ export default {
 }
 </style>
 <style lang="scss">
-.nav-menu {
+.nav-menu.el-popper {
   padding: 0;
   border-radius: 0 12px 12px 12px;
   border-width: 0;
   min-width: 300px;
-  box-shadow:0px 16px 20px 0  rgba(0,0,0,0.15);
+  box-shadow: 0px 16px 20px 0 rgba(0, 0, 0, 0.15);
   background: white;
+  &.fade-in-linear-leave-active.fade-in-linear-leave-to {
+    opacity: 0;
+    transition: all 0s;
+  }
   &.el-popper[x-placement^="bottom"] {
     margin-top: 0;
   }

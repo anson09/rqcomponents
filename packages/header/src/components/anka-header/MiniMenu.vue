@@ -13,6 +13,7 @@
           v-for="(item, idx) in cfg"
           :class="['mini-menu-list__item', { active: activeIdx === idx }]"
           :key="item.label"
+          @mouseover="hover(idx)"
           @click="toggle(idx)"
         >
           <span class="">
@@ -65,7 +66,7 @@ export default {
   data() {
     return {
       active: false,
-      activeIdx: null
+      activeIdx: 0
     };
   },
   computed: {
@@ -81,7 +82,10 @@ export default {
   mounted() {},
   methods: {
     clear() {
-      this.activeIdx = null;
+      this.activeIdx = 0;
+    },
+    hover(idx) {
+      if (this.activeIdx !== idx && this.cfg[idx] && this.cfg[idx].links) this.activeIdx = idx;
     },
     toggle(idx) {
       if (this.activeIdx === idx) return;

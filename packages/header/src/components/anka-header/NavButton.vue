@@ -33,8 +33,8 @@
     v-else
     type="text"
     :class="['nav-button', { light }]"
-    @click="clickHandler"
     slot="reference"
+    @click="clickHandler"
   >
     <span>{{ label }}</span>
     <i
@@ -124,6 +124,9 @@ export default {
   }
   &:focus {
     color: rqthemify(text);
+  }
+  &:hover:not(.active) {
+    box-shadow:0px 0px 8px 0px rgba(0,0,0,0.06);
   }
   &.active {
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
