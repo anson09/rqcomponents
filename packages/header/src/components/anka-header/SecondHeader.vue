@@ -93,8 +93,9 @@ export default {
     this.scrollFn = window.addEventListener(
       "scroll",
       () => {
-	this.windowScrollY = window.scrollY;
-	this.windowScrollX = window.scrollX;
+	// Fallback for ie
+	this.windowScrollY = window.scrollY || window.pageYOffset;
+	this.windowScrollX = window.scrollX || window.pageXOffset;
       }
     );
   },

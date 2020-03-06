@@ -15,15 +15,15 @@
           @click="themeChange(mode.value)"
         >
           <div class="theme-switch-toast__pic">
-            <i class="rq-icons rq-icon-theme-choose"></i>
+            <i class="rq-icons icon-theme-choose"></i>
             <img :src="mode.img" alt="" />
           </div>
           <p>{{ mode.label }}</p>
         </div>
       </div>
       <el-button class="theme-switch-button" size="mini" type="text">
-        <i v-show="active" class="rq-icons rq-icon-theme-fills"></i>
-        <i v-show="!active" class="rq-icons rq-icon-theme-border"></i>
+        <i v-show="active" class="rq-icons icon-theme-fills"></i>
+        <i v-show="!active" class="rq-icons icon-theme-border"></i>
       </el-button>
     </el-tooltip>
   </div>
@@ -104,7 +104,7 @@ export default {
     background-color: inherit;
     border: none;
     .rq-icons {
-      &.rq-icon-theme-fills {
+      &.icon-theme-fills {
         font-size: 14px;
         color: rqthemify(hover-color);
       }
