@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     isVip() {
-      return this.rank && this.rank === 5;
+      return !isNaN(this.rank) && this.rank === 5;
     },
     showWarning() {
       return this.$slots.notification || this.notification;
