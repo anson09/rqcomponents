@@ -142,7 +142,7 @@ export default {
           {
             label: "进入平台",
             plain: true,
-	    type: "text",
+            className: "to-quant",
             click: () => {
               this.redirect({
                 outer: true,
@@ -252,7 +252,6 @@ export default {
   z-index: 10;
   box-sizing: border-box;
   height: 70px;
-  @include full-vw;
   &.is-topic {
     @media screen and (max-width: $mobile-max-vw) {
       height: 40px;
@@ -282,11 +281,11 @@ export default {
   }
   .opacity {
     nav .nav__buttons .road-show {
-      background: #FFFFFF33;
+      background: #ffffff33;
       &:hover,
       &:focus,
       &:active {
-        background: #FFFFFF66;
+        background: #ffffff66;
       }
     }
   }
@@ -333,14 +332,32 @@ export default {
             margin-right: 0;
           }
         }
+        .to-quant,
         .road-show {
           padding: 10px 28px;
-          margin: 0 24px 0 40px;
           border-radius: 40px;
           height: auto;
           border-color: #d9e0ea;
           transition: background 0.3s;
           color: white;
+          &:hover,
+          &:focus,
+          &:active {
+            color: white;
+            transform: scale(1);
+          }
+        }
+	.to-quant {
+          background: transparent;
+          &:hover,
+          &:focus,
+          &:active {
+            background: #C8CDE266;
+          }
+        }
+
+        .road-show {
+	  margin: 0 24px 0 40px;
           background: #1b5fc4;
           &:hover {
             background: #275dac;
@@ -348,12 +365,6 @@ export default {
           &:focus,
           &:active {
             background: #19417b;
-          }
-          &:hover,
-          &:focus,
-          &:active {
-            color: white;
-            transform: scale(1);
           }
         }
         &.login {
