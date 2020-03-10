@@ -52,7 +52,7 @@
                 :plain="cfg.plain || light"
                 :light="light"
                 :type="cfg.type"
-                :icon="`rq-icons icon-${cfg.icon}`"
+                :icon="cfg.icon ? `rq-icons icon-${cfg.icon}` : ''"
                 @click="cfg.click"
                 >{{ cfg.label }}</el-button
               >
@@ -142,6 +142,7 @@ export default {
           {
             label: "进入平台",
             plain: true,
+	    type: "text",
             click: () => {
               this.redirect({
                 outer: true,
@@ -279,6 +280,16 @@ export default {
     height: 100%;
     background: rqthemify(bg-gray);
   }
+  .opacity {
+    nav .nav__buttons .road-show {
+      background: #FFFFFF33;
+      &:hover,
+      &:focus,
+      &:active {
+        background: #FFFFFF66;
+      }
+    }
+  }
   nav {
     position: absolute;
     z-index: 2;
@@ -294,6 +305,9 @@ export default {
     .nav {
       &__logo {
         margin-right: 48px;
+        @include laptop {
+          margin-right: 30px;
+        }
         img {
           width: 136px;
         }
@@ -320,20 +334,20 @@ export default {
           }
         }
         .road-show {
-          padding: 10px 26px;
-          margin: 0 20px 0 40px;
+          padding: 10px 28px;
+          margin: 0 24px 0 40px;
           border-radius: 40px;
           height: auto;
-          background: #8695c6;
           border-color: #d9e0ea;
           transition: background 0.3s;
           color: white;
+          background: #1b5fc4;
           &:hover {
-            background: #1b5fc4;
+            background: #275dac;
           }
           &:focus,
           &:active {
-            background: #104eaa;
+            background: #19417b;
           }
           &:hover,
           &:focus,
@@ -350,6 +364,8 @@ export default {
           }
 
           .el-button--text {
+            padding: 12px 16px;
+            margin-left: 0;
             color: rqthemify(highlight);
             border-width: 0;
             &:focus {

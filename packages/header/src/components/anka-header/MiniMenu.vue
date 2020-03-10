@@ -66,7 +66,7 @@ export default {
   data() {
     return {
       active: false,
-      activeIdx: 0
+      activeIdx: null
     };
   },
   computed: {
@@ -82,10 +82,12 @@ export default {
   mounted() {},
   methods: {
     clear() {
-      this.activeIdx = 0;
+      this.activeIdx = null;
     },
     hover(idx) {
-      if (this.activeIdx !== idx && this.cfg[idx] && this.cfg[idx].links) this.activeIdx = idx;
+      if (this.activeIdx !== idx){
+	this.activeIdx = this.cfg[idx] && this.cfg[idx].links ? idx : null;
+      }
     },
     toggle(idx) {
       if (this.activeIdx === idx) return;
@@ -110,6 +112,7 @@ export default {
   &__wrapper {
     &:before {
       content: "";
+      margin-right: 10px;
       height: 40px;
       width: 1px;
       background: rqthemify(text);

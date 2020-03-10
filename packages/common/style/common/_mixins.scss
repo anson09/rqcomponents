@@ -1,5 +1,12 @@
 @import "./variables";
 
+
+@mixin laptop {
+  @media screen and (max-width: $min-vw) {
+    @content;
+  }
+}
+
 @mixin full-vw {
   width: 100%;
   min-width: $min-vw;
