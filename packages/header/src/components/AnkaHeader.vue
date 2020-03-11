@@ -280,12 +280,26 @@ export default {
     background: rqthemify(bg-gray);
   }
   .opacity {
-    nav .nav__buttons .road-show {
-      background: #ffffff33;
-      &:hover,
-      &:focus,
-      &:active {
-        background: #ffffff66;
+    nav .nav__buttons {
+      .road-show {
+        background: #8695c6ff;
+        &:hover,
+        &:focus,
+        &:active {
+          background: #ffffff66;
+        }
+      }
+
+      .to-quant {
+        color: white;
+        border-color: white;
+        background: transparent;
+        &:hover,
+        &:focus,
+        &:active {
+          color: white;
+          background: #c8cde266;
+        }
       }
     }
   }
@@ -338,7 +352,7 @@ export default {
           border-radius: 40px;
           height: auto;
           border-color: #d9e0ea;
-          transition: background 0.3s;
+          transition: all 0.3s;
           color: white;
           &:hover,
           &:focus,
@@ -347,17 +361,23 @@ export default {
             transform: scale(1);
           }
         }
-	.to-quant {
+        .to-quant {
+          color: rqthemify(highlight);
+          border-color: rqthemify(highlight);
           background: transparent;
           &:hover,
           &:focus,
           &:active {
-            background: #C8CDE266;
+            color: rqthemify(highlight);
+            background: #e3eeffff;
+          }
+          &:active {
+            transform: scale(1.1);
           }
         }
 
         .road-show {
-	  margin: 0 24px 0 40px;
+          margin: 0 24px 0 40px;
           background: #1b5fc4;
           &:hover {
             background: #275dac;
