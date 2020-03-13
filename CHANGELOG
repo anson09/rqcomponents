@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+## [0.0.8-alpha.19] - 2020-03-06
+
+### Added
+
+- Fix road-show btn bug in dark mode.
+- All icon class formated as "rq-icons rq-icon-{iconName}".
+
 ## [0.0.8-alpha.5] - 2020-03-06
 
 ### Added
