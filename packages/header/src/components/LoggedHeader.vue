@@ -264,6 +264,7 @@ export default {
       background: rqthemify(active-background-color);
       box-shadow: 0px 2px 4px 0px rgba(152, 165, 185, 0.2);
       color: rqthemify(shadow-color);
+
       .arrow {
         transform: rotate(180deg) scale(0.5);
         color: rqthemify(hover-color);

@@ -52,7 +52,7 @@
                 :plain="cfg.plain || light"
                 :light="light"
                 :type="cfg.type"
-                :icon="cfg.icon ? `rq-icons icon-${cfg.icon}` : ''"
+                :icon="cfg.icon ? `rq-icons rq-icon-${cfg.icon}` : ''"
                 @click="cfg.click"
                 >{{ cfg.label }}</el-button
               >
@@ -282,7 +282,7 @@ export default {
   .opacity {
     nav .nav__buttons {
       .road-show {
-        background: #8695c6ff;
+        background: #FFFFFF33;
         &:hover,
         &:focus,
         &:active {
@@ -362,6 +362,7 @@ export default {
           }
         }
         .to-quant {
+	  margin-left: 6px;
           color: rqthemify(highlight);
           border-color: rqthemify(highlight);
           background: transparent;

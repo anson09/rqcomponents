@@ -7,7 +7,7 @@
     <div class="header__bg"></div>
     <nav>
       <div class="nav__icon">
-	<i :class="`rq-icons icon-${icon}`"></i>
+	<i :class="`rq-icons rq-icon-${icon}`"></i>
         <span class="mainTitle">{{ mainTitle }}</span>
         <span class="secondTitle">{{ secondTitle }}</span>
       </div>
@@ -29,7 +29,7 @@ export const path2config = {
   "/rqdata": {
     icon: "rqdata",
     mainTitle: "RQData",
-    secondTitle: "金融数据",
+    secondTitle: "金融数据API",
     product: "rqdata"
   },
   "/rqpro": {
@@ -47,7 +47,7 @@ export const path2config = {
   "/rqoptimizer": {
     icon: "rqoptimizer",
     mainTitle: "RQOptimizer",
-    secondTitle: "米筐股票优化器",
+    secondTitle: "组合优化器",
     product: "rqoptimizer"
   }   
 };
@@ -123,6 +123,9 @@ export default {
   justify-content: center;
   height: 60px;
   @include full-vw;
+  &.rqoptimizer {
+    min-width: 1024px;
+  }
   .header__bg {
     position: absolute;
     z-index: -1;

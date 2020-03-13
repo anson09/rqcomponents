@@ -6,7 +6,7 @@
       :class="['menu__links-item', { product: link.icon }, link.icon]"
       @click="clickHandle(link)"
     >
-      <i :class="'rq-icons icon-' + link.icon"></i>
+      <i :class="'rq-icons rq-icon-' + link.icon"></i>
       <a>
         {{ link.label }}
       </a>
@@ -28,12 +28,12 @@
           >
             <i
               v-if="!contact.qrcode"
-              :class="'rq-icons icon-' + contact.icon"
+              :class="'rq-icons rq-icon-' + contact.icon"
               @click="clickHandle(contact)"
             ></i>
             <el-popover v-else placement="bottom" width="auto" trigger="hover">
               <img :src="qrcodeImg" />
-              <i slot="reference" :class="'rq-icons icon-' + contact.icon"></i>
+              <i slot="reference" :class="'rq-icons rq-icon-' + contact.icon"></i>
             </el-popover>
           </span>
         </p>
