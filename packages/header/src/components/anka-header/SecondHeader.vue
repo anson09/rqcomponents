@@ -161,7 +161,7 @@ export default {
       align-items: center;
 
       .rq-icons {
-	font-size: 36px;
+	font-size: 28px;
         margin-right: 13px;
       }
 
