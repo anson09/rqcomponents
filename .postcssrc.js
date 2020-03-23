@@ -13,13 +13,25 @@ const themifyOptions = {
       "text-white": "#ffffff",
       "text-white-dark": "#e7e9f1",
       "text-disabled": "#a3a3a3",
-
+      
       "rq-red": "#d74848",
       "rq-green": "#50bf80",
 
       "success": "#72cd26",
 
       "highlight": "#1b5fc4",
+
+      "rqdata": "#4C469B",
+      "rqams": "#1B60C6",
+      "rqpro": "#D35353",
+      "rqoptimizer": "#21A2AC",
+
+
+      "rqdata-bg": "#e6e6f0",
+      "rqams-bg": "#ebeef3",
+      "rqpro-bg": "#f1e7e7",
+      "rqoptimizer-bg": "#ebf3f4",
+
 
       "border-disabled": "#dcdfe6",
 
@@ -46,6 +58,7 @@ const themifyOptions = {
       "border": "#323d4e",
       "boder-hover": "hsla(220, 100%, 65%, 0.8)",
       "text": "#a7b2be",
+      "text-white": "#ffffff",
       "shadow-color": "rgba(0,0,0,0.2)",
       "hover-color": "#4575d3cc",
       "highlight": "#4F89FF",

@@ -11,6 +11,9 @@ import elButton from "element-ui/lib/button";
 
 export default {
   name: "CommonButton",
+  components: {
+    elButton
+  },
   props: {
     label: {
       type: String,
@@ -27,10 +30,7 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    },
-  },
-  components: {
-    elButton
+    }
   },
   methods: {
     clickHandler() {

@@ -1,59 +1,66 @@
 <template>
-  <div class="anka-header" :class="{'is-topic': Boolean(topic)}">
+  <div class="anka-header">
     <div :class="isInProduce">
       <nav>
         <a href="/" class="nav__logo">
-          <img v-show="light" data-logo-theme="light" src="../../assets/img/logo-white-pure.png" />
-          <img v-show="!light" data-logo-theme="dark" src="../../assets/img/logo.png" />
+          <img
+            v-show="light"
+            data-logo-theme="light"
+            src="../../assets/img/logo-white-pure.png"
+          />
+          <img
+            v-show="!light"
+            data-logo-theme="dark"
+            src="../../assets/img/logo.png"
+          />
         </a>
-	<vnodes v-if="topicSlot" :vnodes="topicSlot"></vnodes>
+        <vnodes v-if="topicSlot" :vnodes="topicSlot"></vnodes>
         <div v-else-if="topic" :class="['nav__topic', { light }]">
           <p>{{ topic }}</p>
         </div>
         <template v-else>
-          <div class="nav__buttons">
+          <div class="nav__buttons" v-if="fullScrean">
             <NavButton
               v-for="(button, idx) in buttons"
               :key="idx"
               :label="button.label"
+              :links="button.links"
+              :support="support"
               :active="button.active"
               :light="light"
               :more="button.more"
+              @redirect="redirect"
               @click="clickHandler"
-              @hover="hoverHandler"
-              @close="closeChildNav"
             ></NavButton>
           </div>
+          <MiniMenu
+            v-else
+            class="nav__buttons"
+            :light="light"
+            :cfg="buttons"
+            :support="support"
+            @redirect="redirect"
+            @click="clickHandler"
+          ></MiniMenu>
           <transition name="fade">
             <div class="nav__buttons login">
-              <CommonButton
+              <el-button
                 v-for="(cfg, idx) in loginButtons"
                 :key="idx"
-		:class="[cfg.className, opacity]"
-                :label="cfg.label"
+                :class="[cfg.className, { light }]"
+                :round="true"
                 :plain="cfg.plain || light"
                 :light="light"
+                :type="cfg.type"
+                :icon="cfg.icon ? `rq-icons rq-icon-${cfg.icon}` : ''"
                 @click="cfg.click"
-              ></CommonButton>
+                >{{ cfg.label }}</el-button
+              >
             </div>
           </transition>
         </template>
       </nav>
-      <ExpandMenu
-        :active-label="activeLabel"
-        :menu-icon-light.sync="menuIconLight"
-        @hover="expandMenuHoverHandler"
-        @redirect="redirect"
-        @close="closeChildNav"
-      ></ExpandMenu>
     </div>
-    <transition name="rq-fade-in-linear">
-      <div
-        v-show="activeLabel !== '' || openDialog"
-        class="mask"
-        @mouseover="closeChildNav"
-      />
-    </transition>
     <SecondHeader></SecondHeader>
   </div>
 </template>
@@ -61,17 +68,20 @@
 <script>
 import CommonButton from "./anka-header/CommonButton.vue";
 import NavButton from "./anka-header/NavButton.vue";
-import ExpandMenu from "./anka-header/ExpandMenu.vue";
-import SecondHeader from "./anka-header/SecondHeader.vue";
+import SecondHeader, { path2config } from "./anka-header/SecondHeader.vue";
+import MiniMenu from "./anka-header/MiniMenu.vue";
 import { anka } from "../../assets/dict/header.json";
+import elButton from "element-ui/lib/button";
+import debounce from "lodash/debounce";
 
 export default {
   name: "AnkaHeader",
   components: {
     NavButton,
+    MiniMenu,
     CommonButton,
-    ExpandMenu,
     SecondHeader,
+    elButton,
     Vnodes: {
       functional: true,
       render: (h, ctx) => ctx.props.vnodes
@@ -93,9 +103,9 @@ export default {
   },
   data() {
     return {
-      openDialog: false,
-      activeLabel: "",
-      menuIconLight: true
+      fullScrean: true,
+      support: anka.support,
+      activeLabel: ""
     };
   },
   computed: {
@@ -104,21 +114,14 @@ export default {
       return this.$parent.$slots?.topic ?? false;
     },
     secondHeaderOpen() {
-      const producePageLink = ["/rqdata", "/rqpro", "/ams"];
-      if (
-        producePageLink.includes(this.getPath()) &&
-          !Boolean(this.activeLabel)
-      ) {
+      const producePageLink = Object.keys(path2config);
+      if (producePageLink.includes(this.getPath())) {
         return true;
       }
       return false;
     },
     light() {
-      const producePageLink = ["/rqdata", "/rqpro"];
-      if (this.secondHeaderOpen) {
-        return false;
-      }
-      if (!Boolean(this.activeLabel) && this.opacity) {
+      if (this.opacity && !this.secondHeaderOpen) {
         return true;
       }
       return false;
@@ -127,17 +130,19 @@ export default {
       const base = [
         {
           label: "预约路演",
-	  className: "road-show",
+          className: "road-show",
           click: () => {
             this.redirect("/welcome/trial/road-show");
           }
-        }];
+        }
+      ];
       if (this.isLogin) {
         return [
-	  ...base,
+          ...base,
           {
             label: "进入平台",
             plain: true,
+            className: "to-quant",
             click: () => {
               this.redirect({
                 outer: true,
@@ -148,10 +153,12 @@ export default {
         ];
       }
       return [
-	...base,
+        ...base,
         {
           label: "登录",
           plain: true,
+          type: "text",
+          icon: "login",
           click: () => {
             this.redirect({ event: "login" });
           }
@@ -159,6 +166,8 @@ export default {
         {
           label: "注册",
           plain: true,
+          type: "text",
+          icon: "registered",
           click: () => {
             this.redirect({ event: "register" });
           }
@@ -183,7 +192,7 @@ export default {
       if (this.secondHeaderOpen) {
         return "header__bg__produce";
       }
-      if (this.opacity && !Boolean(this.activeLabel)) {
+      if (this.opacity) {
         return "header__bg opacity";
       }
       return "header__bg";
@@ -197,8 +206,16 @@ export default {
     }
   },
   mounted() {
+    this.resize();
+    window.addEventListener("resize", this.resize);
+  },
+  destoryed() {
+    window.removeEventListener("resize", this.resize);
   },
   methods: {
+    resize: debounce(function() {
+      this.fullScrean = window.innerWidth > 1280;
+    }),
     getBtnConfig(label) {
       const btns = this.buttons.filter(btn => btn.label === label);
       return btns.length > 0 ? btns[0] : null;
@@ -216,33 +233,6 @@ export default {
           this.$parent.handleLink(btn.link);
         }
       }
-    },
-    expandMenuHoverHandler(label) {
-      const btn = this.getBtnConfig(label);
-      if (btn && btn.more) {
-        if (this.activeLabel !== label) {
-          this.activeLabel = label;
-        }
-      }
-    },
-    hoverHandler(label) {
-      if (this.activeLabel !== "") {
-        this.expandMenuHoverHandler(label);
-      }
-      const btn = this.getBtnConfig(label);
-      if (btn) {
-        if (btn.more) {
-          if (this.activeLabel !== label) {
-            this.activeLabel = label;
-          }
-        }
-      }
-    },
-    closeChildNav() {
-      this.$nextTick(() => {
-        this.menuIconLight = this.isNotPageMore;
-      });
-      this.activeLabel = "";
     },
     getPath() {
       return this.$parent.getPath();
@@ -262,14 +252,13 @@ export default {
   z-index: 10;
   box-sizing: border-box;
   height: 70px;
-  @include full-vw;
   &.is-topic {
     @media screen and (max-width: $mobile-max-vw) {
       height: 40px;
       nav {
-	box-sizing: border-box;
-	width: 100%;
-	padding: 10px 30px;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px 30px;
       }
     }
   }
@@ -290,6 +279,30 @@ export default {
     height: 100%;
     background: rqthemify(bg-gray);
   }
+  .opacity {
+    nav .nav__buttons {
+      .road-show {
+        background: #FFFFFF33;
+        &:hover,
+        &:focus,
+        &:active {
+          background: #ffffff66;
+        }
+      }
+
+      .to-quant {
+        color: white;
+        border-color: white;
+        background: transparent;
+        &:hover,
+        &:focus,
+        &:active {
+          color: white;
+          background: #c8cde266;
+        }
+      }
+    }
+  }
   nav {
     position: absolute;
     z-index: 2;
@@ -304,7 +317,10 @@ export default {
     @include f-center;
     .nav {
       &__logo {
-	margin-right: 48px;
+        margin-right: 48px;
+        @include laptop {
+          margin-right: 30px;
+        }
         img {
           width: 136px;
         }
@@ -314,63 +330,102 @@ export default {
         p {
           @include h2(rqthemify(text-dark));
         }
-        &.light p {   
+        &.light p {
           color: rqthemify(text-white-dark);
         }
       }
       &__buttons {
-	display: flex;
-	flex-wrap: nowrap;
+        display: flex;
+        height: 100%;
+        flex-wrap: nowrap;
         flex: 1;
+        align-items: center;
         div {
           margin-right: 10px;
           &:last-child {
             margin-right: 0;
           }
         }
-	.road-show {
-	  padding: 10px 24px;
-	  margin: 0 20px 0 40px;
-	  border-radius: 40px;
-	  background: rqthemify(highlight);
-	  border-color: transparent;
-	  border-width: 0;
-	  transition: background .3s;
-	  &:hover,
-	  &:active {
-	    filter: brightness(1.1);
-	  }
-	  &.light {
-	    background: linear-gradient(
-	      180deg,
-	      rgba(58, 152, 228, 1) 0%,
-	      rgba(27, 95, 196, 1) 100%
-	    );
-	    &:hover,
-	    &:active {
-	      color: rqthemify(text-white);
-	      background: linear-gradient(
-		180deg,
-		rgba(0, 133, 239, 1) 0%,
-		rgba(0, 70, 173, 1) 100%
-	      );
-	    }
-	  }
-	}
+        .to-quant,
+        .road-show {
+          padding: 10px 28px;
+          border-radius: 40px;
+          height: auto;
+          border-color: #d9e0ea;
+          transition: all 0.3s;
+          color: white;
+          &:hover,
+          &:focus,
+          &:active {
+            color: white;
+            transform: scale(1);
+          }
+        }
+        .to-quant {
+	  margin-left: 6px;
+          color: rqthemify(highlight);
+          border-color: rqthemify(highlight);
+          background: transparent;
+          &:hover,
+          &:focus,
+          &:active {
+            color: rqthemify(highlight);
+            background: #e3eeffff;
+          }
+          &:active {
+            transform: scale(1.1);
+          }
+        }
+
+        .road-show {
+          margin: 0 24px 0 40px;
+          background: #1b5fc4;
+          &:hover {
+            background: #275dac;
+          }
+          &:focus,
+          &:active {
+            background: #19417b;
+          }
+        }
         &.login {
           flex: none;
+          color: rqthemify(text);
+          ::v-deep .rq-icons {
+            margin-right: 8px;
+          }
+
+          .el-button--text {
+            padding: 12px 16px;
+            margin-left: 0;
+            color: rqthemify(highlight);
+            border-width: 0;
+            &:focus {
+              background: transparent;
+            }
+            &:hover {
+              background: #ccd9ea7a;
+            }
+            &:active {
+              background: #cbd8ea;
+            }
+            &.light {
+              color: rqthemify(text-white);
+              border-width: 0;
+              &:focus {
+                background: transparent;
+              }
+              &:hover {
+                background: #ffffff33;
+              }
+              &:active {
+                background: #ffffff66;
+              }
+            }
+          }
         }
       }
     }
-  }
-  .mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rqthemify(mask-bg);
-    z-index: 1;
   }
 }
 </style>

@@ -1,284 +1,276 @@
 {
+  "anka": {
+    "support": {
+      "contact": [
+        {
+          "qrcode": "qrcodeImg",
+          "icon": "wechat"
+        },
+        {
+          "link": {
+            "href": "https://zhuanlan.zhihu.com/ricequant",
+            "newBlock": true
+          },
+          "icon": "zhihu"
+        },
+        {
+          "link": {
+            "href": "https://xueqiu.com/u/ricequant",
+            "newBlock": true
+          },
+          "icon": "xueqiu"
+        },
+        {
+          "link": {
+            "href": "https://weibo.com/ricequant",
+            "newBlock": true
+          },
+          "icon": "weibo"
+        },
+        {
+          "link": {
+            "href": "https://github.com/ricequant",
+            "newBlock": true
+          },
+          "icon": "github"
+        }
+      ],
+      "info": [
+        {
+          "value": "public@ricequant.com",
+          "label": "联系邮箱"
+        },
+        {
+          "value": "0755-22676337",
+          "label": "客服电话"
+        },
+        {
+          "value": "3010840691",
+          "label": "QQ"
+        },
+        {
+          "value": "9:00 - 18:00",
+          "label": "周一至周五"
+        }
+      ],
+      "label": "支持"
+    },
+    "header": {
+      "others": [
+        {
+          "link": "/recruitment/social",
+          "label": "社会招聘"
+        },
+        {
+          "link": "/recruitment/school",
+          "label": "校园招聘"
+        },
+        {
+          "link": "/about",
+          "label": "关于我们"
+        }
+      ],
+      "default": [
+        {
+          "links": [
+            {
+              "link": "/rqdata",
+              "icon": "rqdata",
+              "label": "RQData（金融数据API）"
+            },
+
+            {
+              "link": "/rqpro",
+              "icon": "rqpro",
+              "label": "RQPro（投研交易）"
+            },
+            {
+              "link": "/ams",
+              "icon": "rqams",
+              "label": "RQAMS（资产管理系统）"
+            },
+            {
+              "link": "/rqoptimizer",
+              "icon": "rqoptimizer",
+              "label": "RQOptimizer ( 组合优化器 )"
+            }
+          ],
+          "more": true,
+          "label": "产品"
+        },
+        {
+          "link": "/pricing",
+          "label": "定价"
+        },
+        {
+          "more": true,
+          "label": "支持",
+          "links": [
+            {
+              "link": {
+                "href": "/doc/rqdata-institutional#research-version",
+                "outer": true
+              },
+              "label": "RQData使用文档"
+            },
+            {
+              "link": "/pricing#rqpro",
+              "label": "RQPro试用咨询"
+            },
+            {
+              "link": {
+                "href": "/doc/api/python/chn",
+                "outer": true
+              },
+              "label": "量化平台使用文档"
+            },
+            {
+              "link": {
+                "href": "/site/courses",
+                "outer": true
+              },
+              "label": "米筐量化学院"
+            }
+          ]
+        },
+        {
+          "link": "/edu",
+          "label": "教育专区"
+        },
+        {
+          "link": "/quant",
+          "label": "量化平台"
+        },
+        {
+          "more": true,
+          "label": "量化社区",
+          "links": [
+            {
+              "link": {
+                "href": "/community",
+                "outer": true,
+                "newBlock": true
+              },
+              "label": "量化社区"
+            },
+            {
+              "link": {
+                "href": "/site/tournaments",
+                "outer": true
+              },
+              "label": "量化大赛"
+            },
+            {
+              "link": {
+                "href": "/site/scrafts",
+                "outer": true
+              },
+              "label": "策略英雄榜"
+            }
+          ]
+        },
+        {
+          "more": true,
+          "label": "加入我们",
+          "links": [
+            {
+              "link": {
+                "href": "/recruitment/social",
+                "inner": true,
+                "newBlock": true
+              },
+              "label": "社会招聘"
+            },
+            {
+              "link": {
+                "href": "/recruitment/school",
+                "inner": true,
+                "newBlock": true
+              },
+              "label": "校园招聘"
+            }
+          ]
+        }
+      ]
+    }
+  },
   "logged": {
-    "left": [
-      {
-        "label": "量化",
-        "link": "/quant/"
-      },
-      {
-        "label": "AMS",
-        "link": "/ams/"
-      }
-    ],
     "right": [
       {
-        "label": "预约路演",
-	"className": "road-show",
         "link": {
-	  "href": "/welcome/trial/road-show"
-	}
+          "href": "/welcome/trial/road-show"
+        },
+        "className": "road-show",
+        "label": "预约路演"
       },
       {
-        "label": "帮助文档",
         "links": [
           {
-            "label": "RQData使用文档",
             "link": {
-              "newBlock": true,
-              "href": "/doc/rqdata-institutional#research-version"
-            }
+              "href": "/doc/rqdata-institutional#research-version",
+              "newBlock": true
+            },
+            "label": "RQData使用文档"
           },
           {
-            "label": "量化平台文档",
             "link": {
-              "newBlock": true,
-              "href": "/doc/api/python/chn"
-            }
+              "href": "/doc/api/python/chn",
+              "newBlock": true
+            },
+            "label": "量化平台文档"
           },
           {
-            "label": "RQAMS使用文档",
             "link": {
-              "newBlock": true,
-              "href": "/doc/rqams"
-            }
+              "href": "/doc/rqams",
+              "newBlock": true
+            },
+            "label": "RQAMS使用文档"
           }
-        ]
+        ],
+        "label": "帮助文档"
       },
       {
-        "label": "社区",
         "link": {
-          "newBlock": true,
-          "href": "/community"
-        }
+          "href": "/community",
+          "newBlock": true
+        },
+        "label": "社区"
       },
       {
         "type": "theme"
       },
       {
-        "type": "avatar",
+        "links": [
+          {
+            "link": "/dashboard/profile",
+            "label": "个人主页"
+          },
+          {
+            "link": "/dashboard/account#setting",
+            "label": "账号中心"
+          },
+          {
+            "link": "/",
+            "label": "回到首页"
+          },
+          {
+            "event": "logout",
+            "label": "登出账号"
+          }
+        ],
         "img": "avator",
-        "links": [
-          {
-            "label": "个人主页",
-            "link": "/dashboard/profile"
-          },
-          {
-            "label": "账号中心",
-            "link": "/dashboard/account#setting"
-          },
-          {
-            "label": "回到首页",
-            "link": "/"
-          },
-          {
-            "label": "登出账号",
-            "event": "logout"
-          }
-        ]
-      }
-    ]
-  },
-  "anka": {
-    "header": {
-      "default": [
-        {
-          "label": "产品",
-          "more": true
-        },
-        {
-          "label": "定价",
-          "link": "/pricing"
-        },
-        {
-          "label": "支持",
-          "more": true
-        },
-        {
-          "label": "教育专区",
-          "link": "/edu"
-        },
-	{
-          "label": "量化平台",
-          "link": "/quant"
-        },
-        {
-          "label": "量化社区",
-          "more": true
-        },
-        {
-          "label": "加入我们",
-          "more": true
-        }
-      ],
-      "others": [
-        {
-          "label": "社会招聘",
-          "link": "/recruitment/social"
-        },
-        {
-          "label": "校园招聘",
-          "link": "/recruitment/school"
-        },
-        {
-          "label": "关于我们",
-          "link": "/about"
-        }
-      ]
-    },
-    "expandHeader": [
-      {
-        "label": "产品",
-        "links": [
-          {
-            "label": "RQAMS（资产管理系统）",
-            "icon": "ra",
-            "link": "/ams"
-          },
-          {
-            "label": "RQData（金融数据）",
-            "icon": "rd",
-            "link": "/rqdata"
-          },
-          {
-            "label": "RQPro（投研交易）",
-            "icon": "rp",
-            "link": "/rqpro"
-          }
-        ]
-      },
-      {
-        "label": "支持",
-        "links": [
-          {
-            "label": "RQData使用文档",
-            "link": {
-              "outer": true,
-              "href": "/doc/rqdata-institutional#research-version"
-            }
-          },
-          {
-            "label": "RQPro试用咨询",
-            "link": "/pricing#rqpro"
-          },
-          {
-            "label": "量化平台使用文档",
-            "link": {
-              "outer": true,
-              "href": "/doc/api/python/chn"
-            }
-          },
-          {
-            "label": "米筐量化学院",
-            "link": {
-              "outer": true,
-              "href": "/site/courses"
-            }
-          }
-        ]
-      },
-      {
-        "label": "量化社区",
-        "links": [
-	  {
-            "label": "量化社区",
-            "link": {
-	      "newBlock": true,
-              "outer": true,
-              "href": "/community"
-            }
-          },
-          {
-            "label": "量化大赛",
-            "link": {
-              "outer": true,
-              "href": "/site/tournaments"
-            }
-          },
-          {
-            "label": "策略英雄榜",
-            "link": {
-              "outer": true,
-              "href": "/site/scrafts"
-            }
-          }
-        ]
-      },
-      {
-        "label": "加入我们",
-        "links": [
-          {
-            "label": "社会招聘",
-            "link": {
-              "newBlock": true,
-              "inner": true,
-              "href": "/recruitment/social"
-            }
-          },
-          {
-            "label": "校园招聘",
-            "link": {
-              "newBlock": true,
-              "inner": true,
-              "href": "/recruitment/school"
-            }
-          }
-        ]
+        "type": "avatar"
       }
     ],
-    "support": {
-      "label": "支持",
-      "info": [
-        {
-          "label": "联系邮箱",
-          "value": "public@ricequant.com"
-        },
-        {
-          "label": "客服电话",
-          "value": "0755-22676337"
-        },
-        {
-          "label": "QQ",
-          "value": "3010840691"
-        },
-        {
-          "label": "周一至周五",
-          "value": "9:00 - 18:00"
-        }
-      ],
-      "contact": [
-        {
-          "icon": "wechat",
-          "qrcode": "qrcodeImg"
-        },
-        {
-          "icon": "zhihu",
-          "link": {
-            "newBlock": true,
-            "href": "https://zhuanlan.zhihu.com/ricequant"
-          }
-        },
-        {
-          "icon": "xueqiu",
-          "link": {
-            "newBlock": true,
-            "href": "https://xueqiu.com/u/ricequant"
-          }
-        },
-        {
-          "icon": "weibo",
-          "link": {
-            "newBlock": true,
-            "href": "https://weibo.com/ricequant"
-          }
-        },
-        {
-          "icon": "github",
-          "link": {
-            "newBlock": true,
-            "href": "https://github.com/ricequant"
-          }
-        }
-      ]
-    }
+    "left": [
+      {
+        "link": "/quant/",
+        "label": "量化"
+      },
+      {
+        "link": "/ams/",
+        "label": "AMS"
+      }
+    ]
   }
 }

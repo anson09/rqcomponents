@@ -1,20 +1,20 @@
 <template>
   <div
     v-if="isShow"
-    class="second-header"
+    :class="`second-header ${icon}`"
     :style="{ transform: `translate(-${windowScrollX}px, ${scrollY}px)` }"
   >
     <div class="header__bg"></div>
     <nav>
       <div class="nav__icon">
-        <img :src="icon" alt class="nav__icon__logo" />
+	<i :class="`rq-icons rq-icon-${icon}`"></i>
         <span class="mainTitle">{{ mainTitle }}</span>
         <span class="secondTitle">{{ secondTitle }}</span>
       </div>
       <div class="nav__buttons">
         <CommonButton
           class="nav__button"
-          :plain="scrollY < 70"
+          :plain="true"
           label="免费试用"
           @click="$router.push(redirect)"
         ></CommonButton>
@@ -24,29 +24,32 @@
 </template>
 <script>
 import CommonButton from "./CommonButton.vue";
-import rdHuge from "../../../assets/img/rdHuge.png";
-import rpHuge from "../../../assets/img/rpHuge.png";
-import raHuge from "../../../assets/img/raHuge.png";
 
-const path2config = {
+export const path2config = {
   "/rqdata": {
-    icon: rdHuge,
+    icon: "rqdata",
     mainTitle: "RQData",
-    secondTitle: "金融数据",
+    secondTitle: "金融数据API",
     product: "rqdata"
   },
   "/rqpro": {
-    icon: rpHuge,
+    icon: "rqpro",
     mainTitle: "RQPro",
     secondTitle: "量化投研终端",
     product: "rqpro"
   },
   "/ams": {
-    icon: raHuge,
+    icon: "rqams",
     mainTitle: "RQAMS",
     secondTitle: "米筐资产管理系统",
     product: "rqams"
-  }
+  },
+  "/rqoptimizer": {
+    icon: "rqoptimizer",
+    mainTitle: "RQOptimizer",
+    secondTitle: "组合优化器",
+    product: "rqoptimizer"
+  }   
 };
 
 export default {
@@ -55,7 +58,7 @@ export default {
   props: {},
   data() {
     return {
-      usePageLink: ["/rqdata", "/rqpro", "/ams"], // 产品的几个页面在路由页中的path
+      usePageLink: Object.keys(path2config), // 产品的几个页面在路由页中的path
       scrollFn: null,
       windowScrollX: 0,
       windowScrollY: 0
@@ -90,8 +93,9 @@ export default {
     this.scrollFn = window.addEventListener(
       "scroll",
       () => {
-	this.windowScrollY = window.scrollY;
-	this.windowScrollX = window.scrollX;
+	// Fallback for ie
+	this.windowScrollY = window.scrollY || window.pageYOffset;
+	this.windowScrollX = window.scrollX || window.pageXOffset;
       }
     );
   },
@@ -119,6 +123,9 @@ export default {
   justify-content: center;
   height: 60px;
   @include full-vw;
+  &.rqoptimizer {
+    min-width: 1024px;
+  }
   .header__bg {
     position: absolute;
     z-index: -1;
@@ -129,7 +136,18 @@ export default {
     background: rqthemify(bg-white);
     box-shadow: 0px 10px 11px 0px rgba(8, 25, 52, 0.1);
   }
-
+  
+  
+  $products: rqdata, rqpro, rqams, rqoptimizer;
+  @each $product in $products {
+    &.#{$product} {
+      color: rqthemify($product);
+      .nav__button {
+	color: rqthemify($product);
+	border-color: rqthemify($product);
+      }
+    }
+  }
   nav {
     display: flex;
     align-items: center;
@@ -142,9 +160,8 @@ export default {
       display: flex;
       align-items: center;
 
-      &__logo {
-        width: 38px;
-        height: 29px;
+      .rq-icons {
+	font-size: 28px;
         margin-right: 13px;
       }
 
@@ -164,6 +181,7 @@ export default {
     .nav__button {
       padding: 12px 28px;
       line-height: 1;
+      border-radius: 8px;
     }
   }
 }

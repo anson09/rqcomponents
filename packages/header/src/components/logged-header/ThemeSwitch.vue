@@ -21,7 +21,11 @@
           <p>{{ mode.label }}</p>
         </div>
       </div>
-      <el-button class="theme-switch-button" size="mini" type="text">
+      <el-button
+        :class="['theme-switch-button', { 'is-active': active }]"
+        size="mini"
+        type="text"
+      >
         <i v-show="active" class="rq-icons rq-icon-theme-fills"></i>
         <i v-show="!active" class="rq-icons rq-icon-theme-border"></i>
       </el-button>
@@ -104,7 +108,7 @@ export default {
     background-color: inherit;
     border: none;
     .rq-icons {
-      &.rq-icon-theme-fills {
+      &.icon-theme-fills {
         font-size: 14px;
         color: rqthemify(hover-color);
       }
@@ -130,6 +134,7 @@ export default {
       font-family: sans-serif;
       border-radius: 0 0 2px 2px;
       border: none;
+
       .popper__arrow {
         display: none;
       }
@@ -169,6 +174,23 @@ export default {
   }
   &-button {
     height: 40px;
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 100%;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      z-index: 1;
+      pointer-events: none;
+    }
+    &.is-active {
+      &::before {
+	pointer-events: unset;
+      }
+      
+    }
   }
 }
 </style>
