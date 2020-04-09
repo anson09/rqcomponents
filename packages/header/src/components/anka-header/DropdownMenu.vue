@@ -14,12 +14,13 @@
     <div class="menu-support">
       <div class="menu-support__links">
         <p
-          class="menu-support__links--item"
           v-for="(cfg, idx) in support.info"
+          :class="['menu-support__links--item', { 'is-disabled': cfg.disabled }]"
           :key="idx"
           @click="copy(cfg)"
         >
           {{ cfg.label }}: {{ cfg.value }}
+	  <i v-if="!cfg.disabled" class="el-icon-copy-document"></i>
         </p>
         <p class="contact">
           <span
@@ -77,6 +78,7 @@ export default {
       this.$emit("close");
     },
     copy(cfg) {
+      if (cfg.disabled) return;
       const textArea = document.createElement("textarea");
       textArea.value = cfg.value;
 
@@ -137,7 +139,7 @@ export default {
       padding: 20px 0 10px;
       margin: 22px 20px 0;
       border-top: 1px solid rqthemify(border-disabled);
-      &--item {
+      &--item:not(.is-disabled) {
         & + & {
           margin-top: 6px;
         }
