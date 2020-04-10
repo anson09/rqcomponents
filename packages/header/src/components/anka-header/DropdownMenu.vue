@@ -15,12 +15,15 @@
       <div class="menu-support__links">
         <p
           v-for="(cfg, idx) in support.info"
-          :class="['menu-support__links--item', { 'is-disabled': cfg.disabled }]"
+          :class="[
+            'menu-support__links--item',
+            { 'is-disabled': cfg.disabled }
+          ]"
           :key="idx"
           @click="copy(cfg)"
         >
           {{ cfg.label }}: {{ cfg.value }}
-	  <i v-if="!cfg.disabled" class="el-icon-copy-document"></i>
+          <i v-if="!cfg.disabled" class="el-icon-copy-document"></i>
         </p>
         <p class="contact">
           <span
@@ -34,7 +37,10 @@
             ></i>
             <el-popover v-else placement="bottom" width="auto" trigger="hover">
               <img :src="qrcodeImg" />
-              <i slot="reference" :class="'rq-icons rq-icon-' + contact.icon"></i>
+              <i
+                slot="reference"
+                :class="'rq-icons rq-icon-' + contact.icon"
+              ></i>
             </el-popover>
           </span>
         </p>
@@ -45,7 +51,7 @@
 
 <script>
 import elPopover from "element-ui/lib/popover";
-import Message from 'element-ui/lib/message';
+import Message from "element-ui/lib/message";
 import qrcodeImg from "../../../assets/img/qrcodeImg.jpg";
 
 export default {
@@ -92,9 +98,9 @@ export default {
 
       try {
         document.execCommand("copy");
-	Message.success(`已成功复制到剪切板`);
+        Message.success(`已成功复制到剪切板`);
       } catch (err) {
-	Message.success(`复制失败`);
+        Message.success(`复制失败`);
       }
 
       document.body.removeChild(textArea);
