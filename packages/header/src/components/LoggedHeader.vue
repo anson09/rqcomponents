@@ -8,7 +8,7 @@
       <div
         v-for="(btn, idx) in btnConfigLeft"
         :key="idx"
-        :class="['logged-header-btn',btn.className, { active: btn.active }]"
+        :class="['logged-header-btn', btn.className, { active: btn.active }]"
       >
         <a
           class="logged-header-btn__label"
@@ -24,7 +24,7 @@
         :key="idx"
         :class="[
           'logged-header-btn',
-	  btn.className,
+          btn.className,
           {
             avatar: btn.type === 'avatar',
             theme: btn.type === 'theme',
@@ -47,14 +47,17 @@
           @click="clickHandler(btn)"
           >{{ btn.label }}</span
         >
-        <ThemeSwitch v-else-if="btn.type === 'theme'" :active="btn.active"></ThemeSwitch>
-	<template v-if="btn.type === 'avatar'">
-          <img  v-if="!avatar" :src="baseAvatar" alt="" />
+        <ThemeSwitch
+          v-else-if="btn.type === 'theme'"
+          :active="btn.active"
+        ></ThemeSwitch>
+        <template v-if="btn.type === 'avatar'">
+          <img v-if="!avatar" :src="baseAvatar" alt="" />
           <img v-else :src="avatar" alt="" />
-	  <div v-if="isVip" class="avatar-vip">
-	    {{vipText}}
-	  </div>
-	</template>
+          <div v-if="isVip" class="avatar-vip">
+            {{ vipText }}
+          </div>
+        </template>
         <span v-if="btn.links && !btn.type" class="arrow">
           <i class="rq-icons rq-icon-arrow-down"></i>
         </span>
@@ -145,13 +148,19 @@ export default {
         : "";
     },
     openDropdown(idx) {
-      if (!this.btnConfigRight[idx].links && this.btnConfigRight[idx].type !== 'theme') {
+      if (
+        !this.btnConfigRight[idx].links &&
+        this.btnConfigRight[idx].type !== "theme"
+      ) {
         return;
       }
       this.$set(this.btnConfigRight[idx], "active", true);
     },
     closeDropdown(idx) {
-      if (!this.btnConfigRight[idx].links && this.btnConfigRight[idx].type !== 'theme') {
+      if (
+        !this.btnConfigRight[idx].links &&
+        this.btnConfigRight[idx].type !== "theme"
+      ) {
         return;
       }
       this.$set(this.btnConfigRight[idx], "active", false);
@@ -337,21 +346,20 @@ export default {
       margin-right: 20px;
       border: 1px solid rqthemify(highlight);
       border-radius: 20px;
-      transition: all .3s;
+      transition: all 0.3s;
       .logged-header-btn__label {
         color: rqthemify(highlight);
       }
       &::after {
-	display: none;
+        display: none;
       }
       &:hover,
       &:active {
-	background: rqthemify(highlight);
-	.logged-header-btn__label {
-	  color: rqthemify(text-white);
-	}
+        background: rqthemify(highlight);
+        .logged-header-btn__label {
+          color: rqthemify(text-white);
+        }
       }
-	
     }
     &.avatar {
       position: relative;
@@ -363,17 +371,17 @@ export default {
         border-radius: 50%;
       }
       .avatar-vip {
-	position: absolute;
-	right: 16px;
-	bottom: 2px;
-	font-size: 16px;
-	padding: 4px;
-	line-height: 1;
-	transform-origin: right bottom;
-	transform: scale(.6);
-	background: #1B5FC4;
-	border-radius: 50%;
-	color: white;
+        position: absolute;
+        right: 16px;
+        bottom: 2px;
+        font-size: 16px;
+        padding: 4px;
+        line-height: 1;
+        transform-origin: right bottom;
+        transform: scale(0.6);
+        background: #1b5fc4;
+        border-radius: 50%;
+        color: white;
       }
       &.active {
         background: rqthemify(active-background-color);
