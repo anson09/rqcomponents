@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+## [0.0.8-alpha.24] - 2020-04-10
+
+### Added
+
+- Add copy icon.
+- Refactor theme-switch button as a normal dropdown.
 
 ## [0.0.8-alpha.20] - 2020-03-13
 

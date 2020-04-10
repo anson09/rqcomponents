@@ -9,8 +9,9 @@ $transition-distance: .3s;
 }
 .rq-zoom-in-top-enter,
 .rq-zoom-in-top-leave-active {
+  pointer-events: none;
   opacity: 0;
-  transform: translateY(-10%) scaleY(0);
+  transform: translateY(-10%) scaleY(0.4);
 }
 
 .rq-fade-in-linear-item {

@@ -47,7 +47,7 @@
           @click="clickHandler(btn)"
           >{{ btn.label }}</span
         >
-        <ThemeSwitch v-else-if="btn.type === 'theme'"></ThemeSwitch>
+        <ThemeSwitch v-else-if="btn.type === 'theme'" :active="btn.active"></ThemeSwitch>
 	<template v-if="btn.type === 'avatar'">
           <img  v-if="!avatar" :src="baseAvatar" alt="" />
           <img v-else :src="avatar" alt="" />
@@ -60,7 +60,7 @@
         </span>
         <transition name="rq-zoom-in-top">
           <div
-            v-if="btn.links && btn.active"
+            v-show="btn.links && btn.active"
             class="logged-header-btn__dropdown"
           >
             <p
@@ -145,13 +145,13 @@ export default {
         : "";
     },
     openDropdown(idx) {
-      if (!this.btnConfigRight[idx].links) {
+      if (!this.btnConfigRight[idx].links && this.btnConfigRight[idx].type !== 'theme') {
         return;
       }
       this.$set(this.btnConfigRight[idx], "active", true);
     },
     closeDropdown(idx) {
-      if (!this.btnConfigRight[idx].links) {
+      if (!this.btnConfigRight[idx].links && this.btnConfigRight[idx].type !== 'theme') {
         return;
       }
       this.$set(this.btnConfigRight[idx], "active", false);
@@ -236,6 +236,7 @@ export default {
     align-items: center;
     transition: all 0.3s;
     padding-top: 4px;
+    cursor: pointer;
     a {
       text-decoration: none;
     }
@@ -252,9 +253,6 @@ export default {
       height: 4px;
       background: transparent;
       transition: background 0.3s;
-    }
-    &__label {
-      cursor: pointer;
     }
 
     &__label + .arrow {
@@ -291,9 +289,9 @@ export default {
       position: absolute;
       box-sizing: border-box;
       min-width: 100%;
-      top: 40px;
+      top: 100%;
       left: 0;
-      box-shadow: 0px 8px 12px 0px;
+      box-shadow: 0px 8px 12px 0px rgba(152, 165, 185, 0.2);
       color: rqthemify(shadow-color);
       background: rqthemify(active-background-color);
       z-index: 1;
