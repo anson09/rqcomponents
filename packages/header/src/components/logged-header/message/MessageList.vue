@@ -1,0 +1,146 @@
+<template>
+  <div ref="list" class="list">
+    <div v-for="(msg, index) in message" :key="msg.id" class="item-wrapper">
+      <i
+        class="el-icon-remove-outline"
+        @click.stop="$emit('deleteMessage', { msg, index })"
+      ></i>
+      <a
+        class="item"
+        rel="noopener"
+        target="_blank"
+        :href="linkMap[msg.type]"
+        @click="$emit('updateMessage', { msg, index })"
+      >
+        <p class="title">
+          <img :src="msg.from.avatar" alt="" class="avatar title__item" />
+          <span class="name title__item">{{ msg.from.name }}</span>
+          <span class="time title__item">{{ msg.datetime | dateFormat }}</span>
+        </p>
+        <p class="content">
+          {{ msg.content }}
+        </p>
+      </a>
+    </div>
+  </div>
+</template>
+<script>
+import debounce from "lodash/debounce";
+
+export default {
+  name: "MessageList",
+  filters: {
+    dateFormat(val) {
+      const date = new Date(val * 1000);
+      return `${date.getFullYear()}.${date.getMonth() +
+        1}.${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    },
+  },
+  props: {
+    message: { type: Array, default: () => [] },
+  },
+  data() {
+    return {
+      linkMap: {
+        factor: "/quant/#main-factor?text=因子列表",
+      },
+    };
+  },
+
+  mounted() {
+    const scrollBody = this.$refs.list;
+    scrollBody.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    const scrollBody = this.$refs.list;
+    scrollBody.removeEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    handleClickMsg(msg) {
+      window.open(this.linkMap[msg.type]);
+      this.$emit("updateMessage", msg);
+    },
+
+    handleScroll: debounce(function(event) {
+      const { target } = event;
+      if (target.scrollTop + target.offsetHeight >= target.scrollHeight - 20) {
+        this.$emit("getMessage", {
+          offset: this.message.length,
+        });
+      }
+    }, 300),
+  },
+};
+</script>
+<style lang="scss" scoped>
+.list {
+  min-height: 100px;
+  max-height: 522px;
+  height: fit-content;
+  overflow-y: auto;
+  overflow-x: hidden;
+  .item {
+    border-bottom: 1px solid rqthemify(border-gray);
+    height: 100px;
+    display: flex;
+    color: inherit;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    &-wrapper {
+      display: block;
+
+      cursor: pointer;
+      padding: 0 20px;
+      position: relative;
+      .el-icon-remove-outline {
+        z-index: 9;
+        position: absolute;
+        right: 20px;
+        display: none;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: rqthemify(text-disabled);
+        &:hover {
+          color: rqthemify(remove-hover-color);
+        }
+        &:active,
+        &:focus {
+          color: rqthemify(remove-active-color);
+        }
+      }
+      &:hover {
+        background-color: rqthemify(bg-hover);
+        .el-icon-remove-outline {
+          display: inline-block;
+        }
+      }
+    }
+    .title {
+      line-height: 20px;
+      font-size: 12px;
+      margin-bottom: 8px;
+      &__item {
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+    }
+    .avatar {
+      width: 20px;
+      height: 20px;
+    }
+    .content {
+      height: 44px;
+      color: rqthemify(text-darker);
+      font-size: 14px;
+      letter-spacing: 0.4px;
+      line-height: 22px;
+      width: 360px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+</style>

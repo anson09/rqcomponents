@@ -13,13 +13,16 @@ RqHeader.install = function(Vue, option) {
     ankaPrefix: "/welcome"
   };
   if (option) {
-    Object.keys(cfg).forEach((key) => {
+    Object.keys(cfg).forEach(key => {
       if (key in option) {
         cfg[key] = option[key];
       }
     });
   }
-  RqHeader.methods = Object.assign(RqHeader.methods || {}, methodConstructor(cfg));
+  RqHeader.methods = Object.assign(
+    RqHeader.methods || {},
+    methodConstructor(cfg)
+  );
   Vue.component(RqHeader.name, RqHeader);
 };
 

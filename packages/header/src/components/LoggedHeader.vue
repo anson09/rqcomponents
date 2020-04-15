@@ -10,10 +10,15 @@
         :key="idx"
         :class="['logged-header-btn', btn.className, { active: btn.active }]"
       >
+        <WorkspaceSwitch
+          v-if="btn.type === 'workspace'"
+          v-on="$listeners"
+        ></WorkspaceSwitch>
         <a
-          class="logged-header-btn__label"
+          v-else
           :href="btn.link.href || btn.link"
           :target="btn.link.newBlock && '_blank'"
+          class="logged-header-btn__label"
           >{{ btn.label }}</a
         >
       </div>
@@ -26,8 +31,6 @@
           'logged-header-btn',
           btn.className,
           {
-            avatar: btn.type === 'avatar',
-            theme: btn.type === 'theme',
             active: btn.active
           }
         ]"
@@ -51,6 +54,7 @@
           v-else-if="btn.type === 'theme'"
           :active="btn.active"
         ></ThemeSwitch>
+        <Message v-else-if="btn.type === 'message'"></Message>
         <template v-if="btn.type === 'avatar'">
           <img v-if="!avatar" :src="baseAvatar" alt="" />
           <img v-else :src="avatar" alt="" />
@@ -78,8 +82,8 @@
               class="logged-header-btn__dropdown--item"
             >
               <a
-                :class="isActiveLink(link.href || link)"
                 v-if="link"
+                :class="isActiveLink(link.href || link)"
                 :href="link.href || link"
                 :target="link.newBlock && '_blank'"
                 >{{ label }}</a
@@ -100,11 +104,15 @@ import logo from "../../assets/img/logo.png";
 import logoWhite from "../../assets/img/logo-white.png";
 import header from "../../assets/img/header.png";
 import ThemeSwitch from "./logged-header/ThemeSwitch.vue";
+import Message from "./logged-header/Message.vue";
+import WorkspaceSwitch from "./logged-header/WorkspaceSwitch.vue";
 
 export default {
   name: "LoggedHeader",
   components: {
-    ThemeSwitch
+    ThemeSwitch,
+    Message,
+    WorkspaceSwitch
   },
   props: {
     avatar: {
@@ -137,7 +145,7 @@ export default {
       const { left } = logged;
       return left.map(btn => ({
         ...btn,
-        active: this.getPath().includes(btn.link.href || btn.link)
+        active: this.getPath().includes((btn.link && btn.link.href) || btn.link)
       }));
     }
   },
@@ -338,6 +346,10 @@ export default {
       padding-top: 4px;
       padding: 0;
       font-size: 16px;
+    }
+    &.workspace,
+    &.message {
+      padding: 0;
     }
     &.road-show {
       height: auto;

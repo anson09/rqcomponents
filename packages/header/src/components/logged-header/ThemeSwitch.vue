@@ -9,7 +9,10 @@
         <div
           v-for="mode in modeConfig"
           :key="mode.label"
-          :class="['theme-switch__dropdown--choice', { 'is-active': mode.active }]"
+          :class="[
+            'theme-switch__dropdown--choice',
+            { 'is-active': mode.active }
+          ]"
           @click="themeChange(mode.value)"
         >
           <div class="theme-switch__dropdown--pic">
@@ -107,6 +110,7 @@ export default {
     &:active,
     &:focus,
     &:hover {
+      color: rqthemify(hover-color);
       background-color: inherit;
     }
   }

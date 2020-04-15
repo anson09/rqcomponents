@@ -238,7 +238,12 @@
         "label": "社区"
       },
       {
-        "type": "theme"
+        "type": "theme",
+        "className": "theme"
+      },
+      {
+        "type": "message",
+        "className": "message"
       },
       {
         "links": [
@@ -260,7 +265,8 @@
           }
         ],
         "img": "avator",
-        "type": "avatar"
+        "type": "avatar",
+        "className": "avatar"
       }
     ],
     "left": [
@@ -271,6 +277,10 @@
       {
         "link": "/ams/",
         "label": "AMS"
+      },
+      {
+        "type": "workspace",
+        "className": "workspace"
       }
     ]
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="header-wrapper">
-    <p class="header-warning" v-if="showWarning">
+    <p v-if="showWarning" class="header-warning">
       <slot v-if="$slots.notification" name="notification"></slot>
       <template v-else>
         {{ notification }}
@@ -12,13 +12,14 @@
           v-if="mode === defaultMode && isLogin"
           :username="username"
           :avatar="avatar"
-          :isVip="isVip"
+          :is-vip="isVip"
+          @switchWorkspace="switchWorkspace"
         ></LoggedHeader>
         <AnkaHeader
           v-else
           :topic="topic"
           :opacity="opacity"
-          :isLogin="isLogin"
+          :is-login="isLogin"
         ></AnkaHeader>
       </Transition>
     </header>
@@ -87,6 +88,9 @@ export default {
     this.initAccount();
   },
   methods: {
+    switchWorkspace(val) {
+      this.$emit("switchWorkspace", val);
+    },
     async initAccount() {
       try {
         const {

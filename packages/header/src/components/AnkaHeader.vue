@@ -19,7 +19,7 @@
           <p>{{ topic }}</p>
         </div>
         <template v-else>
-          <div class="nav__buttons" v-if="fullScrean">
+          <div v-if="fullScrean" class="nav__buttons">
             <NavButton
               v-for="(button, idx) in buttons"
               :key="idx"
@@ -66,20 +66,18 @@
 </template>
 
 <script>
-import CommonButton from "./anka-header/CommonButton.vue";
+import elButton from "element-ui/lib/button";
+import debounce from "lodash/debounce";
 import NavButton from "./anka-header/NavButton.vue";
 import SecondHeader, { path2config } from "./anka-header/SecondHeader.vue";
 import MiniMenu from "./anka-header/MiniMenu.vue";
 import { anka } from "../../assets/dict/header.json";
-import elButton from "element-ui/lib/button";
-import debounce from "lodash/debounce";
 
 export default {
   name: "AnkaHeader",
   components: {
     NavButton,
     MiniMenu,
-    CommonButton,
     SecondHeader,
     elButton,
     Vnodes: {
@@ -282,7 +280,7 @@ export default {
   .opacity {
     nav .nav__buttons {
       .road-show {
-        background: #FFFFFF33;
+        background: #ffffff33;
         &:hover,
         &:focus,
         &:active {
@@ -362,7 +360,7 @@ export default {
           }
         }
         .to-quant {
-	  margin-left: 6px;
+          margin-left: 6px;
           color: rqthemify(highlight);
           border-color: rqthemify(highlight);
           background: transparent;
