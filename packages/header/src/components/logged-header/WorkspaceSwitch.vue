@@ -13,11 +13,11 @@
       <span class="workspace-btn__text">{{ curWs.name }} </span>
       <i
         v-show="!dropdownShow"
-        class="el-icon-arrow-down  el-icon--right workspace-btn__icon icon--mini"
+        class="el-icon-arrow-down el-icon--right workspace-btn__icon icon--mini"
       ></i>
       <i
         v-show="dropdownShow"
-        class="el-icon-arrow-up  el-icon--right workspace-btn__icon icon--mini"
+        class="el-icon-arrow-up el-icon--right workspace-btn__icon icon--mini"
       ></i>
     </div>
     <transition name="rq-zoom-in-top">
@@ -27,7 +27,7 @@
           :key="item.id"
           :class="[
             'workspace-dropdown__item',
-            { 'is-active': item.id === curWs.id }
+            { 'is-active': item.id === curWs.id },
           ]"
           @click="setWorkspace(item)"
         >
@@ -49,14 +49,14 @@ export default {
       workspaces: [],
       curWs: {},
       account: localStorageAccount,
-      storageKey: "common_workspace"
+      storageKey: "common_workspace",
     };
   },
 
   computed: {
     settingVisible() {
       return this.curWs.admin === this.account.userId;
-    }
+    },
   },
 
   mounted() {
@@ -80,7 +80,7 @@ export default {
         ];
 
         const ws = this.workspaces.filter(
-          item => item.id === localStorageWorkspace
+          (item) => item.id === localStorageWorkspace
         )[0];
 
         if (ws) {
@@ -104,13 +104,13 @@ export default {
         this.storageKey,
         JSON.stringify({
           ...localStorageWorkspaces,
-          [this.account.userId]: ws.id
+          [this.account.userId]: ws.id,
         })
       );
       this.$emit("switchWorkspace", ws.id);
       this.toggleDropdown(false);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <RqHeader @auth="log" :opacity="true">
-    </RqHeader>
+    <RqHeader :opacity="true" @auth="log"> </RqHeader>
   </div>
 </template>
 
@@ -14,9 +13,9 @@ export default {
   mounted() {},
   methods: {
     log(...params) {
-      console.log('111', params);
-    }
-  }
+      console.log("111", params);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -26,6 +25,6 @@ export default {
 }
 #app {
   height: 300vh;
-  background:pink;
+  background: pink;
 }
 </style>

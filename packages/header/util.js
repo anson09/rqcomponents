@@ -1,21 +1,16 @@
-function methodConstructor(cfg)  {
+function methodConstructor(cfg) {
   return {
     handleLink(params) {
       let link = params;
       if (typeof link === "string") {
-        link = {href: link};
+        link = { href: link };
       }
-      const {
-        outer,
-        inner,
-        href,
-        newBlock,
-        event
-      } = link;
+      const { outer, inner, href, newBlock, event } = link;
       if (event) {
         this.handleEvent(event);
         return;
-      } else if (!href) return;
+      }
+      if (!href) return;
       let prefix = "";
       if (newBlock) {
         if (inner) {
@@ -40,22 +35,21 @@ function methodConstructor(cfg)  {
         this.$emit("auth", event);
       } else {
         const paramStr = Object.entries({
-          redirect: encodeURIComponent(window.location.href), 
-          auth: event
+          redirect: encodeURIComponent(window.location.href),
+          auth: event,
         })
-        .map((kv) => kv.join("="))
-        .join("&");
+          .map((kv) => kv.join("="))
+          .join("&");
         window.location.href = `${cfg.ankaPrefix}/?${paramStr}`;
       }
     },
     getPath() {
       if (cfg.router && this.$route) {
         return this.$route.path;
-      } else {
-        const path = window.location.href.split("/").slice(3);
-        return path.map(key => "/" + key).join("");
       }
-    }
+      const path = window.location.href.split("/").slice(3);
+      return path.map((key) => `/${key}`).join("");
+    },
   };
 }
 
@@ -67,18 +61,14 @@ const themeRender = (theme = "light") => {
   bodyClassList.add(`theme-${theme}`);
   [...bodyClassList]
     .filter(
-      className => className.includes("theme") && !className.includes(theme)
+      (className) => className.includes("theme") && !className.includes(theme)
     )
-    .map(className => bodyClassList.remove(className));
+    .map((className) => bodyClassList.remove(className));
 };
 
-const isSupported = () => window.CSS &&
-      window.CSS.supports &&
-      window.CSS.supports('color', 'var(--fake-var)');
+const isSupported = () =>
+  window.CSS &&
+  window.CSS.supports &&
+  window.CSS.supports("color", "var(--fake-var)");
 
-export {
-  methodConstructor,
-  THEME_MODE,
-  themeRender,
-  isSupported
-}
+export { methodConstructor, THEME_MODE, themeRender, isSupported };

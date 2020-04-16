@@ -7,7 +7,7 @@
     <div class="header__bg"></div>
     <nav>
       <div class="nav__icon">
-	<i :class="`rq-icons rq-icon-${icon}`"></i>
+        <i :class="`rq-icons rq-icon-${icon}`"></i>
         <span class="mainTitle">{{ mainTitle }}</span>
         <span class="secondTitle">{{ secondTitle }}</span>
       </div>
@@ -30,26 +30,26 @@ export const path2config = {
     icon: "rqdata",
     mainTitle: "RQData",
     secondTitle: "金融数据API",
-    product: "rqdata"
+    product: "rqdata",
   },
   "/rqpro": {
     icon: "rqpro",
     mainTitle: "RQPro",
     secondTitle: "量化投研终端",
-    product: "rqpro"
+    product: "rqpro",
   },
   "/ams": {
     icon: "rqams",
     mainTitle: "RQAMS",
     secondTitle: "米筐资产管理系统",
-    product: "rqams"
+    product: "rqams",
   },
   "/rqoptimizer": {
     icon: "rqoptimizer",
     mainTitle: "RQOptimizer",
     secondTitle: "组合优化器",
-    product: "rqoptimizer"
-  }   
+    product: "rqoptimizer",
+  },
 };
 
 export default {
@@ -61,7 +61,7 @@ export default {
       usePageLink: Object.keys(path2config), // 产品的几个页面在路由页中的path
       scrollFn: null,
       windowScrollX: 0,
-      windowScrollY: 0
+      windowScrollY: 0,
     };
   },
   computed: {
@@ -85,19 +85,16 @@ export default {
     },
     scrollY() {
       return this.windowScrollY <= 70 ? 70 - this.windowScrollY : 0;
-    }
+    },
   },
   watch: {},
   created() {},
   mounted() {
-    this.scrollFn = window.addEventListener(
-      "scroll",
-      () => {
-	// Fallback for ie
-	this.windowScrollY = window.scrollY || window.pageYOffset;
-	this.windowScrollX = window.scrollX || window.pageXOffset;
-      }
-    );
+    this.scrollFn = window.addEventListener("scroll", () => {
+      // Fallback for ie
+      this.windowScrollY = window.scrollY || window.pageYOffset;
+      this.windowScrollX = window.scrollX || window.pageXOffset;
+    });
   },
   destroyed() {
     window.removeEventListener("scroll", this.scrollFn);
@@ -108,8 +105,8 @@ export default {
         return this.config[key];
       }
       return "";
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped lang="scss">
@@ -136,15 +133,14 @@ export default {
     background: rqthemify(bg-white);
     box-shadow: 0px 10px 11px 0px rgba(8, 25, 52, 0.1);
   }
-  
-  
+
   $products: rqdata, rqpro, rqams, rqoptimizer;
   @each $product in $products {
     &.#{$product} {
       color: rqthemify($product);
       .nav__button {
-	color: rqthemify($product);
-	border-color: rqthemify($product);
+        color: rqthemify($product);
+        border-color: rqthemify($product);
       }
     }
   }
@@ -161,7 +157,7 @@ export default {
       align-items: center;
 
       .rq-icons {
-	font-size: 28px;
+        font-size: 28px;
         margin-right: 13px;
       }
 

@@ -55,7 +55,7 @@ const themifyOptions = {
       "border-gray": "#dfdfdf",
       "border-hover": "hsla(216, 76%, 44%, 0.8)",
       "background-color": "white",
-      "hover-color": "hsla(216, 76%, 44%, 0.8)"
+      "hover-color": "hsla(216, 76%, 44%, 0.8)",
     },
     dark: {
       border: "#323d4e",
@@ -66,15 +66,15 @@ const themifyOptions = {
       "hover-color": "#4575d3cc",
       highlight: "#4F89FF",
       "background-color": "#1A1C25",
-      "active-background-color": "#282B35"
-    }
+      "active-background-color": "#282B35",
+    },
   },
-  classPrefix: "theme-"
+  classPrefix: "theme-",
 };
 
 module.exports = {
   plugins: [
     require("autoprefixer")({ grid: true }),
-    require("./themify").themify(themifyOptions)
-  ]
+    require("./themify").themify(themifyOptions),
+  ],
 };

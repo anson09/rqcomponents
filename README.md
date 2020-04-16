@@ -8,24 +8,24 @@ import UI from "@rqjs/rqcomponents";
 Vue.use(UI);
 
 new Vue({
-    el: "#rq-header",
-    template: "<RqHeader></RqHeader>"
-})
+  el: "#rq-header",
+  template: "<RqHeader></RqHeader>",
+});
 ```
 
 ## Package
 
 ```js
-import {RqHeader} from "@rqjs/rqcomponents";
+import { RqHeader } from "@rqjs/rqcomponents";
 import "@rqjs/rqcomponents/dist/rqcomponents.esm.css";
 import "@rqjs/rqcomponents/packages/common/assets/icon/iconfont.css";
 
 Vue.use(RqHeader);
 
 new Vue({
-    el: "#rq-header",
-    template: "<RqHeader></RqHeader>"
-})
+  el: "#rq-header",
+  template: "<RqHeader></RqHeader>",
+});
 ```
 
 ### umd
@@ -33,16 +33,15 @@ new Vue({
 bundled all assets
 
 ```js
-import {RqHeader} from "@rqjs/rqcomponents/dist/rqcomponents.js";
+import { RqHeader } from "@rqjs/rqcomponents/dist/rqcomponents.js";
 
 Vue.use(RqHeader);
 
 new Vue({
-    el: "#rq-header",
-    template: "<RqHeader></RqHeader>"
-})
+  el: "#rq-header",
+  template: "<RqHeader></RqHeader>",
+});
 ```
-
 
 ## Components
 
@@ -50,7 +49,7 @@ new Vue({
 
 > Common Header.
 
-#### props: 
+#### props:
 
 ##### notification: string | slot
 
@@ -60,7 +59,7 @@ Raise a warning on the top of the header.
 ##### opacity: boolean
 
 Default: false
-Set background opacity with white font-color; 
+Set background opacity with white font-color;
 
 ##### topic: string
 

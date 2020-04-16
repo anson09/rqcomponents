@@ -11,7 +11,7 @@
           :key="mode.label"
           :class="[
             'theme-switch__dropdown--choice',
-            { 'is-active': mode.active }
+            { 'is-active': mode.active },
           ]"
           @click="themeChange(mode.value)"
         >
@@ -36,13 +36,13 @@ export default {
   props: {
     active: {
       default: false,
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   data() {
     return {
       value: "light",
-      show: false
+      show: false,
     };
   },
   computed: {
@@ -52,21 +52,21 @@ export default {
           label: "极致简洁",
           img: lightImg,
           value: "light",
-          active: this.value === "light"
+          active: this.value === "light",
         },
         {
           label: "沉浸体验",
           img: darkImg,
           value: "dark",
-          active: this.value === "dark"
-        }
+          active: this.value === "dark",
+        },
       ];
-    }
+    },
   },
   mounted() {
     if (isSupported()) {
       const url = this.$parent.getPath();
-      if (["/ams", "/quant"].some(e => url.includes(e))) {
+      if (["/ams", "/quant"].some((e) => url.includes(e))) {
         this.show = true;
         const { theme } = localStorage;
         this.value = THEME_MODE.includes(theme) ? theme : "light";
@@ -83,8 +83,8 @@ export default {
       localStorage.setItem("theme", theme);
       themeRender(theme);
       this.value = theme;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -128,22 +128,6 @@ export default {
     box-shadow: 0px 8px 12px 0px rgba(152, 165, 185, 0.2);
     cursor: default;
 
-    &--choice {
-      position: relative;
-      font-size: 14px;
-      color: rqthemify(text);
-      text-align: center;
-      cursor: pointer;
-      &.is-active {
-        color: rqthemify(hover-color);
-        .theme-switch__dropdown--pic .rq-icons {
-          opacity: 1;
-        }
-      }
-      + & {
-        margin-top: 20px;
-      }
-    }
     &--pic {
       display: block;
       position: relative;
@@ -158,6 +142,22 @@ export default {
         text-align: center;
         opacity: 0;
         transform: translateY(-50%);
+      }
+    }
+    &--choice {
+      position: relative;
+      font-size: 14px;
+      color: rqthemify(text);
+      text-align: center;
+      cursor: pointer;
+      &.is-active {
+        color: rqthemify(hover-color);
+        .theme-switch__dropdown--pic .rq-icons {
+          opacity: 1;
+        }
+      }
+      + & {
+        margin-top: 20px;
       }
     }
   }

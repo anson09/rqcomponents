@@ -82,28 +82,28 @@ export default {
     elButton,
     Vnodes: {
       functional: true,
-      render: (h, ctx) => ctx.props.vnodes
-    }
+      render: (h, ctx) => ctx.props.vnodes,
+    },
   },
   props: {
     isLogin: {
       default: false,
-      type: Boolean
+      type: Boolean,
     },
     opacity: {
       default: false,
-      type: Boolean
+      type: Boolean,
     },
     topic: {
       default: "",
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
       fullScrean: true,
       support: anka.support,
-      activeLabel: ""
+      activeLabel: "",
     };
   },
   computed: {
@@ -131,8 +131,8 @@ export default {
           className: "road-show",
           click: () => {
             this.redirect("/welcome/trial/road-show");
-          }
-        }
+          },
+        },
       ];
       if (this.isLogin) {
         return [
@@ -144,10 +144,10 @@ export default {
             click: () => {
               this.redirect({
                 outer: true,
-                href: "/quant/"
+                href: "/quant/",
               });
-            }
-          }
+            },
+          },
         ];
       }
       return [
@@ -159,7 +159,7 @@ export default {
           icon: "login",
           click: () => {
             this.redirect({ event: "login" });
-          }
+          },
         },
         {
           label: "注册",
@@ -168,8 +168,8 @@ export default {
           icon: "registered",
           click: () => {
             this.redirect({ event: "register" });
-          }
-        }
+          },
+        },
       ];
     },
     buttons() {
@@ -177,7 +177,7 @@ export default {
       if (/(\/about|\/recruitment)/.test(this.getPath())) {
         config = anka.header.others;
       }
-      return config.map(btn => {
+      return config.map((btn) => {
         if (btn.more) {
           btn.active = this.activeLabel === btn.label;
         } else if (btn.link) {
@@ -198,10 +198,10 @@ export default {
     isNotPageMore() {
       return (
         this.buttons
-          .filter(i => !i.more)
-          .filter(sub => this.getPath().includes(sub.link)).length <= 0
+          .filter((i) => !i.more)
+          .filter((sub) => this.getPath().includes(sub.link)).length <= 0
       );
-    }
+    },
   },
   mounted() {
     this.resize();
@@ -211,11 +211,11 @@ export default {
     window.removeEventListener("resize", this.resize);
   },
   methods: {
-    resize: debounce(function() {
+    resize: debounce(function () {
       this.fullScrean = window.innerWidth > 1280;
     }),
     getBtnConfig(label) {
-      const btns = this.buttons.filter(btn => btn.label === label);
+      const btns = this.buttons.filter((btn) => btn.label === label);
       return btns.length > 0 ? btns[0] : null;
     },
     clickHandler(label) {
@@ -237,8 +237,8 @@ export default {
     },
     redirect(params) {
       this.$parent.handleLink(params);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -276,30 +276,6 @@ export default {
     width: 100%;
     height: 100%;
     background: rqthemify(bg-gray);
-  }
-  .opacity {
-    nav .nav__buttons {
-      .road-show {
-        background: #ffffff33;
-        &:hover,
-        &:focus,
-        &:active {
-          background: #ffffff66;
-        }
-      }
-
-      .to-quant {
-        color: white;
-        border-color: white;
-        background: transparent;
-        &:hover,
-        &:focus,
-        &:active {
-          color: white;
-          background: #c8cde266;
-        }
-      }
-    }
   }
   nav {
     position: absolute;
@@ -344,6 +320,7 @@ export default {
             margin-right: 0;
           }
         }
+
         .to-quant,
         .road-show {
           padding: 10px 28px;
@@ -358,32 +335,33 @@ export default {
             color: white;
             transform: scale(1);
           }
-        }
-        .to-quant {
-          margin-left: 6px;
-          color: rqthemify(highlight);
-          border-color: rqthemify(highlight);
-          background: transparent;
-          &:hover,
-          &:focus,
-          &:active {
-            color: rqthemify(highlight);
-            background: #e3eeffff;
-          }
-          &:active {
-            transform: scale(1.1);
-          }
-        }
 
-        .road-show {
-          margin: 0 24px 0 40px;
-          background: #1b5fc4;
-          &:hover {
-            background: #275dac;
+          &.to-quant {
+            margin-left: 6px;
+            color: rqthemify(highlight);
+            border-color: rqthemify(highlight);
+            background: transparent;
+            &:hover,
+            &:focus,
+            &:active {
+              color: rqthemify(highlight);
+              background: #e3eeffff;
+            }
+            &:active {
+              transform: scale(1.1);
+            }
           }
-          &:focus,
-          &:active {
-            background: #19417b;
+
+          &.road-show {
+            margin: 0 24px 0 40px;
+            background: #1b5fc4;
+            &:hover {
+              background: #275dac;
+            }
+            &:focus,
+            &:active {
+              background: #19417b;
+            }
           }
         }
         &.login {
@@ -420,6 +398,31 @@ export default {
                 background: #ffffff66;
               }
             }
+          }
+        }
+      }
+    }
+
+    .opacity {
+      nav .nav__buttons {
+        .road-show {
+          background: #ffffff33;
+          &:hover,
+          &:focus,
+          &:active {
+            background: #ffffff66;
+          }
+        }
+
+        .to-quant {
+          color: white;
+          border-color: white;
+          background: transparent;
+          &:hover,
+          &:focus,
+          &:active {
+            color: white;
+            background: #c8cde266;
           }
         }
       }

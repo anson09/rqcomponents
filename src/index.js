@@ -2,8 +2,8 @@ import RqHeader from "../packages/header";
 
 const components = [RqHeader];
 
-const install = function(Vue, opt = {}) {
-  components.forEach(component => {
+const install = function (Vue, opt = {}) {
+  components.forEach((component) => {
     component.install(Vue, opt[component.name]);
   });
 };
@@ -11,5 +11,5 @@ const install = function(Vue, opt = {}) {
 export { RqHeader };
 
 export default {
-  install
+  install,
 };
