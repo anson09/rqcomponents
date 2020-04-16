@@ -1,4 +1,4 @@
-const postcss = require("postcss");
+import postcss from "postcss";
 
 const THEMIFY = "rqthemify";
 
@@ -110,7 +110,7 @@ function themify(options) {
       const aggragatedSelectorsMap = {};
       const aggragatedSelectors = [];
       const createdRules = [];
-      const variationRules = ((_a = {}), (_a[defaultVariation] = rule), _a);
+      const variationRules = { defaultVariation: rule };
       rule.walkDecls(function (decl) {
         const propertyValue = decl.value;
         if (!hasThemify(propertyValue)) return;
@@ -166,7 +166,6 @@ function themify(options) {
           return root.append(r);
         });
       }
-      let _a;
     });
   }
   /**
@@ -215,6 +214,4 @@ function themify(options) {
     return clonedRule;
   }
 }
-module.exports = {
-  themify: postcss.plugin("rqThemes", themify),
-};
+export default postcss.plugin("rqThemes", themify);

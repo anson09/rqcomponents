@@ -3,6 +3,7 @@
 node_modules
 demo/dist
 dist
+lib
 .cache
 
 *~

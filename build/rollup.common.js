@@ -8,7 +8,7 @@ import json from "rollup-plugin-json";
 import { terser } from "rollup-plugin-terser";
 import images from "rollup-plugin-image-files";
 import ignoreImport from "rollup-plugin-ignore-import";
-import pkg from "./package.json";
+import pkg from "../package.json";
 import { plugins as postPlugins } from "./.postcssrc";
 
 const ensureArray = (maybeArr) =>
@@ -27,9 +27,8 @@ const makeExternalPredicate = (externalArr) => {
 
 const createConfig = ({ output, umd = false, env } = {}) => {
   const min = env === "production";
-
   return {
-    input: "src/index.js",
+    input: "./src/index.js",
     output: ensureArray(output).map((format) => ({
       ...format,
       name: "rqcomponent",
