@@ -12,31 +12,31 @@ import elButton from "element-ui/lib/button";
 export default {
   name: "CommonButton",
   components: {
-    elButton
+    elButton,
   },
   props: {
     label: {
       type: String,
-      required: true
+      required: true,
     },
     plain: {
       type: Boolean,
-      default: false
+      default: false,
     },
     light: {
       type: Boolean,
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     clickHandler() {
       this.$emit("click", this.label);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -99,7 +99,7 @@ export default {
       color: rqthemify(text-white-dark);
       border-color: rqthemify(text-white-dark);
       &:hover {
-        background: rqthemify(button-gray, .8 );
+        background: rqthemify(button-gray, 0.8);
       }
     }
 

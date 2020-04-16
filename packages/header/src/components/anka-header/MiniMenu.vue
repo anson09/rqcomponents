@@ -1,9 +1,9 @@
 <template>
   <el-popover
+    v-model="active"
     :class="['mini-menu__wrapper', { active, light }]"
     placement="bottom-start"
     trigger="hover"
-    v-model="active"
     popper-class="mini-menu"
     :visible-arrow="false"
   >
@@ -11,8 +11,8 @@
       <div class="mini-menu-list">
         <div
           v-for="(item, idx) in cfg"
-          :class="['mini-menu-list__item', { active: activeIdx === idx }]"
           :key="item.label"
+          :class="['mini-menu-list__item', { active: activeIdx === idx }]"
           @mouseover="hover(idx)"
           @click="toggle(idx)"
         >
@@ -27,7 +27,7 @@
         </DropdownMenu>
       </div>
     </div>
-    <el-button class="mini-menu-burger" type="text" slot="reference">
+    <el-button slot="reference" class="mini-menu-burger" type="text">
       <span></span>
       <span></span>
       <span></span>
@@ -45,39 +45,39 @@ export default {
   components: {
     elButton,
     elPopover,
-    DropdownMenu
+    DropdownMenu,
   },
   props: {
     cfg: {
       required: true,
-      type: Array
+      type: Array,
     },
 
     support: {
       required: true,
-      type: Object
+      type: Object,
     },
 
     light: {
       default: false,
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   data() {
     return {
       active: false,
-      activeIdx: null
+      activeIdx: null,
     };
   },
   computed: {
     detail() {
       return this.cfg?.[this.activeIdx]?.links ?? null;
-    }
+    },
   },
   watch: {
     active(val) {
       if (!val) this.clear();
-    }
+    },
   },
   mounted() {},
   methods: {
@@ -85,8 +85,8 @@ export default {
       this.activeIdx = null;
     },
     hover(idx) {
-      if (this.activeIdx !== idx){
-	this.activeIdx = this.cfg[idx] && this.cfg[idx].links ? idx : null;
+      if (this.activeIdx !== idx) {
+        this.activeIdx = this.cfg[idx] && this.cfg[idx].links ? idx : null;
       }
     },
     toggle(idx) {
@@ -100,8 +100,8 @@ export default {
     redirect(...args) {
       this.$emit("redirect", ...args);
       this.active = false;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -109,40 +109,7 @@ export default {
 
 .mini-menu {
   display: flex;
-  &__wrapper {
-    &:before {
-      content: "";
-      margin-right: 10px;
-      height: 40px;
-      width: 1px;
-      background: rqthemify(text);
-    }
-    &.light {
-      &:before {
-	background: rqthemify(text-white);
-      }
-      .mini-menu {
-        &-burger {
-          span {
-            background: rqthemify(text-white);
-          }
-        }
-      }
-    }
-    &.active {
-      &:before {
-	background: transparent;
-      }
-      .mini-menu {
-        &-burger {
-          background: rqthemify(highlight);
-          span {
-            background: white;
-          }
-        }
-      }
-    }
-  }
+
   &-burger {
     @include f-column;
     width: 70px;
@@ -158,6 +125,40 @@ export default {
       transition: all 0.3s;
       + span {
         margin-top: 4px;
+      }
+    }
+  }
+  &__wrapper {
+    &:before {
+      content: "";
+      margin-right: 10px;
+      height: 40px;
+      width: 1px;
+      background: rqthemify(text);
+    }
+    &.light {
+      &:before {
+        background: rqthemify(text-white);
+      }
+      .mini-menu {
+        &-burger {
+          span {
+            background: rqthemify(text-white);
+          }
+        }
+      }
+    }
+    &.active {
+      &:before {
+        background: transparent;
+      }
+      .mini-menu {
+        &-burger {
+          background: rqthemify(highlight);
+          span {
+            background: white;
+          }
+        }
       }
     }
   }

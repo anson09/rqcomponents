@@ -15,11 +15,11 @@
       <div class="menu-support__links">
         <p
           v-for="(cfg, idx) in support.info"
+          :key="idx"
           :class="[
             'menu-support__links--item',
-            { 'is-disabled': cfg.disabled }
+            { 'is-disabled': cfg.disabled },
           ]"
-          :key="idx"
           @click="copy(cfg)"
         >
           {{ cfg.label }}: {{ cfg.value }}
@@ -57,21 +57,21 @@ import qrcodeImg from "../../../assets/img/qrcodeImg.jpg";
 export default {
   name: "DropdownMenu",
   components: {
-    elPopover
+    elPopover,
   },
   props: {
     links: {
       default: () => [],
-      type: Array
+      type: Array,
     },
     support: {
       required: true,
-      type: Object
-    }
+      type: Object,
+    },
   },
   data() {
     return {
-      qrcodeImg
+      qrcodeImg,
     };
   },
   watch: {},
@@ -104,8 +104,8 @@ export default {
       }
 
       document.body.removeChild(textArea);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

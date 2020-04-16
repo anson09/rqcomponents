@@ -31,8 +31,8 @@
           'logged-header-btn',
           btn.className,
           {
-            active: btn.active
-          }
+            active: btn.active,
+          },
         ]"
         @mouseover="openDropdown(idx)"
         @mouseleave="closeDropdown(idx)"
@@ -112,42 +112,44 @@ export default {
   components: {
     ThemeSwitch,
     Message,
-    WorkspaceSwitch
+    WorkspaceSwitch,
   },
   props: {
     avatar: {
       default: "",
-      type: String
+      type: String,
     },
     username: {
       required: true,
-      type: String
+      type: String,
     },
     isVip: {
       default: false,
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   data() {
     return {
       vipText: "企",
       images: {
         logo,
-        logoWhite
+        logoWhite,
       },
       baseAvatar: header,
-      btnConfigRight: logged.right
+      btnConfigRight: logged.right,
       // btnConfigRight: logged.right.map(e => ({...e, active: true}))
     };
   },
   computed: {
     btnConfigLeft() {
       const { left } = logged;
-      return left.map(btn => ({
+      return left.map((btn) => ({
         ...btn,
-        active: this.getPath().includes((btn.link && btn.link.href) || btn.link)
+        active: this.getPath().includes(
+          (btn.link && btn.link.href) || btn.link
+        ),
       }));
-    }
+    },
   },
   methods: {
     isActiveLink(link) {
@@ -189,8 +191,8 @@ export default {
     },
     getPath() {
       return this.$parent.getPath();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -275,6 +277,17 @@ export default {
     &__label + .arrow {
       margin-left: 4px;
     }
+
+    .arrow {
+      display: inline-block;
+      width: 8px;
+      transition: transform 0.3s;
+      transform-origin: right;
+      transform: scale(0.5);
+      .rq-icons {
+        font-size: 16px;
+      }
+    }
     &:hover {
       background: rqthemify(active-background-color);
       box-shadow: 0px 2px 4px 0px rgba(152, 165, 185, 0.2);
@@ -290,16 +303,6 @@ export default {
       }
       &::after {
         background: rqthemify(hover-color);
-      }
-    }
-    .arrow {
-      display: inline-block;
-      width: 8px;
-      transition: transform 0.3s;
-      transform-origin: right;
-      transform: scale(0.5);
-      .rq-icons {
-        font-size: 16px;
       }
     }
     & &__dropdown {
@@ -343,7 +346,6 @@ export default {
       color: rqthemify(hover-color);
     }
     &.theme {
-      padding-top: 4px;
       padding: 0;
       font-size: 16px;
     }

@@ -4,12 +4,12 @@ const baseUrl = "api/rqmessager/v1";
 
 const getMessages = async ({ read, limit, offset }) => {
   const { data } = await axios.get(`${baseUrl}/messages`, {
-    params: { already_read: read, limit, offset }
+    params: { already_read: read, limit, offset },
   });
   return data;
 };
 
-const deleteMessage = async id => {
+const deleteMessage = async (id) => {
   const { data } = await axios.delete(`${baseUrl}/message/${id}`);
   return data;
 };
@@ -19,7 +19,7 @@ const deleteAllMessage = async () => {
   return data;
 };
 
-const updateMessage = async id => {
+const updateMessage = async (id) => {
   const { data } = await axios.patch(`${baseUrl}/message/${id}`);
   return data;
 };
@@ -34,5 +34,5 @@ export {
   deleteMessage,
   deleteAllMessage,
   updateMessage,
-  updateAllMessage
+  updateAllMessage,
 };

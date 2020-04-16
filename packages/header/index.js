@@ -6,14 +6,14 @@ import "../common/style";
 import RqHeader from "./src/Header.vue";
 import { methodConstructor } from "./util";
 
-RqHeader.install = function(Vue, option) {
+RqHeader.install = function (Vue, option) {
   const cfg = {
     router: false,
     admin: false,
-    ankaPrefix: "/welcome"
+    ankaPrefix: "/welcome",
   };
   if (option) {
-    Object.keys(cfg).forEach(key => {
+    Object.keys(cfg).forEach((key) => {
       if (key in option) {
         cfg[key] = option[key];
       }

@@ -32,8 +32,9 @@ export default {
   filters: {
     dateFormat(val) {
       const date = new Date(val * 1000);
-      return `${date.getFullYear()}.${date.getMonth() +
-        1}.${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+      return `${date.getFullYear()}.${
+        date.getMonth() + 1
+      }.${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
     },
   },
   props: {
@@ -61,7 +62,7 @@ export default {
       this.$emit("updateMessage", msg);
     },
 
-    handleScroll: debounce(function(event) {
+    handleScroll: debounce(function (event) {
       const { target } = event;
       if (target.scrollTop + target.offsetHeight >= target.scrollHeight - 20) {
         this.$emit("getMessage", {

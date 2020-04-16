@@ -5,12 +5,12 @@ var THEMIFY = "rqthemify";
 Object.defineProperty(exports, "__esModule", { value: true });
 var defaultOptions = {
   palette: {},
-  classPrefix: ""
+  classPrefix: "",
 };
 /** supported color variations */
 var ColorVariation = {
   DARK: "dark",
-  LIGHT: "light"
+  LIGHT: "light",
 };
 function buildOptions(options) {
   if (!options) {
@@ -27,14 +27,14 @@ var defaultVariation = ColorVariation.LIGHT;
 /** An array of variation values  */
 var variationValues = Object.values(ColorVariation);
 /** An array of all non-default variations */
-var nonDefaultVariations = variationValues.filter(function(v) {
+var nonDefaultVariations = variationValues.filter(function (v) {
   return v !== defaultVariation;
 });
 function themify(options) {
   /** Regex to get the value inside the themify parenthesis */
   var themifyRegExp = /rqthemify\(([^)]+)\)/gi;
   options = buildOptions(options);
-  return function(root) {
+  return function (root) {
     processRules(root);
   };
   function getThemifyValue(propertyValue) {
@@ -45,14 +45,14 @@ function themify(options) {
       var parsedValue;
       try {
         if (typeof value === "string") {
-	  var color;
-	  var alpha = 1;
-	  if (value.includes(",")) {
-	    [color, alpha] = value.split(",").map(e => e.trim());
-	  } else {
-	    color = value;
-	  }
-          parsedValue = {"light": [color, alpha], "dark": [color, alpha]};
+          var color;
+          var alpha = 1;
+          if (value.includes(",")) {
+            [color, alpha] = value.split(",").map((e) => e.trim());
+          } else {
+            color = value;
+          }
+          parsedValue = { light: [color, alpha], dark: [color, alpha] };
         } else {
           parsedValue = JSON.parse(value);
         }
@@ -75,11 +75,11 @@ function themify(options) {
       if (options.palette) return parsedValue[variationName];
     }
     // iterate through all variations
-    variationValues.forEach(function(variationName) {
+    variationValues.forEach(function (variationName) {
       // replace all 'themify' tokens with the right string
       colorVariations[variationName] = propertyValue.replace(
         themifyRegExp,
-        function(occurrence, value) {
+        function (occurrence, value) {
           // parse and normalize the color
           var parsedColor = normalize(value, variationName);
           // convert it to the right format
@@ -90,7 +90,6 @@ function themify(options) {
     return colorVariations;
   }
   function translateColor(colorArr, variationName) {
-
     var [colorVar, alpha] = colorArr;
     // returns the real color representation
     var underlineColor = options.palette[variationName][colorVar];
@@ -106,7 +105,7 @@ function themify(options) {
     return underlineColor;
   }
   function processRules(root) {
-    root.walkRules(function(rule) {
+    root.walkRules(function (rule) {
       if (!hasThemify(rule.toString())) {
         return;
       }
@@ -114,13 +113,11 @@ function themify(options) {
       var aggragatedSelectors = [];
       var createdRules = [];
       var variationRules = ((_a = {}), (_a[defaultVariation] = rule), _a);
-      rule.walkDecls(function(decl) {
+      rule.walkDecls(function (decl) {
         var propertyValue = decl.value;
         if (!hasThemify(propertyValue)) return;
         var property = decl.prop;
-        var variationValueMap = getThemifyValue(
-          propertyValue
-        );
+        var variationValueMap = getThemifyValue(propertyValue);
         var defaultVariationValue = variationValueMap[defaultVariation];
         decl.value = defaultVariationValue;
         // indicate if we have a global rule, that cannot be nested
@@ -130,7 +127,7 @@ function themify(options) {
           return;
         }
         // create a new declaration and append it to each rule
-        nonDefaultVariations.forEach(function(variationName) {
+        nonDefaultVariations.forEach(function (variationName) {
           var currentValue = variationValueMap[variationName];
           // variable for non-default variation is optional
           if (!currentValue || currentValue === "null") {
@@ -167,7 +164,7 @@ function themify(options) {
       }
       // append each created rule
       if (createdRules.length) {
-        createdRules.forEach(function(r) {
+        createdRules.forEach(function (r) {
           return root.append(r);
         });
       }
@@ -209,7 +206,7 @@ function themify(options) {
   function getSelectorName(rule, variationName) {
     var selectorPrefix = "." + (options.classPrefix || "") + variationName;
     return rule.selectors
-      .map(function(selector) {
+      .map(function (selector) {
         return selectorPrefix + " " + selector;
       })
       .join(",");
@@ -221,5 +218,5 @@ function themify(options) {
   }
 }
 module.exports = {
-  themify: postcss.plugin("rqThemes", themify)
+  themify: postcss.plugin("rqThemes", themify),
 };

@@ -1,12 +1,12 @@
 <template>
   <el-popover
+    v-if="links.length > 0"
+    v-model="active"
     class="nav-button__wrapper"
     placement="bottom-start"
     trigger="hover"
     popper-class="nav-menu"
-    v-model="active"
     :visible-arrow="false"
-    v-if="links.length > 0"
   >
     <div>
       <dropdown-menu
@@ -16,10 +16,10 @@
       ></dropdown-menu>
     </div>
     <el-button
+      slot="reference"
       type="text"
       :class="['nav-button', { active, light }]"
       @click="clickHandler"
-      slot="reference"
     >
       <span>{{ label }}</span>
       <i
@@ -31,9 +31,9 @@
 
   <el-button
     v-else
+    slot="reference"
     type="text"
     :class="['nav-button', { light }]"
-    slot="reference"
     @click="clickHandler"
   >
     <span>{{ label }}</span>
@@ -54,33 +54,33 @@ export default {
   components: {
     elPopover,
     elButton,
-    DropdownMenu
+    DropdownMenu,
   },
   props: {
     light: {
       type: Boolean,
-      default: false
+      default: false,
     },
     label: {
       type: String,
-      required: true
+      required: true,
     },
     links: {
       default: () => [],
-      type: Array
+      type: Array,
     },
     support: {
       required: true,
-      type: Object
+      type: Object,
     },
     more: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
-      active: false
+      active: false,
     };
   },
   methods: {
@@ -89,8 +89,8 @@ export default {
     },
     redirect(...args) {
       this.$emit("redirect", ...args);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -100,7 +100,6 @@ export default {
 .nav-button {
   position: relative;
   @include text;
-  position: relative;
   padding: 4px 14px;
   height: 100%;
   margin: 0;
@@ -125,9 +124,6 @@ export default {
   &:focus {
     color: rqthemify(text);
   }
-  &:hover:not(.active) {
-    box-shadow:0px 0px 8px 0px rgba(0,0,0,0.06);
-  }
   &.active {
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
   }
@@ -138,6 +134,9 @@ export default {
     &::after {
       background: rqthemify(hover-color);
     }
+  }
+  &:hover:not(.active) {
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.06);
   }
   &.light {
     border-width: 0;

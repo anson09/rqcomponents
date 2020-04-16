@@ -11,7 +11,7 @@ function snakeCaseConvert(data) {
 
 function queryStringify(data) {
   return Object.entries(data)
-    .map(kvArr => kvArr.join("="))
+    .map((kvArr) => kvArr.join("="))
     .join("&");
 }
 
@@ -20,9 +20,9 @@ async function urlencodePost(url, params) {
     url,
     method: "post",
     headers: {
-      "content-type": "application/x-www-form-urlencoded;charset=UTF-8"
+      "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
-    data: queryStringify(params)
+    data: queryStringify(params),
   });
   return data;
 }

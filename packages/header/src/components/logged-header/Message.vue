@@ -264,7 +264,6 @@ export default {
     }
   }
   &__header {
-    height: 100%;
     padding: 0 20px;
     font-size: 12px;
     line-height: 1.5;

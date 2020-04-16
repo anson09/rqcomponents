@@ -9,19 +9,20 @@ import { terser } from "rollup-plugin-terser";
 import images from "rollup-plugin-image-files";
 import ignoreImport from "rollup-plugin-ignore-import";
 import pkg from "./package.json";
+import { plugins as postPlugins } from "./.postcssrc";
 
-const ensureArray = maybeArr =>
+const ensureArray = (maybeArr) =>
   Array.isArray(maybeArr) ? maybeArr : [maybeArr];
 
 const external = Object.keys(pkg.peerDependencies || {});
 const allExternal = external.concat(Object.keys(pkg.dependencies || {}));
 
-const makeExternalPredicate = externalArr => {
+const makeExternalPredicate = (externalArr) => {
   if (externalArr.length === 0) {
     return () => false;
   }
   const pattern = new RegExp(`^(${externalArr.join("|")})($|/)`);
-  return id => pattern.test(id);
+  return (id) => pattern.test(id);
 };
 
 const createConfig = ({ output, umd = false, env } = {}) => {
@@ -29,14 +30,13 @@ const createConfig = ({ output, umd = false, env } = {}) => {
 
   return {
     input: "src/index.js",
-    output: ensureArray(output).map(format =>
-      Object.assign({}, format, {
-        name: "rqcomponent",
-        exports: "named",
-        sourcemap: true,
-        amd: { id: "rqcomponents" }
-      })
-    ),
+    output: ensureArray(output).map((format) => ({
+      ...format,
+      name: "rqcomponent",
+      exports: "named",
+      sourcemap: true,
+      amd: { id: "rqcomponents" },
+    })),
     plugins: [
       umd &&
         url({
@@ -48,25 +48,25 @@ const createConfig = ({ output, umd = false, env } = {}) => {
             "**/*.ttf",
             "**/*.svg",
             "**/*.png",
-            "**/*.jpg"
+            "**/*.jpg",
           ],
-          emitFiles: true
+          emitFiles: true,
         }),
       !umd && images(),
       !umd &&
         ignoreImport({
           include: "**/iconfont.css",
-          body: ""
+          body: "",
         }),
       postcss({
         extract: !umd,
-        plugins: require("./.postcssrc").plugins,
+        plugins: postPlugins,
         minimize: min,
-        sourceMap: !min
+        sourceMap: !min,
       }),
       resolve({
         preferBuiltins: false,
-        browser: true
+        browser: true,
       }),
       babel({
         exclude: "node_modules/**",
@@ -80,46 +80,46 @@ const createConfig = ({ output, umd = false, env } = {}) => {
                   modules: false,
                   useBuiltIns: "usage",
                   targets: {
-                    ie: "11"
-                  }
+                    ie: "11",
+                  },
                 }
               : {
                   targets: {
-                    ie: "11"
-                  }
-                }
-          ]
+                    ie: "11",
+                  },
+                },
+          ],
         ],
-        plugins: [["@babel/plugin-proposal-object-rest-spread"]]
+        plugins: [["@babel/plugin-proposal-object-rest-spread"]],
       }),
       commonjs(),
-      vue({css: false}),
+      vue({ css: false }),
       json(),
       terser({
-        include: [/^.+\.min\.js$/]
-      })
+        include: [/^.+\.min\.js$/],
+      }),
     ].filter(Boolean),
-    external: makeExternalPredicate(umd ? external : allExternal)
+    external: makeExternalPredicate(umd ? external : allExternal),
   };
 };
 
 const configs = {
   cjs: {
-    output: { file: pkg.main, format: "cjs" }
+    output: { file: pkg.main, format: "cjs" },
   },
   esm: {
-    output: { file: pkg.module, format: "esm" }
+    output: { file: pkg.module, format: "esm" },
   },
   umd: {
     output: { file: pkg.unpkg.replace(/\.min\.js$/, ".js"), format: "umd" },
     umd: true,
-    env: "development"
+    env: "development",
   },
   umd_prod: {
     output: { file: pkg.unpkg, format: "umd" },
     umd: true,
-    env: "production"
-  }
+    env: "production",
+  },
 };
 
 const buildTypes = Object.keys(configs);
@@ -127,5 +127,5 @@ const { ROLLUP_BUILDS = buildTypes.join(",") } = process.env;
 const builds = ROLLUP_BUILDS.split(",");
 
 export default buildTypes
-  .filter(type => builds.includes(type))
-  .map(type => createConfig(configs[type]));
+  .filter((type) => builds.includes(type))
+  .map((type) => createConfig(configs[type]));

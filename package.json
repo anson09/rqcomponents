@@ -14,7 +14,8 @@
     "dev:lib": "rollup -w -c",
     "dev": " rm -rf demo/dist && parcel watch ./demo/index.html --no-autoinstall --out-dir demo/dist",
     "build": "rollup -c",
-    "clean": "rm -rf .cache dist"
+    "clean": "rm -rf .cache dist",
+    "lint": "./scripts/lint.sh"
   },
   "keywords": [
     "vue"
@@ -40,10 +41,11 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-vue": "^6.0.1",
     "husky": "^3.1.0",
-    "lint-staged": "^9.4.3",
+    "lint-staged": "^10.1.3",
     "lodash": "^4.17.15",
     "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.3",
+    "prettier": "^2.0.4",
     "regenerator-runtime": "^0.13.3",
     "rollup": "^1.17.0",
     "rollup-plugin-babel": "^4.3.3",
@@ -58,6 +60,10 @@
     "rollup-plugin-terser": "^5.1.1",
     "rollup-plugin-url": "^2.2.2",
     "rollup-plugin-vue": "^5.0.1",
+    "stylelint": "^13.3.2",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-scss": "^3.17.0",
     "vue": "^2.6.10",
     "vue-hot-reload-api": "^2.3.3",
     "vue-router": "^3.0.7",

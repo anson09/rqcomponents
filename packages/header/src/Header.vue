@@ -35,25 +35,25 @@ export default {
   name: "RqHeader",
   components: {
     LoggedHeader,
-    AnkaHeader
+    AnkaHeader,
   },
   props: {
     notification: {
       default: "",
-      type: String
+      type: String,
     },
     mode: {
       default: "default",
-      type: String
+      type: String,
     },
     opacity: {
       default: false,
-      type: Boolean
+      type: Boolean,
     },
     topic: {
       default: "",
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     let localStorageAcount;
@@ -66,14 +66,14 @@ export default {
       isLogin = false,
       avatar = "",
       fullname: username = "",
-      rank = 0
+      rank = 0,
     } = localStorageAcount;
     return {
       defaultMode: "default",
       isLogin,
       username,
       avatar,
-      rank
+      rank,
     };
   },
   computed: {
@@ -82,7 +82,7 @@ export default {
     },
     showWarning() {
       return this.$slots.notification || this.notification;
-    }
+    },
   },
   mounted() {
     this.initAccount();
@@ -94,7 +94,7 @@ export default {
     async initAccount() {
       try {
         const {
-          data: { code, fullname, avatar, phone, email, userId, rank }
+          data: { code, fullname, avatar, phone, email, userId, rank },
         } = await getAccount();
         if (code === 0) {
           localStorage.setItem(
@@ -106,7 +106,7 @@ export default {
               phone,
               email,
               userId,
-              rank
+              rank,
             })
           );
           this.isLogin = true;
@@ -126,8 +126,8 @@ export default {
       this.username = "";
       this.rank = 0;
       localStorage.removeItem("common_account");
-    }
-  }
+    },
+  },
 };
 </script>
 
