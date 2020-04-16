@@ -1,6 +1,3 @@
-import autoprefixer from "autoprefixer";
-import themify from "./themify";
-
 const themifyOptions = {
   palette: {
     light: {
@@ -75,4 +72,9 @@ const themifyOptions = {
   classPrefix: "theme-",
 };
 
-export const plugins = [autoprefixer({ grid: true }), themify(themifyOptions)];
+module.exports = {
+  plugins: [
+    require("autoprefixer")({ grid: true }),
+    require("./themify").themify(themifyOptions),
+  ],
+};

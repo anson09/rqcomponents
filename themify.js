@@ -1,14 +1,14 @@
-import postcss from "postcss";
-
-const THEMIFY = "rqthemify";
+"use strict";
+var postcss = require("postcss");
+var THEMIFY = "rqthemify";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const defaultOptions = {
+var defaultOptions = {
   palette: {},
   classPrefix: "",
 };
 /** supported color variations */
-const ColorVariation = {
+var ColorVariation = {
   DARK: "dark",
   LIGHT: "light",
 };
@@ -20,33 +20,33 @@ function buildOptions(options) {
   if (!options.palette) {
     throw new Error("The 'palette' option is required.");
   }
-  return { ...defaultOptions, ...options };
+  return Object.assign({}, defaultOptions, options);
 }
 /** Define the default variation */
-const defaultVariation = ColorVariation.LIGHT;
+var defaultVariation = ColorVariation.LIGHT;
 /** An array of variation values  */
-const variationValues = Object.values(ColorVariation);
+var variationValues = Object.values(ColorVariation);
 /** An array of all non-default variations */
-const nonDefaultVariations = variationValues.filter(function (v) {
+var nonDefaultVariations = variationValues.filter(function (v) {
   return v !== defaultVariation;
 });
 function themify(options) {
   /** Regex to get the value inside the themify parenthesis */
-  const themifyRegExp = /rqthemify\(([^)]+)\)/gi;
+  var themifyRegExp = /rqthemify\(([^)]+)\)/gi;
   options = buildOptions(options);
   return function (root) {
     processRules(root);
   };
   function getThemifyValue(propertyValue) {
-    /** Remove the start and end ticks * */
+    /** Remove the start and end ticks **/
     propertyValue = propertyValue.replace(/'/g, "");
-    const colorVariations = {};
+    var colorVariations = {};
     function normalize(value, variationName) {
-      let parsedValue;
+      var parsedValue;
       try {
         if (typeof value === "string") {
-          let color;
-          let alpha = 1;
+          var color;
+          var alpha = 1;
           if (value.includes(",")) {
             [color, alpha] = value.split(",").map((e) => e.trim());
           } else {
@@ -57,12 +57,14 @@ function themify(options) {
           parsedValue = JSON.parse(value);
         }
       } catch (ex) {
-        throw new Error(`fail to parse the following expression: ${value}.`);
+        throw new Error(
+          "fail to parse the following expression: " + value + "."
+        );
       }
-      const currentValue = parsedValue[variationName];
+      var currentValue = parsedValue[variationName];
 
       if (!currentValue) {
-        throw new Error(`${value} has one variation.`);
+        throw new Error(value + " has one variation.");
       }
 
       if (!Array.isArray(currentValue)) {
@@ -79,7 +81,7 @@ function themify(options) {
         themifyRegExp,
         function (occurrence, value) {
           // parse and normalize the color
-          const parsedColor = normalize(value, variationName);
+          var parsedColor = normalize(value, variationName);
           // convert it to the right format
           return translateColor(parsedColor, variationName);
         }
@@ -88,16 +90,16 @@ function themify(options) {
     return colorVariations;
   }
   function translateColor(colorArr, variationName) {
-    const [colorVar, alpha] = colorArr;
+    var [colorVar, alpha] = colorArr;
     // returns the real color representation
-    const underlineColor = options.palette[variationName][colorVar];
+    var underlineColor = options.palette[variationName][colorVar];
     if (!underlineColor) {
       // variable is not mandatory in non-default variations
       if (variationName !== defaultVariation) {
         return null;
       }
       throw new Error(
-        `The variable name '${colorVar}' doesn't exists in your palette.`
+        "The variable name '" + colorVar + "' doesn't exists in your palette."
       );
     }
     return underlineColor;
@@ -107,26 +109,26 @@ function themify(options) {
       if (!hasThemify(rule.toString())) {
         return;
       }
-      const aggragatedSelectorsMap = {};
-      const aggragatedSelectors = [];
-      const createdRules = [];
-      const variationRules = { defaultVariation: rule };
+      var aggragatedSelectorsMap = {};
+      var aggragatedSelectors = [];
+      var createdRules = [];
+      var variationRules = ((_a = {}), (_a[defaultVariation] = rule), _a);
       rule.walkDecls(function (decl) {
-        const propertyValue = decl.value;
+        var propertyValue = decl.value;
         if (!hasThemify(propertyValue)) return;
-        const property = decl.prop;
-        const variationValueMap = getThemifyValue(propertyValue);
-        const defaultVariationValue = variationValueMap[defaultVariation];
+        var property = decl.prop;
+        var variationValueMap = getThemifyValue(propertyValue);
+        var defaultVariationValue = variationValueMap[defaultVariation];
         decl.value = defaultVariationValue;
         // indicate if we have a global rule, that cannot be nested
-        const createNonDefaultVariationRules = isAtRule(rule);
+        var createNonDefaultVariationRules = isAtRule(rule);
         // don't create extra CSS for global rules
         if (createNonDefaultVariationRules) {
           return;
         }
         // create a new declaration and append it to each rule
         nonDefaultVariations.forEach(function (variationName) {
-          const currentValue = variationValueMap[variationName];
+          var currentValue = variationValueMap[variationName];
           // variable for non-default variation is optional
           if (!currentValue || currentValue === "null") {
             return;
@@ -134,7 +136,7 @@ function themify(options) {
           // when the declaration is the same as the default variation,
           // we just need to concatenate our selector to the default rule
           if (currentValue === defaultVariationValue) {
-            const selector = getSelectorName(rule, variationName);
+            var selector = getSelectorName(rule, variationName);
             // append the selector once
             if (!aggragatedSelectorsMap[variationName]) {
               aggragatedSelectorsMap[variationName] = true;
@@ -143,12 +145,12 @@ function themify(options) {
           } else {
             // creating the rule for the first time
             if (!variationRules[variationName]) {
-              const clonedRule = createRuleWithVariation(rule, variationName);
+              var clonedRule = createRuleWithVariation(rule, variationName);
               variationRules[variationName] = clonedRule;
               // append the new rule to the array, so we can append it later
               createdRules.push(clonedRule);
             }
-            const variationDecl = createDecl(
+            var variationDecl = createDecl(
               property,
               variationValueMap[variationName]
             );
@@ -166,6 +168,7 @@ function themify(options) {
           return root.append(r);
         });
       }
+      var _a;
     });
   }
   /**
@@ -177,7 +180,7 @@ function themify(options) {
     return rule.parent && rule.parent.type === "atrule";
   }
   function createDecl(prop, value) {
-    return postcss.decl({ prop, value });
+    return postcss.decl({ prop: prop, value: value });
   }
   /**
    * check if there's a themify keyword in this declaration
@@ -192,8 +195,8 @@ function themify(options) {
    * @param variationName
    */
   function createRuleWithVariation(rule, variationName) {
-    const selector = getSelectorName(rule, variationName);
-    return postcss.rule({ selector });
+    var selector = getSelectorName(rule, variationName);
+    return postcss.rule({ selector: selector });
   }
   /**
    * Get a selector name for the given rule and variation
@@ -201,17 +204,19 @@ function themify(options) {
    * @param variationName
    */
   function getSelectorName(rule, variationName) {
-    const selectorPrefix = `.${options.classPrefix || ""}${variationName}`;
+    var selectorPrefix = "." + (options.classPrefix || "") + variationName;
     return rule.selectors
       .map(function (selector) {
-        return `${selectorPrefix} ${selector}`;
+        return selectorPrefix + " " + selector;
       })
       .join(",");
   }
   function cloneEmptyRule(rule, overrideConfig) {
-    const clonedRule = rule.clone(overrideConfig);
+    var clonedRule = rule.clone(overrideConfig);
     clonedRule.removeAll();
     return clonedRule;
   }
 }
-export default postcss.plugin("rqThemes", themify);
+module.exports = {
+  themify: postcss.plugin("rqThemes", themify),
+};

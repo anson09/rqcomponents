@@ -1,15 +1,15 @@
 import babel from "rollup-plugin-babel";
-import commonjs from "rollup-plugin-commonjs";
 import vue from "rollup-plugin-vue";
 import resolve from "rollup-plugin-node-resolve";
+import commonjs from "rollup-plugin-commonjs";
 import postcss from "rollup-plugin-postcss";
 import url from "rollup-plugin-url";
 import json from "rollup-plugin-json";
 import { terser } from "rollup-plugin-terser";
-import images from "rollup-plugin-image-files";
+import images from "@rollup/plugin-image";
 import ignoreImport from "rollup-plugin-ignore-import";
 import pkg from "../package.json";
-import { plugins as postPlugins } from "./.postcssrc";
+const { plugins: postPlugins } = require("../.postcssrc");
 
 const ensureArray = (maybeArr) =>
   Array.isArray(maybeArr) ? maybeArr : [maybeArr];
@@ -75,7 +75,7 @@ const createConfig = ({ output, umd = false, env } = {}) => {
             "@babel/preset-env",
             umd
               ? {
-                  corejs: 2,
+                  corejs: 3,
                   modules: false,
                   useBuiltIns: "usage",
                   targets: {
@@ -91,11 +91,13 @@ const createConfig = ({ output, umd = false, env } = {}) => {
         ],
         plugins: [["@babel/plugin-proposal-object-rest-spread"]],
       }),
-      commonjs(),
       vue({ css: false }),
       json(),
       terser({
         include: [/^.+\.min\.js$/],
+      }),
+      commonjs({
+        include: "node_modules/**",
       }),
     ].filter(Boolean),
     external: makeExternalPredicate(umd ? external : allExternal),
@@ -110,12 +112,34 @@ const configs = {
     output: { file: pkg.module, format: "esm" },
   },
   umd: {
-    output: { file: pkg.unpkg.replace(/\.min\.js$/, ".js"), format: "umd" },
+    output: {
+      file: pkg.unpkg.replace(/\.min\.js$/, ".js"),
+      format: "umd",
+      globals: {
+        axios: "axios",
+        "element-ui/lib/button": "elButton",
+        "element-ui/lib/popover": "elPopover",
+        "element-ui/lib/message": "elMessage",
+        "lodash/debounce": "debounce",
+        "lodash/snakeCase": "snakeCase",
+      },
+    },
     umd: true,
     env: "development",
   },
   umd_prod: {
-    output: { file: pkg.unpkg, format: "umd" },
+    output: {
+      file: pkg.unpkg,
+      format: "umd",
+      globals: {
+        axios: "axios",
+        "element-ui/lib/button": "elButton",
+        "element-ui/lib/popover": "elPopover",
+        "element-ui/lib/message": "elMessage",
+        "lodash/debounce": "debounce",
+        "lodash/snakeCase": "snakeCase",
+      },
+    },
     umd: true,
     env: "production",
   },
