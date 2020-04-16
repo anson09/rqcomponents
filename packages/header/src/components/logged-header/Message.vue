@@ -75,7 +75,6 @@ export default {
   components: { MessageList, elPopover },
   data() {
     return {
-      value: "light",
       messageTypes: [
         { label: "未读消息", value: "unread" },
         { label: "已读消息", value: "read" },
@@ -87,7 +86,7 @@ export default {
       curType: "unread",
       unreadMsgNum: 0,
       messageVisible: false,
-      limit: 6,
+      limit: 10,
       fetchInterval: null,
       message: {
         read: {
@@ -185,7 +184,7 @@ export default {
             this.message[messageProp].set.clear();
           }
           res.data.forEach((item) => {
-            if (!(item.id in this.message[messageProp].set)) {
+            if (!this.message[messageProp].set.has(item.id)) {
               message.push({ ...item });
               this.message[messageProp].set.add(item.id);
             }
@@ -310,7 +309,7 @@ export default {
 
   &-container {
     position: absolute;
-    background: white;
+    background: rqthemify(active-background-color);
     border-radius: 8px 0 8px 8px;
     width: 438px;
     right: 0;
@@ -319,7 +318,6 @@ export default {
 
   &-setting {
     &__dropdown {
-      background-color: white;
       box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
     }
     &__icon {
@@ -339,11 +337,12 @@ export default {
       line-height: 46px;
       border: none;
       color: rqthemify(text);
+      background-color: transparent;
       &:hover,
       &:active,
       &:focus {
         color: rqthemify(highlight);
-        background-color: rqthemify(bg-hover);
+        background-color: rqthemify(hover-background-color);
       }
     }
   }
@@ -351,6 +350,14 @@ export default {
     .message-setting-popper {
       min-width: 0;
       padding: 0;
+      border-color: rqthemify(border-gray);
+      background-color: rqthemify(active-background-color);
+      .popper__arrow {
+        border-bottom-color: rqthemify(border-gray);
+        &:after {
+          border-bottom-color: rqthemify(active-background-color);
+        }
+      }
     }
   }
 }

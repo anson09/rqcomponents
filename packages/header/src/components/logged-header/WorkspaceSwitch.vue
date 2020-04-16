@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="workspaces.length"
     class="workspace-container"
     @mouseover="toggleDropdown(true)"
     @mouseleave="toggleDropdown(false)"
@@ -44,12 +45,15 @@ export default {
   name: "WorkspaceSwitch",
   data() {
     const localStorageAccount = this.getStorageItem("common_account");
+    const storageKey = "common_workspace";
+    const localStorageWorkspaces = this.getStorageItem(storageKey);
     return {
       dropdownShow: false,
       workspaces: [],
       curWs: {},
       account: localStorageAccount,
-      storageKey: "common_workspace",
+      storageKey,
+      localStorageWorkspaces,
     };
   },
 
@@ -75,12 +79,15 @@ export default {
       try {
         ({ data: this.workspaces } = await getWorksapces());
 
-        const localStorageWorkspace = this.getStorageItem(this.storageKey)[
-          this.account.userId
-        ];
+        if (!this.workspaces.length) {
+          delete this.localStorageWorkspaces[this.account.userId];
+          this.setStorage();
+          return;
+        }
+        const localStorageWs = this.localStorageWorkspaces[this.account.userId];
 
         const ws = this.workspaces.filter(
-          (item) => item.id === localStorageWorkspace
+          (item) => item.id === localStorageWs
         )[0];
 
         if (ws) {
@@ -98,17 +105,18 @@ export default {
       return JSON.parse(localStorage[name] || "{}");
     },
     setWorkspace(ws) {
-      const localStorageWorkspaces = this.getStorageItem(this.storageKey);
+      this.localStorageWorkspaces[this.account.userId] = ws.id;
       this.curWs = ws;
-      localStorage.setItem(
-        this.storageKey,
-        JSON.stringify({
-          ...localStorageWorkspaces,
-          [this.account.userId]: ws.id,
-        })
-      );
+      this.setStorage();
       this.$emit("switchWorkspace", ws.id);
       this.toggleDropdown(false);
+    },
+
+    setStorage() {
+      localStorage.setItem(
+        this.storageKey,
+        JSON.stringify(this.localStorageWorkspaces)
+      );
     },
   },
 };
@@ -130,7 +138,7 @@ export default {
     display: block;
     position: absolute;
     width: 100%;
-    background: white;
+    background: rqthemify(active-background-color);
     left: 0;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 8px 0px;
     box-sizing: border-box;
@@ -147,13 +155,14 @@ export default {
       text-overflow: ellipsis;
       white-space: nowrap;
       color: rqthemify(text);
+
       &.is-active {
         color: rqthemify(highlight);
       }
       &:hover,
       &:active,
       &:focus {
-        background-color: #ecf0f4;
+        background-color: rqthemify(hover-background-color);
         color: rqthemify(highlight);
         font-weight: 600;
       }
@@ -165,7 +174,7 @@ export default {
     height: 100%;
     padding: 0 20px;
     position: relative;
-    background: white;
+    background: inherit;
     z-index: 9;
     &__text {
       width: 135px;

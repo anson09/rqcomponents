@@ -1,26 +1,30 @@
 <template>
-  <div ref="list" class="list">
-    <div v-for="(msg, index) in message" :key="msg.id" class="item-wrapper">
-      <i
-        class="el-icon-remove-outline"
-        @click.stop="$emit('deleteMessage', { msg, index })"
-      ></i>
-      <a
-        class="item"
-        rel="noopener"
-        target="_blank"
-        :href="linkMap[msg.type]"
-        @click="$emit('updateMessage', { msg, index })"
-      >
-        <p class="title">
-          <img :src="msg.from.avatar" alt="" class="avatar title__item" />
-          <span class="name title__item">{{ msg.from.name }}</span>
-          <span class="time title__item">{{ msg.datetime | dateFormat }}</span>
-        </p>
-        <p class="content">
-          {{ msg.content }}
-        </p>
-      </a>
+  <div class="list-container">
+    <div ref="list" class="list">
+      <div v-for="(msg, index) in message" :key="msg.id" class="item-wrapper">
+        <i
+          class="el-icon-remove-outline"
+          @click.stop="$emit('deleteMessage', { msg, index })"
+        ></i>
+        <a
+          class="item"
+          rel="noopener"
+          target="_blank"
+          :href="linkMap[msg.type]"
+          @click="$emit('updateMessage', { msg, index })"
+        >
+          <p class="title">
+            <img :src="msg.from.avatar" alt="" class="avatar title__item" />
+            <span class="name title__item">{{ msg.from.name }}</span>
+            <span class="time title__item">{{
+              msg.datetime | dateFormat
+            }}</span>
+          </p>
+          <p class="content">
+            {{ msg.content }}
+          </p>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -80,9 +84,12 @@ export default {
   height: fit-content;
   overflow-y: auto;
   overflow-x: hidden;
+  &-container {
+    padding-right: 4px;
+  }
   .item {
     border-bottom: 1px solid rqthemify(border-gray);
-    height: 100px;
+    padding: 14px 0;
     display: flex;
     color: inherit;
     justify-content: center;
@@ -112,7 +119,7 @@ export default {
         }
       }
       &:hover {
-        background-color: rqthemify(bg-hover);
+        background-color: rqthemify(hover-background-color);
         .el-icon-remove-outline {
           display: inline-block;
         }
@@ -132,8 +139,7 @@ export default {
       height: 20px;
     }
     .content {
-      height: 44px;
-      color: rqthemify(text-darker);
+      color: rqthemify(text);
       font-size: 14px;
       letter-spacing: 0.4px;
       line-height: 22px;
@@ -142,6 +148,12 @@ export default {
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rqthemify(scrollbar-background);
   }
 }
 </style>

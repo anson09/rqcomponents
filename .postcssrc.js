@@ -3,7 +3,6 @@ const themifyOptions = {
     light: {
       "bg-white": "white",
       "bg-gray": "#f6f9fc",
-      "bg-hover": "#f3f5f8",
 
       "container-bg": "#f7f8fa",
       text: "#666666",
@@ -11,7 +10,6 @@ const themifyOptions = {
       "text-gray-lighter": "#c5c5c5",
       "text-hard": "#2a2a2a",
       "text-dark": "#333",
-      "text-darker": "#2f2f2f",
       "text-white": "#ffffff",
       "text-white-dark": "#e7e9f1",
       "text-disabled": "#a3a3a3",
@@ -49,6 +47,7 @@ const themifyOptions = {
       "shadow-color": "rgba(152, 165, 185, 0.2)",
       "background-color": "white",
       "active-background-color": "white",
+      "hover-background-color": "#f3f5f8",
 
       // theme
       border: "#d7dbe5",
@@ -56,6 +55,7 @@ const themifyOptions = {
       "border-hover": "hsla(216, 76%, 44%, 0.8)",
       "background-color": "white",
       "hover-color": "hsla(216, 76%, 44%, 0.8)",
+      "scrollbar-background": "#e6e9ed",
     },
     dark: {
       border: "#323d4e",
@@ -67,6 +67,9 @@ const themifyOptions = {
       highlight: "#4F89FF",
       "background-color": "#1A1C25",
       "active-background-color": "#282B35",
+      "hover-background-color": "#2f3948",
+      "border-gray": "#323c4c",
+      "scrollbar-background": "#555d68",
     },
   },
   classPrefix: "theme-",
