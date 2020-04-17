@@ -12,6 +12,7 @@
       >
         <WorkspaceSwitch
           v-if="btn.type === 'workspace'"
+          v-bind="btn"
           v-on="$listeners"
         ></WorkspaceSwitch>
         <a
