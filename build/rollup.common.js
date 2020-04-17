@@ -28,7 +28,7 @@ const makeExternalPredicate = (externalArr) => {
 const createConfig = ({ output, umd = false, env } = {}) => {
   const min = env === "production";
   return {
-    input: "./src/index.js",
+    input: "src/index.js",
     output: ensureArray(output).map((format) => ({
       ...format,
       name: "rqcomponent",
