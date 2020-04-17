@@ -152,7 +152,6 @@ export default {
       try {
         await messageApi.deleteAllMessage("already_read");
         this.unreadMsgNum = 0;
-        this.message.unread.data = [];
         this.message.read.data = [];
       } catch (err) {
         this.$message.error(err.message);
