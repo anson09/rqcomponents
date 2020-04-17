@@ -1,5 +1,4 @@
 import babel from "rollup-plugin-babel";
-import commonjs from "@rollup/plugin-commonjs";
 import ignoreImport from "rollup-plugin-ignore-import";
 import images from "@rollup/plugin-image";
 import json from "@rollup/plugin-json";
@@ -65,10 +64,9 @@ const createConfig = Object.entries(componentsList).map(
           ],
           plugins: [["@babel/plugin-proposal-object-rest-spread"]],
         }),
-        commonjs(),
         vue({ css: false }),
         json(),
-        // minify
+        // minify, can set off for develop
         terser(),
       ].filter(Boolean),
       external: makeExternalPredicate(allExternal),
