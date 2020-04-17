@@ -20,7 +20,7 @@ new Vue({
 All format as esm script.
 
 ```js
-import { RqHeader } from "@rqjs/rqcomponents/lib/[componentName]";
+import RqHeader from "@rqjs/rqcomponents/lib/[componentName]";
 import "@rqjs/rqcomponents/lib/theme/[componentName].css";
 import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 
