@@ -1,14 +1,14 @@
 import babel from "rollup-plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
-import vue from "rollup-plugin-vue";
-import resolve from "rollup-plugin-node-resolve";
-import postcss from "rollup-plugin-postcss";
+import componentsList from "./components.json";
+import ignoreImport from "rollup-plugin-ignore-import";
+import images from "@rollup/plugin-image";
 import json from "rollup-plugin-json";
 import { terser } from "rollup-plugin-terser";
-import images from "@rollup/plugin-image";
-import ignoreImport from "rollup-plugin-ignore-import";
 import pkg from "../package.json";
-import componentsList from "./components.json";
+import postcss from "rollup-plugin-postcss";
+import resolve from "rollup-plugin-node-resolve";
+import vue from "rollup-plugin-vue";
 const { plugins: postPlugins } = require("../.postcssrc");
 
 const ensureArray = (maybeArr) =>
@@ -34,7 +34,6 @@ const createConfig = Object.entries(componentsList).map(
         format: "cjs",
         name: fileName,
         exports: "named",
-        sourcemap: true,
       },
       plugins: [
         images(),
@@ -43,10 +42,9 @@ const createConfig = Object.entries(componentsList).map(
           body: "",
         }),
         postcss({
-          extract: true,
+          extract: `lib/theme/${fileName}.css`,
           plugins: postPlugins,
           minimize: true,
-          sourceMap: false,
         }),
         resolve({
           preferBuiltins: false,
@@ -79,4 +77,11 @@ const createConfig = Object.entries(componentsList).map(
   }
 );
 
+const iconfont = {
+  input: "./packages/common/assets/icon/iconfont.css",
+  output: {
+    file: "base.css",
+  },
+};
 export default createConfig;
+// export default iconfont;
