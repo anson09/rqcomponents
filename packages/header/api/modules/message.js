@@ -14,8 +14,10 @@ const deleteMessage = async (id) => {
   return data;
 };
 
-const deleteAllMessage = async () => {
-  const { data } = await axios.delete(`${baseUrl}/messages`);
+const deleteAllMessage = async (type) => {
+  const { data } = await axios.delete(`${baseUrl}/messages`, {
+    params: { type },
+  });
   return data;
 };
 

@@ -81,7 +81,7 @@ export default {
       ],
       messageSettings: [
         { label: "全部已读", value: "updateAllMessage" },
-        { label: "全部删除", value: "deleteAllMessage" },
+        { label: "删除已读", value: "deleteAllMessage" },
       ],
       curType: "unread",
       unreadMsgNum: 0,
@@ -150,7 +150,8 @@ export default {
     },
     async deleteAllMessage() {
       try {
-        await messageApi.deleteAllMessage();
+        await messageApi.deleteAllMessage("already_read");
+        this.unreadMsgNum = 0;
         this.message.unread.data = [];
         this.message.read.data = [];
       } catch (err) {
@@ -162,6 +163,7 @@ export default {
         await messageApi.updateAllMessage();
         this.message.read.data.unshift(...this.message.unread.data);
         this.message.unread.data = [];
+        this.unreadMsgNum = 0;
       } catch (err) {
         this.$message.error(err.message);
       }

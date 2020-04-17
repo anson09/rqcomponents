@@ -37,6 +37,7 @@
       </div>
     </transition>
   </div>
+  <a v-else class="create-btn" href="/dashboard#createWs"> 创建工作空间</a>
 </template>
 <script>
 import { getWorksapces } from "../../../api";
@@ -129,7 +130,7 @@ export default {
     height: 100%;
     padding-top: 4px;
     box-sizing: border-box;
-    color: rqthemify(text);
+
     &:hover {
       color: rqthemify(highlight);
     }
@@ -169,6 +170,7 @@ export default {
     }
   }
   &-btn {
+    color: rqthemify(text);
     display: flex;
     align-items: center;
     height: 100%;
@@ -192,6 +194,15 @@ export default {
     .icon--mini {
       font-size: 8px;
     }
+  }
+}
+.create-btn {
+  color: rqthemify(text);
+  font-size: 14px;
+  padding: 4px 16px 0;
+  &:hover {
+    font-weight: 600;
+    color: rqthemify(highlight);
   }
 }
 </style>
