@@ -4,6 +4,8 @@
 
 ```js
 import UI from "@rqjs/rqcomponents";
+import "@rqjs/rqcomponents/lib/theme/rqcomponents.css";
+import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 
 Vue.use(UI);
 
@@ -15,10 +17,12 @@ new Vue({
 
 ## Package
 
+All format as esm script.
+
 ```js
-import { RqHeader } from "@rqjs/rqcomponents";
-import "@rqjs/rqcomponents/dist/rqcomponents.esm.css";
-import "@rqjs/rqcomponents/packages/common/assets/icon/iconfont.css";
+import { RqHeader } from "@rqjs/rqcomponents/lib/[componentName]";
+import "@rqjs/rqcomponents/lib/theme/[componentName].css";
+import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 
 Vue.use(RqHeader);
 
@@ -28,12 +32,12 @@ new Vue({
 });
 ```
 
-### umd
-
-bundled all assets
+Or import all components and deconstruction.
 
 ```js
-import { RqHeader } from "@rqjs/rqcomponents/dist/rqcomponents.js";
+import { RqHeader } from "@rqjs/rqcomponents";
+import "@rqjs/rqcomponents/lib/theme/[componentName].css";
+import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 
 Vue.use(RqHeader);
 

@@ -2,10 +2,13 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import VueRouter from "vue-router";
 import Vue from "vue";
-import RqHeader from "../lib/rqheader";
-import "../lib/theme/rqheader.css";
-// import "../dist/rqcomponents.esm.css";
-import "../packages/common/assets/icon/iconfont.css";
+// import RqHeader from "../lib/rqheader";
+// import "../lib/theme/rqheader.css";
+
+import "../lib/theme/rqcomponents.css";
+import { RqHeader } from "../lib/rqcomponents.js";
+// import "../packages/common/assets/icon/iconfont.css";
+import "../lib/theme/base.css";
 
 // dev
 // import { RqHeader } from "../src";

@@ -1,14 +1,16 @@
 import babel from "rollup-plugin-babel";
-import commonjs from "rollup-plugin-commonjs";
-import componentsList from "./components.json";
+import commonjs from "@rollup/plugin-commonjs";
 import ignoreImport from "rollup-plugin-ignore-import";
 import images from "@rollup/plugin-image";
-import json from "rollup-plugin-json";
+import json from "@rollup/plugin-json";
 import { terser } from "rollup-plugin-terser";
-import pkg from "../package.json";
 import postcss from "rollup-plugin-postcss";
-import resolve from "rollup-plugin-node-resolve";
+import resolve from "@rollup/plugin-node-resolve";
+import url from "@rollup/plugin-url";
 import vue from "rollup-plugin-vue";
+
+import componentsList from "./components.json";
+import pkg from "../package.json";
 const { plugins: postPlugins } = require("../.postcssrc");
 
 const ensureArray = (maybeArr) =>
@@ -31,14 +33,14 @@ const createConfig = Object.entries(componentsList).map(
       input: filePath,
       output: {
         file: `lib/${fileName}.js`,
-        format: "cjs",
+        format: "esm",
         name: fileName,
         exports: "named",
       },
       plugins: [
         images(),
         ignoreImport({
-          include: "**/iconfont.css",
+          include: ["**/style/index.js"],
           body: "",
         }),
         postcss({
@@ -78,10 +80,30 @@ const createConfig = Object.entries(componentsList).map(
 );
 
 const iconfont = {
-  input: "./packages/common/assets/icon/iconfont.css",
+  input: "./packages/common/style/index",
   output: {
-    file: "base.css",
+    // FIXME css only
+    file: "lib/base.js",
   },
+  onwarn: () => {},
+  plugins: [
+    url({
+      include: [
+        "**/*.eot",
+        "**/*.woff",
+        "**/*.woff2",
+        "**/*.ttf",
+        "**/*.svg",
+        "**/*.png",
+        "**/*.jpg",
+      ],
+      fileName: "iconfont[extname]",
+      destDir: "lib/theme",
+    }),
+    postcss({
+      extract: "lib/theme/base.css",
+      minimize: true,
+    }),
+  ],
 };
-export default createConfig;
-// export default iconfont;
+export default [...createConfig, iconfont];
