@@ -4,8 +4,7 @@ extends:
   - prettier
   - prettier/vue
 globals:
-  AMap: true
-  gio: true
+  rqevent: true
 parserOptions:
   parser: babel-eslint
 rules:

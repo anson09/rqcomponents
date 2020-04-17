@@ -63,9 +63,15 @@ export default {
       return this.curWs.admin === this.account.userId;
     },
   },
-
   mounted() {
     this.getWorkspaces();
+    try {
+      const refresh = (e) => e.name === "refresh" && this.getWorkspaces();
+      rqevent.on("workspace", refresh);
+      this.$once("hook:beforeDestroy", () => rqevent.off(refresh));
+    } catch (e) {
+      // throw { message: "rqevent is not supported currently" };
+    }
   },
   methods: {
     handleLink() {

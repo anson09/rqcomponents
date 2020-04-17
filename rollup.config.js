@@ -9,7 +9,8 @@ import { terser } from "rollup-plugin-terser";
 import images from "rollup-plugin-image-files";
 import ignoreImport from "rollup-plugin-ignore-import";
 import pkg from "./package.json";
-import { plugins as postPlugins } from "./.postcssrc";
+
+const { plugins: postPlugins } = require("./.postcssrc");
 
 const ensureArray = (maybeArr) =>
   Array.isArray(maybeArr) ? maybeArr : [maybeArr];
