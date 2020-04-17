@@ -21,20 +21,9 @@ All format as esm script.
 
 ```js
 import RqHeader from "@rqjs/rqcomponents/lib/[componentName]";
-import "@rqjs/rqcomponents/lib/theme/[componentName].css";
-import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 
-Vue.use(RqHeader);
+// Or import all components and deconstruction.
 
-new Vue({
-  el: "#rq-header",
-  template: "<RqHeader></RqHeader>",
-});
-```
-
-Or import all components and deconstruction.
-
-```js
 import { RqHeader } from "@rqjs/rqcomponents";
 import "@rqjs/rqcomponents/lib/theme/[componentName].css";
 import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
