@@ -95,6 +95,7 @@ export default {
     justify-content: center;
     flex-direction: column;
     text-align: left;
+    text-decoration: none;
     &-wrapper {
       display: block;
 
@@ -149,11 +150,12 @@ export default {
       white-space: nowrap;
     }
   }
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: rqthemify(scrollbar-background);
-  }
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rqthemify(scrollbar-background);
+  border-radius: 3px;
 }
 </style>
