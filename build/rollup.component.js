@@ -3,9 +3,9 @@ import commonjs from "@rollup/plugin-commonjs";
 import ignoreImport from "rollup-plugin-ignore-import";
 import images from "@rollup/plugin-image";
 import json from "@rollup/plugin-json";
-import { terser } from "rollup-plugin-terser";
 import postcss from "rollup-plugin-postcss";
 import resolve from "@rollup/plugin-node-resolve";
+import { terser } from "rollup-plugin-terser";
 import url from "@rollup/plugin-url";
 import vue from "rollup-plugin-vue";
 
@@ -34,8 +34,6 @@ const createConfig = Object.entries(componentsList).map(
       output: {
         file: `lib/${fileName}.js`,
         format: "esm",
-        name: fileName,
-        exports: "named",
       },
       plugins: [
         images(),
@@ -70,9 +68,8 @@ const createConfig = Object.entries(componentsList).map(
         commonjs(),
         vue({ css: false }),
         json(),
-        terser({
-          include: [/^.+\.min\.js$/],
-        }),
+        // minify
+        terser(),
       ].filter(Boolean),
       external: makeExternalPredicate(allExternal),
     };
