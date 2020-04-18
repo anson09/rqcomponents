@@ -162,7 +162,6 @@ export default {
         await messageApi.updateAllMessage();
         this.message.read.data.unshift(...this.message.unread.data);
         this.message.unread.data = [];
-        this.unreadMsgNum = 0;
       } catch (err) {
         this.$message.error(err.message);
       }
