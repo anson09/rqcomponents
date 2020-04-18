@@ -28,6 +28,7 @@
           </div>
           <div class="message__header-right">
             <el-popover
+              v-model="messageSettingDropdown"
               placement="top-end"
               trigger="click"
               :append-to-body="false"
@@ -102,6 +103,7 @@ export default {
           read: false,
         },
       },
+      messageSettingDropdown: false,
     };
   },
 
@@ -221,6 +223,7 @@ export default {
       }
     },
     setMessage(val) {
+      this.messageSettingDropdown = false;
       this[val]();
     },
   },
@@ -337,6 +340,7 @@ export default {
       line-height: 46px;
       border: none;
       color: rqthemify(text);
+      outline: none;
       background-color: transparent;
       &:hover,
       &:active,
