@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+- Build process refactor.
+- Multi output for all components.
+- Output contains iconfont.
+
 ## [0.0.9-next.2] - 2020-04-17
 
 ### Added
