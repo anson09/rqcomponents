@@ -37,13 +37,18 @@
       </div>
     </transition>
   </div>
-  <a v-else class="create-btn" href="/dashboard#createWs"> 创建工作空间</a>
+  <div v-else class="create-btn" @click="createWorkspace">{{ label }}</div>
 </template>
 <script>
 import { getWorksapces } from "../../../api";
 
 export default {
   name: "WorkspaceSwitch",
+  props: {
+    settingHref: { type: String, required: true },
+    label: { type: String, required: true },
+    creatLink: { type: Object, required: true },
+  },
   data() {
     const localStorageAccount = this.getStorageItem("common_account");
     const storageKey = "common_workspace";
@@ -63,14 +68,20 @@ export default {
       return this.curWs.admin === this.account.userId;
     },
   },
-
   mounted() {
     this.getWorkspaces();
+    try {
+      const refresh = (e) => e.name === "refresh" && this.getWorkspaces();
+      rqevent.on("workspace", refresh);
+      this.$once("hook:beforeDestroy", () => rqevent.off(refresh));
+    } catch (e) {
+      // throw { message: "rqevent is not supported currently" };
+    }
   },
   methods: {
     handleLink() {
       if (this.settingVisible) {
-        window.location.href = `/dashboard/workspace/${this.curWs.id}`;
+        window.location.href = `${this.settingHref}/${this.curWs.id}`;
       }
     },
     toggleDropdown(show) {
@@ -118,6 +129,13 @@ export default {
         this.storageKey,
         JSON.stringify(this.localStorageWorkspaces)
       );
+    },
+    createWorkspace() {
+      if (window.location.href.includes(this.creatLink.href)) {
+        this.$emit("createWorkspace");
+      } else {
+        window.location.href = `${this.creatLink.href}${this.creatLink.hash}`;
+      }
     },
   },
 };

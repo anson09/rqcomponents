@@ -28,6 +28,7 @@
           </div>
           <div class="message__header-right">
             <el-popover
+              v-model="messageSettingDropdown"
               placement="top-end"
               trigger="click"
               :append-to-body="false"
@@ -102,6 +103,7 @@ export default {
           read: false,
         },
       },
+      messageSettingDropdown: false,
     };
   },
 
@@ -152,7 +154,6 @@ export default {
       try {
         await messageApi.deleteAllMessage("already_read");
         this.unreadMsgNum = 0;
-        this.message.unread.data = [];
         this.message.read.data = [];
       } catch (err) {
         this.$message.error(err.message);
@@ -163,7 +164,6 @@ export default {
         await messageApi.updateAllMessage();
         this.message.read.data.unshift(...this.message.unread.data);
         this.message.unread.data = [];
-        this.unreadMsgNum = 0;
       } catch (err) {
         this.$message.error(err.message);
       }
@@ -223,6 +223,7 @@ export default {
       }
     },
     setMessage(val) {
+      this.messageSettingDropdown = false;
       this[val]();
     },
   },
@@ -339,6 +340,7 @@ export default {
       line-height: 46px;
       border: none;
       color: rqthemify(text);
+      outline: none;
       background-color: transparent;
       &:hover,
       &:active,

@@ -280,7 +280,13 @@
       },
       {
         "type": "workspace",
-        "className": "workspace"
+        "className": "workspace",
+        "creatLink": {
+          "href": "/dashboard",
+          "hash": "#createWs"
+        },
+        "settingHref": "/dashboard/workspace",
+        "label": "创建工作空间"
       }
     ]
   }

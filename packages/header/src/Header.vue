@@ -14,6 +14,7 @@
           :avatar="avatar"
           :is-vip="isVip"
           @switchWorkspace="switchWorkspace"
+          @createWorkspace="createWorkspace"
         ></LoggedHeader>
         <AnkaHeader
           v-else
@@ -90,6 +91,9 @@ export default {
   methods: {
     switchWorkspace(val) {
       this.$emit("switchWorkspace", val);
+    },
+    createWorkspace() {
+      this.$emit("createWorkspace");
     },
     async initAccount() {
       try {
