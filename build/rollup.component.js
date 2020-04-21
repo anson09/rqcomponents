@@ -7,16 +7,12 @@ import resolve from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 import url from "@rollup/plugin-url";
 import vue from "rollup-plugin-vue";
-
+import filesize from "rollup-plugin-filesize";
 import componentsList from "./components.json";
 import pkg from "../package.json";
 const { plugins: postPlugins } = require("../.postcssrc");
 
-const ensureArray = (maybeArr) =>
-  Array.isArray(maybeArr) ? maybeArr : [maybeArr];
-
 const external = Object.keys(pkg.peerDependencies || {});
-const allExternal = external.concat(Object.keys(pkg.dependencies || {}));
 
 const makeExternalPredicate = (externalArr) => {
   if (externalArr.length === 0) {
@@ -28,6 +24,7 @@ const makeExternalPredicate = (externalArr) => {
 
 const createConfig = Object.entries(componentsList).map(
   ([fileName, filePath]) => {
+    const isDev = process.env.NODE_ENV === "development";
     return {
       input: filePath,
       output: {
@@ -38,7 +35,6 @@ const createConfig = Object.entries(componentsList).map(
         images(),
         ignoreImport({
           include: ["**/style/index.js"],
-          body: "",
         }),
         postcss({
           extract: `lib/theme/${fileName}.css`,
@@ -62,14 +58,25 @@ const createConfig = Object.entries(componentsList).map(
               },
             ],
           ],
-          plugins: [["@babel/plugin-proposal-object-rest-spread"]],
         }),
-        vue({ css: false }),
+        vue({
+          css: false,
+          compileTemplate: true,
+          htmlMinifier: {
+            customAttrSurround: [
+              [/@/, new RegExp("")],
+              [/:/, new RegExp("")],
+            ],
+            collapseWhitespace: true,
+            removeComments: true,
+          },
+        }),
         json(),
         // minify, can set off for develop
-        terser(),
+        !isDev && terser(),
+        filesize(),
       ].filter(Boolean),
-      external: makeExternalPredicate(allExternal),
+      external: makeExternalPredicate(external),
     };
   }
 );

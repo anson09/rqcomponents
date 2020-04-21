@@ -5,11 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Released]
+## [Unreleased]
 
 - Build process refactor.
 - Multi output for all components.
 - Output contains iconfont.
+
+## [Released]
 
 ## [0.0.9-next.2] - 2020-04-17
 

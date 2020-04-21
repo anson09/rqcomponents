@@ -6,7 +6,8 @@ import Vue from "vue";
 // import "../lib/theme/rqheader.css";
 
 import "../lib/theme/rqcomponents.css";
-import { RqHeader } from "../lib/rqcomponents.js";
+// import { RqHeader } from "../lib/rqcomponents.js";
+import rqui from "../lib/rqcomponents.js";
 // import "../packages/common/assets/icon/iconfont.css";
 import "../lib/theme/base.css";
 
@@ -21,10 +22,12 @@ Vue.use(VueRouter);
 //     router: true
 //   }
 // });
-Vue.use(RqHeader, {
+const cfg = {
   router: true,
   admin: true,
-});
+};
+Vue.use(rqui, { RqHeader: cfg });
+// Vue.use(RqHeader, cfg);
 
 /* eslint-disable-next-line no-new */
 new Vue({

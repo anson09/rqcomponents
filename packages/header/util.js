@@ -1,3 +1,4 @@
+// redirect with v-router or windows.methods
 function methodConstructor(cfg) {
   return {
     handleLink(params) {
