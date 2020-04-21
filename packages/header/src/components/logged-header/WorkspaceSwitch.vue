@@ -11,7 +11,7 @@
         class="el-icon-setting workspace-btn__icon"
         @click="handleLink"
       ></i>
-      <span class="workspace-btn__text">{{ curWs.name }} </span>
+      <span class="workspace-btn__text">{{ curWs.name }}</span>
       <i
         v-show="!dropdownShow"
         class="el-icon-arrow-down el-icon--right workspace-btn__icon icon--mini"
@@ -68,6 +68,7 @@ export default {
       return this.curWs.admin === this.account.userId;
     },
   },
+
   mounted() {
     this.getWorkspaces();
     try {
@@ -78,6 +79,7 @@ export default {
       // throw { message: "rqevent is not supported currently" };
     }
   },
+
   methods: {
     handleLink() {
       if (this.settingVisible) {
