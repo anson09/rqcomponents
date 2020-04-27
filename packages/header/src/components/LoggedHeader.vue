@@ -8,15 +8,9 @@
       <div
         v-for="(btn, idx) in btnConfigLeft"
         :key="idx"
-        :class="['logged-header-btn', btn.className, { active: btn.active }]"
+        :class="['logged-header-btn', { active: btn.active }]"
       >
-        <WorkspaceSwitch
-          v-if="btn.type === 'workspace'"
-          v-bind="btn"
-          v-on="$listeners"
-        ></WorkspaceSwitch>
         <a
-          v-else
           :href="btn.link.href || btn.link"
           :target="btn.link.newBlock && '_blank'"
           class="logged-header-btn__label"
@@ -38,8 +32,18 @@
         @mouseover="openDropdown(idx)"
         @mouseleave="closeDropdown(idx)"
       >
+        <WorkspaceSwitch
+          v-if="btn.type === 'workspace'"
+          v-bind="btn"
+          v-on="$listeners"
+        ></WorkspaceSwitch>
+        <ThemeSwitch
+          v-else-if="btn.type === 'theme'"
+          :active="btn.active"
+        ></ThemeSwitch>
+        <Message v-else-if="btn.type === 'message'"></Message>
         <a
-          v-if="btn.label && !btn.links"
+          v-else-if="btn.label && !btn.links"
           class="logged-header-btn__label"
           :href="btn.link.href"
           :target="btn.link.newBlock && '_blank'"
@@ -51,11 +55,7 @@
           @click="clickHandler(btn)"
           >{{ btn.label }}</span
         >
-        <ThemeSwitch
-          v-else-if="btn.type === 'theme'"
-          :active="btn.active"
-        ></ThemeSwitch>
-        <Message v-else-if="btn.type === 'message'"></Message>
+
         <template v-if="btn.type === 'avatar'">
           <img v-if="!avatar" :src="baseAvatar" alt="" />
           <img v-else :src="avatar" alt="" />
@@ -350,6 +350,9 @@ export default {
       padding: 0;
       font-size: 16px;
     }
+    &.workspace {
+      margin-right: 40px;
+    }
     &.workspace,
     &.message {
       padding: 0;
@@ -439,6 +442,13 @@ export default {
         }
       }
     }
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rqthemify(scrollbar-background);
+    border-radius: 3px;
   }
 }
 </style>

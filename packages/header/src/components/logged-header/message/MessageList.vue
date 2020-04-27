@@ -151,11 +151,4 @@ export default {
     }
   }
 }
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: rqthemify(scrollbar-background);
-  border-radius: 3px;
-}
 </style>

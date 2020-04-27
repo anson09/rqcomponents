@@ -33,6 +33,13 @@
           @click="setWorkspace(item)"
         >
           {{ item.name }}
+          <i v-if="item.id === curWs.id" class="el-icon-success"></i>
+        </div>
+        <div class="workspace-dropdown__btn-wrapper">
+          <button class="workspace-dropdown__btn" @click="createWorkspace">
+            <i class="el-icon-circle-plus"></i>
+            {{ label }}
+          </button>
         </div>
       </div>
     </transition>
@@ -161,31 +168,75 @@ export default {
     width: 100%;
     background: rqthemify(active-background-color);
     left: 0;
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 8px 0px;
+    box-shadow: 0px 8px 12px 0px rgba(152, 165, 185, 0.2);
     box-sizing: border-box;
     bottom: 0;
     transform: translateY(100%);
+    max-height: 230px;
+    overflow-y: auto;
+    border-radius: 0 0 8px 8px;
 
     &__item {
       cursor: pointer;
       font-size: 14px;
+      position: relative;
       line-height: 20px;
-      margin: 10px 0;
       padding: 10px 60px 10px 20px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       color: rqthemify(text);
-
-      &.is-active {
-        color: rqthemify(highlight);
+      .el-icon-success {
+        color: rqthemify(icon-gray-lighter);
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+        right: 12px;
+        position: absolute;
       }
+
       &:hover,
       &:active,
       &:focus {
         background-color: rqthemify(hover-background-color);
         color: rqthemify(highlight);
         font-weight: 600;
+      }
+    }
+    &__btn {
+      display: flex;
+      align-items: center;
+      background-color: rqthemify(bg-gray-dark);
+      border: none;
+      border-radius: 4px;
+      padding: 3px 14px 3px 8px;
+      line-height: 20px;
+      color: rqthemify(text-gray);
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+      .el-icon-circle-plus {
+        font-size: 16px;
+        margin-right: 8px;
+      }
+
+      &:hover {
+        background-color: rqthemify(bg-gray-dark-hover);
+        color: rqthemify(text-white);
+        .el-icon-circle-plus {
+          color: rqthemify(text-white);
+        }
+      }
+      &:focus,
+      &:active {
+        transform: scale(1.1);
+        transform-origin: left center;
+      }
+
+      &-wrapper {
+        padding: 12px 0 0 4px;
+        margin: 10px 12px 12px;
+        border-top: 1px solid rqthemify(border-gray);
       }
     }
   }
@@ -195,6 +246,8 @@ export default {
     align-items: center;
     height: 100%;
     padding: 0 20px;
+    width: 215px;
+    box-sizing: border-box;
     position: relative;
     background: inherit;
     z-index: 9;

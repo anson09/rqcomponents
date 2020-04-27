@@ -198,6 +198,16 @@
   "logged": {
     "right": [
       {
+        "type": "workspace",
+        "className": "workspace",
+        "creatLink": {
+          "href": "/dashboard",
+          "hash": "#createWs"
+        },
+        "settingHref": "/dashboard/workspace",
+        "label": "创建新的工作空间"
+      },
+      {
         "link": {
           "href": "/welcome/trial/road-show"
         },
@@ -277,16 +287,6 @@
       {
         "link": "/ams/",
         "label": "AMS"
-      },
-      {
-        "type": "workspace",
-        "className": "workspace",
-        "creatLink": {
-          "href": "/dashboard",
-          "hash": "#createWs"
-        },
-        "settingHref": "/dashboard/workspace",
-        "label": "创建工作空间"
       }
     ]
   }
