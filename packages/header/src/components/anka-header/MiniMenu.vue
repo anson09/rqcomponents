@@ -23,8 +23,8 @@
         </div>
       </div>
       <div v-if="detail" class="mini-menu-detail">
-        <DropdownMenu :links="detail" :support="support" @redirect="redirect">
-        </DropdownMenu>
+        <dropdown-menu :links="detail" :support="support" @redirect="redirect">
+        </dropdown-menu>
       </div>
     </div>
     <el-button slot="reference" class="mini-menu-burger" type="text">
@@ -36,15 +36,15 @@
 </template>
 
 <script>
-import elPopover from "element-ui/lib/popover";
-import elButton from "element-ui/lib/button";
+import ElPopover from "element-ui/lib/popover";
+import ElButton from "element-ui/lib/button";
 import DropdownMenu from "./DropdownMenu.vue";
 
 export default {
   name: "MiniMenu",
   components: {
-    elButton,
-    elPopover,
+    ElButton,
+    ElPopover,
     DropdownMenu,
   },
   props: {

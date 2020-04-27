@@ -20,7 +20,7 @@
         </div>
         <template v-else>
           <div v-if="fullScrean" class="nav__buttons">
-            <NavButton
+            <nav-button
               v-for="(button, idx) in buttons"
               :key="idx"
               :label="button.label"
@@ -31,9 +31,9 @@
               :more="button.more"
               @redirect="redirect"
               @click="clickHandler"
-            ></NavButton>
+            ></nav-button>
           </div>
-          <MiniMenu
+          <mini-menu
             v-else
             class="nav__buttons"
             :light="light"
@@ -41,7 +41,7 @@
             :support="support"
             @redirect="redirect"
             @click="clickHandler"
-          ></MiniMenu>
+          ></mini-menu>
           <transition name="fade">
             <div class="nav__buttons login">
               <el-button
@@ -61,12 +61,12 @@
         </template>
       </nav>
     </div>
-    <SecondHeader></SecondHeader>
+    <second-header @redirect="redirect"></second-header>
   </div>
 </template>
 
 <script>
-import elButton from "element-ui/lib/button";
+import ElButton from "element-ui/lib/button";
 import debounce from "lodash/debounce";
 import NavButton from "./anka-header/NavButton.vue";
 import SecondHeader, { path2config } from "./anka-header/SecondHeader.vue";
@@ -79,7 +79,7 @@ export default {
     NavButton,
     MiniMenu,
     SecondHeader,
-    elButton,
+    ElButton,
     Vnodes: {
       functional: true,
       render: (h, ctx) => ctx.props.vnodes,
@@ -113,7 +113,8 @@ export default {
     },
     secondHeaderOpen() {
       const producePageLink = Object.keys(path2config);
-      if (producePageLink.includes(this.getPath())) {
+
+      if (producePageLink.includes(this.getTopPath())) {
         return true;
       }
       return false;
@@ -234,6 +235,10 @@ export default {
     },
     getPath() {
       return this.$parent.getPath();
+    },
+    getTopPath() {
+      const path = this.getPath();
+      return path.match(/(\/.*?)(?:$|\/)/)[1];
     },
     redirect(params) {
       this.$parent.handleLink(params);

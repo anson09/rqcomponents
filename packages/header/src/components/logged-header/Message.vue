@@ -51,7 +51,7 @@
             </el-popover>
           </div>
         </div>
-        <messageList
+        <message-list
           v-for="(msg, index) in message"
           v-show="curType === msg.type"
           :key="index"
@@ -60,20 +60,20 @@
           @deleteMessage="deleteMessage({ ...$event, unread: msg.unread })"
           @updateMessage="updateMessage({ ...$event, unread: msg.unread })"
         >
-        </messageList>
+        </message-list>
       </div>
     </transition>
   </div>
 </template>
 <script>
-import elPopover from "element-ui/lib/popover";
+import ElPopover from "element-ui/lib/popover";
 
 import MessageList from "./message/MessageList.vue";
 import { message as messageApi } from "../../../api";
 
 export default {
   name: "Message",
-  components: { MessageList, elPopover },
+  components: { MessageList, ElPopover },
   data() {
     return {
       messageTypes: [

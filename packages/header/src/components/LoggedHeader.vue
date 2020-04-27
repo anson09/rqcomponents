@@ -32,16 +32,16 @@
         @mouseover="openDropdown(idx)"
         @mouseleave="closeDropdown(idx)"
       >
-        <WorkspaceSwitch
+        <workspace-switch
           v-if="btn.type === 'workspace'"
           v-bind="btn"
           v-on="$listeners"
-        ></WorkspaceSwitch>
-        <ThemeSwitch
+        ></workspace-switch>
+        <theme-switch
           v-else-if="btn.type === 'theme'"
           :active="btn.active"
-        ></ThemeSwitch>
-        <Message v-else-if="btn.type === 'message'"></Message>
+        ></theme-switch>
+        <message v-else-if="btn.type === 'message'"></message>
         <a
           v-else-if="btn.label && !btn.links"
           class="logged-header-btn__label"

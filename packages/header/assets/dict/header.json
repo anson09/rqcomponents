@@ -81,9 +81,16 @@
             },
 
             {
-              "link": "/rqpro",
-              "icon": "rqpro",
-              "label": "RQPro（投研交易）"
+              "link": "/rqquant",
+              "icon": "rqquant",
+              "label": "Ricequant米筐量化",
+              "subLinks": [
+                { "link": "/rqquant", "label": "量化首页" },
+                { "link": "/rqquant/rqalpha-plus", "label": "RQAlpha Plus" },
+                { "link": "/rqquant/factor", "label": "因子研究" },
+                { "link": "/rqquant/rqsdk", "label": "RQSDK" },
+                { "link": "/rqquant/local", "label": "本地部署" }
+              ]
             },
             {
               "link": "/ams",
@@ -127,6 +134,13 @@
             },
             {
               "link": {
+                "href": "/doc/rqsdk-institutional",
+                "outer": true
+              },
+              "label": "RQSDK使用文档"
+            },
+            {
+              "link": {
                 "href": "/site/courses",
                 "outer": true
               },
@@ -137,10 +151,6 @@
         {
           "link": "/edu",
           "label": "教育专区"
-        },
-        {
-          "link": "/quant",
-          "label": "量化平台"
         },
         {
           "more": true,
@@ -236,6 +246,13 @@
               "newBlock": true
             },
             "label": "RQAMS使用文档"
+          },
+          {
+            "link": {
+              "href": "/doc/rqsdk-institutional",
+              "newBlock": true
+            },
+            "label": "RQSDK使用文档"
           }
         ],
         "label": "帮助文档"

@@ -7,22 +7,22 @@
       </template>
     </p>
     <header>
-      <Transition name="rq-fade-in-linear">
-        <LoggedHeader
+      <transition name="rq-fade-in-linear">
+        <logged-header
           v-if="mode === defaultMode && isLogin"
           :username="username"
           :avatar="avatar"
           :is-vip="isVip"
           @switchWorkspace="switchWorkspace"
           @createWorkspace="createWorkspace"
-        ></LoggedHeader>
-        <AnkaHeader
+        ></logged-header>
+        <anka-header
           v-else
           :topic="topic"
           :opacity="opacity"
           :is-login="isLogin"
-        ></AnkaHeader>
-      </Transition>
+        ></anka-header>
+      </transition>
     </header>
   </div>
 </template>
