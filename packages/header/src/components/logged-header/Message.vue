@@ -136,6 +136,7 @@ export default {
       try {
         await messageApi.updateMessage(msg.id);
         this.message.unread.data.splice(index, 1);
+        this.unreadMsgNum -= 1;
         this.message.read.data.unshift(msg);
       } catch (err) {
         this.$message.error(err.message);
@@ -146,14 +147,17 @@ export default {
         await messageApi.deleteMessage(msg.id);
         const messageProp = read ? "read" : "unread";
         this.message[messageProp].data.splice(index, 1);
+        if (!read) {
+          this.unreadMsgNum -= 1;
+        }
       } catch (err) {
         this.$message.error(err.message);
       }
     },
     async deleteAllMessage() {
+      // 删除已读
       try {
         await messageApi.deleteAllMessage("already_read");
-        this.unreadMsgNum = 0;
         this.message.read.data = [];
       } catch (err) {
         this.$message.error(err.message);
@@ -163,6 +167,7 @@ export default {
       try {
         await messageApi.updateAllMessage();
         this.message.read.data.unshift(...this.message.unread.data);
+        this.unreadMsgNum = 0;
         this.message.unread.data = [];
       } catch (err) {
         this.$message.error(err.message);

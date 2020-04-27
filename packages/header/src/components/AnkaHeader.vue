@@ -277,6 +277,7 @@ export default {
     height: 100%;
     background: rqthemify(bg-gray);
   }
+
   nav {
     position: absolute;
     z-index: 2;
@@ -329,39 +330,39 @@ export default {
           border-color: #d9e0ea;
           transition: all 0.3s;
           color: white;
+        }
+        .to-quant {
+          margin-left: 6px;
+          color: rqthemify(highlight);
+          border-color: rqthemify(highlight);
+          background: transparent;
+          &:hover,
+          &:focus,
+          &:active {
+            color: rqthemify(highlight);
+            background: #e3eeffff;
+            transform: scale(1);
+          }
+          &:active {
+            transform: scale(1.1);
+          }
+        }
+
+        .road-show {
+          margin: 0 24px 0 40px;
+          background: #1b5fc4;
           &:hover,
           &:focus,
           &:active {
             color: white;
             transform: scale(1);
           }
-
-          &.to-quant {
-            margin-left: 6px;
-            color: rqthemify(highlight);
-            border-color: rqthemify(highlight);
-            background: transparent;
-            &:hover,
-            &:focus,
-            &:active {
-              color: rqthemify(highlight);
-              background: #e3eeffff;
-            }
-            &:active {
-              transform: scale(1.1);
-            }
+          &:hover {
+            background: #275dac;
           }
-
-          &.road-show {
-            margin: 0 24px 0 40px;
-            background: #1b5fc4;
-            &:hover {
-              background: #275dac;
-            }
-            &:focus,
-            &:active {
-              background: #19417b;
-            }
+          &:focus,
+          &:active {
+            background: #19417b;
           }
         }
         &.login {
@@ -402,28 +403,27 @@ export default {
         }
       }
     }
-
-    .opacity {
-      nav .nav__buttons {
-        .road-show {
-          background: #ffffff33;
-          &:hover,
-          &:focus,
-          &:active {
-            background: #ffffff66;
-          }
+  }
+  .opacity {
+    nav .nav__buttons {
+      .road-show {
+        background: #ffffff33;
+        &:hover,
+        &:focus,
+        &:active {
+          background: #ffffff66;
         }
+      }
 
-        .to-quant {
+      .to-quant {
+        color: white;
+        border-color: white;
+        background: transparent;
+        &:hover,
+        &:focus,
+        &:active {
           color: white;
-          border-color: white;
-          background: transparent;
-          &:hover,
-          &:focus,
-          &:active {
-            color: white;
-            background: #c8cde266;
-          }
+          background: #c8cde266;
         }
       }
     }

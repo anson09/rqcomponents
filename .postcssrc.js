@@ -1,3 +1,4 @@
+/* eslint-disable global-require, import/no-extraneous-dependencies */
 const themifyOptions = {
   palette: {
     light: {
@@ -45,7 +46,6 @@ const themifyOptions = {
       "mask-bg": "#0d1d540f",
       "mask-bg-dark": "#07112e47",
       "shadow-color": "rgba(152, 165, 185, 0.2)",
-      "background-color": "white",
       "active-background-color": "white",
       "hover-background-color": "#f3f5f8",
 

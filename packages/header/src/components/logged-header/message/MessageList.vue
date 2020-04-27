@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       linkMap: {
-        factor: "/quant/#main-factor?text=因子列表",
+        factor: "/quant/#main-factor?tag=factor",
       },
     };
   },
