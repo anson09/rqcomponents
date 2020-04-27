@@ -119,7 +119,9 @@ export default {
         this.getMessage({
           unread: item.unread,
           offset: 0,
-          limit: Math.max(this.limit, item.data.length),
+          limit: this.messageVisible
+            ? Math.max(this.limit, item.data.length)
+            : 1,
         });
       });
     }, 60 * 1000);
