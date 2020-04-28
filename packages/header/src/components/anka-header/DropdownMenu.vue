@@ -19,14 +19,14 @@
           </div>
         </transition>
         <div class="menu__links-item">
-          <i :class="'rq-icons rq-icon-' + link.icon"></i>
+          <i :class="'icon-base icon-base-' + link.icon"></i>
           <span>{{ link.label }}</span>
           <i class="el-icon-arrow-right"></i>
         </div>
       </template>
       <template v-else>
         <div class="menu__links-item" @click="clickHandle(link)">
-          <i :class="'rq-icons rq-icon-' + link.icon"></i>
+          <i :class="'icon-base icon-base-' + link.icon"></i>
           <a>
             {{ link.label }}
           </a>
@@ -54,14 +54,14 @@
           >
             <i
               v-if="!contact.qrcode"
-              :class="'rq-icons rq-icon-' + contact.icon"
+              :class="'icon-base icon-base-' + contact.icon"
               @click="clickHandle(contact)"
             ></i>
             <el-popover v-else placement="bottom" width="auto" trigger="hover">
               <img :src="qrcodeImg" />
               <i
                 slot="reference"
-                :class="'rq-icons rq-icon-' + contact.icon"
+                :class="'icon-base icon-base-' + contact.icon"
               ></i>
             </el-popover>
           </span>
@@ -197,7 +197,7 @@ export default {
           }
         }
       }
-      .rq-icons {
+      .icon-base {
         font-size: 20px;
         margin-right: 8px;
       }

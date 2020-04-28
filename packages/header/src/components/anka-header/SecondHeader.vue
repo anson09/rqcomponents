@@ -8,7 +8,10 @@
     <nav>
       <div class="nav__icon" @click="clickHandle()">
         <i
-          :class="[`rq-icons rq-icon-${icon}`, { 'is-active': isIconActive }]"
+          :class="[
+            `icon-base icon-base-${icon}`,
+            { 'is-active': isIconActive },
+          ]"
         ></i>
         <span class="main-title">{{ mainTitle }}</span>
         <span class="second-title">{{ secondTitle }}</span>
@@ -98,7 +101,9 @@ export default {
       return this.usePageLink.includes(this.$parent.getTopPath());
     },
     isIconActive() {
-      return this.usePageLink.includes(this.$parent.getPath());
+      return this.usePageLink.some((link) =>
+        this.$parent.getTopPath().includes(link)
+      );
     },
     config() {
       return path2config[this.$parent.getTopPath()];
@@ -182,14 +187,14 @@ export default {
     background: rqthemify(bg-white);
     box-shadow: 0px 10px 11px 0px rgba(8, 25, 52, 0.1);
   }
-  .rq-icons {
+  .icon-base {
     color: rqthemify(text);
   }
 
   $products: rqdata, rqams, rqoptimizer, quant;
   @each $product in $products {
     &.#{$product} {
-      .rq-icons.is-active {
+      .icon-base.is-active {
         color: rqthemify($product);
       }
       .nav__button {
@@ -223,7 +228,7 @@ export default {
       display: flex;
       align-items: center;
 
-      .rq-icons {
+      .icon-base {
         font-size: 28px;
         margin-right: 13px;
       }

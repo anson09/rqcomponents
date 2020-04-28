@@ -52,7 +52,7 @@
                 :plain="cfg.plain || light"
                 :light="light"
                 :type="cfg.type"
-                :icon="cfg.icon ? `rq-icons rq-icon-${cfg.icon}` : ''"
+                :icon="cfg.icon ? `icon-base icon-base-${cfg.icon}` : ''"
                 @click="cfg.click"
                 >{{ cfg.label }}</el-button
               >
@@ -373,7 +373,7 @@ export default {
         &.login {
           flex: none;
           color: rqthemify(text);
-          ::v-deep .rq-icons {
+          ::v-deep .icon-base {
             margin-right: 8px;
           }
 

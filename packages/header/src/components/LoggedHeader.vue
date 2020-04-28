@@ -64,7 +64,7 @@
           </div>
         </template>
         <span v-if="btn.links && !btn.type" class="arrow">
-          <i class="rq-icons rq-icon-arrow-down"></i>
+          <i class="el-icon-arrow-down"></i>
         </span>
         <transition name="rq-zoom-in-top">
           <div
@@ -285,7 +285,7 @@ export default {
       transition: transform 0.3s;
       transform-origin: right;
       transform: scale(0.5);
-      .rq-icons {
+      .icon-base {
         font-size: 16px;
       }
     }
