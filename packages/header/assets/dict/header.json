@@ -81,15 +81,15 @@
             },
 
             {
-              "link": "/rqquant",
-              "icon": "rqquant",
+              "link": "/quant",
+              "icon": "quant",
               "label": "Ricequant米筐量化",
               "subLinks": [
-                { "link": "/rqquant", "label": "量化首页" },
-                { "link": "/rqquant/rqalpha-plus", "label": "RQAlpha Plus" },
-                { "link": "/rqquant/factor", "label": "因子研究" },
-                { "link": "/rqquant/rqsdk", "label": "RQSDK" },
-                { "link": "/rqquant/local", "label": "本地部署" }
+                { "link": "/quant", "label": "量化首页" },
+                { "link": "/quant/rq-alpha-plus", "label": "RQAlpha Plus" },
+                { "link": "/quant/factor", "label": "因子研究" },
+                { "link": "/quant/rq-sdk", "label": "RQSDK" },
+                { "link": "/quant/local", "label": "本地部署" }
               ]
             },
             {

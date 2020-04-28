@@ -32,16 +32,16 @@ const themifyOptions = {
       rqdata: "#4C469B",
       rqams: "#1B60C6",
       rqoptimizer: "#21A2AC",
-      rqquant: "#D35353",
+      quant: "#D35353",
 
       "rqdata-bg": "#e6e6f0",
       "rqams-bg": "#ebeef3",
-      "rqquant-bg": "#fcf6f6",
+      "quant-bg": "#fcf6f6",
       "rqoptimizer-bg": "#ebf3f4",
 
-      "rqquant-view-bg": "#f3f3f3",
-      "rqquant-sub-link-bg": "#f1e7e7",
-      "rqquant-sub-product-bg": "#f0f0f0",
+      "quant-view-bg": "#f3f3f3",
+      "quant-sub-link-bg": "#f1e7e7",
+      "quant-sub-product-bg": "#f0f0f0",
 
       "border-disabled": "#dcdfe6",
       "button-dark": "#2a2a2a",

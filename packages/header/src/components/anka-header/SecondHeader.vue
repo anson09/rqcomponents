@@ -66,16 +66,16 @@ export const path2config = {
     secondTitle: "组合优化器",
     product: "rqoptimizer",
   },
-  "/rqquant": {
-    icon: "rqquant",
+  "/quant": {
+    icon: "quant",
     mainTitle: "Ricequant",
     secondTitle: "米筐量化",
-    product: "rqquant",
+    product: "quant",
     subProducts: [
-      { label: "RQAlpha plus", value: "rqalpha-plus" },
+      { label: "RQAlpha Plus", value: "rq-alpha-plus" },
       // { label: "实盘交易", value: "real-trading" },
       { label: "因子研究", value: "factor" },
-      { label: "RQSDK", value: "rqsdk" },
+      { label: "RQSDK", value: "rq-sdk" },
       { label: "本地部署", value: "local" },
     ],
   },
@@ -186,7 +186,7 @@ export default {
     color: rqthemify(text);
   }
 
-  $products: rqdata, rqams, rqoptimizer, rqquant;
+  $products: rqdata, rqams, rqoptimizer, quant;
   @each $product in $products {
     &.#{$product} {
       .rq-icons.is-active {
@@ -198,7 +198,7 @@ export default {
       }
     }
   }
-  $products: rqquant;
+  $products: quant;
   @each $product in $products {
     &.#{$product} {
       .nav__pro-item {

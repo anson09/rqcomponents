@@ -165,7 +165,7 @@ export default {
             display: block;
           }
         }
-        $products: rqams, rqdata, rqoptimizer, rqquant;
+        $products: rqams, rqdata, rqoptimizer, quant;
         @each $product in $products {
           &.product.#{$product} {
             &:hover {
@@ -174,7 +174,7 @@ export default {
             }
           }
         }
-        $products: rqquant;
+        $products: quant;
         @each $product in $products {
           &.product.#{$product} {
             .menu__sub-links {
