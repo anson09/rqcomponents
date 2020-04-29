@@ -1,32 +1,31 @@
 <template>
   <div
     v-if="isShow"
-    :class="`second-header ${icon}`"
+    :class="`second-header ${config.name}`"
     :style="{ transform: `translate(-${windowScrollX}px, ${scrollY}px)` }"
   >
     <div class="header__bg"></div>
     <nav>
-      <div class="nav__icon" @click="clickHandle()">
-        <i
-          :class="[
-            `icon-base icon-base-${icon}`,
-            { 'is-active': isIconActive },
-          ]"
-        ></i>
-        <span class="main-title">{{ mainTitle }}</span>
-        <span class="second-title">{{ secondTitle }}</span>
-      </div>
-      <div class="nav__pro">
-        <template v-if="subProducts">
+      <div class="nav__product">
+        <template v-for="(item, index) in config.product">
+          <span
+            v-if="item.icon"
+            :key="index"
+            :class="{ 'is-active': isActive(item.path) }"
+            class="nav__icon"
+            @click="clickHandle(item.path)"
+          >
+            <i :class="`icon-base icon-base-${item.icon}`"></i>
+            <span class="main-label">{{ item.mainLabel }}</span>
+            <span class="second-label">{{ item.secondLabel }}</span>
+          </span>
           <common-button
-            v-for="(pro, idx) in subProducts"
-            :key="idx"
-            :class="[
-              'nav__pro-item',
-              { 'is-active': curSubProduct === pro.value },
-            ]"
-            :label="pro.label"
-            @click="clickHandle(getSubProductPath(pro))"
+            v-else
+            :key="index"
+            :class="{ 'is-active': isActive(item.path) }"
+            class="nav__product-item"
+            :label="item.label"
+            @click="clickHandle(item.path)"
           ></common-button>
         </template>
       </div>
@@ -44,45 +43,62 @@
 <script>
 import CommonButton from "./CommonButton.vue";
 
-export const path2config = {
-  "/rqdata": {
-    icon: "rqdata",
-    mainTitle: "RQData",
-    secondTitle: "金融数据API",
-    product: "rqdata",
-  },
-  "/rqpro": {
-    icon: "rqpro",
-    mainTitle: "RQPro",
-    secondTitle: "量化投研终端",
-    product: "rqpro",
-  },
-  "/ams": {
-    icon: "rqams",
-    mainTitle: "RQAMS",
-    secondTitle: "米筐资产管理系统",
-    product: "rqams",
-  },
-  "/rqoptimizer": {
-    icon: "rqoptimizer",
-    mainTitle: "RQOptimizer",
-    secondTitle: "组合优化器",
-    product: "rqoptimizer",
-  },
-  "/quant": {
-    icon: "quant",
-    mainTitle: "Ricequant",
-    secondTitle: "米筐量化",
-    product: "quant",
-    subProducts: [
-      { label: "RQAlpha Plus", value: "rq-alpha-plus" },
-      // { label: "实盘交易", value: "real-trading" },
-      { label: "因子研究", value: "factor" },
-      { label: "RQSDK", value: "rq-sdk" },
-      { label: "本地部署", value: "local" },
+const path2config = [
+  {
+    name: "rqdata",
+    product: [
+      {
+        icon: "rqdata",
+        mainLabel: "RQData",
+        secondLabel: "金融数据API",
+        path: "/rqdata",
+      },
     ],
   },
-};
+  {
+    name: "rqams",
+    product: [
+      {
+        icon: "rqams",
+        mainLabel: "RQAMS",
+        secondLabel: "米筐资产管理系统",
+        path: "/ams",
+      },
+    ],
+  },
+  {
+    name: "rqoptimizer",
+    product: [
+      {
+        icon: "rqoptimizer",
+        mainLabel: "RQOptimizer",
+        secondLabel: "组合优化器",
+        path: "/rqoptimizer",
+      },
+    ],
+  },
+  {
+    name: "quant",
+    product: [
+      {
+        mainLabel: "Ricequant",
+        secondLabel: "米筐量化",
+        icon: "quant",
+        path: "/quant",
+      },
+      { label: "RQAlpha Plus", path: "/quant/rq-alpha-plus" },
+      // { label: "实盘交易", value: "real-trading" },
+      { label: "因子研究", path: "/quant/factor" },
+      { label: "RQSDK", path: "/quant/rq-sdk" },
+      { label: "本地部署", path: "/quant/local" },
+    ],
+  },
+];
+
+export const getSecondHeaderShow = (path) =>
+  path2config
+    .reduce((arr, cur) => [...arr, ...cur.product.map((item) => item.path)], [])
+    .includes(path);
 
 export default {
   name: "SecondHeader",
@@ -90,7 +106,10 @@ export default {
   props: {},
   data() {
     return {
-      usePageLink: Object.keys(path2config),
+      usePageLink: path2config.reduce(
+        (arr, cur) => [...arr, ...cur.product.map(({ path }) => path)],
+        []
+      ),
       scrollFn: null,
       windowScrollX: 0,
       windowScrollY: 0,
@@ -98,38 +117,19 @@ export default {
   },
   computed: {
     isShow() {
-      return this.usePageLink.includes(this.$parent.getTopPath());
+      return getSecondHeaderShow(this.$parent.getPath());
     },
-    isIconActive() {
-      return this.usePageLink.some((link) =>
-        this.$parent.getTopPath().includes(link)
-      );
-    },
+
     config() {
-      return path2config[this.$parent.getTopPath()];
-    },
-    icon() {
-      return this.findInConfig("icon");
-    },
-    mainTitle() {
-      return this.findInConfig("mainTitle");
-    },
-    subProducts() {
-      return this.findInConfig("subProducts");
-    },
-    secondTitle() {
-      return this.findInConfig("secondTitle");
+      return path2config.filter(({ product }) =>
+        product.map(({ path }) => path).includes(this.$parent.getPath())
+      )[0];
     },
     redirect() {
-      return `/pricing#${this.findInConfig("product")}`;
+      return `/pricing#${this.config.name}`;
     },
     scrollY() {
       return this.windowScrollY <= 70 ? 70 - this.windowScrollY : 0;
-    },
-    curSubProduct() {
-      return this.$parent
-        .getPath()
-        .replace(`${this.$parent.getTopPath()}/`, "");
     },
   },
   watch: {},
@@ -145,20 +145,13 @@ export default {
     window.removeEventListener("scroll", this.scrollFn);
   },
   methods: {
+    isActive(path) {
+      return this.$parent.getPath() === path;
+    },
     clickHandle(href) {
-      const redirectHref = href || this.$parent.getTopPath();
-      if (redirectHref && this.$parent.getPath() !== redirectHref) {
-        this.$emit("redirect", redirectHref);
+      if (href && this.$parent.getPath() !== href) {
+        this.$emit("redirect", href);
       }
-    },
-    getSubProductPath(subProduct) {
-      return `/${this.findInConfig("product")}/${subProduct.value}`;
-    },
-    findInConfig(key) {
-      if (this.config) {
-        return this.config[key];
-      }
-      return "";
     },
   },
 };
@@ -194,9 +187,13 @@ export default {
   $products: rqdata, rqams, rqoptimizer, quant;
   @each $product in $products {
     &.#{$product} {
-      .icon-base.is-active {
-        color: rqthemify($product);
+      color: rqthemify($product);
+      .is-active {
+        .icon-base {
+          color: rqthemify($product);
+        }
       }
+
       .nav__button {
         color: rqthemify($product);
         border-color: rqthemify($product);
@@ -206,10 +203,11 @@ export default {
   $products: quant;
   @each $product in $products {
     &.#{$product} {
-      .nav__pro-item {
+      .nav__product-item {
         background: rqthemify(#{$product}-sub-product-bg);
         &.is-active {
           background: rqthemify($product);
+          color: rqthemify(text-white);
         }
       }
     }
@@ -218,47 +216,40 @@ export default {
   nav {
     display: flex;
     align-items: center;
-
     width: 100%;
     padding: 0 50px;
     height: 100%;
+    justify-content: space-between;
+
+    .nav__product {
+      display: flex;
+      align-items: center;
+    }
 
     .nav__icon {
       cursor: pointer;
-      display: flex;
-      align-items: center;
 
       .icon-base {
         font-size: 28px;
         margin-right: 13px;
       }
 
-      &__title {
-        width: 30px;
-      }
-
-      .main-itle {
+      .main-label {
         @include h3(rqthemify(text-dark));
       }
 
-      .second-title {
+      .second-label {
         @include rg-text(rqthemify(text-dark));
         margin-left: 13px;
         margin-right: 17px;
       }
     }
-    .nav__pro {
-      flex: 1;
-      &-item {
-        margin: 0 13px;
-        border: none;
-        padding: 5px 12px;
-        border-radius: 6px;
-        color: rqthemify(text);
-        &.is-active {
-          color: rqthemify(text-white);
-        }
-      }
+    .nav__product-item {
+      margin: 0 13px;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      color: rqthemify(text);
     }
 
     .nav__button {

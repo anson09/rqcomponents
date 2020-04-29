@@ -69,7 +69,9 @@
 import ElButton from "element-ui/lib/button";
 import debounce from "lodash/debounce";
 import NavButton from "./anka-header/NavButton.vue";
-import SecondHeader, { path2config } from "./anka-header/SecondHeader.vue";
+import SecondHeader, {
+  getSecondHeaderShow,
+} from "./anka-header/SecondHeader.vue";
 import MiniMenu from "./anka-header/MiniMenu.vue";
 import { anka } from "../../assets/dict/header.json";
 
@@ -112,12 +114,7 @@ export default {
       return this.$parent.$slots?.topic ?? false;
     },
     secondHeaderOpen() {
-      const producePageLink = Object.keys(path2config);
-
-      if (producePageLink.includes(this.getTopPath())) {
-        return true;
-      }
-      return false;
+      return getSecondHeaderShow(this.getPath());
     },
     light() {
       if (this.opacity && !this.secondHeaderOpen) {
@@ -236,10 +233,7 @@ export default {
     getPath() {
       return this.$parent.getPath();
     },
-    getTopPath() {
-      const path = this.getPath();
-      return path.match(/(\/.*?)(?:$|\/)/)[1];
-    },
+
     redirect(params) {
       this.$parent.handleLink(params);
     },
