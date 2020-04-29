@@ -34,7 +34,7 @@
           class="nav__button"
           :plain="true"
           label="免费试用"
-          @click="clickHandle(redirect)"
+          @click="clickHandle(config.trialHref)"
         ></common-button>
       </div>
     </nav>
@@ -54,6 +54,7 @@ const path2config = [
         path: "/rqdata",
       },
     ],
+    trialHref: "/pricing#rqdata",
   },
   {
     name: "rqams",
@@ -65,6 +66,7 @@ const path2config = [
         path: "/ams",
       },
     ],
+    trialHref: "/pricing#rqams",
   },
   {
     name: "rqoptimizer",
@@ -76,6 +78,7 @@ const path2config = [
         path: "/rqoptimizer",
       },
     ],
+    trialHref: "/pricing#rqoptimizer",
   },
   {
     name: "quant",
@@ -92,6 +95,7 @@ const path2config = [
       { label: "RQSDK", path: "/quant/rq-sdk" },
       { label: "本地部署", path: "/quant/local" },
     ],
+    trialHref: "/trial/rq-quant",
   },
 ];
 
@@ -124,9 +128,7 @@ export default {
         products.map(({ path }) => path).includes(this.$parent.getPath())
       )[0];
     },
-    redirect() {
-      return `/pricing#${this.config.name}`;
-    },
+
     scrollY() {
       return this.windowScrollY <= 70 ? 70 - this.windowScrollY : 0;
     },
