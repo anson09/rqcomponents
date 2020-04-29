@@ -6,8 +6,8 @@
   >
     <div class="header__bg"></div>
     <nav>
-      <div class="nav__product">
-        <template v-for="(item, index) in config.product">
+      <div class="nav__products">
+        <template v-for="(item, index) in config.products">
           <span
             v-if="item.icon"
             :key="index"
@@ -23,7 +23,7 @@
             v-else
             :key="index"
             :class="{ 'is-active': isActive(item.path) }"
-            class="nav__product-item"
+            class="nav__product"
             :label="item.label"
             @click="clickHandle(item.path)"
           ></common-button>
@@ -46,7 +46,7 @@ import CommonButton from "./CommonButton.vue";
 const path2config = [
   {
     name: "rqdata",
-    product: [
+    products: [
       {
         icon: "rqdata",
         mainLabel: "RQData",
@@ -57,7 +57,7 @@ const path2config = [
   },
   {
     name: "rqams",
-    product: [
+    products: [
       {
         icon: "rqams",
         mainLabel: "RQAMS",
@@ -68,7 +68,7 @@ const path2config = [
   },
   {
     name: "rqoptimizer",
-    product: [
+    products: [
       {
         icon: "rqoptimizer",
         mainLabel: "RQOptimizer",
@@ -79,7 +79,7 @@ const path2config = [
   },
   {
     name: "quant",
-    product: [
+    products: [
       {
         mainLabel: "Ricequant",
         secondLabel: "米筐量化",
@@ -97,7 +97,10 @@ const path2config = [
 
 export const getSecondHeaderShow = (path) =>
   path2config
-    .reduce((arr, cur) => [...arr, ...cur.product.map((item) => item.path)], [])
+    .reduce(
+      (arr, cur) => [...arr, ...cur.products.map((item) => item.path)],
+      []
+    )
     .includes(path);
 
 export default {
@@ -106,10 +109,6 @@ export default {
   props: {},
   data() {
     return {
-      usePageLink: path2config.reduce(
-        (arr, cur) => [...arr, ...cur.product.map(({ path }) => path)],
-        []
-      ),
       scrollFn: null,
       windowScrollX: 0,
       windowScrollY: 0,
@@ -121,8 +120,8 @@ export default {
     },
 
     config() {
-      return path2config.filter(({ product }) =>
-        product.map(({ path }) => path).includes(this.$parent.getPath())
+      return path2config.filter(({ products }) =>
+        products.map(({ path }) => path).includes(this.$parent.getPath())
       )[0];
     },
     redirect() {
@@ -202,8 +201,8 @@ export default {
   }
   $products: quant;
   @each $product in $products {
-    &.#{$product} {
-      .nav__product-item {
+    &.#{$products} {
+      .nav__product {
         background: rqthemify(#{$product}-sub-product-bg);
         &.is-active {
           background: rqthemify($product);
@@ -221,7 +220,7 @@ export default {
     height: 100%;
     justify-content: space-between;
 
-    .nav__product {
+    .nav__products {
       display: flex;
       align-items: center;
     }
@@ -244,7 +243,7 @@ export default {
         margin-right: 17px;
       }
     }
-    .nav__product-item {
+    .nav__product {
       margin: 0 13px;
       border: none;
       padding: 5px 12px;
