@@ -2,9 +2,9 @@ import { axios } from "../../../common/api";
 
 const baseUrl = "api/rqmessager/v1";
 
-const getMessages = async ({ read, limit, offset }) => {
+const getMessages = async ({ unread, limit, offset }) => {
   const { data } = await axios.get(`${baseUrl}/messages`, {
-    params: { already_read: read, limit, offset },
+    params: { unread, limit, offset },
   });
   return data;
 };
@@ -14,9 +14,9 @@ const deleteMessage = async (id) => {
   return data;
 };
 
-const deleteAllMessage = async (type) => {
+const deleteAllMessage = async (unread) => {
   const { data } = await axios.delete(`${baseUrl}/messages`, {
-    params: { type },
+    params: { unread },
   });
   return data;
 };

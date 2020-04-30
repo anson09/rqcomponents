@@ -45,15 +45,15 @@
 </template>
 
 <script>
-import elPopover from "element-ui/lib/popover";
-import elButton from "element-ui/lib/button";
+import ElPopover from "element-ui/lib/popover";
+import ElButton from "element-ui/lib/button";
 import DropdownMenu from "./DropdownMenu.vue";
 
 export default {
   name: "NavButton",
   components: {
-    elPopover,
-    elButton,
+    ElPopover,
+    ElButton,
     DropdownMenu,
   },
   props: {

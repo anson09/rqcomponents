@@ -7,12 +7,12 @@
   </el-button>
 </template>
 <script>
-import elButton from "element-ui/lib/button";
+import ElButton from "element-ui/lib/button";
 
 export default {
   name: "CommonButton",
   components: {
-    elButton,
+    ElButton,
   },
   props: {
     label: {

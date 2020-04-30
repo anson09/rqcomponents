@@ -20,7 +20,7 @@
         </div>
         <template v-else>
           <div v-if="fullScrean" class="nav__buttons">
-            <NavButton
+            <nav-button
               v-for="(button, idx) in buttons"
               :key="idx"
               :label="button.label"
@@ -31,9 +31,9 @@
               :more="button.more"
               @redirect="redirect"
               @click="clickHandler"
-            ></NavButton>
+            ></nav-button>
           </div>
-          <MiniMenu
+          <mini-menu
             v-else
             class="nav__buttons"
             :light="light"
@@ -41,7 +41,7 @@
             :support="support"
             @redirect="redirect"
             @click="clickHandler"
-          ></MiniMenu>
+          ></mini-menu>
           <transition name="fade">
             <div class="nav__buttons login">
               <el-button
@@ -52,7 +52,7 @@
                 :plain="cfg.plain || light"
                 :light="light"
                 :type="cfg.type"
-                :icon="cfg.icon ? `rq-icons rq-icon-${cfg.icon}` : ''"
+                :icon="cfg.icon ? `icon-base icon-base-${cfg.icon}` : ''"
                 @click="cfg.click"
                 >{{ cfg.label }}</el-button
               >
@@ -61,15 +61,17 @@
         </template>
       </nav>
     </div>
-    <SecondHeader></SecondHeader>
+    <second-header @redirect="redirect"></second-header>
   </div>
 </template>
 
 <script>
-import elButton from "element-ui/lib/button";
+import ElButton from "element-ui/lib/button";
 import debounce from "lodash/debounce";
 import NavButton from "./anka-header/NavButton.vue";
-import SecondHeader, { path2config } from "./anka-header/SecondHeader.vue";
+import SecondHeader, {
+  getSecondHeaderShow,
+} from "./anka-header/SecondHeader.vue";
 import MiniMenu from "./anka-header/MiniMenu.vue";
 import { anka } from "../../assets/dict/header.json";
 
@@ -79,7 +81,7 @@ export default {
     NavButton,
     MiniMenu,
     SecondHeader,
-    elButton,
+    ElButton,
     Vnodes: {
       functional: true,
       render: (h, ctx) => ctx.props.vnodes,
@@ -112,11 +114,7 @@ export default {
       return this.$parent.$slots?.topic ?? false;
     },
     secondHeaderOpen() {
-      const producePageLink = Object.keys(path2config);
-      if (producePageLink.includes(this.getPath())) {
-        return true;
-      }
-      return false;
+      return getSecondHeaderShow(this.getPath());
     },
     light() {
       if (this.opacity && !this.secondHeaderOpen) {
@@ -235,6 +233,7 @@ export default {
     getPath() {
       return this.$parent.getPath();
     },
+
     redirect(params) {
       this.$parent.handleLink(params);
     },
@@ -277,6 +276,7 @@ export default {
     height: 100%;
     background: rqthemify(bg-gray);
   }
+
   nav {
     position: absolute;
     z-index: 2;
@@ -329,45 +329,45 @@ export default {
           border-color: #d9e0ea;
           transition: all 0.3s;
           color: white;
+        }
+        .to-quant {
+          margin-left: 6px;
+          color: rqthemify(highlight);
+          border-color: rqthemify(highlight);
+          background: transparent;
+          &:hover,
+          &:focus,
+          &:active {
+            color: rqthemify(highlight);
+            background: #e3eeffff;
+            transform: scale(1);
+          }
+          &:active {
+            transform: scale(1.1);
+          }
+        }
+
+        .road-show {
+          margin: 0 24px 0 40px;
+          background: #1b5fc4;
           &:hover,
           &:focus,
           &:active {
             color: white;
             transform: scale(1);
           }
-
-          &.to-quant {
-            margin-left: 6px;
-            color: rqthemify(highlight);
-            border-color: rqthemify(highlight);
-            background: transparent;
-            &:hover,
-            &:focus,
-            &:active {
-              color: rqthemify(highlight);
-              background: #e3eeffff;
-            }
-            &:active {
-              transform: scale(1.1);
-            }
+          &:hover {
+            background: #275dac;
           }
-
-          &.road-show {
-            margin: 0 24px 0 40px;
-            background: #1b5fc4;
-            &:hover {
-              background: #275dac;
-            }
-            &:focus,
-            &:active {
-              background: #19417b;
-            }
+          &:focus,
+          &:active {
+            background: #19417b;
           }
         }
         &.login {
           flex: none;
           color: rqthemify(text);
-          ::v-deep .rq-icons {
+          ::v-deep .icon-base {
             margin-right: 8px;
           }
 
@@ -402,28 +402,27 @@ export default {
         }
       }
     }
-
-    .opacity {
-      nav .nav__buttons {
-        .road-show {
-          background: #ffffff33;
-          &:hover,
-          &:focus,
-          &:active {
-            background: #ffffff66;
-          }
+  }
+  .opacity {
+    nav .nav__buttons {
+      .road-show {
+        background: #ffffff33;
+        &:hover,
+        &:focus,
+        &:active {
+          background: #ffffff66;
         }
+      }
 
-        .to-quant {
+      .to-quant {
+        color: white;
+        border-color: white;
+        background: transparent;
+        &:hover,
+        &:focus,
+        &:active {
           color: white;
-          border-color: white;
-          background: transparent;
-          &:hover,
-          &:focus,
-          &:active {
-            color: white;
-            background: #c8cde266;
-          }
+          background: #c8cde266;
         }
       }
     }

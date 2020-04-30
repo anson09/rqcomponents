@@ -8,15 +8,9 @@
       <div
         v-for="(btn, idx) in btnConfigLeft"
         :key="idx"
-        :class="['logged-header-btn', btn.className, { active: btn.active }]"
+        :class="['logged-header-btn', { active: btn.active }]"
       >
-        <WorkspaceSwitch
-          v-if="btn.type === 'workspace'"
-          v-bind="btn"
-          v-on="$listeners"
-        ></WorkspaceSwitch>
         <a
-          v-else
           :href="btn.link.href || btn.link"
           :target="btn.link.newBlock && '_blank'"
           class="logged-header-btn__label"
@@ -38,8 +32,18 @@
         @mouseover="openDropdown(idx)"
         @mouseleave="closeDropdown(idx)"
       >
+        <workspace-switch
+          v-if="btn.type === 'workspace'"
+          v-bind="btn"
+          v-on="$listeners"
+        ></workspace-switch>
+        <theme-switch
+          v-else-if="btn.type === 'theme'"
+          :active="btn.active"
+        ></theme-switch>
+        <message v-else-if="btn.type === 'message'"></message>
         <a
-          v-if="btn.label && !btn.links"
+          v-else-if="btn.label && !btn.links"
           class="logged-header-btn__label"
           :href="btn.link.href"
           :target="btn.link.newBlock && '_blank'"
@@ -51,11 +55,7 @@
           @click="clickHandler(btn)"
           >{{ btn.label }}</span
         >
-        <ThemeSwitch
-          v-else-if="btn.type === 'theme'"
-          :active="btn.active"
-        ></ThemeSwitch>
-        <Message v-else-if="btn.type === 'message'"></Message>
+
         <template v-if="btn.type === 'avatar'">
           <img v-if="!avatar" :src="baseAvatar" alt="" />
           <img v-else :src="avatar" alt="" />
@@ -64,7 +64,7 @@
           </div>
         </template>
         <span v-if="btn.links && !btn.type" class="arrow">
-          <i class="rq-icons rq-icon-arrow-down"></i>
+          <i class="el-icon-arrow-down"></i>
         </span>
         <transition name="rq-zoom-in-top">
           <div
@@ -285,7 +285,7 @@ export default {
       transition: transform 0.3s;
       transform-origin: right;
       transform: scale(0.5);
-      .rq-icons {
+      .icon-base {
         font-size: 16px;
       }
     }
@@ -349,6 +349,9 @@ export default {
     &.theme {
       padding: 0;
       font-size: 16px;
+    }
+    &.workspace {
+      margin-right: 40px;
     }
     &.workspace,
     &.message {
@@ -439,6 +442,13 @@ export default {
         }
       }
     }
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rqthemify(scrollbar-background);
+    border-radius: 3px;
   }
 }
 </style>

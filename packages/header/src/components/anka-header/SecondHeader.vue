@@ -1,23 +1,41 @@
 <template>
   <div
     v-if="isShow"
-    :class="`second-header ${icon}`"
+    :class="`second-header ${config.name}`"
     :style="{ transform: `translate(-${windowScrollX}px, ${scrollY}px)` }"
   >
     <div class="header__bg"></div>
     <nav>
-      <div class="nav__icon">
-        <i :class="`rq-icons rq-icon-${icon}`"></i>
-        <span class="mainTitle">{{ mainTitle }}</span>
-        <span class="secondTitle">{{ secondTitle }}</span>
+      <div class="nav__products">
+        <template v-for="(item, index) in config.products">
+          <span
+            v-if="item.icon"
+            :key="index"
+            :class="{ 'is-active': isActive(item.path) }"
+            class="nav__icon"
+            @click="clickHandle(item.path)"
+          >
+            <i :class="`icon-base icon-base-${item.icon}`"></i>
+            <span class="main-label">{{ item.mainLabel }}</span>
+            <span class="second-label">{{ item.secondLabel }}</span>
+          </span>
+          <common-button
+            v-else
+            :key="index"
+            :class="{ 'is-active': isActive(item.path) }"
+            class="nav__product"
+            :label="item.label"
+            @click="clickHandle(item.path)"
+          ></common-button>
+        </template>
       </div>
       <div class="nav__buttons">
-        <CommonButton
+        <common-button
           class="nav__button"
           :plain="true"
           label="免费试用"
-          @click="$router.push(redirect)"
-        ></CommonButton>
+          @click="clickHandle(config.trialHref)"
+        ></common-button>
       </div>
     </nav>
   </div>
@@ -25,32 +43,69 @@
 <script>
 import CommonButton from "./CommonButton.vue";
 
-export const path2config = {
-  "/rqdata": {
-    icon: "rqdata",
-    mainTitle: "RQData",
-    secondTitle: "金融数据API",
-    product: "rqdata",
+const path2config = [
+  {
+    name: "rqdata",
+    products: [
+      {
+        icon: "rqdata",
+        mainLabel: "RQData",
+        secondLabel: "金融数据API",
+        path: "/rqdata",
+      },
+    ],
+    trialHref: "/pricing#rqdata",
   },
-  "/rqpro": {
-    icon: "rqpro",
-    mainTitle: "RQPro",
-    secondTitle: "量化投研终端",
-    product: "rqpro",
+  {
+    name: "rqams",
+    products: [
+      {
+        icon: "rqams",
+        mainLabel: "RQAMS",
+        secondLabel: "米筐资产管理系统",
+        path: "/ams",
+      },
+    ],
+    trialHref: "/pricing#rqams",
   },
-  "/ams": {
-    icon: "rqams",
-    mainTitle: "RQAMS",
-    secondTitle: "米筐资产管理系统",
-    product: "rqams",
+  {
+    name: "rqoptimizer",
+    products: [
+      {
+        icon: "rqoptimizer",
+        mainLabel: "RQOptimizer",
+        secondLabel: "组合优化器",
+        path: "/rqoptimizer",
+      },
+    ],
+    trialHref: "/pricing#rqoptimizer",
   },
-  "/rqoptimizer": {
-    icon: "rqoptimizer",
-    mainTitle: "RQOptimizer",
-    secondTitle: "组合优化器",
-    product: "rqoptimizer",
+  {
+    name: "quant",
+    products: [
+      {
+        mainLabel: "Ricequant",
+        secondLabel: "米筐量化",
+        icon: "quant",
+        path: "/quant",
+      },
+      { label: "RQAlpha Plus", path: "/quant/rq-alpha-plus" },
+      // { label: "实盘交易", value: "real-trading" },
+      { label: "因子研究", path: "/quant/factor" },
+      { label: "RQSDK", path: "/quant/rq-sdk" },
+      { label: "本地部署", path: "/quant/local" },
+    ],
+    trialHref: "/trial/rq-quant",
   },
-};
+];
+
+export const getSecondHeaderShow = (path) =>
+  path2config
+    .reduce(
+      (arr, cur) => [...arr, ...cur.products.map((item) => item.path)],
+      []
+    )
+    .includes(path);
 
 export default {
   name: "SecondHeader",
@@ -58,7 +113,6 @@ export default {
   props: {},
   data() {
     return {
-      usePageLink: Object.keys(path2config), // 产品的几个页面在路由页中的path
       scrollFn: null,
       windowScrollX: 0,
       windowScrollY: 0,
@@ -66,23 +120,15 @@ export default {
   },
   computed: {
     isShow() {
-      return this.usePageLink.includes(this.$parent.getPath());
+      return getSecondHeaderShow(this.$parent.getPath());
     },
+
     config() {
-      return path2config[this.$parent.getPath()];
+      return path2config.filter(({ products }) =>
+        products.map(({ path }) => path).includes(this.$parent.getPath())
+      )[0];
     },
-    icon() {
-      return this.findInConfig("icon");
-    },
-    mainTitle() {
-      return this.findInConfig("mainTitle");
-    },
-    secondTitle() {
-      return this.findInConfig("secondTitle");
-    },
-    redirect() {
-      return `/pricing#${this.findInConfig("product")}`;
-    },
+
     scrollY() {
       return this.windowScrollY <= 70 ? 70 - this.windowScrollY : 0;
     },
@@ -100,11 +146,13 @@ export default {
     window.removeEventListener("scroll", this.scrollFn);
   },
   methods: {
-    findInConfig(key) {
-      if (this.config) {
-        return this.config[key];
+    isActive(path) {
+      return this.$parent.getPath() === path;
+    },
+    clickHandle(href) {
+      if (href && this.$parent.getPath() !== href) {
+        this.$emit("redirect", href);
       }
-      return "";
     },
   },
 };
@@ -133,47 +181,78 @@ export default {
     background: rqthemify(bg-white);
     box-shadow: 0px 10px 11px 0px rgba(8, 25, 52, 0.1);
   }
+  .icon-base {
+    color: rqthemify(text);
+  }
 
-  $products: rqdata, rqpro, rqams, rqoptimizer;
+  $products: rqdata, rqams, rqoptimizer, quant;
   @each $product in $products {
     &.#{$product} {
       color: rqthemify($product);
+      .is-active {
+        .icon-base {
+          color: rqthemify($product);
+        }
+      }
+
       .nav__button {
         color: rqthemify($product);
         border-color: rqthemify($product);
       }
     }
   }
+  $products: quant;
+  @each $product in $products {
+    &.#{$products} {
+      .nav__product {
+        background: rqthemify(#{$product}-sub-product-bg);
+        &.is-active {
+          background: rqthemify($product);
+          color: rqthemify(text-white);
+        }
+      }
+    }
+  }
+
   nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
     padding: 0 50px;
     height: 100%;
+    justify-content: space-between;
 
-    .nav__icon {
+    .nav__products {
       display: flex;
       align-items: center;
+    }
 
-      .rq-icons {
+    .nav__icon {
+      cursor: pointer;
+
+      .icon-base {
         font-size: 28px;
         margin-right: 13px;
       }
 
-      &__title {
-        width: 30px;
-      }
-
-      .mainTitle {
+      .main-label {
         @include h3(rqthemify(text-dark));
       }
 
-      .secondTitle {
+      .second-label {
         @include rg-text(rqthemify(text-dark));
         margin-left: 13px;
+        margin-right: 17px;
       }
     }
+    .nav__product {
+      margin: 0 13px;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      color: rqthemify(text);
+    }
+
     .nav__button {
       padding: 12px 28px;
       line-height: 1;

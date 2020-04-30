@@ -1,8 +1,8 @@
 <template>
   <div v-if="show" class="theme-switch">
     <div class="theme-switch-button">
-      <i v-show="active" class="rq-icons rq-icon-theme-fills"></i>
-      <i v-show="!active" class="rq-icons rq-icon-theme-border"></i>
+      <i v-show="active" class="icon-base icon-base-theme-fills"></i>
+      <i v-show="!active" class="icon-base icon-base-theme-border"></i>
     </div>
     <transition name="rq-zoom-in-top">
       <div v-show="active" class="theme-switch__dropdown">
@@ -16,7 +16,7 @@
           @click="themeChange(mode.value)"
         >
           <div class="theme-switch__dropdown--pic">
-            <i class="rq-icons rq-icon-theme-choose"></i>
+            <i class="icon-base icon-base-theme-choose"></i>
             <img :src="mode.img" alt="" />
           </div>
           <p>{{ mode.label }}</p>
@@ -100,7 +100,7 @@ export default {
     color: rqthemify(text);
     background-color: inherit;
     border: none;
-    .rq-icons {
+    .icon-base {
       pointer-events: none;
       &.icon-theme-fills {
         font-size: 14px;
@@ -131,7 +131,7 @@ export default {
     &--pic {
       display: block;
       position: relative;
-      .rq-icons {
+      .icon-base {
         position: absolute;
         top: 50%;
         right: 0;
@@ -152,7 +152,7 @@ export default {
       cursor: pointer;
       &.is-active {
         color: rqthemify(hover-color);
-        .theme-switch__dropdown--pic .rq-icons {
+        .theme-switch__dropdown--pic .icon-base {
           opacity: 1;
         }
       }

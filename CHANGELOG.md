@@ -13,6 +13,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+## [0.0.10] - 2020-04-29
+
+### Update
+
+- Update iconfont, All icon class formated as "icon-base icon-base-{iconName}".
+- anka second header
+- message interface field
+
+## [0.0.9] - 2020-04-23
+
+### Fix
+
+- notification number display
+
 ## [0.0.9-next.2] - 2020-04-17
 
 ### Added

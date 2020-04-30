@@ -1,4 +1,4 @@
 demo/
 themify.js
-.postcss.js
+!.postcssrc.js
 build

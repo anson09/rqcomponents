@@ -51,29 +51,29 @@
             </el-popover>
           </div>
         </div>
-        <messageList
+        <message-list
           v-for="(msg, index) in message"
           v-show="curType === msg.type"
           :key="index"
           :message="msg.data"
-          @getMessage="getMessage({ ...$event, read: msg.read })"
-          @deleteMessage="deleteMessage({ ...$event, read: msg.read })"
-          @updateMessage="updateMessage({ ...$event, read: msg.read })"
+          @getMessage="getMessage({ ...$event, unread: msg.unread })"
+          @deleteMessage="deleteMessage({ ...$event, unread: msg.unread })"
+          @updateMessage="updateMessage({ ...$event, unread: msg.unread })"
         >
-        </messageList>
+        </message-list>
       </div>
     </transition>
   </div>
 </template>
 <script>
-import elPopover from "element-ui/lib/popover";
+import ElPopover from "element-ui/lib/popover";
 
 import MessageList from "./message/MessageList.vue";
 import { message as messageApi } from "../../../api";
 
 export default {
   name: "Message",
-  components: { MessageList, elPopover },
+  components: { MessageList, ElPopover },
   data() {
     return {
       messageTypes: [
@@ -93,14 +93,14 @@ export default {
         read: {
           type: "read",
           data: [],
-          read: true,
+          unread: false,
           set: new Set(),
         },
         unread: {
           type: "unread",
           data: [],
           set: new Set(),
-          read: false,
+          unread: true,
         },
       },
       messageSettingDropdown: false,
@@ -109,16 +109,19 @@ export default {
 
   mounted() {
     Object.values(this.message).forEach((item) => {
-      this.getMessage({ read: item.read, updateToView: true });
+      this.getMessage({ unread: item.unread, updateToView: true });
     });
     this.fetchInterval = setInterval(() => {
       Object.values(this.message).forEach((item) => {
         // 已读消息在未显示时不更新
-        if (!this.messageVisible && item.read) return;
+
+        if (!this.messageVisible && !item.unread) return;
         this.getMessage({
-          read: item.read,
+          unread: item.unread,
           offset: 0,
-          limit: Math.max(this.limit, item.data.length),
+          limit: this.messageVisible
+            ? Math.max(this.limit, item.data.length)
+            : 1,
         });
       });
     }, 60 * 1000);
@@ -131,29 +134,34 @@ export default {
     setMessageVisible(visible) {
       this.messageVisible = visible;
     },
-    async updateMessage({ msg, read, index }) {
-      if (read) return;
+    async updateMessage({ msg, unread, index }) {
+      // 只更新未读
+      if (!unread) return;
       try {
         await messageApi.updateMessage(msg.id);
         this.message.unread.data.splice(index, 1);
+        this.unreadMsgNum -= 1;
         this.message.read.data.unshift(msg);
       } catch (err) {
         this.$message.error(err.message);
       }
     },
-    async deleteMessage({ read, msg, index }) {
+    async deleteMessage({ unread, msg, index }) {
       try {
         await messageApi.deleteMessage(msg.id);
-        const messageProp = read ? "read" : "unread";
+        const messageProp = unread ? "unread" : "read";
         this.message[messageProp].data.splice(index, 1);
+        if (unread) {
+          this.unreadMsgNum -= 1;
+        }
       } catch (err) {
         this.$message.error(err.message);
       }
     },
     async deleteAllMessage() {
+      // 删除已读
       try {
-        await messageApi.deleteAllMessage("already_read");
-        this.unreadMsgNum = 0;
+        await messageApi.deleteAllMessage(false);
         this.message.read.data = [];
       } catch (err) {
         this.$message.error(err.message);
@@ -163,22 +171,23 @@ export default {
       try {
         await messageApi.updateAllMessage();
         this.message.read.data.unshift(...this.message.unread.data);
+        this.unreadMsgNum = 0;
         this.message.unread.data = [];
       } catch (err) {
         this.$message.error(err.message);
       }
     },
     async getMessage(
-      { offset = 0, limit = this.limit, read = false, updateToView = false },
+      { offset = 0, limit = this.limit, unread = false, updateToView = false },
       getNewestMsg = false
     ) {
       const res = await messageApi.getMessages({
-        read,
+        unread,
         limit,
         offset,
       });
       if (this.messageVisible || updateToView) {
-        const messageProp = read ? "read" : "unread";
+        const messageProp = unread ? "unread" : "read";
         const message = [];
 
         if (!getNewestMsg) {
@@ -205,7 +214,7 @@ export default {
           const lacking = offset + res.data.length - message.length;
 
           if (lacking > 0) {
-            await this.getMessage({ offset: 0, limit: lacking, read }, true);
+            await this.getMessage({ offset: 0, limit: lacking, unread }, true);
             return;
           }
         } else {
@@ -218,7 +227,7 @@ export default {
           this.message[messageProp].data.unshift(...message);
         }
       }
-      if (!read) {
+      if (unread) {
         this.unreadMsgNum = res.total;
       }
     },
