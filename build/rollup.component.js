@@ -90,6 +90,7 @@ const iconfont = {
   onwarn: () => {},
   plugins: [
     url({
+      limit: 0,
       include: [
         "**/*.eot",
         "**/*.woff",

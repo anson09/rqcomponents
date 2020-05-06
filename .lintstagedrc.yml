@@ -3,7 +3,7 @@
   - stylelint --fix --mw 0
   - prettier --write
 "*.js":
-  - eslint --fix --max-warnings 0
+  - eslint --fix
   - prettier --write
 "*.scss":
   - stylelint --fix --mw 0
