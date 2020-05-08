@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Provide before-logout props;
+
 ## [Released]
 
 ## [0.0.10] - 2020-04-29

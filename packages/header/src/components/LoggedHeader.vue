@@ -100,7 +100,6 @@
 
 <script>
 import { logged } from "../../assets/dict/header.json";
-import { logout } from "../../api";
 import logo from "../../assets/img/logo.png";
 import logoWhite from "../../assets/img/logo-white.png";
 import header from "../../assets/img/header.png";
@@ -176,16 +175,10 @@ export default {
       }
       this.$set(this.btnConfigRight[idx], "active", false);
     },
-    async clickHandler(cfg) {
+    clickHandler(cfg) {
       if (cfg.event === "logout") {
-        const { code } = await logout();
-        if (code === 0) {
-          localStorage.removeItem("common_account");
-          localStorage.removeItem("rq-saas-ams-vuex");
-          return this.redirect("/");
-        }
+        this.$emit("logout");
       }
-      return false;
     },
     redirect(params) {
       this.$parent.handleLink(params);

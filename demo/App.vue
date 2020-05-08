@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <RqHeader :opacity="true" @auth="log"> </RqHeader>
+    <RqHeader :opacity="true" @auth="log" :before-logout="logout"> </RqHeader>
   </div>
 </template>
 
@@ -14,6 +14,10 @@ export default {
   methods: {
     log(...params) {
       console.log("111", params);
+    },
+    logout(done) {
+      console.log(done);
+      done();
     },
   },
 };

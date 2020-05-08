@@ -65,3 +65,8 @@ Set background opacity with white font-color;
 
 Default: ""
 A clear header with a topic text only.
+
+##### before-logout: function(done: function) {}
+
+Default: null
+Custom way to handle logout event.

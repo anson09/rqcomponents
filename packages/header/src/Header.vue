@@ -15,6 +15,7 @@
           :is-vip="isVip"
           @switchWorkspace="switchWorkspace"
           @createWorkspace="createWorkspace"
+          @logout="handleLogout"
         ></logged-header>
         <anka-header
           v-else
@@ -30,7 +31,7 @@
 <script>
 import LoggedHeader from "./components/LoggedHeader.vue";
 import AnkaHeader from "./components/AnkaHeader.vue";
-import { getAccount } from "../api";
+import { getAccount, logout } from "../api";
 
 export default {
   name: "RqHeader",
@@ -54,6 +55,10 @@ export default {
     topic: {
       default: "",
       type: String,
+    },
+    beforeLogout: {
+      default: null,
+      type: Function,
     },
   },
   data() {
@@ -94,6 +99,17 @@ export default {
     },
     createWorkspace() {
       this.$emit("createWorkspace");
+    },
+    handleLogout() {
+      const done = async () => {
+        const { code } = await logout();
+        if (code === 0) {
+          localStorage.removeItem("common_account");
+          this.handleLink("/");
+        }
+      };
+      if (this.beforeLogout) this.beforeLogout(done);
+      else done();
     },
     async initAccount() {
       try {
