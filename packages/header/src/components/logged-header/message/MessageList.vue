@@ -35,10 +35,15 @@ export default {
   name: "MessageList",
   filters: {
     dateFormat(val) {
+      function formatNumber(number) {
+        return number < 10 ? `0${number}` : number;
+      }
       const date = new Date(val * 1000);
-      return `${date.getFullYear()}.${
+      return `${date.getFullYear()}.${formatNumber(
         date.getMonth() + 1
-      }.${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+      )}.${formatNumber(date.getDate())} ${formatNumber(
+        date.getHours()
+      )}:${formatNumber(date.getMinutes())}:${formatNumber(date.getSeconds())}`;
     },
   },
   props: {
@@ -69,9 +74,7 @@ export default {
     handleScroll: debounce(function (event) {
       const { target } = event;
       if (target.scrollTop + target.offsetHeight >= target.scrollHeight - 20) {
-        this.$emit("getMessage", {
-          offset: this.message.length,
-        });
+        this.$emit("getMessage");
       }
     }, 300),
   },

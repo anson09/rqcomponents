@@ -98,8 +98,9 @@ export default {
     },
     async getWorkspaces() {
       try {
-        ({ data: this.workspaces } = await getWorksapces());
-
+        const res = await getWorksapces();
+        if (!res.data) return;
+        this.workspaces = res.data;
         if (!this.workspaces.length) {
           delete this.localStorageWorkspaces[this.account.userId];
           this.setStorage();
