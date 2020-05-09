@@ -56,7 +56,9 @@
           v-show="curType === msg.type"
           :key="index"
           :message="msg.data"
-          @getMessage="getMessage({ ...$event, unread: msg.unread })"
+          @getMessage="
+            getMessage({ ...$event, unread: msg.unread, offset: msg.offset })
+          "
           @deleteMessage="deleteMessage({ ...$event, unread: msg.unread })"
           @updateMessage="updateMessage({ ...$event, unread: msg.unread })"
         >
@@ -95,12 +97,14 @@ export default {
           data: [],
           unread: false,
           set: new Set(),
+          offset: 0,
         },
         unread: {
           type: "unread",
           data: [],
           set: new Set(),
           unread: true,
+          offset: 0,
         },
       },
       messageSettingDropdown: false,
@@ -178,53 +182,54 @@ export default {
       }
     },
     async getMessage(
-      { offset = 0, limit = this.limit, unread = false, updateToView = false },
-      getNewestMsg = false
+      { offset, limit = this.limit, unread = false, updateToView = false },
+      getLackingMsg = false
     ) {
+      const messageProp = unread ? "unread" : "read";
       const res = await messageApi.getMessages({
         unread,
         limit,
         offset,
       });
+      if (!res.data) return;
       if (this.messageVisible || updateToView) {
-        const messageProp = unread ? "unread" : "read";
         const message = [];
 
-        if (!getNewestMsg) {
-          if (offset === 0) {
-            this.message[messageProp].set.clear();
+        if (offset === 0) {
+          this.message[messageProp].set.clear();
+        }
+        res.data.forEach((item) => {
+          if (!this.message[messageProp].set.has(item.id)) {
+            message.push({ ...item });
+            this.message[messageProp].set.add(item.id);
           }
-          res.data.forEach((item) => {
-            if (!this.message[messageProp].set.has(item.id)) {
-              message.push({ ...item });
-              this.message[messageProp].set.add(item.id);
-            }
-          });
+        });
 
-          // 更新到视图
-          if (offset === 0) {
-            this.message[messageProp].data.splice(
-              0,
-              this.message[messageProp].data.length,
-              ...message
-            );
-          } else {
-            this.message[messageProp].data.push(...message);
-          }
-          const lacking = offset + res.data.length - message.length;
-
+        // 更新到视图
+        if (offset === 0) {
+          this.message[messageProp].data.splice(
+            0,
+            this.message[messageProp].data.length,
+            ...message
+          );
+          this.message[messageProp].offset = 0;
+        } else {
+          this.message[messageProp].data.push(...message);
+        }
+        this.message[messageProp].offset += res.data.length;
+        if (!getLackingMsg) {
+          const lacking = res.data.length - message.length;
           if (lacking > 0) {
-            await this.getMessage({ offset: 0, limit: lacking, unread }, true);
+            await this.getMessage(
+              {
+                offset: this.message[messageProp].offset,
+                limit: lacking,
+                unread,
+              },
+              true
+            );
             return;
           }
-        } else {
-          res.data.forEach((item) => {
-            if (!this.message[messageProp].set.has(item.id)) {
-              message.push(item);
-              this.message[messageProp].set.add(item.id);
-            }
-          });
-          this.message[messageProp].data.unshift(...message);
         }
       }
       if (unread) {
