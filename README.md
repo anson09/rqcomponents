@@ -1,6 +1,6 @@
-# usage:
+# Import:
 
-## Full
+## Full Import（NOT RECOMMANDED）
 
 ```js
 import UI from "@rqjs/rqcomponents";
@@ -15,16 +15,15 @@ new Vue({
 });
 ```
 
-## Package
+## Partial Import
 
-All format as esm script.
+rqcomponnets only exports esm standard packages now.
 
 ```js
 import RqHeader from "@rqjs/rqcomponents/lib/[componentName]";
-
 // Or import all components and deconstruction.
+// import { RqHeader } from "@rqjs/rqcomponents";
 
-import { RqHeader } from "@rqjs/rqcomponents";
 import "@rqjs/rqcomponents/lib/theme/[componentName].css";
 import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 
@@ -36,25 +35,23 @@ new Vue({
 });
 ```
 
-## Components
+# Components Description
 
-### RqHeader
+## RqHeader
 
-> Common Header.
+### props:
 
-#### props:
-
-##### notification: string | slot
+#### notification: string | slot
 
 Default: ""
 Raise a warning on the top of the header.
 
-##### opacity: boolean
+#### opacity: boolean
 
 Default: false
 Set background opacity with white font-color;
 
-##### topic: string
+#### topic: string
 
 Default: ""
 A clear header with a topic text only.

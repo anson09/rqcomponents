@@ -158,7 +158,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import "../../../../common/style/common";
+@import "../../../common/style/mixins";
 
 .second-header {
   position: fixed;

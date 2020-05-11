@@ -71,7 +71,7 @@
 import ElPopover from "element-ui/lib/popover";
 
 import MessageList from "./message/MessageList.vue";
-import { message as messageApi } from "../../../api";
+import { message as messageApi } from "../../api";
 
 export default {
   name: "Message",
@@ -244,7 +244,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../../../common/style/common";
+@import "../../../common/style/mixins";
 .message {
   padding: 0;
   height: 100%;

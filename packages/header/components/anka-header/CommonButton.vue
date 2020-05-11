@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../../common/style/common";
+@import "../../../common/style/mixins";
 
 .common-button {
   box-sizing: border-box;

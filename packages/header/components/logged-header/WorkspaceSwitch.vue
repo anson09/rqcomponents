@@ -47,7 +47,7 @@
   <div v-else class="create-btn" @click="createWorkspace">{{ label }}</div>
 </template>
 <script>
-import { getWorksapces } from "../../../api";
+import { getWorksapces } from "../../api";
 
 export default {
   name: "WorkspaceSwitch",

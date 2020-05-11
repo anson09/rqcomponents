@@ -1,4 +1,4 @@
-/* eslint-disable global-require, import/no-extraneous-dependencies */
+/* eslint-disable global-require */
 const themifyOptions = {
   palette: {
     light: {
@@ -90,6 +90,6 @@ const themifyOptions = {
 module.exports = {
   plugins: [
     require("autoprefixer")({ grid: true }),
-    require("./themify").themify(themifyOptions),
+    require("./build/themify").themify(themifyOptions),
   ],
 };

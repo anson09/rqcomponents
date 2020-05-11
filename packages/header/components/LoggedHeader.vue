@@ -99,11 +99,11 @@
 </template>
 
 <script>
-import { logged } from "../../assets/dict/header.json";
-import { logout } from "../../api";
-import logo from "../../assets/img/logo.png";
-import logoWhite from "../../assets/img/logo-white.png";
-import header from "../../assets/img/header.png";
+import { logged } from "../assets/dict/header.json";
+import { logout } from "../api";
+import logo from "../assets/img/logo.png";
+import logoWhite from "../assets/img/logo-white.png";
+import header from "../assets/img/header.png";
 import ThemeSwitch from "./logged-header/ThemeSwitch.vue";
 import Message from "./logged-header/Message.vue";
 import WorkspaceSwitch from "./logged-header/WorkspaceSwitch.vue";
@@ -198,7 +198,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../common/style/common";
+@import "../../common/style/mixins";
 
 .theme {
   @each $i in dark, light {

@@ -1,4 +1,4 @@
-import RqHeader from "../packages/header";
+import RqHeader from "./header";
 
 const components = [RqHeader];
 

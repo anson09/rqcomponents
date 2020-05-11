@@ -6,12 +6,12 @@
           <img
             v-show="light"
             data-logo-theme="light"
-            src="../../assets/img/logo-white-pure.png"
+            src="../assets/img/logo-white-pure.png"
           />
           <img
             v-show="!light"
             data-logo-theme="dark"
-            src="../../assets/img/logo.png"
+            src="../assets/img/logo.png"
           />
         </a>
         <vnodes v-if="topicSlot" :vnodes="topicSlot"></vnodes>
@@ -73,7 +73,7 @@ import SecondHeader, {
   getSecondHeaderShow,
 } from "./anka-header/SecondHeader.vue";
 import MiniMenu from "./anka-header/MiniMenu.vue";
-import { anka } from "../../assets/dict/header.json";
+import { anka } from "../assets/dict/header.json";
 
 export default {
   name: "AnkaHeader",
@@ -242,7 +242,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../common/style/common";
+@import "../../common/style/mixins";
 
 .anka-header {
   position: relative;
@@ -250,7 +250,7 @@ export default {
   box-sizing: border-box;
   height: 70px;
   &.is-topic {
-    @media screen and (max-width: $mobile-max-vw) {
+    @media screen and (max-width: 600px) {
       height: 40px;
       nav {
         box-sizing: border-box;
