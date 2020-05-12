@@ -2,8 +2,7 @@ import "element-ui/lib/theme-chalk/base.css";
 import "element-ui/lib/theme-chalk/button.css";
 import "element-ui/lib/theme-chalk/message.css";
 import "element-ui/lib/theme-chalk/popover.css";
-import "../common/style";
-import RqHeader from "./src/Header.vue";
+import RqHeader from "./Header.vue";
 import { methodConstructor } from "./util";
 
 RqHeader.install = function (Vue, option) {

@@ -1,6 +1,7 @@
 .vscode
-.cache
-dist
+demo/.cache
+demo/dist
+lib
 package-lock.json
 
 # Emacs

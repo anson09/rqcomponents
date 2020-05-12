@@ -1,26 +1,39 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
-import VueRouter from "vue-router";
+import "normalize.css";
 import Vue from "vue";
-// import {RqHeader} from "../dist/rqcomponents.cjs";
-// import "../dist/rqcomponents.esm.css";
-// import "../packages/common/assets/icon/iconfont.css";
+import VueRouter from "vue-router";
 
-// dev
-import { RqHeader } from "../src";
+/* build from lib */
+// import RqHeader from "../lib/rqheader";
+// import { RqHeader } from "../lib/rqcomponents";
+import rqcomponents from "../lib/rqcomponents";
+
+// import "../lib/theme/rqheader.css";
+import "../lib/theme/rqcomponents.css";
+import "../lib/theme/base.css";
+/* --------  */
+
+/* build from source */
+// import { RqHeader } from "../packages";
+// import "../packages/common/style";
+/* --------  */
+
 import App from "./App.vue";
-import "/../node_modules/normalize.css";
 
 Vue.use(VueRouter);
-// Vue.use(Rqui, {
-//   RqHeader: {
-//     router: true
-//   }
-// });
-Vue.use(RqHeader, {
-  router: true,
-  admin: true,
+
+Vue.use(rqcomponents, {
+  RqHeader: {
+    router: true,
+    admin: true,
+  },
 });
+
+// Vue.use(RqHeader, {
+//   router: true,
+//   admin: true,
+// });
 
 /* eslint-disable-next-line no-new */
 new Vue({

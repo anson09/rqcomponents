@@ -31,7 +31,7 @@
 <script>
 import LoggedHeader from "./components/LoggedHeader.vue";
 import AnkaHeader from "./components/AnkaHeader.vue";
-import { getAccount, logout } from "../api";
+import { getAccount, logout } from "./api";
 
 export default {
   name: "RqHeader",

@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import lightImg from "../../../assets/img/theme-light.png";
-import darkImg from "../../../assets/img/theme-dark.png";
-import { THEME_MODE, themeRender, isSupported } from "../../../util";
+import lightImg from "../../assets/img/theme-light.png";
+import darkImg from "../../assets/img/theme-dark.png";
+import { THEME_MODE, themeRender, isSupported } from "../../util";
 
 export default {
   name: "ThemeSwitch",
@@ -89,7 +89,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../../common/style/common";
+@import "../../../common/style/mixins";
 
 .theme-switch {
   margin: auto;

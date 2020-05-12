@@ -3,10 +3,10 @@ extends:
   - plugin:vue/recommended
   - prettier
   - prettier/vue
-globals:
-  rqevent: true
 parserOptions:
   parser: babel-eslint
+globals:
+  rqevent: true
 rules:
   no-restricted-globals:
     - off
@@ -34,8 +34,14 @@ rules:
   no-plusplus:
     - error
     - allowForLoopAfterthoughts: true
+  import/no-extraneous-dependencies:
+    - off
   # parcel support
   import/no-absolute-path:
     - off
   import/no-unresolved:
     - off
+  # experiment
+  complexity:
+    - error
+    - 11

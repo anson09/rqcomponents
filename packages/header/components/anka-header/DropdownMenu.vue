@@ -58,7 +58,7 @@
               @click="clickHandle(contact)"
             ></i>
             <el-popover v-else placement="bottom" width="auto" trigger="hover">
-              <img :src="qrcodeImg" />
+              <img :src="qrcode" />
               <i
                 slot="reference"
                 :class="'icon-base icon-base-' + contact.icon"
@@ -74,7 +74,7 @@
 <script>
 import ElPopover from "element-ui/lib/popover";
 import Message from "element-ui/lib/message";
-import qrcodeImg from "../../../assets/img/qrcodeImg.jpg";
+import qrcode from "../../assets/img/qrcode.jpg";
 
 export default {
   name: "DropdownMenu",
@@ -93,7 +93,7 @@ export default {
   },
   data() {
     return {
-      qrcodeImg,
+      qrcode,
     };
   },
   watch: {},
@@ -131,7 +131,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../../../common/style/common";
+@import "../../../common/style/mixins";
 
 .menu {
   &__sub-links {

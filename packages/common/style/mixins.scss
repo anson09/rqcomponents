@@ -1,4 +1,4 @@
-@import "./variables";
+$min-vw: 1280px;
 
 @mixin laptop {
   @media screen and (max-width: $min-vw) {

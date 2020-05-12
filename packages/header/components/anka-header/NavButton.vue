@@ -95,7 +95,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../../common/style/common";
+@import "../../../common/style/mixins";
 
 .nav-button {
   position: relative;

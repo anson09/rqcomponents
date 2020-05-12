@@ -3,7 +3,7 @@
     "support": {
       "contact": [
         {
-          "qrcode": "qrcodeImg",
+          "qrcode": "qrcode",
           "icon": "wechat"
         },
         {

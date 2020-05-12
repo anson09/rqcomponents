@@ -11,11 +11,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+## [0.1.0-next.0] - 2020-05-11
+
+### **Break**
+
+- import method updated，please refer to README.md
+
+### Update
+
+- Multi output for all components
+- Output contains iconfont≈
+
+### Refactor
+
+- Project structure
+- Build process
+
 ## [0.0.10] - 2020-04-29
 
 ### Update
 
-- Update iconfont, All icon class formated as "icon-base icon-base-{iconName}".
+- Update iconfont, All icon class formated as "icon-base icon-base-{iconName}"
 - anka second header
 - message interface field
 
@@ -36,8 +52,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add copy icon.
-- Refactor theme-switch button as a normal dropdown.
+- Add copy icon
+- Refactor theme-switch button as a normal dropdown
 
 ## [0.0.8-alpha.20] - 2020-03-13
 
@@ -49,14 +65,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Fix road-show btn bug in dark mode.
-- All icon class formated as "rq-icons rq-icon-{iconName}".
+- Fix road-show btn bug in dark mode
+- All icon class formated as "rq-icons rq-icon-{iconName}"
 
 ## [0.0.8-alpha.5] - 2020-03-06
 
 ### Added
 
-- Fix scroll bug for IE11.
+- Fix scroll bug for IE11
 - Icon bug
 
 ## [0.0.8-alpha.3] - 2020-03-04
@@ -69,10 +85,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Vip icon for rank 5 user:
+- Vip icon for rank 5 user
 
 ## [0.0.7-alpha.62] - 2020-02-10
 
 ### Added
 
-- Warning text as props and slot;
+- Warning text as props and slot
