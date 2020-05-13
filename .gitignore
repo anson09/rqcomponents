@@ -4,7 +4,4 @@ node_modules
 demo/dist
 demo/.cache
 lib
-
-*~
-\#*\#
-.\#*
+.depVersion
