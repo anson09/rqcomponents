@@ -26,6 +26,7 @@ const componentsConfig = Object.entries(componentsList).map(
       images(),
       vue({
         css: false,
+        needMap: false,
       }),
       postcss({
         extract: `lib/theme/${fileName}.css`,
