@@ -253,8 +253,7 @@ export default {
   color: rqthemify(text);
 
   &-button {
-    padding: 4px 10px;
-    width: 38px;
+    padding: 4px 20px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -270,7 +269,7 @@ export default {
       position: absolute;
       color: white;
       background-color: #ed4a4a;
-      right: 0;
+      right: 10px;
       top: 4px;
       width: 18px;
       height: 18px;

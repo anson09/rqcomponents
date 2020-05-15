@@ -156,7 +156,6 @@ export default {
     position: relative;
     cursor: pointer;
     height: 100%;
-    padding-top: 4px;
     box-sizing: border-box;
 
     &:hover {
@@ -251,6 +250,7 @@ export default {
     box-sizing: border-box;
     position: relative;
     background: inherit;
+    justify-content: space-between;
     z-index: 9;
     &__text {
       width: 135px;
@@ -273,7 +273,7 @@ export default {
 .create-btn {
   color: rqthemify(text);
   font-size: 14px;
-  padding: 4px 16px 0;
+  padding: 0 20px;
   &:hover {
     font-weight: 600;
     color: rqthemify(highlight);

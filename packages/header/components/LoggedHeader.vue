@@ -19,6 +19,9 @@
       </div>
     </div>
     <div class="logged-header-btns">
+      <!-- 工作空间 路演 帮助文档 社区  消息 主题 头像 -->
+      <!-- type 工作空间 消息 主题 头像 -->
+      <!-- none type 路演 帮助文档 社区  -->
       <div
         v-for="(btn, idx) in btnConfigRight"
         :key="idx"
@@ -37,11 +40,13 @@
           v-bind="btn"
           v-on="$listeners"
         ></workspace-switch>
+
         <theme-switch
           v-else-if="btn.type === 'theme'"
           :active="btn.active"
         ></theme-switch>
         <message v-else-if="btn.type === 'message'"></message>
+        <!-- 纯按钮: 社区 路演 -->
         <a
           v-else-if="btn.label && !btn.links"
           class="logged-header-btn__label"
@@ -49,13 +54,11 @@
           :target="btn.link.newBlock && '_blank'"
           >{{ btn.label }}</a
         >
-        <span
-          v-else-if="btn.label"
-          class="logged-header-btn__label"
-          @click="clickHandler(btn)"
-          >{{ btn.label }}</span
-        >
-
+        <!-- 非以上且有label:  帮助文档 -->
+        <span v-else-if="btn.label" class="logged-header-btn__label">{{
+          btn.label
+        }}</span>
+        <!-- 头像 -->
         <template v-if="btn.type === 'avatar'">
           <img v-if="!avatar" :src="baseAvatar" alt="" />
           <img v-else :src="avatar" alt="" />
@@ -63,10 +66,12 @@
             {{ vipText }}
           </div>
         </template>
+        <!-- 没有 type 的有二级链接的: 帮助文档 -->
         <span v-if="btn.links && !btn.type" class="arrow">
           <i class="el-icon-arrow-down"></i>
         </span>
         <transition name="rq-zoom-in-top">
+          <!-- 有二级链接: 帮助文档 头像 -->
           <div
             v-show="btn.links && btn.active"
             class="logged-header-btn__dropdown"
@@ -78,18 +83,31 @@
               {{ username }}
             </p>
             <div
-              v-for="({ label, link, event }, linkIdx) in btn.links"
+              v-for="({ label, link, event, links }, linkIdx) in btn.links"
               :key="linkIdx"
               class="logged-header-btn__dropdown--item"
             >
-              <a
-                v-if="link"
-                :class="isActiveLink(link.href || link)"
-                :href="link.href || link"
-                :target="link.newBlock && '_blank'"
-                >{{ label }}</a
+              <!-- 三级链接 -->
+              <template v-if="links">
+                <i class="el-icon-arrow-right"></i>
+                <div class="logged-header-btn__dropdown--subitem-container">
+                  <p
+                    v-for="(sublink, sublinkIdx) in links"
+                    :key="sublinkIdx"
+                    class="logged-header-btn__dropdown--subitem"
+                    @click="clickHandler({ redirect: sublink.link })"
+                  >
+                    {{ sublink.label }}
+                  </p>
+                </div>
+              </template>
+              <p
+                class="logged-header-btn__dropdown--item-text"
+                :class="isActiveLink((link && link.href) || link)"
+                @click="clickHandler({ event, redirect: link })"
               >
-              <span v-else @click="clickHandler({ event })">{{ label }}</span>
+                {{ label }}
+              </p>
             </div>
           </div>
         </transition>
@@ -153,7 +171,7 @@ export default {
   },
   methods: {
     isActiveLink(link) {
-      return link.length > 2 && window.location.href.includes(link)
+      return link && link.length > 2 && window.location.href.includes(link)
         ? "active"
         : "";
     },
@@ -179,6 +197,10 @@ export default {
       if (cfg.event === "logout") {
         this.$emit("logout");
       }
+      if (cfg.redirect) {
+        this.redirect(cfg.redirect);
+      }
+      return false;
     },
     redirect(params) {
       this.$parent.handleLink(params);
@@ -241,14 +263,13 @@ export default {
     }
   }
   &-btn {
-    padding: 0 16px;
+    padding: 0 20px;
     position: relative;
     height: 100%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     transition: all 0.3s;
-    padding-top: 4px;
     cursor: pointer;
     a {
       text-decoration: none;
@@ -256,6 +277,7 @@ export default {
     span,
     a {
       @include text(rqthemify(text));
+      line-height: 20px;
     }
     &::after {
       content: "";
@@ -277,7 +299,7 @@ export default {
       width: 8px;
       transition: transform 0.3s;
       transform-origin: right;
-      transform: scale(0.5);
+      margin-right: 8px;
       .icon-base {
         font-size: 16px;
       }
@@ -305,56 +327,110 @@ export default {
       min-width: 100%;
       top: 100%;
       left: 0;
+      padding-top: 4px;
       box-shadow: 0px 8px 12px 0px rgba(152, 165, 185, 0.2);
       color: rqthemify(shadow-color);
       background: rqthemify(active-background-color);
       z-index: 1;
       border-radius: 0 0 2px 2px;
+
       &--item {
-        margin-top: 18px;
-        a,
-        span {
-          cursor: pointer;
-          box-sizing: border-box;
-          display: inline-block;
-          min-width: 100%;
+        position: relative;
+        margin-bottom: -8px;
+        cursor: pointer;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        @include text(rqthemify(text));
+        &-text {
           white-space: nowrap;
-          @include text(rqthemify(text));
-          padding: 0 20px;
-          &.active {
-            color: rqthemify(hover-color);
-          }
+          padding: 12px 20px;
+        }
+        .el-icon-arrow-right {
+          right: 10px;
+          position: absolute;
+          @include t-center-vertical;
+        }
+      }
+
+      &--subitem {
+        display: block;
+        padding: 12px 20px;
+        margin-bottom: -8px;
+        white-space: nowrap;
+        font-weight: 500;
+        @include text(rqthemify(text));
+        &:last-child {
+          margin-bottom: 0;
+        }
+        &:hover,
+        &:active,
+        &:focus {
+          color: rqthemify(hover-color);
+          font-weight: 600;
         }
         &:hover {
-          a,
-          span {
-            color: rqthemify(hover-color);
-          }
+          background: rqthemify(bg-hover);
         }
-        &:last-child {
-          padding-bottom: 20px;
+        &:active,
+        &:focus {
+          background: rqthemify(bg-active);
+        }
+        &-container {
+          width: 188px;
+          display: none;
+          position: absolute;
+          right: 0;
+          top: -4px;
+          transform: translateX(100%);
+          background: rqthemify(container-bg);
+          box-shadow: 20px 0px 20px 0px rgba(0, 0, 0, 0.15);
+          padding: 4px 0;
+          flex-direction: column;
+        }
+      }
+
+      @mixin item-text-active($bg-color) {
+        background: $bg-color;
+        color: rqthemify(hover-color);
+        font-weight: 600;
+      }
+
+      $pre-class-name: logged-header-btn__dropdown;
+      .#{$pre-class-name}--item-text:hover {
+        @include item-text-active(rqthemify(bg-hover));
+      }
+
+      .#{$pre-class-name}--item:hover .#{$pre-class-name}--subitem-container {
+        display: block;
+      }
+
+      .#{$pre-class-name}--subitem-container:hover {
+        background: rqthemify(active-background-color);
+        ~ .#{$pre-class-name}--item-text {
+          @include item-text-active(rqthemify(bg-view));
         }
       }
     }
     &.active &__label {
       color: rqthemify(hover-color);
     }
+    &.docs &__dropdown--item-text {
+      padding-right: 30px;
+    }
     &.theme {
       padding: 0;
       font-size: 16px;
     }
-    &.workspace {
-      margin-right: 40px;
-    }
+
     &.workspace,
     &.message {
       padding: 0;
     }
     &.road-show {
       height: auto;
-      padding: 2px 20px;
-      margin-top: 4px;
-      margin-right: 20px;
+      padding: 4px 20px;
+      margin: 0 20px;
       border: 1px solid rqthemify(highlight);
       border-radius: 20px;
       transition: all 0.3s;
@@ -376,8 +452,8 @@ export default {
       position: relative;
       height: 100%;
       img {
-        width: 28px;
-        height: 28px;
+        width: 36px;
+        height: 36px;
         object-fit: cover;
         border-radius: 50%;
       }
@@ -427,11 +503,8 @@ export default {
             background: rqthemify(success);
           }
         }
-        &--item {
-          text-align: center;
-          &:last-child {
-            padding-bottom: 20px;
-          }
+        &--item-text {
+          justify-content: center;
         }
       }
     }

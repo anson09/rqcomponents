@@ -19,14 +19,14 @@
             <span class="main-label">{{ item.mainLabel }}</span>
             <span class="second-label">{{ item.secondLabel }}</span>
           </span>
-          <common-button
+          <span
             v-else
             :key="index"
-            :class="{ 'is-active': isActive(item.path) }"
-            class="nav__product"
-            :label="item.label"
+            :class="['nav__product', { 'is-active': isActive(item.path) }]"
             @click="clickHandle(item.path)"
-          ></common-button>
+          >
+            {{ item.label }}
+          </span>
         </template>
       </div>
       <div class="nav__buttons">
@@ -168,7 +168,8 @@ export default {
   justify-content: center;
   height: 60px;
   @include full-vw;
-  &.rqoptimizer {
+  &.rqoptimizer,
+  &.quant {
     min-width: 1024px;
   }
   .header__bg {
@@ -181,35 +182,26 @@ export default {
     background: rqthemify(bg-white);
     box-shadow: 0px 10px 11px 0px rgba(8, 25, 52, 0.1);
   }
-  .icon-base {
-    color: rqthemify(text);
-  }
 
   $products: rqdata, rqams, rqoptimizer, quant;
   @each $product in $products {
     &.#{$product} {
-      color: rqthemify($product);
-      .is-active {
-        .icon-base {
+      .icon-base {
+        color: rqthemify($product);
+      }
+      .nav__product {
+        &.is-active {
           color: rqthemify($product);
+          &:after {
+            background: rqthemify($product);
+            width: 100%;
+          }
         }
       }
 
       .nav__button {
         color: rqthemify($product);
         border-color: rqthemify($product);
-      }
-    }
-  }
-  $products: quant;
-  @each $product in $products {
-    &.#{$products} {
-      .nav__product {
-        background: rqthemify(#{$product}-sub-product-bg);
-        &.is-active {
-          background: rqthemify($product);
-          color: rqthemify(text-white);
-        }
       }
     }
   }
@@ -229,28 +221,58 @@ export default {
 
     .nav__icon {
       cursor: pointer;
-
+      margin-right: 16px;
+      display: flex;
+      align-items: center;
+      &:hover,
+      &:focus,
+      &:active {
+        transform: scaleX(1.05);
+      }
       .icon-base {
         font-size: 28px;
-        margin-right: 13px;
       }
 
       .main-label {
-        @include h3(rqthemify(text-dark));
+        @include h3(rqthemify(text-darker));
+        margin: 0 8px 0 10px;
       }
 
       .second-label {
-        @include rg-text(rqthemify(text-dark));
-        margin-left: 13px;
-        margin-right: 17px;
+        @include rg-text(rqthemify(text-darker));
       }
     }
+
     .nav__product {
-      margin: 0 13px;
-      border: none;
-      padding: 5px 12px;
-      border-radius: 6px;
-      color: rqthemify(text);
+      position: relative;
+      cursor: pointer;
+      @include rg-text(rqthemify(text));
+      margin: 0 16px;
+      padding: 18px 0;
+      height: 100%;
+
+      &.is-active,
+      &:hover {
+        color: rqthemify(text-dark);
+        transform: scaleX(1.05);
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 0;
+        height: 3px;
+        transition: width 0.3s ease;
+      }
+      &:hover {
+        &:after {
+          background: rqthemify(bg-gray-hover);
+          width: 100%;
+        }
+      }
     }
 
     .nav__button {

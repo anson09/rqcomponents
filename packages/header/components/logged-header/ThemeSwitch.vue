@@ -95,15 +95,16 @@ export default {
   margin: auto;
   &-button {
     padding: 0 10px;
-    width: 36px;
+    width: 40px;
     text-align: center;
     color: rqthemify(text);
     background-color: inherit;
     border: none;
     .icon-base {
       pointer-events: none;
+      font-size: 18px;
       &.icon-theme-fills {
-        font-size: 14px;
+        font-size: 20px;
         color: rqthemify(hover-color);
       }
     }
@@ -136,7 +137,7 @@ export default {
         top: 50%;
         right: 0;
         left: 0;
-        font-size: inherit;
+        font-size: 16px;
         line-height: 100%;
         color: rqthemify(success);
         text-align: center;

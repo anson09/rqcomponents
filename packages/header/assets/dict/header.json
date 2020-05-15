@@ -84,7 +84,7 @@
               "link": "/quant",
               "icon": "quant",
               "label": "Ricequant米筐量化",
-              "subLinks": [
+              "links": [
                 { "link": "/quant", "label": "量化首页" },
                 { "link": "/quant/rq-alpha-plus", "label": "RQAlpha Plus" },
                 { "link": "/quant/factor", "label": "因子研究" },
@@ -115,10 +115,23 @@
           "label": "支持",
           "links": [
             {
-              "link": {
-                "href": "/doc/rqdata-institutional#research-version",
-                "outer": true
-              },
+              "links": [
+                {
+                  "link": {
+                    "href": "/doc/rqdata-institutional",
+                    "outer": true
+                  },
+                  "label": "Python API文档"
+                },
+                {
+                  "link": {
+                    "href": "/doc/rqdata-http-institutional",
+                    "outer": true
+                  },
+                  "label": "HTTP API文档"
+                }
+              ],
+
               "label": "RQData使用文档"
             },
             {
@@ -227,11 +240,23 @@
       {
         "links": [
           {
-            "link": {
-              "href": "/doc/rqdata-institutional#research-version",
-              "newBlock": true
-            },
-            "label": "RQData使用文档"
+            "links": [
+              {
+                "link": {
+                  "href": "/doc/rqdata-institutional",
+                  "newBlock": true
+                },
+                "label": "API帮助文档-Python"
+              },
+              {
+                "link": {
+                  "href": "/doc/rqdata-http-institutional",
+                  "newBlock": true
+                },
+                "label": "Restful文档-HTTP服务"
+              }
+            ],
+            "label": "RQData 使用文档"
           },
           {
             "link": {
@@ -255,7 +280,8 @@
             "label": "RQSDK使用文档"
           }
         ],
-        "label": "帮助文档"
+        "label": "帮助文档",
+        "className": "docs"
       },
       {
         "link": {
@@ -265,13 +291,14 @@
         "label": "社区"
       },
       {
-        "type": "theme",
-        "className": "theme"
-      },
-      {
         "type": "message",
         "className": "message"
       },
+      {
+        "type": "theme",
+        "className": "theme"
+      },
+
       {
         "links": [
           {

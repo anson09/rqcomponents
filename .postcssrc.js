@@ -4,8 +4,13 @@ const themifyOptions = {
     light: {
       "bg-white": "white",
       "bg-gray": "#f6f9fc",
+      "bg-gray-hover": "#c8cddc",
       "bg-gray-dark": "#ececec",
       "bg-gray-dark-hover": "#1b5fc4",
+
+      "bg-hover": "#F2F5F9",
+      "bg-view": "#F0F0F0",
+      "bg-active": "#e3eaf5",
 
       "container-bg": "#f7f8fa",
       text: "#666666",
@@ -13,6 +18,7 @@ const themifyOptions = {
       "text-gray-lighter": "#c5c5c5",
       "text-hard": "#2a2a2a",
       "text-dark": "#333",
+      "text-darker": "#272727",
       "text-white": "#ffffff",
       "text-white-dark": "#e7e9f1",
       "text-disabled": "#a3a3a3",
@@ -41,7 +47,6 @@ const themifyOptions = {
 
       "quant-view-bg": "#f3f3f3",
       "quant-sub-link-bg": "#f1e7e7",
-      "quant-sub-product-bg": "#f0f0f0",
 
       "border-disabled": "#dcdfe6",
       "button-dark": "#2a2a2a",

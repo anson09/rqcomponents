@@ -5,16 +5,16 @@
       :key="linkIdx"
       :class="['menu__links-item-wrapper', { product: link.icon }, link.icon]"
     >
-      <template v-if="link.subLinks">
+      <template v-if="link.links">
         <transition name="rq-fade-in-linear">
-          <div class="menu__sub-links">
+          <div class="menu__sublinks">
             <p
-              v-for="(subLink, subLinkIdx) in link.subLinks"
-              :key="subLinkIdx"
-              class="menu__sub-links__item"
-              @click.stop="clickHandle(subLink)"
+              v-for="(sublink, sublinkIdx) in link.links"
+              :key="sublinkIdx"
+              class="menu__sublink-item"
+              @click="clickHandle(sublink)"
             >
-              {{ subLink.label }}
+              {{ sublink.label }}
             </p>
           </div>
         </transition>
@@ -134,36 +134,51 @@ export default {
 @import "../../../common/style/mixins";
 
 .menu {
-  &__sub-links {
-    position: absolute;
-    display: none;
-    right: 1px;
-    padding: 12px 0;
-    box-shadow: 20px 0px 20px 0px rgba(0, 0, 0, 0.15);
-    top: 0;
-    transform: translateX(100%);
-    background: white;
-    &__item {
+  &__sublink {
+    &-item {
       padding: 12px 30px 12px 20px;
       @include text(rqthemify(text));
-      cursor: pointer;
+      @include hover;
+      &:hover {
+        background: rqthemify(bg-hover);
+        font-weight: 600;
+      }
+      &:active,
+      &:focus {
+        background: rqthemify(bg-active);
+      }
+    }
+    &s {
+      display: none;
+      padding: 10px 0;
+      position: absolute;
+      right: 1px;
+      box-shadow: 20px 0px 20px 0px rgba(0, 0, 0, 0.15);
+      transform: translateX(100%);
+      background: rqthemify(container-bg);
+      top: -10px;
+      &:hover {
+        background: rqthemify(active-background-color);
+      }
     }
   }
   &__links {
     @include text(rqthemify(text));
     margin-top: 10px;
     &-item {
-      padding: 10px 20px;
-      vertical-align: middle;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
 
       &-wrapper {
         position: relative;
         @include hover;
         &:hover {
           font-weight: bold;
-          .menu__sub-links {
+          .menu__sublinks {
             display: block;
           }
+          background: rqthemify(bg-hover);
         }
         $products: rqams, rqdata, rqoptimizer, quant;
         @each $product in $products {
@@ -177,14 +192,14 @@ export default {
         $products: quant;
         @each $product in $products {
           &.product.#{$product} {
-            .menu__sub-links {
+            .menu__sublinks {
               &:hover {
                 + .menu__links-item {
                   background: rqthemify(#{$product}-view-bg);
                 }
               }
             }
-            .menu__sub-links__item {
+            .menu__sublink-item {
               &:hover {
                 color: rqthemify(#{$product});
                 background: rqthemify(#{$product}-bg);
@@ -205,8 +220,13 @@ export default {
         position: absolute;
         @include t-center-vertical;
         right: 16px;
+        font-weight: inherit;
       }
     }
+  }
+
+  &__sublinks:hover ~ .menu__links-item {
+    background: rqthemify(bg-view);
   }
 
   &-support {
