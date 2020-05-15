@@ -302,11 +302,17 @@
       {
         "links": [
           {
-            "link": "/dashboard/profile",
+            "link": {
+              "href": "/dashboard",
+              "outer": true
+            },
             "label": "个人主页"
           },
           {
-            "link": "/dashboard/account#setting",
+            "link": {
+              "href": "/dashboard/account#setting",
+              "outer": true
+            },
             "label": "账号中心"
           },
           {
