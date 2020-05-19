@@ -306,11 +306,11 @@ export default {
     }
     &:hover {
       background: rqthemify(active-background-color);
-      box-shadow: 0px 2px 4px 0px rgba(152, 165, 185, 0.2);
+      box-shadow: 0px 2px 4px 0px rqthemify(shadow-color);
       color: rqthemify(shadow-color);
 
       .arrow {
-        transform: rotate(180deg) scale(0.5);
+        transform: rotate(180deg);
         color: rqthemify(hover-color);
       }
       .logged-header-btn__label {
@@ -328,7 +328,7 @@ export default {
       top: 100%;
       left: 0;
       padding-top: 4px;
-      box-shadow: 0px 8px 12px 0px rgba(152, 165, 185, 0.2);
+      box-shadow: 0px 8px 12px 0px rqthemify(shadow-color);
       color: rqthemify(shadow-color);
       background: rqthemify(active-background-color);
       z-index: 1;
@@ -341,7 +341,7 @@ export default {
         &:last-child {
           margin-bottom: 0;
         }
-        @include text(rqthemify(text));
+        @include text(rqthemify(dropdown-text));
         &-text {
           white-space: nowrap;
           padding: 12px 20px;
@@ -359,14 +359,14 @@ export default {
         margin-bottom: -8px;
         white-space: nowrap;
         font-weight: 500;
-        @include text(rqthemify(text));
+        @include text(rqthemify(dropdown-text));
         &:last-child {
           margin-bottom: 0;
         }
         &:hover,
         &:active,
         &:focus {
-          color: rqthemify(hover-color);
+          color: rqthemify(dropdown-text-hover);
           font-weight: 600;
         }
         &:hover {
@@ -384,7 +384,7 @@ export default {
           top: -4px;
           transform: translateX(100%);
           background: rqthemify(container-bg);
-          box-shadow: 20px 0px 20px 0px rgba(0, 0, 0, 0.15);
+          box-shadow: 20px 0px 20px 0px rqthemify(shadow-color);
           padding: 4px 0;
           flex-direction: column;
         }
@@ -392,7 +392,7 @@ export default {
 
       @mixin item-text-active($bg-color) {
         background: $bg-color;
-        color: rqthemify(hover-color);
+        color: rqthemify(dropdown-text-hover);
         font-weight: 600;
       }
 
