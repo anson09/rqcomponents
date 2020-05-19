@@ -26,11 +26,11 @@ const componentsConfig = Object.entries(componentsList).map(
       images(),
       vue({
         css: false,
+        needMap: false,
       }),
       postcss({
         extract: `lib/theme/${fileName}.css`,
         plugins: postcssPlugins,
-        // sourceMap: true,
       }),
       resolve(),
       babel({
@@ -86,7 +86,6 @@ const baseCssConfig = {
     }),
     postcss({
       extract: "lib/theme/base.css",
-      // sourceMap: true,
     }),
   ],
 };
