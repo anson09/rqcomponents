@@ -103,7 +103,7 @@ export default {
     .icon-base {
       pointer-events: none;
       font-size: 18px;
-      &.icon-theme-fills {
+      &.icon-base-theme-fills {
         font-size: 20px;
         color: rqthemify(hover-color);
       }
