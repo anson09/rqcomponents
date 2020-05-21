@@ -504,7 +504,7 @@ export default {
           }
         }
         &--item-text {
-          justify-content: center;
+          text-align: center;
         }
       }
     }
