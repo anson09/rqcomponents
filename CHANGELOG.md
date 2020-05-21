@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.0&sourceBranch=refs/tags/v0.1.1) (2020-05-21)
+
+
+### Bug Fixes
+
+* .depVersion ([00da877](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/00da8774ee733ee00b3ac6d4c38075db7849c89a))
+* add color variables in dark theme for loggedDownHeaderDropdown ([b1f9c58](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/b1f9c5871fa1a6d69d59fb11629055269b837871))
+* add color variables in dark theme for loggedDownHeaderDropdown ([7df12f3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7df12f370c16410603114092e980f42d0df7c040))
+* avatart drodown item align ([db34930](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/db34930404c287d3614d3daf7a71056b3bce26d8))
+* dashboard link ([dc73b07](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/dc73b075da01228fc041d0482739aea40b2f2586))
+* dev mode hotreload fail ([c7d0002](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/c7d0002b9d0585312f892250a0251187186064cd))
+* theme icon style ([0830965](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/0830965e334585e54b3c0ff77cb41690ac79cff1))
+
+
+### CI
+
+* add changelog tag compares ([603dd54](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/603dd54f7781e8bf7d3c8a7dd3906550efde3ca7))
+* need node 12 ([4b34e43](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/4b34e4380138a4640694a134fd273ff6b7eadb3a))
+
+
+### Chores
+
+* updep ([700cb97](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/700cb97982716f597d4cd1fe055e5810f40af441))
+
+
+### Build Flow
+
+* fix version compares ([73576f0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/73576f08a513b2aca5d6d85494077f3bd92852f7))
+
 ## 0.1.0 (2020-05-13)
 
 
