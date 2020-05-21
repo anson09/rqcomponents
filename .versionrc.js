@@ -1,4 +1,4 @@
-const URL = "http://git.ricequant.com/projects/NODE/repos/wall";
+const URL = "http://git.ricequant.com/projects/NODE/repos/rqcomponents";
 module.exports = {
   types: [
     { type: "feat", section: "Features" },
