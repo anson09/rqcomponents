@@ -117,7 +117,7 @@
 </template>
 
 <script>
-import { logged } from "../assets/dict/header.json";
+import { logged } from "../assets/dict/header";
 import logo from "../assets/img/logo.png";
 import logoWhite from "../assets/img/logo-white.png";
 import header from "../assets/img/header.png";

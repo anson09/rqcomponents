@@ -1,4 +1,5 @@
 {
   "rqcomponents": "./packages/index.js",
-  "rqheader": "./packages/header/index.js"
+  "rqheader": "./packages/header/index.js",
+  "rqfooter": "./packages/footer/index.js"
 }

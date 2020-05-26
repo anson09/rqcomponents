@@ -74,7 +74,7 @@
 <script>
 import ElPopover from "element-ui/lib/popover";
 import Message from "element-ui/lib/message";
-import qrcode from "../../assets/img/qrcode.jpg";
+import qrcode from "../../../common/assets/img/qrcode.jpg";
 
 export default {
   name: "DropdownMenu",

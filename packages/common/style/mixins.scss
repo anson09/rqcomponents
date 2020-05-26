@@ -28,9 +28,9 @@ $min-vw: 1280px;
   font-weight: 400;
 }
 
-@mixin mini-text($color: rqthemify(text)) {
+@mixin mini-text($color: rqthemify(text), $font-weight: 300) {
   @include text($color, 12);
-  font-weight: 300;
+  font-weight: $font-weight;
 }
 
 @mixin h1($color: rqthemify(text)) {

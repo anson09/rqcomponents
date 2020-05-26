@@ -73,7 +73,7 @@ import SecondHeader, {
   getSecondHeaderShow,
 } from "./anka-header/SecondHeader.vue";
 import MiniMenu from "./anka-header/MiniMenu.vue";
-import { anka } from "../assets/dict/header.json";
+import { anka } from "../assets/dict/header";
 
 export default {
   name: "AnkaHeader",
