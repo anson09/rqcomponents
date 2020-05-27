@@ -58,8 +58,8 @@ export default {
     creatLink: { type: Object, required: true },
   },
   data() {
-    const localStorageAccount = getStorage("common_account");
-    const storageKey = "common_workspace";
+    const localStorageAccount = getStorage("account");
+    const storageKey = "workspace";
     const localStorageWorkspaces = getStorage(storageKey);
     return {
       dropdownShow: false,

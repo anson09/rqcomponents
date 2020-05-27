@@ -141,8 +141,8 @@ export default {
             plain: true,
             className: "entry",
             click: () => {
-              const account = getStorage("common_account");
-              const history = getStorage("common_user_history");
+              const account = getStorage("account");
+              const history = getStorage("userHistory");
               const href = history[account.userId] ?? "/quant/";
 
               this.redirect({

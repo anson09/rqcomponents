@@ -65,7 +65,7 @@ export default {
     },
   },
   data() {
-    const localStorageAcount = getStorage("common_account");
+    const localStorageAcount = getStorage("account");
     const {
       isLogin = false,
       avatar = "",
@@ -104,16 +104,16 @@ export default {
       const done = async () => {
         const { code } = await logout();
         if (code === 0) {
-          removeStorage("common_account");
+          removeStorage("account");
           this.handleLink("/");
         }
       };
       const url = this.getPath();
       if (isProductPath(url)) {
         // 在产品内
-        const commonHistory = getStorage("common_user_history");
+        const commonHistory = getStorage("userHistory");
         commonHistory[this.userId] = url;
-        setStorage("common_user_history", commonHistory);
+        setStorage("userHistory", commonHistory);
       }
       if (this.beforeLogout) this.beforeLogout(done);
       else done();
@@ -124,7 +124,7 @@ export default {
           data: { code, fullname, avatar, phone, email, userId, rank },
         } = await getAccount();
         if (code === 0) {
-          setStorage("common_account", {
+          setStorage("account", {
             isLogin: true,
             fullname,
             avatar,
@@ -150,7 +150,7 @@ export default {
       this.avatar = "";
       this.username = "";
       this.rank = 0;
-      removeStorage("common_account");
+      removeStorage("account");
     },
   },
 };

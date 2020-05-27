@@ -53,4 +53,11 @@ const info = [
   },
 ];
 
-export { info, contact };
+const storageKeys = {
+  account: "common_account",
+  userHistory: "common_user_history",
+  theme: "theme",
+  workspace: "common_workspace",
+};
+
+export { info, contact, storageKeys };

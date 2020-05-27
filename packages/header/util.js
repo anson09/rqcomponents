@@ -1,5 +1,7 @@
 // redirect with v-router or windows.methods
 
+import { storageKeys } from "../common/assets/dict/config";
+
 const THEME_MODE = ["dark", "light"];
 
 const themeRender = (theme = "light") => {
@@ -15,16 +17,16 @@ const themeRender = (theme = "light") => {
 
 const getStorage = (name, type = "object") =>
   type === "object"
-    ? JSON.parse(localStorage[name] || "{}")
-    : localStorage[name];
+    ? JSON.parse(localStorage[storageKeys[name]] || "{}")
+    : localStorage[storageKeys[name]];
 
-const setStorage = (key, val) =>
+const setStorage = (name, val) =>
   localStorage.setItem(
-    key,
+    storageKeys[name],
     typeof val === "object" ? JSON.stringify(val) : val
   );
 
-const removeStorage = (key) => localStorage.removeItem(key);
+const removeStorage = (name) => localStorage.removeItem(storageKeys[name]);
 
 const isSupported = () =>
   window.CSS &&
