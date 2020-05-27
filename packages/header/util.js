@@ -18,4 +18,7 @@ const isSupported = () =>
   window.CSS.supports &&
   window.CSS.supports("color", "var(--fake-var)");
 
-export { THEME_MODE, themeRender, isSupported };
+const isProductPath = (path) =>
+  ["/ams", "/quant"].some((url) => path.includes(url));
+
+export { THEME_MODE, themeRender, isSupported, isProductPath };

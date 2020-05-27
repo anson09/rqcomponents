@@ -33,6 +33,7 @@ import LoggedHeader from "./components/LoggedHeader.vue";
 import AnkaHeader from "./components/AnkaHeader.vue";
 import { getAccount, logout } from "./api";
 import mixin from "../common/mixin";
+import { isProductPath } from "./util";
 
 export default {
   name: "RqHeader",
@@ -75,6 +76,7 @@ export default {
       avatar = "",
       fullname: username = "",
       rank = 0,
+      userId = 0,
     } = localStorageAcount;
     return {
       defaultMode: "default",
@@ -82,6 +84,7 @@ export default {
       username,
       avatar,
       rank,
+      userId,
     };
   },
   computed: {
@@ -110,6 +113,18 @@ export default {
           this.handleLink("/");
         }
       };
+      const url = this.getPath();
+      if (isProductPath(url)) {
+        // 在产品内
+        const commonHistory = JSON.parse(
+          localStorage.getItem("common_user_history") ?? "{}"
+        );
+        commonHistory[this.userId] = url;
+        localStorage.setItem(
+          "common_user_history",
+          JSON.stringify(commonHistory)
+        );
+      }
       if (this.beforeLogout) this.beforeLogout(done);
       else done();
     },
@@ -134,6 +149,7 @@ export default {
           this.isLogin = true;
           this.avatar = avatar;
           this.username = fullname;
+          this.userId = userId;
           this.rank = rank;
         } else {
           this.reset();

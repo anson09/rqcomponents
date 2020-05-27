@@ -29,7 +29,12 @@
 <script>
 import lightImg from "../../assets/img/theme-light.png";
 import darkImg from "../../assets/img/theme-dark.png";
-import { THEME_MODE, themeRender, isSupported } from "../../util";
+import {
+  THEME_MODE,
+  themeRender,
+  isSupported,
+  isProductPath,
+} from "../../util";
 
 export default {
   name: "ThemeSwitch",
@@ -66,7 +71,7 @@ export default {
   mounted() {
     if (isSupported()) {
       const url = this.$parent.getPath();
-      if (["/ams", "/quant"].some((e) => url.includes(e))) {
+      if (isProductPath(url)) {
         this.show = true;
         const { theme } = localStorage;
         this.value = THEME_MODE.includes(theme) ? theme : "light";
