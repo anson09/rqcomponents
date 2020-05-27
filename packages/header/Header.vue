@@ -33,7 +33,7 @@ import LoggedHeader from "./components/LoggedHeader.vue";
 import AnkaHeader from "./components/AnkaHeader.vue";
 import { getAccount, logout } from "./api";
 import mixin from "../common/mixin";
-import { isProductPath } from "./util";
+import { isProductPath, getStorage, setStorage, removeStorage } from "./util";
 
 export default {
   name: "RqHeader",
@@ -65,12 +65,7 @@ export default {
     },
   },
   data() {
-    let localStorageAcount;
-    try {
-      localStorageAcount = JSON.parse(localStorage.common_account);
-    } catch (err) {
-      localStorageAcount = {};
-    }
+    const localStorageAcount = getStorage("common_account");
     const {
       isLogin = false,
       avatar = "",
@@ -109,21 +104,16 @@ export default {
       const done = async () => {
         const { code } = await logout();
         if (code === 0) {
-          localStorage.removeItem("common_account");
+          removeStorage("common_account");
           this.handleLink("/");
         }
       };
       const url = this.getPath();
       if (isProductPath(url)) {
         // 在产品内
-        const commonHistory = JSON.parse(
-          localStorage.getItem("common_user_history") ?? "{}"
-        );
+        const commonHistory = getStorage("common_user_history");
         commonHistory[this.userId] = url;
-        localStorage.setItem(
-          "common_user_history",
-          JSON.stringify(commonHistory)
-        );
+        setStorage("common_user_history", commonHistory);
       }
       if (this.beforeLogout) this.beforeLogout(done);
       else done();
@@ -134,18 +124,15 @@ export default {
           data: { code, fullname, avatar, phone, email, userId, rank },
         } = await getAccount();
         if (code === 0) {
-          localStorage.setItem(
-            "common_account",
-            JSON.stringify({
-              isLogin: true,
-              fullname,
-              avatar,
-              phone,
-              email,
-              userId,
-              rank,
-            })
-          );
+          setStorage("common_account", {
+            isLogin: true,
+            fullname,
+            avatar,
+            phone,
+            email,
+            userId,
+            rank,
+          });
           this.isLogin = true;
           this.avatar = avatar;
           this.username = fullname;
@@ -163,7 +150,7 @@ export default {
       this.avatar = "";
       this.username = "";
       this.rank = 0;
-      localStorage.removeItem("common_account");
+      removeStorage("common_account");
     },
   },
 };

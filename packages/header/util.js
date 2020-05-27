@@ -13,6 +13,19 @@ const themeRender = (theme = "light") => {
     .map((className) => bodyClassList.remove(className));
 };
 
+const getStorage = (name, type = "object") =>
+  type === "object"
+    ? JSON.parse(localStorage[name] || "{}")
+    : localStorage[name];
+
+const setStorage = (key, val) =>
+  localStorage.setItem(
+    key,
+    typeof val === "object" ? JSON.stringify(val) : val
+  );
+
+const removeStorage = (key) => localStorage.removeItem(key);
+
 const isSupported = () =>
   window.CSS &&
   window.CSS.supports &&
@@ -21,4 +34,12 @@ const isSupported = () =>
 const isProductPath = (path) =>
   ["/ams", "/quant"].some((url) => path.includes(url));
 
-export { THEME_MODE, themeRender, isSupported, isProductPath };
+export {
+  THEME_MODE,
+  themeRender,
+  isSupported,
+  isProductPath,
+  getStorage,
+  setStorage,
+  removeStorage,
+};

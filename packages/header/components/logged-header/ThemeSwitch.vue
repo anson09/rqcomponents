@@ -30,6 +30,8 @@
 import lightImg from "../../assets/img/theme-light.png";
 import darkImg from "../../assets/img/theme-dark.png";
 import {
+  getStorage,
+  setStorage,
   THEME_MODE,
   themeRender,
   isSupported,
@@ -73,7 +75,7 @@ export default {
       const url = this.$parent.getPath();
       if (isProductPath(url)) {
         this.show = true;
-        const { theme } = localStorage;
+        const theme = getStorage("theme", "string");
         this.value = THEME_MODE.includes(theme) ? theme : "light";
         themeRender(this.value);
         return;
@@ -85,7 +87,7 @@ export default {
   methods: {
     themeChange(theme) {
       if (!THEME_MODE.includes(theme)) return;
-      localStorage.setItem("theme", theme);
+      setStorage("theme", theme);
       themeRender(theme);
       this.value = theme;
     },

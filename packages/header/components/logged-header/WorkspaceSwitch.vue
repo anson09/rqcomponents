@@ -48,6 +48,7 @@
 </template>
 <script>
 import { getWorksapces } from "../../api";
+import { setStorage, getStorage } from "../../util";
 
 export default {
   name: "WorkspaceSwitch",
@@ -57,9 +58,9 @@ export default {
     creatLink: { type: Object, required: true },
   },
   data() {
-    const localStorageAccount = this.getStorageItem("common_account");
+    const localStorageAccount = getStorage("common_account");
     const storageKey = "common_workspace";
-    const localStorageWorkspaces = this.getStorageItem(storageKey);
+    const localStorageWorkspaces = getStorage(storageKey);
     return {
       dropdownShow: false,
       workspaces: [],
@@ -103,7 +104,7 @@ export default {
         this.workspaces = res.data;
         if (!this.workspaces.length) {
           delete this.localStorageWorkspaces[this.account.userId];
-          this.setStorage();
+          setStorage(this.storageKey, this.localStorageWorkspaces);
           return;
         }
         const localStorageWs = this.localStorageWorkspaces[this.account.userId];
@@ -123,23 +124,15 @@ export default {
         this.$message.error(err.message);
       }
     },
-    getStorageItem(name) {
-      return JSON.parse(localStorage[name] || "{}");
-    },
+
     setWorkspace(ws) {
       this.localStorageWorkspaces[this.account.userId] = ws.id;
       this.curWs = ws;
-      this.setStorage();
+      setStorage(this.storageKey, this.localStorageWorkspaces);
       this.$emit("switchWorkspace", ws.id);
       this.toggleDropdown(false);
     },
 
-    setStorage() {
-      localStorage.setItem(
-        this.storageKey,
-        JSON.stringify(this.localStorageWorkspaces)
-      );
-    },
     createWorkspace() {
       if (window.location.href.includes(this.creatLink.href)) {
         this.$emit("createWorkspace");
