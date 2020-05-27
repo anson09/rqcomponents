@@ -74,6 +74,7 @@ import SecondHeader, {
 } from "./anka-header/SecondHeader.vue";
 import MiniMenu from "./anka-header/MiniMenu.vue";
 import { anka } from "../assets/dict/header";
+import { getStorage } from "../util";
 
 export default {
   name: "AnkaHeader",
@@ -138,11 +139,15 @@ export default {
           {
             label: "进入平台",
             plain: true,
-            className: "to-quant",
+            className: "entry",
             click: () => {
+              const account = getStorage("common_account");
+              const history = getStorage("common_user_history");
+              const href = history[account.userId] ?? "/quant/";
+
               this.redirect({
                 outer: true,
-                href: "/quant/",
+                href,
               });
             },
           },
@@ -321,7 +326,7 @@ export default {
           }
         }
 
-        .to-quant,
+        .entry,
         .road-show {
           padding: 10px 28px;
           border-radius: 40px;
@@ -330,7 +335,7 @@ export default {
           transition: all 0.3s;
           color: white;
         }
-        .to-quant {
+        .entry {
           margin-left: 6px;
           color: rqthemify(highlight);
           border-color: rqthemify(highlight);
@@ -414,7 +419,7 @@ export default {
         }
       }
 
-      .to-quant {
+      .entry {
         color: white;
         border-color: white;
         background: transparent;
