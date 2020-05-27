@@ -1,11 +1,11 @@
 export default {
   props: {
     config: {
-      default: {
+      default: () => ({
         router: false,
         admin: false,
         ankaPrefix: "/welcome",
-      },
+      }),
       type: Object,
     },
   },

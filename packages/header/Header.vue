@@ -32,6 +32,7 @@
 import LoggedHeader from "./components/LoggedHeader.vue";
 import AnkaHeader from "./components/AnkaHeader.vue";
 import { getAccount, logout } from "./api";
+import mixin from "../common/mixin";
 
 export default {
   name: "RqHeader",
@@ -39,6 +40,7 @@ export default {
     LoggedHeader,
     AnkaHeader,
   },
+  mixins: [mixin],
   props: {
     notification: {
       default: "",
