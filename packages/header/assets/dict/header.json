@@ -232,8 +232,11 @@
       },
       {
         "link": {
-          "href": "/welcome/trial/road-show"
+          "href": "/welcome/trial/road-show",
+          "outer": true,
+          "event": "roadShow"
         },
+
         "className": "road-show",
         "label": "预约路演"
       },

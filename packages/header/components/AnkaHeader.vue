@@ -128,7 +128,7 @@ export default {
           label: "预约路演",
           className: "road-show",
           click: () => {
-            this.redirect("/welcome/trial/road-show");
+            this.redirect({ href: `/trial/road-show`, event: "roadShow" });
           },
         },
       ];

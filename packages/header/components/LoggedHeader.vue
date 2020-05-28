@@ -47,12 +47,12 @@
         ></theme-switch>
         <message v-else-if="btn.type === 'message'"></message>
         <!-- 纯按钮: 社区 路演 -->
-        <a
+        <span
           v-else-if="btn.label && !btn.links"
           class="logged-header-btn__label"
-          :href="btn.link.href"
           :target="btn.link.newBlock && '_blank'"
-          >{{ btn.label }}</a
+          @click="redirect(btn.link)"
+          >{{ btn.label }}</span
         >
         <!-- 非以上且有label:  帮助文档 -->
         <span v-else-if="btn.label" class="logged-header-btn__label">{{
@@ -197,6 +197,7 @@ export default {
       if (cfg.event === "logout") {
         this.$emit("logout");
       }
+
       if (cfg.redirect) {
         this.redirect(cfg.redirect);
       }
