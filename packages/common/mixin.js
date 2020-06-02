@@ -10,31 +10,48 @@ export default {
     },
   },
   methods: {
+    // eslint-disable-next-line complexity
     handleLink(params) {
       let link = params;
       if (typeof link === "string") {
         link = { href: link };
       }
-      const { outer, inner, href, newBlock, event } = link;
+      const { outer, inner, newBlock, event } = link;
+      let { href } = link;
       if (event) {
-        this.handleEvent(event);
-        return;
+        if (event === "roadShow") {
+          const path = this.getFirstPath();
+          if (["quant", "ams", "rqdata", "rqoptimizer"].includes(path)) {
+            href += `#${path}`;
+          }
+        } else {
+          this.handleEvent(event);
+          return;
+        }
       }
       if (!href) return;
       let prefix = "";
       if (newBlock) {
+        // 新开tab
         if (inner) {
+          // 若是 anka 内部链接，则补上 /welcome 前缀
           prefix = this.config.ankaPrefix;
         }
         window.open(prefix + href);
       } else if (!outer && this.config.router && this.$router) {
+        // anka 项目中，非内部链接则直接使用 router 跳转
         this.$router.push(href);
       } else {
+        // 其他项目中，若是没有带 outer 则需要补上 /welcome
         if (!outer) {
           prefix = this.config.ankaPrefix;
         }
         window.location.href = prefix + href;
       }
+    },
+    getFirstPath() {
+      const path = this.getPath();
+      return path.match(/\/(.*?)(\/|$)/)?.[1] ?? path;
     },
     handleEvent(event) {
       const dialogModes = ["login", "forget", "register"];
@@ -54,6 +71,7 @@ export default {
       }
     },
     getPath() {
+      // config.router 只有 anka 有，为了过滤出 welcome
       if (this.config.router && this.$route) {
         return this.$route.path;
       }
