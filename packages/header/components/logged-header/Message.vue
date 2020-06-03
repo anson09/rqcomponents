@@ -250,14 +250,14 @@ export default {
   height: 100%;
   position: relative;
   margin: auto;
-  color: rqthemify(text);
+  color: rqthemify(--text-normal);
 
   &-button {
     padding: 4px 20px;
     height: 100%;
     display: flex;
     align-items: center;
-    color: rqthemify(text);
+    color: rqthemify(--text-normal);
     background-color: inherit;
     border: none;
     position: relative;
@@ -268,7 +268,7 @@ export default {
     &__num {
       position: absolute;
       color: white;
-      background-color: #ed4a4a;
+      background-color: rqthemify(--remove-hover-color);
       right: 10px;
       top: 4px;
       width: 18px;
@@ -282,12 +282,12 @@ export default {
     padding: 0 20px;
     font-size: 12px;
     line-height: 1.5;
-    color: rqthemify(text);
+    color: rqthemify(--text-normal);
     height: 53px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rqthemify(border-gray);
+    border-bottom: 1px solid rqthemify(--border-primary);
 
     &-item {
       margin: 0 12px;
@@ -302,19 +302,19 @@ export default {
         height: 11px;
         content: "";
         display: block;
-        background: rqthemify(text);
+        background: rqthemify(--text-normal);
       }
       &:first-child {
         margin-left: 0;
       }
       &.is-active {
-        color: rqthemify(highlight);
+        color: rqthemify(--primary-color);
         font-weight: 600;
       }
       &:hover,
       &:focus,
       &:active {
-        color: rqthemify(highlight);
+        color: rqthemify(--primary-color);
         font-weight: 600;
       }
     }
@@ -325,23 +325,23 @@ export default {
 
   &-container {
     position: absolute;
-    background: rqthemify(active-background-color);
+    background: rqthemify(--dropdown-background);
     border-radius: 8px 0 8px 8px;
     width: 438px;
     right: 0;
-    box-shadow: 0px 8px 12px 0px rgba(152, 165, 185, 0.2);
+    box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);
   }
 
   &-setting {
     &__dropdown {
-      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+      box-shadow: 0px 0px 20px 0px rqthemify(--shadow-primary);
     }
     &__icon {
       font-size: 18px;
       cursor: pointer;
       &:focus,
       &:active {
-        color: rqthemify(highlight);
+        color: rqthemify(--primary-color);
       }
     }
     &__item {
@@ -352,14 +352,14 @@ export default {
       width: 76px;
       line-height: 46px;
       border: none;
-      color: rqthemify(text);
+      color: rqthemify(--text-normal);
       outline: none;
       background-color: transparent;
       &:hover,
       &:active,
       &:focus {
-        color: rqthemify(highlight);
-        background-color: rqthemify(hover-background-color);
+        color: rqthemify(--primary-color);
+        background-color: rqthemify(--background-primary);
       }
     }
   }
@@ -367,12 +367,12 @@ export default {
     .message-setting-popper {
       min-width: 0;
       padding: 0;
-      border-color: rqthemify(border-gray);
-      background-color: rqthemify(active-background-color);
+      border-color: rqthemify(--border-primary);
+      background-color: rqthemify(--dropdown-background);
       .popper__arrow {
-        border-bottom-color: rqthemify(border-gray);
+        border-bottom-color: rqthemify(--border-primary);
         &:after {
-          border-bottom-color: rqthemify(active-background-color);
+          border-bottom-color: rqthemify(--dropdown-background);
         }
       }
     }

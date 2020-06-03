@@ -236,10 +236,10 @@ export default {
   height: 40px;
   padding-left: 40px;
   padding-right: 20px;
-  background: rqthemify(background-color);
+  background: rqthemify(--background-final);
   z-index: 1;
   box-shadow: 0px 2px 4px 0px;
-  color: rqthemify(shadow-color);
+  color: rqthemify(--shadow-primary);
   &__logo {
     position: relative;
     display: block;
@@ -277,7 +277,7 @@ export default {
     }
     span,
     a {
-      @include text(rqthemify(text));
+      @include text(rqthemify(--text-normal));
       line-height: 20px;
     }
     &::after {
@@ -306,20 +306,20 @@ export default {
       }
     }
     &:hover {
-      background: rqthemify(active-background-color);
-      box-shadow: 0px 2px 4px 0px rqthemify(shadow-color);
-      color: rqthemify(shadow-color);
+      background: rqthemify(--dropdown-background);
+      box-shadow: 0px 2px 4px 0px rqthemify(--shadow-primary);
+      color: rqthemify(--shadow-primary);
 
       .arrow {
         transform: rotate(180deg);
-        color: rqthemify(hover-color);
+        color: rqthemify(--primary-color);
       }
       .logged-header-btn__label {
-        color: rqthemify(highlight);
+        color: rqthemify(--primary-color);
         font-weight: 600;
       }
       &::after {
-        background: rqthemify(hover-color);
+        background: rqthemify(--primary-color);
       }
     }
     & &__dropdown {
@@ -329,11 +329,10 @@ export default {
       top: 100%;
       left: 0;
       padding-top: 4px;
-      box-shadow: 0px 8px 12px 0px rqthemify(shadow-color);
-      color: rqthemify(shadow-color);
-      background: rqthemify(active-background-color);
+      box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);
+      color: rqthemify(--shadow-primary);
+      background: rqthemify(--dropdown-background);
       z-index: 1;
-      border-radius: 0 0 2px 2px;
 
       &--item {
         position: relative;
@@ -342,7 +341,7 @@ export default {
         &:last-child {
           margin-bottom: 0;
         }
-        @include text(rqthemify(dropdown-text));
+        @include text(rqthemify(--text-normal));
         &-text {
           white-space: nowrap;
           padding: 12px 20px;
@@ -360,22 +359,22 @@ export default {
         margin-bottom: -8px;
         white-space: nowrap;
         font-weight: 500;
-        @include text(rqthemify(dropdown-text));
+        @include text(rqthemify(--text-normal));
         &:last-child {
           margin-bottom: 0;
         }
         &:hover,
         &:active,
         &:focus {
-          color: rqthemify(dropdown-text-hover);
+          color: rqthemify(--primary-color);
           font-weight: 600;
         }
         &:hover {
-          background: rqthemify(bg-hover);
+          background: rqthemify(--primary-color-1);
         }
         &:active,
         &:focus {
-          background: rqthemify(bg-active);
+          background: rqthemify(--background-active);
         }
         &-container {
           width: 188px;
@@ -384,8 +383,8 @@ export default {
           right: 0;
           top: -4px;
           transform: translateX(100%);
-          background: rqthemify(container-bg);
-          box-shadow: 20px 0px 20px 0px rqthemify(shadow-color);
+          background: rqthemify(--background-primary);
+          box-shadow: 20px 0px 20px 0px rqthemify(--shadow-primary);
           padding: 4px 0;
           flex-direction: column;
         }
@@ -393,13 +392,13 @@ export default {
 
       @mixin item-text-active($bg-color) {
         background: $bg-color;
-        color: rqthemify(dropdown-text-hover);
+        color: rqthemify(--primary-color);
         font-weight: 600;
       }
 
       $pre-class-name: logged-header-btn__dropdown;
       .#{$pre-class-name}--item-text:hover {
-        @include item-text-active(rqthemify(bg-hover));
+        @include item-text-active(rqthemify(--primary-color-1));
       }
 
       .#{$pre-class-name}--item:hover .#{$pre-class-name}--subitem-container {
@@ -407,14 +406,14 @@ export default {
       }
 
       .#{$pre-class-name}--subitem-container:hover {
-        background: rqthemify(active-background-color);
+        background: rqthemify(--dropdown-background);
         ~ .#{$pre-class-name}--item-text {
-          @include item-text-active(rqthemify(bg-view));
+          @include item-text-active(rqthemify(--background-view));
         }
       }
     }
     &.active &__label {
-      color: rqthemify(hover-color);
+      color: rqthemify(--primary-color);
     }
     &.docs &__dropdown--item-text {
       padding-right: 30px;
@@ -432,20 +431,20 @@ export default {
       height: auto;
       padding: 4px 20px;
       margin: 0 20px;
-      border: 1px solid rqthemify(highlight);
+      border: 1px solid rqthemify(--primary-color);
       border-radius: 20px;
-      transition: all 0.3s;
+      @include click-scale();
       .logged-header-btn__label {
-        color: rqthemify(highlight);
+        color: rqthemify(--primary-color);
       }
       &::after {
         display: none;
       }
       &:hover,
       &:active {
-        background: rqthemify(highlight);
+        background: rqthemify(--primary-color);
         .logged-header-btn__label {
-          color: rqthemify(text-white);
+          color: rqthemify(--text-white);
         }
       }
     }
@@ -467,21 +466,21 @@ export default {
         line-height: 1;
         transform-origin: right bottom;
         transform: scale(0.6);
-        background: #1b5fc4;
+        background: rethemify(--primary-color);
         border-radius: 50%;
         color: white;
       }
       &.active {
-        background: rqthemify(active-background-color);
+        background: rqthemify(--dropdown-background);
       }
       .logged-header-btn__dropdown {
         left: auto;
         right: 0;
         padding: 0;
-        background: rqthemify(active-background-color);
+        background: rqthemify(--dropdown-background);
         &--username {
           position: relative;
-          @include text(rqthemify(text));
+          @include text(rqthemify(--text-normal));
           line-height: 1;
           box-sizing: border-box;
           width: 108px;
@@ -490,7 +489,7 @@ export default {
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          border-bottom: 1px solid rqthemify(border);
+          border-bottom: 1px solid rqthemify(--border-primary);
           &::before {
             content: "";
             position: absolute;
@@ -501,7 +500,7 @@ export default {
             width: 4px;
             height: 4px;
             border-radius: 50%;
-            background: rqthemify(success);
+            background: rqthemify(--succeed-color);
           }
         }
         &--item-text {
@@ -514,7 +513,7 @@ export default {
     width: 6px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: rqthemify(scrollbar-background);
+    background-color: rqthemify(--border-primary);
     border-radius: 3px;
   }
 }

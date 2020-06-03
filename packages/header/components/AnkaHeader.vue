@@ -1,6 +1,6 @@
 <template>
   <div class="anka-header">
-    <div :class="isInProduce">
+    <div :class="headerClassName">
       <nav>
         <a href="/" class="nav__logo">
           <img
@@ -189,10 +189,7 @@ export default {
         return btn;
       });
     },
-    isInProduce() {
-      if (this.secondHeaderOpen) {
-        return "header__bg__produce";
-      }
+    headerClassName() {
       if (this.opacity) {
         return "header__bg opacity";
       }
@@ -269,17 +266,10 @@ export default {
     z-index: 2;
     width: 100%;
     height: 100%;
-    background: rqthemify(bg-white);
+    background: rqthemify(--background-white);
     &.opacity {
       background: transparent;
     }
-  }
-  .header__bg__produce {
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    background: rqthemify(bg-gray);
   }
 
   nav {
@@ -307,10 +297,10 @@ export default {
       &__topic {
         flex: 1;
         p {
-          @include h2(rqthemify(text-dark));
+          @include h2(rqthemify(--text-primary));
         }
         &.light p {
-          color: rqthemify(text-white-dark);
+          color: rqthemify(--border-primary);
         }
       }
       &__buttons {
@@ -331,20 +321,19 @@ export default {
           padding: 10px 28px;
           border-radius: 40px;
           height: auto;
-          border-color: #d9e0ea;
+          border-color: rqthemify(--text-white-8);
           transition: all 0.3s;
-          color: white;
+          color: rqthemify(--text-white);
         }
         .entry {
           margin-left: 6px;
-          color: rqthemify(highlight);
-          border-color: rqthemify(highlight);
+          color: rqthemify(--primary-color);
+          border-color: rqthemify(--primary-color);
           background: transparent;
           &:hover,
           &:focus,
           &:active {
-            color: rqthemify(highlight);
-            background: #e3eeffff;
+            color: rqthemify(--primary-color);
             transform: scale(1);
           }
           &:active {
@@ -354,53 +343,51 @@ export default {
 
         .road-show {
           margin: 0 24px 0 40px;
-          background: #1b5fc4;
+          background: rqthemify(--primary-color);
           &:hover,
           &:focus,
           &:active {
-            color: white;
+            color: rqthemify(--text-white);
             transform: scale(1);
-          }
-          &:hover {
-            background: #275dac;
-          }
-          &:focus,
-          &:active {
-            background: #19417b;
+            background: rqthemify(--text-white-4);
           }
         }
         &.login {
           flex: none;
-          color: rqthemify(text);
-          ::v-deep .icon-base {
-            margin-right: 8px;
+
+          color: rqthemify(--text-normal);
+          ::v-deep {
+            .el-button {
+              @include click-scale();
+            }
+            .icon-base {
+              margin-right: 8px;
+            }
           }
 
           .el-button--text {
             padding: 12px 16px;
             margin-left: 0;
-            color: rqthemify(highlight);
+            color: rqthemify(--primary-color);
             border-width: 0;
             &:focus {
               background: transparent;
             }
             &:hover {
-              background: #ccd9ea7a;
+              background: rqthemify(--text-white-4);
             }
-            &:active {
-              background: #cbd8ea;
-            }
+
             &.light {
-              color: rqthemify(text-white);
+              color: rqthemify(--text-white);
               border-width: 0;
               &:focus {
                 background: transparent;
               }
               &:hover {
-                background: #ffffff33;
+                background: rqthemify(--text-white-2);
               }
               &:active {
-                background: #ffffff66;
+                background: rqthemify(--text-white-4);
               }
             }
           }
@@ -411,23 +398,22 @@ export default {
   .opacity {
     nav .nav__buttons {
       .road-show {
-        background: #ffffff33;
+        background: rqthemify(--text-white-2);
         &:hover,
         &:focus,
         &:active {
-          background: #ffffff66;
+          background: rqthemify(--text-white-4);
         }
       }
 
       .entry {
-        color: white;
-        border-color: white;
+        color: rqthemify(--text-white);
+        border-color: rqthemify(--text-white);
         background: transparent;
         &:hover,
         &:focus,
         &:active {
-          color: white;
-          background: #c8cde266;
+          color: rqthemify(--text-white);
         }
       }
     }

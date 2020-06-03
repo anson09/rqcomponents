@@ -179,29 +179,29 @@ export default {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rqthemify(bg-white);
-    box-shadow: 0px 10px 11px 0px rgba(8, 25, 52, 0.1);
+    background: rqthemify(--background-white);
+    box-shadow: 0px 10px 11px 0px rqthemify(--shadow-primary);
   }
 
   $products: rqdata, rqams, rqoptimizer, quant;
   @each $product in $products {
     &.#{$product} {
       .icon-base {
-        color: rqthemify($product);
+        color: rqthemify(--#{$product}-product-color);
       }
       .nav__product {
         &.is-active {
-          color: rqthemify($product);
+          color: rqthemify(--#{$product}-product-color);
           &:after {
-            background: rqthemify($product);
+            background: rqthemify(--#{$product}-product-color);
             width: 100%;
           }
         }
       }
 
       .nav__button {
-        color: rqthemify($product);
-        border-color: rqthemify($product);
+        color: rqthemify(--#{$product}-product-color);
+        border-color: rqthemify(--#{$product}-product-color);
       }
     }
   }
@@ -234,26 +234,26 @@ export default {
       }
 
       .main-label {
-        @include h3(rqthemify(text-darker));
+        @include h3(rqthemify(--text-primary));
         margin: 0 8px 0 10px;
       }
 
       .second-label {
-        @include rg-text(rqthemify(text-darker));
+        @include rg-text(rqthemify(--text-primary));
       }
     }
 
     .nav__product {
       position: relative;
       cursor: pointer;
-      @include rg-text(rqthemify(text));
+      @include rg-text(rqthemify(--text-normal));
       margin: 0 16px;
       padding: 18px 0;
       height: 100%;
 
       &.is-active,
       &:hover {
-        color: rqthemify(text-dark);
+        color: rqthemify(--text-primary);
         transform: scaleX(1.05);
       }
 
@@ -269,7 +269,7 @@ export default {
       }
       &:hover {
         &:after {
-          background: rqthemify(bg-gray-hover);
+          background: rqthemify(--background-hover);
           width: 100%;
         }
       }

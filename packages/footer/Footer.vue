@@ -84,22 +84,19 @@ export default {
 <style lang="scss" scoped>
 @import "../common/style/mixins";
 
-// TODO color in postcss
-$border: #e2e2e2;
-$border-light: rgba(255, 255, 255, 0.2);
 @mixin hover {
   cursor: pointer;
   &:hover {
-    color: rqthemify(highlight);
+    color: rqthemify(--primary-color);
   }
 }
 .footer {
   width: 100%;
-  @include mini-text(rqthemify(text), 400);
+  @include mini-text(rqthemify(--text-normal), 400);
 
   &__content {
-    border-bottom: 1px solid $border;
-    border-top: 1px solid $border;
+    border-bottom: 1px solid rqthemify(--border-primary);
+    border-top: 1px solid rqthemify(--border-primary);
     &-wrapper {
       padding: 20px 0;
       @media screen and(min-width: $min-vw) {
@@ -150,11 +147,10 @@ $border-light: rgba(255, 255, 255, 0.2);
       cursor: pointer;
     }
   }
-  // TODO opacity
   &.opacity {
-    color: rgba(255, 255, 255, 0.7);
+    color: rqthemify(--text-white-7);
     .footer__content {
-      border-color: $border-light;
+      border-color: rqthemify(--text-white-2);
     }
   }
 }

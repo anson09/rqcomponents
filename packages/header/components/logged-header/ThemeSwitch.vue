@@ -104,7 +104,7 @@ export default {
     padding: 0 10px;
     width: 40px;
     text-align: center;
-    color: rqthemify(text);
+    color: rqthemify(--text-normal);
     background-color: inherit;
     border: none;
     .icon-base {
@@ -112,13 +112,13 @@ export default {
       font-size: 18px;
       &.icon-base-theme-fills {
         font-size: 20px;
-        color: rqthemify(hover-color);
+        color: rqthemify(--primary-color);
       }
     }
     &:active,
     &:focus,
     &:hover {
-      color: rqthemify(hover-color);
+      color: rqthemify(--primary-color);
       background-color: inherit;
     }
   }
@@ -128,12 +128,12 @@ export default {
     right: 0;
     padding: 32px 14px;
     padding-top: 16px;
-    color: rqthemify(text);
-    background: rqthemify(active-background-color);
+    color: rqthemify(--text-normal);
+    background: rqthemify(--dropdown-background);
     border-radius: 0 0 2px 2px;
     width: fit-content;
     border: none;
-    box-shadow: 0px 8px 12px 0px rgba(152, 165, 185, 0.2);
+    box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);
     cursor: default;
 
     &--pic {
@@ -146,7 +146,7 @@ export default {
         left: 0;
         font-size: 16px;
         line-height: 100%;
-        color: rqthemify(success);
+        color: rqthemify(--succeed-color);
         text-align: center;
         opacity: 0;
         transform: translateY(-50%);
@@ -155,11 +155,11 @@ export default {
     &--choice {
       position: relative;
       font-size: 14px;
-      color: rqthemify(text);
+      color: rqthemify(--text-normal);
       text-align: center;
       cursor: pointer;
       &.is-active {
-        color: rqthemify(hover-color);
+        color: rqthemify(--primary-color);
         .theme-switch__dropdown--pic .icon-base {
           opacity: 1;
         }

@@ -171,8 +171,9 @@ export default {
     position: relative;
     width: 100%;
     margin: 0;
-    color: rgb(0, 0, 0);
-    background: rgb(253, 208, 0);
+    color: rqthemify(--text-primary);
+    background: rqthemify(--warning-color);
+
     font-size: 16px;
     line-height: 1.5;
     word-break: break-all;

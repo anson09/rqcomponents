@@ -122,38 +122,39 @@ export default {
     height: 100%;
   }
   &:focus {
-    color: rqthemify(text);
+    color: rqthemify(--text-normal);
   }
   &.active {
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 20px 0px rqthemify(--shadow-primary);
   }
   &:hover,
   &.active {
-    color: rqthemify(highlight);
-    background: white;
+    color: rqthemify(--primary-color);
+    background: rqthemify(--background-white);
     &::after {
-      background: rqthemify(hover-color);
+      background: rqthemify(--primary-color);
     }
   }
   &:hover:not(.active) {
-    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.06);
+    box-shadow: 0px 0px 8px 0px rqthemify(--shadow-primary);
   }
   &.light {
     border-width: 0;
-    color: rqthemify(text-white-dark);
-    &:hover {
-      color: rqthemify(highlight);
-      background: white;
+    color: rqthemify(--border-primary);
+    &:hover,
+    &:active {
+      color: rqthemify(--primary-color);
+      background: rqthemify(--background-white);
     }
     &.active {
-      background: white;
-      color: rqthemify(highlight);
+      background: rqthemify(--background-white);
+      color: rqthemify(--primary-color);
       span {
         padding-bottom: 12px;
-        border-bottom: 1px solid rqthemify(text-white);
+        // border-bottom: 1px solid rqthemify(--text-primary);
       }
       &:hover {
-        color: rqthemify(highlight);
+        color: rqthemify(--primary-color);
       }
     }
   }

@@ -137,15 +137,15 @@ export default {
   &__sublink {
     &-item {
       padding: 12px 30px 12px 20px;
-      @include text(rqthemify(text));
+      @include text(rqthemify(--text-normal));
       @include hover;
       &:hover {
-        background: rqthemify(bg-hover);
+        background: rqthemify(--primary-color-1);
         font-weight: 600;
       }
       &:active,
       &:focus {
-        background: rqthemify(bg-active);
+        background: rqthemify(--background-active);
       }
     }
     &s {
@@ -153,17 +153,17 @@ export default {
       padding: 10px 0;
       position: absolute;
       right: 1px;
-      box-shadow: 20px 0px 20px 0px rgba(0, 0, 0, 0.15);
+      box-shadow: 20px 0px 20px 0px rqthemify(--shadow-primary);
       transform: translateX(100%);
-      background: rqthemify(container-bg);
+      background: rqthemify(--background-primary);
       top: -10px;
       &:hover {
-        background: rqthemify(active-background-color);
+        background: rqthemify(--dropdown-background);
       }
     }
   }
   &__links {
-    @include text(rqthemify(text));
+    @include text(rqthemify(--text-normal));
     margin-top: 10px;
     &-item {
       padding: 12px 20px;
@@ -178,35 +178,25 @@ export default {
           .menu__sublinks {
             display: block;
           }
-          background: rqthemify(bg-hover);
+          background: rqthemify(--primary-color-1);
+        }
+        &:active,
+        &:focus {
+          background: rqthemify(--primary-color-2);
         }
         $products: rqams, rqdata, rqoptimizer, quant;
         @each $product in $products {
           &.product.#{$product} {
             &:hover {
-              color: rqthemify(#{$product});
-              background: rqthemify(#{$product}-bg);
-            }
-          }
-        }
-        $products: quant;
-        @each $product in $products {
-          &.product.#{$product} {
-            .menu__sublinks {
-              &:hover {
-                + .menu__links-item {
-                  background: rqthemify(#{$product}-view-bg);
-                }
-              }
+              color: rqthemify(--#{$product}-product-color);
+              background: rqthemify(--#{$product}-product-color-1);
             }
             .menu__sublink-item {
-              &:hover {
-                color: rqthemify(#{$product});
-                background: rqthemify(#{$product}-bg);
-              }
+              &:hover,
               &:focus,
               &:active {
-                background: rqthemify(#{$product}-sub-link-bg);
+                color: rqthemify(--#{$product}-product-color);
+                background: rqthemify(--#{$product}-product-color-1);
               }
             }
           }
@@ -226,15 +216,15 @@ export default {
   }
 
   &__sublinks:hover ~ .menu__links-item {
-    background: rqthemify(bg-view);
+    background: rqthemify(--background-secondary);
   }
 
   &-support {
-    @include mini-text(#a3a3a3ff);
+    @include mini-text(--text-secondary);
     &__links {
       padding: 20px 0 10px;
       margin: 22px 20px 0;
-      border-top: 1px solid rqthemify(border-disabled);
+      border-top: 1px solid rqthemify(--primary-color-1);
       &--item:not(.is-disabled) {
         & + & {
           margin-top: 6px;
@@ -261,8 +251,8 @@ export default {
   border-radius: 0;
   border-width: 0;
   min-width: 300px;
-  box-shadow: 0px 16px 20px 0 rgba(0, 0, 0, 0.15);
-  background: white;
+  box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
+  background: rqthemify(--background-white);
   &.fade-in-linear-leave-active.fade-in-linear-leave-to {
     opacity: 0;
     transition: all 0s;

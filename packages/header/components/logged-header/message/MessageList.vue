@@ -91,7 +91,7 @@ export default {
     padding-right: 4px;
   }
   .item {
-    border-bottom: 1px solid rqthemify(border-gray);
+    border-bottom: 1px solid rqthemify(--border-primary);
     padding: 14px 0;
     display: flex;
     color: inherit;
@@ -113,17 +113,17 @@ export default {
         top: 50%;
         transform: translateY(-50%);
         font-size: 18px;
-        color: rqthemify(text-disabled);
+        color: rqthemify(--text-secondary);
         &:hover {
-          color: rqthemify(remove-hover-color);
+          color: rqthemify(--remove-hover-color);
         }
         &:active,
         &:focus {
-          color: rqthemify(remove-active-color);
+          color: rqthemify(--remove-active-color);
         }
       }
       &:hover {
-        background-color: rqthemify(hover-background-color);
+        background-color: rqthemify(--background-white-hover);
         .el-icon-remove-outline {
           display: inline-block;
         }
@@ -143,7 +143,7 @@ export default {
       height: 20px;
     }
     .content {
-      color: rqthemify(text);
+      color: rqthemify(--text-normal);
       font-size: 14px;
       letter-spacing: 0.4px;
       line-height: 22px;

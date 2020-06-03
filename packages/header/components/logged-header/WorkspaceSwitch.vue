@@ -152,22 +152,21 @@ export default {
     box-sizing: border-box;
 
     &:hover {
-      color: rqthemify(highlight);
+      color: rqthemify(--primary-color);
     }
   }
   &-dropdown {
     display: block;
     position: absolute;
     width: 100%;
-    background: rqthemify(active-background-color);
+    background: rqthemify(--dropdown-background);
     left: 0;
-    box-shadow: 0px 8px 12px 0px rgba(152, 165, 185, 0.2);
+    box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);
     box-sizing: border-box;
     bottom: 0;
     transform: translateY(100%);
     max-height: 230px;
     overflow-y: auto;
-    border-radius: 0 0 8px 8px;
 
     &__item {
       cursor: pointer;
@@ -178,9 +177,9 @@ export default {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      color: rqthemify(text);
+      color: rqthemify(--text-normal);
       .el-icon-success {
-        color: rqthemify(icon-gray-lighter);
+        color: rqthemify(--primary-color-3);
         top: 50%;
         transform: translateY(-50%);
         font-size: 16px;
@@ -191,20 +190,20 @@ export default {
       &:hover,
       &:active,
       &:focus {
-        background-color: rqthemify(hover-background-color);
-        color: rqthemify(highlight);
+        background-color: rqthemify(--background-white-hover);
+        color: rqthemify(--primary-color);
         font-weight: 600;
       }
     }
     &__btn {
       display: flex;
       align-items: center;
-      background-color: rqthemify(bg-gray-dark);
+      background-color: rqthemify(--button-gray-background);
       border: none;
       border-radius: 4px;
       padding: 3px 14px 3px 8px;
       line-height: 20px;
-      color: rqthemify(text-gray);
+      color: rqthemify(--text-normal);
       font-size: 14px;
       cursor: pointer;
       outline: none;
@@ -214,10 +213,10 @@ export default {
       }
 
       &:hover {
-        background-color: rqthemify(bg-gray-dark-hover);
-        color: rqthemify(text-white);
+        background-color: rqthemify(--primary-color);
+        color: rqthemify(--text-white);
         .el-icon-circle-plus {
-          color: rqthemify(text-white);
+          color: rqthemify(--text-white);
         }
       }
       &:focus,
@@ -229,12 +228,12 @@ export default {
       &-wrapper {
         padding: 12px 0 0 4px;
         margin: 10px 12px 12px;
-        border-top: 1px solid rqthemify(border-gray);
+        border-top: 1px solid rqthemify(--border-primary);
       }
     }
   }
   &-btn {
-    color: rqthemify(text);
+    color: rqthemify(--text-normal);
     display: flex;
     align-items: center;
     height: 100%;
@@ -264,12 +263,12 @@ export default {
   }
 }
 .create-btn {
-  color: rqthemify(text);
+  color: rqthemify(--text-normal);
   font-size: 14px;
   padding: 0 20px;
   &:hover {
     font-weight: 600;
-    color: rqthemify(highlight);
+    color: rqthemify(--primary-color);
   }
 }
 </style>

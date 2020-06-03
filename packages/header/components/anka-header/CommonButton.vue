@@ -47,21 +47,15 @@ export default {
   box-sizing: border-box;
   display: inline-block;
   padding: 10px 28px;
-  @include text(rqthemify(text-white));
-  background: linear-gradient(
-    180deg,
-    rgba(58, 152, 228, 1) 0%,
-    rgba(27, 95, 196, 1) 100%
-  );
+  @include text(rqthemify(--text-primary));
   border: 1px solid transparent;
   border-radius: 4px;
-  transition: all 0.2s;
-
+  @include click-scale();
   &.disabled {
-    color: rqthemify(text-disabled);
+    color: rqthemify(--text-secondary);
     cursor: not-allowed;
-    background: rqthemify(button-disabled);
-    border-color: rqthemify(border-disabled);
+    background: rqthemify(--background-primary);
+    border-color: rqthemify(--primary-color-1);
     &:active {
       transform: none;
     }
@@ -72,54 +66,42 @@ export default {
   }
   &:hover,
   &:active {
-    color: rqthemify(text-white);
-    background: linear-gradient(
-      180deg,
-      rgba(0, 133, 239, 1) 0%,
-      rgba(0, 70, 173, 1) 100%
-    );
+    color: rqthemify(--text-white);
   }
-  &:active {
-    transform: scale(1.1);
-  }
+
   &:focus {
-    color: rqthemify(text-white);
-    background: linear-gradient(
-      180deg,
-      rgba(58, 152, 228, 1) 0%,
-      rgba(27, 95, 196, 1) 100%
-    );
+    color: rqthemify(--text-white);
   }
   &.plain {
-    color: rqthemify(highlight);
+    color: rqthemify(--primary-color);
     background: transparent;
-    border: 1px solid rqthemify(highlight);
+    border: 1px solid rqthemify(--primary-color);
 
     &.light {
-      color: rqthemify(text-white-dark);
-      border-color: rqthemify(text-white-dark);
+      color: rqthemify(--border-primary);
+      border-color: rqthemify(--border-primary);
       &:hover {
-        background: rqthemify(button-gray, 0.8);
+        background: rqthemify(--primary-color-8);
       }
     }
 
     &.disabled {
-      color: rqthemify(text-disabled);
+      color: rqthemify(--text-secondary);
       cursor: not-allowed;
-      background: rqthemify(button-disabled);
-      border-color: rqthemify(border-disabled);
+      background: rqthemify(--background-primary);
+      border-color: rqthemify(--primary-color-1);
       &:active {
         transform: none;
       }
     }
     &:focus,
     &:active {
-      color: rqthemify(highlight);
-      background: rqthemify(button-gray);
+      color: rqthemify(--primary-color);
+      background: rqthemify(--primary-color-1);
     }
     &:hover {
-      color: rqthemify(highlight);
-      background: rqthemify(button-gray);
+      color: rqthemify(--primary-color);
+      background: rqthemify(--primary-color-1);
     }
   }
 }

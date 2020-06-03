@@ -120,7 +120,7 @@ export default {
       display: block;
       width: 30px;
       height: 5px;
-      background: rqthemify(text);
+      background: rqthemify(--text-normal);
       border-radius: 6px;
       transition: all 0.3s;
       + span {
@@ -134,16 +134,16 @@ export default {
       margin-right: 10px;
       height: 40px;
       width: 1px;
-      background: rqthemify(text);
+      background: rqthemify(--text-normal);
     }
     &.light {
       &:before {
-        background: rqthemify(text-white);
+        background: rqthemify(--text-normal);
       }
       .mini-menu {
         &-burger {
           span {
-            background: rqthemify(text-white);
+            background: rqthemify(--text-normal);
           }
         }
       }
@@ -154,9 +154,9 @@ export default {
       }
       .mini-menu {
         &-burger {
-          background: rqthemify(highlight);
+          background: rqthemify(--primary-color);
           span {
-            background: white;
+            background: rqthemify(--text-normal);
           }
         }
       }
@@ -168,19 +168,19 @@ export default {
     width: 124px;
     height: 400px;
     box-sizing: border-box;
-    background: #1b5fc4;
+    background: rethemify(--primary-color);
     &__item {
       display: flex;
       align-items: center;
       padding-left: 20px;
-      color: #d4e0f2;
+      color: rqthemify(--primary-color-2);
       height: 46px;
       cursor: pointer;
       transition: all 0.3s;
       &:hover,
       &.active {
-        color: rqthemify(highlight);
-        background: white;
+        color: rqthemify(--primary-color);
+        background: rqthemify(--background-white);
       }
       i {
         margin-left: 12px;
@@ -206,7 +206,7 @@ export default {
   padding: 0;
   border-width: 0;
   min-width: auto;
-  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 20px 20px 0px rqthemify(--shadow-primary);
   &.el-popper[x-placement^="bottom"] {
     margin-top: 0;
   }
