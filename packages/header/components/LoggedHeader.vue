@@ -98,8 +98,8 @@
 <script>
 import ElButton from "element-ui/lib/button";
 import { logged } from "../assets/dict/header";
-import logo from "../assets/img/logo.png";
-import logoWhite from "../assets/img/logo-white.png";
+import logo from "../assets/img/logo-small.png";
+import logoWhite from "../assets/img/logo-white-small.png";
 import ThemeSwitch from "./logged-header/ThemeSwitch.vue";
 import Message from "./logged-header/Message.vue";
 import WorkspaceSwitch from "./logged-header/WorkspaceSwitch.vue";
@@ -362,8 +362,8 @@ export default {
   &__logo {
     position: relative;
     display: block;
-    width: 98px;
-    height: 24px;
+    width: 116px;
+    height: 28px;
     margin-right: 16px;
     img {
       position: absolute;
