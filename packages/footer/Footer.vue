@@ -124,6 +124,16 @@ export default {
       }
     }
     &-contact {
+      .icon-base {
+        cursor: pointer;
+        font-size: 20px;
+        &:hover {
+          color: rqthemify(--text-primary);
+        }
+        &:active {
+          color: rqthemify(--primary-color);
+        }
+      }
       display: flex;
       flex: auto;
       justify-content: flex-end;
@@ -132,10 +142,6 @@ export default {
         margin-right: 22px;
         &:last-child {
           margin-right: 0;
-        }
-        .icon-base {
-          font-size: 20px;
-          @include hover;
         }
       }
     }
@@ -151,6 +157,15 @@ export default {
     color: rqthemify(--text-white-7);
     .footer__content {
       border-color: rqthemify(--text-white-2);
+      &-contact .icon-base {
+        color: rqthemify(--text-white-5);
+        &:hover {
+          color: rqthemify(--text-white-8);
+        }
+        &:active {
+          color: rqthemify(--text-white);
+        }
+      }
     }
   }
 }
