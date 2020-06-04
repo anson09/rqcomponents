@@ -202,6 +202,13 @@ export default {
       .nav__button {
         color: rqthemify(--#{$product}-product-color);
         border-color: rqthemify(--#{$product}-product-color);
+        &:hover {
+          background-color: rqthemify(--#{$product}-product-color-9);
+        }
+        &:active,
+        &:focus {
+          background-color: rqthemify(--#{$product}-product-color);
+        }
       }
     }
   }
@@ -279,6 +286,11 @@ export default {
       padding: 12px 28px;
       line-height: 1;
       border-radius: 8px;
+      &:hover,
+      &:active,
+      &:focus {
+        color: rqthemify(--text-white);
+      }
     }
   }
 }

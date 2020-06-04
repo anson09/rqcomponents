@@ -6,7 +6,7 @@
           <img
             v-show="light"
             data-logo-theme="light"
-            src="../assets/img/logo-white-pure.png"
+            src="../assets/img/logo-white.png"
           />
           <img
             v-show="!light"
@@ -49,13 +49,23 @@
                 :key="idx"
                 :class="[cfg.className, { light }]"
                 :round="true"
-                :plain="cfg.plain || light"
+                plain
                 :light="light"
                 :type="cfg.type"
                 :icon="cfg.icon ? `icon-base icon-base-${cfg.icon}` : ''"
                 @click="cfg.click"
-                >{{ cfg.label }}</el-button
               >
+                <template v-if="cfg.images">
+                  <img
+                    v-for="(item, index) in cfg.images"
+                    :key="index"
+                    :src="item.src || item"
+                    :class="item.className"
+                  />
+                </template>
+
+                {{ cfg.label }}
+              </el-button>
             </div>
           </transition>
         </template>
@@ -75,6 +85,9 @@ import SecondHeader, {
 import MiniMenu from "./anka-header/MiniMenu.vue";
 import { anka } from "../assets/dict/header";
 import { getStorage } from "../util";
+import entryOpacityImg from "../assets/img/entry-opacity.png";
+import entryImg from "../assets/img/entry.png";
+import entryActiveImg from "../assets/img/entry-active.png";
 
 export default {
   name: "AnkaHeader",
@@ -138,8 +151,20 @@ export default {
           ...base,
           {
             label: "进入平台",
-            plain: true,
             className: "entry",
+            type: "text",
+            images: this.opacity
+              ? [entryOpacityImg]
+              : [
+                  {
+                    className: "default",
+                    src: entryImg,
+                  },
+                  {
+                    className: "active",
+                    src: entryActiveImg,
+                  },
+                ],
             click: () => {
               const account = getStorage("account");
               const history = getStorage("userHistory");
@@ -157,7 +182,6 @@ export default {
         ...base,
         {
           label: "登录",
-          plain: true,
           type: "text",
           icon: "login",
           click: () => {
@@ -166,7 +190,6 @@ export default {
         },
         {
           label: "注册",
-          plain: true,
           type: "text",
           icon: "registered",
           click: () => {
@@ -291,7 +314,7 @@ export default {
           margin-right: 30px;
         }
         img {
-          width: 136px;
+          width: 138px;
         }
       }
       &__topic {
@@ -316,79 +339,78 @@ export default {
           }
         }
 
-        .entry,
-        .road-show {
-          padding: 10px 28px;
-          border-radius: 40px;
-          height: auto;
-          border-color: rqthemify(--text-white-8);
-          transition: all 0.3s;
-          color: rqthemify(--text-white);
-        }
-        .entry {
-          margin-left: 6px;
-          color: rqthemify(--primary-color);
-          border-color: rqthemify(--primary-color);
-          background: transparent;
-          &:hover,
-          &:focus,
-          &:active {
-            color: rqthemify(--primary-color);
-            transform: scale(1);
-          }
-          &:active {
-            transform: scale(1.1);
-          }
-        }
-
-        .road-show {
-          margin: 0 24px 0 40px;
-          background: rqthemify(--primary-color);
-          &:hover,
-          &:focus,
-          &:active {
-            color: rqthemify(--text-white);
-            transform: scale(1);
-            background: rqthemify(--text-white-4);
-          }
-        }
         &.login {
           flex: none;
-
-          color: rqthemify(--text-normal);
           ::v-deep {
             .el-button {
               @include click-scale();
-            }
-            .icon-base {
-              margin-right: 8px;
+              // 登录 注册
+              color: rqthemify(--text-primary);
+              border-radius: 19px;
+              padding: 10px 14px;
+              img {
+                width: 26px;
+                height: 26px;
+                vertical-align: middle;
+                margin-right: 12px;
+                &.active {
+                  display: none;
+                }
+              }
+              &:hover,
+              &:active,
+              &:focus {
+                img {
+                  &.default {
+                    display: none;
+                  }
+                  &.active {
+                    display: inline-block;
+                  }
+                }
+              }
+
+              &:hover {
+                border-color: rqthemify(--text-primary);
+              }
+              &:active,
+              &:focus {
+                color: rqthemify(--primary-color);
+                border-color: rqthemify(--primary-color);
+              }
+              .icon-base {
+                margin-right: 8px;
+              }
             }
           }
+          // 预约路演 进入平台
+          .entry {
+            padding: 6px 12px;
+            margin-left: 6px;
+            border-radius: 4px;
+          }
 
-          .el-button--text {
-            padding: 12px 16px;
-            margin-left: 0;
-            color: rqthemify(--primary-color);
-            border-width: 0;
-            &:focus {
-              background: transparent;
-            }
-            &:hover {
-              background: rqthemify(--text-white-4);
-            }
+          .road-show {
+            margin: 0 24px 0 40px;
+            border-radius: 40px;
+            padding: 10px 28px;
+            border-color: rqthemify(--text-primary);
+          }
 
-            &.light {
-              color: rqthemify(--text-white);
-              border-width: 0;
-              &:focus {
-                background: transparent;
-              }
-              &:hover {
-                background: rqthemify(--text-white-2);
-              }
-              &:active {
-                background: rqthemify(--text-white-4);
-              }
+          .entry,
+          .road-show {
+            color: rqthemify(--text-primary);
+            height: auto;
+            transition: all 0.3s;
+            &:hover,
+            &:focus,
+            &:active {
+              color: rqthemify(--primary-color);
+              border-color: rqthemify(--primary-color);
+            }
+            &:focus,
+            &:active {
+              background: rqthemify(--primary-color-1);
             }
           }
         }
@@ -397,23 +419,40 @@ export default {
   }
   .opacity {
     nav .nav__buttons {
-      .road-show {
-        background: rqthemify(--text-white-2);
-        &:hover,
-        &:focus,
-        &:active {
-          background: rqthemify(--text-white-4);
+      &.login {
+        ::v-deep {
+          .el-button {
+            color: rqthemify(--text-white);
+            border-color: transparent;
+            &:hover {
+              background: rqthemify(--text-white-4);
+            }
+            &:focus,
+            &:active {
+              background: rqthemify(--text-white-6);
+            }
+          }
         }
-      }
-
-      .entry {
-        color: rqthemify(--text-white);
-        border-color: rqthemify(--text-white);
-        background: transparent;
-        &:hover,
-        &:focus,
-        &:active {
+        .road-show {
           color: rqthemify(--text-white);
+          border-color: rqthemify(--white);
+          background: rqthemify(--text-white-2);
+        }
+
+        .entry {
+          border-color: transparent;
+          color: rqthemify(--text-white);
+          background: transparent;
+        }
+        .entry,
+        .road-show {
+          &:hover {
+            background: rqthemify(--text-white-4);
+          }
+          &:focus,
+          &:active {
+            background: rqthemify(--text-white-6);
+          }
         }
       }
     }

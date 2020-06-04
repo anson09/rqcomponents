@@ -250,7 +250,7 @@ export default {
   padding: 0;
   border-radius: 0;
   border-width: 0;
-  min-width: 256px;
+  min-width: 250px;
   box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
   background: rqthemify(--background-white);
   &.fade-in-linear-leave-active.fade-in-linear-leave-to {

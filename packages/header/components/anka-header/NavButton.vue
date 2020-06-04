@@ -99,7 +99,7 @@ export default {
 
 .nav-button {
   position: relative;
-  @include text;
+  @include text(rqthemify(--text-primary));
   padding: 4px 14px;
   height: 100%;
   margin: 0;
