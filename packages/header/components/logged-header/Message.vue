@@ -244,6 +244,14 @@ export default {
   position: relative;
   margin: auto;
   color: rqthemify(--text-primary);
+  .el-icon-chat-dot-round {
+    font-size: 18px;
+  }
+  &:hover {
+    .el-icon-chat-dot-round {
+      color: rqthemify(--primary-color);
+    }
+  }
 
   &-button {
     padding: 4px 15px;
@@ -255,9 +263,6 @@ export default {
     border: none;
     position: relative;
 
-    .el-icon-chat-dot-round {
-      font-size: 18px;
-    }
     &__num {
       position: absolute;
       color: white;
