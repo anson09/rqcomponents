@@ -1,28 +1,7 @@
 <template>
-  <div
-    v-if="workspaces.length"
-    class="workspace-container"
-    @mouseover="toggleDropdown(true)"
-    @mouseleave="toggleDropdown(false)"
-  >
-    <div class="workspace-btn">
-      <i
-        v-if="settingVisible"
-        class="el-icon-setting workspace-btn__icon"
-        @click="handleLink"
-      ></i>
-      <span class="workspace-btn__text">{{ curWs.name }}</span>
-      <i
-        v-show="!dropdownShow"
-        class="el-icon-arrow-down el-icon--right workspace-btn__icon icon--mini"
-      ></i>
-      <i
-        v-show="dropdownShow"
-        class="el-icon-arrow-up el-icon--right workspace-btn__icon icon--mini"
-      ></i>
-    </div>
+  <div v-if="workspaces.length" class="workspace-container">
     <transition name="rq-zoom-in-top">
-      <div v-show="dropdownShow" class="workspace-dropdown">
+      <div v-show="active" class="workspace-dropdown">
         <div
           v-for="item in workspaces"
           :key="item.id"
@@ -43,6 +22,11 @@
         </div>
       </div>
     </transition>
+    <div class="workspace-btn">
+      <i v-if="settingVisible" class="el-icon-setting" @click="handleClick"></i>
+      <span class="workspace-btn__text">{{ curWs.name }}</span>
+      <i class="el-icon-caret-bottom workspace-btn__icon"></i>
+    </div>
   </div>
   <div v-else class="create-btn" @click="createWorkspace">{{ label }}</div>
 </template>
@@ -56,13 +40,13 @@ export default {
     settingHref: { type: String, required: true },
     label: { type: String, required: true },
     creatLink: { type: Object, required: true },
+    active: { type: Boolean, default: false },
   },
   data() {
     const localStorageAccount = getStorage("account");
     const storageKey = "workspace";
     const localStorageWorkspaces = getStorage(storageKey);
     return {
-      dropdownShow: false,
       workspaces: [],
       curWs: {},
       account: localStorageAccount,
@@ -89,14 +73,18 @@ export default {
   },
 
   methods: {
-    handleLink() {
+    handleClick() {
       if (this.settingVisible) {
-        window.location.href = `${this.settingHref}/${this.curWs.id}`;
+        this.handleLink({
+          href: `${this.settingHref}/${this.curWs.id}`,
+          outer: true,
+        });
       }
     },
-    toggleDropdown(show) {
-      this.dropdownShow = show;
+    handleLink(cfg) {
+      this.$emit("handleLink", cfg);
     },
+
     async getWorkspaces() {
       try {
         const res = await getWorksapces();
@@ -134,25 +122,35 @@ export default {
     },
 
     createWorkspace() {
-      if (window.location.href.includes(this.creatLink.href)) {
+      if (this.$parent.getPath().includes(this.creatLink.href)) {
         this.$emit("createWorkspace");
       } else {
-        window.location.href = `${this.creatLink.href}${this.creatLink.hash}`;
+        this.handleLink({
+          href: `${this.creatLink.href}${this.creatLink.hash}`,
+          outer: true,
+        });
       }
     },
   },
 };
 </script>
 <style lang="scss" scoped>
+@import "../../../common/style/mixins.scss";
 .workspace {
   &-container {
     position: relative;
     cursor: pointer;
     height: 100%;
     box-sizing: border-box;
-
+    .el-icon-caret-bottom {
+      font-size: 12px;
+      transition: all 0.3s;
+    }
     &:hover {
-      color: rqthemify(--primary-color);
+      color: rqthemify(--text-hover);
+      .el-icon-caret-bottom {
+        transform: rotate(180deg);
+      }
     }
   }
   &-dropdown {
@@ -163,8 +161,7 @@ export default {
     left: 0;
     box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);
     box-sizing: border-box;
-    bottom: 0;
-    transform: translateY(100%);
+    top: 100%;
     max-height: 230px;
     overflow-y: auto;
 
@@ -191,14 +188,13 @@ export default {
       &:active,
       &:focus {
         background-color: rqthemify(--background-white-hover);
-        color: rqthemify(--primary-color);
-        font-weight: 600;
+        color: rqthemify(--text-hover);
       }
     }
     &__btn {
       display: flex;
       align-items: center;
-      background-color: rqthemify(--button-gray-background);
+      background-color: rqthemify(--background-secondary);
       border: none;
       border-radius: 4px;
       padding: 3px 14px 3px 8px;
@@ -207,6 +203,8 @@ export default {
       font-size: 14px;
       cursor: pointer;
       outline: none;
+      @include click-scale();
+
       .el-icon-circle-plus {
         font-size: 16px;
         margin-right: 8px;
@@ -214,15 +212,7 @@ export default {
 
       &:hover {
         background-color: rqthemify(--primary-color);
-        color: rqthemify(--text-white);
-        .el-icon-circle-plus {
-          color: rqthemify(--text-white);
-        }
-      }
-      &:focus,
-      &:active {
-        transform: scale(1.1);
-        transform-origin: left center;
+        color: rqthemify(--white);
       }
 
       &-wrapper {
@@ -232,8 +222,9 @@ export default {
       }
     }
   }
+
   &-btn {
-    color: rqthemify(--text-normal);
+    color: inherit;
     display: flex;
     align-items: center;
     height: 100%;
@@ -249,17 +240,14 @@ export default {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      font-weight: 500;
       font-size: 14px;
     }
-    &__icon {
-      margin: 0;
+    .el-icon-setting {
       font-size: 16px;
-      margin-right: 8px;
     }
-    .icon--mini {
-      font-size: 8px;
-    }
+  }
+  &-dropdown:hover ~ &-btn {
+    box-shadow: 0px 0px 20px rqthemify(--shadow-primary);
   }
 }
 .create-btn {
@@ -267,8 +255,7 @@ export default {
   font-size: 14px;
   padding: 0 20px;
   &:hover {
-    font-weight: 600;
-    color: rqthemify(--primary-color);
+    color: rqthemify(--text-hover);
   }
 }
 </style>

@@ -171,8 +171,16 @@ const anka = {
 const logged = {
   right: [
     {
-      type: "workspace",
-      className: "workspace",
+      link: {
+        href: "/trial/road-show",
+        event: "roadShow",
+      },
+      type: "button",
+      label: "预约路演",
+    },
+    {
+      component: "workspaceSwitch",
+
       creatLink: {
         href: "/dashboard",
         hash: "#createWs",
@@ -180,13 +188,7 @@ const logged = {
       settingHref: "/dashboard/workspace",
       label: "创建新的工作空间",
     },
-    {
-      link: {
-        href: "/welcome/trial/road-show",
-      },
-      className: "road-show",
-      label: "预约路演",
-    },
+
     {
       links: [
         {
@@ -230,23 +232,24 @@ const logged = {
           label: "RQSDK使用文档",
         },
       ],
+      type: "dropdown",
       label: "帮助文档",
-      className: "docs",
     },
     {
       link: {
         href: "/community",
         newBlock: true,
       },
+      type: "text",
       label: "社区",
     },
     {
       type: "message",
-      className: "message",
+      component: "message",
     },
     {
       type: "theme",
-      className: "theme",
+      component: "themeSwitch",
     },
 
     {
@@ -274,18 +277,23 @@ const logged = {
           label: "登出账号",
         },
       ],
-      img: "avator",
-      type: "avatar",
-      className: "avatar",
+      component: "account",
     },
   ],
   left: [
     {
-      link: "/quant/",
+      link: {
+        href: "/quant/",
+        outer: true,
+      },
+
       label: "量化",
     },
     {
-      link: "/ams/",
+      link: {
+        href: "/ams/",
+        outer: true,
+      },
       label: "AMS",
     },
   ],

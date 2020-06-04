@@ -93,23 +93,32 @@ const dark = {
 const themifyOptions = {
   palette: {
     light: {
+      "--text-hover": light["--primary-color"],
+      "--white": "hsl(0, 0%, 100%)",
       "--warning-color": "hsl(49, 100%, 50%)",
       "--succeed-color": "hsla(146, 48%, 49%, 1)",
       "--remove-hover-color": "hsl(0, 82%, 61%)",
       "--remove-active-color": "hsl(0, 59%, 47%)",
       "--dropdown-background": light["--background-white"],
-      "--background-active": light["--primary-color-2"],
-      "--background-view": light["--background-secondary"],
-      "--button-gray-background": light["--background-secondary"],
+      "--dropdown-active-background": light["--primary-color-2"],
+      "--dropdown-hover-background": light["--primary-color-1"],
+      // "--background-view": light["--background-secondary"],
+
       "--background-white-hover": light["--background-primary"],
       ...light,
     },
     dark: {
+      "--white": "hsl(0, 0%, 100%)",
+      "--text-hover": light["--text-white"],
+      "--remove-hover-color": "hsl(0, 82%, 61%)",
+      "--remove-active-color": "hsl(0, 59%, 47%)",
       "--succeed-color": "hsla(146, 48%, 49%, 1)",
       "--dropdown-background": dark["--text-white"],
-      "--background-active": dark["--primary-color-4"],
-      "--background-view": dark["--primary-color-2"],
-      "--button-gray-background": light["--primary-color"],
+      "--dropdown-active-background": dark["--primary-color-4"],
+      "--dropdown-hover-background": light["--primary-color-2"],
+
+      // "--background-view": dark["--background-secondary"],
+
       "--background-white-hover": light["--primary-color-2"],
       ...dark,
     },

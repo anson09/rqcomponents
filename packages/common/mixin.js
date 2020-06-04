@@ -12,6 +12,8 @@ export default {
   methods: {
     // eslint-disable-next-line complexity
     handleLink(params) {
+      if (!params) return;
+
       let link = params;
       if (typeof link === "string") {
         link = { href: link };

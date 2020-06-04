@@ -16,11 +16,15 @@ $min-vw: 1280px;
   }
 }
 
-@mixin text($color: rqthemify(--text-normal), $font-size: 14) {
+@mixin text(
+  $color: rqthemify(--text-normal),
+  $font-size: 14,
+  $line-height: 1.5
+) {
   font-size: $font-size + px;
   color: $color;
-  line-height: 1.5;
-  font-weight: 500;
+  line-height: $line-height;
+  font-weight: 400;
 }
 
 @mixin rg-text($color: rqthemify(--text-normal)) {

@@ -1,10 +1,5 @@
 <template>
-  <div
-    ref="message"
-    class="message"
-    @mouseover="setMessageVisible(true)"
-    @mouseleave="setMessageVisible(false)"
-  >
+  <div ref="message" class="message">
     <button class="message-button" size="mini" type="text">
       <i class="el-icon-chat-dot-round"></i>
       <span v-show="unreadMsgNum > 0" class="message-button__num">{{
@@ -12,7 +7,7 @@
       }}</span>
     </button>
     <transition name="rq-zoom-in-top">
-      <div v-show="messageVisible" class="message-container">
+      <div v-show="active" class="message-container">
         <div class="message__header">
           <div class="message__header-left">
             <span
@@ -76,6 +71,9 @@ import { message as messageApi } from "../../api";
 export default {
   name: "Message",
   components: { MessageList, ElPopover },
+  props: {
+    active: { type: Boolean, default: false },
+  },
   data() {
     return {
       messageTypes: [
@@ -88,7 +86,7 @@ export default {
       ],
       curType: "unread",
       unreadMsgNum: 0,
-      messageVisible: false,
+
       limit: 10,
       fetchInterval: null,
       message: {
@@ -119,13 +117,11 @@ export default {
       Object.values(this.message).forEach((item) => {
         // 已读消息在未显示时不更新
 
-        if (!this.messageVisible && !item.unread) return;
+        if (!this.active && !item.unread) return;
         this.getMessage({
           unread: item.unread,
           offset: 0,
-          limit: this.messageVisible
-            ? Math.max(this.limit, item.data.length)
-            : 1,
+          limit: this.active ? Math.max(this.limit, item.data.length) : 1,
         });
       });
     }, 60 * 1000);
@@ -135,9 +131,6 @@ export default {
   },
 
   methods: {
-    setMessageVisible(visible) {
-      this.messageVisible = visible;
-    },
     async updateMessage({ msg, unread, index }) {
       // 只更新未读
       if (!unread) return;
@@ -192,7 +185,7 @@ export default {
         offset,
       });
       if (!res.data) return;
-      if (this.messageVisible || updateToView) {
+      if (this.active || updateToView) {
         const message = [];
 
         if (offset === 0) {
@@ -250,14 +243,14 @@ export default {
   height: 100%;
   position: relative;
   margin: auto;
-  color: rqthemify(--text-normal);
+  color: rqthemify(--text-primary);
 
   &-button {
-    padding: 4px 20px;
+    padding: 4px 15px;
     height: 100%;
     display: flex;
     align-items: center;
-    color: rqthemify(--text-normal);
+    color: rqthemify(--text-primary);
     background-color: inherit;
     border: none;
     position: relative;
@@ -326,7 +319,6 @@ export default {
   &-container {
     position: absolute;
     background: rqthemify(--dropdown-background);
-    border-radius: 8px 0 8px 8px;
     width: 438px;
     right: 0;
     box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);

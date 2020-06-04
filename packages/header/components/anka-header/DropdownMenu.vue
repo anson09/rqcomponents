@@ -145,7 +145,7 @@ export default {
       }
       &:active,
       &:focus {
-        background: rqthemify(--background-active);
+        background: rqthemify(--dropdown-active-background);
       }
     }
     &s {
@@ -220,7 +220,7 @@ export default {
   }
 
   &-support {
-    @include mini-text(--text-secondary);
+    @include mini-text(rqthemify(--text-secondary));
     &__links {
       padding: 20px 0 10px;
       margin: 22px 20px 0;
@@ -250,7 +250,7 @@ export default {
   padding: 0;
   border-radius: 0;
   border-width: 0;
-  min-width: 300px;
+  min-width: 256px;
   box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
   background: rqthemify(--background-white);
   &.fade-in-linear-leave-active.fade-in-linear-leave-to {

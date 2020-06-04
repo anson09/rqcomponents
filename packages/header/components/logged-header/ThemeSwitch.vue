@@ -104,7 +104,7 @@ export default {
     padding: 0 10px;
     width: 40px;
     text-align: center;
-    color: rqthemify(--text-normal);
+    color: rqthemify(--text-primary);
     background-color: inherit;
     border: none;
     .icon-base {
