@@ -33,7 +33,6 @@ import LoggedHeader from "./components/LoggedHeader.vue";
 import AnkaHeader from "./components/AnkaHeader.vue";
 import { getAccount, logout } from "./api";
 import mixin from "../common/util/mixin";
-import { isProductPath } from "./util";
 import { getStorage, setStorage, removeStorage } from "../common/util";
 
 export default {
@@ -109,13 +108,6 @@ export default {
           this.handleLink("/");
         }
       };
-      const url = this.getPath();
-      if (isProductPath(url)) {
-        // 在产品内
-        const commonHistory = getStorage("userHistory");
-        commonHistory[this.userId] = url;
-        setStorage("userHistory", commonHistory);
-      }
       if (this.beforeLogout) this.beforeLogout(done);
       else done();
     },

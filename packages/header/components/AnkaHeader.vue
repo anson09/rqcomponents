@@ -168,11 +168,9 @@ export default {
             click: () => {
               const account = getStorage("account");
               const history = getStorage("userHistory");
-              const href = history[account.userId] ?? "/quant/";
-
               this.redirect({
                 outer: true,
-                href,
+                href: history[account.userId] ?? "/quant/",
               });
             },
           },
