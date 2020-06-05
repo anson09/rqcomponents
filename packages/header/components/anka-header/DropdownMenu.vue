@@ -141,7 +141,6 @@ export default {
       @include hover;
       &:hover {
         background: rqthemify(--primary-color-1);
-        font-weight: 600;
       }
       &:active,
       &:focus {
@@ -174,7 +173,6 @@ export default {
         position: relative;
         @include hover;
         &:hover {
-          font-weight: bold;
           .menu__sublinks {
             display: block;
           }
@@ -210,7 +208,6 @@ export default {
         position: absolute;
         @include t-center-vertical;
         right: 16px;
-        font-weight: inherit;
       }
     }
   }
