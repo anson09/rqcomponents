@@ -2,6 +2,54 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.1&sourceBranch=refs/tags/v0.1.2) (2020-06-05)
+
+
+### Features
+
+* add rqfooter ([023735c](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/023735c6ead476b86a66c0c1077605f90eb9f3b8))
+* disabled mode ([9ece2da](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/9ece2da0d5830b0f7dd17f5170a4bb7f76383fae))
+* new loggedHeader ([ffceb4a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/ffceb4ab12e09993f1bdda586d6d33a009610bb2))
+* set commonUserHistory when logout ([133a75a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/133a75a40b865dc5ad1dce806bc0828f7c96e981))
+* set entry link according to storage ([72c0946](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/72c0946d6a7a5f5353c7d80ad4ac894d452591b1))
+
+
+### Bug Fixes
+
+* --rqdata-product-color-2 ([190ac8b](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/190ac8b573b7f5d3988f2a7f125eabe7f37600cd))
+* common user history ([fa017f9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/fa017f94930d4a8b45e68fd759d4d059ea5925b7))
+* dropdown item hover font-weight ([93b971b](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/93b971bb8fd425da99bffcde6c962f8642b622bb))
+* isProductPath ([8f6abf2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/8f6abf2504279158bd7033e2a1cbad7380c544de))
+* message icon hover style ([3315d5c](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/3315d5cc316ba276ce63efcb5f0c842910bc3302))
+* text font-weight ([5affbdb](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/5affbdbdb4298da516d9ef00e7d5205ed237a3c4))
+
+
+### Chores
+
+* update logged logo ([3b8ef2e](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/3b8ef2e964fbd699cc9d7972298cbc1e86161c71))
+
+
+### Refactors
+
+* ankaHeader ([26e092a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/26e092a75f986948cc2691187a7edc1c94a40b0c))
+* common util ([07d32a4](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/07d32a41ad2406184b035677f17a8f897bc73884))
+* commont_user_history to common_user_default_product ([e71baa0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/e71baa045967af032ff4c31c71625812f3c557b3))
+* doc path ([85e8688](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/85e8688631c674a5b12a23d3358cb1aead9f87c9))
+* dynamic import rqcomponent in demo ([7bfa57b](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7bfa57b39d744eb6969cf3b1523d5c4808b3fb8a))
+* fomat color variables ([eb2754a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/eb2754a4ab4ed84415545874e18a47100e1ee60a))
+* footer ([88a4671](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/88a46716d1c6e71a4cf783f3aae8ff3150cef4e3))
+* set get remove storage in util ([6f1bfe4](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6f1bfe44b44f638520e92b05ef806c27a23c1dad))
+* split common util ([7492b2e](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7492b2e06b6396ba04a7ec1075a6bebab02b5e59))
+* use mixin in header ([d8f862f](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/d8f862f2d7c1f3e007dd98e55a95a4ba7319d2f7))
+* use storageKeys in config ([f54299e](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/f54299eddbbdc7b0af1a30bd5443005707d642e1))
+
+
+### Docs
+
+* add registration in readme ([2df2ad4](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/2df2ad4303d4d8b28f21fe9b29a0193155aa02d6))
+* format readme ([bd07b63](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/bd07b635eefd10e374e80f70d93645089c5fb015))
+* update readme ([9bf51d4](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/9bf51d496e73a1487d544aee534638ce91e5c918))
+
 ### [0.1.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.0&sourceBranch=refs/tags/v0.1.1) (2020-05-21)
 
 
