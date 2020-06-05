@@ -68,14 +68,14 @@ const anka = {
             links: [
               {
                 link: {
-                  href: "/doc/rqdata-institutional",
+                  href: "/doc/rqdata/python/",
                   outer: true,
                 },
                 label: "Python API文档",
               },
               {
                 link: {
-                  href: "/doc/rqdata-http-institutional",
+                  href: "/doc/rqdata/http/",
                   outer: true,
                 },
                 label: "HTTP API文档",
@@ -90,14 +90,14 @@ const anka = {
           },
           {
             link: {
-              href: "/doc/api/python/chn",
+              href: "/doc/quant/",
               outer: true,
             },
             label: "量化平台使用文档",
           },
           {
             link: {
-              href: "/doc/rqsdk-institutional",
+              href: "/doc/rqsdk/",
               outer: true,
             },
             label: "RQSDK使用文档",
@@ -195,14 +195,14 @@ const logged = {
           links: [
             {
               link: {
-                href: "/doc/rqdata-institutional",
+                href: "/doc/rqdata/python/",
                 newBlock: true,
               },
               label: "API帮助文档-Python",
             },
             {
               link: {
-                href: "/doc/rqdata-http-institutional",
+                href: "/doc/rqdata/http/",
                 newBlock: true,
               },
               label: "Restful文档-HTTP服务",
@@ -212,21 +212,21 @@ const logged = {
         },
         {
           link: {
-            href: "/doc/api/python/chn",
+            href: "/doc/quant/",
             newBlock: true,
           },
           label: "量化平台文档",
         },
         {
           link: {
-            href: "/doc/rqams",
+            href: "/doc/rqams/",
             newBlock: true,
           },
           label: "RQAMS使用文档",
         },
         {
           link: {
-            href: "/doc/rqsdk-institutional",
+            href: "/doc/rqsdk/",
             newBlock: true,
           },
           label: "RQSDK使用文档",
