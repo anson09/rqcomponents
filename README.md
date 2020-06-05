@@ -82,7 +82,7 @@ admin: whether to use vue-events(auth) or redirect when click login or register 
 
 ankaPrefix: anka publick path.
 
-##### before-logout: function(done: function) {}
+#### before-logout: function(done: function) {}
 
 Default: null
 
@@ -102,7 +102,7 @@ Parameters:
 
 Triggers when user click create workspace button.
 
-### switchWorkspace
+#### switchWorkspace
 
 Parameters: currentWorkspaceId
 
