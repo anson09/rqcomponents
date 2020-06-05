@@ -29,14 +29,14 @@
 <script>
 import lightImg from "../../assets/img/theme-light.png";
 import darkImg from "../../assets/img/theme-dark.png";
+
 import {
-  getStorage,
-  setStorage,
   THEME_MODE,
   themeRender,
   isSupported,
   isProductPath,
-} from "../../../common/util";
+} from "../../util";
+import { getStorage, setStorage } from "../../../common/util";
 
 export default {
   name: "ThemeSwitch",

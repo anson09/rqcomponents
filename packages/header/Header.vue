@@ -33,13 +33,8 @@ import LoggedHeader from "./components/LoggedHeader.vue";
 import AnkaHeader from "./components/AnkaHeader.vue";
 import { getAccount, logout } from "./api";
 import mixin from "../common/util/mixin";
-
-import {
-  isProductPath,
-  getStorage,
-  setStorage,
-  removeStorage,
-} from "../common/util";
+import { isProductPath } from "./util";
+import { getStorage, setStorage, removeStorage } from "../common/util";
 
 export default {
   name: "RqHeader",
