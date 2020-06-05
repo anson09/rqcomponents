@@ -2,7 +2,7 @@
 
 const storageKeys = {
   account: "common_account",
-  userHistory: "common_user_history",
+  userDefaultProduct: "common_user_default_product",
   theme: "theme",
   workspace: "common_workspace",
 };

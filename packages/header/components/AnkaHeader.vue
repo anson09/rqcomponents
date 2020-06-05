@@ -167,10 +167,10 @@ export default {
                 ],
             click: () => {
               const account = getStorage("account");
-              const history = getStorage("userHistory");
+              const history = getStorage("userDefaultProduct");
               this.redirect({
                 outer: true,
-                href: history[account.userId] ?? "/quant/",
+                href: `/${history[account.userId] ?? "quant"}/`,
               });
             },
           },
