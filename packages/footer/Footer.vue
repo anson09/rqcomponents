@@ -59,8 +59,8 @@
 </template>
 <script>
 import ElPopover from "element-ui/lib/popover";
-import footer from "./assets/dict/footer";
-import mixin from "../common/mixin";
+import footer from "./assets/dict/config";
+import mixin from "../common/util/mixin";
 import qrcode from "../common/assets/img/qrcode.jpg";
 
 export default {

@@ -36,7 +36,7 @@ import {
   themeRender,
   isSupported,
   isProductPath,
-} from "../../util";
+} from "../../../common/util";
 
 export default {
   name: "ThemeSwitch",

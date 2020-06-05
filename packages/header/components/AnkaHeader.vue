@@ -83,8 +83,8 @@ import SecondHeader, {
   getSecondHeaderShow,
 } from "./anka-header/SecondHeader.vue";
 import MiniMenu from "./anka-header/MiniMenu.vue";
-import { anka } from "../assets/dict/header";
-import { getStorage } from "../util";
+import { anka } from "../assets/dict/config";
+import { getStorage } from "../../common/util";
 import entryOpacityImg from "../assets/img/entry-opacity.png";
 import entryImg from "../assets/img/entry.png";
 import entryActiveImg from "../assets/img/entry-active.png";

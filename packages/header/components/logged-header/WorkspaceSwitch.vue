@@ -32,7 +32,7 @@
 </template>
 <script>
 import { getWorksapces } from "../../api";
-import { setStorage, getStorage } from "../../util";
+import { setStorage, getStorage } from "../../../common/util";
 
 export default {
   name: "WorkspaceSwitch",
