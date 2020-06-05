@@ -39,7 +39,7 @@ const isSupported = () =>
   window.CSS.supports("color", "var(--fake-var)");
 
 const isProductPath = (path) =>
-  ["/ams", "/quant"].some((url) => path.includes(url));
+  ["/ams", "/quant"].some((url) => path.startsWith(url));
 
 export {
   THEME_MODE,
