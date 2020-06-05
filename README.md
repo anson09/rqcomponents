@@ -6,13 +6,6 @@
 import UI from "@rqjs/rqcomponents";
 import "@rqjs/rqcomponents/lib/theme/rqcomponents.css";
 import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
-
-Vue.use(UI);
-
-new Vue({
-  el: "#rq-header",
-  template: "<RqHeader></RqHeader>",
-});
 ```
 
 ## Partial Import
@@ -26,12 +19,32 @@ import RqHeader from "@rqjs/rqcomponents/lib/[componentName]";
 
 import "@rqjs/rqcomponents/lib/theme/[componentName].css";
 import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
+```
+
+# Registration
+
+## Global Registration
+
+```js
+import RqHeader from "@rqjs/rqcomponents/lib/[componentName]";
 
 Vue.use(RqHeader);
 
 new Vue({
   el: "#rq-header",
-  template: "<RqHeader></RqHeader>",
+  render: (h) => h("RqHeader"),
+});
+```
+
+## Local Registration
+
+```js
+import RqHeader from "@rqjs/rqcomponents/lib/[componentName]";
+
+new Vue({
+  el: "#rq-header",
+  components: { RqHeader },
+  render: (h) => h("RqHeader"),
 });
 ```
 
