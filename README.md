@@ -44,19 +44,73 @@ new Vue({
 #### notification: string | slot
 
 Default: ""
+
 Raise a warning on the top of the header.
 
 #### opacity: boolean
 
 Default: false
-Set background opacity with white font-color;
+
+Set background opacity with white font-color.
 
 #### topic: string
 
 Default: ""
+
 A clear header with a topic text only.
+
+#### config: object
+
+Default: { router: false, admin: flase, ankaPrefix: '/welcome' }
+
+router: whether to use vue-router or window.location.href in handleLink.
+
+admin: whether to use vue-events(auth) or redirect when click login or register button.
+
+ankaPrefix: anka publick path.
 
 ##### before-logout: function(done: function) {}
 
 Default: null
+
 Custom way to handle logout event.
+
+### events:
+
+#### auth
+
+Parameters: mode(login|register)
+
+Triggers when user click login or register button.
+
+#### createWorkspace
+
+Parameters:
+
+Triggers when user click create workspace button.
+
+### switchWorkspace
+
+Parameters: currentWorkspaceId
+
+Triggers when current workspace change.
+
+## RqFooter
+
+### props:
+
+#### config: object
+
+Default: { router: false, admin: flase, ankaPrefix: '/welcome' }
+
+router: whether to use vue-router or window.location.href in handleLink.
+
+admin: whether to use vue-events(auth) or redirect when click login or register button.
+
+ankaPrefix: anka publick path.
+
+#### opacity: boolean
+
+Default: false
+
+Set background opacity with white font-color.
