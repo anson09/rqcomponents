@@ -15,7 +15,7 @@ const light = {
   //product-color//
   "--rqdata-product-color": "hsl(244, 38%, 44%)", //rqdata主题色
   "--rqdata-product-color-1": "hsla(244, 38%, 44%, 0.1)",
-  "--rqdata-product-color-2": "hsla(243, 45%, 9%, 0.2)",
+  "--rqdata-product-color-2": "hsla(244, 38%, 44%, 0.2)",
   "--rqdata-product-color-9": "hsla(244, 38%, 44%, 0.9)",
   "--quant-product-color": "hsl(0, 59%, 58%)", //ricequant主题色
   "--quant-product-color-1": "hsla(0, 59%, 58%, 0.1)",
