@@ -220,7 +220,7 @@ export default {
     @include mini-text(rqthemify(--text-secondary));
     &__links {
       padding: 20px 0 10px;
-      margin: 22px 20px 0;
+      margin: 14px 20px 0;
       border-top: 1px solid rqthemify(--primary-color-1);
       &--item:not(.is-disabled) {
         & + & {

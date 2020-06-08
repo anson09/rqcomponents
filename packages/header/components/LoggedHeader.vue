@@ -298,6 +298,7 @@ export default {
       &__item {
         position: relative;
         margin-top: -8px;
+        display: flex;
         &:first-child {
           margin-top: 4px;
         }
@@ -318,6 +319,7 @@ export default {
         }
       }
       &__label {
+        width: 100%;
         padding: 12px 30px 12px 15px;
         @include label-hover();
       }
