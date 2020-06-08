@@ -259,7 +259,7 @@ export default {
     display: flex;
     align-items: center;
     color: rqthemify(--text-primary);
-    background-color: inherit;
+    background-color: transparent;
     border: none;
     position: relative;
 
