@@ -243,13 +243,14 @@ const logged = {
       type: "text",
       label: "社区",
     },
-    {
-      type: "message",
-      component: "message",
-    },
+
     {
       type: "theme",
       component: "themeSwitch",
+    },
+    {
+      type: "message",
+      component: "message",
     },
 
     {
