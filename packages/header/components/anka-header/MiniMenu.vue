@@ -156,7 +156,7 @@ export default {
         &-burger {
           background: rqthemify(--primary-color);
           span {
-            background: rqthemify(--text-normal);
+            background: rqthemify(--text-white);
           }
         }
       }
@@ -168,12 +168,12 @@ export default {
     width: 124px;
     height: 400px;
     box-sizing: border-box;
-    background: rethemify(--primary-color);
+    background: rqthemify(--primary-color);
     &__item {
       display: flex;
       align-items: center;
       padding-left: 20px;
-      color: rqthemify(--primary-color-2);
+      color: rqthemify(--text-white);
       height: 46px;
       cursor: pointer;
       transition: all 0.3s;
@@ -184,18 +184,6 @@ export default {
       }
       i {
         margin-left: 12px;
-      }
-    }
-  }
-  &-detail {
-    min-width: 300px;
-    ::v-deep {
-      .menu__links {
-        height: 100%;
-        .menu-support {
-          position: absolute;
-          bottom: 0;
-        }
       }
     }
   }
