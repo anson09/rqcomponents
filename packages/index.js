@@ -3,9 +3,9 @@ import RqFooter from "./footer";
 
 const components = [RqHeader, RqFooter];
 
-const install = function (Vue, opt = {}) {
+const install = function (Vue) {
   components.forEach((component) => {
-    component.install(Vue, opt[component.name]);
+    component.install(Vue);
   });
 };
 
