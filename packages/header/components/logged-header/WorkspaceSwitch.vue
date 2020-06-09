@@ -118,7 +118,6 @@ export default {
       this.curWs = ws;
       setStorage(this.storageKey, this.localStorageWorkspaces);
       this.$emit("switchWorkspace", ws.id);
-      this.toggleDropdown(false);
     },
 
     createWorkspace() {
