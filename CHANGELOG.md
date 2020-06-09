@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.2&sourceBranch=refs/tags/v0.1.3) (2020-06-09)
+
+
+### Bug Fixes
+
+* dropdown support margin-top ([24b6ea9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/24b6ea97f3d32fc20d0a46a9f354166a1dcccde9))
+* dropdown width in ie ([7afeb29](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7afeb2905cfb66c53825da41877f62b48c773cf8))
+* message background in ie ([a6240a3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a6240a3df5f451cde213678bd30aa01d7b0ded19))
+* message theme order ([52d5212](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/52d52127ae4466cc2e8fad8bd76e9bbc56b371ef))
+* miniMenu color & background, rm useless ([e3a32f1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/e3a32f18f4ec38f55621eab4da70a03d508ded7d))
+
+
+### Chores
+
+* updep ([9c88391](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/9c88391eecd56171a330c1e0e45d1e5fdffa5f8d))
+
 ### [0.1.2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.1&sourceBranch=refs/tags/v0.1.2) (2020-06-05)
 
 
