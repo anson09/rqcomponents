@@ -69,6 +69,7 @@ export default {
   &__avatar {
     width: 34px;
     height: 34px;
+    border-radius: 50%;
   }
   &__vip {
     position: absolute;
