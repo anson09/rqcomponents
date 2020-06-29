@@ -25,36 +25,47 @@ const anka = {
       {
         links: [
           {
-            link: "/rqdata",
+            label: "米筐量化协作平台",
             icon: "rqdata",
-            label: "RQData（金融数据API）",
-          },
-
-          {
             link: "/quant",
-            icon: "quant",
-            label: "Ricequant米筐量化",
+            product: "quant",
+          },
+          {
+            label: "米筐量化工具套件",
+            icon: "rqdata",
+            link: "",
             links: [
-              { link: "/quant", label: "量化首页" },
-              { link: "/quant/rq-alpha-plus", label: "RQAlpha Plus" },
-              { link: "/quant/factor", label: "因子研究" },
-              { link: "/quant/rq-sdk", label: "RQSDK" },
-              { link: "/quant/local", label: "本地部署" },
+              {
+                label: "RQAlpha Plus",
+                icon: "rqdata",
+                link: "",
+                product: "rqams",
+              },
+              { label: "RQData", icon: "rqdata", link: "", product: "rqdata" },
+              {
+                label: "RQFactor",
+                icon: "rqdata",
+                link: "",
+                product: "rqfactor",
+              },
+              {
+                label: "RQOptimizer",
+                icon: "rqoptimizer",
+                link: "",
+                product: "rqoptimizer",
+              },
             ],
           },
           {
-            link: "/ams",
-            icon: "rqams",
             label: "RQAMS（资产管理系统）",
-          },
-          {
-            link: "/rqoptimizer",
-            icon: "rqoptimizer",
-            label: "RQOptimizer ( 组合优化器 )",
+            icon: "rqams",
+            link: "",
+            product: "rqams",
           },
         ],
         more: true,
         label: "产品",
+        className: "product",
       },
       {
         link: "/pricing",
@@ -63,52 +74,48 @@ const anka = {
       {
         more: true,
         label: "支持",
+        className: "docs",
         links: [
           {
+            label: "RQSDK文档",
+            border: true,
             links: [
               {
-                link: {
-                  href: "/doc/rqdata/python/",
-                  outer: true,
-                },
-                label: "Python API文档",
+                label: "快速上手",
+                link: "",
               },
               {
-                link: {
-                  href: "/doc/rqdata/http/",
-                  outer: true,
-                },
-                label: "HTTP API文档",
+                label: "RQData-金融数据API",
+                links: [
+                  { label: "Python API文档", link: "" },
+                  { label: "Http API文档", link: "" },
+                ],
+              },
+              {
+                label: "RQAlpha Plus-回测框架",
+                links: [
+                  { label: "使用教程", link: "" },
+                  { label: "API使用手册", link: "" },
+                ],
+              },
+              {
+                label: "RQFactor-因子投研工具",
+                links: [
+                  { label: "使用教程", link: "" },
+                  { label: "API使用手册", link: "" },
+                ],
+              },
+              {
+                label: "RQOptimizer-股票组合优化器",
+                links: [
+                  { label: "使用教程", link: "" },
+                  { label: "API使用手册", link: "" },
+                ],
               },
             ],
-
-            label: "RQData使用文档",
           },
-          {
-            link: "/pricing#rqpro",
-            label: "RQPro试用咨询",
-          },
-          {
-            link: {
-              href: "/doc/quant/",
-              outer: true,
-            },
-            label: "量化平台使用文档",
-          },
-          {
-            link: {
-              href: "/doc/rqsdk/",
-              outer: true,
-            },
-            label: "RQSDK使用文档",
-          },
-          {
-            link: {
-              href: "/site/courses",
-              outer: true,
-            },
-            label: "米筐量化学院",
-          },
+          { label: "RQAMS文档", link: "" },
+          { label: "量化平台文档", link: "" },
         ],
       },
       {
@@ -140,28 +147,6 @@ const anka = {
               outer: true,
             },
             label: "策略英雄榜",
-          },
-        ],
-      },
-      {
-        more: true,
-        label: "加入我们",
-        links: [
-          {
-            link: {
-              href: "/recruitment/social",
-              inner: true,
-              newBlock: true,
-            },
-            label: "社会招聘",
-          },
-          {
-            link: {
-              href: "/recruitment/school",
-              inner: true,
-              newBlock: true,
-            },
-            label: "校园招聘",
           },
         ],
       },

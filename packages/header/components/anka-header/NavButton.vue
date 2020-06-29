@@ -1,6 +1,6 @@
 <template>
   <el-popover
-    v-if="links.length > 0"
+    v-if="button.links"
     v-model="active"
     class="nav-button__wrapper"
     placement="bottom-start"
@@ -10,7 +10,7 @@
   >
     <div>
       <dropdown-menu
-        :links="links"
+        :links="button.links"
         :support="support"
         @redirect="redirect"
       ></dropdown-menu>
@@ -19,11 +19,10 @@
       slot="reference"
       type="text"
       :class="['nav-button', { active, light }]"
-      @click="clickHandler"
     >
-      <span>{{ label }}</span>
+      <span>{{ button.label }}</span>
       <i
-        v-if="more"
+        v-if="button.more"
         :class="`el-icon-arrow-${active ? 'up' : 'down'} el-icon--right`"
       />
     </el-button>
@@ -34,11 +33,11 @@
     slot="reference"
     type="text"
     :class="['nav-button', { light }]"
-    @click="clickHandler"
+    @click="redirect(button.link)"
   >
-    <span>{{ label }}</span>
+    <span>{{ button.label }} 没有</span>
     <i
-      v-if="more"
+      v-if="button.more"
       :class="`el-icon-arrow-${active ? 'up' : 'down'} el-icon--right`"
     />
   </el-button>
@@ -61,21 +60,13 @@ export default {
       type: Boolean,
       default: false,
     },
-    label: {
-      type: String,
-      required: true,
-    },
-    links: {
-      default: () => [],
-      type: Array,
-    },
     support: {
       required: true,
       type: Object,
     },
-    more: {
-      type: Boolean,
-      default: false,
+    button: {
+      type: Object,
+      required: true,
     },
   },
   data() {
@@ -83,12 +74,10 @@ export default {
       active: false,
     };
   },
+  mounted() {},
   methods: {
-    clickHandler() {
-      this.$emit("click", this.label);
-    },
-    redirect(...args) {
-      this.$emit("redirect", ...args);
+    redirect(link) {
+      this.$emit("redirect", link);
     },
   },
 };

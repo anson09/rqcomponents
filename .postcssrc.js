@@ -17,21 +17,31 @@ const light = {
   "--rqdata-product-color-1": "hsla(244, 38%, 44%, 0.1)",
   "--rqdata-product-color-2": "hsla(244, 38%, 44%, 0.2)",
   "--rqdata-product-color-9": "hsla(244, 38%, 44%, 0.9)",
+
   "--quant-product-color": "hsl(0, 59%, 58%)", //ricequant主题色
   "--quant-product-color-1": "hsla(0, 59%, 58%, 0.1)",
   "--quant-product-color-2": "hsla(0, 59%, 58%, 0.2)",
   "--quant-product-color-9": "hsla(0, 59%, 58%, 0.9)",
+
   "--rqams-product-color": "hsl(216, 76%, 44%)", //rqams主题色
   "--rqams-product-color-1": "hsla(216, 76%, 44%, 0.1)",
   "--rqams-product-color-2": "hsla(216, 76%, 44%, 0.2)",
   "--rqams-product-color-9": "hsla(216, 76%, 44%, 0.9)",
+
   "--rqoptimizer-product-color": "hsl(184, 54%, 44%)", //rqoptimizer主题色
   "--rqoptimizer-product-color-1": "hsla(184, 54%, 44%, 0.1)",
   "--rqoptimizer-product-color-2": "hsla(184, 54%, 44%, 0.2)",
   "--rqoptimizer-product-color-9": "hsla(184, 54%, 44%, 0.9)",
 
+  "--rqfactor-product-color": "hsl(41, 98%, 52%)", //rqoptimizer主题色
+  "--rqfactor-product-color-1": "hsla(41, 98%, 52%, 0.1)",
+  "--rqfactor-product-color-2": "hsla(41, 98%, 52%, 0.2)",
+  "--rqfactor-product-color-9": "hsla(41, 98%, 52%, 0.9)",
+
   //text-color//
+  "--text-remind": "hsl(0, 0%, 3%)",
   "--text-primary": "hsl(0, 0%, 20%)", //浅色底字体色值
+  "--text-important": "hsl(0, 0%, 29%)",
   "--text-normal": "hsl(0, 0%, 40%)", //常规字体色值
   "--text-secondary": "hsl(0, 0%, 64%)", //不重要字体色值
   "--text-white": "hsl(0, 0%, 100%)", //深色底字体色值

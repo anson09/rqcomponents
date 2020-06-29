@@ -23,14 +23,11 @@
             <nav-button
               v-for="(button, idx) in buttons"
               :key="idx"
-              :label="button.label"
-              :links="button.links"
+              class="nav button"
               :support="support"
-              :active="button.active"
               :light="light"
-              :more="button.more"
+              :button="button"
               @redirect="redirect"
-              @click="clickHandler"
             ></nav-button>
           </div>
           <mini-menu
@@ -40,7 +37,6 @@
             :cfg="buttons"
             :support="support"
             @redirect="redirect"
-            @click="clickHandler"
           ></mini-menu>
           <transition name="fade">
             <div class="nav__buttons login">
@@ -201,27 +197,32 @@ export default {
       if (/(\/about|\/recruitment)/.test(this.getPath())) {
         config = anka.header.others;
       }
-      return config.map((btn) => {
-        if (btn.more) {
-          btn.active = this.activeLabel === btn.label;
-        } else if (btn.link) {
-          btn.active = this.getPath().includes(btn.link);
+      function getList(node, level = 0) {
+        if (Array.isArray(node)) {
+          return [
+            ...node.reduce(
+              (arr, item) => [...arr, ...getList(item, level)],
+              []
+            ),
+          ];
         }
-        return btn;
-      });
+        if (node.links) {
+          const obj = { ...node };
+          delete obj.links;
+          return [{ ...obj, level }, ...getList(node.links, level + 1)];
+        }
+        return [{ ...node, level, isLeaf: level !== 0 }];
+      }
+      return config.map((item) => ({
+        ...item,
+        links: item.links && getList(item.links),
+      }));
     },
     headerClassName() {
       if (this.opacity) {
         return "header__bg opacity";
       }
       return "header__bg";
-    },
-    isNotPageMore() {
-      return (
-        this.buttons
-          .filter((i) => !i.more)
-          .filter((sub) => this.getPath().includes(sub.link)).length <= 0
-      );
     },
   },
   mounted() {

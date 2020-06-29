@@ -1,86 +1,41 @@
 <template>
   <div class="menu__links">
-    <div
-      v-for="(link, linkIdx) in links"
-      :key="linkIdx"
-      :class="['menu__links-item-wrapper', { product: link.icon }, link.icon]"
-    >
-      <template v-if="link.links">
-        <transition name="rq-fade-in-linear">
-          <div class="menu__sublinks">
-            <p
-              v-for="(sublink, sublinkIdx) in link.links"
-              :key="sublinkIdx"
-              class="menu__sublink-item"
-              @click="clickHandle(sublink)"
-            >
-              {{ sublink.label }}
-            </p>
-          </div>
-        </transition>
-        <div class="menu__links-item">
-          <i :class="'icon-base icon-base-' + link.icon"></i>
-          <span>{{ link.label }}</span>
-          <i class="el-icon-arrow-right"></i>
-        </div>
-      </template>
-      <template v-else>
-        <div class="menu__links-item" @click="clickHandle(link)">
-          <i :class="'icon-base icon-base-' + link.icon"></i>
-          <a>
-            {{ link.label }}
-          </a>
-        </div>
-      </template>
-    </div>
-    <div class="menu-support">
-      <div class="menu-support__links">
-        <p
-          v-for="(cfg, idx) in support.info"
-          :key="idx"
+    <template>
+      <div class="menu-link-wrapper">
+        <div
+          v-for="(item, index) in links"
+          :key="index"
           :class="[
-            'menu-support__links--item',
-            { 'is-disabled': cfg.disabled },
+            'menu-link',
+            `level-${item.level}`,
+            item.product,
+            {
+              product: item.icon,
+              'is-leaf': item.isLeaf,
+              'is-border': item.border,
+            },
           ]"
-          @click="copy(cfg)"
+          @click="redirect(item)"
         >
-          {{ cfg.label }}: {{ cfg.value }}
-          <i v-if="!cfg.disabled" class="el-icon-copy-document"></i>
-        </p>
-        <p class="contact">
-          <span
-            v-for="(contact, contactIdx) in support.contact"
-            :key="contactIdx"
-          >
-            <i
-              v-if="!contact.qrcode"
-              :class="'icon-base icon-base-' + contact.icon"
-              @click="clickHandle(contact)"
-            ></i>
-            <el-popover v-else placement="bottom" width="auto" trigger="hover">
-              <img :src="qrcode" />
-              <i
-                slot="reference"
-                :class="'icon-base icon-base-' + contact.icon"
-              ></i>
-            </el-popover>
-          </span>
-        </p>
+          <i
+            v-if="item.icon"
+            :class="['icon-base', `icon-base-${item.icon}`]"
+          ></i>
+
+          <span class="menu-link__label">{{ item.label }}</span>
+        </div>
       </div>
-    </div>
+      <Support :cfg="support" @redirect="redirect"></Support>
+    </template>
   </div>
 </template>
 
 <script>
-import ElPopover from "element-ui/lib/popover";
-import Message from "element-ui/lib/message";
-import qrcode from "../../../common/assets/img/qrcode.jpg";
+import Support from "./Support.vue";
 
 export default {
   name: "DropdownMenu",
-  components: {
-    ElPopover,
-  },
+  components: { Support },
   props: {
     links: {
       default: () => [],
@@ -92,40 +47,14 @@ export default {
     },
   },
   data() {
-    return {
-      qrcode,
-    };
+    return {};
   },
+  computed: {},
   watch: {},
   mounted() {},
   methods: {
-    clickHandle({ link }) {
-      if (link) {
-        this.$emit("redirect", link);
-      }
-      this.$emit("close");
-    },
-    copy(cfg) {
-      if (cfg.disabled) return;
-      const textArea = document.createElement("textarea");
-      textArea.value = cfg.value;
-
-      textArea.style.top = "0";
-      textArea.style.left = "0";
-      textArea.style.position = "fixed";
-
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
-
-      try {
-        document.execCommand("copy");
-        Message.success(`已成功复制到剪切板`);
-      } catch (err) {
-        Message.success(`复制失败`);
-      }
-
-      document.body.removeChild(textArea);
+    redirect({ link }) {
+      this.$emit("redirect", link);
     },
   },
 };
@@ -134,110 +63,125 @@ export default {
 @import "../../../common/style/mixins";
 
 .menu {
-  &__sublink {
-    &-item {
-      padding: 12px 30px 12px 20px;
-      @include text(rqthemify(--text-normal));
-      @include hover;
-      &:hover {
-        background: rqthemify(--primary-color-1);
-      }
-      &:active,
-      &:focus {
-        background: rqthemify(--dropdown-active-background);
-      }
-    }
-    &s {
-      display: none;
-      padding: 10px 0;
-      position: absolute;
-      right: 1px;
-      box-shadow: 20px 0px 20px 0px rqthemify(--shadow-primary);
-      transform: translateX(100%);
-      background: rqthemify(--background-primary);
-      top: -10px;
-      &:hover {
-        background: rqthemify(--dropdown-background);
-      }
-    }
-  }
   &__links {
-    @include text(rqthemify(--text-normal));
-    margin-top: 10px;
-    &-item {
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
+    margin-top: 20px;
+  }
+  &-link {
+    padding: 6px 0 6px 20px;
+    display: flex;
+    align-items: center;
+    @include text(rqthemify(--text-important), 14, 20px);
+    cursor: pointer;
+    position: relative;
 
-      &-wrapper {
+    .icon-base {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+
+    &.is-leaf {
+      padding-top: 4px;
+      padding-bottom: 4px;
+      margin: 2px 0;
+      color: rqthemify(--text-normal);
+      &:before {
+        content: "";
         position: relative;
-        @include hover;
-        &:hover {
-          .menu__sublinks {
-            display: block;
-          }
-          background: rqthemify(--primary-color-1);
-        }
-        &:active,
-        &:focus {
-          background: rqthemify(--primary-color-2);
-        }
-        $products: rqams, rqdata, rqoptimizer, quant;
-        @each $product in $products {
-          &.product.#{$product} {
-            &:hover {
-              color: rqthemify(--#{$product}-product-color);
-              background: rqthemify(--#{$product}-product-color-1);
-            }
-            .menu__sublink-item {
-              &:hover,
-              &:focus,
-              &:active {
-                color: rqthemify(--#{$product}-product-color);
-                background: rqthemify(--#{$product}-product-color-1);
-              }
-            }
-          }
-        }
-      }
-      .icon-base {
-        font-size: 20px;
+        width: 4px;
+        height: 4px;
         margin-right: 8px;
+        border-radius: 50%;
+        background-color: rqthemify(--text-normal);
       }
-      .el-icon-arrow-right {
+    }
+    &:hover {
+      color: rqthemify(--text-remind);
+      background-color: rqthemify(--background-primary);
+      &:before {
+        background-color: rqthemify(--text-remind);
+      }
+    }
+    &:active {
+      color: rqthemify(--primary-color);
+      background-color: rqthemify(--primary-color-1);
+      &:before {
+        background-color: rqthemify(--primary-color);
+      }
+    }
+    &.is-leaf + &:not(.is-leaf) {
+      margin-top: 10px;
+    }
+
+    &.is-border ~ &.level-0 {
+      margin-top: 31px;
+      &::before {
         position: absolute;
-        @include t-center-vertical;
+        content: "";
+        left: 15px;
+        top: -14px;
         right: 16px;
+        height: 1px;
+        background-color: rqthemify(--border-primary);
       }
     }
-  }
 
-  &__sublinks:hover ~ .menu__links-item {
-    background: rqthemify(--background-secondary);
-  }
+    &.level-0 + &.level-0 {
+      margin-top: 8px;
+      &::before {
+        display: none;
+      }
+    }
 
-  &-support {
-    @include mini-text(rqthemify(--text-secondary));
-    &__links {
-      padding: 20px 0 10px;
-      margin: 14px 20px 0;
-      border-top: 1px solid rqthemify(--primary-color-1);
-      &--item:not(.is-disabled) {
-        & + & {
-          margin-top: 6px;
+    &.level-1 {
+      padding-left: 30px;
+    }
+    &.level-2 {
+      padding-left: 40px;
+    }
+
+    &.product {
+      padding: 6px 20px;
+      &:active {
+        color: rqthemify(--text-remind);
+      }
+      &:before {
+        content: none;
+      }
+      &.level-0:not(:first-child) {
+        &:before {
+          position: absolute;
+          content: "";
+          display: block;
+          left: 15px;
+          top: -14px;
+          right: 16px;
+          height: 1px;
+          background-color: rqthemify(--border-primary);
         }
-        @include hover;
+      }
+      &.level-0 ~ &.level-0 {
+        margin-top: 27px;
+      }
+      $products: quant, rqams, rqdata, rqfactor, rqoptimizer;
+      @each $product in $products {
+        &.#{$product} {
+          .icon-base {
+            color: rqthemify(--#{$product}-product-color);
+          }
+          &:hover {
+            color: rqthemify(--#{$product}-product-color);
+          }
+          &:active {
+            background: rqthemify(--#{$product}-product-color-1);
+          }
+        }
       }
     }
-    .contact {
-      margin-top: 6px;
 
-      i {
-        margin-right: 12px;
-        font-size: 16px;
-        cursor: pointer;
-        @include hover;
-      }
+    &-item {
+      width: 254px;
+      padding: 4px 0;
+      position: relative;
     }
   }
 }
