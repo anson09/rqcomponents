@@ -19,6 +19,7 @@
         ></logged-header>
         <anka-header
           v-else
+          :show-warning="showWarning"
           :topic="topic"
           :opacity="opacity"
           :is-login="isLogin"
@@ -87,7 +88,7 @@ export default {
       return !isNaN(this.rank) && this.rank === 5;
     },
     showWarning() {
-      return this.$slots.notification || this.notification;
+      return !!this.$slots.notification || !!this.notification;
     },
   },
   mounted() {

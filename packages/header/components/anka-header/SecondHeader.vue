@@ -110,7 +110,9 @@ export const getSecondHeaderShow = (path) =>
 export default {
   name: "SecondHeader",
   components: { CommonButton },
-  props: {},
+  props: {
+    showWarning: { default: false, type: Boolean },
+  },
   data() {
     return {
       scrollFn: null,
@@ -130,7 +132,14 @@ export default {
     },
 
     scrollY() {
-      return this.windowScrollY <= 70 ? 70 - this.windowScrollY : 0;
+      const warningHeight = this.showWarning
+        ? document.querySelector(".header-wrapper .header-warning")
+            ?.offsetHeight ?? 0
+        : 0;
+      const headerHeight = warningHeight + 70;
+      return this.windowScrollY <= headerHeight
+        ? headerHeight - this.windowScrollY
+        : 0;
     },
   },
   watch: {},
