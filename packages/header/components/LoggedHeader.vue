@@ -196,6 +196,14 @@ export default {
   z-index: 1;
   color: rqthemify(--shadow-primary);
 
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rqthemify(--border-primary);
+    border-radius: 3px;
+  }
+
   &-btns {
     height: 100%;
     display: flex;
@@ -217,24 +225,6 @@ export default {
       padding: 0 15px;
     }
 
-    ::v-deep {
-      .el-button {
-        color: inherit;
-        line-height: inherit;
-      }
-      .el-button--default {
-        padding: 4px 20px;
-        background-color: transparent;
-        border-color: rqthemify(--text-primary);
-        border-radius: 4px;
-        &:hover {
-          border-color: rqthemify(--primary-color-9);
-          color: rqthemify(--white);
-          background-color: rqthemify(--primary-color-9);
-          @include click-scale();
-        }
-      }
-    }
     &.is-component:hover {
       background: rqthemify(--dropdown-background);
     }
@@ -257,6 +247,27 @@ export default {
 
         &::after {
           background-color: rqthemify(--primary-color);
+        }
+      }
+    }
+    &.button,
+    &.text {
+      ::v-deep {
+        .el-button {
+          color: inherit;
+          line-height: inherit;
+        }
+        .el-button--default {
+          padding: 4px 20px;
+          background-color: transparent;
+          border-color: rqthemify(--text-primary);
+          border-radius: 4px;
+          &:hover {
+            border-color: rqthemify(--primary-color-9);
+            color: rqthemify(--white);
+            background-color: rqthemify(--primary-color-9);
+            @include click-scale();
+          }
         }
       }
     }
@@ -372,14 +383,6 @@ export default {
       width: 100%;
       opacity: 0;
     }
-  }
-
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: rqthemify(--border-primary);
-    border-radius: 3px;
   }
 }
 </style>
