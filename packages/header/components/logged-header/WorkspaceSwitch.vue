@@ -97,18 +97,8 @@ export default {
           return;
         }
         const localStorageWs = this.localStorageWorkspaces[this.account.userId];
-
-        const ws = this.workspaces.filter(
-          (item) => item.id === localStorageWs
-        )[0];
-
-        if (ws) {
-          // 有效ws
-          this.curWs = ws;
-        } else {
-          [this.curWs] = this.workspaces;
-          this.setWorkspace(this.curWs);
-        }
+        const ws = this.workspaces.find((item) => item.id === localStorageWs);
+        this.setWorkspace(ws || this.workspaces[0]);
       } catch (err) {
         Message.error(err.message);
       }
