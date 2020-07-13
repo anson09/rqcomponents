@@ -31,6 +31,7 @@
   <div v-else class="create-btn" @click="createWorkspace">{{ label }}</div>
 </template>
 <script>
+import Message from "element-ui/lib/message";
 import { getWorksapces } from "../../api";
 import { setStorage, getStorage } from "../../../common/util";
 
@@ -109,7 +110,7 @@ export default {
           this.setWorkspace(this.curWs);
         }
       } catch (err) {
-        this.$message.error(err.message);
+        Message.error(err.message);
       }
     },
 

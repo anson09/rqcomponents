@@ -64,6 +64,7 @@
 </template>
 <script>
 import ElPopover from "element-ui/lib/popover";
+import Message from "element-ui/lib/message";
 
 import MessageList from "./message/MessageList.vue";
 import { message as messageApi } from "../../api";
@@ -140,7 +141,7 @@ export default {
         this.unreadMsgNum -= 1;
         this.message.read.data.unshift(msg);
       } catch (err) {
-        this.$message.error(err.message);
+        Message.error(err.message);
       }
     },
     async deleteMessage({ unread, msg, index }) {
@@ -152,7 +153,7 @@ export default {
           this.unreadMsgNum -= 1;
         }
       } catch (err) {
-        this.$message.error(err.message);
+        Message.error(err.message);
       }
     },
     async deleteAllMessage() {
@@ -161,7 +162,7 @@ export default {
         await messageApi.deleteAllMessage(false);
         this.message.read.data = [];
       } catch (err) {
-        this.$message.error(err.message);
+        Message.error(err.message);
       }
     },
     async updateAllMessage() {
@@ -171,7 +172,7 @@ export default {
         this.unreadMsgNum = 0;
         this.message.unread.data = [];
       } catch (err) {
-        this.$message.error(err.message);
+        Message.error(err.message);
       }
     },
     async getMessage(
