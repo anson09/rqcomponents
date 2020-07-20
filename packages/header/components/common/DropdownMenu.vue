@@ -25,7 +25,11 @@
           <span class="menu-link__label">{{ item.label }}</span>
         </div>
       </div>
-      <Support :cfg="support" @redirect="redirect"></Support>
+      <Support
+        v-if="isSupportShow"
+        :cfg="support"
+        @redirect="redirect"
+      ></Support>
     </template>
   </div>
 </template>
@@ -42,14 +46,18 @@ export default {
       type: Array,
     },
     support: {
-      required: true,
       type: Object,
+      default: () => ({}),
     },
   },
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    isSupportShow() {
+      return !!Object.keys(this.support).length;
+    },
+  },
   watch: {},
   mounted() {},
   methods: {
@@ -64,7 +72,10 @@ export default {
 
 .menu {
   &__links {
-    margin-top: 20px;
+    padding-top: 20px;
+    background-color: rqthemify(--background-final);
+    min-width: 250px;
+    box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);
   }
   &-link {
     padding: 6px 0 6px 20px;
@@ -191,9 +202,6 @@ export default {
   padding: 0;
   border-radius: 0;
   border-width: 0;
-  min-width: 250px;
-  box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
-  background: rqthemify(--background-white);
   &.fade-in-linear-leave-active.fade-in-linear-leave-to {
     opacity: 0;
     transition: all 0s;

@@ -87,6 +87,8 @@ const dark = {
   "--text-normal": "hsl(211, 15%, 70%)", //常规字体色值
   "--text-secondary": "hsl(211, 10%, 50%)", //不重要字体色值
   "--text-white": "hsl(226, 14%, 18%)", //下拉背景色值
+  "--text-remind": "hsl(0, 0%, 100%)",
+  "--text-important": "hsl(214, 15%, 80%)",
 
   //background-color//
   "--background-primary": "hsl(226, 16%, 16%)", //一级背景色

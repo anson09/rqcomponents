@@ -35,7 +35,7 @@
     :class="['nav-button', { light }]"
     @click="redirect(button.link)"
   >
-    <span>{{ button.label }} 没有</span>
+    <span>{{ button.label }}</span>
     <i
       v-if="button.more"
       :class="`el-icon-arrow-${active ? 'up' : 'down'} el-icon--right`"
@@ -46,7 +46,7 @@
 <script>
 import ElPopover from "element-ui/lib/popover";
 import ElButton from "element-ui/lib/button";
-import DropdownMenu from "./DropdownMenu.vue";
+import DropdownMenu from "../common/DropdownMenu.vue";
 
 export default {
   name: "NavButton",

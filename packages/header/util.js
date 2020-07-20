@@ -21,4 +21,17 @@ const isSupported = () =>
 const isProductPath = (path) =>
   ["/ams", "/quant"].some((url) => path.includes(url));
 
-export { THEME_MODE, themeRender, isSupported, isProductPath };
+const flattenNode = (node, level = 0) => {
+  if (Array.isArray(node)) {
+    return [
+      ...node.reduce((arr, item) => [...arr, ...flattenNode(item, level)], []),
+    ];
+  }
+  if (node.links) {
+    const obj = { ...node };
+    delete obj.links;
+    return [{ ...obj, level }, ...flattenNode(node.links, level + 1)];
+  }
+  return [{ ...node, level, isLeaf: level !== 0 }];
+};
+export { THEME_MODE, themeRender, isSupported, isProductPath, flattenNode };

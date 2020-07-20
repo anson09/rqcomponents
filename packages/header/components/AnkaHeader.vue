@@ -87,6 +87,7 @@ import { getStorage } from "../../common/util";
 import entryOpacityImg from "../assets/img/entry-opacity.png";
 import entryImg from "../assets/img/entry.png";
 import entryActiveImg from "../assets/img/entry-active.png";
+import { flattenNode } from "../util";
 
 export default {
   name: "AnkaHeader",
@@ -201,25 +202,10 @@ export default {
       if (/(\/about|\/recruitment)/.test(this.getPath())) {
         config = anka.header.others;
       }
-      function getList(node, level = 0) {
-        if (Array.isArray(node)) {
-          return [
-            ...node.reduce(
-              (arr, item) => [...arr, ...getList(item, level)],
-              []
-            ),
-          ];
-        }
-        if (node.links) {
-          const obj = { ...node };
-          delete obj.links;
-          return [{ ...obj, level }, ...getList(node.links, level + 1)];
-        }
-        return [{ ...node, level, isLeaf: level !== 0 }];
-      }
+
       return config.map((item) => ({
         ...item,
-        links: item.links && getList(item.links),
+        links: item.links && flattenNode(item.links),
       }));
     },
     headerClassName() {

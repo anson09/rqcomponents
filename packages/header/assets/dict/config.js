@@ -1,5 +1,108 @@
 import { info, contact } from "../../../common/assets/dict/config";
 
+const docLinks = [
+  {
+    label: "RQSDK文档",
+    border: true,
+    links: [
+      {
+        label: "快速上手",
+        link: {
+          href: "/doc/rqsdk/",
+          newBlock: true,
+        },
+      },
+      {
+        label: "RQData-金融数据API",
+        links: [
+          {
+            label: "Python API文档",
+            link: {
+              href: "/doc/rqdata/python/",
+              newBlock: true,
+            },
+          },
+          {
+            label: "Http API文档",
+            link: {
+              href: "/doc/rqdata/http/",
+              newBlock: true,
+            },
+          },
+        ],
+      },
+      {
+        label: "RQAlpha Plus-回测框架",
+        links: [
+          {
+            label: "使用教程",
+            link: {
+              href: "/doc/rqalpha-plus/tutorial.html",
+              newBlock: true,
+            },
+          },
+          {
+            label: "API使用手册",
+            link: {
+              href: "/doc/rqalpha-plus/api/",
+              newBlock: true,
+            },
+          },
+        ],
+      },
+      {
+        label: "RQFactor-因子投研工具",
+        links: [
+          {
+            label: "使用教程",
+            link: {
+              href: "/doc/rqfactor/manual.html",
+              newBlock: true,
+            },
+          },
+          {
+            label: "API使用手册",
+            link: {
+              href: "/doc/rqfactor/api.html",
+              newBlock: true,
+            },
+          },
+        ],
+      },
+      {
+        label: "RQOptimizer-股票组合优化器",
+        links: [
+          {
+            label: "使用教程",
+            link: {
+              href: "/doc/rqoptimize/manual.html",
+              newBlock: true,
+            },
+          },
+          {
+            label: "API使用手册",
+            link: {
+              href: "/doc/rqoptimizer/api/",
+              newBlock: true,
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "RQAMS文档",
+    link: {
+      href: "/doc/rqams/",
+      newBlock: true,
+    },
+  },
+  {
+    label: "量化平台文档",
+    link: { href: "/doc/quant/", newBlock: true },
+  },
+];
+
 const anka = {
   support: {
     contact,
@@ -75,48 +178,7 @@ const anka = {
         more: true,
         label: "支持",
         className: "docs",
-        links: [
-          {
-            label: "RQSDK文档",
-            border: true,
-            links: [
-              {
-                label: "快速上手",
-                link: "",
-              },
-              {
-                label: "RQData-金融数据API",
-                links: [
-                  { label: "Python API文档", link: "" },
-                  { label: "Http API文档", link: "" },
-                ],
-              },
-              {
-                label: "RQAlpha Plus-回测框架",
-                links: [
-                  { label: "使用教程", link: "" },
-                  { label: "API使用手册", link: "" },
-                ],
-              },
-              {
-                label: "RQFactor-因子投研工具",
-                links: [
-                  { label: "使用教程", link: "" },
-                  { label: "API使用手册", link: "" },
-                ],
-              },
-              {
-                label: "RQOptimizer-股票组合优化器",
-                links: [
-                  { label: "使用教程", link: "" },
-                  { label: "API使用手册", link: "" },
-                ],
-              },
-            ],
-          },
-          { label: "RQAMS文档", link: "" },
-          { label: "量化平台文档", link: "" },
-        ],
+        links: docLinks,
       },
       {
         link: "/edu",
@@ -175,48 +237,8 @@ const logged = {
     },
 
     {
-      links: [
-        {
-          links: [
-            {
-              link: {
-                href: "/doc/rqdata/python/",
-                newBlock: true,
-              },
-              label: "API帮助文档-Python",
-            },
-            {
-              link: {
-                href: "/doc/rqdata/http/",
-                newBlock: true,
-              },
-              label: "Restful文档-HTTP服务",
-            },
-          ],
-          label: "RQData 使用文档",
-        },
-        {
-          link: {
-            href: "/doc/quant/",
-            newBlock: true,
-          },
-          label: "量化平台文档",
-        },
-        {
-          link: {
-            href: "/doc/rqams/",
-            newBlock: true,
-          },
-          label: "RQAMS使用文档",
-        },
-        {
-          link: {
-            href: "/doc/rqsdk/",
-            newBlock: true,
-          },
-          label: "RQSDK使用文档",
-        },
-      ],
+      links: docLinks,
+
       type: "dropdown",
       label: "帮助文档",
     },

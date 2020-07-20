@@ -56,7 +56,7 @@
 <script>
 import ElPopover from "element-ui/lib/popover";
 import ElButton from "element-ui/lib/button";
-import Support from "./Support.vue";
+import Support from "../common/Support.vue";
 
 export default {
   name: "MiniMenu",
