@@ -68,6 +68,7 @@
       </nav>
     </div>
     <second-header
+      :config="secondHeader"
       :show-warning="showWarning"
       @redirect="redirect"
     ></second-header>
@@ -78,9 +79,7 @@
 import ElButton from "element-ui/lib/button";
 import debounce from "lodash/debounce";
 import NavButton from "./anka-header/NavButton.vue";
-import SecondHeader, {
-  getSecondHeaderShow,
-} from "./anka-header/SecondHeader.vue";
+import SecondHeader from "./anka-header/SecondHeader.vue";
 import MiniMenu from "./anka-header/MiniMenu.vue";
 import { anka } from "../assets/dict/config";
 import { getStorage } from "../../common/util";
@@ -120,6 +119,7 @@ export default {
     return {
       fullScrean: true,
       support: anka.support,
+      secondHeader: anka.secondHeader,
       activeLabel: "",
     };
   },
@@ -128,11 +128,9 @@ export default {
       if (!this.topic) return false;
       return this.$parent.$slots?.topic ?? false;
     },
-    secondHeaderOpen() {
-      return getSecondHeaderShow(this.getPath());
-    },
+
     light() {
-      if (this.opacity && !this.secondHeaderOpen) {
+      if (this.opacity) {
         return true;
       }
       return false;

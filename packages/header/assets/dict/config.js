@@ -126,7 +126,51 @@ const anka = {
     ],
     default: [
       {
-        links: docLinks,
+        links: [
+          {
+            label: "米筐量化协作平台",
+            icon: "quant",
+            link: "/quant",
+            product: "quant",
+          },
+          {
+            label: "米筐量化工具套件",
+            icon: "rq-sdk",
+            link: "/rq-sdk",
+            links: [
+              {
+                label: "RQAlpha Plus",
+                icon: "rqalphaplus",
+                link: "/rq-alpha-plus",
+                product: "rqalphaplus",
+              },
+              {
+                label: "RQData",
+                icon: "rqdata",
+                link: "/rqdata",
+                product: "rqdata",
+              },
+              {
+                label: "RQFactor",
+                icon: "rqfactor",
+                link: "/rqfactor",
+                product: "rqfactor",
+              },
+              {
+                label: "RQOptimizer",
+                icon: "rqoptimizer",
+                link: "/rqoptimizer",
+                product: "rqoptimizer",
+              },
+            ],
+          },
+          {
+            label: "RQAMS（资产管理系统）",
+            icon: "rqams",
+            link: "/ams",
+            product: "rqams",
+          },
+        ],
         more: true,
         label: "产品",
         className: "product",
@@ -139,48 +183,7 @@ const anka = {
         more: true,
         label: "支持",
         className: "docs",
-        links: [
-          {
-            label: "RQSDK文档",
-            border: true,
-            links: [
-              {
-                label: "快速上手",
-                link: "",
-              },
-              {
-                label: "RQData-金融数据API",
-                links: [
-                  { label: "Python API文档", link: "" },
-                  { label: "Http API文档", link: "" },
-                ],
-              },
-              {
-                label: "RQAlpha Plus-回测框架",
-                links: [
-                  { label: "使用教程", link: "" },
-                  { label: "API使用手册", link: "" },
-                ],
-              },
-              {
-                label: "RQFactor-因子投研工具",
-                links: [
-                  { label: "使用教程", link: "" },
-                  { label: "API使用手册", link: "" },
-                ],
-              },
-              {
-                label: "RQOptimizer-股票组合优化器",
-                links: [
-                  { label: "使用教程", link: "" },
-                  { label: "API使用手册", link: "" },
-                ],
-              },
-            ],
-          },
-          { label: "RQAMS文档", link: "" },
-          { label: "量化平台文档", link: "" },
-        ],
+        links: docLinks,
       },
       {
         link: "/edu",
@@ -216,6 +219,93 @@ const anka = {
       },
     ],
   },
+  secondHeader: [
+    {
+      name: "rqdata",
+      // products 数组是为了后面 ams 会有子产品
+      products: [
+        {
+          icon: "rqdata",
+          mainLabel: "RQData",
+          secondLabel: "金融数据API",
+          path: "/rqdata",
+        },
+      ],
+      trialHref: "/pricing#rqdata",
+    },
+    {
+      name: "rqams",
+      products: [
+        {
+          icon: "rqams",
+          mainLabel: "RQAMS",
+          secondLabel: "米筐资产管理系统",
+          path: "/ams",
+        },
+      ],
+      trialHref: "/pricing#rqams",
+    },
+    {
+      name: "rqoptimizer",
+      products: [
+        {
+          icon: "rqoptimizer",
+          mainLabel: "RQOptimizer",
+          secondLabel: "组合优化器",
+          path: "/rqoptimizer",
+        },
+      ],
+      trialHref: "/pricing#rqoptimizer",
+    },
+    {
+      name: "quant",
+      products: [
+        {
+          icon: "quant",
+          mainLabel: "Ricequant",
+          secondLabel: "米筐量化",
+          path: "/quant",
+        },
+      ],
+      trialHref: "/trial/rq-quant",
+    },
+    {
+      name: "rq-alpha-plus",
+      products: [
+        {
+          icon: "rqalphaplus",
+          mainLabel: "RQAlpha Plus",
+          secondLabel: "米筐量化策略引擎",
+          path: "/rq-alpha-plus",
+        },
+      ],
+      trialHref: "/trial/rq-sdk",
+    },
+    {
+      name: "rqfactor",
+      products: [
+        {
+          icon: "rqfactor",
+          mainLabel: "RQFactor",
+          secondLabel: "因子研究",
+          path: "/rq-factor",
+        },
+      ],
+      trialHref: "/trial/rq-sdk",
+    },
+    {
+      name: "rqsdk",
+      products: [
+        {
+          icon: "rqsdk",
+          mainLabel: "",
+          secondLabel: "米筐量化工具套件",
+          path: "/rq-sdk",
+        },
+      ],
+      trialHref: "/trial/rq-sdk",
+    },
+  ],
 };
 const logged = {
   right: [
@@ -308,4 +398,5 @@ const logged = {
     },
   ],
 };
+
 export { anka, logged };

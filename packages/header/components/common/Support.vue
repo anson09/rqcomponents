@@ -79,12 +79,12 @@ export default {
 
 .menu-support {
   @include mini-text(rqthemify(--text-secondary));
+  padding-bottom: 14px;
   &__links {
     padding-top: 2px;
     margin: 14px 16px 0;
     border-top: 1px solid rqthemify(--border-primary);
     &--item:not(.is-disabled) {
-      margin: 10px 4px;
       @include hover;
       .el-icon-copy-document {
         margin-left: 6px;
@@ -92,7 +92,6 @@ export default {
     }
   }
   .contact {
-    margin-bottom: 14px;
     height: 16px;
     line-height: 16px;
     i {
