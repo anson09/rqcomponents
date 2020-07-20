@@ -126,46 +126,7 @@ const anka = {
     ],
     default: [
       {
-        links: [
-          {
-            label: "米筐量化协作平台",
-            icon: "rqdata",
-            link: "/quant",
-            product: "quant",
-          },
-          {
-            label: "米筐量化工具套件",
-            icon: "rqdata",
-            link: "",
-            links: [
-              {
-                label: "RQAlpha Plus",
-                icon: "rqdata",
-                link: "",
-                product: "rqams",
-              },
-              { label: "RQData", icon: "rqdata", link: "", product: "rqdata" },
-              {
-                label: "RQFactor",
-                icon: "rqdata",
-                link: "",
-                product: "rqfactor",
-              },
-              {
-                label: "RQOptimizer",
-                icon: "rqoptimizer",
-                link: "",
-                product: "rqoptimizer",
-              },
-            ],
-          },
-          {
-            label: "RQAMS（资产管理系统）",
-            icon: "rqams",
-            link: "",
-            product: "rqams",
-          },
-        ],
+        links: docLinks,
         more: true,
         label: "产品",
         className: "product",
@@ -178,7 +139,48 @@ const anka = {
         more: true,
         label: "支持",
         className: "docs",
-        links: docLinks,
+        links: [
+          {
+            label: "RQSDK文档",
+            border: true,
+            links: [
+              {
+                label: "快速上手",
+                link: "",
+              },
+              {
+                label: "RQData-金融数据API",
+                links: [
+                  { label: "Python API文档", link: "" },
+                  { label: "Http API文档", link: "" },
+                ],
+              },
+              {
+                label: "RQAlpha Plus-回测框架",
+                links: [
+                  { label: "使用教程", link: "" },
+                  { label: "API使用手册", link: "" },
+                ],
+              },
+              {
+                label: "RQFactor-因子投研工具",
+                links: [
+                  { label: "使用教程", link: "" },
+                  { label: "API使用手册", link: "" },
+                ],
+              },
+              {
+                label: "RQOptimizer-股票组合优化器",
+                links: [
+                  { label: "使用教程", link: "" },
+                  { label: "API使用手册", link: "" },
+                ],
+              },
+            ],
+          },
+          { label: "RQAMS文档", link: "" },
+          { label: "量化平台文档", link: "" },
+        ],
       },
       {
         link: "/edu",
