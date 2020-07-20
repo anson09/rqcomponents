@@ -72,10 +72,11 @@ export default {
 
 .menu {
   &__links {
+    box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
+
     padding-top: 20px;
     background-color: rqthemify(--background-final);
     min-width: 250px;
-    box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);
   }
   &-link {
     padding: 6px 0 6px 20px;
@@ -202,6 +203,7 @@ export default {
   padding: 0;
   border-radius: 0;
   border-width: 0;
+  box-shadow: none;
   &.fade-in-linear-leave-active.fade-in-linear-leave-to {
     opacity: 0;
     transition: all 0s;
