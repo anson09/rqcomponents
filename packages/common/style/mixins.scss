@@ -1,14 +1,15 @@
-$min-vw: 1280px;
+$medium-vw: 1280px;
+$min-vw: 1024px;
 
 @mixin laptop {
-  @media screen and (max-width: $min-vw) {
+  @media screen and (max-width: $medium-vw) {
     @content;
   }
 }
 
 @mixin full-vw {
   width: 100%;
-  min-width: $min-vw;
+  min-width: $medium-vw;
   @media screen and (max-width: 600px) {
     width: 100vw;
     min-width: auto;

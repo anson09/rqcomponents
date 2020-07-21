@@ -100,10 +100,10 @@ export default {
     border-top: 1px solid rqthemify(--border-primary);
     &-wrapper {
       padding: 20px 0;
-      @media screen and(min-width: $min-vw) {
+      @media screen and(min-width: $medium-vw) {
         max-width: 1170px;
       }
-      @media screen and(max-width: $min-vw) {
+      @media screen and(max-width: $medium-vw) {
         max-width: 900px;
       }
 
@@ -111,10 +111,10 @@ export default {
       margin: 0 auto;
     }
     &-item {
-      @media screen and(min-width: $min-vw) {
+      @media screen and(min-width: $medium-vw) {
         margin-right: 108px;
       }
-      @media screen and(max-width: $min-vw) {
+      @media screen and(max-width: $medium-vw) {
         margin-right: 50px;
       }
       &__label {
