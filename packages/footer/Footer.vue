@@ -106,9 +106,11 @@ export default {
       @media screen and(max-width: $medium-vw) {
         max-width: 900px;
       }
-
       @include f-center;
       margin: 0 auto;
+      @media screen and(max-width: $min-vw) {
+        justify-content: space-evenly;
+      }
     }
     &-item {
       @media screen and(min-width: $medium-vw) {
@@ -116,6 +118,9 @@ export default {
       }
       @media screen and(max-width: $medium-vw) {
         margin-right: 50px;
+      }
+      @media screen and(max-width: $min-vw) {
+        margin-right: 0;
       }
       &__label {
         margin: 10px 0;
@@ -137,7 +142,10 @@ export default {
         }
       }
       display: flex;
-      flex: auto;
+      @media screen and(min-width: $min-vw) {
+        flex: auto;
+      }
+
       justify-content: flex-end;
       align-items: flex-end;
       &-item {
