@@ -41,7 +41,7 @@ const links = [
     {
       label: "知乎专栏",
       link: {
-        herf: "/zhuanlan.zhihu.com/ricequant",
+        href: "https://zhuanlan.zhihu.com/ricequant",
         outer: true,
       },
     },
