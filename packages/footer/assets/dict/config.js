@@ -4,27 +4,32 @@ const links = [
   [
     { label: "产品" },
     {
-      label: "AMS(组合管理)",
-      link: "/ams",
+      label: "量化协作平台",
+      link: "/quant",
     },
     {
-      label: "RQPro(投研交易)",
-      link: "/rqpro",
+      label: "RQSDK",
+      link: "/rq-sdk",
     },
     {
-      label: "RQData(金融数据)",
+      label: "RQData",
       link: "/rqdata",
     },
-  ],
-  [
-    { label: "资源" },
     {
-      label: "帮助中心",
-      link: "",
+      label: "RQAlpha Plus",
+      link: "/rq-alpha-plus",
     },
     {
-      label: "案例中心",
-      link: "",
+      label: "RQFactor",
+      link: "/rq-factor",
+    },
+    {
+      label: "RQOptimizer",
+      link: "/rqoptimizer",
+    },
+    {
+      label: "RQAMS",
+      link: "/ams",
     },
   ],
   [
@@ -35,14 +40,55 @@ const links = [
     },
     {
       label: "知乎专栏",
-      link: "",
+      link: {
+        herf: "/zhuanlan.zhihu.com/ricequant",
+        outer: true,
+      },
     },
     {
       label: "加入我们",
-      link: "/",
+      link: "/recruitment/social",
     },
   ],
-
+  [
+    { label: "支持" },
+    // {
+    //   label: "帮助中心",
+    //   link: "/",
+    // },
+    {
+      label: "RQSDK文档",
+      link: {
+        href: "/doc/rqsdk/",
+        outer: true,
+      },
+    },
+    {
+      label: "量化平台文档",
+      link: {
+        href: "/doc/quant/",
+        outer: true,
+      },
+    },
+    {
+      label: "RQAMS文档",
+      link: {
+        href: "/doc/rqams",
+        outer: true,
+      },
+    },
+  ],
+  [
+    { label: "账号中心" },
+    {
+      label: "管理个人信息",
+      link: { href: "/dashboard/account#info", outer: true },
+    },
+    {
+      label: "安全中心",
+      link: { href: "/dashboard/account#setting", outer: true },
+    },
+  ],
   info.map((item) => `${item.label}：${item.value}`),
 ];
 

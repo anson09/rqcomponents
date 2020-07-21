@@ -1,5 +1,5 @@
 <template>
-  <div :class="['footer', { opacity }]">
+  <footer :class="['footer', { opacity }]">
     <div class="footer__content">
       <div class="footer__content-wrapper">
         <div
@@ -55,7 +55,7 @@
         >{{ item.label || item }}</span
       >
     </div>
-  </div>
+  </footer>
 </template>
 <script>
 import ElPopover from "element-ui/lib/popover";
@@ -93,6 +93,7 @@ export default {
 .footer {
   width: 100%;
   @include mini-text(rqthemify(--text-normal), 400);
+  background-color: rqthemify(--background-white);
 
   &__content {
     border-bottom: 1px solid rqthemify(--border-primary);
@@ -118,6 +119,7 @@ export default {
       }
       &__label {
         margin: 10px 0;
+        width: max-content;
         &.link {
           @include hover;
         }
@@ -147,7 +149,7 @@ export default {
     }
   }
   &__copy-right {
-    margin: 16px 0;
+    padding: 16px 0;
     text-align: center;
     &-link {
       cursor: pointer;
@@ -155,6 +157,7 @@ export default {
   }
   &.opacity {
     color: rqthemify(--text-white-7);
+    background-color: rqthemify(--background-black);
     .footer__content {
       border-color: rqthemify(--text-white-2);
       &-contact .icon-base {

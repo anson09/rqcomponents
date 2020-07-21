@@ -62,11 +62,6 @@ $min-vw: 1280px;
   font-weight: 700;
 }
 
-@mixin t-center-horizontal {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 @mixin t-center-vertical {
   top: 50%;
   transform: translateY(-50%);

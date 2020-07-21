@@ -260,12 +260,10 @@ export default {
         border-left: 1px solid rqthemify(--border-primary);
       }
       &::after {
-        border-left: 1px solid transparent;
-        border-right: 1px solid transparent;
-        @include t-center-horizontal();
+        left: 0;
+        right: 0;
       }
       &.active::after {
-        border-color: rqthemify(--primary-color);
         background-color: rqthemify(--primary-color);
       }
     }
