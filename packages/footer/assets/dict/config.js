@@ -13,7 +13,7 @@ const links = [
     },
     {
       label: "RQData",
-      link: "/rqdata",
+      link: "/rq-data",
     },
     {
       label: "RQAlpha Plus",
@@ -25,7 +25,7 @@ const links = [
     },
     {
       label: "RQOptimizer",
-      link: "/rqoptimizer",
+      link: "/rq-optimizer",
     },
     {
       label: "RQAMS",
