@@ -156,6 +156,7 @@ export default {
       }
       .mini-menu {
         &-burger {
+          box-shadow: 0px 0px 20px 0px rqthemify(--shadow-secondary);
           background: rqthemify(--background-white);
           span {
             background: rqthemify(--primary-color);

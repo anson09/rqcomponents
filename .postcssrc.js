@@ -68,6 +68,7 @@ const light = {
 
   //shdow-color//
   "--shadow-primary": "hsla(0, 0%, 20%, 0.1)",
+  "--shadow-secondary": "hsla(0, 0%, 20%, 0.05)",
 };
 
 const dark = {

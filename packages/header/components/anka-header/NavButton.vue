@@ -114,7 +114,7 @@ export default {
     color: rqthemify(--text-normal);
   }
   &.active {
-    box-shadow: 0px 0px 20px 0px rqthemify(--shadow-primary);
+    box-shadow: 0px 0px 20px 0px rqthemify(--shadow-secondary);
   }
   &:hover,
   &.active {
