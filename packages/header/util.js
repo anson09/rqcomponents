@@ -27,11 +27,15 @@ const flattenNode = (node, level = 0) => {
       ...node.reduce((arr, item) => [...arr, ...flattenNode(item, level)], []),
     ];
   }
+  const isRoot = level === 0;
   if (node.links) {
     const obj = { ...node };
     delete obj.links;
-    return [{ ...obj, level }, ...flattenNode(node.links, level + 1)];
+    return [
+      { ...obj, level, isRoot, isLeaf: false },
+      ...flattenNode(node.links, level + 1),
+    ];
   }
-  return [{ ...node, level, isRoot: level === 0, isLeaf: !node.links }];
+  return [{ ...node, level, isRoot, isLeaf: true }];
 };
 export { THEME_MODE, themeRender, isSupported, isProductPath, flattenNode };
