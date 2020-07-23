@@ -52,9 +52,8 @@ export default {
   },
   data() {
     return {
-      scrollFn: null,
+      scrollY: 0,
       windowScrollX: 0,
-      windowScrollY: 0,
     };
   },
   computed: {
@@ -72,31 +71,26 @@ export default {
         products.map(({ path }) => path).includes(this.$parent.getPath())
       )[0];
     },
-
-    scrollY() {
-      const warningHeight = this.showWarning
-        ? document.querySelector(".header-wrapper .header-warning")
-            ?.offsetHeight ?? 0
-        : 0;
-      const headerHeight = warningHeight + 70;
-      return this.windowScrollY <= headerHeight
-        ? headerHeight - this.windowScrollY
-        : 0;
-    },
   },
   watch: {},
   created() {},
   mounted() {
-    this.scrollFn = window.addEventListener("scroll", () => {
-      // Fallback for ie
-      this.windowScrollY = window.scrollY || window.pageYOffset;
-      this.windowScrollX = window.scrollX || window.pageXOffset;
-    });
+    window.addEventListener("scroll", this.scrollFn);
   },
-  destroyed() {
+  beforeDestroy() {
     window.removeEventListener("scroll", this.scrollFn);
   },
   methods: {
+    scrollFn() {
+      // Fallback for ie
+      const windowScrollY = window.scrollY || window.pageYOffset;
+      this.scrollY =
+        windowScrollY <= this.headerHeight
+          ? this.headerHeight - windowScrollY
+          : 0;
+
+      this.windowScrollX = window.scrollX || window.pageXOffset;
+    },
     isActive(path) {
       return this.$parent.getPath() === path;
     },
