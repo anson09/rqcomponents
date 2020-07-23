@@ -47,7 +47,6 @@ export default {
   name: "SecondHeader",
   components: { CommonButton },
   props: {
-    showWarning: { default: false, type: Boolean },
     config: { type: Array, required: true },
   },
   data() {
@@ -75,6 +74,9 @@ export default {
   watch: {},
   created() {},
   mounted() {
+    this.headerHeight =
+      (document.querySelector(".header-wrapper .header-warning")
+        ?.offsetHeight ?? 0) + 70;
     window.addEventListener("scroll", this.scrollFn);
   },
   beforeDestroy() {

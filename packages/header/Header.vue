@@ -19,7 +19,6 @@
         ></logged-header>
         <anka-header
           v-else
-          :show-warning="showWarning"
           :topic="topic"
           :opacity="opacity"
           :is-login="isLogin"

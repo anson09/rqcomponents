@@ -67,11 +67,7 @@
         </template>
       </nav>
     </div>
-    <second-header
-      :config="secondHeader"
-      :show-warning="showWarning"
-      @redirect="redirect"
-    ></second-header>
+    <second-header :config="secondHeader" @redirect="redirect"></second-header>
   </div>
 </template>
 
@@ -101,7 +97,6 @@ export default {
     },
   },
   props: {
-    showWarning: { default: false, type: Boolean },
     isLogin: {
       default: false,
       type: Boolean,

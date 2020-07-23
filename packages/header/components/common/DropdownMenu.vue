@@ -11,8 +11,10 @@
             item.product,
             {
               product: item.icon,
+              'is-root': item.isRoot,
               'is-leaf': item.isLeaf,
               'is-border': item.border,
+              'is-link': item.link,
             },
           ]"
           @click="redirect(item)"
@@ -83,7 +85,6 @@ export default {
     display: flex;
     align-items: center;
     @include text(rqthemify(--text-important), 14, 20px);
-    cursor: pointer;
     position: relative;
 
     .icon-base {
@@ -91,12 +92,23 @@ export default {
       margin-right: 8px;
     }
 
-    &.is-leaf {
+    &.is-link {
+      cursor: pointer;
+      &:hover {
+        color: rqthemify(--text-remind);
+        background-color: rqthemify(--background-primary);
+        &:before {
+          background-color: rqthemify(--text-remind);
+        }
+      }
+    }
+
+    &:not(.is-root).is-link {
       padding-top: 4px;
       padding-bottom: 4px;
       margin: 2px 0;
       color: rqthemify(--text-normal);
-      &:before {
+      &:not(.product):before {
         content: "";
         position: relative;
         width: 4px;
@@ -106,13 +118,7 @@ export default {
         background-color: rqthemify(--text-normal);
       }
     }
-    &:hover {
-      color: rqthemify(--text-remind);
-      background-color: rqthemify(--background-primary);
-      &:before {
-        background-color: rqthemify(--text-remind);
-      }
-    }
+
     &:active {
       color: rqthemify(--primary-color);
       background-color: rqthemify(--primary-color-1);
