@@ -93,7 +93,6 @@ export default {
 .footer {
   width: 100%;
   @include mini-text(rqthemify(--text-normal), 400);
-  background-color: rqthemify(--background-white);
 
   &__content {
     border-bottom: 1px solid rqthemify(--border-primary);
@@ -165,7 +164,6 @@ export default {
   }
   &.opacity {
     color: rqthemify(--text-white-7);
-    background-color: rqthemify(--background-black);
     .footer__content {
       border-color: rqthemify(--text-white-2);
       &-contact .icon-base {
