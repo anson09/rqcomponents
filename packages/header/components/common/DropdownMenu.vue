@@ -101,6 +101,14 @@ export default {
           background-color: rqthemify(--text-remind);
         }
       }
+
+      &:active {
+        color: rqthemify(--primary-color);
+        background-color: rqthemify(--primary-color-1);
+        &:before {
+          background-color: rqthemify(--primary-color);
+        }
+      }
     }
 
     &:not(.is-root).is-link {
@@ -119,13 +127,6 @@ export default {
       }
     }
 
-    &:active {
-      color: rqthemify(--primary-color);
-      background-color: rqthemify(--primary-color-1);
-      &:before {
-        background-color: rqthemify(--primary-color);
-      }
-    }
     &.is-leaf + &:not(.is-leaf) {
       margin-top: 10px;
     }
