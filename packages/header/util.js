@@ -32,6 +32,6 @@ const flattenNode = (node, level = 0) => {
     delete obj.links;
     return [{ ...obj, level }, ...flattenNode(node.links, level + 1)];
   }
-  return [{ ...node, level, isLeaf: level !== 0 }];
+  return [{ ...node, level, isRoot: level === 0, isLeaf: !node.links }];
 };
 export { THEME_MODE, themeRender, isSupported, isProductPath, flattenNode };
