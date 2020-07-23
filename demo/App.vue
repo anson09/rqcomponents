@@ -8,14 +8,14 @@
 <script>
 /* eslint-disable no-console */
 /* build from lib */
-import { RqHeader, RqFooter } from "../lib/rqcomponents";
-import "../lib/theme/base.css";
-import "../lib/theme/rqcomponents.css";
+// import { RqHeader, RqFooter } from "../lib/rqcomponents";
+// import "../lib/theme/base.css";
+// import "../lib/theme/rqcomponents.css";
 /* --------  */
 
 /* build from source */
-// import { RqHeader, RqFooter } from "../packages";
-// import "../packages/common/style";
+import { RqHeader, RqFooter } from "../packages";
+import "../packages/common/style";
 /* --------  */
 
 export default {

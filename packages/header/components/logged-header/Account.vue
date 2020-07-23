@@ -1,7 +1,6 @@
 <template>
   <div class="account">
-    <img v-if="!avatar" class="account__avatar" :src="defaultAvatar" alt="" />
-    <img v-else :src="avatar" class="account__avatar" alt="" />
+    <img class="account__avatar" :src="avatarShow" alt="" />
     <div v-if="isVip" class="account__vip">
       {{ vipText }}
     </div>
@@ -44,8 +43,12 @@ export default {
   data() {
     return {
       vipText: "企",
-      defaultAvatar,
     };
+  },
+  computed: {
+    avatarShow() {
+      return this.avatar || defaultAvatar;
+    },
   },
   methods: {
     handleClick(cfg) {
@@ -69,6 +72,7 @@ export default {
   &__avatar {
     width: 34px;
     height: 34px;
+    border-radius: 50%;
   }
   &__vip {
     position: absolute;

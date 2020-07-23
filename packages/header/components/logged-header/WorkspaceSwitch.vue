@@ -31,6 +31,7 @@
   <div v-else class="create-btn" @click="createWorkspace">{{ label }}</div>
 </template>
 <script>
+import Message from "element-ui/lib/message";
 import { getWorksapces } from "../../api";
 import { setStorage, getStorage } from "../../../common/util";
 
@@ -96,20 +97,10 @@ export default {
           return;
         }
         const localStorageWs = this.localStorageWorkspaces[this.account.userId];
-
-        const ws = this.workspaces.filter(
-          (item) => item.id === localStorageWs
-        )[0];
-
-        if (ws) {
-          // 有效ws
-          this.curWs = ws;
-        } else {
-          [this.curWs] = this.workspaces;
-          this.setWorkspace(this.curWs);
-        }
+        const ws = this.workspaces.find((item) => item.id === localStorageWs);
+        this.setWorkspace(ws || this.workspaces[0]);
       } catch (err) {
-        this.$message.error(err.message);
+        Message.error(err.message);
       }
     },
 

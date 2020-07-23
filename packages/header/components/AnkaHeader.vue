@@ -23,14 +23,11 @@
             <nav-button
               v-for="(button, idx) in buttons"
               :key="idx"
-              :label="button.label"
-              :links="button.links"
+              class="nav button"
               :support="support"
-              :active="button.active"
               :light="light"
-              :more="button.more"
+              :button="button"
               @redirect="redirect"
-              @click="clickHandler"
             ></nav-button>
           </div>
           <mini-menu
@@ -40,7 +37,6 @@
             :cfg="buttons"
             :support="support"
             @redirect="redirect"
-            @click="clickHandler"
           ></mini-menu>
           <transition name="fade">
             <div class="nav__buttons login">
@@ -71,7 +67,7 @@
         </template>
       </nav>
     </div>
-    <second-header @redirect="redirect"></second-header>
+    <second-header :config="secondHeader" @redirect="redirect"></second-header>
   </div>
 </template>
 
@@ -79,15 +75,14 @@
 import ElButton from "element-ui/lib/button";
 import debounce from "lodash/debounce";
 import NavButton from "./anka-header/NavButton.vue";
-import SecondHeader, {
-  getSecondHeaderShow,
-} from "./anka-header/SecondHeader.vue";
+import SecondHeader from "./anka-header/SecondHeader.vue";
 import MiniMenu from "./anka-header/MiniMenu.vue";
 import { anka } from "../assets/dict/config";
 import { getStorage } from "../../common/util";
 import entryOpacityImg from "../assets/img/entry-opacity.png";
 import entryImg from "../assets/img/entry.png";
 import entryActiveImg from "../assets/img/entry-active.png";
+import { flattenNode } from "../util";
 
 export default {
   name: "AnkaHeader",
@@ -119,6 +114,7 @@ export default {
     return {
       fullScrean: true,
       support: anka.support,
+      secondHeader: anka.secondHeader,
       activeLabel: "",
     };
   },
@@ -127,11 +123,9 @@ export default {
       if (!this.topic) return false;
       return this.$parent.$slots?.topic ?? false;
     },
-    secondHeaderOpen() {
-      return getSecondHeaderShow(this.getPath());
-    },
+
     light() {
-      if (this.opacity && !this.secondHeaderOpen) {
+      if (this.opacity) {
         return true;
       }
       return false;
@@ -201,27 +195,17 @@ export default {
       if (/(\/about|\/recruitment)/.test(this.getPath())) {
         config = anka.header.others;
       }
-      return config.map((btn) => {
-        if (btn.more) {
-          btn.active = this.activeLabel === btn.label;
-        } else if (btn.link) {
-          btn.active = this.getPath().includes(btn.link);
-        }
-        return btn;
-      });
+
+      return config.map((item) => ({
+        ...item,
+        links: item.links && flattenNode(item.links),
+      }));
     },
     headerClassName() {
       if (this.opacity) {
         return "header__bg opacity";
       }
       return "header__bg";
-    },
-    isNotPageMore() {
-      return (
-        this.buttons
-          .filter((i) => !i.more)
-          .filter((sub) => this.getPath().includes(sub.link)).length <= 0
-      );
     },
   },
   mounted() {

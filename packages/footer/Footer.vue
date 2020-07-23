@@ -1,5 +1,5 @@
 <template>
-  <div :class="['footer', { opacity }]">
+  <footer :class="['footer', { opacity }]">
     <div class="footer__content">
       <div class="footer__content-wrapper">
         <div
@@ -55,7 +55,7 @@
         >{{ item.label || item }}</span
       >
     </div>
-  </div>
+  </footer>
 </template>
 <script>
 import ElPopover from "element-ui/lib/popover";
@@ -99,25 +99,31 @@ export default {
     border-top: 1px solid rqthemify(--border-primary);
     &-wrapper {
       padding: 20px 0;
-      @media screen and(min-width: $min-vw) {
+      @media screen and(min-width: $medium-vw) {
         max-width: 1170px;
       }
-      @media screen and(max-width: $min-vw) {
+      @media screen and(max-width: $medium-vw) {
         max-width: 900px;
       }
-
       @include f-center;
       margin: 0 auto;
+      @media screen and(max-width: $min-vw) {
+        justify-content: space-evenly;
+      }
     }
     &-item {
-      @media screen and(min-width: $min-vw) {
+      @media screen and(min-width: $medium-vw) {
         margin-right: 108px;
       }
-      @media screen and(max-width: $min-vw) {
+      @media screen and(max-width: $medium-vw) {
         margin-right: 50px;
+      }
+      @media screen and(max-width: $min-vw) {
+        margin-right: 0;
       }
       &__label {
         margin: 10px 0;
+        width: max-content;
         &.link {
           @include hover;
         }
@@ -135,7 +141,10 @@ export default {
         }
       }
       display: flex;
-      flex: auto;
+      @media screen and(min-width: $min-vw) {
+        flex: auto;
+      }
+
       justify-content: flex-end;
       align-items: flex-end;
       &-item {
@@ -147,7 +156,7 @@ export default {
     }
   }
   &__copy-right {
-    margin: 16px 0;
+    padding: 16px 0;
     text-align: center;
     &-link {
       cursor: pointer;

@@ -76,9 +76,9 @@ A clear header with a topic text only.
 
 Default: { router: false, admin: flase, ankaPrefix: '/welcome' }
 
-router: whether to use vue-router or window.location.href in handleLink.
+router: use vue-router or window.location.href in handleLink.
 
-admin: whether to use vue-events(auth) or redirect when click login or register button.
+admin: use vue-events(auth) or redirect when click login or register button.
 
 ankaPrefix: anka publick path.
 
@@ -87,6 +87,12 @@ ankaPrefix: anka publick path.
 Default: null
 
 Custom way to handle logout event.
+
+### mode: string
+
+Default: default
+
+which header to show when logged.
 
 ### events:
 
@@ -116,9 +122,9 @@ Triggers when current workspace change.
 
 Default: { router: false, admin: flase, ankaPrefix: '/welcome' }
 
-router: whether to use vue-router or window.location.href in handleLink.
+router: use vue-router or window.location.href in handleLink.
 
-admin: whether to use vue-events(auth) or redirect when click login or register button.
+admin: use vue-events(auth) or redirect when click login or register button.
 
 ankaPrefix: anka publick path.
 

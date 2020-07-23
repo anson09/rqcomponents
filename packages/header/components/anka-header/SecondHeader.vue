@@ -1,13 +1,13 @@
 <template>
   <div
     v-if="isShow"
-    :class="`second-header ${config.name}`"
+    :class="`second-header ${product.name}`"
     :style="{ transform: `translate(-${windowScrollX}px, ${scrollY}px)` }"
   >
     <div class="header__bg"></div>
     <nav>
       <div class="nav__products">
-        <template v-for="(item, index) in config.products">
+        <template v-for="(item, index) in product.products">
           <span
             v-if="item.icon"
             :key="index"
@@ -34,7 +34,7 @@
           class="nav__button"
           :plain="true"
           label="免费试用"
-          @click="clickHandle(config.trialHref)"
+          @click="clickHandle(product.trialHref)"
         ></common-button>
       </div>
     </nav>
@@ -43,109 +43,56 @@
 <script>
 import CommonButton from "./CommonButton.vue";
 
-const path2config = [
-  {
-    name: "rqdata",
-    products: [
-      {
-        icon: "rqdata",
-        mainLabel: "RQData",
-        secondLabel: "金融数据API",
-        path: "/rqdata",
-      },
-    ],
-    trialHref: "/pricing#rqdata",
-  },
-  {
-    name: "rqams",
-    products: [
-      {
-        icon: "rqams",
-        mainLabel: "RQAMS",
-        secondLabel: "米筐资产管理系统",
-        path: "/ams",
-      },
-    ],
-    trialHref: "/pricing#rqams",
-  },
-  {
-    name: "rqoptimizer",
-    products: [
-      {
-        icon: "rqoptimizer",
-        mainLabel: "RQOptimizer",
-        secondLabel: "组合优化器",
-        path: "/rqoptimizer",
-      },
-    ],
-    trialHref: "/pricing#rqoptimizer",
-  },
-  {
-    name: "quant",
-    products: [
-      {
-        mainLabel: "Ricequant",
-        secondLabel: "米筐量化",
-        icon: "quant",
-        path: "/quant",
-      },
-      { label: "RQAlpha Plus", path: "/quant/rq-alpha-plus" },
-      // { label: "实盘交易", value: "real-trading" },
-      { label: "因子研究", path: "/quant/factor" },
-      { label: "RQSDK", path: "/quant/rq-sdk" },
-      { label: "本地部署", path: "/quant/local" },
-    ],
-    trialHref: "/trial/rq-quant",
-  },
-];
-
-export const getSecondHeaderShow = (path) =>
-  path2config
-    .reduce(
-      (arr, cur) => [...arr, ...cur.products.map((item) => item.path)],
-      []
-    )
-    .includes(path);
-
 export default {
   name: "SecondHeader",
   components: { CommonButton },
-  props: {},
+  props: {
+    config: { type: Array, required: true },
+  },
   data() {
     return {
-      scrollFn: null,
+      scrollY: 0,
       windowScrollX: 0,
-      windowScrollY: 0,
     };
   },
   computed: {
     isShow() {
-      return getSecondHeaderShow(this.$parent.getPath());
+      return this.config
+        .reduce(
+          (arr, cur) => [...arr, ...cur.products.map((item) => item.path)],
+          []
+        )
+        .includes(this.$parent.getPath());
     },
 
-    config() {
-      return path2config.filter(({ products }) =>
+    product() {
+      return this.config.filter(({ products }) =>
         products.map(({ path }) => path).includes(this.$parent.getPath())
       )[0];
-    },
-
-    scrollY() {
-      return this.windowScrollY <= 70 ? 70 - this.windowScrollY : 0;
     },
   },
   watch: {},
   created() {},
   mounted() {
-    this.scrollFn = window.addEventListener("scroll", () => {
-      // Fallback for ie
-      this.windowScrollY = window.scrollY || window.pageYOffset;
-      this.windowScrollX = window.scrollX || window.pageXOffset;
-    });
+    this.headerHeight =
+      (document.querySelector(".header-wrapper .header-warning")
+        ?.offsetHeight ?? 0) + 70;
+    window.addEventListener("scroll", this.scrollFn);
   },
-  destroyed() {
+  beforeDestroy() {
     window.removeEventListener("scroll", this.scrollFn);
   },
   methods: {
+    scrollFn() {
+      // Fallback for ie
+      const windowScrollY = window.scrollY || window.pageYOffset;
+      this.scrollY =
+        windowScrollY <= this.headerHeight
+          ? this.headerHeight - windowScrollY
+          : 0;
+
+      this.windowScrollX = window.scrollX || window.pageXOffset;
+    },
     isActive(path) {
       return this.$parent.getPath() === path;
     },
