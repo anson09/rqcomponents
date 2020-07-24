@@ -77,6 +77,7 @@ export default {
     this.headerHeight =
       (document.querySelector(".header-wrapper .header-warning")
         ?.offsetHeight ?? 0) + 70;
+    this.scrollFn();
     window.addEventListener("scroll", this.scrollFn);
   },
   beforeDestroy() {
