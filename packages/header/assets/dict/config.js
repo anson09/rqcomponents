@@ -147,7 +147,7 @@ const anka = {
               {
                 label: "RQData",
                 icon: "rqdata",
-                link: "/rq-data",
+                link: "/rqdata",
                 product: "rqdata",
               },
               {
@@ -158,8 +158,8 @@ const anka = {
               },
               {
                 label: "RQOptimizer",
-                icon: "rq-optimizer",
-                link: "/rq-optimizer",
+                icon: "rqoptimizer",
+                link: "/rqoptimizer",
                 product: "rqoptimizer",
               },
             ],
@@ -228,7 +228,7 @@ const anka = {
           icon: "rqdata",
           mainLabel: "RQData",
           secondLabel: "金融数据API",
-          path: "/rq-data",
+          path: "/rqdata",
         },
       ],
       trialHref: "/pricing#rqdata",
