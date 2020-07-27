@@ -84,6 +84,7 @@ export default {
     align-items: center;
     @include text(rqthemify(--text-important), 14, 20px);
     position: relative;
+    cursor: initial;
 
     .icon-base {
       width: 20px;
