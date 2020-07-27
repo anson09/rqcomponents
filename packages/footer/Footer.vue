@@ -11,12 +11,15 @@
             v-for="(subitem, subIndex) in item"
             :key="subIndex"
             :class="[
-              'footer__content-item__label',
+              subitem.title
+                ? 'footer__content-item__title'
+                : 'footer__content-item__label',
+
               { link: typeof subitem === 'object' && subitem.link },
             ]"
             @click="handleLink(subitem.link || '')"
           >
-            {{ subitem.label || subitem }}
+            {{ subitem.label || subitem.title || subitem }}
           </p>
         </div>
 
@@ -120,11 +123,18 @@ export default {
       @media screen and(max-width: $min-vw) {
         margin-right: 0;
       }
+      &__title,
       &__label {
         margin: 10px 0;
         width: max-content;
+      }
+      &__title {
+        font-weight: bold;
+      }
+      &__label {
         &.link {
           @include hover;
+          font-weight: normal;
         }
       }
     }

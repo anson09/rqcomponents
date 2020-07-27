@@ -2,7 +2,7 @@ import { info, contact } from "../../../common/assets/dict/config";
 
 const links = [
   [
-    { label: "产品" },
+    { title: "产品" },
     {
       label: "量化协作平台",
       link: "/quant",
@@ -33,7 +33,7 @@ const links = [
     },
   ],
   [
-    { label: "公司" },
+    { title: "公司" },
     {
       label: "关于我们",
       link: "/about",
@@ -51,7 +51,7 @@ const links = [
     },
   ],
   [
-    { label: "支持" },
+    { title: "支持" },
     // {
     //   label: "帮助中心",
     //   link: "/",
@@ -79,7 +79,7 @@ const links = [
     },
   ],
   [
-    { label: "账号中心" },
+    { title: "账号中心" },
     {
       label: "管理个人信息",
       link: { href: "/dashboard/account#info", outer: true },
