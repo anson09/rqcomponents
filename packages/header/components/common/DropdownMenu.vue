@@ -87,8 +87,7 @@ export default {
 .menu {
   &__links {
     box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
-
-    padding-top: 20px;
+    padding-top: 14px;
     background-color: rqthemify(--background-final);
     min-width: 250px;
   }

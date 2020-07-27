@@ -81,13 +81,16 @@ export default {
   @include mini-text(rqthemify(--text-secondary));
   padding-bottom: 14px;
   &__links {
-    padding-top: 2px;
+    padding-top: 4px;
     margin: 14px 16px 0;
     border-top: 1px solid rqthemify(--border-primary);
-    &--item:not(.is-disabled) {
-      @include hover;
-      .el-icon-copy-document {
-        margin-left: 6px;
+    &--item {
+      margin: 10px 0;
+      &:not(.is-disabled) {
+        @include hover;
+        .el-icon-copy-document {
+          margin-left: 6px;
+        }
       }
     }
   }
