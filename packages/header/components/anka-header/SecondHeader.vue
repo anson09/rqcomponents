@@ -171,10 +171,16 @@ export default {
   nav {
     display: flex;
     align-items: center;
-    width: 100%;
-    padding: 0 50px;
     height: 100%;
     justify-content: space-between;
+    margin: 0 auto;
+    width: 1168px;
+    @media screen and (max-width: 1440px) {
+      width: 816px;
+    }
+    @media screen and (max-width: 1024px) {
+      width: 768px;
+    }
 
     .nav__products {
       display: flex;

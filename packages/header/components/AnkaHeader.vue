@@ -217,7 +217,7 @@ export default {
   },
   methods: {
     resize: debounce(function () {
-      this.fullScrean = window.innerWidth > 1280;
+      this.fullScrean = window.innerWidth > 1440;
     }),
     getBtnConfig(label) {
       const btns = this.buttons.filter((btn) => btn.label === label);
@@ -256,6 +256,7 @@ export default {
   z-index: 10;
   box-sizing: border-box;
   height: 70px;
+
   &.is-topic {
     @media screen and (max-width: 600px) {
       height: 40px;
@@ -281,14 +282,20 @@ export default {
     position: absolute;
     z-index: 2;
     align-items: center;
-    width: 100%;
     height: 100%;
     box-shadow: none;
-    padding: 0 50px;
     box-sizing: border-box;
     background: transparent;
     @include m-center-horizontal;
     @include f-center;
+    margin: 0 auto;
+    width: 1168px;
+    @media screen and (max-width: 1440px) {
+      width: 816px;
+    }
+    @media screen and (max-width: 1024px) {
+      width: 768px;
+    }
     .nav {
       &__logo {
         margin-right: 48px;
