@@ -96,7 +96,6 @@ export default {
 
   &__content {
     border-bottom: 1px solid rqthemify(--border-primary);
-    border-top: 1px solid rqthemify(--border-primary);
     &-wrapper {
       padding: 20px 0;
       @media screen and(min-width: $medium-vw) {
