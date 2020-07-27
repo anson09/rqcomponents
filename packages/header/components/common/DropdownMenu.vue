@@ -19,16 +19,10 @@
           ]"
           @click="redirect(item)"
         >
-          <i
-            v-if="item.icon"
-            :class="['icon-base', `icon-base-${item.icon}`]"
-          ></i>
-          <img
-            v-if="imgs[item.img]"
-            class="menu-link__img"
-            :src="imgs[item.img]"
-            alt=""
-          />
+          <svg v-if="item.icon" id="" aria-hidden="true" :class="'icon-base'">
+            <use :xlink:href="`#icon-base-${item.icon}`"></use>
+          </svg>
+
           <span class="menu-link__label">{{ item.label }}</span>
         </div>
       </div>
@@ -43,8 +37,6 @@
 
 <script>
 import Support from "./Support.vue";
-import quantImg from "../../assets/img/quant.png";
-import rqsdkImg from "../../assets/img/rq-sdk.png";
 
 export default {
   name: "DropdownMenu",
@@ -60,12 +52,7 @@ export default {
     },
   },
   data() {
-    return {
-      imgs: {
-        quant: quantImg,
-        rqsdk: rqsdkImg,
-      },
-    };
+    return {};
   },
   computed: {
     isSupportShow() {
@@ -99,14 +86,12 @@ export default {
     position: relative;
 
     .icon-base {
-      font-size: 20px;
-      margin-right: 8px;
-    }
-    &__img {
       width: 20px;
       height: 20px;
-      margin-right: 8px;
-      opacity: 0.8;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 20px;
     }
 
     &.is-link {
@@ -177,8 +162,11 @@ export default {
 
     &.product {
       &.is-link {
-        padding: 6px 20px;
+        padding: 6px 20px 6px 48px;
         margin: 4px 0;
+      }
+      &:not(.is-root) {
+        font-size: 12px;
       }
       &:active {
         color: rqthemify(--text-remind);
@@ -206,18 +194,24 @@ export default {
       @each $product in $products {
         &.#{$product} {
           .icon-base {
-            color: rqthemify(--#{$product}-product-color);
-            opacity: 0.9;
+            opacity: 0.8;
           }
           &:hover {
             color: rqthemify(--#{$product}-product-color);
-            .icon-base,
-            .menu-link__img {
+            .icon-base {
               opacity: 1;
             }
           }
           &:active {
             background: rqthemify(--#{$product}-product-color-1);
+          }
+        }
+      }
+      $products: rqams;
+      @each $product in $products {
+        &.#{$product} {
+          .icon-base {
+            fill: rqthemify(--#{$product}-product-color);
           }
         }
       }
