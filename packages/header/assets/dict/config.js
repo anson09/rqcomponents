@@ -129,36 +129,38 @@ const anka = {
         links: [
           {
             label: "米筐量化协作平台",
-            icon: "quant",
+            img: "quant",
             link: "/quant",
             product: "quant",
+            border: true,
           },
           {
             label: "米筐量化工具套件",
-            icon: "rq-sdk",
+            img: "rqsdk",
             link: "/rq-sdk",
+            product: "rqsdk",
             links: [
               {
                 label: "RQAlpha Plus",
-                icon: "rqalphaplus",
+                icon: "logo-rqalphaplus-round",
                 link: "/rq-alpha-plus",
                 product: "rqalphaplus",
               },
               {
                 label: "RQData",
-                icon: "rqdata",
+                icon: "logo-rqdata-round",
                 link: "/rqdata",
                 product: "rqdata",
               },
               {
                 label: "RQFactor",
-                icon: "rq-factor",
+                icon: "logo-rqfactor-round",
                 link: "/rq-factor",
                 product: "rqfactor",
               },
               {
                 label: "RQOptimizer",
-                icon: "rqoptimizer",
+                icon: "logo-rqoptimizer-round",
                 link: "/rqoptimizer",
                 product: "rqoptimizer",
               },
@@ -166,7 +168,7 @@ const anka = {
           },
           {
             label: "RQAMS（资产管理系统）",
-            icon: "rqams",
+            icon: "logo-ams",
             link: "/ams",
             product: "rqams",
           },
@@ -225,7 +227,7 @@ const anka = {
       // products 数组是为了后面 ams 会有子产品
       products: [
         {
-          icon: "rqdata",
+          icon: "logo-rqdata-round",
           mainLabel: "RQData",
           secondLabel: "金融数据API",
           path: "/rqdata",
@@ -237,7 +239,7 @@ const anka = {
       name: "rqams",
       products: [
         {
-          icon: "rqams",
+          icon: "logo-ams",
           mainLabel: "RQAMS",
           secondLabel: "米筐资产管理系统",
           path: "/ams",
@@ -249,10 +251,10 @@ const anka = {
       name: "rqoptimizer",
       products: [
         {
-          icon: "rqoptimizer",
+          icon: "logo-rqoptimizer-round",
           mainLabel: "RQOptimizer",
           secondLabel: "组合优化器",
-          path: "/rq-optimizer",
+          path: "/rqoptimizer",
         },
       ],
       trialHref: "/pricing#rqoptimizer",
@@ -261,7 +263,7 @@ const anka = {
       name: "quant",
       products: [
         {
-          icon: "quant",
+          img: "quant",
           mainLabel: "Ricequant",
           secondLabel: "米筐量化",
           path: "/quant",
@@ -270,10 +272,11 @@ const anka = {
       trialHref: "/trial/rq-quant",
     },
     {
-      name: "rq-alpha-plus",
+      name: "rqalphaplus",
       products: [
         {
-          icon: "rqalphaplus",
+          icon: "logo-rqalphaplus-round",
+
           mainLabel: "RQAlpha Plus",
           secondLabel: "米筐量化策略引擎",
           path: "/rq-alpha-plus",
@@ -285,7 +288,7 @@ const anka = {
       name: "rqfactor",
       products: [
         {
-          icon: "rqfactor",
+          icon: "logo-rqfactor-round",
           mainLabel: "RQFactor",
           secondLabel: "因子研究",
           path: "/rq-factor",
@@ -297,7 +300,7 @@ const anka = {
       name: "rqsdk",
       products: [
         {
-          icon: "rqsdk",
+          img: "rqsdk",
           mainLabel: "",
           secondLabel: "米筐量化工具套件",
           path: "/rq-sdk",

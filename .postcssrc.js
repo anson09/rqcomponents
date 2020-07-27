@@ -13,30 +13,40 @@ const light = {
   "--primary-color-9": "hsla(216, 76%, 44%, 0.9)",
 
   //product-color//
-  "--rqdata-product-color": "hsl(244, 38%, 44%)", //rqdata主题色
-  "--rqdata-product-color-1": "hsla(244, 38%, 44%, 0.1)",
-  "--rqdata-product-color-2": "hsla(244, 38%, 44%, 0.2)",
-  "--rqdata-product-color-9": "hsla(244, 38%, 44%, 0.9)",
-
-  "--quant-product-color": "hsl(0, 59%, 58%)", //ricequant主题色
-  "--quant-product-color-1": "hsla(0, 59%, 58%, 0.1)",
-  "--quant-product-color-2": "hsla(0, 59%, 58%, 0.2)",
-  "--quant-product-color-9": "hsla(0, 59%, 58%, 0.9)",
+  "--rqdata-product-color": "hsl(247, 58%, 42%)", //rqdata主题色
+  "--rqdata-product-color-1": "hsla(247, 58%, 42%, 0.1)",
+  "--rqdata-product-color-2": "hsla(247, 58%, 42%, 0.2)",
+  "--rqdata-product-color-9": "hsla(247, 58%, 42%, 0.9)",
 
   "--rqams-product-color": "hsl(216, 76%, 44%)", //rqams主题色
   "--rqams-product-color-1": "hsla(216, 76%, 44%, 0.1)",
   "--rqams-product-color-2": "hsla(216, 76%, 44%, 0.2)",
   "--rqams-product-color-9": "hsla(216, 76%, 44%, 0.9)",
 
-  "--rqoptimizer-product-color": "hsl(184, 54%, 44%)", //rqoptimizer主题色
-  "--rqoptimizer-product-color-1": "hsla(184, 54%, 44%, 0.1)",
-  "--rqoptimizer-product-color-2": "hsla(184, 54%, 44%, 0.2)",
-  "--rqoptimizer-product-color-9": "hsla(184, 54%, 44%, 0.9)",
+  "--rqoptimizer-product-color": "hsl(184, 84%, 29%)", //rqoptimizer主题色
+  "--rqoptimizer-product-color-1": "hsla(184, 84%, 29%, 0.1)",
+  "--rqoptimizer-product-color-2": "hsla(184, 84%, 29%, 0.2)",
+  "--rqoptimizer-product-color-9": "hsla(184, 84%, 29%, 0.9)",
+
+  "--rqsdk-product-color": "hsl(218, 64%, 29%)", //rqsdk主题色
+  "--rqsdk-product-color-1": "hsl(218, 63%, 29%, 0.1)",
+  "--rqsdk-product-color-2": "hsl(218, 63%, 29%, 0.2)",
+  "--rqsdk-product-color-9": "hsl(218, 63%, 29%, 0.9)",
 
   "--rqfactor-product-color": "hsl(41, 98%, 52%)", //rqoptimizer主题色
   "--rqfactor-product-color-1": "hsla(41, 98%, 52%, 0.1)",
   "--rqfactor-product-color-2": "hsla(41, 98%, 52%, 0.2)",
   "--rqfactor-product-color-9": "hsla(41, 98%, 52%, 0.9)",
+
+  "--rqalphaplus-product-color": "hsl(1, 74%, 54%)", //rqalphaplus主题色
+  "--rqalphaplus-product-color-1": "hsl(1, 74%, 54%, 0.1)",
+  "--rqalphaplus-product-color-2": "hsl(1, 74%, 54%, 0.2)",
+  "--rqalphaplus-product-color-9": "hsl(1, 74%, 54%, 0.9)",
+
+  "--quant-product-color": "hsl(0, 59%, 58%)", //ricequant主题色
+  "--quant-product-color-1": "hsla(0, 59%, 58%, 0.1)",
+  "--quant-product-color-2": "hsla(0, 59%, 58%, 0.2)",
+  "--quant-product-color-9": "hsla(0, 59%, 58%, 0.9)",
 
   //text-color//
   "--text-remind": "hsl(0, 0%, 3%)",

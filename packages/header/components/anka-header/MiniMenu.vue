@@ -245,7 +245,8 @@ export default {
           }
         }
         &.product {
-          $products: quant, rqams, rqdata, rqfactor, rqoptimizer;
+          $products: quant, rqsdk, rqalphaplus, rqams, rqdata, rqfactor,
+            rqoptimizer;
           @each $product in $products {
             &.#{$product} {
               &:hover {

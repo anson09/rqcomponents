@@ -9,13 +9,14 @@
       <div class="nav__products">
         <template v-for="(item, index) in product.products">
           <span
-            v-if="item.icon"
+            v-if="index === 0"
             :key="index"
             :class="{ 'is-active': isActive(item.path) }"
             class="nav__icon"
             @click="clickHandle(item.path)"
           >
             <i :class="`icon-base icon-base-${item.icon}`"></i>
+            <img v-if="imgs[item.img]" :src="imgs[item.img]" class="nav__img" />
             <span class="main-label">{{ item.mainLabel }}</span>
             <span class="second-label">{{ item.secondLabel }}</span>
           </span>
@@ -42,6 +43,8 @@
 </template>
 <script>
 import CommonButton from "./CommonButton.vue";
+import quantImg from "../../assets/img/quant.png";
+import rqsdkImg from "../../assets/img/rq-sdk.png";
 
 export default {
   name: "SecondHeader",
@@ -53,6 +56,10 @@ export default {
     return {
       scrollY: 0,
       windowScrollX: 0,
+      imgs: {
+        quant: quantImg,
+        rqsdk: rqsdkImg,
+      },
     };
   },
   computed: {
@@ -131,7 +138,7 @@ export default {
     box-shadow: 0px 10px 11px 0px rqthemify(--shadow-primary);
   }
 
-  $products: rqdata, rqams, rqoptimizer, quant;
+  $products: quant, rqsdk, rqalphaplus, rqams, rqdata, rqfactor, rqoptimizer;
   @each $product in $products {
     &.#{$product} {
       .icon-base {
@@ -186,6 +193,10 @@ export default {
       }
       .icon-base {
         font-size: 28px;
+      }
+      .nav__img {
+        width: 28px;
+        height: 28px;
       }
 
       .main-label {
