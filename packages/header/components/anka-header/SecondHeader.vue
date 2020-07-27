@@ -174,13 +174,9 @@ export default {
     height: 100%;
     justify-content: space-between;
     margin: 0 auto;
-    width: 1168px;
-    @media screen and (max-width: 1440px) {
-      width: 816px;
-    }
-    @media screen and (max-width: 1024px) {
-      width: 768px;
-    }
+    padding: 0 16px;
+    width: 100%;
+    max-width: 1200px;
 
     .nav__products {
       display: flex;

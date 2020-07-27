@@ -217,7 +217,7 @@ export default {
   },
   methods: {
     resize: debounce(function () {
-      this.fullScrean = window.innerWidth > 1440;
+      this.fullScrean = window.innerWidth > 1280;
     }),
     getBtnConfig(label) {
       const btns = this.buttons.filter((btn) => btn.label === label);
@@ -289,13 +289,10 @@ export default {
     @include m-center-horizontal;
     @include f-center;
     margin: 0 auto;
-    width: 1168px;
-    @media screen and (max-width: 1440px) {
-      width: 816px;
-    }
-    @media screen and (max-width: 1024px) {
-      width: 768px;
-    }
+    padding: 0 16px;
+    width: 100%;
+    max-width: 1200px;
+
     .nav {
       &__logo {
         margin-right: 48px;
