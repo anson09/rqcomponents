@@ -119,7 +119,8 @@ const themifyOptions = {
     light: {
       "--text-hover": light["--primary-color"],
       "--white": "hsl(0, 0%, 100%)",
-      "--warning-color": "hsl(49, 100%, 50%)",
+      "--warning-background": "hsl(49, 100%, 50%)",
+      "--warning-color": light["--text-primary"],
       "--succeed-color": "hsla(146, 48%, 49%, 1)",
       "--remove-hover-color": "hsl(0, 82%, 61%)",
       "--remove-active-color": "hsl(0, 59%, 47%)",
@@ -140,6 +141,8 @@ const themifyOptions = {
       "--dropdown-background": dark["--text-white"],
       "--dropdown-active-background": dark["--primary-color-4"],
       "--dropdown-hover-background": light["--primary-color-2"],
+      "--warning-background": light["--primary-color"],
+      "--warning-color": light["--text-white-8"],
 
       // "--background-view": dark["--background-secondary"],
 

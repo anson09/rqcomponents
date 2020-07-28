@@ -1,10 +1,12 @@
 <template>
   <div class="header-wrapper">
     <p v-if="showWarning" class="header-warning">
-      <slot v-if="$slots.notification" name="notification"></slot>
-      <template v-else>
-        {{ notification }}
-      </template>
+      <span class="header-warning-text">
+        <slot v-if="$slots.notification" name="notification"></slot>
+        <template v-else>
+          {{ notification }}
+        </template>
+      </span>
     </p>
     <header>
       <transition name="rq-fade-in-linear">
@@ -44,7 +46,8 @@ export default {
   mixins: [mixin],
   props: {
     notification: {
-      default: "",
+      default:
+        "哈哈呈韫椟而藏 罗荣城 ifdsalkfjsa韫椟而藏 中要械 哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏",
       type: String,
     },
     mode: {
@@ -164,13 +167,22 @@ export default {
     position: relative;
     width: 100%;
     margin: 0;
-    color: rqthemify(--text-primary);
-    background: rqthemify(--warning-color);
-
+    color: rqthemify(--warning-color);
+    background: rqthemify(--warning-background);
     font-size: 16px;
-    line-height: 1.5;
+    height: 24px;
+    line-height: 24px;
     word-break: break-all;
     z-index: 100;
+    overflow-x: auto;
+    @media screen and(max-width: 1280px) {
+      font-size: 12px;
+    }
+    &-text {
+      display: inline-block;
+      width: max-content;
+      height: 100%;
+    }
   }
 }
 </style>
