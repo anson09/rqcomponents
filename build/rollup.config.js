@@ -66,7 +66,7 @@ const baseCssConfig = {
   input: "./packages/common/style/index.js",
   output: {
     // TODO css only
-    file: "lib/base.js",
+    file: "lib/theme/base.js",
   },
   onwarn: () => {},
   plugins: [

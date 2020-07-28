@@ -297,7 +297,7 @@ const anka = {
       name: "rqsdk",
       products: [
         {
-          icon: "logo-sdk-caise",
+          icon: "logo-sdk-color",
           mainLabel: "",
           secondLabel: "米筐量化工具套件",
           path: "/rq-sdk",
