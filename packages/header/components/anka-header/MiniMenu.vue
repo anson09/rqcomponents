@@ -110,7 +110,6 @@ export default {
 .mini-menu {
   display: flex;
   flex-wrap: wrap;
-  max-width: 606px;
 
   &-burger {
     @include f-column;
@@ -284,7 +283,7 @@ export default {
 .mini-menu.el-popover {
   padding: 0;
   border-width: 0;
-  min-width: auto;
+  max-width: 620px;
   border-radius: 0;
   box-shadow: 0px 20px 20px 0px rqthemify(--shadow-primary);
   &.el-popper[x-placement^="bottom"] {
