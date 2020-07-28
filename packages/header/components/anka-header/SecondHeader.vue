@@ -147,9 +147,6 @@ export default {
       .icon-base {
         color: rqthemify(--#{$product}-product-color);
       }
-      .icon-base-colorful {
-        fill: rqthemify(--#{$product}-product-color);
-      }
 
       .nav__product {
         &.is-active {
