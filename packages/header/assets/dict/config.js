@@ -135,35 +135,36 @@ const anka = {
             border: true,
           },
           {
-            label: "米筐量化工具套件",
+            label: "RQSDK米筐量化工具套件",
             icon: "logo-sdk-caise",
             link: "/rq-sdk",
             product: "rqsdk",
             links: [
               {
-                label: "RQAlpha Plus",
-                link: "/rq-alpha-plus",
-                product: "rqalphaplus",
-              },
-              {
-                label: "RQData",
+                label: "RQData 金融数据API",
                 link: "/rqdata",
                 product: "rqdata",
               },
               {
-                label: "RQFactor",
+                label: "RQAlpha Plus 回测框架",
+                link: "/rq-alpha-plus",
+                product: "rqalphaplus",
+              },
+
+              {
+                label: "RQFactor 因子投研工具",
                 link: "/rq-factor",
                 product: "rqfactor",
               },
               {
-                label: "RQOptimizer",
+                label: "RQOptimizer 股票组合优化器",
                 link: "/rqoptimizer",
                 product: "rqoptimizer",
               },
             ],
           },
           {
-            label: "RQAMS（资产管理系统）",
+            label: "RQAMS 资产管理系统",
             icon: "logo-ams",
             link: "/ams",
             product: "rqams",
