@@ -5,6 +5,7 @@
 ```js
 import UI from "@rqjs/rqcomponents";
 import "@rqjs/rqcomponents/lib/theme/rqcomponents.css";
+import "@rqjs/rqcomponents/lib/theme/base";
 import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 ```
 
@@ -18,6 +19,7 @@ import RqHeader from "@rqjs/rqcomponents/lib/[componentName]";
 // import { RqHeader } from "@rqjs/rqcomponents";
 
 import "@rqjs/rqcomponents/lib/theme/[componentName].css";
+import "@rqjs/rqcomponents/lib/theme/base";
 import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 ```
 
