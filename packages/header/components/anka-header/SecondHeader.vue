@@ -136,6 +136,9 @@ export default {
   $products: quant, rqsdk, rqalphaplus, rqams, rqdata, rqfactor, rqoptimizer;
   @each $product in $products {
     &.#{$product} {
+      .icon-base {
+        fill: rqthemify(--#{$product}-product-color);
+      }
       .nav__product {
         &.is-active {
           color: rqthemify(--#{$product}-product-color);
@@ -156,15 +159,6 @@ export default {
         &:focus {
           background-color: rqthemify(--#{$product}-product-color);
         }
-      }
-    }
-  }
-
-  $products: rqams;
-  @each $product in $products {
-    &.#{$product} {
-      .icon-base {
-        fill: rqthemify(--#{$product}-product-color);
       }
     }
   }
