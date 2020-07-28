@@ -20,13 +20,14 @@
           @click="redirect(item)"
         >
           <svg
-            v-if="item.icon"
+            v-if="item.iconColorful"
             id=""
             aria-hidden="true"
             :class="'icon-base-colorful'"
           >
-            <use :xlink:href="`#icon-base-colorful-${item.icon}`"></use>
+            <use :xlink:href="`#icon-base-colorful-${item.iconColorful}`"></use>
           </svg>
+          <i v-if="item.icon" :class="`icon-base icon-base-${item.icon}`" />
 
           <span class="menu-link__label">{{ item.label }}</span>
         </div>
@@ -94,6 +95,12 @@ export default {
     .icon-base-colorful {
       width: 20px;
       height: 20px;
+    }
+    .icon-base {
+      font-size: 20px;
+    }
+    .icon-base,
+    .icon-base-colorful {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -199,7 +206,8 @@ export default {
       $products: quant, rqsdk, rqalphaplus, rqams, rqdata, rqfactor, rqoptimizer;
       @each $product in $products {
         &.#{$product} {
-          .icon-base {
+          .icon-base,
+          .icon-base-colorful {
             opacity: 0.8;
           }
           &:hover {
@@ -217,7 +225,7 @@ export default {
       @each $product in $products {
         &.#{$product} {
           .icon-base {
-            fill: rqthemify(--#{$product}-product-color);
+            color: rqthemify(--#{$product}-product-color);
           }
         }
       }

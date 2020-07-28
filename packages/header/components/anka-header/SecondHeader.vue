@@ -15,13 +15,16 @@
             class="nav__icon"
             @click="clickHandle(item.path)"
           >
+            <i v-if="item.icon" :class="`icon-base icon-base-${item.icon}`" />
             <svg
-              v-if="item.icon"
+              v-if="item.iconColorful"
               id=""
               aria-hidden="true"
               :class="'icon-base-colorful'"
             >
-              <use :xlink:href="`#icon-base-colorful-${item.icon}`"></use>
+              <use
+                :xlink:href="`#icon-base-colorful-${item.iconColorful}`"
+              ></use>
             </svg>
             <span class="main-label">{{ item.mainLabel }}</span>
             <span class="second-label">{{ item.secondLabel }}</span>
@@ -142,8 +145,12 @@ export default {
   @each $product in $products {
     &.#{$product} {
       .icon-base {
+        color: rqthemify(--#{$product}-product-color);
+      }
+      .icon-base-colorful {
         fill: rqthemify(--#{$product}-product-color);
       }
+
       .nav__product {
         &.is-active {
           color: rqthemify(--#{$product}-product-color);
@@ -191,6 +198,9 @@ export default {
       &:focus,
       &:active {
         transform: scaleX(1.05);
+      }
+      .icon-base {
+        font-size: 28px;
       }
       .icon-base-colorful {
         width: 28px;
