@@ -15,8 +15,13 @@
             class="nav__icon"
             @click="clickHandle(item.path)"
           >
-            <svg v-if="item.icon" id="" aria-hidden="true" :class="'icon-base'">
-              <use :xlink:href="`#icon-base-${item.icon}`"></use>
+            <svg
+              v-if="item.icon"
+              id=""
+              aria-hidden="true"
+              :class="'icon-base-colorful'"
+            >
+              <use :xlink:href="`#icon-base-colorful-${item.icon}`"></use>
             </svg>
             <span class="main-label">{{ item.mainLabel }}</span>
             <span class="second-label">{{ item.secondLabel }}</span>
@@ -194,7 +199,7 @@ export default {
       &:active {
         transform: scaleX(1.05);
       }
-      .icon-base {
+      .icon-base-colorful {
         width: 28px;
         height: 28px;
       }

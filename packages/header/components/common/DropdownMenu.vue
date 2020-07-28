@@ -19,8 +19,13 @@
           ]"
           @click="redirect(item)"
         >
-          <svg v-if="item.icon" id="" aria-hidden="true" :class="'icon-base'">
-            <use :xlink:href="`#icon-base-${item.icon}`"></use>
+          <svg
+            v-if="item.icon"
+            id=""
+            aria-hidden="true"
+            :class="'icon-base-colorful'"
+          >
+            <use :xlink:href="`#icon-base-colorful-${item.icon}`"></use>
           </svg>
 
           <span class="menu-link__label">{{ item.label }}</span>
@@ -86,7 +91,7 @@ export default {
     position: relative;
     cursor: initial;
 
-    .icon-base {
+    .icon-base-colorful {
       width: 20px;
       height: 20px;
       position: absolute;
