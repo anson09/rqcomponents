@@ -230,7 +230,7 @@ const anka = {
           path: "/rqdata",
         },
       ],
-      trialHref: "/pricing#rqdata",
+      trialHref: "/trial/rq-sdk",
     },
     {
       name: "rqams",
@@ -254,7 +254,7 @@ const anka = {
           path: "/rqoptimizer",
         },
       ],
-      trialHref: "/pricing#rqoptimizer",
+      trialHref: "/trial/rq-sdk",
     },
     {
       name: "quant",
@@ -299,7 +299,7 @@ const anka = {
         {
           iconColorful: "logo-sdk",
           mainLabel: "",
-          secondLabel: "米筐量化工具套件",
+          secondLabel: "RQSDK米筐量化工具套件",
           path: "/rq-sdk",
         },
       ],
