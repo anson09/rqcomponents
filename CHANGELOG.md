@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.4&sourceBranch=refs/tags/v0.1.5) (2020-07-30)
+
+
+### Bug Fixes
+
+* dropdown menu max-height ([6dfe02a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6dfe02a139061aad999e2e3f599a255550509634))
+* second header config ([7149e46](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7149e467683dfdd8172478c7aeae21ccaac4b5fa))
+
+
+### Docs
+
+* add basic js import ([de9cc0d](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/de9cc0d5e3a926bdcec018784e3756453275b48f))
+
 ### [0.1.4](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.3&sourceBranch=refs/tags/v0.1.4) (2020-07-28)
 
 
