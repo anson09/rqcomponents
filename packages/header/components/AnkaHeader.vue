@@ -83,7 +83,6 @@ import entryOpacityImg from "../assets/img/entry-opacity.png";
 import entryImg from "../assets/img/entry.png";
 import entryActiveImg from "../assets/img/entry-active.png";
 import { flattenNode } from "../util";
-import "../../common/assets/icon/iconfont";
 
 export default {
   name: "AnkaHeader",

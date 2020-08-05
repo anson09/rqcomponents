@@ -129,14 +129,14 @@ const anka = {
         links: [
           {
             label: "米筐量化协作平台",
-            icon: "logo-ricequant",
+            iconColorful: "logo-ricequant",
             link: "/quant",
             product: "quant",
             border: true,
           },
           {
             label: "RQSDK米筐量化工具套件",
-            icon: "logo-sdk-caise",
+            iconColorful: "logo-sdk",
             link: "/rq-sdk",
             product: "rqsdk",
             links: [
@@ -230,7 +230,7 @@ const anka = {
           path: "/rqdata",
         },
       ],
-      trialHref: "/pricing#rqdata",
+      trialHref: "/trial/rq-sdk",
     },
     {
       name: "rqams",
@@ -254,13 +254,13 @@ const anka = {
           path: "/rqoptimizer",
         },
       ],
-      trialHref: "/pricing#rqoptimizer",
+      trialHref: "/trial/rq-sdk",
     },
     {
       name: "quant",
       products: [
         {
-          icon: "logo-ricequant",
+          iconColorful: "logo-ricequant",
           mainLabel: "Ricequant",
           secondLabel: "米筐量化",
           path: "/quant",
@@ -297,9 +297,9 @@ const anka = {
       name: "rqsdk",
       products: [
         {
-          icon: "logo-sdk-caise",
+          iconColorful: "logo-sdk",
           mainLabel: "",
-          secondLabel: "米筐量化工具套件",
+          secondLabel: "RQSDK米筐量化工具套件",
           path: "/rq-sdk",
         },
       ],

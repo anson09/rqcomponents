@@ -2,6 +2,86 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.4&sourceBranch=refs/tags/v0.1.5) (2020-07-30)
+
+
+### Bug Fixes
+
+* dropdown menu max-height ([6dfe02a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6dfe02a139061aad999e2e3f599a255550509634))
+* second header config ([7149e46](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7149e467683dfdd8172478c7aeae21ccaac4b5fa))
+
+
+### Docs
+
+* add basic js import ([de9cc0d](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/de9cc0d5e3a926bdcec018784e3756453275b48f))
+
+### [0.1.4](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.3&sourceBranch=refs/tags/v0.1.4) (2020-07-28)
+
+
+### Features
+
+* $medium-vw &  $min-vw ([b0f2a2f](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/b0f2a2fd3c4885b2bde746d8ede98d040c439863))
+* footer ([160e021](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/160e021b30a677779061f9bc095e77f2c87392ea))
+* footer min-width to 768 ([cc5fe88](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/cc5fe88ff3b5651dd6d8b577a81c9dc87f12a95a))
+* loggedHeader dropdownMenu ([51786fc](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/51786fc49807b8ca23ad9c23cf56e05fcc0fb0eb))
+* nav button & mini menu box-shadow to shadow-secondary ([eb3b44e](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/eb3b44ec8d2e9d495dede4468cecff41073b2165))
+* new anka-header-menu ([69bd7fc](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/69bd7fc0a6a73246842a8d121d1c2ecac54cc9c9))
+* secondHeader ([27cd992](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/27cd992ef973b50424376629d3bc345cf25d187b))
+* support colorful icon ([86f4efe](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/86f4efe53296b437d762b505ef2a3125f7a3f9f6))
+* trigger switchWorkspace when init ws ([b9c0d87](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/b9c0d873d6e98f6ea114db6d7ba860e80325abcd))
+* update icon colorful ([992cf04](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/992cf043eb0293f9dbfcd946b33d8277a818621b))
+* update product ([7cc87ee](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7cc87eeb97153811adc746cf8cade644b9f7634c))
+
+
+### Bug Fixes
+
+* anka header width ([8ea8ddc](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/8ea8ddcf9dd3305cec2191e2c1591810f85e9687))
+* anka header width ([df92a40](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/df92a40e77e76fbfc4e3c34c6d132c6619b0ee19))
+* avatar border-radius ([f57cb69](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/f57cb693ad42e5fb522f6b8a47b357bd13b868b9))
+* dropdown box-shadow ([157ff4f](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/157ff4fbdebcafa8d8483a7c2f91265ffe095642))
+* dropdown item cursor ([34ed4fc](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/34ed4fced9559ee16491e416d8a7b7782a863049))
+* footer font-weight ([6f2f5cd](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6f2f5cd9f09955dacebb314aa78fa5b2a1469f98))
+* footer link ([f4aebf5](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/f4aebf5374f9a38f1fc2f0fc196cd12d0e3cecc4))
+* isLeaf, isRoot ([a9e1792](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a9e179240a7711bdb1a335dd8b8063076f9402ed))
+* isLeaf, isRoot ([e817827](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/e817827d8c43c3c1940c0f0943ddfe9d274eec30))
+* logged-header-btn color ([5ab9143](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/5ab9143f2630cf346613da2e643a42a27fe306f3))
+* logged-header-btn color ([718d993](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/718d99348122cfa1305e5a640c549b6252e4307f))
+* menu style ([e81eca1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/e81eca140781ff90deec73ea7d5e3bdbcb946643))
+* mini menu width ([8c6cf52](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/8c6cf52603dba0d552dbfa84241e00e6c6c9cbf5))
+* product link ([ec86352](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/ec86352ee059bdb88a967bd5d5b277b812f891d0))
+* rm active style of isnt link item in drodown menu ([cddd7d8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/cddd7d858897aaed5ab31a926508f203dab38cac))
+* rm footer background ([cbfdda7](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/cbfdda77a7296ce6e5ea81d8fa5bd8283ba862f1))
+* rm footer border-top ([6ec017a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6ec017a8e7f3001573d6f38ef851ee4c7ab4b8d0))
+* rm toggleDropdown when setWorkspace ([6610ca5](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6610ca5637d9f3bd756d2234ce58bab26a6b4de7))
+* scroll listener ([9530838](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/9530838681342a3ac0cad99c9475e5504dab3709))
+* second header align center in ie ([5e5db04](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/5e5db0496090f5c41d5e2f8516cabb34de73f4a3))
+* second header icon color ([612cff9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/612cff9c42856655fd10bd565660bdc0126faa03))
+* secondHeader top when notification show ([ca6bb20](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/ca6bb2036e8c74bf930a48135d7155964f3880a4))
+* set scrollY when mounted ([5c8e44e](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/5c8e44ed2e04c40368d7bfa2c5ba278ae09c1309))
+* use icon by symbol ([39aaec3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/39aaec3b72e6455fc15687af3d2253d63d94fcc7))
+* use message of element-ui ([12cc359](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/12cc3591f7b090b147d978ad2f971ecb0c4bb4a4))
+
+
+### Chores
+
+* rm useless ([69c0906](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/69c090698b370f289d64e1259e9fe0e483a7f004))
+* update icon ([ca3d730](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/ca3d7305bf51ca515c6d4bfa3f543c82bbec2a2a))
+* update iconfont ([c2e3ee9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/c2e3ee94fc65749d4794051e9429a587b649d8ab))
+* update product links ([ace3dcf](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/ace3dcf805f316e4d821c168fb618f1274b05d13))
+* updep ([66e9b06](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/66e9b06e8c82ccb3aad138a34a6448296c64729f))
+
+
+### Docs
+
+* update readme ([1e89ff7](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1e89ff7b1246af35a0370143ac0beaab3d2859c1))
+
+
+### Refactors
+
+* avatartShow ([9d8139e](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/9d8139e5b1df5c9931ad5c73ca07777c9e43471f))
+* format product link ([def3b93](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/def3b93eaa7cf3af9a25acaf3cdaecf354371c0d))
+* set header height when mounted in second header ([f09d504](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/f09d504765ee5f392015a4eba49be9ad61ace950))
+
 ### [0.1.3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.2&sourceBranch=refs/tags/v0.1.3) (2020-06-09)
 
 

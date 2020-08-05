@@ -82,7 +82,6 @@ export default {
       }
     }
     this.show = false;
-    themeRender("light");
   },
   methods: {
     themeChange(theme) {

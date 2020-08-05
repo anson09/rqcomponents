@@ -19,9 +19,15 @@
           ]"
           @click="redirect(item)"
         >
-          <svg v-if="item.icon" id="" aria-hidden="true" :class="'icon-base'">
-            <use :xlink:href="`#icon-base-${item.icon}`"></use>
+          <svg
+            v-if="item.iconColorful"
+            id=""
+            aria-hidden="true"
+            :class="'icon-base-colorful'"
+          >
+            <use :xlink:href="`#icon-base-colorful-${item.iconColorful}`"></use>
           </svg>
+          <i v-if="item.icon" :class="`icon-base icon-base-${item.icon}`" />
 
           <span class="menu-link__label">{{ item.label }}</span>
         </div>
@@ -86,9 +92,15 @@ export default {
     position: relative;
     cursor: initial;
 
-    .icon-base {
+    .icon-base-colorful {
       width: 20px;
       height: 20px;
+    }
+    .icon-base {
+      font-size: 20px;
+    }
+    .icon-base,
+    .icon-base-colorful {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -194,7 +206,8 @@ export default {
       $products: quant, rqsdk, rqalphaplus, rqams, rqdata, rqfactor, rqoptimizer;
       @each $product in $products {
         &.#{$product} {
-          .icon-base {
+          .icon-base,
+          .icon-base-colorful {
             opacity: 0.8;
           }
           &:hover {
@@ -212,7 +225,7 @@ export default {
       @each $product in $products {
         &.#{$product} {
           .icon-base {
-            fill: rqthemify(--#{$product}-product-color);
+            color: rqthemify(--#{$product}-product-color);
           }
         }
       }
@@ -232,6 +245,8 @@ export default {
   border-radius: 0;
   border-width: 0;
   box-shadow: none;
+  max-height: 80vh;
+  overflow: auto;
   &.fade-in-linear-leave-active.fade-in-linear-leave-to {
     opacity: 0;
     transition: all 0s;
