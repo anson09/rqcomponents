@@ -182,6 +182,9 @@ export default {
     height: 24px;
     line-height: 24px;
     align-items: center;
+    ::-webkit-scrollbar {
+      height: 4px;
+    }
 
     @media screen and(max-width: 1280px) {
       font-size: 12px;
@@ -202,6 +205,7 @@ export default {
         width: 100px;
         height: 100%;
         flex: 1;
+        overflow-y: hidden;
         overflow-x: auto;
         word-break: break-all;
       }
