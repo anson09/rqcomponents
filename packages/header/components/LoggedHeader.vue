@@ -83,8 +83,6 @@ import Account from "./logged-header/Account.vue";
 import { flattenNode } from "../util";
 import DropdownMenu from "./common/DropdownMenu.vue";
 
-console.log({ logo });
-
 export default {
   name: "LoggedHeader",
   components: {

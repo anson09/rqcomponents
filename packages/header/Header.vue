@@ -49,8 +49,7 @@ export default {
   mixins: [mixin],
   props: {
     notification: {
-      default:
-        "哈哈呈韫椟而藏 罗荣城 ifdsalkfjsa韫椟而藏 中要械 哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏哈哈呈韫椟而藏",
+      default: "",
       type: String,
     },
     mode: {
