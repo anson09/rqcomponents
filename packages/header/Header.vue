@@ -1,12 +1,15 @@
 <template>
   <div class="header-wrapper">
     <p v-if="showWarning" class="header-warning">
-      <span class="header-warning-text">
-        <slot v-if="$slots.notification" name="notification"></slot>
-        <template v-else>
-          {{ notification }}
-        </template>
+      <span class="header-warning-text-wrapper">
+        <span class="header-warning-text">
+          <slot v-if="$slots.notification" name="notification"></slot>
+          <template v-else>
+            {{ notification }}
+          </template>
+        </span>
       </span>
+      <i class="el-icon-circle-close" @click="handleCloseWarning"></i>
     </p>
     <header>
       <transition name="rq-fade-in-linear">
@@ -83,6 +86,7 @@ export default {
       avatar,
       rank,
       userId,
+      isWarngingHidden: false,
     };
   },
   computed: {
@@ -90,13 +94,19 @@ export default {
       return !isNaN(this.rank) && this.rank === 5;
     },
     showWarning() {
-      return !!this.$slots.notification || !!this.notification;
+      return (
+        !this.isWarngingHidden &&
+        (!!this.$slots.notification || !!this.notification)
+      );
     },
   },
   mounted() {
     this.initAccount();
   },
   methods: {
+    handleCloseWarning() {
+      this.isWarngingHidden = true;
+    },
     switchWorkspace(val) {
       this.$emit("switchWorkspace", val);
     },
@@ -172,16 +182,30 @@ export default {
     font-size: 16px;
     height: 24px;
     line-height: 24px;
-    word-break: break-all;
-    z-index: 100;
-    overflow-x: auto;
+    align-items: center;
+
     @media screen and(max-width: 1280px) {
       font-size: 12px;
     }
+    display: flex;
+    .el-icon-circle-close {
+      cursor: pointer;
+      padding: 4px;
+      background: rqthemify(--warning-background-secondary);
+    }
+
     &-text {
       display: inline-block;
       width: max-content;
       height: 100%;
+      position: relative;
+      &-wrapper {
+        width: 100px;
+        height: 100%;
+        flex: 1;
+        overflow-x: auto;
+        word-break: break-all;
+      }
     }
   }
 }
