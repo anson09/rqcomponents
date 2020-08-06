@@ -11,7 +11,11 @@
           ]"
           @click="setWorkspace(item)"
         >
-          {{ item.name }}
+          <i
+            v-if="item.isQuantEnterprise"
+            class="icon-base icon-base-enterprise"
+          ></i>
+          <span class="workspace-dropdown__item-label"> {{ item.name }}</span>
           <i v-if="item.id === curWs.id" class="el-icon-success"></i>
         </div>
         <div class="workspace-dropdown__btn-wrapper">
@@ -32,7 +36,7 @@
 </template>
 <script>
 import Message from "element-ui/lib/message";
-import { getWorksapces } from "../../api";
+import { getWorksapces, getWorksapcesProducts } from "../../api";
 import { setStorage, getStorage } from "../../../common/util";
 
 export default {
@@ -90,7 +94,24 @@ export default {
       try {
         const res = await getWorksapces();
         if (!res.data) return;
-        this.workspaces = res.data;
+        const { data: wsProducts } = await getWorksapcesProducts();
+        const wsProductsDict = wsProducts.reduce(
+          (obj, cur) => ({
+            ...obj,
+            [cur.ws_id]: cur.product,
+          }),
+          {}
+        );
+
+        this.workspaces = res.data.map((item) => ({
+          ...item,
+          isQuantEnterprise: !!wsProductsDict[item.id].find((pro) => {
+            return (
+              pro.product.name === "QUANT" &&
+              pro.product.version === "Enterprise"
+            );
+          }),
+        }));
         if (!this.workspaces.length) {
           delete this.localStorageWorkspaces[this.account.userId];
           setStorage(this.storageKey, this.localStorageWorkspaces);
@@ -161,10 +182,19 @@ export default {
       position: relative;
       line-height: 20px;
       padding: 10px 60px 10px 20px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+
+      display: flex;
+      align-items: center;
       color: rqthemify(--text-normal);
+      .icon-base-enterprise {
+        font-size: 16px;
+      }
+      &-label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-left: 8px;
+      }
       .el-icon-success {
         color: rqthemify(--primary-color-3);
         top: 50%;
