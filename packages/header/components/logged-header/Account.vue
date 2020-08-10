@@ -1,9 +1,7 @@
 <template>
   <div class="account">
     <img class="account__avatar" :src="avatarShow" alt="" />
-    <div v-if="isVip" class="account__vip">
-      {{ vipText }}
-    </div>
+
     <transition name="rq-zoom-in-top">
       <div v-show="active" class="account-dropdown">
         <p class="account__username">{{ username }}</p>
@@ -35,15 +33,9 @@ export default {
       required: true,
       type: String,
     },
-    isVip: {
-      default: false,
-      type: Boolean,
-    },
   },
   data() {
-    return {
-      vipText: "企",
-    };
+    return {};
   },
   computed: {
     avatarShow() {
@@ -74,17 +66,7 @@ export default {
     height: 34px;
     border-radius: 50%;
   }
-  &__vip {
-    position: absolute;
-    right: 16px;
-    bottom: 2px;
-    @include text(rqthemify(--white), 16, 1);
-    transform: scale(0.6);
-    padding: 4px;
-    border-radius: 50%;
-    background-color: rqthemify(--primary-color);
-    transform-origin: right bottom;
-  }
+
   &__link {
     cursor: pointer;
     margin-bottom: -8px;
