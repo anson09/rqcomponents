@@ -9,10 +9,9 @@
         v-for="(btn, idx) in btnConfigLeft"
         :key="idx"
         :class="['logged-header-btn', 'is-left', { active: btn.active }]"
+        @click="handleLink(btn.link)"
       >
-        <el-button type="text" @click="handleLink(btn.link)">{{
-          btn.label
-        }}</el-button>
+        <el-button type="text">{{ btn.label }}</el-button>
       </div>
     </div>
 
