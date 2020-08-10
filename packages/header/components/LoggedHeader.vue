@@ -154,17 +154,6 @@ export default {
 <style lang="scss" scoped>
 @import "../../common/style/mixins";
 
-.theme {
-  @each $i in dark, light {
-    &-#{$i} {
-      .logged-header {
-        &__logo img[data-theme="#{$i}"] {
-          opacity: 1;
-        }
-      }
-    }
-  }
-}
 .logged-header {
   position: relative;
   display: flex;
@@ -299,7 +288,22 @@ export default {
     img {
       position: absolute;
       width: 100%;
+      &[data-theme="light"] {
+        opacity: 1;
+      }
+      &[data-theme="dark"] {
+        opacity: 0;
+      }
+    }
+  }
+}
+.theme-dark {
+  .logged-header__logo img {
+    &[data-theme="light"] {
       opacity: 0;
+    }
+    &[data-theme="dark"] {
+      opacity: 1;
     }
   }
 }
