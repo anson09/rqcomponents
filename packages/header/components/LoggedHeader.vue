@@ -195,6 +195,9 @@ export default {
     &.left {
       flex: auto;
     }
+    .el-button--text {
+      color: rqthemify(--primary-color);
+    }
   }
 
   &-btn {
