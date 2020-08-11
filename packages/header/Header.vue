@@ -99,6 +99,7 @@ export default {
       );
     },
   },
+
   mounted() {
     this.initAccount();
   },
@@ -206,8 +207,11 @@ export default {
         height: 100%;
         flex: 1;
         overflow-y: hidden;
-        overflow-x: auto;
+        overflow-x: hidden;
         word-break: break-all;
+        &:hover {
+          overflow-x: auto;
+        }
       }
     }
   }
