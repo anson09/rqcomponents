@@ -92,17 +92,18 @@ export default {
 
     async getWorkspaces() {
       try {
-        const res = await getWorksapces();
+        const [res, wsProRes] = await Promise.all([
+          getWorksapces(),
+          getWorksapcesProducts(),
+        ]);
         if (!res.data) return;
-        const { data: wsProducts } = await getWorksapcesProducts();
-        const wsProductsDict = wsProducts.reduce(
+        const wsProductsDict = wsProRes.data.reduce(
           (obj, cur) => ({
             ...obj,
             [cur.ws_id]: cur.product,
           }),
           {}
         );
-
         this.workspaces = res.data.map((item) => ({
           ...item,
           isQuantEnterprise: !!wsProductsDict[item.id].find((pro) => {
