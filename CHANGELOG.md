@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.5&sourceBranch=refs/tags/v0.1.6) (2020-08-12)
+
+
+### Features
+
+* add date util ([7bd443d](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7bd443dd917fe6818cc14fd62b29e9141dc61c34))
+* add isEnterprise ([b142933](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/b14293362520e3e76d5463151d93e0de4e37f3c1))
+* close warning ([3729b42](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/3729b4290e613c158acd4ff5fe0ff6fdfb558b76))
+
+
+### Bug Fixes
+
+* btn color ([afb5a1a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/afb5a1aca095ec2eceaceb3ca7806d480806e3bb))
+* check product ([c9490f4](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/c9490f43f5632611278adcc14c38cbb2baa74c34))
+* default theme setting ([08db8eb](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/08db8eb98dd9b3486a17a4c636e47fc8c016ca7d))
+* get workspace & products ([3c29726](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/3c29726bc0ee23225d412002aa7978b17c756a59))
+* hover scroll ([4293415](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/42934151ec84ccefa8daac1fd6a3a39a7dd6cc07))
+* logged beader left btn click ([f7e393a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/f7e393a740cad7fb5839fe4652b83b00dbec1838))
+* logo opacity ([06b1df1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/06b1df1ba8b9739f9b40c85f59b900bb503d0082))
+* rm vip ([794b144](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/794b144efcd6c04086b02c1f731ac73c40690dce))
+* undefined check ([cf677f9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/cf677f976644f8ae0738b7ddf27ff8f290b460ea))
+* warnging scrollbar ([02a4a45](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/02a4a453eb88582f78f29eda325de3c081362f30))
+* warning dark ([423d220](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/423d2206e74b4a063e274d240c9e49b4f8013aae))
+
+
+### Chores
+
+* rm useless ([5fe8b35](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/5fe8b35b86c2378d4186a3db6b6fda22c226bf6d))
+* update icon ([43218d0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/43218d0291428462b48dd4167482aebb7443864e))
+
 ### [0.1.5](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.4&sourceBranch=refs/tags/v0.1.5) (2020-07-30)
 
 
