@@ -17,7 +17,6 @@
           v-if="mode === defaultMode && isLogin"
           :username="username"
           :avatar="avatar"
-          :is-vip="isVip"
           @switchWorkspace="switchWorkspace"
           @createWorkspace="createWorkspace"
           @logout="handleLogout"
@@ -75,7 +74,6 @@ export default {
       isLogin = false,
       avatar = "",
       fullname: username = "",
-      rank = 0,
       userId = 0,
     } = localStorageAcount;
     return {
@@ -83,15 +81,11 @@ export default {
       isLogin,
       username,
       avatar,
-      rank,
       userId,
       isWarngingHidden: false,
     };
   },
   computed: {
-    isVip() {
-      return !isNaN(this.rank) && this.rank === 5;
-    },
     showWarning() {
       return (
         !this.isWarngingHidden &&
@@ -127,7 +121,7 @@ export default {
     async initAccount() {
       try {
         const {
-          data: { code, fullname, avatar, phone, email, userId, rank },
+          data: { code, fullname, avatar, phone, email, userId },
         } = await getAccount();
         if (code === 0) {
           setStorage("account", {
@@ -137,13 +131,11 @@ export default {
             phone,
             email,
             userId,
-            rank,
           });
           this.isLogin = true;
           this.avatar = avatar;
           this.username = fullname;
           this.userId = userId;
-          this.rank = rank;
         } else {
           this.reset();
         }
@@ -155,7 +147,6 @@ export default {
       this.isLogin = false;
       this.avatar = "";
       this.username = "";
-      this.rank = 0;
       removeStorage("account");
     },
   },

@@ -9,10 +9,9 @@
         v-for="(btn, idx) in btnConfigLeft"
         :key="idx"
         :class="['logged-header-btn', 'is-left', { active: btn.active }]"
+        @click="handleLink(btn.link)"
       >
-        <el-button type="text" @click="handleLink(btn.link)">{{
-          btn.label
-        }}</el-button>
+        <el-button type="text">{{ btn.label }}</el-button>
       </div>
     </div>
 
@@ -155,17 +154,6 @@ export default {
 <style lang="scss" scoped>
 @import "../../common/style/mixins";
 
-.theme {
-  @each $i in dark, light {
-    &-#{$i} {
-      .logged-header {
-        &__logo img[data-theme="#{$i}"] {
-          opacity: 1;
-        }
-      }
-    }
-  }
-}
 .logged-header {
   position: relative;
   display: flex;
@@ -195,6 +183,9 @@ export default {
     @include text(rqthemify(--text-primary), 14, 20px);
     &.left {
       flex: auto;
+    }
+    .el-button--text {
+      color: rqthemify(--primary-color);
     }
   }
 
@@ -297,7 +288,22 @@ export default {
     img {
       position: absolute;
       width: 100%;
+      &[data-theme="light"] {
+        opacity: 1;
+      }
+      &[data-theme="dark"] {
+        opacity: 0;
+      }
+    }
+  }
+}
+.theme-dark {
+  .logged-header__logo img {
+    &[data-theme="light"] {
       opacity: 0;
+    }
+    &[data-theme="dark"] {
+      opacity: 1;
     }
   }
 }
