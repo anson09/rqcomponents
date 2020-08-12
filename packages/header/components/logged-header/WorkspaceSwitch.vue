@@ -37,7 +37,7 @@
 <script>
 import Message from "element-ui/lib/message";
 import { getWorksapces, getWorksapcesProducts } from "../../api";
-import { setStorage, getStorage } from "../../../common/util";
+import { setStorage, getStorage, getDate } from "../../../common/util";
 
 export default {
   name: "WorkspaceSwitch",
@@ -110,8 +110,8 @@ export default {
             return (
               pro.product.name === "QUANT" &&
               pro.product.version === "Enterprise" &&
-              new Date(pro.start) < new Date() &&
-              new Date(pro.expire) > new Date()
+              getDate(pro.start) < new Date() &&
+              getDate(pro.expire) > new Date()
             );
           }),
         }));
