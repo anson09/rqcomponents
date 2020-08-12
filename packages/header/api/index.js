@@ -16,4 +16,10 @@ const getWorksapces = async () => {
   return data;
 };
 
-export { getAccount, logout, getWorksapces, message };
+const getWorksapcesProducts = async (productName) => {
+  const { data } = await axios.get("/api/user/v1/workspaces/products", {
+    params: { product_name: productName },
+  });
+  return data;
+};
+export { getAccount, logout, getWorksapces, message, getWorksapcesProducts };
