@@ -109,7 +109,9 @@ export default {
           isQuantEnterprise: !!wsProductsDict[item.id].find((pro) => {
             return (
               pro.product.name === "QUANT" &&
-              pro.product.version === "Enterprise"
+              pro.product.version === "Enterprise" &&
+              new Date(pro.start) < new Date() &&
+              new Date(pro.expire) > new Date()
             );
           }),
         }));
