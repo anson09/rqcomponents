@@ -96,8 +96,8 @@ export default {
           getWorksapces(),
           getWorksapcesProducts(),
         ]);
-        if (!res.data) return;
-        const wsProductsDict = wsProRes.data.reduce(
+        if (!res?.data) return;
+        const wsProductsDict = wsProRes?.data.reduce(
           (obj, cur) => ({
             ...obj,
             [cur.ws_id]: cur.product,
