@@ -283,7 +283,7 @@ export default {
 .mini-menu.el-popover {
   padding: 0;
   border-width: 0;
-  max-width: 620px;
+  max-width: 500px;
   border-radius: 0;
   box-shadow: 0px 20px 20px 0px rqthemify(--shadow-primary);
   &.el-popper[x-placement^="bottom"] {

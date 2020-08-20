@@ -188,34 +188,6 @@ const anka = {
         link: "/edu",
         label: "教育专区",
       },
-      {
-        more: true,
-        label: "量化社区",
-        links: [
-          {
-            link: {
-              href: "/community",
-              outer: true,
-              newBlock: true,
-            },
-            label: "量化社区",
-          },
-          {
-            link: {
-              href: "/site/tournaments",
-              outer: true,
-            },
-            label: "量化大赛",
-          },
-          {
-            link: {
-              href: "/site/scrafts",
-              outer: true,
-            },
-            label: "策略英雄榜",
-          },
-        ],
-      },
     ],
   },
   secondHeader: [
@@ -333,14 +305,6 @@ const logged = {
 
       type: "dropdown",
       label: "帮助文档",
-    },
-    {
-      link: {
-        href: "/community",
-        newBlock: true,
-      },
-      type: "text",
-      label: "社区",
     },
 
     {
