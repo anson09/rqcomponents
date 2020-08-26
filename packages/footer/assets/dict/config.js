@@ -56,6 +56,7 @@ const links = [
     //   label: "帮助中心",
     //   link: "/",
     // },
+
     {
       label: "RQSDK文档",
       link: {
@@ -74,6 +75,13 @@ const links = [
       label: "RQAMS文档",
       link: {
         href: "/doc/rqams",
+        outer: true,
+      },
+    },
+    {
+      label: "米筐量化学院",
+      link: {
+        href: "/site/courses",
         outer: true,
       },
     },
