@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.6&sourceBranch=refs/tags/v0.1.7) (2020-08-26)
+
+
+### Features
+
+* add courses in footer ([2fa8336](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/2fa8336ba9f03bbb08d9c19a07057ee8597e7694))
+* rm site ([fa20fd3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/fa20fd3d5e5ba29bf5bee21cd2e1b9f32516da10))
+
 ### [0.1.6](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.5&sourceBranch=refs/tags/v0.1.6) (2020-08-12)
 
 
