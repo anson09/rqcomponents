@@ -65,7 +65,6 @@ const componentsConfig = Object.entries(componentsList).map(
 const baseCssConfig = {
   input: "./packages/common/style/index.js",
   output: {
-    // TODO css only
     file: "lib/theme/base.js",
   },
   onwarn: () => {},
