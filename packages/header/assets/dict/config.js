@@ -202,7 +202,7 @@ const anka = {
           path: "/rqdata",
         },
       ],
-      trialHref: "/trial/rq-sdk",
+      trialHref: "/trial/rqsdk-cloud",
     },
     {
       name: "rqams",
@@ -226,7 +226,7 @@ const anka = {
           path: "/rqoptimizer",
         },
       ],
-      trialHref: "/trial/rq-sdk",
+      trialHref: "/trial/rqsdk-cloud",
     },
     {
       name: "quant",
@@ -251,7 +251,7 @@ const anka = {
           path: "/rq-alpha-plus",
         },
       ],
-      trialHref: "/trial/rq-sdk",
+      trialHref: "/trial/rqsdk-cloud",
     },
     {
       name: "rqfactor",
@@ -263,7 +263,7 @@ const anka = {
           path: "/rq-factor",
         },
       ],
-      trialHref: "/trial/rq-sdk",
+      trialHref: "/trial/rqsdk-cloud",
     },
     {
       name: "rqsdk",
@@ -275,7 +275,7 @@ const anka = {
           path: "/rq-sdk",
         },
       ],
-      trialHref: "/trial/rq-sdk",
+      trialHref: "/trial/rqsdk-cloud",
     },
   ],
 };
