@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.7&sourceBranch=refs/tags/v0.1.8) (2020-09-02)
+
+
+### Bug Fixes
+
+* rqsdk-cloud trial href ([9889960](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/9889960ee2ce15000441d24215f0e870193e0613))
+
+
+### Chores
+
+* remove npmrc ([ed12485](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/ed124857db0b3357c87964ab05f7fc2d69b9292e))
+* remove TODO ([973331c](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/973331c6a4537aba08aa4a90f26e5f038ad9ec10))
+
 ### [0.1.7](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.6&sourceBranch=refs/tags/v0.1.7) (2020-08-26)
 
 
