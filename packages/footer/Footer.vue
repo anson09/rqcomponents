@@ -29,17 +29,13 @@
             :key="index"
             class="footer__content-contact-item"
           >
-            <el-popover
+            <img
               v-if="item.qrcode"
-              placement="top"
-              width="auto"
-              trigger="hover"
-            >
-              <img :src="qrcode" />
-              <i slot="reference" :class="'icon-base icon-base-' + item.icon" />
-            </el-popover>
+              class="footer__content-contact-item__img"
+              :src="qrcode"
+            />
+
             <i
-              v-else
               :class="'icon-base icon-base-' + item.icon"
               @click="handleLink(item.link)"
             ></i>
@@ -61,14 +57,12 @@
   </footer>
 </template>
 <script>
-import ElPopover from "element-ui/lib/popover";
 import footer from "./assets/dict/config";
 import mixin from "../common/util/mixin";
 import qrcode from "../common/assets/img/qrcode.jpg";
 
 export default {
   name: "Footer",
-  components: { ElPopover },
   mixins: [mixin],
   props: {
     opacity: {
@@ -157,9 +151,26 @@ export default {
       justify-content: flex-end;
       align-items: flex-end;
       &-item {
+        position: relative;
         margin-right: 22px;
         &:last-child {
           margin-right: 0;
+        }
+
+        &__img {
+          padding: 12px;
+          box-shadow: 0 2px 12px 0 rqthemify(--shadow-primary);
+          position: absolute;
+          display: none;
+          left: 50%;
+          top: -10px;
+          border: 1px solid rqthemify(--border-primary);
+          border-radius: 4px;
+          transform: translate(-50%, -100%);
+          background-color: rqthemify(--white);
+        }
+        &:hover &__img {
+          display: block;
         }
       }
     }
