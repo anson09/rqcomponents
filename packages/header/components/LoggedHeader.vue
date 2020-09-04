@@ -5,14 +5,14 @@
       <img :src="images.logoWhite" data-theme="dark" />
     </a>
     <div class="logged-header-btns left">
-      <div
+      <button
         v-for="(btn, idx) in btnConfigLeft"
         :key="idx"
         :class="['logged-header-btn', 'is-left', { active: btn.active }]"
         @click="handleLink(btn.link)"
       >
-        <el-button type="text">{{ btn.label }}</el-button>
-      </div>
+        {{ btn.label }}
+      </button>
     </div>
 
     <div class="logged-header-btns">
@@ -39,20 +39,14 @@
         </component>
 
         <!-- 按钮式 -->
-        <el-button
+        <button
           v-if="btn.type === 'button'"
-          plain
+          class="logged-header-btn-button"
           @click="handleLink(btn.link)"
         >
           {{ btn.label }}
-        </el-button>
-        <!-- 文字 -->
-        <el-button
-          v-if="btn.type === 'text'"
-          type="text"
-          @click="handleLink(btn.link)"
-          >{{ btn.label }}</el-button
-        >
+        </button>
+
         <div v-if="btn.type === 'dropdown'" class="logged-header-btn__wrapper">
           <p class="logged-header__label">{{ btn.label }}</p>
           <i class="el-icon-caret-bottom"></i>
@@ -184,9 +178,6 @@ export default {
     &.left {
       flex: auto;
     }
-    .el-button--text {
-      color: rqthemify(--primary-color);
-    }
   }
 
   &-btn {
@@ -223,24 +214,18 @@ export default {
         }
       }
     }
-    &.button,
-    &.text {
-      ::v-deep {
-        .el-button {
-          color: inherit;
-          line-height: inherit;
-        }
-        .el-button--default {
-          padding: 4px 20px;
-          background-color: transparent;
-          border-color: rqthemify(--text-primary);
-          border-radius: 4px;
-          &:hover {
-            border-color: rqthemify(--primary-color-9);
-            color: rqthemify(--white);
-            background-color: rqthemify(--primary-color-9);
-            @include click-scale();
-          }
+    &.button {
+      button {
+        padding: 4px 20px;
+        background-color: transparent;
+        border: 1px solid rqthemify(--text-primary);
+        line-height: 20px;
+        border-radius: 4px;
+        &:hover {
+          border-color: rqthemify(--primary-color-9);
+          color: rqthemify(--white);
+          background-color: rqthemify(--primary-color-9);
+          @include click-scale();
         }
       }
     }

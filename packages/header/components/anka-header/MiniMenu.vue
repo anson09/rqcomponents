@@ -45,23 +45,21 @@
       </div>
       <Support :cfg="support" @redirect="redirect"></Support>
     </div>
-    <el-button slot="reference" class="mini-menu-burger" type="text">
+    <button slot="reference" class="mini-menu-burger" type="text">
       <span></span>
       <span></span>
       <span></span>
-    </el-button>
+    </button>
   </el-popover>
 </template>
 
 <script>
 import ElPopover from "element-ui/lib/popover";
-import ElButton from "element-ui/lib/button";
 import Support from "../common/Support.vue";
 
 export default {
   name: "MiniMenu",
   components: {
-    ElButton,
     ElPopover,
     Support,
   },
@@ -117,6 +115,9 @@ export default {
     height: 100%;
     border-radius: 0;
     transition: all 0.3s;
+    &:active {
+      transform: none;
+    }
     span {
       display: block;
       width: 30px;

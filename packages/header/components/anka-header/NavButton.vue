@@ -15,7 +15,7 @@
         @redirect="redirect"
       ></dropdown-menu>
     </div>
-    <el-button
+    <button
       slot="reference"
       type="text"
       :class="['nav-button', { active, light }]"
@@ -25,10 +25,10 @@
         v-if="button.more"
         :class="`el-icon-arrow-${active ? 'up' : 'down'} el-icon--right`"
       />
-    </el-button>
+    </button>
   </el-popover>
 
-  <el-button
+  <button
     v-else
     slot="reference"
     type="text"
@@ -40,19 +40,17 @@
       v-if="button.more"
       :class="`el-icon-arrow-${active ? 'up' : 'down'} el-icon--right`"
     />
-  </el-button>
+  </button>
 </template>
 
 <script>
 import ElPopover from "element-ui/lib/popover";
-import ElButton from "element-ui/lib/button";
 import DropdownMenu from "../common/DropdownMenu.vue";
 
 export default {
   name: "NavButton",
   components: {
     ElPopover,
-    ElButton,
     DropdownMenu,
   },
   props: {

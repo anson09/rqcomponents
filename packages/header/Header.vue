@@ -154,6 +154,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../common/style/mixins.scss";
+::v-deep {
+  button {
+    cursor: pointer;
+    outline: none;
+    background: transparent;
+    border: none;
+    color: inherit;
+    @include click-scale();
+  }
+}
 .header {
   header {
     position: relative;

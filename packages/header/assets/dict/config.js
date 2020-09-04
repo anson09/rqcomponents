@@ -308,11 +308,9 @@ const logged = {
     },
 
     {
-      type: "theme",
       component: "themeSwitch",
     },
     {
-      type: "message",
       component: "message",
     },
 

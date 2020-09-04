@@ -40,15 +40,10 @@
           ></mini-menu>
           <transition name="fade">
             <div class="nav__buttons login">
-              <el-button
+              <button
                 v-for="(cfg, idx) in loginButtons"
                 :key="idx"
-                :class="[cfg.className, { light }]"
-                :round="true"
-                plain
-                :light="light"
-                :type="cfg.type"
-                :icon="cfg.icon ? `icon-base icon-base-${cfg.icon}` : ''"
+                :class="[cfg.className, { light }, 'login-button']"
                 @click="cfg.click"
               >
                 <template v-if="cfg.images">
@@ -59,9 +54,13 @@
                     :class="item.className"
                   />
                 </template>
+                <i
+                  v-if="cfg.icon"
+                  :class="`icon-base icon-base-${cfg.icon}`"
+                ></i>
 
                 {{ cfg.label }}
-              </el-button>
+              </button>
             </div>
           </transition>
         </template>
@@ -72,7 +71,6 @@
 </template>
 
 <script>
-import ElButton from "element-ui/lib/button";
 import debounce from "lodash/debounce";
 import NavButton from "./anka-header/NavButton.vue";
 import SecondHeader from "./anka-header/SecondHeader.vue";
@@ -90,7 +88,6 @@ export default {
     NavButton,
     MiniMenu,
     SecondHeader,
-    ElButton,
     Vnodes: {
       functional: true,
       render: (h, ctx) => ctx.props.vnodes,
@@ -327,60 +324,63 @@ export default {
 
         &.login {
           flex: none;
-          ::v-deep {
-            .el-button {
-              @include click-scale();
-              // 登录 注册
-              color: rqthemify(--text-primary);
-              border-radius: 19px;
-              padding: 10px 14px;
+          button {
+            background: transparent;
+            padding: 8px 12px;
+            border: 1px solid transparent;
+            margin: 0 4px;
+            font-size: 14px;
+            line-height: 18px;
+            color: rqthemify(--text-primary);
+            display: flex;
+            border-radius: 20px;
+            align-items: center;
+            .icon-base {
+              margin-right: 8px;
+            }
+            img {
+              width: 26px;
+              height: 26px;
+              vertical-align: middle;
+              margin-right: 12px;
+              &.active {
+                display: none;
+              }
+            }
+            &:hover,
+            &:active,
+            &:focus {
               img {
-                width: 26px;
-                height: 26px;
-                vertical-align: middle;
-                margin-right: 12px;
-                &.active {
+                &.default {
                   display: none;
                 }
-              }
-              &:hover,
-              &:active,
-              &:focus {
-                img {
-                  &.default {
-                    display: none;
-                  }
-                  &.active {
-                    display: inline-block;
-                  }
+                &.active {
+                  display: inline-block;
                 }
               }
+            }
 
-              &:hover {
-                border-color: rqthemify(--text-primary);
-              }
-              &:active,
-              &:focus {
-                color: rqthemify(--primary-color);
-                border-color: rqthemify(--primary-color);
-              }
-              .icon-base {
-                margin-right: 8px;
-              }
+            &:hover {
+              border-color: rqthemify(--text-primary);
+            }
+            &:active,
+            &:focus {
+              color: rqthemify(--primary-color);
+              border-color: rqthemify(--primary-color);
             }
           }
           // 预约路演 进入平台
           .entry {
-            padding: 6px 12px;
+            padding: 4px 12px;
             margin-left: 6px;
             border-radius: 4px;
           }
 
           .road-show {
-            margin: 0 24px 0 40px;
+            margin: 0 22px 0 40px;
             border-radius: 40px;
-            padding: 10px 28px;
-            border-color: rqthemify(--text-primary);
+            padding: 8px 28px;
+            border: 1px solid rqthemify(--text-primary);
           }
 
           .entry,
@@ -406,22 +406,21 @@ export default {
   .opacity {
     nav .nav__buttons {
       &.login {
-        ::v-deep {
-          .el-button {
-            color: rqthemify(--text-white);
-            border-color: transparent;
-            &:hover {
-              background: rqthemify(--text-white-4);
-            }
-            &:focus,
-            &:active {
-              background: rqthemify(--text-white-6);
-            }
+        button {
+          color: rqthemify(--text-white);
+          border-color: transparent;
+          &:hover {
+            background: rqthemify(--text-white-4);
+          }
+          &:focus,
+          &:active {
+            background: rqthemify(--text-white-6);
           }
         }
+
         .road-show {
           color: rqthemify(--text-white);
-          border-color: rqthemify(--white);
+          border: 1px solid rqthemify(--white);
           background: rqthemify(--text-white-2);
         }
 

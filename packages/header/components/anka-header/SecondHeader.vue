@@ -40,22 +40,16 @@
         </template>
       </div>
       <div class="nav__buttons">
-        <common-button
-          class="nav__button"
-          :plain="true"
-          label="免费试用"
-          @click="clickHandle(product.trialHref)"
-        ></common-button>
+        <button class="nav__button" @click="clickHandle(product.trialHref)">
+          免费试用
+        </button>
       </div>
     </nav>
   </div>
 </template>
 <script>
-import CommonButton from "./CommonButton.vue";
-
 export default {
   name: "SecondHeader",
-  components: { CommonButton },
   props: {
     config: { type: Array, required: true },
   },
@@ -250,6 +244,8 @@ export default {
       padding: 12px 28px;
       line-height: 1;
       border-radius: 8px;
+      font-size: 14px;
+      border: 1px solid;
       &:hover,
       &:active,
       &:focus {
