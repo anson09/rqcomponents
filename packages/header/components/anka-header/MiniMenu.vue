@@ -1,66 +1,59 @@
 <template>
-  <el-popover
-    v-model="active"
-    :class="['mini-menu__wrapper', { active, light }]"
-    placement="bottom-start"
-    trigger="hover"
-    popper-class="mini-menu"
-    :visible-arrow="false"
-  >
-    <div class="mini-menu">
-      <div class="mini-menu-list">
-        <div
-          v-for="(item, index) in list"
-          :key="index"
-          :class="['mini-menu-list-item', item.className]"
-        >
-          <p :class="['mini-menu-list-item__label', item.className]">
-            {{ item.label }}
-          </p>
-          <p
-            v-for="(link, linkIdx) in item.links"
-            :key="linkIdx"
-            :class="[
-              'mini-menu-list-item__link',
-              item.className,
-              link.product,
-              `level-${link.level}`,
-              { 'is-leaf': link.isLeaf },
-            ]"
-            @click="redirect(link.link)"
+  <div :class="['mini-menu']">
+    <div :class="['mini-menu-wrapper', { light }]">
+      <button class="mini-menu-burger" type="text">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="mini-menu-popover">
+        <div class="mini-menu-list">
+          <div
+            v-for="(item, index) in list"
+            :key="index"
+            :class="['mini-menu-list-item', item.className]"
           >
-            {{ link.label }}
-          </p>
-          <template v-if="index === 0">
+            <p :class="['mini-menu-list-item__label', item.className]">
+              {{ item.label }}
+            </p>
             <p
-              v-for="link in links"
-              :key="link.label"
-              class="mini-menu-list-item__link level-0"
+              v-for="(link, linkIdx) in item.links"
+              :key="linkIdx"
+              :class="[
+                'mini-menu-list-item__link',
+                item.className,
+                link.product,
+                `level-${link.level}`,
+                { 'is-leaf': link.isLeaf },
+              ]"
               @click="redirect(link.link)"
             >
               {{ link.label }}
             </p>
-          </template>
+            <template v-if="index === 0">
+              <p
+                v-for="link in links"
+                :key="link.label"
+                class="mini-menu-list-item__link level-0"
+                @click="redirect(link.link)"
+              >
+                {{ link.label }}
+              </p>
+            </template>
+          </div>
         </div>
+        <Support :cfg="support" @redirect="redirect"></Support>
       </div>
-      <Support :cfg="support" @redirect="redirect"></Support>
     </div>
-    <button slot="reference" class="mini-menu-burger" type="text">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </el-popover>
+  </div>
 </template>
 
 <script>
-import ElPopover from "element-ui/lib/popover";
 import Support from "../common/Support.vue";
 
 export default {
   name: "MiniMenu",
   components: {
-    ElPopover,
     Support,
   },
   props: {
@@ -106,9 +99,6 @@ export default {
 @import "../../../common/style/mixins";
 
 .mini-menu {
-  display: flex;
-  flex-wrap: wrap;
-
   &-burger {
     @include f-column;
     width: 70px;
@@ -130,7 +120,29 @@ export default {
       }
     }
   }
-  &__wrapper {
+
+  &-popover {
+    background-color: rqthemify(--white);
+    min-width: 500px;
+    border: 1px solid rqthemify(--border-primary);
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    padding: 0;
+    border-width: 0;
+    max-width: 500px;
+    border-radius: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    text-align: left;
+    box-shadow: 0px 20px 20px 0px rqthemify(--shadow-primary);
+  }
+
+  &-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
     &:before {
       content: "";
       margin-right: 10px;
@@ -142,15 +154,13 @@ export default {
       &:before {
         background: rqthemify(--text-normal);
       }
-      .mini-menu {
-        &-burger {
-          span {
-            background: rqthemify(--text-normal);
-          }
+      .mini-menu-burger {
+        span {
+          background: rqthemify(--text-normal);
         }
       }
     }
-    &.active {
+    &:hover {
       &:before {
         background: transparent;
       }
@@ -162,10 +172,14 @@ export default {
             background: rqthemify(--primary-color);
           }
         }
+        &-popover {
+          display: flex;
+        }
       }
     }
   }
-  & &-list {
+
+  &-list {
     display: flex;
     width: 100%;
     &-item {
@@ -277,18 +291,6 @@ export default {
         }
       }
     }
-  }
-}
-</style>
-<style lang="scss">
-.mini-menu.el-popover {
-  padding: 0;
-  border-width: 0;
-  max-width: 500px;
-  border-radius: 0;
-  box-shadow: 0px 20px 20px 0px rqthemify(--shadow-primary);
-  &.el-popper[x-placement^="bottom"] {
-    margin-top: 0;
   }
 }
 </style>
