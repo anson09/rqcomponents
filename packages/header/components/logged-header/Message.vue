@@ -22,28 +22,24 @@
             >
           </div>
           <div class="message__header-right">
-            <el-popover
-              v-model="messageSettingDropdown"
-              placement="top-end"
-              trigger="click"
-              :append-to-body="false"
-              popper-class="message-setting-popper"
+            <i
+              class="el-icon-setting message-setting__icon"
+              @click="setSettingDropdownVisible(!settingDropdownVisible)"
+            ></i>
+
+            <div
+              v-show="settingDropdownVisible"
+              class="message-setting__dropdown"
             >
-              <div class="message-setting__dropdown">
-                <button
-                  v-for="setting in messageSettings"
-                  :key="setting.value"
-                  class="message-setting__item"
-                  @click="setMessage(setting.value)"
-                >
-                  {{ setting.label }}
-                </button>
-              </div>
-              <i
-                slot="reference"
-                class="el-icon-setting message-setting__icon"
-              ></i>
-            </el-popover>
+              <button
+                v-for="setting in messageSettings"
+                :key="setting.value"
+                class="message-setting__item"
+                @click="setMessage(setting.value)"
+              >
+                {{ setting.label }}
+              </button>
+            </div>
           </div>
         </div>
         <message-list
@@ -63,7 +59,6 @@
   </div>
 </template>
 <script>
-import ElPopover from "element-ui/lib/popover";
 import Message from "element-ui/lib/message";
 
 import MessageList from "./message/MessageList.vue";
@@ -71,7 +66,7 @@ import { message as messageApi } from "../../api";
 
 export default {
   name: "Message",
-  components: { MessageList, ElPopover },
+  components: { MessageList },
   props: {
     active: { type: Boolean, default: false },
   },
@@ -106,8 +101,16 @@ export default {
           offset: 0,
         },
       },
-      messageSettingDropdown: false,
+      settingDropdownVisible: false,
     };
+  },
+
+  watch: {
+    active(val) {
+      if (!val) {
+        this.setSettingDropdownVisible(false);
+      }
+    },
   },
 
   mounted() {
@@ -132,6 +135,9 @@ export default {
   },
 
   methods: {
+    setSettingDropdownVisible(visible) {
+      this.settingDropdownVisible = visible;
+    },
     async updateMessage({ msg, unread, index }) {
       // 只更新未读
       if (!unread) return;
@@ -231,7 +237,7 @@ export default {
       }
     },
     setMessage(val) {
-      this.messageSettingDropdown = false;
+      this.settingDropdownVisible = false;
       this[val]();
     },
   },
@@ -332,6 +338,12 @@ export default {
 
   &-setting {
     &__dropdown {
+      position: absolute;
+      z-index: 10;
+      border: 1px solid rqthemify(--border-primary);
+      background-color: rqthemify(--dropdown-background);
+      border-radius: 4px;
+      right: 0;
       box-shadow: 0px 0px 20px 0px rqthemify(--shadow-primary);
     }
     &__icon {
@@ -358,20 +370,6 @@ export default {
       &:focus {
         color: rqthemify(--primary-color);
         background-color: rqthemify(--background-primary);
-      }
-    }
-  }
-  ::v-deep {
-    .message-setting-popper {
-      min-width: 0;
-      padding: 0;
-      border-color: rqthemify(--border-primary);
-      background-color: rqthemify(--dropdown-background);
-      .popper__arrow {
-        border-bottom-color: rqthemify(--border-primary);
-        &:after {
-          border-bottom-color: rqthemify(--dropdown-background);
-        }
       }
     }
   }
