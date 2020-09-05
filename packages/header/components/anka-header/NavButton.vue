@@ -1,56 +1,29 @@
 <template>
-  <el-popover
-    v-if="button.links"
-    v-model="active"
-    class="nav-button__wrapper"
-    placement="bottom-start"
-    trigger="hover"
-    popper-class="nav-menu"
-    :visible-arrow="false"
-  >
-    <div>
-      <dropdown-menu
-        :links="button.links"
-        :support="support"
-        @redirect="redirect"
-      ></dropdown-menu>
-    </div>
-    <button
-      slot="reference"
-      type="text"
-      :class="['nav-button', { active, light }]"
-    >
-      <span>{{ button.label }}</span>
-      <i
-        v-if="button.more"
-        :class="`el-icon-arrow-${active ? 'up' : 'down'} el-icon--right`"
-      />
-    </button>
-  </el-popover>
-
   <button
-    v-else
-    slot="reference"
-    type="text"
-    :class="['nav-button', { light }]"
+    :class="['nav-button', { light, 'has-dropdown': button.links }]"
     @click="redirect(button.link)"
   >
     <span>{{ button.label }}</span>
-    <i
-      v-if="button.more"
-      :class="`el-icon-arrow-${active ? 'up' : 'down'} el-icon--right`"
-    />
+    <template v-if="button.links">
+      <i class="el-icon-arrow-up" />
+      <div class="nav-button__dropdown-wrapper">
+        <dropdown-menu
+          class="nav-button__dropdown"
+          :links="button.links"
+          :support="support"
+          @redirect="redirect"
+        ></dropdown-menu>
+      </div>
+    </template>
   </button>
 </template>
 
 <script>
-import ElPopover from "element-ui/lib/popover";
 import DropdownMenu from "../common/DropdownMenu.vue";
 
 export default {
   name: "NavButton",
   components: {
-    ElPopover,
     DropdownMenu,
   },
   props: {
@@ -68,9 +41,7 @@ export default {
     },
   },
   data() {
-    return {
-      active: false,
-    };
+    return {};
   },
   mounted() {},
   methods: {
@@ -85,7 +56,11 @@ export default {
 @import "../../../common/style/mixins";
 
 .nav-button {
+  &:active {
+    transform: none;
+  }
   position: relative;
+  text-align: left;
   @include text(rqthemify(--text-primary));
   padding: 4px 14px;
   height: 100%;
@@ -103,28 +78,23 @@ export default {
     background: transparent;
     transition: background 0.3s;
   }
-  &__wrapper {
-    position: relative;
-    display: block;
-    height: 100%;
-  }
+
   &:focus {
     color: rqthemify(--text-normal);
   }
-  &.active {
-    box-shadow: 0px 0px 20px 0px rqthemify(--shadow-secondary);
-  }
-  &:hover,
-  &.active {
+
+  &:hover {
     color: rqthemify(--primary-color);
     background: rqthemify(--background-white);
+    box-shadow: 0px 0px 8px 0px rqthemify(--shadow-primary);
     &::after {
       background: rqthemify(--primary-color);
     }
   }
-  &:hover:not(.active) {
-    box-shadow: 0px 0px 8px 0px rqthemify(--shadow-primary);
+  &.has-dropdown:hover {
+    box-shadow: 0px 0px 20px 0px rqthemify(--shadow-secondary);
   }
+
   &.light {
     border-width: 0;
     color: rqthemify(--border-primary);
@@ -133,17 +103,28 @@ export default {
       color: rqthemify(--primary-color);
       background: rqthemify(--background-white);
     }
-    &.active {
-      background: rqthemify(--background-white);
-      color: rqthemify(--primary-color);
-      span {
-        padding-bottom: 12px;
-        // border-bottom: 1px solid rqthemify(--text-primary);
-      }
-      &:hover {
-        color: rqthemify(--primary-color);
-      }
+  }
+
+  .el-icon-arrow-up {
+    margin-left: 4px;
+  }
+
+  &__dropdown {
+    display: none;
+    max-height: 80vh;
+    overflow-y: auto;
+    &-wrapper {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      transform: translateY(100%);
     }
+  }
+  &:hover &__dropdown {
+    display: block;
+  }
+  &:hover .el-icon-arrow-up {
+    transform: rotate(180deg);
   }
 }
 </style>

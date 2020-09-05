@@ -239,20 +239,3 @@ export default {
   }
 }
 </style>
-<style lang="scss">
-.nav-menu.el-popper {
-  padding: 0;
-  border-radius: 0;
-  border-width: 0;
-  box-shadow: none;
-  max-height: 80vh;
-  overflow: auto;
-  &.fade-in-linear-leave-active.fade-in-linear-leave-to {
-    opacity: 0;
-    transition: all 0s;
-  }
-  &.el-popper[x-placement^="bottom"] {
-    margin-top: 0;
-  }
-}
-</style>

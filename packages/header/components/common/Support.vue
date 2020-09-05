@@ -10,33 +10,32 @@
         {{ item.label }}: {{ item.value }}
         <i v-if="!item.disabled" class="el-icon-copy-document"></i>
       </p>
-      <p class="contact">
-        <span v-for="(contact, contactIdx) in cfg.contact" :key="contactIdx">
+      <p class="menu-support-contact">
+        <span
+          v-for="(contact, contactIdx) in cfg.contact"
+          :key="contactIdx"
+          class="menu-support-contact-item"
+        >
           <i
-            v-if="!contact.qrcode"
             :class="'icon-base icon-base-' + contact.icon"
             @click="clickHandle(contact)"
           ></i>
-          <el-popover v-else placement="bottom" width="auto" trigger="hover">
-            <img :src="qrcode" />
-            <i
-              slot="reference"
-              :class="'icon-base icon-base-' + contact.icon"
-            ></i>
-          </el-popover>
+          <img
+            v-if="contact.qrcode"
+            class="menu-support-contact-item__img"
+            :src="qrcode"
+          />
         </span>
       </p>
     </div>
   </div>
 </template>
 <script>
-import ElPopover from "element-ui/lib/popover";
 import Message from "element-ui/lib/message";
 import qrcode from "../../../common/assets/img/qrcode.jpg";
 
 export default {
   name: "Support",
-  components: { ElPopover },
   props: {
     cfg: { type: Object, required: true },
   },
@@ -94,7 +93,7 @@ export default {
       }
     }
   }
-  .contact {
+  &-contact {
     height: 16px;
     line-height: 16px;
     i {
@@ -102,6 +101,24 @@ export default {
       font-size: 16px;
       cursor: pointer;
       @include hover;
+    }
+    &-item {
+      &__img {
+        padding: 12px;
+        box-shadow: 0 2px 12px 0 rqthemify(--shadow-primary);
+        position: absolute;
+        display: none;
+        z-index: 999;
+        left: 20px;
+        bottom: 50px;
+        transform: translateX(-50%);
+        border: 1px solid rqthemify(--border-primary);
+        border-radius: 4px;
+        background-color: rqthemify(--white);
+      }
+      &:hover &__img {
+        display: block;
+      }
     }
   }
 }

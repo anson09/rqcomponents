@@ -170,7 +170,7 @@ const anka = {
             product: "rqams",
           },
         ],
-        more: true,
+        // more: true,
         label: "产品",
         className: "product",
       },
@@ -179,7 +179,7 @@ const anka = {
         label: "定价",
       },
       {
-        more: true,
+        // more: true,
         label: "支持",
         className: "docs",
         links: docLinks,
