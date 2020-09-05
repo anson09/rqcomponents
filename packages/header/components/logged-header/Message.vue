@@ -59,8 +59,6 @@
   </div>
 </template>
 <script>
-import Message from "element-ui/lib/message";
-
 import MessageList from "./message/MessageList.vue";
 import { message as messageApi } from "../../api";
 
@@ -141,45 +139,29 @@ export default {
     async updateMessage({ msg, unread, index }) {
       // 只更新未读
       if (!unread) return;
-      try {
-        await messageApi.updateMessage(msg.id);
-        this.message.unread.data.splice(index, 1);
-        this.unreadMsgNum -= 1;
-        this.message.read.data.unshift(msg);
-      } catch (err) {
-        Message.error(err.message);
-      }
+      await messageApi.updateMessage(msg.id);
+      this.message.unread.data.splice(index, 1);
+      this.unreadMsgNum -= 1;
+      this.message.read.data.unshift(msg);
     },
     async deleteMessage({ unread, msg, index }) {
-      try {
-        await messageApi.deleteMessage(msg.id);
-        const messageProp = unread ? "unread" : "read";
-        this.message[messageProp].data.splice(index, 1);
-        if (unread) {
-          this.unreadMsgNum -= 1;
-        }
-      } catch (err) {
-        Message.error(err.message);
+      await messageApi.deleteMessage(msg.id);
+      const messageProp = unread ? "unread" : "read";
+      this.message[messageProp].data.splice(index, 1);
+      if (unread) {
+        this.unreadMsgNum -= 1;
       }
     },
     async deleteAllMessage() {
       // 删除已读
-      try {
-        await messageApi.deleteAllMessage(false);
-        this.message.read.data = [];
-      } catch (err) {
-        Message.error(err.message);
-      }
+      await messageApi.deleteAllMessage(false);
+      this.message.read.data = [];
     },
     async updateAllMessage() {
-      try {
-        await messageApi.updateAllMessage();
-        this.message.read.data.unshift(...this.message.unread.data);
-        this.unreadMsgNum = 0;
-        this.message.unread.data = [];
-      } catch (err) {
-        Message.error(err.message);
-      }
+      await messageApi.updateAllMessage();
+      this.message.read.data.unshift(...this.message.unread.data);
+      this.unreadMsgNum = 0;
+      this.message.unread.data = [];
     },
     async getMessage(
       { offset, limit = this.limit, unread = false, updateToView = false },

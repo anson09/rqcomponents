@@ -35,7 +35,6 @@
   <div v-else class="create-btn" @click="createWorkspace">{{ label }}</div>
 </template>
 <script>
-import Message from "element-ui/lib/message";
 import { getWorksapces, getWorksapcesProducts } from "../../api";
 import { setStorage, getStorage, getDate } from "../../../common/util";
 
@@ -91,41 +90,37 @@ export default {
     },
 
     async getWorkspaces() {
-      try {
-        const [res, wsProRes] = await Promise.all([
-          getWorksapces(),
-          getWorksapcesProducts(),
-        ]);
-        if (!res?.data) return;
-        const wsProductsDict = wsProRes?.data.reduce(
-          (obj, cur) => ({
-            ...obj,
-            [cur.ws_id]: cur.product,
-          }),
-          {}
-        );
-        this.workspaces = res.data.map((item) => ({
-          ...item,
-          isQuantEnterprise: !!wsProductsDict[item.id].find((pro) => {
-            return (
-              pro.product.name === "QUANT" &&
-              pro.product.version === "Enterprise" &&
-              getDate(pro.start) < new Date() &&
-              getDate(pro.expire) > new Date()
-            );
-          }),
-        }));
-        if (!this.workspaces.length) {
-          delete this.localStorageWorkspaces[this.account.userId];
-          setStorage(this.storageKey, this.localStorageWorkspaces);
-          return;
-        }
-        const localStorageWs = this.localStorageWorkspaces[this.account.userId];
-        const ws = this.workspaces.find((item) => item.id === localStorageWs);
-        this.setWorkspace(ws || this.workspaces[0]);
-      } catch (err) {
-        Message.error(err.message);
+      const [res, wsProRes] = await Promise.all([
+        getWorksapces(),
+        getWorksapcesProducts(),
+      ]);
+      if (!res?.data) return;
+      const wsProductsDict = wsProRes?.data.reduce(
+        (obj, cur) => ({
+          ...obj,
+          [cur.ws_id]: cur.product,
+        }),
+        {}
+      );
+      this.workspaces = res.data.map((item) => ({
+        ...item,
+        isQuantEnterprise: !!wsProductsDict[item.id].find((pro) => {
+          return (
+            pro.product.name === "QUANT" &&
+            pro.product.version === "Enterprise" &&
+            getDate(pro.start) < new Date() &&
+            getDate(pro.expire) > new Date()
+          );
+        }),
+      }));
+      if (!this.workspaces.length) {
+        delete this.localStorageWorkspaces[this.account.userId];
+        setStorage(this.storageKey, this.localStorageWorkspaces);
+        return;
       }
+      const localStorageWs = this.localStorageWorkspaces[this.account.userId];
+      const ws = this.workspaces.find((item) => item.id === localStorageWs);
+      this.setWorkspace(ws || this.workspaces[0]);
     },
 
     setWorkspace(ws) {

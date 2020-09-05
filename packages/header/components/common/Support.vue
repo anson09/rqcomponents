@@ -61,12 +61,9 @@ export default {
       textArea.focus();
       textArea.select();
 
-      try {
-        document.execCommand("copy");
-        Message.success(`已成功复制到剪切板`);
-      } catch (err) {
-        Message.success(`复制失败`);
-      }
+      document.execCommand("copy");
+      // TODO
+      Message.success(`已成功复制到剪切板`);
 
       document.body.removeChild(textArea);
     },
