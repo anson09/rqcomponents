@@ -1,4 +1,3 @@
-import "element-ui/lib/theme-chalk/popover.css";
 import RqFooter from "./Footer.vue";
 
 RqFooter.install = function (Vue) {

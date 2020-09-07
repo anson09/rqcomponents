@@ -65,7 +65,6 @@
 </template>
 
 <script>
-import ElButton from "element-ui/lib/button";
 import { logged } from "../assets/dict/config";
 import logo from "../assets/img/logo-small.png";
 import logoWhite from "../assets/img/logo-white-small.png";
@@ -83,7 +82,6 @@ export default {
     Message,
     WorkspaceSwitch,
     Account,
-    ElButton,
     DropdownMenu,
   },
 
