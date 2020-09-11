@@ -46,7 +46,7 @@ export default {
   methods: {
     clickHandle({ link }) {
       if (link) {
-        this.$emit("redirect", link);
+        this.$emit("redirect", { link });
       }
     },
     copy(cfg) {
