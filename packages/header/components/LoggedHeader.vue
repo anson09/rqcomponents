@@ -160,6 +160,12 @@ export default {
   z-index: 1;
   color: rqthemify(--shadow-primary);
 
+  ::v-deep {
+    .menu__links {
+      min-width: 234px;
+    }
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
   }
