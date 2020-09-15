@@ -360,6 +360,13 @@ const logged = {
       },
       label: "AMS",
     },
+    {
+      link: {
+        href: "/fof/",
+        outer: true,
+      },
+      label: "基金投研",
+    },
   ],
 };
 
