@@ -164,7 +164,7 @@ const anka = {
             ],
           },
           {
-            label: "RQAMS 资产管理系统",
+            label: "RQAMS（资产管理系统）",
             icon: "logo-ams",
             link: "/ams",
             product: "rqams",
@@ -222,7 +222,7 @@ const anka = {
         {
           icon: "logo-rqoptimizer-round",
           mainLabel: "RQOptimizer",
-          secondLabel: "组合优化器",
+          secondLabel: "米筐股票优化器",
           path: "/rqoptimizer",
         },
       ],
@@ -234,7 +234,7 @@ const anka = {
         {
           iconColorful: "logo-ricequant",
           mainLabel: "Ricequant",
-          secondLabel: "米筐量化",
+          secondLabel: "米筐量化协作平台",
           path: "/quant",
         },
       ],
@@ -270,8 +270,8 @@ const anka = {
       products: [
         {
           iconColorful: "logo-sdk",
-          mainLabel: "",
-          secondLabel: "RQSDK米筐量化工具套件",
+          mainLabel: "RQSDK",
+          secondLabel: "米筐量化工具套件",
           path: "/rq-sdk",
         },
       ],
