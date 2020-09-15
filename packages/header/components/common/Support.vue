@@ -33,6 +33,7 @@
 <script>
 import Message from "element-ui/lib/message";
 import qrcode from "../../../common/assets/img/qrcode.jpg";
+import "element-ui/lib/theme-chalk/message.css";
 
 export default {
   name: "Support",
@@ -62,9 +63,7 @@ export default {
       textArea.select();
 
       document.execCommand("copy");
-      // TODO
-      Message.success(`已成功复制到剪切板`);
-
+      Message.success("已成功复制到剪切板");
       document.body.removeChild(textArea);
     },
   },
