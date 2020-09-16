@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.8&sourceBranch=refs/tags/v0.1.9) (2020-09-16)
+
+
+### Features
+
+* add fof ([8bccd51](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/8bccd51fe4d268e4c54d913567f6b72fc0d21a3f))
+* remove el-button ([f4603c5](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/f4603c503401af72870da6fcf91089fcaabdf88c))
+* rm catch error ([3ffb607](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/3ffb607e2a8fcb8fb8eae869825e02419f467d54))
+* rm el-popover in footer ([3e94dfc](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/3e94dfc45bf2793af1f2e8110a38da7d59ea3afe))
+* rm el-popover in message ([7d827a6](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7d827a6e9ab88294f6c8421f29b3a4e1887dd949))
+* rm el-popover in miniMenu ([7221a4e](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7221a4eb8a580ff4809d7443ee992b71ccc6c884))
+* rm el-popover in navButton ([aa0b48a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/aa0b48ab5efecf76c218c660af047a4f8823d9a6))
+* rm element css ([7f3cc38](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7f3cc380d4a7d80224fdab762fa48d27db13770c))
+* update secondHeader config ([a76c5fa](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a76c5fac8288eafd24dbf4f689f7cfcdfb32a58e))
+
+
+### Bug Fixes
+
+* add el message css ([a3ed4d8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a3ed4d897d144fa56d3a5c1656fbc6a55c988596))
+* logged header dropdown menu min-width ([1439408](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1439408e16affcf8773186e7a205a9a7adbdc7a3))
+* support clickHanle ([77596e8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/77596e863fe4f11c37736ea1891f5a1324d1f396))
+
+
+### Chores
+
+* rm useless ([28b410d](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/28b410d6b7a7be10022b40545d025ede770981d9))
+* update icon-svg ([f0a2bf8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/f0a2bf8321d21cb56e967bac0129fb0abb6cdd9a))
+
 ### [0.1.8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.7&sourceBranch=refs/tags/v0.1.8) (2020-09-02)
 
 
