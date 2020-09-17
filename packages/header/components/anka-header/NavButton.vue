@@ -1,5 +1,5 @@
 <template>
-  <button
+  <span
     :class="['nav-button', { light, 'has-dropdown': button.links }]"
     @click="redirect(button.link)"
   >
@@ -15,7 +15,7 @@
         ></dropdown-menu>
       </div>
     </template>
-  </button>
+  </span>
 </template>
 
 <script>
@@ -59,6 +59,8 @@ export default {
   &:active {
     transform: none;
   }
+  display: flex;
+  align-items: center;
   position: relative;
   text-align: left;
   @include text(rqthemify(--text-primary));
