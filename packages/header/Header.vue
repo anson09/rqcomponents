@@ -1,14 +1,10 @@
 <template>
   <div class="header-wrapper">
     <p v-if="showWarning" class="header-warning">
-      <span class="header-warning-text-wrapper">
-        <span class="header-warning-text">
-          <slot v-if="$slots.notification" name="notification"></slot>
-          <template v-else>
-            {{ notification }}
-          </template>
-        </span>
-      </span>
+      <slot v-if="$slots.notification" name="notification"></slot>
+      <template v-else>
+        {{ notification }}
+      </template>
       <i class="el-icon-circle-close" @click="handleCloseWarning"></i>
     </p>
     <header>
@@ -177,14 +173,12 @@ export default {
   }
   &-warning {
     position: relative;
-    width: 100%;
-    margin: 0;
+    box-sizing: border-box;
+    padding-right: 24px;
     color: rqthemify(--warning-color);
     background: rqthemify(--warning-background);
     font-size: 16px;
-    height: 24px;
     line-height: 24px;
-    align-items: center;
     ::-webkit-scrollbar {
       height: 4px;
     }
@@ -196,25 +190,14 @@ export default {
     .el-icon-circle-close {
       cursor: pointer;
       padding: 4px;
-      background: rqthemify(--warning-background-secondary);
-    }
-
-    &-text {
-      display: inline-block;
-      width: max-content;
+      position: absolute;
+      right: 0;
+      display: flex;
+      align-items: center;
       height: 100%;
-      position: relative;
-      &-wrapper {
-        width: 100px;
-        height: 100%;
-        flex: 1;
-        overflow-y: hidden;
-        overflow-x: hidden;
-        word-break: break-all;
-        &:hover {
-          overflow-x: auto;
-        }
-      }
+      top: 0;
+      box-sizing: border-box;
+      background: rqthemify(--warning-background-secondary);
     }
   }
 }
