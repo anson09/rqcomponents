@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.9&sourceBranch=refs/tags/v0.1.10) (2020-09-21)
+
+
+### Features
+
+* add bond ([1bbb09c](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1bbb09c1374d95ab7cc7db9f382d4c276db294ac))
+
+
+### Bug Fixes
+
+* button inner click event not fire in ie ([0759286](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/075928673ed658855a36982af8ad8f93fa0ef06f))
+* notification style ([ddcc985](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/ddcc9851927b31570c0561f5d74684089223af55))
+
+
+### Chores
+
+* rm useless img ([ad9a312](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/ad9a312a775dc27ddf41735a4b211b1fee6db7df))
+
 ### [0.1.9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.8&sourceBranch=refs/tags/v0.1.9) (2020-09-16)
 
 
