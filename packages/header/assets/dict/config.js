@@ -363,6 +363,13 @@ const logged = {
       },
       label: "基金投研",
     },
+    {
+      link: {
+        href: "/bond/",
+        outer: true,
+      },
+      label: "债券投研",
+    },
   ],
 };
 
