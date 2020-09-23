@@ -6,13 +6,23 @@
     <span>{{ button.label }}</span>
     <template v-if="button.links">
       <i class="el-icon-arrow-up" />
+
       <div class="nav-button__dropdown-wrapper">
-        <dropdown-menu
+        <component
+          :is="button.component"
+          v-if="button.component"
+          class="nav-button__dropdown"
+          :config="button.links"
+          :support="support"
+          @redirect="redirect"
+        />
+        <!-- <dropdown-menu
+          v-else
           class="nav-button__dropdown"
           :links="button.links"
           :support="support"
           @redirect="redirect"
-        ></dropdown-menu>
+        ></dropdown-menu> -->
       </div>
     </template>
   </span>
@@ -20,11 +30,13 @@
 
 <script>
 import DropdownMenu from "../common/DropdownMenu.vue";
+import DocDropdownMenu from "../common/DocDropdownMenu.vue";
 
 export default {
   name: "NavButton",
   components: {
     DropdownMenu,
+    DocDropdownMenu,
   },
   props: {
     light: {
@@ -112,9 +124,10 @@ export default {
   }
 
   &__dropdown {
-    display: none;
-    max-height: 80vh;
-    overflow-y: auto;
+    // display: none;
+    // 由于doc改造，不会有太长的
+    // max-height: 80vh;
+    // overflow-y: auto;
     &-wrapper {
       position: absolute;
       left: 0;

@@ -80,7 +80,6 @@ import { getStorage } from "../../common/util";
 import entryOpacityImg from "../assets/img/entry-opacity.png";
 import entryImg from "../assets/img/entry.png";
 import entryActiveImg from "../assets/img/entry-active.png";
-import { flattenNode } from "../util";
 
 export default {
   name: "AnkaHeader",
@@ -193,10 +192,12 @@ export default {
         config = anka.header.others;
       }
 
-      return config.map((item) => ({
-        ...item,
-        links: item.links && flattenNode(item.links),
-      }));
+      return config;
+
+      // return config.map((item) => ({
+      //   ...item,
+      //   links: item.links && flattenNode(item.links),
+      // }));
     },
     headerClassName() {
       if (this.opacity) {

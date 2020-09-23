@@ -2,18 +2,17 @@ import { info, contact } from "../../../common/assets/dict/config";
 
 const docLinks = [
   {
-    label: "RQSDK文档",
-    border: true,
+    label: "RQSDK使用文档",
     links: [
       {
-        label: "快速上手",
+        label: "Ricequant SDK快速上手",
         link: {
           href: "/doc/rqsdk/",
           newBlock: true,
         },
       },
       {
-        label: "RQData-金融数据API",
+        label: "RQData - 金融数据 API",
         links: [
           {
             label: "Python API文档",
@@ -32,7 +31,7 @@ const docLinks = [
         ],
       },
       {
-        label: "RQAlpha Plus-回测框架",
+        label: "RQAlpha Plus - 回测框架",
         links: [
           {
             label: "使用教程",
@@ -51,7 +50,7 @@ const docLinks = [
         ],
       },
       {
-        label: "RQFactor-因子投研工具",
+        label: "RQFactor - 因子投研工具",
         links: [
           {
             label: "使用教程",
@@ -70,7 +69,7 @@ const docLinks = [
         ],
       },
       {
-        label: "RQOptimizer-股票组合优化器",
+        label: "RQOptimizer - 股票组合优化器",
         links: [
           {
             label: "使用教程",
@@ -99,6 +98,16 @@ const docLinks = [
   },
   {
     label: "量化平台文档",
+    link: { href: "/doc/quant/", newBlock: true },
+  },
+  {
+    label: "RQFUND米筐公募基金文档",
+    // TODO
+    link: { href: "/doc/quant/", newBlock: true },
+  },
+  {
+    label: "RQBOND米筐债券文档",
+    // TODO
     link: { href: "/doc/quant/", newBlock: true },
   },
 ];
@@ -181,6 +190,7 @@ const anka = {
         label: "支持",
         className: "docs",
         links: docLinks,
+        component: "docDropdownMenu",
       },
       {
         link: "/edu",

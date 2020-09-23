@@ -114,10 +114,14 @@ const dark = {
   "--shadow-primary": "hsl(0, 0%, 8%)",
 };
 
+const product = {
+  "--primary-color": "hsl(216, 79%, 53%)",
+};
+
 const themifyOptions = {
   palette: {
     light: {
-      "--text-hover": light["--primary-color"],
+      "--text-hover": product["--primary-color"],
       "--white": "hsl(0, 0%, 100%)",
       "--warning-background": "hsl(49, 100%, 50%)",
       "--warning-background-secondary": light["--rqfactor-product-color"],
@@ -135,7 +139,7 @@ const themifyOptions = {
     },
     dark: {
       "--white": "hsl(0, 0%, 100%)",
-      "--text-hover": light["--text-white"],
+      "--text-hover": dark["--primary-color"],
       "--remove-hover-color": "hsl(0, 82%, 61%)",
       "--remove-active-color": "hsl(0, 59%, 47%)",
       "--succeed-color": "hsla(146, 48%, 49%, 1)",
