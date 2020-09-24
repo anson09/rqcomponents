@@ -84,7 +84,7 @@ export default {
 @mixin hover {
   cursor: pointer;
   &:hover {
-    color: rqthemify(--primary-color);
+    color: rqthemify(--light-primary-color);
   }
 }
 .footer {
@@ -140,7 +140,7 @@ export default {
           color: rqthemify(--text-primary);
         }
         &:active {
-          color: rqthemify(--primary-color);
+          color: rqthemify(--light-primary-color);
         }
       }
       display: flex;

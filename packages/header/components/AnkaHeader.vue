@@ -361,8 +361,8 @@ export default {
             }
             &:active,
             &:focus {
-              color: rqthemify(--primary-color);
-              border-color: rqthemify(--primary-color);
+              color: rqthemify(--light-primary-color);
+              border-color: rqthemify(--light-primary-color);
             }
           }
           // 预约路演 进入平台
@@ -387,12 +387,12 @@ export default {
             &:hover,
             &:focus,
             &:active {
-              color: rqthemify(--primary-color);
-              border-color: rqthemify(--primary-color);
+              color: rqthemify(--light-primary-color);
+              border-color: rqthemify(--light-primary-color);
             }
             &:focus,
             &:active {
-              background: rqthemify(--primary-color-1);
+              background: rqthemify(--light-primary-color-1);
             }
           }
         }

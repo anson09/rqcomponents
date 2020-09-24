@@ -142,8 +142,8 @@ export default {
       background-color: rqthemify(--background-secondary);
     }
     &:active {
-      color: rqthemify(--primary-color);
-      background: rqthemify(--primary-color-1);
+      color: rqthemify(--light-primary-color);
+      background: rqthemify(--light-primary-color-1);
     }
   }
 }

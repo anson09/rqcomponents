@@ -96,11 +96,11 @@ export default {
   }
 
   &:hover {
-    color: rqthemify(--primary-color);
+    color: rqthemify(--light-primary-color);
     background: rqthemify(--background-white);
     box-shadow: 0px 0px 8px 0px rqthemify(--shadow-primary);
     &::after {
-      background: rqthemify(--primary-color);
+      background: rqthemify(--light-primary-color);
     }
   }
   &.has-dropdown:hover {
@@ -112,7 +112,7 @@ export default {
     color: rqthemify(--border-primary);
     &:hover,
     &:active {
-      color: rqthemify(--primary-color);
+      color: rqthemify(--light-primary-color);
       background: rqthemify(--background-white);
     }
   }
