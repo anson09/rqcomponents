@@ -1,16 +1,16 @@
 /* eslint-disable global-require */
 
-const light = {
-  "--primary-color": "hsl(216, 76%, 44%)", //品牌色
-  "--primary-color-1": "hsla(216, 76%, 44%, 0.1)",
-  "--primary-color-2": "hsla(216, 76%, 44%, 0.2)",
-  "--primary-color-3": "hsla(216, 76%, 44%, 0.3)",
-  "--primary-color-4": "hsla(216, 76%, 44%, 0.4)",
-  "--primary-color-5": "hsla(216, 76%, 44%, 0.5)",
-  "--primary-color-6": "hsla(216, 76%, 44%, 0.6)",
-  "--primary-color-7": "hsla(216, 76%, 44%, 0.7)",
-  "--primary-color-8": "hsla(216, 76%, 44%, 0.8)",
-  "--primary-color-9": "hsla(216, 76%, 44%, 0.9)",
+const product = {
+  "--primary-color": "hsl(216, 79%, 53%)", //品牌色
+  "--primary-color-1": "hsla(216, 79%, 53%, 0.1)",
+  "--primary-color-2": "hsla(216, 79%, 53%, 0.2)",
+  "--primary-color-3": "hsla(216, 79%, 53%, 0.3)",
+  "--primary-color-4": "hsla(216, 79%, 53%, 0.4)",
+  "--primary-color-5": "hsla(216, 79%, 53%, 0.5)",
+  "--primary-color-6": "hsla(216, 79%, 53%, 0.6)",
+  "--primary-color-7": "hsla(216, 79%, 53%, 0.7)",
+  "--primary-color-8": "hsla(216, 79%, 53%, 0.8)",
+  "--primary-color-9": "hsla(216, 79%, 53%, 0.9)",
 
   //product-color//
   "--rqdata-product-color": "hsl(247, 58%, 42%)", //rqdata主题色
@@ -52,7 +52,7 @@ const light = {
   "--text-remind": "hsl(0, 0%, 3%)",
   "--text-primary": "hsl(0, 0%, 20%)", //浅色底字体色值
   "--text-important": "hsl(0, 0%, 29%)",
-  "--text-normal": "hsl(0, 0%, 40%)", //常规字体色值
+  "--text-normal": "hsla(220, 3%, 39%, 1)", //常规字体色值
   "--text-secondary": "hsl(0, 0%, 64%)", //不重要字体色值
   "--text-white": "hsl(0, 0%, 100%)", //深色底字体色值
   "--text-white-1": "hsla(0, 0%, 100%, 0.1)",
@@ -79,6 +79,19 @@ const light = {
   //shdow-color//
   "--shadow-primary": "hsla(0, 0%, 20%, 0.1)",
   "--shadow-secondary": "hsla(0, 0%, 20%, 0.05)",
+};
+
+const light = {
+  "--light-primary-color": "hsl(216, 76%, 44%)", //品牌色
+  "--light-primary-color-1": "hsla(216, 76%, 44%, 0.1)",
+  "--light-primary-color-2": "hsla(216, 76%, 44%, 0.2)",
+  "--light-primary-color-3": "hsla(216, 76%, 44%, 0.3)",
+  "--light-primary-color-4": "hsla(216, 76%, 44%, 0.4)",
+  "--light-primary-color-5": "hsla(216, 76%, 44%, 0.5)",
+  "--light-primary-color-6": "hsla(216, 76%, 44%, 0.6)",
+  "--light-primary-color-7": "hsla(216, 76%, 44%, 0.7)",
+  "--light-primary-color-8": "hsla(216, 76%, 44%, 0.8)",
+  "--light-primary-color-9": "hsla(216, 76%, 44%, 0.9)",
 };
 
 const dark = {
@@ -114,29 +127,26 @@ const dark = {
   "--shadow-primary": "hsl(0, 0%, 8%)",
 };
 
-const product = {
-  "--primary-color": "hsl(216, 79%, 53%)",
-};
-
 const themifyOptions = {
   palette: {
-    light: {
+    product: {
       "--text-hover": product["--primary-color"],
       "--white": "hsl(0, 0%, 100%)",
       "--warning-background": "hsl(49, 100%, 50%)",
-      "--warning-background-secondary": light["--rqfactor-product-color"],
-      "--warning-color": light["--text-primary"],
+      "--warning-background-secondary": product["--rqfactor-product-color"],
+      "--warning-color": product["--text-primary"],
       "--succeed-color": "hsla(146, 48%, 49%, 1)",
       "--remove-hover-color": "hsl(0, 82%, 61%)",
       "--remove-active-color": "hsl(0, 59%, 47%)",
-      "--dropdown-background": light["--background-white"],
-      "--dropdown-active-background": light["--primary-color-2"],
-      "--dropdown-hover-background": light["--primary-color-1"],
+      "--dropdown-background": product["--background-white"],
+      // "--dropdown-active-background": product["--primary-color-2"],
+      "--dropdown-hover-background": product["--primary-color-1"],
       // "--background-view": light["--background-secondary"],
-
-      "--background-white-hover": light["--background-primary"],
+      "--background-white-hover": product["--background-primary"],
+      ...product,
       ...light,
     },
+
     dark: {
       "--white": "hsl(0, 0%, 100%)",
       "--text-hover": dark["--primary-color"],
@@ -144,15 +154,15 @@ const themifyOptions = {
       "--remove-active-color": "hsl(0, 59%, 47%)",
       "--succeed-color": "hsla(146, 48%, 49%, 1)",
       "--dropdown-background": dark["--text-white"],
-      "--dropdown-active-background": dark["--primary-color-4"],
-      "--dropdown-hover-background": light["--primary-color-2"],
-      "--warning-background": light["--primary-color"],
+      // "--dropdown-active-background": dark["--primary-color-4"],
+      "--dropdown-hover-background": product["--primary-color-2"],
+      "--warning-background": product["--primary-color"],
       "--warning-background-secondary": "hsl(222, 60%, 37%)",
-      "--warning-color": light["--text-white-8"],
+      "--warning-color": product["--text-white-8"],
 
       // "--background-view": dark["--background-secondary"],
 
-      "--background-white-hover": light["--primary-color-2"],
+      "--background-white-hover": product["--primary-color-2"],
       ...dark,
     },
   },
