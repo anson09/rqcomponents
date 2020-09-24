@@ -16,27 +16,20 @@
           :support="support"
           @redirect="redirect"
         />
-        <!-- <dropdown-menu
-          v-else
-          class="nav-button__dropdown"
-          :links="button.links"
-          :support="support"
-          @redirect="redirect"
-        ></dropdown-menu> -->
       </div>
     </template>
   </span>
 </template>
 
 <script>
-import DropdownMenu from "../common/DropdownMenu.vue";
 import DocDropdownMenu from "../common/DocDropdownMenu.vue";
+import ProductDropdownMenu from "../common/ProductDropdownMenu.vue";
 
 export default {
   name: "NavButton",
   components: {
-    DropdownMenu,
     DocDropdownMenu,
+    ProductDropdownMenu,
   },
   props: {
     light: {
@@ -75,6 +68,7 @@ export default {
   align-items: center;
   position: relative;
   text-align: left;
+  cursor: pointer;
   @include text(rqthemify(--text-primary));
   padding: 4px 14px;
   height: 100%;
@@ -124,10 +118,14 @@ export default {
   }
 
   &__dropdown {
-    // display: none;
+    display: none;
     // 由于doc改造，不会有太长的
     // max-height: 80vh;
     // overflow-y: auto;
+    border-top-left-radius: 0;
+    // 为了保持衔接
+    box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
+
     &-wrapper {
       position: absolute;
       left: 0;

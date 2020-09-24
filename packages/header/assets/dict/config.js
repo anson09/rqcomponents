@@ -181,6 +181,7 @@ const anka = {
         ],
         label: "产品",
         className: "product",
+        component: "productDropdownMenu",
       },
       {
         link: "/pricing",
