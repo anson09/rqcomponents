@@ -6,42 +6,33 @@
         <span></span>
         <span></span>
       </button>
-      <div class="mini-menu-popover">
-        <div class="mini-menu-list">
+      <div class="mini-menu-dropdown">
+        <div class="mini-menu-item-wrapper">
           <div
             v-for="(item, index) in list"
             :key="index"
-            :class="['mini-menu-list-item', item.className]"
+            class="mini-menu-item"
           >
-            <p :class="['mini-menu-list-item__label', item.className]">
-              {{ item.label }}
-            </p>
-            <p
-              v-for="(link, linkIdx) in item.links"
-              :key="linkIdx"
-              :class="[
-                'mini-menu-list-item__link',
-                item.className,
-                link.product,
-                `level-${link.level}`,
-                { 'is-leaf': link.isLeaf },
-              ]"
-              @click="redirect(link.link)"
+            <component
+              :is="item.componentMini"
+              v-if="item.componentMini"
+              :config="item"
+              @redirect="redirect"
             >
-              {{ link.label }}
-            </p>
-            <template v-if="index === 0">
+            </component>
+            <div v-if="index === 0" class="mini-menu-item-more">
               <p
                 v-for="link in links"
                 :key="link.label"
-                class="mini-menu-list-item__link level-0"
+                class="mini-menu-item-more__label"
                 @click="redirect(link.link)"
               >
                 {{ link.label }}
               </p>
-            </template>
+            </div>
           </div>
         </div>
+
         <Support :cfg="support" @redirect="redirect"></Support>
       </div>
     </div>
@@ -50,11 +41,15 @@
 
 <script>
 import Support from "../common/Support.vue";
+import DocDropdownMiniMenu from "../common/DocDropdownMiniMenu.vue";
+import ProductDropdownMiniMenu from "../common/ProductDropdownMiniMenu.vue";
 
 export default {
   name: "MiniMenu",
   components: {
     Support,
+    DocDropdownMiniMenu,
+    ProductDropdownMiniMenu,
   },
   props: {
     cfg: {
@@ -85,6 +80,7 @@ export default {
       return this.cfg.filter((item) => !item.links);
     },
   },
+  watch: {},
 
   mounted() {},
   methods: {
@@ -120,8 +116,42 @@ export default {
       }
     }
   }
+  &-item {
+    &-wrapper {
+      display: flex;
+      width: 100%;
+      border-bottom: 1px solid rqthemify(--border-primary);
+    }
+    flex: 1;
+    padding-top: 26px;
+    border-right: 1px solid rqthemify(--border-primary);
+    &:last-child {
+      border-right: none;
+    }
+    &-more {
+      margin-bottom: 16px;
 
-  &-popover {
+      &__label {
+        font-size: 14px;
+        line-height: 32px;
+        margin: 0;
+        margin-bottom: 8px;
+        color: rqthemify(--text-important);
+        padding-left: 26px;
+        cursor: pointer;
+        &:hover {
+          color: rqthemify(--text-remind);
+          background-color: rqthemify(--background-secondary);
+        }
+        &:active {
+          color: rqthemify(--primary-color);
+          background: rqthemify(--primary-color-1);
+        }
+      }
+    }
+  }
+
+  &-dropdown {
     background-color: rqthemify(--white);
     min-width: 500px;
     border: 1px solid rqthemify(--border-primary);
@@ -143,6 +173,7 @@ export default {
     position: relative;
     display: flex;
     align-items: center;
+    height: 100%;
     &:before {
       content: "";
       margin-right: 10px;
@@ -172,105 +203,8 @@ export default {
             background: rqthemify(--primary-color);
           }
         }
-        &-popover {
+        &-dropdown {
           display: flex;
-        }
-      }
-    }
-  }
-
-  &-list {
-    display: flex;
-    width: 100%;
-    &-item {
-      padding: 26px 0;
-      &:not(:first-child) {
-        border-left: 1px solid rqthemify(--border-primary);
-      }
-      &:last-child {
-        flex: 1;
-      }
-      &__label {
-        margin: 0;
-        padding-left: 26px;
-        @include text(rqthemify(--text-normal), 12);
-        &.docs {
-          margin-bottom: 22px;
-        }
-      }
-      &__link {
-        @include text;
-        padding: 4px 30px 4px 26px;
-        margin: 2px 0 0;
-        cursor: pointer;
-
-        &:active {
-          background-color: rqthemify(--background-secondary);
-        }
-        &.level-0 {
-          color: rqthemify(--text-important);
-          margin-top: 8px;
-        }
-        &:hover {
-          color: rqthemify(--text-remind);
-          background-color: rqthemify(--background-primary);
-        }
-
-        &.docs {
-          position: relative;
-          color: rqthemify(--text-important);
-
-          &.is-leaf {
-            padding-left: 36px;
-            font-size: 12px;
-            margin: 0 0 -2px;
-            color: rqthemify(--text-secondary);
-            font-weight: 400;
-            &:before {
-              position: absolute;
-              content: "";
-              width: 4px;
-              height: 4px;
-              border-radius: 50%;
-              left: 26px;
-              background-color: rqthemify(--text-secondary);
-              @include t-center-vertical;
-            }
-          }
-          &:hover {
-            color: rqthemify(--text-remind);
-          }
-          &.is-leaf:hover:before {
-            background-color: rqthemify(--text-remind);
-          }
-
-          &:not(.is-leaf) {
-            margin-top: 12px;
-
-            &:before {
-              position: absolute;
-              left: 26px;
-              right: 26px;
-              height: 1px;
-              top: -6px;
-              content: "";
-              background-color: rqthemify(--background-secondary);
-            }
-          }
-        }
-        &.product {
-          $products: quant, rqsdk, rqalphaplus, rqams, rqdata, rqfactor,
-            rqoptimizer;
-          @each $product in $products {
-            &.#{$product} {
-              &:hover {
-                color: rqthemify(--#{$product}-product-color);
-              }
-              &:active {
-                background: rqthemify(--#{$product}-product-color-1);
-              }
-            }
-          }
         }
       }
     }

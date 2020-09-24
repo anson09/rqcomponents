@@ -193,11 +193,6 @@ export default {
       }
 
       return config;
-
-      // return config.map((item) => ({
-      //   ...item,
-      //   links: item.links && flattenNode(item.links),
-      // }));
     },
     headerClassName() {
       if (this.opacity) {

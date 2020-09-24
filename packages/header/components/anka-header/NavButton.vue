@@ -15,7 +15,9 @@
           :config="button.links"
           :support="support"
           @redirect="redirect"
-        />
+        >
+          <Support :cfg="support" @redirect="redirect" />
+        </component>
       </div>
     </template>
   </span>
@@ -24,12 +26,14 @@
 <script>
 import DocDropdownMenu from "../common/DocDropdownMenu.vue";
 import ProductDropdownMenu from "../common/ProductDropdownMenu.vue";
+import Support from "../common/Support.vue";
 
 export default {
   name: "NavButton",
   components: {
     DocDropdownMenu,
     ProductDropdownMenu,
+    Support,
   },
   props: {
     light: {

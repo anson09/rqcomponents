@@ -26,18 +26,14 @@
         </div>
       </div>
     </div>
-    <Suppoort :cfg="support" />
+    <slot />
   </div>
 </template>
 <script>
-import Suppoort from "./Support.vue";
-
 export default {
   name: "ProductDropdownMenu",
-  components: { Suppoort },
   props: {
     config: { type: Array, required: true },
-    support: { type: Object, required: true },
   },
   data() {
     return {};

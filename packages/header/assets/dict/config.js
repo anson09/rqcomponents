@@ -182,6 +182,7 @@ const anka = {
         label: "产品",
         className: "product",
         component: "productDropdownMenu",
+        componentMini: "productDropdownMiniMenu",
       },
       {
         link: "/pricing",
@@ -192,6 +193,7 @@ const anka = {
         className: "docs",
         links: docLinks,
         component: "docDropdownMenu",
+        componentMini: "docDropdownMiniMenu",
       },
       {
         link: "/edu",
