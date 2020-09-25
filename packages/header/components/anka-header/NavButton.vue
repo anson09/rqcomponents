@@ -1,7 +1,7 @@
 <template>
   <span
     :class="['nav-button', { light, 'has-dropdown': button.links }]"
-    @click="redirect(button.link)"
+    @click="handleLink(button.link)"
   >
     <span>{{ button.label }}</span>
     <template v-if="button.links">
@@ -14,9 +14,8 @@
           class="nav-button__dropdown"
           :config="button.links"
           :support="support"
-          @redirect="redirect"
         >
-          <Support :cfg="support" @redirect="redirect" />
+          <Support :cfg="support" />
         </component>
       </div>
     </template>
@@ -27,6 +26,7 @@
 import DocDropdownMenu from "../common/DocDropdownMenu.vue";
 import ProductDropdownMenu from "../common/ProductDropdownMenu.vue";
 import Support from "../common/Support.vue";
+import mixin from "../../../common/util/mixin";
 
 export default {
   name: "NavButton",
@@ -35,6 +35,7 @@ export default {
     ProductDropdownMenu,
     Support,
   },
+  mixins: [mixin],
   props: {
     light: {
       type: Boolean,
@@ -53,11 +54,6 @@ export default {
     return {};
   },
   mounted() {},
-  methods: {
-    redirect(link) {
-      this.$emit("redirect", link);
-    },
-  },
 };
 </script>
 

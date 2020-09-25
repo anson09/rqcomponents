@@ -17,7 +17,6 @@
               :is="item.componentMini"
               v-if="item.componentMini"
               :config="item"
-              @redirect="redirect"
             >
             </component>
             <div v-if="index === 0" class="mini-menu-item-more">
@@ -25,7 +24,7 @@
                 v-for="link in links"
                 :key="link.label"
                 class="mini-menu-item-more__label"
-                @click="redirect(link.link)"
+                @click="handleLink(link.link)"
               >
                 {{ link.label }}
               </p>
@@ -33,7 +32,7 @@
           </div>
         </div>
 
-        <Support :cfg="support" @redirect="redirect"></Support>
+        <Support :cfg="support"></Support>
       </div>
     </div>
   </div>
@@ -83,12 +82,7 @@ export default {
   watch: {},
 
   mounted() {},
-  methods: {
-    redirect(link) {
-      this.$emit("redirect", link);
-      this.active = false;
-    },
-  },
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>

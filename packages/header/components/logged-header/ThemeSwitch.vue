@@ -38,9 +38,11 @@ import {
   isProductPath,
 } from "../../util";
 import { getStorage, setStorage } from "../../../common/util";
+import mixin from "../../../common/util/mixin";
 
 export default {
   name: "ThemeSwitch",
+  mixins: [mixin],
   inheritAttrs: false,
   data() {
     return {
@@ -69,7 +71,7 @@ export default {
   },
   mounted() {
     if (isSupported()) {
-      const url = this.$parent.getPath();
+      const url = this.getPath();
       if (isProductPath(url)) {
         this.show = true;
         const theme = getStorage("theme", "string");

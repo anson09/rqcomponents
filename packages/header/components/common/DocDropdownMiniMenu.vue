@@ -2,7 +2,7 @@
   <div class="doc-mini-menu">
     <p class="doc-mini-menu__title">{{ label }}</p>
     <div v-for="(item, index) in links" :key="index" class="doc-mini-menu-item">
-      <p class="doc-mini-menu-item__label" @click="redirect(item, index)">
+      <p class="doc-mini-menu-item__label" @click="handleClick(item, index)">
         {{ item.label }}
         <i
           v-if="item.links"
@@ -27,7 +27,7 @@
               'doc-mini-menu-subitem__label',
               { 'is-link': subitem.link },
             ]"
-            @click="redirect(subitem)"
+            @click="handleClick(subitem)"
           >
             {{ subitem.label }}
           </p>
@@ -36,7 +36,7 @@
               v-for="(leastitem, leastindex) in subitem.links"
               :key="leastindex"
               class="doc-mini-menu-leastitem__label is-link"
-              @click="redirect(leastitem)"
+              @click="handleClick(leastitem)"
             >
               {{ leastitem.label }}
             </p>
@@ -47,8 +47,11 @@
   </div>
 </template>
 <script>
+import mixin from "../../../common/util/mixin";
+
 export default {
   name: "DocDropdownMiniMenu",
+  mixins: [mixin],
   props: {
     config: { type: Object, required: true },
   },
@@ -58,9 +61,9 @@ export default {
     };
   },
   methods: {
-    redirect(item, index) {
+    handleClick(item, index) {
       if (item.link) {
-        this.$emit("redirect", item.link);
+        this.handleLink(item.link);
       } else if (item.links) {
         this.$set(this.links, index, {
           ...item,

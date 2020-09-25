@@ -18,7 +18,7 @@
         >
           <i
             :class="'icon-base icon-base-' + contact.icon"
-            @click="clickHandle(contact)"
+            @click="handleLink(contact.link)"
           ></i>
           <img
             v-if="contact.qrcode"
@@ -34,9 +34,11 @@
 import Message from "element-ui/lib/message";
 import qrcode from "../../../common/assets/img/qrcode.jpg";
 import "element-ui/lib/theme-chalk/message.css";
+import mixin from "../../../common/util/mixin";
 
 export default {
   name: "Support",
+  mixins: [mixin],
   props: {
     cfg: { type: Object, required: true },
   },
@@ -44,11 +46,6 @@ export default {
     return { qrcode };
   },
   methods: {
-    clickHandle({ link }) {
-      if (link) {
-        this.$emit("redirect", { link });
-      }
-    },
     copy(cfg) {
       if (cfg.disabled) return;
       const textArea = document.createElement("textarea");

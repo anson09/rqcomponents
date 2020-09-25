@@ -1,7 +1,7 @@
 <template>
   <div class="doc-menu">
     <div v-for="(item, index) in config" :key="index" class="doc-menu-item">
-      <p class="doc-menu-item__label" @click="redirect(item)">
+      <p class="doc-menu-item__label" @click="handleLink(item.link)">
         {{ item.label }} <i v-if="item.links" class="el-icon-arrow-right"></i>
       </p>
 
@@ -13,7 +13,7 @@
         >
           <p
             :class="['doc-menu-subitem__label', { 'not-link': !subitem.link }]"
-            @click="redirect(subitem)"
+            @click="handleLink(subitem.link)"
           >
             {{ subitem.label }}
           </p>
@@ -22,7 +22,7 @@
               v-for="(leastItem, leastIndex) in subitem.links"
               :key="leastIndex"
               class="doc-menu-least-item__label"
-              @click="redirect(leastItem)"
+              @click="handleLink(leastItem.link)"
             >
               {{ leastItem.label }}
             </p>
@@ -34,18 +34,16 @@
   </div>
 </template>
 <script>
+import mixin from "../../../common/util/mixin";
+
 export default {
   name: "DocDropdownMenu",
+  mixins: [mixin],
   props: {
     config: { type: Array, required: true },
   },
   data() {
     return {};
-  },
-  methods: {
-    redirect({ link }) {
-      this.$emit("redirect", link);
-    },
   },
 };
 </script>

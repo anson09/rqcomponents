@@ -43,9 +43,11 @@
 <script>
 import { getWorksapces, getWorksapcesProducts } from "../../api";
 import { setStorage, getStorage, getDate } from "../../../common/util";
+import mixin from "../../../common/util/mixin";
 
 export default {
   name: "WorkspaceSwitch",
+  mixins: [mixin],
   props: {
     settingHref: { type: String, required: true },
     label: { type: String, required: true },
@@ -91,9 +93,6 @@ export default {
         });
       }
     },
-    handleLink(cfg) {
-      this.$emit("handleLink", cfg);
-    },
 
     async getWorkspaces() {
       const [res, wsProRes] = await Promise.all([
@@ -137,7 +136,7 @@ export default {
     },
 
     createWorkspace() {
-      if (this.$parent.getPath().includes(this.creatLink.href)) {
+      if (this.getPath().includes(this.creatLink.href)) {
         this.$emit("createWorkspace");
       } else {
         this.handleLink({

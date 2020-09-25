@@ -32,7 +32,7 @@
 import LoggedHeader from "./components/LoggedHeader.vue";
 import AnkaHeader from "./components/AnkaHeader.vue";
 import { getAccount, logout } from "./api";
-import mixin from "../common/util/mixin";
+import { rootMixin } from "../common/util/mixin";
 import { getStorage, setStorage, removeStorage } from "../common/util";
 
 export default {
@@ -41,7 +41,8 @@ export default {
     LoggedHeader,
     AnkaHeader,
   },
-  mixins: [mixin],
+  mixins: [rootMixin],
+
   props: {
     notification: {
       default: "",

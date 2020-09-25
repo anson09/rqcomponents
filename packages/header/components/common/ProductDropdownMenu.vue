@@ -3,7 +3,7 @@
     <div v-for="(item, index) in config" :key="index" class="product-menu-item">
       <div
         :class="['product-menu-item__label', item.product]"
-        @click="redirect(item)"
+        @click="handleLink(item.link)"
       >
         <svg
           v-if="item.iconColorful"
@@ -20,7 +20,7 @@
           v-for="(subitem, subindex) in item.links"
           :key="subindex"
           :class="['product-menu-subitem__label', subitem.product]"
-          @click="redirect(item)"
+          @click="handleLink(subitem.link)"
         >
           {{ subitem.label }}
         </div>
@@ -30,18 +30,16 @@
   </div>
 </template>
 <script>
+import mixin from "../../../common/util/mixin";
+
 export default {
   name: "ProductDropdownMenu",
+  mixins: [mixin],
   props: {
     config: { type: Array, required: true },
   },
   data() {
     return {};
-  },
-  methods: {
-    redirect({ link }) {
-      this.$emit("redirect", link);
-    },
   },
 };
 </script>

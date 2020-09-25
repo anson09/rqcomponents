@@ -15,7 +15,6 @@
           :active="btn.active"
           v-on="$listeners"
           @logout="$emit('logout')"
-          @handleLink="handleLink"
         >
         </component>
 
@@ -44,6 +43,7 @@ import Document from "./logged-header/Document.vue";
 import Products from "./logged-header/Products.vue";
 import Account from "./logged-header/Account.vue";
 import DropdownMenu from "./common/DropdownMenu.vue";
+import mixin from "../../common/util/mixin";
 
 export default {
   name: "LoggedHeader",
@@ -56,6 +56,7 @@ export default {
     WorkspaceSwitch,
     Products,
   },
+  mixins: [mixin],
 
   data() {
     return {
@@ -88,12 +89,6 @@ export default {
         this.handleLink(cfg.redirect);
       }
       return false;
-    },
-    handleLink(params) {
-      this.$parent.handleLink(params);
-    },
-    getPath() {
-      return this.$parent.getPath();
     },
   },
 };

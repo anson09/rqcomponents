@@ -27,7 +27,6 @@
               :support="support"
               :light="light"
               :button="button"
-              @redirect="redirect"
             ></nav-button>
           </div>
           <mini-menu
@@ -36,7 +35,6 @@
             :light="light"
             :cfg="buttons"
             :support="support"
-            @redirect="redirect"
           ></mini-menu>
           <transition name="fade">
             <div class="nav__buttons login">
@@ -66,7 +64,7 @@
         </template>
       </nav>
     </div>
-    <second-header :config="secondHeader" @redirect="redirect"></second-header>
+    <second-header :config="secondHeader"></second-header>
   </div>
 </template>
 
@@ -80,6 +78,7 @@ import { getStorage } from "../../common/util";
 import entryOpacityImg from "../assets/img/entry-opacity.png";
 import entryImg from "../assets/img/entry.png";
 import entryActiveImg from "../assets/img/entry-active.png";
+import mixin from "../../common/util/mixin";
 
 export default {
   name: "AnkaHeader",
@@ -92,6 +91,7 @@ export default {
       render: (h, ctx) => ctx.props.vnodes,
     },
   },
+  mixins: [mixin],
   props: {
     isLogin: {
       default: false,
@@ -132,7 +132,7 @@ export default {
           label: "预约路演",
           className: "road-show",
           click: () => {
-            this.redirect({ href: `/trial/road-show`, event: "roadShow" });
+            this.handleLink({ href: `/trial/road-show`, event: "roadShow" });
           },
         },
       ];
@@ -158,7 +158,7 @@ export default {
             click: () => {
               const account = getStorage("account");
               const history = getStorage("userDefaultProduct");
-              this.redirect({
+              this.handleLink({
                 outer: true,
                 href: `/${history[account.userId] ?? "quant"}/`,
               });
@@ -173,7 +173,7 @@ export default {
           type: "text",
           icon: "login",
           click: () => {
-            this.redirect({ event: "login" });
+            this.handleLink({ event: "login" });
           },
         },
         {
@@ -181,7 +181,7 @@ export default {
           type: "text",
           icon: "registered",
           click: () => {
-            this.redirect({ event: "register" });
+            this.handleLink({ event: "register" });
           },
         },
       ];
@@ -226,16 +226,9 @@ export default {
             this.activeLabel = "";
           }
         } else if (btn.link) {
-          this.$parent.handleLink(btn.link);
+          this.handleLink(btn.link);
         }
       }
-    },
-    getPath() {
-      return this.$parent.getPath();
-    },
-
-    redirect(params) {
-      this.$parent.handleLink(params);
     },
   },
 };

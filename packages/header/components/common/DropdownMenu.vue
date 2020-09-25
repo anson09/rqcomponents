@@ -17,7 +17,7 @@
               'is-link': item.link,
             },
           ]"
-          @click="redirect(item)"
+          @click="handleLink(item.link)"
         >
           <svg
             v-if="item.iconColorful"
@@ -32,21 +32,19 @@
           <span class="menu-link__label">{{ item.label }}</span>
         </div>
       </div>
-      <Support
-        v-if="isSupportShow"
-        :cfg="support"
-        @redirect="redirect"
-      ></Support>
+      <Support v-if="isSupportShow" :cfg="support"></Support>
     </template>
   </div>
 </template>
 
 <script>
 import Support from "./Support.vue";
+import mixin from "../../../common/util/mixin";
 
 export default {
   name: "DropdownMenu",
   components: { Support },
+  mixins: [mixin],
   props: {
     links: {
       default: () => [],
@@ -67,11 +65,7 @@ export default {
   },
   watch: {},
   mounted() {},
-  methods: {
-    redirect({ link }) {
-      this.$emit("redirect", link);
-    },
-  },
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>

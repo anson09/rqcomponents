@@ -6,7 +6,7 @@
       :key="index"
       class="product-mini-menu-item"
     >
-      <p class="product-mini-menu-item__label" @click="redirect(item)">
+      <p class="product-mini-menu-item__label" @click="handleLink(item.link)">
         {{ item.label }}
       </p>
       <div v-if="item.links" class="product-mini-menu-subitem-wrapper">
@@ -17,7 +17,7 @@
         >
           <p
             class="product-mini-menu-subitem__label"
-            @click="redirect(subitem)"
+            @click="handleLink(subitem.link)"
           >
             {{ subitem.label }}
           </p>
@@ -27,19 +27,18 @@
   </div>
 </template>
 <script>
+import mixin from "../../../common/util/mixin";
+
 export default {
   name: "ProductDropdownMiniMenu",
+  mixins: [mixin],
   props: {
     config: { type: Object, required: true },
   },
   data() {
     return {};
   },
-  methods: {
-    redirect({ link }) {
-      this.$emit("redirect", link);
-    },
-  },
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>

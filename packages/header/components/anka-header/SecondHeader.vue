@@ -13,7 +13,7 @@
             :key="index"
             :class="{ 'is-active': isActive(item.path) }"
             class="nav__icon"
-            @click="clickHandle(item.path)"
+            @click="handleLink(item.path)"
           >
             <i v-if="item.icon" :class="`icon-base icon-base-${item.icon}`" />
             <svg
@@ -33,14 +33,14 @@
             v-else
             :key="index"
             :class="['nav__product', { 'is-active': isActive(item.path) }]"
-            @click="clickHandle(item.path)"
+            @click="handleLink(item.path)"
           >
             {{ item.label }}
           </span>
         </template>
       </div>
       <div class="nav__buttons">
-        <button class="nav__button" @click="clickHandle(product.trialHref)">
+        <button class="nav__button" @click="handleLink(product.trialHref)">
           免费试用
         </button>
       </div>
@@ -48,8 +48,11 @@
   </div>
 </template>
 <script>
+import mixin from "../../../common/util/mixin";
+
 export default {
   name: "SecondHeader",
+  mixins: [mixin],
   props: {
     config: { type: Array, required: true },
   },
@@ -66,12 +69,12 @@ export default {
           (arr, cur) => [...arr, ...cur.products.map((item) => item.path)],
           []
         )
-        .includes(this.$parent.getPath());
+        .includes(this.getPath());
     },
 
     product() {
       return this.config.filter(({ products }) =>
-        products.map(({ path }) => path).includes(this.$parent.getPath())
+        products.map(({ path }) => path).includes(this.getPath())
       )[0];
     },
   },
@@ -99,12 +102,7 @@ export default {
       this.windowScrollX = window.scrollX || window.pageXOffset;
     },
     isActive(path) {
-      return this.$parent.getPath() === path;
-    },
-    clickHandle(href) {
-      if (href && this.$parent.getPath() !== href) {
-        this.$emit("redirect", href);
-      }
+      return this.getPath() === path;
     },
   },
 };

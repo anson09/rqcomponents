@@ -58,12 +58,12 @@
 </template>
 <script>
 import footer from "./assets/dict/config";
-import mixin from "../common/util/mixin";
+import { rootMixin } from "../common/util/mixin";
 import qrcode from "../common/assets/img/qrcode.jpg";
 
 export default {
   name: "Footer",
-  mixins: [mixin],
+  mixins: [rootMixin],
   props: {
     opacity: {
       default: false,

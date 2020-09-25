@@ -23,9 +23,11 @@
 </template>
 <script>
 import defaultAvatar from "../../assets/img/header.png";
+import mixin from "../../../common/util/mixin";
 
 export default {
   name: "Account",
+  mixins: [mixin],
   props: {
     links: { type: Array, required: true },
     active: { type: Boolean, default: false },
@@ -56,7 +58,7 @@ export default {
       if (cfg.event === "logout") {
         this.$emit("logout");
       } else if (cfg.link) {
-        this.$emit("handleLink", cfg.link);
+        this.handleLink(cfg.link);
       }
     },
   },

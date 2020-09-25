@@ -13,7 +13,7 @@
 export default {
   name: "Products",
   props: {
-    config: { type: Object, required: true },
+    config: { type: Array, required: true },
   },
   data() {
     return {};

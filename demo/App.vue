@@ -22,6 +22,7 @@ import "../packages/common/style";
 export default {
   name: "App",
   components: { RqHeader, RqFooter },
+
   mounted() {},
   methods: {
     log(...params) {
