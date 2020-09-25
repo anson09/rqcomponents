@@ -118,7 +118,7 @@ const dark = {
   //background-color//
   "--background-primary": "hsl(226, 16%, 16%)", //一级背景色
   "--background-secondary": "hsl(229, 18%, 12%)", //二级背景色
-  "--background-final": "hsl(227, 18%, 10%)", //网站背景色
+  "--background-final": "hsla(226, 14%, 18%, 1)", //网站背景色
 
   //border-color//
   "--border-primary": "hsl(216, 22%, 25%)", //主要分割线

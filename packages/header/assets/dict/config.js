@@ -290,100 +290,102 @@ const anka = {
     },
   ],
 };
-const logged = {
-  right: [
-    {
-      link: {
-        href: "/trial/road-show",
-        event: "roadShow",
-      },
-      type: "button",
-      label: "预约路演",
-    },
-    {
-      component: "workspaceSwitch",
 
-      creatLink: {
-        href: "/dashboard",
-        hash: "#createWs",
-      },
-      settingHref: "/dashboard/workspace",
-      label: "创建新的工作空间",
-    },
+const logged = [
+  {
+    component: "workspaceSwitch",
 
-    {
-      links: docLinks,
-
-      type: "dropdown",
-      label: "帮助文档",
+    creatLink: {
+      href: "/dashboard",
+      hash: "#createWs",
     },
-
-    {
-      component: "themeSwitch",
-    },
-    {
-      component: "message",
-    },
-
-    {
-      links: [
-        {
-          link: {
-            href: "/dashboard",
-            outer: true,
-          },
-          label: "个人主页",
+    settingHref: "/dashboard/workspace",
+    label: "创建新的工作空间",
+  },
+  {
+    component: "products",
+    config: [
+      {
+        link: {
+          href: "/quant/",
+          outer: true,
         },
-        {
-          link: {
-            href: "/dashboard/account#setting",
-            outer: true,
-          },
-          label: "账号中心",
-        },
-        {
-          link: "/",
-          label: "回到首页",
-        },
-        {
-          event: "logout",
-          label: "登出账号",
-        },
-      ],
-      component: "account",
-    },
-  ],
-  left: [
-    {
-      link: {
-        href: "/quant/",
-        outer: true,
+
+        label: "量化",
       },
 
-      label: "量化",
-    },
-    {
-      link: {
-        href: "/ams/",
-        outer: true,
+      {
+        link: {
+          href: "/ams/",
+          outer: true,
+        },
+        label: "AMS",
       },
-      label: "AMS",
-    },
-    {
-      link: {
-        href: "/fof/",
-        outer: true,
+      {
+        link: {
+          href: "/fof/",
+          outer: true,
+        },
+        label: "基金投研",
       },
-      label: "基金投研",
-    },
-    {
-      link: {
-        href: "/bond/",
-        outer: true,
+      {
+        link: {
+          href: "/bond/",
+          outer: true,
+        },
+        label: "债券投研",
       },
-      label: "债券投研",
+    ],
+  },
+  {
+    link: {
+      href: "/trial/road-show",
+      event: "roadShow",
     },
-  ],
-};
+    type: "button",
+    label: "预约路演",
+  },
+
+  {
+    links: docLinks,
+    component: "document",
+    type: "dropdown",
+    label: "帮助文档",
+  },
+
+  {
+    component: "themeSwitch",
+  },
+  {
+    component: "message",
+  },
+  {
+    component: "account",
+    links: [
+      {
+        link: {
+          href: "/dashboard",
+          outer: true,
+        },
+        label: "个人主页",
+      },
+      {
+        link: {
+          href: "/dashboard/account#setting",
+          outer: true,
+        },
+        label: "账号中心",
+      },
+      {
+        link: "/",
+        label: "回到首页",
+      },
+      {
+        event: "logout",
+        label: "登出账号",
+      },
+    ],
+  },
+];
 
 export { anka, logged };

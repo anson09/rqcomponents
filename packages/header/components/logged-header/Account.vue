@@ -1,9 +1,13 @@
 <template>
   <div class="account">
-    <img class="account__avatar" :src="avatarShow" alt="" />
-
+    <img
+      class="account__avatar"
+      :src="avatarShow"
+      alt=""
+      @click="toggleDropdownVisible"
+    />
     <transition name="rq-zoom-in-top">
-      <div v-show="active" class="account-dropdown">
+      <div v-show="dropdownVisible" class="account-dropdown">
         <p class="account__username">{{ username }}</p>
         <p
           v-for="(link, index) in links"
@@ -35,7 +39,9 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      dropdownVisible: false,
+    };
   },
   computed: {
     avatarShow() {
@@ -43,6 +49,9 @@ export default {
     },
   },
   methods: {
+    toggleDropdownVisible() {
+      this.dropdownVisible = !this.dropdownVisible;
+    },
     handleClick(cfg) {
       if (cfg.event === "logout") {
         this.$emit("logout");
@@ -60,11 +69,15 @@ export default {
   display: flex;
   align-items: center;
   position: relative;
-  padding: 0 15px;
+  padding: 0 5px;
+  p {
+    margin: 0;
+  }
   &__avatar {
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
+    cursor: pointer;
   }
 
   &__link {
@@ -105,12 +118,7 @@ export default {
     }
   }
   &-dropdown {
-    box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);
-    position: absolute;
-    right: 0;
-    top: 100%;
-    background-color: rqthemify(--dropdown-background);
-    @include text(rqthemify(--text-normal), 14, 1);
+    @include logged-dropdown;
   }
 }
 </style>

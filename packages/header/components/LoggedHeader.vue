@@ -4,32 +4,13 @@
       <img :src="images.logo" data-theme="light" />
       <img :src="images.logoWhite" data-theme="dark" />
     </a>
-    <div class="logged-header-btns left">
-      <button
-        v-for="(btn, idx) in btnConfigLeft"
-        :key="idx"
-        :class="['logged-header-btn', 'is-left', { active: btn.active }]"
-        @click="handleLink(btn.link)"
-      >
-        {{ btn.label }}
-      </button>
-    </div>
 
     <div class="logged-header-btns">
-      <div
-        v-for="(btn, idx) in btnConfigRight"
-        :key="idx"
-        :class="[
-          'logged-header-btn',
-          btn.type,
-          { 'is-component': btn.component, active: btn.active },
-        ]"
-        @mouseover="openDropdown(idx)"
-        @mouseleave="closeDropdown(idx)"
-      >
+      <template v-for="(btn, idx) in config">
         <component
           :is="btn.component"
           v-if="btn.component"
+          :key="idx"
           v-bind="{ ...btn, ...$attrs }"
           :active="btn.active"
           v-on="$listeners"
@@ -41,38 +22,27 @@
         <!-- 按钮式 -->
         <button
           v-if="btn.type === 'button'"
-          class="logged-header-btn-button"
+          :key="idx"
+          class="logged-header__button"
           @click="handleLink(btn.link)"
         >
           {{ btn.label }}
         </button>
-
-        <div v-if="btn.type === 'dropdown'" class="logged-header-btn__wrapper">
-          <p class="logged-header__label">{{ btn.label }}</p>
-          <i class="el-icon-caret-bottom"></i>
-          <transition name="rq-zoom-in-top">
-            <div v-show="btn.active" class="logged-header-btn-dropdown">
-              <DropdownMenu
-                :links="btn.links"
-                @redirect="handleLink"
-              ></DropdownMenu>
-            </div>
-          </transition>
-        </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>
 
 <script>
-import { logged } from "../assets/dict/config";
+import { logged as config } from "../assets/dict/config";
 import logo from "../assets/img/logo-small.png";
 import logoWhite from "../assets/img/logo-white-small.png";
 import ThemeSwitch from "./logged-header/ThemeSwitch.vue";
 import Message from "./logged-header/Message.vue";
 import WorkspaceSwitch from "./logged-header/WorkspaceSwitch.vue";
+import Document from "./logged-header/Document.vue";
+import Products from "./logged-header/Products.vue";
 import Account from "./logged-header/Account.vue";
-import { flattenNode } from "../util";
 import DropdownMenu from "./common/DropdownMenu.vue";
 
 export default {
@@ -80,37 +50,24 @@ export default {
   components: {
     ThemeSwitch,
     Message,
-    WorkspaceSwitch,
+    Document,
     Account,
     DropdownMenu,
+    WorkspaceSwitch,
+    Products,
   },
 
   data() {
-    const { right } = logged;
-    right
-      .filter(({ type }) => type === "dropdown")
-      .forEach((item) => {
-        item.links = flattenNode(item.links);
-      });
     return {
+      config,
       images: {
         logo,
         logoWhite,
       },
-      btnConfigRight: right,
+      // btnConfigRight: right,
     };
   },
-  computed: {
-    btnConfigLeft() {
-      const { left } = logged;
-      return left.map((btn) => ({
-        ...btn,
-        active: this.getPath().includes(
-          (btn.link && btn.link.href) || btn.link
-        ),
-      }));
-    },
-  },
+  computed: {},
   methods: {
     isActiveLink(link) {
       return link && link.length > 2 && window.location.href.includes(link)
@@ -118,16 +75,15 @@ export default {
         : "";
     },
     openDropdown(idx) {
-      this.$set(this.btnConfigRight[idx], "active", true);
+      this.$set(this.config[idx], "active", true);
     },
     closeDropdown(idx) {
-      this.$set(this.btnConfigRight[idx], "active", false);
+      this.$set(this.config[idx], "active", false);
     },
     clickHandler(cfg) {
       if (cfg.event === "logout") {
         this.$emit("logout");
       }
-
       if (cfg.redirect) {
         this.handleLink(cfg.redirect);
       }
@@ -160,12 +116,6 @@ export default {
   z-index: 1;
   color: rqthemify(--shadow-primary);
 
-  ::v-deep {
-    .menu__links {
-      min-width: 234px;
-    }
-  }
-
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -174,97 +124,36 @@ export default {
     border-radius: 3px;
   }
 
-  &-btns {
+  &-btn {
     height: 100%;
     display: flex;
     align-items: center;
-    @include text(rqthemify(--text-primary), 14, 20px);
-    &.left {
-      flex: auto;
+    margin: 0 8px;
+    &s {
+      flex: 1 auto;
+      display: flex;
+      color: rqthemify(--text-normal);
+      font-size: 14px;
+      height: 100%;
+      align-items: center;
     }
   }
+  &__button {
+    background-color: rqthemify(--text-normal);
+    border-radius: 16px;
+    color: rqthemify(--white);
+    font-weight: 600;
+    line-height: 1;
+    padding: 6px 20px;
+    margin: 0 13px;
 
-  &-btn {
-    position: relative;
-
-    height: 100%;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    &:not(.is-component) {
-      padding: 0 15px;
-    }
-
-    &.is-component:hover {
-      background: rqthemify(--dropdown-background);
-    }
-
-    &:not(.button) {
-      &::after {
-        position: absolute;
-        content: "";
-        background: transparent;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 4px;
-      }
-      &:hover {
-        color: rqthemify(--text-hover);
-        box-shadow: 0px 0px 20px rqthemify(--shadow-primary);
-
-        &::after {
-          background-color: rqthemify(--primary-color);
-        }
-      }
-    }
-    &.button {
-      button {
-        padding: 4px 20px;
-        background-color: transparent;
-        border: 1px solid rqthemify(--text-primary);
-        line-height: 20px;
-        border-radius: 4px;
-        &:hover {
-          border-color: rqthemify(--primary-color-9);
-          color: rqthemify(--white);
-          background-color: rqthemify(--primary-color-9);
-          @include click-scale();
-        }
-      }
-    }
-    &.is-left {
-      padding: 0 40px;
-      border-right: 1px solid rqthemify(--border-primary);
-      &:first-child {
-        border-left: 1px solid rqthemify(--border-primary);
-      }
-      &::after {
-        left: 0;
-        right: 0;
-      }
-      &.active::after {
-        background-color: rqthemify(--primary-color);
-      }
-    }
-    &__wrapper {
-      display: flex;
-      align-items: center;
-
-      .el-icon-caret-bottom {
-        font-size: 12px;
-        margin-left: 8px;
-      }
-    }
-    &-dropdown {
-      position: absolute;
-      left: 0;
-      top: 100%;
-    }
-
-    &:hover .el-icon-caret-bottom {
-      transform: rotate(180deg);
-      transition: all 0.3s;
+    // TODO
+    box-shadow: 0px 4px 4px hsla(222, 8%, 24%, 0.29);
+    &:hover,
+    &:active {
+      background-color: rqthemify(--primary-color);
+      // TODO
+      box-shadow: 0px 4px 4px hsla(220, 100%, 65%, 0.2);
     }
   }
 

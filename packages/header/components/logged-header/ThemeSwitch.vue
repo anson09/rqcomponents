@@ -1,11 +1,12 @@
 <template>
-  <div v-if="show" class="theme-switch">
-    <div class="theme-switch-button">
-      <i v-show="active" class="icon-base icon-base-theme-fills"></i>
-      <i v-show="!active" class="icon-base icon-base-theme-border"></i>
+  <!-- TODO  v-if="show"-->
+  <div class="theme-switch">
+    <div class="theme-switch-button" @click="toggleDropdownVisible">
+      <i class="icon-base icon-base-theme-fills"></i>
+      <i class="icon-base icon-base-theme-border"></i>
     </div>
     <transition name="rq-zoom-in-top">
-      <div v-show="active" class="theme-switch__dropdown">
+      <div v-show="dropdownVisible" class="theme-switch__dropdown">
         <div
           v-for="mode in modeConfig"
           :key="mode.label"
@@ -16,7 +17,7 @@
           @click="themeChange(mode.value)"
         >
           <div class="theme-switch__dropdown--pic">
-            <i class="icon-base icon-base-theme-choose"></i>
+            <i class="el-icon-success"></i>
             <img :src="mode.img" alt="" />
           </div>
           <p>{{ mode.label }}</p>
@@ -40,16 +41,12 @@ import { getStorage, setStorage } from "../../../common/util";
 
 export default {
   name: "ThemeSwitch",
-  props: {
-    active: {
-      default: false,
-      type: Boolean,
-    },
-  },
+  inheritAttrs: false,
   data() {
     return {
       value: "light",
       show: false,
+      dropdownVisible: false,
     };
   },
   computed: {
@@ -90,6 +87,9 @@ export default {
       themeRender(theme);
       this.value = theme;
     },
+    toggleDropdownVisible() {
+      this.dropdownVisible = !this.dropdownVisible;
+    },
   },
 };
 </script>
@@ -99,46 +99,57 @@ export default {
 
 .theme-switch {
   margin: auto;
-  &-button {
-    padding: 0 10px;
-    width: 40px;
-    text-align: center;
-    color: rqthemify(--text-primary);
-    background-color: inherit;
-    border: none;
-    .icon-base {
-      pointer-events: none;
-      font-size: 18px;
-      &.icon-base-theme-fills {
-        font-size: 20px;
-        color: rqthemify(--primary-color);
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  .icon-base-theme {
+    &-border {
+      display: inline-block;
+    }
+    &-fills {
+      display: none;
+    }
+  }
+  &:hover {
+    .icon-base-theme {
+      &-border {
+        display: none;
+      }
+      &-fills {
+        display: inline-block;
       }
     }
-    &:active,
-    &:focus,
-    &:hover {
-      color: rqthemify(--primary-color);
-      background-color: inherit;
-    }
+  }
+  &-button {
+    @include logged-icon-container("icon-base-theme-fills");
+    @include logged-icon-container("icon-base-theme-border");
   }
   &__dropdown {
     position: absolute;
-    top: 100%;
+    bottom: 4px;
+    transform: translateY(100%);
     right: 0;
-    padding: 32px 14px;
+    padding: 16px 14px;
     padding-top: 16px;
     color: rqthemify(--text-normal);
     background: rqthemify(--dropdown-background);
-    border-radius: 0 0 2px 2px;
     width: fit-content;
     border: none;
-    box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);
+    // TODO
+    box-shadow: 0px 0px 8px hsla(220, 100%, 65%, 0.2);
     cursor: default;
+    border-radius: 4px;
 
     &--pic {
       display: block;
       position: relative;
-      .icon-base {
+      width: 57px;
+      img {
+        width: 100%;
+      }
+      .el-icon-success {
         position: absolute;
         top: 50%;
         right: 0;
@@ -159,7 +170,7 @@ export default {
       cursor: pointer;
       &.is-active {
         color: rqthemify(--primary-color);
-        .theme-switch__dropdown--pic .icon-base {
+        .theme-switch__dropdown--pic .el-icon-success {
           opacity: 1;
         }
       }

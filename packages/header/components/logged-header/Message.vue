@@ -1,13 +1,13 @@
 <template>
   <div ref="message" class="message">
-    <button class="message-button" size="mini" type="text">
+    <div class="message-button" @click="toggleDropdownVisible">
       <i class="el-icon-chat-dot-round"></i>
       <span v-show="unreadMsgNum > 0" class="message-button__num">{{
         unreadMsgNum
       }}</span>
-    </button>
+    </div>
     <transition name="rq-zoom-in-top">
-      <div v-show="active" class="message-container">
+      <div v-show="dropdownVisible" class="message-container">
         <div class="message__header">
           <div class="message__header-left">
             <span
@@ -23,7 +23,10 @@
           </div>
           <div class="message__header-right">
             <i
-              class="el-icon-setting message-setting__icon"
+              :class="[
+                'el-icon-bell message-setting__icon',
+                { 'is-active': settingDropdownVisible },
+              ]"
               @click="setSettingDropdownVisible(!settingDropdownVisible)"
             ></i>
 
@@ -65,11 +68,9 @@ import { message as messageApi } from "../../api";
 export default {
   name: "Message",
   components: { MessageList },
-  props: {
-    active: { type: Boolean, default: false },
-  },
   data() {
     return {
+      dropdownVisible: false,
       messageTypes: [
         { label: "未读消息", value: "unread" },
         { label: "已读消息", value: "read" },
@@ -103,14 +104,6 @@ export default {
     };
   },
 
-  watch: {
-    active(val) {
-      if (!val) {
-        this.setSettingDropdownVisible(false);
-      }
-    },
-  },
-
   mounted() {
     Object.values(this.message).forEach((item) => {
       this.getMessage({ unread: item.unread, updateToView: true });
@@ -119,11 +112,13 @@ export default {
       Object.values(this.message).forEach((item) => {
         // 已读消息在未显示时不更新
 
-        if (!this.active && !item.unread) return;
+        if (!this.dropdownVisible && !item.unread) return;
         this.getMessage({
           unread: item.unread,
           offset: 0,
-          limit: this.active ? Math.max(this.limit, item.data.length) : 1,
+          limit: this.dropdownVisible
+            ? Math.max(this.limit, item.data.length)
+            : 1,
         });
       });
     }, 60 * 1000);
@@ -133,6 +128,12 @@ export default {
   },
 
   methods: {
+    toggleDropdownVisible() {
+      this.dropdownVisible = !this.dropdownVisible;
+      if (!this.dropdownVisible) {
+        this.setSettingDropdownVisible(false);
+      }
+    },
     setSettingDropdownVisible(visible) {
       this.settingDropdownVisible = visible;
     },
@@ -174,7 +175,7 @@ export default {
         offset,
       });
       if (!res.data) return;
-      if (this.active || updateToView) {
+      if (this.dropdownVisible || updateToView) {
         const message = [];
 
         if (offset === 0) {
@@ -232,6 +233,8 @@ export default {
   height: 100%;
   position: relative;
   margin: auto;
+  display: flex;
+  align-items: center;
   color: rqthemify(--text-primary);
   .el-icon-chat-dot-round {
     font-size: 18px;
@@ -243,25 +246,21 @@ export default {
   }
 
   &-button {
-    padding: 4px 15px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    color: rqthemify(--text-primary);
-    background-color: transparent;
-    border: none;
     position: relative;
+    display: flex;
+    align-items: flex-end;
+    @include logged-icon-container("el-icon-chat-dot-round");
 
     &__num {
-      position: absolute;
-      color: white;
-      background-color: rqthemify(--remove-hover-color);
-      right: 10px;
-      top: 4px;
-      width: 18px;
-      height: 18px;
+      color: rqthemify(--white);
+      background-color: rqthemify(--primary-color);
+      display: flex;
+      margin-left: -8px;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
-      line-height: 18px;
       font-size: 12px;
     }
   }
@@ -311,11 +310,10 @@ export default {
   }
 
   &-container {
-    position: absolute;
+    @include logged-dropdown;
+
     background: rqthemify(--dropdown-background);
     width: 438px;
-    right: 0;
-    box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);
   }
 
   &-setting {
@@ -331,7 +329,9 @@ export default {
     &__icon {
       font-size: 18px;
       cursor: pointer;
+
       &:focus,
+      &.is-active,
       &:active {
         color: rqthemify(--primary-color);
       }

@@ -27,7 +27,13 @@
       </div>
     </transition>
     <div class="workspace-btn">
-      <i v-if="settingVisible" class="el-icon-setting" @click="handleClick"></i>
+      <span class="el-icon-s-tools-wrapper">
+        <i
+          v-if="settingVisible"
+          class="el-icon-s-tools"
+          @click="handleClick"
+        ></i>
+      </span>
       <span class="workspace-btn__text">{{ curWs.name }}</span>
       <i class="el-icon-caret-bottom workspace-btn__icon"></i>
     </div>
@@ -150,15 +156,34 @@ export default {
     position: relative;
     cursor: pointer;
     height: 100%;
+    padding: 6px 0;
+    // TODO
     box-sizing: border-box;
     .el-icon-caret-bottom {
       font-size: 12px;
       transition: all 0.3s;
     }
+    .el-icon-s-tools-wrapper {
+      @include logged-icon-container("el-icon-s-tools");
+    }
+    &:hover,
+    &:active {
+      .el-icon-s-tools {
+        color: rqthemify(--text-hover);
+      }
+      .el-icon-caret-bottom {
+        color: rqthemify(--text-hover);
+      }
+    }
     &:hover {
-      color: rqthemify(--text-hover);
       .el-icon-caret-bottom {
         transform: rotate(180deg);
+      }
+    }
+    &:active {
+      .el-icon-s-tools-wrapper {
+        color: rqthemify(--text-hover);
+        background: rqthemify(--primary-color-1);
       }
     }
   }
@@ -246,22 +271,20 @@ export default {
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0 20px;
-    width: 215px;
+    padding: 0 20px 0 4px;
+    width: 210px;
     box-sizing: border-box;
     position: relative;
-    background: inherit;
     justify-content: space-between;
     z-index: 9;
+    background: rqthemify(--primary-color-1);
+    border-radius: 4px;
     &__text {
       width: 135px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       font-size: 14px;
-    }
-    .el-icon-setting {
-      font-size: 16px;
     }
   }
   &-dropdown:hover ~ &-btn {

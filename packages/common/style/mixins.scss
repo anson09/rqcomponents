@@ -160,3 +160,35 @@ $min-vw: 1024px;
     padding-left: 20px;
   }
 }
+
+@mixin logged-icon-container($icon-name, $font-size: 20, $padding: 5) {
+  padding: $padding + px;
+  border-radius: 4px;
+  cursor: pointer;
+  // TODO
+  color: hsl(217, 19, 67, 1);
+  .#{$icon-name} {
+    font-size: $font-size + px;
+    color: inherit;
+  }
+  &:hover,
+  &:active {
+    color: rqthemify(--text-hover);
+  }
+  &:active {
+    // TODO
+    background-color: hsla(216, 79%, 53%, 0.1);
+    // TODO
+    box-shadow: 0px 4px 4px hsla(216, 79%, 53%, 0.2);
+  }
+}
+
+@mixin logged-dropdown {
+  background: rqthemify(--dropdown-background);
+  box-shadow: 0px 0px 8px hsla(220, 100%, 65%, 0.2);
+  border-radius: 4px;
+  position: absolute;
+  right: 0;
+  bottom: 4px;
+  transform: translateY(100%);
+}
