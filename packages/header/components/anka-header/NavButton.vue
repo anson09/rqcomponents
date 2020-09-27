@@ -24,8 +24,8 @@
 
 <script>
 import DocDropdownMenu from "../common/DocDropdownMenu.vue";
-import ProductDropdownMenu from "../common/ProductDropdownMenu.vue";
-import Support from "../common/Support.vue";
+import ProductDropdownMenu from "./ProductDropdownMenu.vue";
+import Support from "./Support.vue";
 import mixin from "../../../common/util/mixin";
 
 export default {

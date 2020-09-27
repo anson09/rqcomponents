@@ -39,9 +39,9 @@
 </template>
 
 <script>
-import Support from "../common/Support.vue";
-import DocDropdownMiniMenu from "../common/DocDropdownMiniMenu.vue";
-import ProductDropdownMiniMenu from "../common/ProductDropdownMiniMenu.vue";
+import Support from "./Support.vue";
+import DocDropdownMiniMenu from "./DocDropdownMiniMenu.vue";
+import ProductDropdownMiniMenu from "./ProductDropdownMiniMenu.vue";
 
 export default {
   name: "MiniMenu",

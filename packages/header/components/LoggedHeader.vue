@@ -43,7 +43,6 @@ import WorkspaceSwitch from "./logged-header/WorkspaceSwitch.vue";
 import Document from "./logged-header/Document.vue";
 import Products from "./logged-header/Products.vue";
 import Account from "./logged-header/Account.vue";
-import DropdownMenu from "./common/DropdownMenu.vue";
 import mixin from "../../common/util/mixin";
 
 export default {
@@ -53,7 +52,6 @@ export default {
     Message,
     Document,
     Account,
-    DropdownMenu,
     WorkspaceSwitch,
     Products,
   },
