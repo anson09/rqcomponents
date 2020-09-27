@@ -330,17 +330,17 @@ const logged = [
         links: [
           {
             label: "投后分析",
-            icon: "performanceanalysis",
+            icon: "performance-analysis",
             link: "/shared-main",
           },
           {
             label: "风险管理",
-            icon: "Risk-management",
+            icon: "risk-management",
             link: "/shared-main",
           },
           {
             label: "投资驾驶舱",
-            icon: "Investment-cockpit",
+            icon: "investment-cockpit",
             link: "/shared-main",
           },
           {
