@@ -2,6 +2,18 @@ import { info, contact } from "../../../common/assets/dict/config";
 
 const docLinks = [
   {
+    label: "RQAMS文档",
+    link: {
+      href: "/doc/rqams/",
+      newBlock: true,
+    },
+  },
+
+  {
+    label: "量化平台文档",
+    link: { href: "/doc/quant/", newBlock: true },
+  },
+  {
     label: "RQSDK使用文档",
     links: [
       {
@@ -90,16 +102,13 @@ const docLinks = [
     ],
   },
   {
-    label: "RQAMS文档",
+    label: "帮助中心",
     link: {
-      href: "/doc/rqams/",
+      href: "/doc/faq/",
       newBlock: true,
     },
   },
-  {
-    label: "量化平台文档",
-    link: { href: "/doc/quant/", newBlock: true },
-  },
+
   // {
   //   label: "RQFUND米筐公募基金文档",
   //   link: { href: "/doc/quant/", newBlock: true },
