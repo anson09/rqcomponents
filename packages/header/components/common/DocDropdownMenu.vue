@@ -49,7 +49,6 @@ export default {
 <style lang="scss" scoped>
 @mixin container {
   background-color: rqthemify(--dropdown-background);
-  // TODO
   box-shadow: 0px 0px 8px rqthemify(--shadow-primary);
   border-radius: 4px;
 }
@@ -117,10 +116,8 @@ export default {
   &-item,
   &-least-item {
     &__label {
-      // TODO
       color: rqthemify(--text-normal);
       &:hover {
-        // TODO
         color: rqthemify(--text-hover);
         background-color: rqthemify(--background-primary);
       }

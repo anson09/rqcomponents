@@ -1,6 +1,5 @@
 <template>
-  <!-- TODO  v-if="show"-->
-  <div class="theme-switch">
+  <div v-if="show" class="theme-switch">
     <div class="theme-switch-button" @click="toggleDropdownVisible">
       <i class="icon-base icon-base-theme-fills"></i>
       <i class="icon-base icon-base-theme-border"></i>
@@ -139,8 +138,7 @@ export default {
     background: rqthemify(--dropdown-background);
     width: fit-content;
     border: none;
-    // TODO
-    box-shadow: 0px 0px 8px hsla(220, 100%, 65%, 0.2);
+    box-shadow: 0px 0px 8px rqthemify(--shadow-dropdown);
     cursor: default;
     border-radius: 4px;
 

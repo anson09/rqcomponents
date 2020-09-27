@@ -35,7 +35,7 @@ export default {
   align-items: center;
   height: 100%;
   &-icon-wrapper {
-    @include logged-icon-container("el-icon-question", 14, 5);
+    @include logged-icon-container("el-icon-question");
   }
   ::v-deep {
     .doc-menu {

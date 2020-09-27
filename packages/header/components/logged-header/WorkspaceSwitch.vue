@@ -164,7 +164,6 @@ export default {
     cursor: pointer;
     height: 100%;
     padding: 6px 0;
-    // TODO
     box-sizing: border-box;
     .el-icon-caret-bottom {
       font-size: 12px;

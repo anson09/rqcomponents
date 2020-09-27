@@ -143,13 +143,11 @@ export default {
     padding: 6px 20px;
     margin: 0 13px;
 
-    // TODO
-    box-shadow: 0px 4px 4px hsla(222, 8%, 24%, 0.29);
+    box-shadow: 0px 4px 4px rqthemify(--shadow-button);
     &:hover,
     &:active {
       background-color: rqthemify(--primary-color);
-      // TODO
-      box-shadow: 0px 4px 4px hsla(220, 100%, 65%, 0.2);
+      box-shadow: 0px 4px 4px rqthemify(--shadow-button-active);
     }
   }
 

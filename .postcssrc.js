@@ -79,6 +79,12 @@ const product = {
   //shdow-color//
   "--shadow-primary": "hsla(0, 0%, 20%, 0.1)",
   "--shadow-secondary": "hsla(0, 0%, 20%, 0.05)",
+  // TODO
+  "--shadow-dropdown": "hsla(221, 17%, 49%, 0.2)",
+  "--shadow-button": "hsla(222, 8%, 24%, 0.29)",
+  "--shadow-button-active": "hsla(220, 100%, 65%, 0.2)",
+  "--shadow-container": "hsla(216, 76%, 44%, 0.1)",
+  "--text-gray": "hsl(217, 19, 67, 1)",
 };
 
 const light = {
@@ -125,6 +131,12 @@ const dark = {
 
   //projection-color//
   "--shadow-primary": "hsl(0, 0%, 8%)",
+  // TODO
+  "--shadow-dropdown": "hsla(221, 17%, 49%, 0.2)",
+  "--shadow-button": "hsla(222, 8%, 24%, 0.29)",
+  "--shadow-button-active": "hsla(220, 100%, 65%, 0.2)",
+  "--text-gray": "hsl(217, 19, 67, 1)",
+  "--shadow-container": "hsla(216, 76%, 44%, 0.1)",
 };
 
 const themifyOptions = {

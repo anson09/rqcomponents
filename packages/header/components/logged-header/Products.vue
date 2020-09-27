@@ -109,7 +109,7 @@ export default {
     }
   }
   &__subitem-wrapper {
-    box-shadow: inset 0px 2px 4px -2px hsla(216, 76%, 44%, 0.1);
+    box-shadow: inset 0px 2px 4px -2px rqthemify(--shadow-container);
     position: fixed;
     top: 40px;
     left: 0;
