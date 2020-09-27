@@ -33,12 +33,14 @@ export default {
 .document {
   display: flex;
   align-items: center;
+  position: relative;
   height: 100%;
   &-icon-wrapper {
     @include logged-icon-container("el-icon-question");
   }
   ::v-deep {
     .doc-menu {
+      right: 0;
       position: absolute;
       bottom: 4px;
       transform: translateY(100%);
