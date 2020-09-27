@@ -171,6 +171,8 @@ export default {
   &-wrapper {
     position: relative;
     width: 100%;
+    // TODO
+    box-shadow: 0px 2px 4px hsla(216, 76%, 44%, 0.1);
   }
   &-warning {
     position: relative;

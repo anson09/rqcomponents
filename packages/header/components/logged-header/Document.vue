@@ -37,11 +37,16 @@ export default {
   &-icon-wrapper {
     @include logged-icon-container("el-icon-question", 14, 5);
   }
-
-  .doc-menu {
-    position: absolute;
-    bottom: 4px;
-    transform: translateY(100%);
+  ::v-deep {
+    .doc-menu {
+      position: absolute;
+      bottom: 4px;
+      transform: translateY(100%);
+      &-item-popover {
+        left: 0;
+        transform: translateX(-100%);
+      }
+    }
   }
 }
 </style>

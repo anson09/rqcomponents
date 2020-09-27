@@ -29,7 +29,6 @@
           </template>
         </div>
       </div>
-      <!-- </template> -->
     </div>
   </div>
 </template>
@@ -130,12 +129,12 @@ export default {
       }
     }
   }
+
   &-subitem {
     padding: 6px 0;
-    border-bottom: 1px solid rqthemify(--border-primary);
-    &:last-child {
-      border-bottom: none;
-    }
+  }
+  &-subitem + &-subitem {
+    border-top: 1px solid rqthemify(--border-primary);
   }
 }
 </style>

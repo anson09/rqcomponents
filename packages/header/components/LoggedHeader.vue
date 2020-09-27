@@ -13,6 +13,7 @@
           :key="idx"
           v-bind="{ ...btn, ...$attrs }"
           :active="btn.active"
+          class="logged-header__component"
           v-on="$listeners"
           @logout="$emit('logout')"
         >
@@ -119,19 +120,19 @@ export default {
     border-radius: 3px;
   }
 
-  &-btn {
+  &-btns {
+    flex: 1 auto;
+    display: flex;
+    color: rqthemify(--text-normal);
+    font-size: 14px;
+    height: 100%;
+    align-items: center;
+  }
+  &__component {
     height: 100%;
     display: flex;
     align-items: center;
     margin: 0 8px;
-    &s {
-      flex: 1 auto;
-      display: flex;
-      color: rqthemify(--text-normal);
-      font-size: 14px;
-      height: 100%;
-      align-items: center;
-    }
   }
   &__button {
     background-color: rqthemify(--text-normal);

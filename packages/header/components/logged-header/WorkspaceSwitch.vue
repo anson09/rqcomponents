@@ -1,7 +1,7 @@
 <template>
   <div v-if="workspaces.length" class="workspace-container">
     <transition name="rq-zoom-in-top">
-      <div v-show="active" class="workspace-dropdown">
+      <div v-show="dropdownVisible" class="workspace-dropdown">
         <div
           v-for="item in workspaces"
           :key="item.id"
@@ -26,16 +26,21 @@
         </div>
       </div>
     </transition>
-    <div class="workspace-btn">
+    <div class="workspace-btn" @click="toggleDropdownVisible">
       <span class="el-icon-s-tools-wrapper">
         <i
           v-if="settingVisible"
           class="el-icon-s-tools"
-          @click="handleClick"
+          @click.stop="handleClick"
         ></i>
       </span>
       <span class="workspace-btn__text">{{ curWs.name }}</span>
-      <i class="el-icon-caret-bottom workspace-btn__icon"></i>
+      <i
+        :class="[
+          dropdownVisible ? 'el-icon-caret-top' : 'el-icon-caret-bottom',
+          'workspace-btn__icon',
+        ]"
+      ></i>
     </div>
   </div>
   <div v-else class="create-btn" @click="createWorkspace">{{ label }}</div>
@@ -52,7 +57,6 @@ export default {
     settingHref: { type: String, required: true },
     label: { type: String, required: true },
     creatLink: { type: Object, required: true },
-    active: { type: Boolean, default: false },
   },
   data() {
     const localStorageAccount = getStorage("account");
@@ -64,6 +68,7 @@ export default {
       account: localStorageAccount,
       storageKey,
       localStorageWorkspaces,
+      dropdownVisible: false,
     };
   },
 
@@ -85,6 +90,9 @@ export default {
   },
 
   methods: {
+    toggleDropdownVisible() {
+      this.dropdownVisible = !this.dropdownVisible;
+    },
     handleClick() {
       if (this.settingVisible) {
         this.handleLink({
@@ -179,15 +187,8 @@ export default {
         transform: rotate(180deg);
       }
     }
-    &:active {
-      .el-icon-s-tools-wrapper {
-        color: rqthemify(--text-hover);
-        background: rqthemify(--primary-color-1);
-      }
-    }
   }
   &-dropdown {
-    display: block;
     position: absolute;
     width: 100%;
     background: rqthemify(--dropdown-background);
