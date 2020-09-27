@@ -320,6 +320,29 @@ const logged = [
           outer: true,
         },
         label: "AMS",
+        links: [
+          {
+            label: "投后分析",
+            icon: "performanceanalysis",
+            link: "/shared-main",
+          },
+          {
+            label: "风险管理",
+            icon: "Risk-management",
+            link: "/shared-main",
+          },
+          {
+            label: "投资驾驶舱",
+            icon: "Investment-cockpit",
+            link: "/shared-main",
+          },
+          {
+            label: "组合管理",
+            icon: "portfolio-management",
+            link: "/shared-main",
+          },
+          { label: "分享给我", icon: "share-me", link: "/shared-main" },
+        ],
       },
       {
         link: {
