@@ -100,16 +100,14 @@ const docLinks = [
     label: "量化平台文档",
     link: { href: "/doc/quant/", newBlock: true },
   },
-  {
-    label: "RQFUND米筐公募基金文档",
-    // TODO
-    link: { href: "/doc/quant/", newBlock: true },
-  },
-  {
-    label: "RQBOND米筐债券文档",
-    // TODO
-    link: { href: "/doc/quant/", newBlock: true },
-  },
+  // {
+  //   label: "RQFUND米筐公募基金文档",
+  //   link: { href: "/doc/quant/", newBlock: true },
+  // },
+  // {
+  //   label: "RQBOND米筐债券文档",
+  //   link: { href: "/doc/quant/", newBlock: true },
+  // },
 ];
 
 const anka = {
