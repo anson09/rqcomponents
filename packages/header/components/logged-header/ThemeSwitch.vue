@@ -128,19 +128,13 @@ export default {
     @include logged-icon-container("icon-base-theme-border");
   }
   &__dropdown {
-    position: absolute;
-    bottom: 4px;
-    transform: translateY(100%);
-    right: 0;
+    @include logged-dropdown;
     padding: 16px 14px;
     padding-top: 16px;
     color: rqthemify(--text-normal);
-    background: rqthemify(--dropdown-background);
     width: fit-content;
     border: none;
-    box-shadow: 0px 0px 8px rqthemify(--shadow-dropdown);
     cursor: default;
-    border-radius: 4px;
 
     &--pic {
       display: block;
