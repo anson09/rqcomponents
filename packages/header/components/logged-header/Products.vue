@@ -128,6 +128,11 @@ export default {
     margin: 0 2px;
     border-radius: 4px;
     cursor: pointer;
+    &:active,
+    &.is-active {
+      color: rqthemify(--text-hover);
+      background-color: rqthemify(--primary-color-1);
+    }
     &-wrapper {
       height: 100%;
       display: flex;
@@ -137,16 +142,11 @@ export default {
         .product__subitem-wrapper {
           display: flex;
         }
+        .product__item {
+          background-color: rqthemify(--primary-color);
+          color: rqthemify(--white);
+        }
       }
-    }
-    &:hover,
-    &.is-active {
-      background-color: rqthemify(--primary-color);
-      color: rqthemify(--white);
-    }
-    &:active {
-      color: rqthemify(--text-hover);
-      background-color: rqthemify(--primary-color-1);
     }
   }
 }

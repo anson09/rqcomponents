@@ -72,6 +72,7 @@ const product = {
   "--background-white": "hsl(0, 0%, 100%)",
   "--background-black": "hsl(0, 0%, 0%)",
   "--background-hover": "hsl(225, 22%, 82%)", //二级header子产品hover后出现的下划线的背景色
+  "--background-minor": "hsl(216, 20%, 95%)",
 
   //border-color//
   "--border-primary": "hsl(0, 0%, 89%)", //浅色底分割线
@@ -79,10 +80,8 @@ const product = {
   //shdow-color//
   "--shadow-primary": "hsla(0, 0%, 20%, 0.1)",
   "--shadow-secondary": "hsla(0, 0%, 20%, 0.05)",
-  // TODO
-  "--shadow-dropdown": "hsla(221, 17%, 49%, 0.2)",
   "--shadow-button": "hsla(222, 8%, 24%, 0.29)",
-  "--shadow-button-active": "hsla(220, 100%, 65%, 0.2)",
+  "--shadow-dropdown": "hsla(220, 100%, 65%, 0.2)",
   "--shadow-container": "hsla(216, 76%, 44%, 0.1)",
   "--text-gray": "hsl(217, 19, 67, 1)",
 };
@@ -125,16 +124,15 @@ const dark = {
   "--background-primary": "hsl(226, 16%, 16%)", //一级背景色
   "--background-secondary": "hsl(229, 18%, 12%)", //二级背景色
   "--background-final": "hsla(226, 14%, 18%, 1)", //网站背景色
+  "--background-minor": "hsla(226, 14%, 24%, 1)",
 
   //border-color//
   "--border-primary": "hsl(216, 22%, 25%)", //主要分割线
 
   //projection-color//
   "--shadow-primary": "hsl(0, 0%, 8%)",
-  // TODO
-  "--shadow-dropdown": "hsla(221, 17%, 49%, 0.2)",
   "--shadow-button": "hsla(222, 8%, 24%, 0.29)",
-  "--shadow-button-active": "hsla(220, 100%, 65%, 0.2)",
+  "--shadow-dropdown": "hsla(220, 100%, 65%, 0.2)",
   "--text-gray": "hsl(217, 19, 67, 1)",
   "--shadow-container": "hsla(216, 76%, 44%, 0.1)",
 };

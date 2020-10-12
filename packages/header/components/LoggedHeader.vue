@@ -145,7 +145,7 @@ export default {
     &:hover,
     &:active {
       background-color: rqthemify(--primary-color);
-      box-shadow: 0px 4px 4px rqthemify(--shadow-button-active);
+      box-shadow: 0px 4px 4px rqthemify(--shadow-dropdown);
     }
   }
 

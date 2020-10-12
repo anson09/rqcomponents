@@ -276,7 +276,7 @@ export default {
     position: relative;
     justify-content: space-between;
     z-index: 9;
-    background: rqthemify(--primary-color-1);
+    background: rqthemify(--background-minor);
     border-radius: 4px;
     &__text {
       width: 135px;
