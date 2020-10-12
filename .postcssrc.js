@@ -71,7 +71,6 @@ const product = {
   "--background-secondary": "hsl(0, 0%, 94%)", //二级背景色
   "--background-white": "hsl(0, 0%, 100%)",
   "--background-black": "hsl(0, 0%, 0%)",
-  "--background-hover": "hsl(225, 22%, 82%)", //二级header子产品hover后出现的下划线的背景色
   "--background-minor": "hsl(216, 20%, 95%)",
 
   //border-color//

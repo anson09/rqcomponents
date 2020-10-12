@@ -232,7 +232,7 @@ export default {
       }
       &:hover {
         &:after {
-          background: rqthemify(--background-hover);
+          background: rqthemify(--light-primary-color);
           width: 100%;
         }
       }

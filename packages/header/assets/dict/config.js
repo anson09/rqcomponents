@@ -231,6 +231,18 @@ const anka = {
           secondLabel: "米筐资产管理系统",
           path: "/ams",
         },
+        {
+          label: "产品组合管理",
+          path: "/ams/portfolio-management",
+        },
+        {
+          label: "投后分析",
+          path: "/ams/post-investment-analysis",
+        },
+        {
+          label: "风险管理",
+          path: "/ams/risk-management",
+        },
       ],
       trialHref: "/pricing#rqams",
     },
