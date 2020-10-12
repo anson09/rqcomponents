@@ -343,24 +343,24 @@ const logged = [
           {
             label: "投后分析",
             icon: "performance-analysis",
-            link: "/shared-main",
+            link: "/post-investment-analysis",
           },
           {
             label: "风险管理",
             icon: "risk-management",
-            link: "/shared-main",
+            link: "/risk-management",
           },
           {
             label: "投资驾驶舱",
             icon: "investment-cockpit",
-            link: "/shared-main",
+            link: "/investment-cockpit",
           },
           {
             label: "组合管理",
             icon: "portfolio-management",
-            link: "/shared-main",
+            link: "/portfolio-management",
           },
-          { label: "分享给我", icon: "share-me", link: "/shared-main" },
+          { label: "分享给我", icon: "share-me", link: "/sharing-management" },
         ],
       },
       {
