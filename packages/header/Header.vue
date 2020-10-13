@@ -22,6 +22,7 @@
           :topic="topic"
           :opacity="opacity"
           :is-login="isLogin"
+          @auth="$emit('auth', $event)"
         ></anka-header>
       </transition>
     </header>
