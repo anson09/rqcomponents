@@ -112,6 +112,4 @@ const copyRight = [
   },
 ];
 
-// const info = information.map((item) => `${item.label}：${item.value}`);
-
 export default { info, contact, links, copyRight };

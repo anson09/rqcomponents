@@ -1,5 +1,3 @@
-// redirect with v-router or windows.methods
-
 const storageKeys = {
   account: "common_account",
   userDefaultProduct: "common_user_default_product",

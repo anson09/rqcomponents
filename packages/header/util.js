@@ -1,5 +1,3 @@
-// redirect with v-router or windows.methods
-
 const THEME_MODE = ["dark", "light"];
 
 const themeRender = (theme = "light") => {

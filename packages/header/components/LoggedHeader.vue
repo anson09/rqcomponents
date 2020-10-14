@@ -64,7 +64,6 @@ export default {
         logo,
         logoWhite,
       },
-      // btnConfigRight: right,
     };
   },
   computed: {},

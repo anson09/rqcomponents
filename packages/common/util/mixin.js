@@ -74,7 +74,6 @@ const methods = {
 export default {
   inject: ["rootConfig"],
   methods,
-  // methods: ,
 };
 
 export const rootMixin = {

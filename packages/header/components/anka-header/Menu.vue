@@ -119,11 +119,7 @@ export default {
 
   &__dropdown {
     display: none;
-    // 由于doc改造，不会有太长的
-    // max-height: 80vh;
-    // overflow-y: auto;
     border-top-left-radius: 0;
-    // 为了保持衔接
     box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
 
     &-wrapper {

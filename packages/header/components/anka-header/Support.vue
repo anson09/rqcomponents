@@ -73,9 +73,7 @@ export default {
   @include mini-text(rqthemify(--text-secondary));
   padding-bottom: 14px;
   &__links {
-    // padding-top: 4px;
     margin: 14px 16px 0;
-    // border-top: 1px solid rqthemify(--border-primary);
     &--item {
       margin: 10px 0;
       &:not(.is-disabled) {
