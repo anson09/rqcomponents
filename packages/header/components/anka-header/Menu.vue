@@ -29,7 +29,7 @@ import Support from "./Support.vue";
 import mixin from "../../../common/util/mixin";
 
 export default {
-  name: "NavButton",
+  name: "Menu",
   components: {
     DocDropdownMenu,
     ProductDropdownMenu,

@@ -20,14 +20,14 @@
         </div>
         <template v-else>
           <div v-if="fullScrean" class="nav__buttons">
-            <nav-button
+            <Menu
               v-for="(button, idx) in buttons"
               :key="idx"
               class="nav button"
               :support="support"
               :light="light"
               :button="button"
-            ></nav-button>
+            ></Menu>
           </div>
           <mini-menu
             v-else
@@ -70,7 +70,7 @@
 
 <script>
 import debounce from "lodash/debounce";
-import NavButton from "./anka-header/NavButton.vue";
+import Menu from "./anka-header/Menu.vue";
 import SecondHeader from "./anka-header/SecondHeader.vue";
 import MiniMenu from "./anka-header/MiniMenu.vue";
 import { anka } from "../assets/dict/config";
@@ -83,7 +83,7 @@ import mixin from "../../common/util/mixin";
 export default {
   name: "AnkaHeader",
   components: {
-    NavButton,
+    Menu,
     MiniMenu,
     SecondHeader,
     Vnodes: {
