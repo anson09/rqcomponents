@@ -110,10 +110,11 @@ export default {
   }
   &__subitem-wrapper {
     box-shadow: inset 0px 2px 4px -2px rqthemify(--shadow-container);
-    position: fixed;
+    position: absolute;
     top: 40px;
-    left: 0;
-    width: 100vw;
+    left: 50%;
+    width: 200vw;
+    transform: translateX(-50%);
     background: rqthemify(--background-final);
     display: none;
     align-items: center;
