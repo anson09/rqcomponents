@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show" class="theme-switch">
+  <div v-if="show" v-clickoutside="handleClickOutside" class="theme-switch">
     <div class="theme-switch-button" @click="toggleDropdownVisible">
       <i class="icon-base icon-base-theme-fills"></i>
       <i class="icon-base icon-base-theme-border"></i>
@@ -38,16 +38,16 @@ import {
 } from "../../util";
 import { getStorage, setStorage } from "../../../common/util";
 import mixin from "../../../common/util/mixin";
+import dropdownMixin from "./dropdown-mixin";
 
 export default {
   name: "ThemeSwitch",
-  mixins: [mixin],
+  mixins: [mixin, dropdownMixin],
   inheritAttrs: false,
   data() {
     return {
       value: "light",
       show: false,
-      dropdownVisible: false,
     };
   },
   computed: {
@@ -87,9 +87,6 @@ export default {
       setStorage("theme", theme);
       themeRender(theme);
       this.value = theme;
-    },
-    toggleDropdownVisible() {
-      this.dropdownVisible = !this.dropdownVisible;
     },
   },
 };

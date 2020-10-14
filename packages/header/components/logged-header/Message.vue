@@ -1,5 +1,5 @@
 <template>
-  <div ref="message" class="message">
+  <div ref="message" v-clickoutside="handleClickOutside" class="message">
     <div class="message-button" @click="toggleDropdownVisible">
       <i class="el-icon-chat-dot-round"></i>
       <span v-show="unreadMsgNum > 0" class="message-button__num">{{
@@ -64,13 +64,14 @@
 <script>
 import MessageList from "./message/MessageList.vue";
 import { message as messageApi } from "../../api";
+import dropdownMixin from "./dropdown-mixin";
 
 export default {
   name: "Message",
   components: { MessageList },
+  mixins: [dropdownMixin],
   data() {
     return {
-      dropdownVisible: false,
       messageTypes: [
         { label: "未读消息", value: "unread" },
         { label: "已读消息", value: "read" },
@@ -128,12 +129,6 @@ export default {
   },
 
   methods: {
-    toggleDropdownVisible() {
-      this.dropdownVisible = !this.dropdownVisible;
-      if (!this.dropdownVisible) {
-        this.setSettingDropdownVisible(false);
-      }
-    },
     setSettingDropdownVisible(visible) {
       this.settingDropdownVisible = visible;
     },

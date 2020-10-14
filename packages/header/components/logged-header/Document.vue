@@ -1,31 +1,27 @@
 <template>
-  <div class="document">
-    <div class="document-icon-wrapper" @click="toggleMenuVisile">
+  <div v-clickoutside="handleClickOutside" class="document">
+    <div class="document-icon-wrapper" @click="toggleDropdownVisible">
       <i class="el-icon-question"></i>
     </div>
-    <DocDropdownMenu v-show="menuVisible" :config="links" />
+    <DocDropdownMenu v-show="dropdownVisible" :config="links" />
   </div>
 </template>
 <script>
 import DocDropdownMenu from "../common/DocDropdownMenu.vue";
+import dropdownMixin from "./dropdown-mixin";
 
 export default {
   name: "Document",
   components: { DocDropdownMenu },
+  mixins: [dropdownMixin],
   inheritAttrs: false,
   props: {
     links: { type: Array, required: true },
   },
   data() {
-    return {
-      menuVisible: false,
-    };
+    return {};
   },
-  methods: {
-    toggleMenuVisile() {
-      this.menuVisible = !this.menuVisible;
-    },
-  },
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>

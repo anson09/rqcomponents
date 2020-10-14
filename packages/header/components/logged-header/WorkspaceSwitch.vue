@@ -1,5 +1,9 @@
 <template>
-  <div v-if="workspaces.length" class="workspace-container">
+  <div
+    v-if="workspaces.length"
+    v-clickoutside="handleClickOutside"
+    class="workspace-container"
+  >
     <transition name="rq-zoom-in-top">
       <div v-show="dropdownVisible" class="workspace-dropdown">
         <div
@@ -49,10 +53,11 @@
 import { getWorksapces, getWorksapcesProducts } from "../../api";
 import { setStorage, getStorage, getDate } from "../../../common/util";
 import mixin from "../../../common/util/mixin";
+import dropdownMixin from "./dropdown-mixin";
 
 export default {
   name: "WorkspaceSwitch",
-  mixins: [mixin],
+  mixins: [mixin, dropdownMixin],
   props: {
     settingHref: { type: String, required: true },
     label: { type: String, required: true },
@@ -68,7 +73,6 @@ export default {
       account: localStorageAccount,
       storageKey,
       localStorageWorkspaces,
-      dropdownVisible: false,
     };
   },
 
@@ -90,9 +94,6 @@ export default {
   },
 
   methods: {
-    toggleDropdownVisible() {
-      this.dropdownVisible = !this.dropdownVisible;
-    },
     handleClick() {
       if (this.settingVisible) {
         this.handleLink({
@@ -141,6 +142,7 @@ export default {
       this.curWs = ws;
       setStorage(this.storageKey, this.localStorageWorkspaces);
       this.$emit("switchWorkspace", ws.id);
+      this.toggleDropdownVisible(false);
     },
 
     createWorkspace() {
@@ -179,11 +181,6 @@ export default {
       }
       .el-icon-caret-bottom {
         color: rqthemify(--text-hover);
-      }
-    }
-    &:hover {
-      .el-icon-caret-bottom {
-        transform: rotate(180deg);
       }
     }
   }

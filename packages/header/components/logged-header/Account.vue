@@ -1,5 +1,5 @@
 <template>
-  <div class="account">
+  <div v-clickoutside="handleClickOutside" class="account">
     <img
       class="account__avatar"
       :src="avatarShow"
@@ -24,10 +24,11 @@
 <script>
 import defaultAvatar from "../../assets/img/header.png";
 import mixin from "../../../common/util/mixin";
+import dropdownMixin from "./dropdown-mixin";
 
 export default {
   name: "Account",
-  mixins: [mixin],
+  mixins: [mixin, dropdownMixin],
   props: {
     links: { type: Array, required: true },
     active: { type: Boolean, default: false },
@@ -41,9 +42,7 @@ export default {
     },
   },
   data() {
-    return {
-      dropdownVisible: false,
-    };
+    return {};
   },
   computed: {
     avatarShow() {
@@ -51,9 +50,6 @@ export default {
     },
   },
   methods: {
-    toggleDropdownVisible() {
-      this.dropdownVisible = !this.dropdownVisible;
-    },
     handleClick(cfg) {
       if (cfg.event === "logout") {
         this.$emit("logout");
