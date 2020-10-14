@@ -156,6 +156,7 @@ export default {
     &--choice {
       position: relative;
       font-size: 14px;
+      margin: 14px 0;
       color: rqthemify(--text-normal);
       text-align: center;
       cursor: pointer;
