@@ -12,7 +12,6 @@
           v-if="btn.component"
           :key="idx"
           v-bind="{ ...btn, ...$attrs }"
-          :active="btn.active"
           class="logged-header__component"
           v-on="$listeners"
           @logout="$emit('logout')"

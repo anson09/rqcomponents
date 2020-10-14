@@ -31,7 +31,6 @@ export default {
   mixins: [mixin, dropdownMixin],
   props: {
     links: { type: Array, required: true },
-    active: { type: Boolean, default: false },
     avatar: {
       default: "",
       type: String,
