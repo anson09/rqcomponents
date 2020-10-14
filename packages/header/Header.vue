@@ -175,6 +175,7 @@ export default {
     box-shadow: 0px 2px 4px rqthemify(--shadow-container);
   }
   &-warning {
+    margin: 0;
     position: relative;
     box-sizing: border-box;
     padding-right: 24px;
