@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11-next.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.10&sourceBranch=refs/tags/v0.1.11-next.0) (2020-10-14)
+
+
+### Features
+
+* add clickoutside for logged-header ([7888306](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7888306ef56a2f303722bdf6506acd26c33dd9d4))
+* add product and set it as default color variation ([a83bf83](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a83bf832d13f7fedf95cbb08bb871a1e1115de4d))
+* anka header use light primary color ([276c7e1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/276c7e1615d55c1352a5768d80ebf7d511ef5d83))
+* common mixin ([68c4c91](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/68c4c912c96be92f4ce7c3842c4db2f9ad18c959))
+* doc order, add faq ([71df9a9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/71df9a96c1492cecb75e3a12df80099e857dded2))
+* hide unavailable  doc ([99d7c46](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/99d7c46fced85816565f24f24fdc3afa8d181549))
+* new doc and product mini menu ([3420f92](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/3420f92b6ae597324f6306f0abf4fbdcc734a200))
+* new doc menu ([428003c](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/428003c9ef136e9dac46919892bdda23ed8a0533))
+* new logged header ([70a3536](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/70a35360522d8e7f015408532ffad4cf6951d8f7))
+* new loggedHeader ([bc828d1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/bc828d11530078db344937a9807e39b8b594834b))
+* new product menu ([82381ac](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/82381acdca0ed894f462ffee064f055bc3083c53))
+* products subitem ([3dc6ef2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/3dc6ef23e9ebb4c0bc5d6717cf968cd7bfd82374))
+* rm useless ([8f2dfc7](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/8f2dfc7ce8526cbbc01332dab7f1e166c1e99807))
+* rqams sub product in secondHeader ([523c221](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/523c22117b23bc709b6e6b360000b35e04d11d31))
+* rqams sub product link ([c239922](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/c23992211d0d06105d093bb49e9e9ae7316a78c9))
+* use color variables ([e4d5d58](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/e4d5d586a2b5cc317fde05796e83f132f8242ff0))
+* use logged-down mixin ([0b0067d](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/0b0067d3caecef90d7d7713d6a57083d97ca9fc5))
+
+
+### Bug Fixes
+
+* --background-minor, --shadow-dropdown, product item hover ([467e788](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/467e788e52f0c2c5b2c7f7cd13f4a206ec5edece))
+* logged document dropdown position ([8f3b913](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/8f3b913c975fb9861e76d7b6fa3dfc86943ed0c8))
+* pass auth event to ankaHeader ([ee1aa25](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/ee1aa25294f8e23e4a1f05e9ce2e07342089af24))
+* product click event traget & rm useless event modifier ([075237a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/075237a61f402d5b819aa2170095a9135855ebb5))
+* set header-warning margin to 0 ([f29d3f8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/f29d3f8aa01f6e18240b87d41dcb2a3b2ac56887))
+* subproduct position ([2e6edf1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/2e6edf12e1f3ffcb3650948bb87d3ecad948f6b3))
+* themeSwitch choice margin ([efa07b8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/efa07b8d9d8bcb50439fc5f07bb24499d87ad991))
+
+
+### Refactors
+
+* components structure ([12ddc4d](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/12ddc4db0755533fd9179833266426bc44c550dc))
+* navButton renames to menu ([c3497f1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/c3497f15151ac9639b95e15d7578df118c9e322a))
+
+
+### Chores
+
+* rm useless comment ([5e3be56](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/5e3be564db4effb2e574565f5db6dc418b7d31d3))
+* update icon-svg ([466b245](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/466b2455f0740b017665847dab1e6864abb13fee))
+
 ### [0.1.10](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.9&sourceBranch=refs/tags/v0.1.10) (2020-09-21)
 
 
