@@ -4,9 +4,11 @@
       v-for="(item, index) in products"
       :key="index"
       :class="['product__item-wrapper', { 'is-active': item.active }]"
-      @click="handleLink(item.link)"
     >
-      <div :class="['product__item', { 'is-active': item.active }]">
+      <div
+        :class="['product__item', { 'is-active': item.active }]"
+        @click="handleLink(item.link)"
+      >
         {{ item.label }}
       </div>
 
@@ -15,7 +17,7 @@
           v-for="(subitem, subindex) in item.links"
           :key="subindex"
           class="product__subitem"
-          @click.stop="handleLinkSubitem(item, subitem)"
+          @click="handleLinkSubitem(item, subitem)"
         >
           <svg aria-hidden="true" class="icon-base-colorful">
             <use :xlink:href="`#icon-base-colorful-${subitem.icon}`"></use>
