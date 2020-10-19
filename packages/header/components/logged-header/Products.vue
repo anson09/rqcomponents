@@ -16,7 +16,7 @@
         <div
           v-for="(subitem, subindex) in item.links"
           :key="subindex"
-          class="product__subitem"
+          :class="['product__subitem', { 'is-active': subitem.active }]"
           @click="handleLinkSubitem(item, subitem)"
         >
           <svg aria-hidden="true" class="icon-base-colorful">
@@ -42,9 +42,17 @@ export default {
   },
   computed: {
     products() {
+      const path = this.getPath();
+
       return this.config.map((item) => ({
         ...item,
-        active: item.link.href.includes(this.getFirstPath()),
+        active: path.startsWith(item.link.href),
+        links: item.links
+          ? item.links.map((subitem) => ({
+              ...subitem,
+              active: path.includes(subitem.link),
+            }))
+          : undefined,
       }));
     },
   },
@@ -97,7 +105,7 @@ export default {
       background-color: rqthemify(--primary-color);
       opacity: 0;
     }
-
+    &.is-active,
     &:hover,
     &:active {
       color: rqthemify(--text-hover);
