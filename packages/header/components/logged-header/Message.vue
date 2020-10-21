@@ -1,7 +1,16 @@
 <template>
-  <div ref="message" v-clickoutside="handleClickOutside" class="message">
+  <div
+    ref="message"
+    v-clickoutside="handleClickOutside"
+    :class="['message', { 'is-dropdown-active': dropdownVisible }]"
+  >
     <div class="message-button" @click="toggleDropdownVisible">
-      <i class="el-icon-chat-dot-round"></i>
+      <i
+        class="icon-base icon-base-message-center-border icon-message-center"
+      ></i>
+      <i
+        class="icon-base icon-base-message-center-fill icon-message-center"
+      ></i>
       <span v-show="unreadMsgNum > 0" class="message-button__num">{{
         unreadMsgNum
       }}</span>
@@ -21,10 +30,13 @@
               >{{ type.label }}</span
             >
           </div>
-          <div class="message__header-right">
+          <div
+            v-clickoutside="handleSettingClickOutside"
+            class="message__header-right"
+          >
             <i
               :class="[
-                'el-icon-bell message-setting__icon',
+                'icon-base icon-base-message-border message-setting__icon',
                 { 'is-active': settingDropdownVisible },
               ]"
               @click="setSettingDropdownVisible(!settingDropdownVisible)"
@@ -129,6 +141,9 @@ export default {
   },
 
   methods: {
+    handleSettingClickOutside() {
+      this.setSettingDropdownVisible(false);
+    },
     setSettingDropdownVisible(visible) {
       this.settingDropdownVisible = visible;
     },
@@ -231,12 +246,23 @@ export default {
   display: flex;
   align-items: center;
   color: rqthemify(--text-primary);
-  .el-icon-chat-dot-round {
-    font-size: 18px;
+  .icon-message-center {
+    font-size: 20px;
   }
-  &:hover {
-    .el-icon-chat-dot-round {
+  .icon-base-message-center-fill {
+    display: none;
+  }
+
+  &:hover,
+  &.is-dropdown-active {
+    .icon-message-center {
       color: rqthemify(--primary-color);
+    }
+    .icon-base-message-center-border {
+      display: none;
+    }
+    .icon-base-message-center-fill {
+      display: block;
     }
   }
 
@@ -244,7 +270,7 @@ export default {
     position: relative;
     display: flex;
     align-items: flex-end;
-    @include logged-icon-container("el-icon-chat-dot-round");
+    @include logged-icon-container("icon-message-center");
 
     &__num {
       color: rqthemify(--white);
@@ -322,7 +348,7 @@ export default {
       box-shadow: 0px 0px 20px 0px rqthemify(--shadow-primary);
     }
     &__icon {
-      font-size: 18px;
+      font-size: 14px;
       cursor: pointer;
 
       &:focus,

@@ -1,7 +1,11 @@
 <template>
-  <div v-clickoutside="handleClickOutside" class="document">
+  <div
+    v-clickoutside="handleClickOutside"
+    :class="['document', { 'is-dropdown-visible': dropdownVisible }]"
+  >
     <div class="document-icon-wrapper" @click="toggleDropdownVisible">
-      <i class="el-icon-question"></i>
+      <i class="icon-base icon-base-help-border"></i>
+      <i class="icon-base icon-base-help-fill"></i>
     </div>
     <DocDropdownMenu v-show="dropdownVisible" :config="links" />
   </div>
@@ -31,8 +35,25 @@ export default {
   align-items: center;
   position: relative;
   height: 100%;
+
   &-icon-wrapper {
-    @include logged-icon-container("el-icon-question");
+    @include logged-icon-container("icon-base");
+    .icon-base-help-fill {
+      display: none;
+    }
+  }
+  &:hover,
+  &:active,
+  &.is-dropdown-visible {
+    .icon-base {
+      color: rqthemify(--text-hover);
+    }
+    .icon-base-help-fill {
+      display: inline-block;
+    }
+    .icon-base-help-border {
+      display: none;
+    }
   }
   ::v-deep {
     .doc-menu {

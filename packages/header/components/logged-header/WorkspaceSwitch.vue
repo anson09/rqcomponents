@@ -34,7 +34,7 @@
       <span class="el-icon-s-tools-wrapper">
         <i
           v-if="settingVisible"
-          class="el-icon-s-tools"
+          class="icon-base icon-base-set-up-fill"
           @click.stop="handleClick"
         ></i>
       </span>
