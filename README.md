@@ -104,13 +104,13 @@ Parameters: mode(login|register)
 
 Triggers when user click login or register button.
 
-#### createWorkspace
+#### create-workspace
 
 Parameters:
 
 Triggers when user click create workspace button.
 
-#### switchWorkspace
+#### switch-workspace
 
 Parameters: currentWorkspaceId
 

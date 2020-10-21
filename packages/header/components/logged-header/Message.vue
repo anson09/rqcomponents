@@ -50,11 +50,11 @@
           v-show="curType === msg.type"
           :key="index"
           :message="msg.data"
-          @getMessage="
+          @get-message="
             getMessage({ ...$event, unread: msg.unread, offset: msg.offset })
           "
-          @deleteMessage="deleteMessage({ ...$event, unread: msg.unread })"
-          @updateMessage="updateMessage({ ...$event, unread: msg.unread })"
+          @delete-message="deleteMessage({ ...$event, unread: msg.unread })"
+          @update-message="updateMessage({ ...$event, unread: msg.unread })"
         >
         </message-list>
       </div>

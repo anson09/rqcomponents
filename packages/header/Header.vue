@@ -13,8 +13,8 @@
           v-if="mode === defaultMode && isLogin"
           :username="username"
           :avatar="avatar"
-          @switchWorkspace="switchWorkspace"
-          @createWorkspace="createWorkspace"
+          @switch-workspace="switchWorkspace"
+          @create-workspace="createWorkspace"
           @logout="handleLogout"
         ></logged-header>
         <anka-header
@@ -100,10 +100,10 @@ export default {
       this.isWarngingHidden = true;
     },
     switchWorkspace(val) {
-      this.$emit("switchWorkspace", val);
+      this.$emit("switch-workspace", val);
     },
     createWorkspace() {
-      this.$emit("createWorkspace");
+      this.$emit("create-workspace");
     },
     handleLogout() {
       const done = async () => {

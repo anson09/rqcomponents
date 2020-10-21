@@ -4,14 +4,14 @@
       <div v-for="(msg, index) in message" :key="msg.id" class="item-wrapper">
         <i
           class="el-icon-remove-outline"
-          @click.stop="$emit('deleteMessage', { msg, index })"
+          @click.stop="$emit('delete-message', { msg, index })"
         ></i>
         <a
           class="item"
           rel="noopener"
           target="_blank"
           :href="linkMap[msg.type]"
-          @click="$emit('updateMessage', { msg, index })"
+          @click="$emit('update-message', { msg, index })"
         >
           <p class="title">
             <img :src="msg.from.avatar" alt="" class="avatar title__item" />
@@ -68,13 +68,13 @@ export default {
   methods: {
     handleClickMsg(msg) {
       window.open(this.linkMap[msg.type]);
-      this.$emit("updateMessage", msg);
+      this.$emit("update-message", msg);
     },
 
     handleScroll: debounce(function (event) {
       const { target } = event;
       if (target.scrollTop + target.offsetHeight >= target.scrollHeight - 20) {
-        this.$emit("getMessage");
+        this.$emit("get-message");
       }
     }, 300),
   },
