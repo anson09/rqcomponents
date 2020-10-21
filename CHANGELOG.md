@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11-next.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.11-next.0&sourceBranch=refs/tags/v0.1.11-next.1) (2020-10-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* header events createWorkspace/switchWorksapce rename to
+create-workspace/switch-workspace
+
+### Code Style
+
+* eslint error fix ([1b57480](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1b57480d90d6f28c1f02705ef719371c5542e63c))
+
+
+### Chores
+
+* drop eslint complexity count ([1c29e5b](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1c29e5bc92a40078b8d53a5288c96485d9873f5a))
+* update eslint 7 ([f4e919d](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/f4e919dfd6a065018c6e3616f639f54bb121b016))
+* update rollup plugin ([1373b8e](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1373b8eb8a9ec9348a551f6e0a64c9f02bfd1b9d))
+
 ### [0.1.11-next.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.10&sourceBranch=refs/tags/v0.1.11-next.0) (2020-10-14)
 
 
