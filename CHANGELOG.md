@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.11-next.1&sourceBranch=refs/tags/v0.1.11) (2020-10-26)
+
+
+### Features
+
+* update icon ([93f47f0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/93f47f00d3144882c82dd351ffa446897806a3c5))
+* use icon-base in logged-header ([a500649](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a5006498f0d2b2242e7cb1332d1c170354d6dd79))
+
+
+### Bug Fixes
+
+* subproduct active ([0c5c0bd](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/0c5c0bda4df0fa1889e73b2130dd2a69df5cf7f5))
+* update path after click subproduct ([e38eaf6](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/e38eaf656464d0d0f796aba62fe66c56997aae39))
+
 ### [0.1.11-next.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.11-next.0&sourceBranch=refs/tags/v0.1.11-next.1) (2020-10-21)
 
 
