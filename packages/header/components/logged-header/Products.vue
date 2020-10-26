@@ -38,19 +38,20 @@ export default {
     config: { type: Array, required: true },
   },
   data() {
-    return {};
+    return {
+      path: this.getPath(),
+    };
   },
+
   computed: {
     products() {
-      const path = this.getPath();
-
       return this.config.map((item) => ({
         ...item,
-        active: path.startsWith(item.link.href),
+        active: this.path.startsWith(item.link.href),
         links: item.links
           ? item.links.map((subitem) => ({
               ...subitem,
-              active: path.includes(subitem.link),
+              active: this.path.includes(subitem.link),
             }))
           : undefined,
       }));
@@ -58,11 +59,13 @@ export default {
   },
   methods: {
     handleLinkSubitem(item, subitem) {
+      const path = `${item.link.href}${subitem.link}`.replace("//", "/");
       if (item.active) {
         this.$router.push(subitem.link);
+        this.path = path;
       } else {
         this.handleLink({
-          href: `${item.link.href}${subitem.link}`.replace("//", "/"),
+          href: path,
           outer: true,
         });
       }
