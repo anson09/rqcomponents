@@ -41,7 +41,3 @@ rules:
     - off
   import/no-unresolved:
     - off
-  # experiment
-  complexity:
-    - error
-    - 11

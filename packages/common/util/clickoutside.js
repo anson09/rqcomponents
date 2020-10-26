@@ -13,7 +13,6 @@ document.addEventListener("mouseup", (e) => {
 });
 
 function createDocumentHandler(el, binding, vnode) {
-  // eslint-disable-next-line complexity
   return function (mouseup = {}, mousedown = {}) {
     if (
       !vnode ||

@@ -1,5 +1,4 @@
 const methods = {
-  // eslint-disable-next-line complexity
   handleLink(params) {
     if (!params) return;
 

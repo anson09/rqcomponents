@@ -141,13 +141,13 @@ export default {
       this.localStorageWorkspaces[this.account.userId] = ws.id;
       this.curWs = ws;
       setStorage(this.storageKey, this.localStorageWorkspaces);
-      this.$emit("switchWorkspace", ws.id);
+      this.$emit("switch-workspace", ws.id);
       this.toggleDropdownVisible(false);
     },
 
     createWorkspace() {
       if (this.getPath().includes(this.creatLink.href)) {
-        this.$emit("createWorkspace");
+        this.$emit("create-workspace");
       } else {
         this.handleLink({
           href: `${this.creatLink.href}${this.creatLink.hash}`,
