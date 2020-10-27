@@ -61,12 +61,19 @@ const methods = {
     }
   },
   getPath() {
+    let path;
     // config.router 只有 anka 有，为了过滤出 welcome
     if (this.rootConfig.router && this.$route) {
-      return this.$route.path;
+      path = this.$route.path;
+    } else {
+      path = window.location.href
+        .split("/")
+        .slice(3)
+        .map((key) => `/${key}`)
+        .join("");
     }
-    const path = window.location.href.split("/").slice(3);
-    return path.map((key) => `/${key}`).join("");
+
+    return path.replace(/\/$/, "");
   },
 };
 
