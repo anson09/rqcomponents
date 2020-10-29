@@ -1,11 +1,11 @@
 <template>
   <div v-clickoutside="handleClickOutside" class="account">
-    <img
-      class="account__avatar"
-      :src="avatarShow"
-      alt=""
+    <div
+      :class="['account__avatar-wrapper', { 'is-active': dropdownVisible }]"
       @click="toggleDropdownVisible"
-    />
+    >
+      <img class="account__avatar" :src="avatarShow" alt="" />
+    </div>
     <transition name="rq-zoom-in-top">
       <div v-show="dropdownVisible" class="account-dropdown">
         <p class="account__username">{{ username }}</p>
@@ -30,7 +30,6 @@ export default {
   name: "Account",
   mixins: [mixin, dropdownMixin],
   props: {
-    links: { type: Array, required: true },
     avatar: {
       default: "",
       type: String,
@@ -41,7 +40,32 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      links: [
+        {
+          link: {
+            href: "/dashboard",
+            outer: true,
+          },
+          label: "个人主页",
+        },
+        {
+          link: {
+            href: "/dashboard/account#setting",
+            outer: true,
+          },
+          label: "账号中心",
+        },
+        {
+          link: "/",
+          label: "回到首页",
+        },
+        {
+          event: "logout",
+          label: "登出账号",
+        },
+      ],
+    };
   },
   computed: {
     avatarShow() {
@@ -62,11 +86,21 @@ export default {
 <style lang="scss" scoped>
 @import "../../../common/style/mixins.scss";
 .account {
+  color: rqthemify(--text-normal);
   height: 100%;
+  margin: 0 13px;
   display: flex;
   align-items: center;
   position: relative;
-  padding: 0 5px;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    &::after {
+      opacity: 1;
+    }
+  }
+
   p {
     margin: 0;
   }
@@ -74,7 +108,38 @@ export default {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    cursor: pointer;
+
+    &-wrapper {
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        background: rqthemify(--primary-color-3);
+        border-radius: 50%;
+        opacity: 0;
+        @include t-center;
+      }
+      &:hover {
+        &:after {
+          opacity: 1;
+        }
+      }
+      &.is-active {
+        &:after {
+          opacity: 1;
+          width: 34px;
+          height: 34px;
+        }
+        &:hover:after {
+          background: rqthemify(--primary-color-4);
+        }
+      }
+    }
   }
 
   &__link {

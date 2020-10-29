@@ -1,29 +1,32 @@
 <template>
-  <div
-    v-clickoutside="handleClickOutside"
-    :class="['document', { 'is-dropdown-visible': dropdownVisible }]"
-  >
-    <div class="document-icon-wrapper" @click="toggleDropdownVisible">
+  <div v-clickoutside="handleClickOutside" class="document">
+    <div
+      :class="['document-icon-wrapper', { 'is-icon-active': dropdownVisible }]"
+      @click="toggleDropdownVisible"
+    >
       <i class="icon-base icon-base-help-border"></i>
-      <i class="icon-base icon-base-help-fill"></i>
+      <i class="icon-base icon-base-help-fill active-icon"></i>
     </div>
-    <DocDropdownMenu v-show="dropdownVisible" :config="links" />
+    <DocDropdownMenu
+      v-show="dropdownVisible"
+      class="dropdown"
+      :config="links"
+    />
   </div>
 </template>
 <script>
 import DocDropdownMenu from "../common/DocDropdownMenu.vue";
 import dropdownMixin from "./dropdown-mixin";
+import { docLinks as links } from "../../assets/dict/config";
 
 export default {
   name: "Document",
   components: { DocDropdownMenu },
   mixins: [dropdownMixin],
   inheritAttrs: false,
-  props: {
-    links: { type: Array, required: true },
-  },
+
   data() {
-    return {};
+    return { links };
   },
   methods: {},
 };
@@ -31,6 +34,8 @@ export default {
 <style lang="scss" scoped>
 @import "../../../common/style/mixins.scss";
 .document {
+  margin: 0 8px;
+  color: rqthemify(--text-normal);
   display: flex;
   align-items: center;
   position: relative;
@@ -38,26 +43,10 @@ export default {
 
   &-icon-wrapper {
     @include logged-icon-container("icon-base");
-    .icon-base-help-fill {
-      display: none;
-    }
-  }
-  &:hover,
-  &:active,
-  &.is-dropdown-visible {
-    .icon-base {
-      color: rqthemify(--text-hover);
-    }
-    .icon-base-help-fill {
-      display: inline-block;
-    }
-    .icon-base-help-border {
-      display: none;
-    }
   }
   ::v-deep {
     .doc-menu {
-      right: 0;
+      left: 0;
       position: absolute;
       bottom: 4px;
       transform: translateY(100%);

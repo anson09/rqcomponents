@@ -48,14 +48,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 @mixin container {
-  background-color: rqthemify(--dropdown-background);
-  box-shadow: 0px 0px 8px rqthemify(--shadow-primary);
+  background-color: rqthemify(--background-final);
+  box-shadow: 0px 0px 8px rqthemify(--shadow-dropdown);
   border-radius: 4px;
 }
 
 .doc-menu {
   @include container;
-  padding: 14px 0;
+  padding: 9px 0;
   width: 208px;
   p {
     margin: 0;

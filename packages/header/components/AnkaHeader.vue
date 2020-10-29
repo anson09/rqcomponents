@@ -237,6 +237,10 @@ export default {
 <style lang="scss" scoped>
 @import "../../common/style/mixins";
 
+::v-deep button {
+  @include click-scale();
+}
+
 .anka-header {
   position: relative;
   z-index: 10;

@@ -1,8 +1,13 @@
 <template>
-  <div v-if="show" v-clickoutside="handleClickOutside" class="theme-switch">
-    <div class="theme-switch-button" @click="toggleDropdownVisible">
-      <i class="icon-base icon-base-theme-fills"></i>
-      <i class="icon-base icon-base-theme-border"></i>
+  <div v-show="show" v-clickoutside="handleClickOutside" class="theme-switch">
+    <div
+      :class="['theme-switch-button', { 'is-icon-active': dropdownVisible }]"
+      @click="toggleDropdownVisible"
+    >
+      <i
+        class="icon-base icon-base-theme icon-base-theme-fills active-icon"
+      ></i>
+      <i class="icon-base icon-base-theme icon-base-theme-border"></i>
     </div>
     <transition name="rq-zoom-in-top">
       <div v-show="dropdownVisible" class="theme-switch__dropdown">
@@ -96,33 +101,20 @@ export default {
 @import "../../../common/style/mixins";
 
 .theme-switch {
-  margin: auto;
+  color: rqthemify(--text-normal);
+  margin: 0 8px;
   position: relative;
   height: 100%;
   display: flex;
   align-items: center;
 
-  .icon-base-theme {
-    &-border {
-      display: inline-block;
-    }
-    &-fills {
-      display: none;
-    }
-  }
-  &:hover {
-    .icon-base-theme {
-      &-border {
-        display: none;
-      }
-      &-fills {
-        display: inline-block;
-      }
-    }
-  }
   &-button {
-    @include logged-icon-container("icon-base-theme-fills");
-    @include logged-icon-container("icon-base-theme-border");
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    @include logged-icon-container("icon-base-theme");
   }
   &__dropdown {
     @include logged-dropdown;
@@ -132,6 +124,7 @@ export default {
     width: fit-content;
     border: none;
     cursor: default;
+    left: 0;
 
     &--pic {
       display: block;

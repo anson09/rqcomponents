@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- :config="config" -->
     <RqHeader :opacity="true" :before-logout="logout" @auth="log"> </RqHeader>
     <RqFooter></RqFooter>
   </div>
@@ -22,7 +23,15 @@ import "../packages/common/style";
 export default {
   name: "App",
   components: { RqHeader, RqFooter },
-
+  data() {
+    return {
+      config: {
+        router: true,
+        admin: true,
+        ankaPrefix: "anka",
+      },
+    };
+  },
   mounted() {},
   methods: {
     log(...params) {

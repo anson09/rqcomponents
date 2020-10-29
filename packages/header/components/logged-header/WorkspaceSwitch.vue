@@ -2,7 +2,7 @@
   <div
     v-if="workspaces.length"
     v-clickoutside="handleClickOutside"
-    class="workspace-container"
+    :class="['workspace-container', { 'is-dropdown-active': dropdownVisible }]"
   >
     <transition name="rq-zoom-in-top">
       <div v-show="dropdownVisible" class="workspace-dropdown">
@@ -25,49 +25,59 @@
         <div class="workspace-dropdown__btn-wrapper">
           <button class="workspace-dropdown__btn" @click="createWorkspace">
             <i class="el-icon-circle-plus"></i>
-            {{ label }}
+            创建新的工作空间
           </button>
         </div>
       </div>
     </transition>
-    <div class="workspace-btn" @click="toggleDropdownVisible">
-      <span class="el-icon-s-tools-wrapper">
-        <i
-          v-if="settingVisible"
-          class="icon-base icon-base-set-up-fill"
-          @click.stop="handleClick"
-        ></i>
+    <div
+      :class="['workspace-btn', { 'is-tooltip-hidden': dropdownVisible }]"
+      @click="toggleDropdownVisible"
+    >
+      <span :class="['icon-set-up-wrapper']">
+        <template v-if="settingVisible">
+          <i
+            class="icon-base icon-base-set-up-fill icon-set-up active-icon"
+            @click.stop="handleClick"
+          ></i>
+          <i
+            class="icon-base icon-base-set-up icon-set-up"
+            @click.stop="handleClick"
+          ></i>
+        </template>
       </span>
-      <span class="workspace-btn__text">{{ curWs.name }}</span>
+      <span class="workspace-btn__label-wrapper">
+        <span ref="curWsLabel" class="workspace-btn__label">
+          {{ curWs.name }}
+        </span>
+      </span>
+      <Tooltip v-show="tooltipVisible" mode="light" :text="curWs.name" />
       <i
         :class="[
+          'el-icon-caret',
           dropdownVisible ? 'el-icon-caret-top' : 'el-icon-caret-bottom',
-          'workspace-btn__icon',
         ]"
       ></i>
     </div>
   </div>
-  <div v-else class="create-btn" @click="createWorkspace">{{ label }}</div>
 </template>
 <script>
 import { getWorksapces, getWorksapcesProducts } from "../../api";
 import { setStorage, getStorage, getDate } from "../../../common/util";
 import mixin from "../../../common/util/mixin";
 import dropdownMixin from "./dropdown-mixin";
+import Tooltip from "./Tooltip.vue";
 
 export default {
   name: "WorkspaceSwitch",
+  components: { Tooltip },
   mixins: [mixin, dropdownMixin],
-  props: {
-    settingHref: { type: String, required: true },
-    label: { type: String, required: true },
-    creatLink: { type: Object, required: true },
-  },
   data() {
     const localStorageAccount = getStorage("account");
     const storageKey = "workspace";
     const localStorageWorkspaces = getStorage(storageKey);
     return {
+      tooltipVisible: false,
       workspaces: [],
       curWs: {},
       account: localStorageAccount,
@@ -79,6 +89,14 @@ export default {
   computed: {
     settingVisible() {
       return this.curWs.admin === this.account.userId;
+    },
+  },
+  watch: {
+    curWs() {
+      this.$nextTick(() => {
+        this.tooltipVisible =
+          this.$refs.curWsLabel.scrollWidth > this.$refs.curWsLabel.offsetWidth;
+      });
     },
   },
 
@@ -97,7 +115,7 @@ export default {
     handleClick() {
       if (this.settingVisible) {
         this.handleLink({
-          href: `${this.settingHref}/${this.curWs.id}`,
+          href: `/dashboard/workspace/${this.curWs.id}`,
           outer: true,
         });
       }
@@ -142,15 +160,17 @@ export default {
       this.curWs = ws;
       setStorage(this.storageKey, this.localStorageWorkspaces);
       this.$emit("switch-workspace", ws.id);
-      this.toggleDropdownVisible(false);
+      this.dropdownVisible = false;
     },
 
     createWorkspace() {
-      if (this.getPath().includes(this.creatLink.href)) {
+      const link = { href: "/dashboard", hash: "#createWs" };
+
+      if (this.getPath().includes(link.href)) {
         this.$emit("create-workspace");
       } else {
         this.handleLink({
-          href: `${this.creatLink.href}${this.creatLink.hash}`,
+          href: `${link.href}${link.hash}`,
           outer: true,
         });
       }
@@ -162,38 +182,48 @@ export default {
 @import "../../../common/style/mixins.scss";
 .workspace {
   &-container {
+    color: rqthemify(--text-normal);
     position: relative;
     cursor: pointer;
     height: 100%;
     padding: 6px 0;
+    margin-left: 10px;
     box-sizing: border-box;
-    .el-icon-caret-bottom {
+    .el-icon-caret {
       font-size: 12px;
       transition: all 0.3s;
     }
-    .el-icon-s-tools-wrapper {
-      @include logged-icon-container("el-icon-s-tools");
+
+    .icon-set-up-wrapper {
+      height: 24px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      @include logged-icon-container("icon-set-up", 16, 4);
     }
+
     &:hover,
-    &:active {
-      .el-icon-s-tools {
+    &:active,
+    &.is-dropdown-active {
+      .el-icon-caret {
         color: rqthemify(--text-hover);
       }
-      .el-icon-caret-bottom {
+      .icon-set-up {
         color: rqthemify(--text-hover);
+        display: none;
+        &.active-icon {
+          display: inline-block;
+        }
       }
     }
   }
   &-dropdown {
-    position: absolute;
     width: 100%;
-    background: rqthemify(--dropdown-background);
     left: 0;
-    box-shadow: 0px 8px 12px 0px rqthemify(--shadow-primary);
     box-sizing: border-box;
-    top: 100%;
     max-height: 230px;
     overflow-y: auto;
+    @include logged-dropdown;
 
     &__item {
       cursor: pointer;
@@ -267,32 +297,30 @@ export default {
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0 20px 0 4px;
-    width: 210px;
+    padding: 0 11px 0 4px;
+    width: 214px;
     box-sizing: border-box;
     position: relative;
     justify-content: space-between;
     z-index: 9;
     background: rqthemify(--background-minor);
     border-radius: 4px;
-    &__text {
-      width: 135px;
+    &__label {
+      display: inline-block;
+      width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      font-size: 14px;
+      &-wrapper {
+        flex: 1;
+        margin-left: 4px;
+        display: flex;
+        font-size: 14px;
+        overflow: hidden;
+        color: rqthemify(--text-normal);
+      }
     }
-  }
-  &-dropdown:hover ~ &-btn {
-    box-shadow: 0px 0px 20px rqthemify(--shadow-primary);
-  }
-}
-.create-btn {
-  color: rqthemify(--text-normal);
-  font-size: 14px;
-  padding: 0 20px;
-  &:hover {
-    color: rqthemify(--text-hover);
+    @include tooltip-wrapper;
   }
 }
 </style>

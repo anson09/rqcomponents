@@ -6,11 +6,11 @@ export default {
     return { dropdownVisible: false };
   },
   methods: {
-    toggleDropdownVisible(visible = !this.dropdownVisible) {
-      this.dropdownVisible = visible;
+    toggleDropdownVisible() {
+      this.dropdownVisible = !this.dropdownVisible;
     },
     handleClickOutside() {
-      this.toggleDropdownVisible(false);
+      this.dropdownVisible = false;
     },
   },
 };

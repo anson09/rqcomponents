@@ -160,7 +160,6 @@ export default {
     background: transparent;
     border: none;
     color: inherit;
-    @include click-scale();
   }
 }
 .header {

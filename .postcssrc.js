@@ -54,6 +54,10 @@ const product = {
   "--text-important": "hsl(0, 0%, 29%)",
   "--text-normal": "hsla(220, 3%, 39%, 1)", //常规字体色值
   "--text-secondary": "hsl(0, 0%, 64%)", //不重要字体色值
+  "--text-gray": "hsla(217, 19%, 67, 1)", // logged icon color
+
+  "--text-button": "hsl(0, 0%, 100%)", // logged road show button color
+  "--text-tooltip": "hsl(220, 3%, 19%)",
   "--text-white": "hsl(0, 0%, 100%)", //深色底字体色值
   "--text-white-1": "hsla(0, 0%, 100%, 0.1)",
   "--text-white-2": "hsla(0, 0%, 100%, 0.2)",
@@ -71,7 +75,10 @@ const product = {
   "--background-secondary": "hsl(0, 0%, 94%)", //二级背景色
   "--background-white": "hsl(0, 0%, 100%)",
   "--background-black": "hsl(0, 0%, 0%)",
-  "--background-minor": "hsl(216, 20%, 95%)",
+  "--background-minor": "hsl(218, 100%, 98%)",
+  "--background-dark": "hsl(216, 70%, 30%)",
+  "--background-active": "hsl(216, 89%, 41%)",
+  "--background-gray": "hsl(223, 3%, 42%)",
 
   //border-color//
   "--border-primary": "hsl(0, 0%, 89%)", //浅色底分割线
@@ -80,9 +87,9 @@ const product = {
   "--shadow-primary": "hsla(0, 0%, 20%, 0.1)",
   "--shadow-secondary": "hsla(0, 0%, 20%, 0.05)",
   "--shadow-button": "hsla(222, 8%, 24%, 0.29)",
-  "--shadow-dropdown": "hsla(220, 100%, 65%, 0.2)",
   "--shadow-container": "hsla(216, 76%, 44%, 0.1)",
-  "--text-gray": "hsl(217, 19, 67, 1)",
+
+  "--border-tooltip": "hsl(0, 0%, 100%)",
 };
 
 const light = {
@@ -115,9 +122,9 @@ const dark = {
   "--text-primary": "hsl(215, 21%, 89%)", //主字体色值
   "--text-normal": "hsl(211, 15%, 70%)", //常规字体色值
   "--text-secondary": "hsl(211, 10%, 50%)", //不重要字体色值
-  "--text-white": "hsl(226, 14%, 18%)", //下拉背景色值
   "--text-remind": "hsl(0, 0%, 100%)",
   "--text-important": "hsl(214, 15%, 80%)",
+  "--text-button": "hsla(220, 3%, 19%, 1)",
 
   //background-color//
   "--background-primary": "hsl(226, 16%, 16%)", //一级背景色
@@ -131,8 +138,7 @@ const dark = {
   //projection-color//
   "--shadow-primary": "hsl(0, 0%, 8%)",
   "--shadow-button": "hsla(222, 8%, 24%, 0.29)",
-  "--shadow-dropdown": "hsla(220, 100%, 65%, 0.2)",
-  "--text-gray": "hsl(217, 19, 67, 1)",
+  "--text-gray": "hsla(217, 19%, 67, 1)",
   "--shadow-container": "hsla(216, 76%, 44%, 0.1)",
 };
 
@@ -147,9 +153,12 @@ const themifyOptions = {
       "--succeed-color": "hsla(146, 48%, 49%, 1)",
       "--remove-hover-color": "hsl(0, 82%, 61%)",
       "--remove-active-color": "hsl(0, 59%, 47%)",
-      "--dropdown-background": product["--background-white"],
       "--dropdown-hover-background": product["--primary-color-1"],
       "--background-white-hover": product["--background-primary"],
+
+      "--shadow-dropdown": dark["--primary-color-2"],
+
+      // "--text-tooltip-light": product['--text-white'],
       ...product,
       ...light,
     },
@@ -160,12 +169,19 @@ const themifyOptions = {
       "--remove-hover-color": "hsl(0, 82%, 61%)",
       "--remove-active-color": "hsl(0, 59%, 47%)",
       "--succeed-color": "hsla(146, 48%, 49%, 1)",
-      "--dropdown-background": dark["--text-white"],
       "--dropdown-hover-background": product["--primary-color-2"],
       "--warning-background": product["--primary-color"],
       "--warning-background-secondary": "hsl(222, 60%, 37%)",
       "--warning-color": product["--text-white-8"],
       "--background-white-hover": product["--primary-color-2"],
+      "--background-dark": product["--background-final"],
+      "--text-white": product["--text-tooltip"],
+      "--text-tooltip": dark["--text-normal"],
+      "--border-tooltip": dark["--primary-color-8"],
+      "--background-gray": product["--background-final"],
+      "--shadow-dropdown": dark["--primary-color-2"],
+      "--background-active": product["--primary-color"],
+
       ...dark,
     },
   },

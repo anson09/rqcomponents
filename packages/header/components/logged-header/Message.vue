@@ -4,12 +4,15 @@
     v-clickoutside="handleClickOutside"
     :class="['message', { 'is-dropdown-active': dropdownVisible }]"
   >
-    <div class="message-button" @click="toggleDropdownVisible">
+    <div
+      :class="['message-button', { 'is-icon-active': dropdownVisible }]"
+      @click="toggleDropdownVisible"
+    >
       <i
         class="icon-base icon-base-message-center-border icon-message-center"
       ></i>
       <i
-        class="icon-base icon-base-message-center-fill icon-message-center"
+        class="icon-base icon-base-message-center-fill icon-message-center active-icon"
       ></i>
       <span v-show="unreadMsgNum > 0" class="message-button__num">{{
         unreadMsgNum
@@ -240,30 +243,14 @@ export default {
 @import "../../../common/style/mixins";
 .message {
   padding: 0;
+  margin: 0 8px;
   height: 100%;
   position: relative;
-  margin: auto;
   display: flex;
   align-items: center;
   color: rqthemify(--text-primary);
-  .icon-message-center {
-    font-size: 20px;
-  }
   .icon-base-message-center-fill {
     display: none;
-  }
-
-  &:hover,
-  &.is-dropdown-active {
-    .icon-message-center {
-      color: rqthemify(--primary-color);
-    }
-    .icon-base-message-center-border {
-      display: none;
-    }
-    .icon-base-message-center-fill {
-      display: block;
-    }
   }
 
   &-button {
@@ -279,10 +266,16 @@ export default {
       margin-left: -8px;
       justify-content: center;
       align-items: center;
-      width: 16px;
-      height: 16px;
+      width: 17px;
+      height: 17px;
       border-radius: 50%;
       font-size: 12px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 1px solid transparent;
+    }
+    &:hover &__num {
+      border-color: rqthemify(--white);
     }
   }
   &__header {
@@ -332,8 +325,6 @@ export default {
 
   &-container {
     @include logged-dropdown;
-
-    background: rqthemify(--dropdown-background);
     width: 438px;
   }
 
@@ -342,7 +333,7 @@ export default {
       position: absolute;
       z-index: 10;
       border: 1px solid rqthemify(--border-primary);
-      background-color: rqthemify(--dropdown-background);
+      background-color: rqthemify(--background-final);
       border-radius: 4px;
       right: 0;
       box-shadow: 0px 0px 20px 0px rqthemify(--shadow-primary);
