@@ -161,6 +161,7 @@ export default {
   box-sizing: border-box;
   align-items: center;
   width: 100%;
+  min-width: 1280px;
   height: 41px;
   border-bottom: 1px solid rqthemify(--border-primary);
   padding-left: 24px;
