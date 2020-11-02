@@ -55,7 +55,7 @@ export default {
 
 .doc-menu {
   @include container;
-  padding: 9px 0;
+  padding: 8px 0;
   width: 208px;
   p {
     margin: 0;
