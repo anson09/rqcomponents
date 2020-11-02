@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="workspaces.length"
     v-clickoutside="handleClickOutside"
     :class="['workspace-container', { 'is-dropdown-active': dropdownVisible }]"
   >
@@ -44,6 +43,7 @@
             class="icon-base icon-base-set-up icon-set-up"
             @click.stop="handleClick"
           ></i>
+          <Tooltip class="set-up-tooltip" mode="light" text="进入该工作空间" />
         </template>
       </span>
       <span class="workspace-btn__label-wrapper">
@@ -57,7 +57,8 @@
           'el-icon-caret',
           dropdownVisible ? 'el-icon-caret-top' : 'el-icon-caret-bottom',
         ]"
-      ></i>
+      >
+      </i>
     </div>
   </div>
 </template>
@@ -193,13 +194,17 @@ export default {
       font-size: 12px;
       transition: all 0.3s;
     }
+    .tooltip {
+      display: none;
+    }
 
     .icon-set-up-wrapper {
       height: 24px;
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
+      position: relative;
       @include logged-icon-container("icon-set-up", 16, 4);
+      &:hover .set-up-tooltip {
+        display: block;
+      }
     }
 
     &:hover,
@@ -315,12 +320,16 @@ export default {
         flex: 1;
         margin-left: 4px;
         display: flex;
+        height: 100%;
+        align-items: center;
         font-size: 14px;
         overflow: hidden;
         color: rqthemify(--text-normal);
+        &:hover + .tooltip {
+          display: block;
+        }
       }
     }
-    @include tooltip-wrapper;
   }
 }
 </style>
