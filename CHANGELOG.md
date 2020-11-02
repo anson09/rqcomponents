@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12-next.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.11&sourceBranch=refs/tags/v0.1.12-next.0) (2020-11-02)
+
+
+### Features
+
+* logged header min-width to 1280 ([a7503bd](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a7503bd6ca49183c2e886bb42080efcc5a0f714e))
+* message unread dot ([479c04b](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/479c04ba804d92397388598b97b61ce10838248b))
+* new loggedHeader ([a256275](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a2562756665b8f7316078908d69fee23236de8a2))
+* rm / at the end in getPath return ([7de41e8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7de41e85eb38ef88908e8ee7fd673e30fcb14f98))
+* update icon ([8cff2a6](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/8cff2a6040d9a1ac781e7e736d4c3cf770b68124))
+* update icon ([6d775f0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6d775f0ec83dbc83a32f03b8cb754c634a2cd9c7))
+* workspace set-up-icon tooltip ([acdb590](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/acdb59062b09ce10e87544da194d466f8b69007f))
+
+
+### Bug Fixes
+
+* --text-gray variable ([26aecfe](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/26aecfe8f79be66cec41e20451ce961e7ec4d2f9))
+* doc dropdown menu width ([1d5ed25](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1d5ed250bf2468b0df1003ffa33cede16178cc14))
+* doc dropdown padding ([8fa7979](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/8fa79796b01da673914b7b1130de818ed702bfe7))
+* header min-width ([bf51554](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/bf515543b67598d648c0a06d192da20370848913))
+* icon container ([0bab219](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/0bab21997080afbe10a809ad76d0c6062a5f36d2))
+* logged dropdown position ([e3411d8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/e3411d816ff7bd9b91b99bee7b759ea43681828b))
+* product menu color ([854ea31](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/854ea31c2e6fc636ad0baae063608391524fac9d))
+* rm useless ([6739d79](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6739d795ea134b811cdd0ab888659cbaffe7b321))
+* tooltip default text ([fc9e739](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/fc9e739601eae3c37f81610f11c138643719ea04))
+
 ### [0.1.11](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.11-next.1&sourceBranch=refs/tags/v0.1.11) (2020-10-26)
 
 
