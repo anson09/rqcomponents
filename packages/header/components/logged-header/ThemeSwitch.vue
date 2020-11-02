@@ -114,7 +114,7 @@ export default {
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    @include logged-icon-container("icon-base-theme");
+    @include logged-icon-container("icon-base-theme", 18);
   }
   &__dropdown {
     @include logged-dropdown;

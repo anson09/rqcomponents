@@ -49,7 +49,7 @@ export default {
     .doc-menu {
       left: 0;
       position: absolute;
-      bottom: 4px;
+      bottom: -2px;
       transform: translateY(100%);
       &-item-popover {
         left: 0;

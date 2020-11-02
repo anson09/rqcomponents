@@ -85,7 +85,7 @@ export default {
     box-shadow: 0px 2px 4px rqthemify(--primary-color-1);
     border-radius: 4px;
     color: rqthemify(--text-normal);
-    transform: translateY(2px);
+    transform: translateY(7px);
     line-height: 20px;
     &__item {
       position: relative;
