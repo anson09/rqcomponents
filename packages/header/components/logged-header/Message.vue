@@ -14,9 +14,7 @@
       <i
         class="icon-base icon-base-message-center-fill icon-message-center active-icon"
       ></i>
-      <span v-show="unreadMsgNum > 0" class="message-button__num">{{
-        unreadMsgNum
-      }}</span>
+      <span v-show="unreadMsgNum > 0" class="message-button__dot"></span>
     </div>
     <transition name="rq-zoom-in-top">
       <div v-show="dropdownVisible" class="message-container">
@@ -258,20 +256,14 @@ export default {
     height: 30px;
     @include logged-icon-container("icon-message-center");
 
-    &__num {
-      color: rqthemify(--white);
-      background-color: rqthemify(--primary-color);
-      display: flex;
-      margin-left: -8px;
-      justify-content: center;
-      align-items: center;
-      width: 17px;
-      height: 17px;
+    &__dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      font-size: 12px;
-      box-sizing: border-box;
-      background-clip: content-box;
-      border: 1px solid transparent;
+      background-color: rqthemify(--remove-hover-color);
+      left: 7px;
+      top: 18px;
     }
     &:hover &__num {
       border-color: rqthemify(--white);
