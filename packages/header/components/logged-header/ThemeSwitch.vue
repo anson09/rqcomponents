@@ -111,9 +111,6 @@ export default {
   &-button {
     width: 30px;
     height: 30px;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
     @include logged-icon-container("icon-base-theme", 18);
   }
   &__dropdown {

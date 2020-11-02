@@ -54,7 +54,6 @@ export default {
   position: relative;
   .tooltip-wrapper {
     @include f-column;
-    box-sizing: border-box;
     @include tooltip-wrapper;
     @include logged-icon-container("icon-base-switch-products", 18);
     color: rqthemify(--primary-color-4);
