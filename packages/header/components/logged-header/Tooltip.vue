@@ -8,7 +8,7 @@
 export default {
   name: "Tooltip",
   props: {
-    text: { type: String, required: true },
+    text: { type: String, default: "" },
     mode: { type: String, default: "dark" },
   },
   data() {
