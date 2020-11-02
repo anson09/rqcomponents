@@ -167,6 +167,9 @@ $min-vw: 1024px;
   cursor: pointer;
   font-size: #{$font-size}px;
   color: rqthemify(--text-gray);
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
   .#{$icon-name} {
     font-size: inherit;
     &.active-icon {

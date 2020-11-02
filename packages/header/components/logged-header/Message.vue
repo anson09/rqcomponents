@@ -255,8 +255,7 @@ export default {
 
   &-button {
     position: relative;
-    display: flex;
-    align-items: flex-end;
+    height: 30px;
     @include logged-icon-container("icon-message-center");
 
     &__num {

@@ -43,6 +43,7 @@ export default {
 
   &-icon-wrapper {
     @include logged-icon-container("icon-base");
+    height: 30px;
   }
   ::v-deep {
     .doc-menu {
