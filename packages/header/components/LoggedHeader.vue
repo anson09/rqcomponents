@@ -27,7 +27,7 @@
     <!-- 消息 -->
     <Message />
     <!-- 头像 -->
-    <Account v-bind="$attrs" />
+    <Account v-bind="$attrs" v-on="$listeners" />
   </div>
 </template>
 
