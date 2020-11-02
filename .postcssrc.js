@@ -54,7 +54,7 @@ const product = {
   "--text-important": "hsl(0, 0%, 29%)",
   "--text-normal": "hsla(220, 3%, 39%, 1)", //常规字体色值
   "--text-secondary": "hsl(0, 0%, 64%)", //不重要字体色值
-  "--text-gray": "hsla(217, 19%, 67, 1)", // logged icon color
+  "--text-gray": "hsla(217, 19%, 67%, 1)", // logged icon color
 
   "--text-button": "hsl(0, 0%, 100%)", // logged road show button color
   "--text-tooltip": "hsl(220, 3%, 19%)",
@@ -138,7 +138,7 @@ const dark = {
   //projection-color//
   "--shadow-primary": "hsl(0, 0%, 8%)",
   "--shadow-button": "hsla(222, 8%, 24%, 0.29)",
-  "--text-gray": "hsla(217, 19%, 67, 1)",
+  "--text-gray": "hsla(217, 19%, 67%, 1)",
   "--shadow-container": "hsla(216, 76%, 44%, 0.1)",
 };
 
