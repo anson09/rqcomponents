@@ -166,7 +166,7 @@ export default {
   header {
     position: relative;
     box-sizing: border-box;
-    width: 100%;
+    min-width: 100%;
   }
   &-wrapper {
     position: relative;
