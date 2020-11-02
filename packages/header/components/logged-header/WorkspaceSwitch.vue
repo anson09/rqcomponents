@@ -43,7 +43,7 @@
             class="icon-base icon-base-set-up icon-set-up"
             @click.stop="handleClick"
           ></i>
-          <Tooltip class="set-up-tooltip" mode="light" text="进入该工作空间" />
+          <Tooltip class="set-up-tooltip" mode="dark" text="进入该工作空间" />
         </template>
       </span>
       <span class="workspace-btn__label-wrapper">
