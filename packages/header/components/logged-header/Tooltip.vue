@@ -25,6 +25,7 @@ export default {
   left: 50%;
   transform: translate(-50%, 4px);
   box-shadow: 0px 2px 4px rqthemify(--primary-color-1);
+  border: none;
   &__text {
     border-radius: 2px;
     display: block;
