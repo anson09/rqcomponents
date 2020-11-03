@@ -40,6 +40,7 @@ export default {
   align-items: center;
   position: relative;
   height: 100%;
+  width: 30px;
 
   &-icon-wrapper {
     @include logged-icon-container("icon-base");

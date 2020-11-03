@@ -52,6 +52,7 @@ export default {
 @import "../../../common/style/mixins.scss";
 .product-menu {
   position: relative;
+  width: 28px;
   .tooltip-wrapper {
     @include f-column;
     @include tooltip-wrapper;

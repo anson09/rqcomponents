@@ -243,6 +243,7 @@ export default {
   padding: 0;
   margin: 0 8px;
   height: 100%;
+  width: 30px;
   position: relative;
   display: flex;
   align-items: center;
