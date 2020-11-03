@@ -1,5 +1,5 @@
 <template>
-  <div v-show="show" v-clickoutside="handleClickOutside" class="theme-switch">
+  <div v-clickoutside="handleClickOutside" class="theme-switch">
     <div
       :class="['theme-switch-button', { 'is-icon-active': dropdownVisible }]"
       @click="toggleDropdownVisible"
@@ -25,6 +25,12 @@
             <img :src="mode.img" alt="" />
           </div>
           <p>{{ mode.label }}</p>
+          <Tooltip
+            v-if="mode.tooltipText"
+            :text="mode.tooltipText"
+            :class="{ 'is-ie': !isBrowerSupported }"
+            mode="dark"
+          />
         </div>
       </div>
     </transition>
@@ -34,6 +40,7 @@
 <script>
 import lightImg from "../../assets/img/theme-light.png";
 import darkImg from "../../assets/img/theme-dark.png";
+import Tooltip from "./Tooltip.vue";
 
 import {
   THEME_MODE,
@@ -47,12 +54,14 @@ import dropdownMixin from "./dropdown-mixin";
 
 export default {
   name: "ThemeSwitch",
+  components: { Tooltip },
   mixins: [mixin, dropdownMixin],
   inheritAttrs: false,
   data() {
     return {
       value: "light",
-      show: false,
+      isBrowerSupported: true,
+      isProductSupported: true,
     };
   },
   computed: {
@@ -63,31 +72,35 @@ export default {
           img: lightImg,
           value: "light",
           active: this.value === "light",
+          tooltipText: null,
         },
         {
           label: "沉浸体验",
           img: darkImg,
           value: "dark",
           active: this.value === "dark",
+          tooltipText: !this.isBrowerSupported
+            ? "IE浏览器不支持深肤色"
+            : !this.isProductSupported
+            ? "该产品暂无深肤色"
+            : "",
         },
       ];
     },
   },
   mounted() {
-    if (isSupported()) {
-      const url = this.getPath();
-      if (isProductPath(url)) {
-        this.show = true;
-        const theme = getStorage("theme", "string");
-        this.value = THEME_MODE.includes(theme) ? theme : "light";
-        themeRender(this.value);
-        return;
-      }
+    this.isBrowerSupported = isSupported();
+    this.isProductSupported = isProductPath(this.getPath());
+
+    if (this.isBrowerSupported && this.isProductSupported) {
+      const theme = getStorage("theme", "string");
+      this.value = THEME_MODE.includes(theme) ? theme : "light";
+      themeRender(this.value);
     }
-    this.show = false;
   },
   methods: {
     themeChange(theme) {
+      if (!this.isBrowerSupported || !this.isProductSupported) return;
       if (!THEME_MODE.includes(theme)) return;
       setStorage("theme", theme);
       themeRender(theme);
@@ -118,7 +131,8 @@ export default {
     padding: 16px 14px;
     padding-top: 16px;
     color: rqthemify(--text-normal);
-    width: fit-content;
+    width: 110px;
+    box-sizing: border-box;
     border: none;
     cursor: default;
     left: 0;
@@ -127,6 +141,7 @@ export default {
       display: block;
       position: relative;
       width: 57px;
+      margin: 0 auto;
       img {
         width: 100%;
       }
@@ -158,6 +173,25 @@ export default {
       }
       + & {
         margin-top: 20px;
+      }
+      @include tooltip-wrapper;
+      .tooltip {
+        left: -22px;
+        &.is-ie {
+          left: -36px;
+        }
+        transform: translate(0, -102px);
+        ::v-deep {
+          .tooltip__arrow {
+            top: 30px;
+            transform: translate(-50%, -100%) rotate(45deg);
+          }
+          .tooltip__text {
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 4px;
+          }
+        }
       }
     }
   }
