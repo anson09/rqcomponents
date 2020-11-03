@@ -28,12 +28,10 @@ export default {
   border: none;
   &__text {
     border-radius: 2px;
-    display: block;
     box-sizing: border-box;
     line-height: 18px;
     padding: 4px 8px;
-    min-width: 72px;
-    max-width: 200px;
+    display: flex;
     flex-wrap: nowrap;
     width: max-content;
     position: relative;
