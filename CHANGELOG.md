@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.12-next.0&sourceBranch=refs/tags/v0.1.12) (2020-11-03)
+
+
+### Features
+
+* theme unsupported tooltip ([23395b7](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/23395b7d86dff6ee910441b2507126e34373ba10))
+
+
+### Bug Fixes
+
+* doc dropdown width ([5d9919e](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/5d9919ee4cb8c0d1c0d0e3d3eeb1fa30c6da3d57))
+* logged header component width ([8e10f75](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/8e10f75bb24a6af6055f697f478fab7ddbba56e2))
+* pass logout event to account ([85bb4f0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/85bb4f0556d41d29643c957b0f3b1b100d91c651))
+* set-up-tooltip use dark mode ([480bf50](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/480bf50cf5fa880e1616c8eb804d252e57dddd00))
+* tooltip border ([3cb3dd9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/3cb3dd9f6c8616910f244c75d95bf90b25ab2967))
+* tooltip text in te ([64af9cc](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/64af9cc994649d1cbefee49448b1ccc2dfef697b))
+
 ### [0.1.12-next.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.11&sourceBranch=refs/tags/v0.1.12-next.0) (2020-11-02)
 
 
