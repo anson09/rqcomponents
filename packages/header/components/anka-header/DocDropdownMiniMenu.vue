@@ -48,16 +48,15 @@
 </template>
 <script>
 import mixin from "../../../common/util/mixin";
+import { config } from "../common/DocDropdownMenu.vue";
 
 export default {
   name: "DocDropdownMiniMenu",
   mixins: [mixin],
-  props: {
-    config: { type: Object, required: true },
-  },
   data() {
     return {
-      ...this.config,
+      links: config,
+      label: "支持",
     };
   },
   methods: {
