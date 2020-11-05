@@ -2,7 +2,7 @@
   <div class="menu-support">
     <div class="menu-support__links">
       <p
-        v-for="(item, idx) in cfg.info"
+        v-for="(item, idx) in info"
         :key="idx"
         :class="['menu-support__links--item', { 'is-disabled': item.disabled }]"
         @click="copy(item)"
@@ -12,16 +12,16 @@
       </p>
       <p class="menu-support-contact">
         <span
-          v-for="(contact, contactIdx) in cfg.contact"
-          :key="contactIdx"
+          v-for="(item, index) in contact"
+          :key="index"
           class="menu-support-contact-item"
         >
           <i
             :class="'icon-base icon-base-' + contact.icon"
-            @click="handleLink(contact.link)"
+            @click="handleLink(item.link)"
           ></i>
           <img
-            v-if="contact.qrcode"
+            v-if="item.qrcode"
             class="menu-support-contact-item__img"
             :src="qrcode"
           />
@@ -35,15 +35,13 @@ import Message from "element-ui/lib/message";
 import qrcode from "../../../common/assets/img/qrcode.jpg";
 import "element-ui/lib/theme-chalk/message.css";
 import mixin from "../../../common/util/mixin";
+import { info, contact } from "../../../common/assets/dict/config";
 
 export default {
   name: "Support",
   mixins: [mixin],
-  props: {
-    cfg: { type: Object, required: true },
-  },
   data() {
-    return { qrcode };
+    return { qrcode, info, contact };
   },
   methods: {
     copy(cfg) {
