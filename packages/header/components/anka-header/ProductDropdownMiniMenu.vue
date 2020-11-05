@@ -1,8 +1,8 @@
 <template>
   <div class="product-mini-menu">
-    <p class="product-mini-menu__title">{{ config.label }}</p>
+    <p class="product-mini-menu__title">{{ label }}</p>
     <div
-      v-for="(item, index) in config.links"
+      v-for="(item, index) in links"
       :key="index"
       class="product-mini-menu-item"
     >
@@ -28,15 +28,17 @@
 </template>
 <script>
 import mixin from "../../../common/util/mixin";
+import { config } from "./ProductDropdownMenu.vue";
 
 export default {
   name: "ProductDropdownMiniMenu",
   mixins: [mixin],
-  props: {
-    config: { type: Object, required: true },
-  },
+
   data() {
-    return {};
+    return {
+      links: config,
+      label: "产品",
+    };
   },
   methods: {},
 };

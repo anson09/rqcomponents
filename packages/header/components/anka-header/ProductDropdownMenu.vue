@@ -32,14 +32,56 @@
 <script>
 import mixin from "../../../common/util/mixin";
 
+const config = [
+  {
+    label: "米筐量化协作平台",
+    iconColorful: "logo-ricequant",
+    link: "/quant",
+    product: "quant",
+    border: true,
+  },
+  {
+    label: "RQSDK米筐量化工具套件",
+    iconColorful: "logo-sdk",
+    link: "/rq-sdk",
+    product: "rqsdk",
+    links: [
+      {
+        label: "RQData 金融数据API",
+        link: "/rqdata",
+        product: "rqdata",
+      },
+      {
+        label: "RQAlpha Plus 回测框架",
+        link: "/rq-alpha-plus",
+        product: "rqalphaplus",
+      },
+
+      {
+        label: "RQFactor 因子投研工具",
+        link: "/rq-factor",
+        product: "rqfactor",
+      },
+      {
+        label: "RQOptimizer 股票组合优化器",
+        link: "/rqoptimizer",
+        product: "rqoptimizer",
+      },
+    ],
+  },
+  {
+    label: "RQAMS（资产管理系统）",
+    icon: "logo-ams",
+    link: "/ams",
+    product: "rqams",
+  },
+];
+export { config };
 export default {
   name: "ProductDropdownMenu",
   mixins: [mixin],
-  props: {
-    config: { type: Array, required: true },
-  },
   data() {
-    return {};
+    return { config };
   },
 };
 </script>
