@@ -27,4 +27,8 @@ async function urlencodePost(url, params) {
   return data;
 }
 
-export { queryStringify, snakeCaseConvert, urlencodePost, axios };
+const getAccount = () => {
+  return urlencodePost("api/user/isLogin.do", {});
+};
+
+export { queryStringify, snakeCaseConvert, urlencodePost, axios, getAccount };

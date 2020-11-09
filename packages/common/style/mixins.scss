@@ -1,3 +1,5 @@
+@use "sass:meta";
+$max-vw: 1440px;
 $medium-vw: 1280px;
 $min-vw: 1024px;
 
@@ -74,35 +76,15 @@ $min-vw: 1024px;
   transform: translateX(-50%) translateY(-50%);
 }
 
-@mixin m-center-horizontal {
-  right: 0;
-  left: 0;
-  margin: auto;
-}
-
-@mixin m-center-vertical {
-  top: 0;
-  bottom: 0;
-  margin: auto;
-}
-
-@mixin m-center {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-}
-
-@mixin f-center {
+@mixin f-center($justify-content: center, $align-items: center) {
   display: flex;
-  justify-content: center;
+  justify-content: $justify-content;
+  align-items: $align-items;
 }
 
 @mixin f-column {
   @include f-center;
   flex-direction: column;
-  align-items: center;
 }
 
 @mixin debug {
@@ -220,6 +202,25 @@ $min-vw: 1024px;
   &.is-tooltip-hidden {
     .tooltip {
       display: none;
+    }
+  }
+}
+
+@mixin root {
+  ::v-deep {
+    button {
+      cursor: pointer;
+      outline: none;
+      background: transparent;
+      border: none;
+      color: inherit;
+      @include click-scale;
+    }
+    p {
+      margin: 0;
+    }
+    [class^="rq"] {
+      box-sizing: border-box;
     }
   }
 }

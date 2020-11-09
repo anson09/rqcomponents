@@ -1,7 +1,6 @@
 const methods = {
   handleLink(params) {
     if (!params) return;
-
     let link = params;
     if (typeof link === "string") {
       link = { href: link };

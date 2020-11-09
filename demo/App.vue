@@ -2,6 +2,10 @@
   <div id="app">
     <!-- :config="config" -->
     <RqHeader :opacity="true" :before-logout="logout" @auth="log"> </RqHeader>
+    <RqAnkaHeader :opacity="true" :before-logout="logout" @auth="log">
+      <template slot="notification">a test a test a test</template>
+    </RqAnkaHeader>
+    <RqLoggedHeader />
     <RqFooter></RqFooter>
   </div>
 </template>
@@ -16,13 +20,13 @@
 /* --------  */
 
 /* build from source */
-import { RqHeader, RqFooter } from "../packages";
+import { RqFooter, RqAnkaHeader, RqHeader, RqLoggedHeader } from "../packages";
 import "../packages/common/style";
 /* --------  */
 
 export default {
   name: "App",
-  components: { RqHeader, RqFooter },
+  components: { RqFooter, RqAnkaHeader, RqHeader, RqLoggedHeader },
   data() {
     return {
       config: {
@@ -31,6 +35,11 @@ export default {
         ankaPrefix: "anka",
       },
     };
+  },
+  watch: {
+    $route() {
+      console.log("watch route", this.$route);
+    },
   },
   mounted() {},
   methods: {

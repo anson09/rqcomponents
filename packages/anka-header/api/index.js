@@ -1,9 +1,5 @@
-import { axios, urlencodePost } from "../../common/api";
+import { axios } from "../../common/api";
 import * as message from "./modules/message";
-
-const getAccount = () => {
-  return urlencodePost("api/user/isLogin.do", {});
-};
 
 const logout = async () => {
   const url = "api/user/logout.do";
@@ -22,4 +18,4 @@ const getWorksapcesProducts = async (productName) => {
   });
   return data;
 };
-export { getAccount, logout, getWorksapces, message, getWorksapcesProducts };
+export { logout, getWorksapces, message, getWorksapcesProducts };

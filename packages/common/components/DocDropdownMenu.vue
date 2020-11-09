@@ -1,0 +1,225 @@
+<template>
+  <div class="doc-menu">
+    <div v-for="(item, index) in config" :key="index" class="doc-menu-item">
+      <p class="doc-menu-item__label" @click="handleLink(item.link)">
+        {{ item.label }} <i v-if="item.links" class="el-icon-arrow-right"></i>
+      </p>
+
+      <div v-if="item.links" class="doc-menu-item-popover">
+        <div
+          v-for="(subitem, subindex) in item.links"
+          :key="subindex"
+          class="doc-menu-subitem"
+        >
+          <p
+            :class="['doc-menu-subitem__label', { 'not-link': !subitem.href }]"
+            @click="handleLink(subitem.link)"
+          >
+            {{ subitem.label }}
+          </p>
+          <template v-if="subitem.links">
+            <p
+              v-for="(leastItem, leastIndex) in subitem.links"
+              :key="leastIndex"
+              class="doc-menu-least-item__label"
+              @click="handleLink(leastItem.link)"
+            >
+              {{ leastItem.label }}
+            </p>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+const config = [
+  {
+    label: "RQAMS文档",
+    link: "/doc/rqams/",
+  },
+
+  {
+    label: "量化平台文档",
+    link: "/doc/quant/",
+  },
+  {
+    label: "RQSDK使用文档",
+    links: [
+      {
+        label: "Ricequant SDK快速上手",
+        link: "/doc/rqsdk/",
+      },
+      {
+        label: "RQData - 金融数据 API",
+        links: [
+          {
+            label: "Python API文档",
+            link: "/doc/rqdata/python/",
+          },
+          {
+            label: "Http API文档",
+            link: "/doc/rqdata/http/",
+          },
+        ],
+      },
+      {
+        label: "RQAlpha Plus - 回测框架",
+        links: [
+          {
+            label: "使用教程",
+            link: "/doc/rqalpha-plus/tutorial.html",
+          },
+          {
+            label: "API使用手册",
+            link: "/doc/rqalpha-plus/api/",
+          },
+        ],
+      },
+      {
+        label: "RQFactor - 因子投研工具",
+        links: [
+          {
+            label: "使用教程",
+            link: "/doc/rqfactor/manual.html",
+          },
+          {
+            label: "API使用手册",
+            link: "/doc/rqfactor/api.html",
+          },
+        ],
+      },
+      {
+        label: "RQOptimizer - 股票组合优化器",
+        links: [
+          {
+            label: "使用教程",
+            link: "/doc/rqoptimize/manual.html",
+          },
+          {
+            label: "API使用手册",
+            link: "/doc/rqoptimizer/api/",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "帮助中心",
+    link: "/doc/faq/",
+  },
+
+  // {
+  //   label: "RQFUND米筐公募基金文档",
+  //   link: "/doc/quant/"
+  // },
+  // {
+  //   label: "RQBOND米筐债券文档",
+  //   link: "/doc/quant/"
+  // },
+];
+
+export { config };
+
+export default {
+  name: "DocDropdownMenu",
+
+  data() {
+    return { config };
+  },
+  methods: {
+    handleLink(link) {
+      window.open(link);
+    },
+  },
+};
+</script>
+<style lang="scss" scoped>
+@mixin container {
+  background-color: rqthemify(--background-final);
+  box-shadow: 0px 0px 8px rqthemify(--shadow-dropdown);
+  border-radius: 4px;
+}
+
+.doc-menu {
+  @include container;
+  padding: 8px 0;
+  width: 196px;
+  p {
+    margin: 0;
+  }
+  &-item {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    &-popover {
+      position: absolute;
+      right: 0;
+      transform: translateX(100%);
+      top: 0;
+      width: 240px;
+      @include container;
+      padding: 8px 0;
+      display: none;
+    }
+    &:hover &-popover {
+      display: block;
+    }
+
+    &__label {
+      padding-left: 15px;
+      position: relative;
+
+      .el-icon-arrow-right {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: inherit;
+      }
+    }
+  }
+
+  &-subitem,
+  &-item {
+    &__label {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 36px;
+      padding-left: 15px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  &-least-item {
+    &__label {
+      font-size: 12px;
+      line-height: 30px;
+      padding-left: 24px;
+    }
+  }
+
+  &-subitem,
+  &-item,
+  &-least-item {
+    &__label {
+      color: rqthemify(--text-normal);
+      &:hover {
+        color: rqthemify(--text-hover);
+        background-color: rqthemify(--background-primary);
+      }
+      &.not-link {
+        cursor: initial;
+      }
+    }
+  }
+
+  &-subitem {
+    padding: 6px 0;
+  }
+  &-subitem + &-subitem {
+    border-top: 1px solid rqthemify(--border-primary);
+  }
+}
+</style>
