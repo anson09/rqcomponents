@@ -1,9 +1,8 @@
 import RqHeader from "./header";
 import RqFooter from "./footer";
-import RqAnkaHeader from "./anka-header";
 import RqLoggedHeader from "./logged-header";
 
-const components = [RqHeader, RqFooter, RqAnkaHeader, RqLoggedHeader];
+const components = [RqHeader, RqFooter, RqLoggedHeader];
 
 const install = function (Vue) {
   components.forEach((component) => {
@@ -11,7 +10,7 @@ const install = function (Vue) {
   });
 };
 
-export { RqHeader, RqFooter, RqAnkaHeader, RqLoggedHeader };
+export { RqHeader, RqFooter, RqLoggedHeader };
 
 export default {
   install,
