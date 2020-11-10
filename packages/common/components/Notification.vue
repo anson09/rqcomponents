@@ -31,7 +31,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.rq-notification {
+@import "./../style/mixins.scss";
+@include block(notification) {
   margin: 0;
   position: relative;
   padding-right: 24px;
@@ -45,7 +46,7 @@ export default {
     height: 4px;
   }
 
-  @media screen and(max-width: 1280px) {
+  @media screen and(max-width: $medium-vw) {
     font-size: 12px;
   }
   .el-icon-circle-close {
