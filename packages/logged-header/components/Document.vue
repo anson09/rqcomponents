@@ -45,13 +45,12 @@ export default {
     height: 30px;
   }
   ::v-deep {
-    // TODO
-    .doc-menu {
+    .#{$namespace}-docs {
       left: 0;
       position: absolute;
       bottom: -2px;
       transform: translateY(100%);
-      &-item-popover {
+      .#{$namespace}-doc__more {
         left: 0;
         transform: translateX(-100%);
       }

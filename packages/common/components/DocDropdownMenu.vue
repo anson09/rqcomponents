@@ -1,18 +1,18 @@
 <template>
-  <div class="doc-menu">
-    <div v-for="(item, index) in config" :key="index" class="doc-menu-item">
-      <p class="doc-menu-item__label" @click="handleLink(item.link)">
+  <div class="rq-docs">
+    <div v-for="(item, index) in config" :key="index" class="rq-doc">
+      <p class="rq-doc__label" @click="handleLink(item.link)">
         {{ item.label }} <i v-if="item.links" class="el-icon-arrow-right"></i>
       </p>
 
-      <div v-if="item.links" class="doc-menu-item-popover">
+      <div v-if="item.links" class="rq-doc__more">
         <div
           v-for="(subitem, subindex) in item.links"
           :key="subindex"
-          class="doc-menu-subitem"
+          class="rq-doc__more-item"
         >
           <p
-            :class="['doc-menu-subitem__label', { 'not-link': !subitem.href }]"
+            :class="['rq-doc__label', { 'not-link': !subitem.link }]"
             @click="handleLink(subitem.link)"
           >
             {{ subitem.label }}
@@ -21,7 +21,7 @@
             <p
               v-for="(leastItem, leastIndex) in subitem.links"
               :key="leastIndex"
-              class="doc-menu-least-item__label"
+              class="rq-doc__label rq-doc__label--mini"
               @click="handleLink(leastItem.link)"
             >
               {{ leastItem.label }}
@@ -135,91 +135,73 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import "./../style/mixins.scss";
+
 @mixin container {
   background-color: rqthemify(--background-final);
   box-shadow: 0px 0px 8px rqthemify(--shadow-dropdown);
   border-radius: 4px;
+  padding: 8px 0;
 }
 
-.doc-menu {
+@include block(docs) {
   @include container;
-  padding: 8px 0;
   width: 196px;
-  p {
-    margin: 0;
+}
+
+@include block(doc) {
+  position: relative;
+  cursor: pointer;
+  @include f-center;
+  &__more {
+    position: absolute;
+    right: 0;
+    transform: translateX(100%);
+    top: 0;
+    width: 240px;
+    @include container;
+    display: none;
+    &-item {
+      padding: 6px 0;
+      border-top: 1px solid rqthemify(--border-primary);
+      &:first-child {
+        border-top: none;
+      }
+    }
   }
-  &-item {
+
+  &:hover &__more {
+    display: block;
+  }
+  &__label {
     position: relative;
-    cursor: pointer;
-    display: flex;
-    &-popover {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 36px;
+    padding-left: 15px;
+    width: 100%;
+    color: rqthemify(--text-normal);
+    &:hover {
+      color: rqthemify(--text-hover);
+      background-color: rqthemify(--background-primary);
+    }
+    &.not-link {
+      cursor: initial;
+    }
+
+    .el-icon-arrow-right {
       position: absolute;
-      right: 0;
-      transform: translateX(100%);
-      top: 0;
-      width: 240px;
-      @include container;
-      padding: 8px 0;
-      display: none;
-    }
-    &:hover &-popover {
-      display: block;
-    }
-
-    &__label {
-      padding-left: 15px;
-      position: relative;
-
-      .el-icon-arrow-right {
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: inherit;
-      }
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: inherit;
     }
   }
-
-  &-subitem,
-  &-item {
-    &__label {
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 36px;
-      padding-left: 15px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-  }
-
-  &-least-item {
-    &__label {
-      font-size: 12px;
-      line-height: 30px;
-      padding-left: 24px;
-    }
-  }
-
-  &-subitem,
-  &-item,
-  &-least-item {
-    &__label {
-      color: rqthemify(--text-normal);
-      &:hover {
-        color: rqthemify(--text-hover);
-        background-color: rqthemify(--background-primary);
-      }
-      &.not-link {
-        cursor: initial;
-      }
-    }
-  }
-
-  &-subitem {
-    padding: 6px 0;
-  }
-  &-subitem + &-subitem {
-    border-top: 1px solid rqthemify(--border-primary);
+  &__label--mini {
+    font-size: 12px;
+    line-height: 30px;
+    padding-left: 24px;
+    font-weight: 400;
   }
 }
 </style>
