@@ -1,10 +1,10 @@
 <template>
-  <div class="product-nav">
+  <div class="rq-header-nav">
     <div
       v-for="(item, index) in config.links"
       :key="index"
       :class="[
-        'product-nav__item',
+        'rq-header-nav__item',
         {
           'is-active': $route.path.startsWith(item.link),
         },
@@ -31,17 +31,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../style/mixin.scss";
+@import "../style/mixins.scss";
 @include block(nav) {
   height: 100%;
   flex: 1;
   @include f-center;
-  align-items: center;
   color: rqthemify(--text-normal);
   font-size: 14px;
   &__item {
     @include f-center;
-    align-items: center;
     position: relative;
     height: 100%;
     padding: 0px 16px 0 10px;

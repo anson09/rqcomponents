@@ -1,15 +1,18 @@
 <template>
   <div
     v-clickoutside="handleClickOutside"
-    :class="['workspace-container', { 'is-dropdown-active': dropdownVisible }]"
+    :class="[
+      'rq-header-ws-container',
+      { 'is-dropdown-active': dropdownVisible },
+    ]"
   >
     <transition name="rq-zoom-in-top">
-      <div v-show="dropdownVisible" class="workspace-dropdown">
+      <div v-show="dropdownVisible" class="rq-header-ws-dropdown">
         <div
           v-for="item in workspaces"
           :key="item.id"
           :class="[
-            'workspace-dropdown__item',
+            'rq-header-ws-dropdown__item',
             { 'is-active': item.id === curWs.id },
           ]"
           @click="setWorkspace(item)"
@@ -18,11 +21,13 @@
             v-if="item.isQuantEnterprise"
             class="icon-base icon-base-enterprise"
           ></i>
-          <span class="workspace-dropdown__item-label"> {{ item.name }}</span>
+          <span class="rq-header-ws-dropdown__item-label">
+            {{ item.name }}</span
+          >
           <i v-if="item.id === curWs.id" class="el-icon-success"></i>
         </div>
-        <div class="workspace-dropdown__btn-wrapper">
-          <button class="workspace-dropdown__btn" @click="createWorkspace">
+        <div class="rq-header-ws-dropdown__btn-wrapper">
+          <button class="rq-header-ws-dropdown__btn" @click="createWorkspace">
             <i class="el-icon-circle-plus"></i>
             创建新的工作空间
           </button>
@@ -30,7 +35,7 @@
       </div>
     </transition>
     <div
-      :class="['workspace-btn', { 'is-tooltip-hidden': dropdownVisible }]"
+      :class="['rq-header-ws-btn', { 'is-tooltip-hidden': dropdownVisible }]"
       @click="toggleDropdownVisible"
     >
       <span :class="['icon-set-up-wrapper']">
@@ -46,8 +51,8 @@
           <Tooltip class="set-up-tooltip" mode="dark" text="进入该工作空间" />
         </template>
       </span>
-      <span class="workspace-btn__label-wrapper">
-        <span ref="curWsLabel" class="workspace-btn__label">
+      <span class="rq-header-ws-btn__label-wrapper">
+        <span ref="curWsLabel" class="rq-header-ws-btn__label">
           {{ curWs.name }}
         </span>
       </span>
@@ -63,9 +68,9 @@
   </div>
 </template>
 <script>
-import { getWorksapces, getWorksapcesProducts } from "../../api";
-import { setStorage, getStorage, getDate } from "../../../common/util";
-import mixin from "../../../common/util/mixin";
+import { getWorksapces, getWorksapcesProducts } from "../api/index";
+import { setStorage, getStorage, getDate } from "../../common/util";
+import mixin from "../../common/util/mixin";
 import dropdownMixin from "./dropdown-mixin";
 import Tooltip from "./Tooltip.vue";
 
@@ -180,8 +185,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../../common/style/mixins.scss";
-.workspace {
+@import "./../style/mixins.scss";
+
+@include block(ws) {
   &-container {
     color: rqthemify(--text-normal);
     position: relative;
@@ -189,19 +195,18 @@ export default {
     height: 100%;
     padding: 6px 0;
     margin-left: 10px;
-    box-sizing: border-box;
     .el-icon-caret {
       font-size: 12px;
       transition: all 0.3s;
     }
-    .tooltip {
+    @include block(tooltip) {
       display: none;
     }
 
     .icon-set-up-wrapper {
       height: 24px;
       position: relative;
-      @include logged-icon-container("icon-set-up", 16, 4);
+      @include icon-container("icon-set-up", 16, 4);
       &:hover .set-up-tooltip {
         display: block;
       }
@@ -225,10 +230,9 @@ export default {
   &-dropdown {
     width: 100%;
     left: 0;
-    box-sizing: border-box;
     max-height: 230px;
     overflow-y: auto;
-    @include logged-dropdown;
+    @include dropdown;
 
     &__item {
       cursor: pointer;
@@ -236,9 +240,7 @@ export default {
       position: relative;
       line-height: 20px;
       padding: 10px 60px 10px 20px;
-
-      display: flex;
-      align-items: center;
+      @include f-center(flex-start);
       color: rqthemify(--text-normal);
       .icon-base-enterprise {
         font-size: 16px;
@@ -266,8 +268,7 @@ export default {
       }
     }
     &__btn {
-      display: flex;
-      align-items: center;
+      @include f-center;
       background-color: rqthemify(--background-secondary);
       border: none;
       border-radius: 4px;
@@ -278,7 +279,6 @@ export default {
       cursor: pointer;
       outline: none;
       @include click-scale();
-
       .el-icon-circle-plus {
         font-size: 16px;
         margin-right: 8px;
@@ -299,14 +299,11 @@ export default {
 
   &-btn {
     color: inherit;
-    display: flex;
-    align-items: center;
+    @include f-center(space-between);
     height: 100%;
     padding: 0 11px 0 4px;
     width: 214px;
-    box-sizing: border-box;
     position: relative;
-    justify-content: space-between;
     z-index: 9;
     background: rqthemify(--background-minor);
     border-radius: 4px;
@@ -319,9 +316,8 @@ export default {
       &-wrapper {
         flex: 1;
         margin-left: 4px;
-        display: flex;
+        @include f-center;
         height: 100%;
-        align-items: center;
         font-size: 14px;
         overflow: hidden;
         color: rqthemify(--text-normal);
