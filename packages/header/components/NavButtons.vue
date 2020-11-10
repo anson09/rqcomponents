@@ -72,7 +72,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../../common/style/mixins.scss";
-@include root;
 .rq-header {
   $self: &;
   &__buttons {

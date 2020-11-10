@@ -78,6 +78,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../common/style/mixins.scss";
+@include reset;
 
 .rq-header {
   $self: &;
