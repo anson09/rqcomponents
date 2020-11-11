@@ -68,7 +68,7 @@ $component: null;
 
 @mixin t-center-horizontal($translateY: 0) {
   left: 50%;
-  transform: translateX(-50%, $translateY);
+  transform: translate(-50%, $translateY);
 }
 
 @mixin t-center {
