@@ -97,7 +97,7 @@ export default {
   &-container {
     position: relative;
     width: 100%;
-    max-width: 1440px;
+    background: rqthemify(--background-white);
     box-shadow: 0px 2px 4px rqthemify(--shadow-container);
     &.is-opacity {
       background: transparent;
