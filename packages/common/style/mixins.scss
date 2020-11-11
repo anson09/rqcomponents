@@ -77,10 +77,10 @@ $component: null;
   transform: translateX(-50%) translateY(-50%);
 }
 
-@mixin f-center($justify-content: center) {
+@mixin f-center($justify-content: center, $align-items: center) {
   display: flex;
   justify-content: $justify-content;
-  align-items: center;
+  align-items: $align-items;
 }
 
 @mixin f-column($align-item: center) {
