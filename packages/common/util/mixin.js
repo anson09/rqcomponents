@@ -65,13 +65,8 @@ const methods = {
     if (this.rootConfig.router && this.$route) {
       path = this.$route.path;
     } else {
-      path = window.location.href
-        .split("/")
-        .slice(3)
-        .map((key) => `/${key}`)
-        .join("");
+      path = window.location.pathname;
     }
-
     return path.replace(/\/$/, "");
   },
 };
