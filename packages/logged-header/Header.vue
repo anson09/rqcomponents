@@ -247,7 +247,7 @@ export default {
     }
   }
 
-  .rq-header-tooltip {
+  #{$namespace}-tooltip {
     top: 110%;
   }
 }
