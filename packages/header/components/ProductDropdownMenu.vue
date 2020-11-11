@@ -19,7 +19,7 @@
         <i v-if="item.icon" :class="`icon-base icon-base-${item.icon}`" />
         {{ item.label }}
       </div>
-      <div>
+      <div class="rq-header-menu__label-wrapper">
         <div
           v-for="(subitem, subindex) in item.links"
           :key="subindex"
@@ -103,6 +103,7 @@ export default {
   box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
   padding-top: 6px;
   &__label {
+    width: 100%;
     font-size: 14px;
     color: rqthemify(--text-important);
     padding-left: 20px;
@@ -117,6 +118,9 @@ export default {
       font-size: 12px;
       color: rqthemify(--text-normal);
       padding-left: 48px;
+    }
+    &-wrapper {
+      width: 100%;
     }
   }
   &__item {
