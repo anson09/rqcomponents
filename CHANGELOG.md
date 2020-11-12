@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.12&sourceBranch=refs/tags/v0.1.13) (2020-11-12)
+
+
+### Features
+
+* handle avatar load error ([812e851](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/812e8514d64bed7215a0a784a8b7d2ede59779ac))
+
+
+### Bug Fixes
+
+* message link ([748bdf9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/748bdf92ed4db1abc0e11935f1055f40ed77e81c))
+* pass create event to workspace switch ([d676eff](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/d676effe7df28f0ab2be7ff2d7d1aaef654882c8))
+* product menu line height ([e480479](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/e48047979691e6bc7a204fd886bf26a7286c5209))
+
+
+### Refactors
+
+* message data structure ([1b6348e](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1b6348e52b0cc0de03598abaeb5bf999ee185541))
+
 ### [0.1.12](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.12-next.0&sourceBranch=refs/tags/v0.1.12) (2020-11-03)
 
 
