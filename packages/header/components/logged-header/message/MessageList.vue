@@ -49,16 +49,7 @@ export default {
     message: { type: Array, default: () => [] },
   },
   data() {
-    return {
-      linkDict: {
-        // TODO 旧的因子消息 type 为 factor
-        factor: "/quant",
-        quant: "/quant",
-        ams: "/ams",
-        fof: "/fof",
-        bond: "/bond",
-      },
-    };
+    return {};
   },
 
   mounted() {
@@ -71,9 +62,22 @@ export default {
   },
   methods: {
     handleClick(msg, index) {
-      window.open(
-        `${this.linkDict[msg.type]}?action=${msg.action || msg.type}`
-      );
+      const linkDict = {
+        quant: "/quant",
+        ams: "/ams",
+        fof: "/fof",
+        bond: "/bond",
+      };
+      let fullpath = "";
+      // TODO 旧的因子消息 type 为 factor 且 没有 action 字段
+      if (msg.type === "factor") {
+        fullpath = "/quant/factor";
+      } else {
+        fullpath = `${linkDict[msg.system]}?action=${JSON.stringify(
+          msg.action
+        )}`;
+      }
+      window.open(fullpath);
       this.$emit("update-message", { msg, index });
     },
 
