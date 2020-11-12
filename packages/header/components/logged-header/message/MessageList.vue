@@ -10,8 +10,7 @@
           class="item"
           rel="noopener"
           target="_blank"
-          :href="linkMap[msg.type]"
-          @click="$emit('update-message', { msg, index })"
+          @click="handleClick(msg, index)"
         >
           <p class="title">
             <img :src="msg.from.avatar" alt="" class="avatar title__item" />
@@ -51,8 +50,13 @@ export default {
   },
   data() {
     return {
-      linkMap: {
-        factor: "/quant/#main-factor?tag=factor",
+      linkDict: {
+        // TODO 旧的因子消息 type 为 factor
+        factor: "/quant",
+        quant: "/quant",
+        ams: "/ams",
+        fof: "/fof",
+        bond: "/bond",
       },
     };
   },
@@ -66,9 +70,11 @@ export default {
     scrollBody.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
-    handleClickMsg(msg) {
-      window.open(this.linkMap[msg.type]);
-      this.$emit("update-message", msg);
+    handleClick(msg, index) {
+      window.open(
+        `${this.linkDict[msg.type]}?action=${msg.action || msg.type}`
+      );
+      this.$emit("update-message", { msg, index });
     },
 
     handleScroll: debounce(function (event) {
