@@ -13,7 +13,10 @@
       activeProduct.name
     }}</span>
     <!-- 工作空间 -->
-    <WorkspaceSwitch @switch-workspace="$emit('switch-workspace', $event)" />
+    <WorkspaceSwitch
+      @switch-workspace="$emit('switch-workspace', $event)"
+      @create-workspace="$emit('create-workspace', $event)"
+    />
     <!-- 当前产品导航 -->
     <ProductNav v-show="activeProduct" :config="activeProduct" />
     <!-- 路演 -->

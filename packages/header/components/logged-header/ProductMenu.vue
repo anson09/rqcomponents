@@ -53,6 +53,7 @@ export default {
 .product-menu {
   position: relative;
   width: 28px;
+  line-height: 1;
   .tooltip-wrapper {
     @include f-column;
     @include tooltip-wrapper;

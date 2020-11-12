@@ -10,8 +10,7 @@
           class="item"
           rel="noopener"
           target="_blank"
-          :href="linkMap[msg.type]"
-          @click="$emit('update-message', { msg, index })"
+          @click="handleClick(msg, index)"
         >
           <p class="title">
             <img :src="msg.from.avatar" alt="" class="avatar title__item" />
@@ -50,11 +49,7 @@ export default {
     message: { type: Array, default: () => [] },
   },
   data() {
-    return {
-      linkMap: {
-        factor: "/quant/#main-factor?tag=factor",
-      },
-    };
+    return {};
   },
 
   mounted() {
@@ -66,9 +61,24 @@ export default {
     scrollBody.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
-    handleClickMsg(msg) {
-      window.open(this.linkMap[msg.type]);
-      this.$emit("update-message", msg);
+    handleClick(msg, index) {
+      const linkDict = {
+        quant: "/quant",
+        ams: "/ams",
+        fof: "/fof",
+        bond: "/bond",
+      };
+      let fullpath = "";
+      // TODO 旧的因子消息 type 为 factor 且 没有 action 字段
+      if (msg.type === "factor") {
+        fullpath = "/quant/factor";
+      } else {
+        fullpath = `${linkDict[msg.system]}?action=${JSON.stringify(
+          msg.action
+        )}`;
+      }
+      window.open(fullpath);
+      this.$emit("update-message", { msg, index });
     },
 
     handleScroll: debounce(function (event) {
