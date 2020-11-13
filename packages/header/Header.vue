@@ -79,6 +79,12 @@ export default {
 <style lang="scss" scoped>
 @import "./style/mixins.scss";
 @include reset;
+
+::v-deep {
+  button {
+    @include click-scale;
+  }
+}
 @include block(null) {
   $self: &;
   height: 100%;

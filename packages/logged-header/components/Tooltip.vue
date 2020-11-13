@@ -23,8 +23,7 @@ export default {
   text-align: center;
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translate(-50%, 4px);
+  @include t-center-horizontal(4px);
   box-shadow: 0px 2px 4px rqthemify(--primary-color-1);
   border: none;
   &__text {

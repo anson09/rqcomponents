@@ -89,32 +89,33 @@ export default {
 }
 .footer {
   width: 100%;
-  @include mini-text(rqthemify(--text-normal), 400);
-
+  color: rqthemify(--text-normal);
+  font-size: 12px;
+  line-height: 1.5;
   &__content {
     border-bottom: 1px solid rqthemify(--border-primary);
     &-wrapper {
       padding: 20px 0;
-      @media screen and(min-width: $medium-vw) {
+      @include desktop {
         max-width: 1170px;
       }
-      @media screen and(max-width: $medium-vw) {
+      @include laptop {
         max-width: 900px;
       }
       @include f-center;
       margin: 0 auto;
-      @media screen and(max-width: $min-vw) {
+      @include pad {
         justify-content: space-evenly;
       }
     }
     &-item {
-      @media screen and(min-width: $medium-vw) {
+      @include desktop {
         margin-right: 108px;
       }
-      @media screen and(max-width: $medium-vw) {
+      @include laptop {
         margin-right: 50px;
       }
-      @media screen and(max-width: $min-vw) {
+      @include pad {
         margin-right: 0;
       }
       &__title,
@@ -127,8 +128,11 @@ export default {
       }
       &__label {
         &.link {
-          @include hover;
+          cursor: pointer;
           font-weight: normal;
+          &:hover {
+            color: rqthemify(--primary-color);
+          }
         }
       }
     }
@@ -144,7 +148,7 @@ export default {
         }
       }
       display: flex;
-      @media screen and(min-width: $min-vw) {
+      @include pc {
         flex: auto;
       }
 
@@ -162,11 +166,10 @@ export default {
           box-shadow: 0 2px 12px 0 rqthemify(--shadow-primary);
           position: absolute;
           display: none;
-          left: 50%;
           top: -10px;
+          @include t-center-horizontal(-100%);
           border: 1px solid rqthemify(--border-primary);
           border-radius: 4px;
-          transform: translate(-50%, -100%);
           background-color: rqthemify(--white);
         }
         &:hover &__img {

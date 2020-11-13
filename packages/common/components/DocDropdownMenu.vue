@@ -192,8 +192,7 @@ export default {
     .el-icon-arrow-right {
       position: absolute;
       right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
+      @include t-center-vertical;
       color: inherit;
     }
   }

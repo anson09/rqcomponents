@@ -204,7 +204,7 @@ export default {
   position: relative;
   @include f-center;
   width: 100%;
-  min-width: 1280px;
+  min-width: $medium-vw;
   height: 41px;
   border-bottom: 1px solid rqthemify(--border-primary);
   padding-left: 24px;

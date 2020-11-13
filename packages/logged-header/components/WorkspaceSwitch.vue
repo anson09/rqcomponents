@@ -253,8 +253,7 @@ export default {
       }
       .el-icon-success {
         color: rqthemify(--primary-color-3);
-        top: 50%;
-        transform: translateY(-50%);
+        @include t-center-vertical;
         font-size: 16px;
         right: 12px;
         position: absolute;
@@ -278,7 +277,6 @@ export default {
       font-size: 14px;
       cursor: pointer;
       outline: none;
-      @include click-scale();
       .el-icon-circle-plus {
         font-size: 16px;
         margin-right: 8px;

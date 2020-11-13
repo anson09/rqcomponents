@@ -103,8 +103,7 @@ export default {
     position: absolute;
     right: 20px;
     display: none;
-    top: 50%;
-    transform: translateY(-50%);
+    @include t-center-vertical;
     font-size: 18px;
     color: rqthemify(--text-secondary);
     &:hover {

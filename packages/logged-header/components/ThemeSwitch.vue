@@ -157,7 +157,7 @@ export default {
       }
       .el-icon-success {
         position: absolute;
-        top: 50%;
+        @include t-center-vertical;
         right: 0;
         left: 0;
         font-size: 16px;
@@ -165,7 +165,6 @@ export default {
         color: rqthemify(--succeed-color);
         text-align: center;
         opacity: 0;
-        transform: translateY(-50%);
       }
     }
     &--choice {

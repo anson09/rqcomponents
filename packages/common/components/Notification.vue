@@ -37,18 +37,19 @@ export default {
   position: relative;
   padding-right: 24px;
   color: rqthemify(--warning-color);
-  background: rqthemify(--warning-background);
   font-size: 16px;
   line-height: 24px;
+  background: rqthemify(--warning-background);
   display: flex;
 
   ::-webkit-scrollbar {
     height: 4px;
   }
 
-  @media screen and(max-width: $medium-vw) {
+  @include laptop {
     font-size: 12px;
   }
+
   .el-icon-circle-close {
     cursor: pointer;
     padding: 4px;

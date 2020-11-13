@@ -54,8 +54,7 @@ export default {
       display: block;
       position: absolute;
       bottom: -1px;
-      left: 50%;
-      transform: translateX(-50%);
+      @include t-center-horizontal;
       width: 100%;
       height: 2px;
       border-radius: 1px;

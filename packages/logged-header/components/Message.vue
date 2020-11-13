@@ -287,8 +287,7 @@ export default {
       position: absolute;
       width: 1px;
       right: -12px;
-      top: 50%;
-      transform: translateY(-50%);
+      @include t-center-vertical;
       height: 11px;
       content: "";
       display: block;

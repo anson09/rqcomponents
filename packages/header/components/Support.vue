@@ -71,7 +71,10 @@ export default {
 @import "../../common/style/mixins";
 @import "../style/mixins.scss";
 @include block(support) {
-  @include mini-text(rqthemify(--text-secondary));
+  color: rqthemify(--text-secondary);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.5;
   padding-bottom: 14px;
   &__contacts {
     margin: 14px 16px 0;
@@ -79,7 +82,11 @@ export default {
   &__contact {
     margin: 10px 0;
     &:not(.is-disabled) {
-      @include hover;
+      cursor: pointer;
+      &:hover {
+        color: rqthemify(--primary-color);
+      }
+
       .el-icon-copy-document {
         margin-left: 6px;
       }
@@ -113,7 +120,9 @@ export default {
     i {
       font-size: 16px;
       cursor: pointer;
-      @include hover;
+      &:hover {
+        color: rqthemify(--primary-color);
+      }
     }
   }
 }
