@@ -1,41 +1,41 @@
 <template>
-  <div class="doc-mini-menu">
-    <p class="doc-mini-menu__title">{{ label }}</p>
-    <div v-for="(item, index) in links" :key="index" class="doc-mini-menu-item">
-      <p class="doc-mini-menu-item__label" @click="handleClick(item, index)">
+  <div class="rq-header-doc-container">
+    <p class="rq-header-doc__title">{{ label }}</p>
+    <div v-for="(item, index) in links" :key="index">
+      <p
+        class="rq-header-doc__label rq-header-doc__label--default"
+        @click="handleClick(item, index)"
+      >
         {{ item.label }}
         <i
           v-if="item.links"
-          :class="
-            item.linksVisible ? 'el-icon-caret-top' : 'el-icon-caret-bottom'
-          "
+          :class="[
+            'icon-caret',
+            item.linksVisible ? 'el-icon-caret-top' : 'el-icon-caret-bottom',
+          ]"
         ></i>
       </p>
 
       <div
         v-show="item.linksVisible"
         v-if="item.links"
-        class="doc-mini-menu-subitem-wrapper"
+        class="rq-header-doc__more"
       >
-        <div
-          v-for="(subitem, subindex) in item.links"
-          :key="subindex"
-          class="doc-mini-menu-subitem"
-        >
+        <div v-for="(subitem, subindex) in item.links" :key="subindex">
           <p
             :class="[
-              'doc-mini-menu-subitem__label',
-              { 'is-link': subitem.href },
+              'rq-header-doc__label rq-header-doc__label--medium ',
+              { 'is-link': subitem.link },
             ]"
             @click="handleClick(subitem)"
           >
             {{ subitem.label }}
           </p>
-          <div v-if="subitem.links" class="doc-mini-menu-leastitem-wrapper">
+          <div v-if="subitem.links" class="rq-header-doc__label--mini-wrapper">
             <p
               v-for="(leastitem, leastindex) in subitem.links"
               :key="leastindex"
-              class="doc-mini-menu-leastitem__label is-link"
+              class="rq-header-doc__label rq-header-doc__label--mini is-link"
               @click="handleClick(leastitem)"
             >
               {{ leastitem.label }}
@@ -72,79 +72,68 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.doc-mini-menu {
+@import "../style/mixins.scss";
+@include block(doc) {
   &__title {
     font-size: 12px;
     color: rqthemify(--text-important);
     padding-left: 26px;
   }
-
-  &-subitem {
-    &-wrapper {
-      padding: 6px 0;
-      background-color: rqthemify(--background-primary);
+  &__label {
+    position: relative;
+    @include f-center(flex-start);
+    font-size: 14px;
+    padding: 6px 26px;
+    line-height: 20px;
+    color: rqthemify(--text-important);
+    margin: 8px 0;
+    .icon-caret {
+      margin-left: 4px;
     }
-  }
-  &-subitem,
-  &-leastitem {
-    &__label {
-      position: relative;
-      display: flex;
-      align-items: center;
-      &.is-link {
-        color: rqthemify(--text-normal);
-        &:before {
-          content: "";
-          position: relative;
-          width: 4px;
-          height: 4px;
-          border-radius: 50%;
-          display: block;
-          background-color: rqthemify(--text-important);
-          margin-right: 8px;
+    &.is-link {
+      color: rqthemify(--text-normal);
 
-          left: 0;
-        }
-        &:hover {
-          &:before {
-            background-color: rqthemify(--text-remind);
-          }
+      &:before {
+        content: "";
+        position: relative;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        display: block;
+        background-color: rqthemify(--text-important);
+        margin-right: 8px;
+        left: 0;
+      }
+      &:hover {
+        &:before {
+          background-color: rqthemify(--text-remind);
         }
       }
     }
-  }
-
-  &-item,
-  &-subitem,
-  &-leastitem {
-    &__label {
-      font-size: 14px;
-      padding: 6px 26px;
-      line-height: 20px;
-      color: rqthemify(--text-important);
-      margin: 8px 0;
-    }
-  }
-  &-leastitem {
-    &-wrapper {
-      margin-top: -9px;
-    }
-    &__label {
+    &--mini {
       padding: 5px 48px;
       margin: 0;
+      &-wrapper {
+        margin-top: -9px;
+      }
+    }
+    &--default,
+    &--mini,
+    &--medium.is-link {
+      cursor: pointer;
+      &:hover {
+        color: rqthemify(--text-remind);
+        background-color: rqthemify(--background-secondary);
+      }
+      &:active {
+        color: rqthemify(--light-primary-color);
+        background: rqthemify(--light-primary-color-1);
+      }
     }
   }
-  .is-link,
-  &-item__label {
-    cursor: pointer;
-    &:hover {
-      color: rqthemify(--text-remind);
-      background-color: rqthemify(--background-secondary);
-    }
-    &:active {
-      color: rqthemify(--light-primary-color);
-      background: rqthemify(--light-primary-color-1);
-    }
+  &__more {
+    padding: 6px 0;
+    background-color: rqthemify(--background-primary);
   }
 }
 </style>

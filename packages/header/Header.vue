@@ -77,10 +77,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../common/style/mixins.scss";
+@import "./style/mixins.scss";
 @include reset;
-
-.rq-header {
+@include block(null) {
   $self: &;
   height: 100%;
   z-index: 2;
@@ -89,21 +88,6 @@ export default {
   max-width: $max-vw;
   @include f-center;
 
-  &-nav {
-    &--mini {
-      display: none;
-    }
-  }
-  @include laptop {
-    #{$self}-nav {
-      &--mini {
-        display: flex;
-      }
-      &--default {
-        display: none;
-      }
-    }
-  }
   &-container {
     position: relative;
     width: 100%;
@@ -119,20 +103,31 @@ export default {
     z-index: 10;
     height: 70px;
   }
+}
 
-  &__logo {
-    @include laptop {
-      margin-right: 30px;
+@include block(nav) {
+  &--mini {
+    display: none;
+  }
+}
+
+@include laptop {
+  @include block(nav) {
+    &--mini {
+      display: flex;
     }
-    img {
-      width: 138px;
+    &--default {
+      display: none;
     }
   }
-  &__topic {
-    flex: 1;
-    font-size: 26px;
-    font-weight: 500;
-    color: rqthemify(--text-primary);
+}
+
+@include block(logo) {
+  @include laptop {
+    margin-right: 30px;
+  }
+  &__img {
+    width: 138px;
   }
 }
 

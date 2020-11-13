@@ -6,11 +6,11 @@
         <span></span>
         <span></span>
       </button>
-      <div class="rq-header-nav__dropdown">
-        <div class="rq-header-nav__item-wrapper">
-          <div class="rq-header-nav__item">
+      <div class="rq-header-dropdown-wrapper">
+        <div class="rq-header-dropdown">
+          <div class="rq-header-dropdown__item">
             <ProductDropdownMiniMenu />
-            <div class="rq-header-nav__more">
+            <div>
               <p
                 v-for="item in links"
                 :key="item.label"
@@ -21,7 +21,7 @@
               </p>
             </div>
           </div>
-          <div class="rq-header-nav__item">
+          <div class="rq-header-dropdown__item">
             <DocDropdownMiniMenu />
           </div>
         </div>
@@ -54,8 +54,8 @@ export default {
   data() {
     return {
       links: [
-        { link: "/edu", label: "教育专区" },
         { link: "/pricing", label: "定价" },
+        { link: "/edu", label: "教育专区" },
       ],
     };
   },
@@ -67,9 +67,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../common/style/mixins";
-
-.rq-header-nav {
+@import "../style/mixins.scss";
+// @import "../../common/style/mixins";
+@include block(nav) {
   $self: &;
   position: relative;
   @include f-center;
@@ -80,6 +80,16 @@ export default {
     height: 40px;
     width: 1px;
     background: rqthemify(--text-normal);
+  }
+  &.is-opacity {
+    &:before {
+      background: rqthemify(--text-normal);
+    }
+    #{$self}__burger {
+      span {
+        background: rqthemify(--text-normal);
+      }
+    }
   }
   &-wrapper {
     flex: 1;
@@ -107,50 +117,38 @@ export default {
       }
     }
   }
-  &__item {
-    &-wrapper {
-      display: flex;
-      width: 100%;
-      border-bottom: 1px solid rqthemify(--border-primary);
+  &:hover {
+    &:before {
+      background: transparent;
     }
-    flex: 1;
-    padding-top: 26px;
-    border-right: 1px solid rqthemify(--border-primary);
-    &:last-child {
-      border-right: none;
+
+    #{$self}__burger {
+      box-shadow: 0px 0px 20px 0px rqthemify(--shadow-secondary);
+      background: rqthemify(--background-white);
+      span {
+        background: rqthemify(--primary-color);
+      }
     }
-    #{$self}__more {
-      margin-bottom: 16px;
-      &-label {
-        font-size: 14px;
-        line-height: 32px;
-        margin: 0;
-        margin-bottom: 8px;
-        color: rqthemify(--text-important);
-        padding-left: 26px;
-        cursor: pointer;
-        &:hover {
-          color: rqthemify(--text-remind);
-          background-color: rqthemify(--background-secondary);
-        }
-        &:active {
-          color: rqthemify(--primary-color);
-          background: rqthemify(--primary-color-1);
-        }
+    @include block(dropdown) {
+      &-wrapper {
+        display: flex;
       }
     }
   }
-
-  &__dropdown {
+}
+@include block(dropdown) {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid rqthemify(--border-primary);
+  &-wrapper {
     background-color: rqthemify(--white);
-    min-width: 500px;
+    width: 486px;
     border: 1px solid rqthemify(--border-primary);
     display: none;
     flex-direction: column;
     position: absolute;
     padding: 0;
     border-width: 0;
-    max-width: 500px;
     border-radius: 0;
     bottom: 0;
     left: 11px;
@@ -158,32 +156,29 @@ export default {
     text-align: left;
     box-shadow: 0px 20px 20px 0px rqthemify(--shadow-primary);
   }
-
-  &.is-opacity {
-    &:before {
-      background: rqthemify(--text-normal);
-    }
-    #{$self}__burger {
-      span {
-        background: rqthemify(--text-normal);
-      }
+  &__item {
+    flex: 1;
+    padding-top: 26px;
+    border-right: 1px solid rqthemify(--border-primary);
+    &:last-child {
+      border-right: none;
     }
   }
-  &:hover {
-    &:before {
-      background: transparent;
+  &__label {
+    font-size: 14px;
+    line-height: 32px;
+    margin: 0;
+    margin-bottom: 8px;
+    color: rqthemify(--text-important);
+    padding-left: 26px;
+    cursor: pointer;
+    &:hover {
+      color: rqthemify(--text-remind);
+      background-color: rqthemify(--background-secondary);
     }
-    #{$self} {
-      &__burger {
-        box-shadow: 0px 0px 20px 0px rqthemify(--shadow-secondary);
-        background: rqthemify(--background-white);
-        span {
-          background: rqthemify(--primary-color);
-        }
-      }
-      &__dropdown {
-        display: flex;
-      }
+    &:active {
+      color: rqthemify(--primary-color);
+      background: rqthemify(--primary-color-1);
     }
   }
 }

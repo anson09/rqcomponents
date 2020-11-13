@@ -8,9 +8,9 @@
     >
       <span class="rq-header-nav__label">{{ item.label }}</span>
       <template v-if="item.component">
-        <i class="rq-header-icon el-icon-arrow-up" />
-        <div class="rq-header-nav__dropdown-wrapper">
-          <component :is="item.component" class="rq-header-nav__dropdown" />
+        <i class="el-icon-arrow-up" />
+        <div class="rq-header-dropdown-wrapper">
+          <component :is="item.component" class="rq-header-dropdown" />
         </div>
       </template>
     </span>
@@ -51,14 +51,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../common/style/mixins.scss";
-
-.rq-header-nav {
+@import "../style/mixins.scss";
+@include block(nav) {
   flex: 1;
   margin: 0 20px;
   height: 100%;
   @include f-center(start);
   color: rqthemify(--text-primary);
+
   &.is-opacity {
     color: rqthemify(--border-primary);
   }
@@ -71,16 +71,7 @@ export default {
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    .rq-header-nav__dropdown {
-      border-top-left-radius: 0;
-      box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
-      &-wrapper {
-        position: absolute;
-        left: 0;
-        top: 100%;
-        display: none;
-      }
-    }
+
     &:after {
       content: "";
       position: absolute;
@@ -100,8 +91,10 @@ export default {
       .el-icon-arrow-up {
         transform: rotate(180deg);
       }
-      .rq-header-nav__dropdown-wrapper {
-        display: block;
+      @include block(dropdown) {
+        &-wrapper {
+          display: block;
+        }
       }
     }
   }
@@ -110,6 +103,17 @@ export default {
     height: 100%;
     @include f-center;
     margin-right: 8px;
+  }
+}
+
+@include block(dropdown) {
+  border-top-left-radius: 0;
+  box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
+  &-wrapper {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    display: none;
   }
 }
 </style>

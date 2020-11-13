@@ -1,8 +1,12 @@
 <template>
-  <div class="product-menu">
-    <div v-for="(item, index) in config" :key="index" class="product-menu-item">
+  <div class="rq-header-menu">
+    <div
+      v-for="(item, index) in config"
+      :key="index"
+      class="rq-header-menu__item"
+    >
       <div
-        :class="['product-menu-item__label', item.product]"
+        :class="['rq-header-menu__label', item.product]"
         @click="handleLink(item.link)"
       >
         <svg
@@ -15,11 +19,14 @@
         <i v-if="item.icon" :class="`icon-base icon-base-${item.icon}`" />
         {{ item.label }}
       </div>
-      <div class="product-menu-subitem">
+      <div>
         <div
           v-for="(subitem, subindex) in item.links"
           :key="subindex"
-          :class="['product-menu-subitem__label', subitem.product]"
+          :class="[
+            'rq-header-menu__label rq-header-menu__label--mini',
+            subitem.product,
+          ]"
           @click="handleLink(subitem.link)"
         >
           {{ subitem.label }}
@@ -89,25 +96,35 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.product-menu {
+@import "../style/mixins.scss";
+@include block(menu) {
   width: 250px;
   background: rqthemify(--background-final);
   box-shadow: 0px 16px 20px 0 rqthemify(--shadow-primary);
   padding-top: 6px;
-  &-item {
+  &__label {
+    font-size: 14px;
+    color: rqthemify(--text-important);
+    padding-left: 20px;
+    cursor: pointer;
+    @include f-center(flex-start);
+    font-weight: 500;
+    &:hover {
+      background-color: rqthemify(--background-secondary);
+    }
+
+    &--mini {
+      font-size: 12px;
+      color: rqthemify(--text-normal);
+      padding-left: 48px;
+    }
+  }
+  &__item {
     line-height: 32px;
     margin: 14px 0;
-    display: flex;
-    flex-direction: column;
+    @include f-column(flex-start);
     position: relative;
-    &__label {
-      font-size: 14px;
-      color: rqthemify(--text-important);
-      padding-left: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-    }
+
     &:after {
       position: absolute;
       content: "";
@@ -144,23 +161,6 @@ export default {
         .icon-base {
           color: rqthemify(--#{$product}-product-color);
         }
-      }
-    }
-  }
-  &-subitem {
-    &__label {
-      cursor: pointer;
-      font-size: 12px;
-      color: rqthemify(--text-normal);
-      padding-left: 48px;
-    }
-  }
-  &-item,
-  &-subitem {
-    &__label {
-      font-weight: 500;
-      &:hover {
-        background-color: rqthemify(--background-secondary);
       }
     }
   }

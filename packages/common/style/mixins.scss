@@ -84,8 +84,10 @@ $component: null;
   align-items: $align-items;
 }
 
-@mixin f-column {
-  @include f-center;
+@mixin f-column($align-item: center) {
+  display: flex;
+  justify-content: center;
+  align-items: $align-item;
   flex-direction: column;
 }
 
@@ -165,14 +167,15 @@ $component: null;
   }
 }
 @mixin block($block) {
-  $b: $namespace;
+  $name: $namespace;
+
   @if ($component) {
-    $b: $b + "-" + $component;
+    $name: $name + "-" + $component;
   }
   @if $block {
-    $b: $b + "-" + $block;
+    $name: $name + "-" + $block;
   }
-  .#{$b} {
+  .#{$name} {
     @content;
   }
 }

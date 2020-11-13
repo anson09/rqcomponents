@@ -1,22 +1,21 @@
 <template>
-  <div class="product-mini-menu">
-    <p class="product-mini-menu__title">{{ label }}</p>
+  <div class="rq-header-menu">
+    <p class="rq-header-menu__title">{{ label }}</p>
     <div
       v-for="(item, index) in links"
       :key="index"
-      class="product-mini-menu-item"
+      class="rq-header-menu__item"
     >
-      <p class="product-mini-menu-item__label" @click="handleLink(item.link)">
+      <p
+        class="rq-header-menu__label rq-header-menu__label--default"
+        @click="handleLink(item.link)"
+      >
         {{ item.label }}
       </p>
-      <div v-if="item.links" class="product-mini-menu-subitem-wrapper">
-        <div
-          v-for="(subitem, subindex) in item.links"
-          :key="subindex"
-          class="product-mini-menu-subitem"
-        >
+      <div v-if="item.links" class="rq-header-menu__item--mini">
+        <div v-for="(subitem, subindex) in item.links" :key="subindex">
           <p
-            class="product-mini-menu-subitem__label"
+            class="rq-header-menu__label rq-header-menu__label--mini"
             @click="handleLink(subitem.link)"
           >
             {{ subitem.label }}
@@ -43,48 +42,40 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.product-mini-menu {
-  p {
-    margin: 0;
-  }
+@import "../style/mixins.scss";
+@include block(menu) {
   &__title {
-    color: rqthemify(--text-important);
     font-size: 12px;
     padding-left: 26px;
     line-height: 18px;
     margin-bottom: 8px;
   }
-  &-item {
+  &__item {
     margin-bottom: 4px;
-    &__label {
+    &--mini {
+      margin-bottom: 8px;
+    }
+  }
+  &__label {
+    padding: 6px 48px 6px 26px;
+    cursor: pointer;
+    &:hover {
+      color: rqthemify(--text-remind);
+      background-color: rqthemify(--background-primary);
+    }
+    &:active {
+      background-color: rqthemify(--background-secondary);
+    }
+    &--default {
       cursor: pointer;
       font-size: 14px;
       color: rqthemify(--text-important);
       line-height: 20px;
     }
-  }
-  &-subitem {
-    &-wrapper {
-      margin-bottom: 8px;
-    }
-    &__label {
+    &--mini {
       color: rqthemify(--text-normal);
       font-size: 12px;
       line-height: 18px;
-    }
-  }
-  &-subitem,
-  &-item {
-    &__label {
-      padding: 6px 48px 6px 26px;
-      cursor: pointer;
-      &:hover {
-        color: rqthemify(--text-remind);
-        background-color: rqthemify(--background-primary);
-      }
-      &:active {
-        background-color: rqthemify(--background-secondary);
-      }
     }
   }
 }

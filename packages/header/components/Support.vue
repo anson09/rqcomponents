@@ -1,11 +1,11 @@
 <template>
   <div class="rq-header-support">
-    <div class="rq-header-support__links">
+    <div class="rq-header-support__contacts">
       <p
         v-for="(item, idx) in info"
         :key="idx"
         :class="[
-          'rq-header-support__links--item',
+          'rq-header-support__contact',
           { 'is-disabled': item.disabled },
         ]"
         @click="copy(item)"
@@ -13,11 +13,11 @@
         {{ item.label }}: {{ item.value }}
         <i v-if="!item.disabled" class="el-icon-copy-document"></i>
       </p>
-      <p class="rq-header-support-contact">
+      <p class="rq-header-support__links">
         <span
           v-for="(item, index) in contact"
           :key="index"
-          class="rq-header-support-contact-item"
+          class="rq-header-support__link"
         >
           <i
             :class="'icon-base icon-base-' + item.icon"
@@ -25,7 +25,7 @@
           ></i>
           <img
             v-if="item.qrcode"
-            class="rq-header-support-contact-item__img"
+            class="rq-header-support__link-img"
             :src="qrcode"
           />
         </span>
@@ -69,23 +69,23 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../../common/style/mixins";
-
-.rq-header-support {
+@import "../style/mixins.scss";
+@include block(support) {
   @include mini-text(rqthemify(--text-secondary));
   padding-bottom: 14px;
-  &__links {
+  &__contacts {
     margin: 14px 16px 0;
-    &--item {
-      margin: 10px 0;
-      &:not(.is-disabled) {
-        @include hover;
-        .el-icon-copy-document {
-          margin-left: 6px;
-        }
+  }
+  &__contact {
+    margin: 10px 0;
+    &:not(.is-disabled) {
+      @include hover;
+      .el-icon-copy-document {
+        margin-left: 6px;
       }
     }
   }
-  &-contact {
+  &__links {
     height: 16px;
     line-height: 16px;
   }
@@ -111,28 +111,9 @@ export default {
       display: block;
     }
     i {
-      margin-right: 12px;
       font-size: 16px;
       cursor: pointer;
       @include hover;
-    }
-    &-item {
-      &__img {
-        padding: 12px;
-        box-shadow: 0 2px 12px 0 rqthemify(--shadow-primary);
-        position: absolute;
-        display: none;
-        z-index: 999;
-        left: 20px;
-        bottom: 50px;
-        transform: translateX(-50%);
-        border: 1px solid rqthemify(--border-primary);
-        border-radius: 4px;
-        background-color: rqthemify(--white);
-      }
-      &:hover &__img {
-        display: block;
-      }
     }
   }
 }
