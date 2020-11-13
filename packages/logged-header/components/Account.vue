@@ -4,7 +4,12 @@
       :class="['rq-header-avatar', { 'is-active': dropdownVisible }]"
       @click="toggleDropdownVisible"
     >
-      <img class="rq-header-avatar__img" :src="avatarShow" alt="" />
+      <img
+        class="account__avatar"
+        :src="avatarShow"
+        alt=""
+        @error="handleAvatarLoadError"
+      />
     </div>
     <transition name="rq-zoom-in-top">
       <div v-show="dropdownVisible" class="rq-header-dropdown">
@@ -65,14 +70,20 @@ export default {
           label: "登出账号",
         },
       ],
+      isAvatarLoadError: false,
     };
   },
   computed: {
     avatarShow() {
-      return this.avatar || defaultAvatar;
+      return this.isAvatarLoadError
+        ? defaultAvatar
+        : this.avatar || defaultAvatar;
     },
   },
   methods: {
+    handleAvatarLoadError() {
+      this.isAvatarLoadError = true;
+    },
     handleClick(cfg) {
       if (cfg.event === "logout") {
         this.$emit("logout");

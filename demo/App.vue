@@ -2,9 +2,6 @@
   <div id="app">
     <!-- :config="config" -->
     <RqHeader :opacity="true" :before-logout="logout" @auth="log"> </RqHeader>
-    <RqAnkaHeader :opacity="true" :before-logout="logout" @auth="log">
-      <template slot="notification">a test a test a test</template>
-    </RqAnkaHeader>
     <RqLoggedHeader />
     <RqFooter></RqFooter>
   </div>
@@ -20,13 +17,13 @@
 /* --------  */
 
 /* build from source */
-import { RqFooter, RqAnkaHeader, RqHeader, RqLoggedHeader } from "../packages";
+import { RqFooter, RqHeader, RqLoggedHeader } from "../packages";
 import "../packages/common/style";
 /* --------  */
 
 export default {
   name: "App",
-  components: { RqFooter, RqAnkaHeader, RqHeader, RqLoggedHeader },
+  components: { RqFooter, RqHeader, RqLoggedHeader },
   data() {
     return {
       config: {
