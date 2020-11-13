@@ -73,8 +73,8 @@ export default {
       if (msg.type === "factor") {
         fullpath = "/quant/factor";
       } else {
-        fullpath = `${linkDict[msg.system]}?action=${JSON.stringify(
-          msg.action
+        fullpath = `${linkDict[msg.system]}?action=${encodeURIComponent(
+          JSON.stringify(msg.action)
         )}`;
       }
       window.open(fullpath);
