@@ -221,6 +221,7 @@ export default {
   &-wrapper {
     position: relative;
     z-index: 1000;
+    width: 100%;
   }
 }
 
