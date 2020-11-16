@@ -3,7 +3,7 @@
     <div ref="list" class="rq-header-msgs">
       <div v-for="(msg, index) in message" :key="msg.id" class="rq-header-msg">
         <i
-          class="el-icon-remove-outline"
+          class="icon-base icon-base-remove-outline"
           @click.stop="$emit('delete-message', { msg, index })"
         ></i>
         <a
@@ -108,13 +108,13 @@ export default {
   cursor: pointer;
   padding: 0 20px;
   position: relative;
-  .el-icon-remove-outline {
+  .icon-base-remove-outline {
     z-index: 9;
     position: absolute;
     right: 20px;
     display: none;
     @include t-center-vertical;
-    font-size: 18px;
+    font-size: 16px;
     color: rqthemify(--text-secondary);
     &:hover {
       color: rqthemify(--remove-hover-color);
@@ -126,7 +126,7 @@ export default {
   }
   &:hover {
     background-color: rqthemify(--background-white-hover);
-    .el-icon-remove-outline {
+    .icon-base-remove-outline {
       display: inline-block;
     }
   }

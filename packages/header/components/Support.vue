@@ -11,7 +11,7 @@
         @click="copy(item)"
       >
         {{ item.label }}: {{ item.value }}
-        <i v-if="!item.disabled" class="el-icon-copy-document"></i>
+        <i v-if="!item.disabled" class="icon-base icon-base-copy-document"></i>
       </p>
       <p class="rq-header-support__links">
         <span
@@ -87,8 +87,9 @@ export default {
         color: rqthemify(--primary-color);
       }
 
-      .el-icon-copy-document {
+      .icon-base-copy-document {
         margin-left: 6px;
+        font-size: 10px;
       }
     }
   }

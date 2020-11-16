@@ -10,8 +10,10 @@
         <i
           v-if="item.links"
           :class="[
-            'icon-caret',
-            item.linksVisible ? 'el-icon-caret-top' : 'el-icon-caret-bottom',
+            'icon-base',
+
+            'icon-base-caret-bottom',
+            { 'is-active': item.linksVisible },
           ]"
         ></i>
       </p>
@@ -87,8 +89,12 @@ export default {
     line-height: 20px;
     color: rqthemify(--text-important);
     margin: 8px 0;
-    .icon-caret {
+    .icon-base {
       margin-left: 4px;
+      font-size: 10px;
+      &.is-active {
+        transform: rotate(180deg);
+      }
     }
     &.is-link {
       color: rqthemify(--text-normal);

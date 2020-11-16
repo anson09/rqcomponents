@@ -8,7 +8,7 @@
     >
       <span class="rq-header-nav__label">{{ item.label }}</span>
       <template v-if="item.component">
-        <i class="el-icon-arrow-up" />
+        <i class="icon-base icon-base-arrow-up" />
         <div class="rq-header-dropdown-wrapper">
           <component :is="item.component" class="rq-header-dropdown" />
         </div>
@@ -88,7 +88,8 @@ export default {
       &:after {
         background-color: rqthemify(--light-primary-color);
       }
-      .el-icon-arrow-up {
+      .icon-base-arrow-up {
+        font-size: 14px;
         transform: rotate(180deg);
       }
       @include block(dropdown) {

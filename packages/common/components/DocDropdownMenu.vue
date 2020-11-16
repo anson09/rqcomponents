@@ -2,7 +2,8 @@
   <div class="rq-docs">
     <div v-for="(item, index) in config" :key="index" class="rq-doc">
       <p class="rq-doc__label" @click="handleLink(item.link)">
-        {{ item.label }} <i v-if="item.links" class="el-icon-arrow-right"></i>
+        {{ item.label }}
+        <i v-if="item.links" class="icon-base icon-base-arrow-up"></i>
       </p>
 
       <div v-if="item.links" class="rq-doc__more">
@@ -189,11 +190,13 @@ export default {
       cursor: initial;
     }
 
-    .el-icon-arrow-right {
+    .icon-base-arrow-up {
       position: absolute;
       right: 12px;
       @include t-center-vertical;
+      transform: translateY(-50%) rotate(90deg);
       color: inherit;
+      font-size: 8px;
     }
   }
   &__label--mini {

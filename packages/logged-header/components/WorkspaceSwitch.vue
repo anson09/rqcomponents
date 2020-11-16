@@ -24,11 +24,14 @@
           <span class="rq-header-ws-dropdown__item-label">
             {{ item.name }}</span
           >
-          <i v-if="item.id === curWs.id" class="el-icon-success"></i>
+          <i
+            v-if="item.id === curWs.id"
+            class="icon-base icon-base-success"
+          ></i>
         </div>
         <div class="rq-header-ws-dropdown__btn-wrapper">
           <button class="rq-header-ws-dropdown__btn" @click="createWorkspace">
-            <i class="el-icon-circle-plus"></i>
+            <i class="icon-base icon-base-circle-plus"></i>
             创建新的工作空间
           </button>
         </div>
@@ -57,13 +60,7 @@
         </span>
       </span>
       <Tooltip v-show="tooltipVisible" mode="light" :text="curWs.name" />
-      <i
-        :class="[
-          'el-icon-caret',
-          dropdownVisible ? 'el-icon-caret-top' : 'el-icon-caret-bottom',
-        ]"
-      >
-      </i>
+      <i class="icon-base icon-base-caret-bottom"> </i>
     </div>
   </div>
 </template>
@@ -195,9 +192,8 @@ export default {
     height: 100%;
     padding: 6px 0;
     margin-left: 10px;
-    .el-icon-caret {
-      font-size: 12px;
-      transition: all 0.3s;
+    .icon-base-caret-bottom {
+      font-size: 10px;
     }
     @include block(tooltip) {
       display: none;
@@ -215,8 +211,9 @@ export default {
     &:hover,
     &:active,
     &.is-dropdown-active {
-      .el-icon-caret {
+      .icon-base-caret-bottom {
         color: rqthemify(--text-hover);
+        transform: rotate(180deg);
       }
       .icon-set-up {
         color: rqthemify(--text-hover);
@@ -251,7 +248,7 @@ export default {
         white-space: nowrap;
         margin-left: 8px;
       }
-      .el-icon-success {
+      .icon-base-success {
         color: rqthemify(--primary-color-3);
         @include t-center-vertical;
         font-size: 16px;
@@ -277,7 +274,7 @@ export default {
       font-size: 14px;
       cursor: pointer;
       outline: none;
-      .el-icon-circle-plus {
+      .icon-base-circle-plus {
         font-size: 16px;
         margin-right: 8px;
       }

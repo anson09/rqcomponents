@@ -4,7 +4,7 @@
     <template v-else>
       {{ text }}
     </template>
-    <i class="rq-icon el-icon-circle-close" @click="handleClose"></i>
+    <i class="icon-base icon-base-circle-close" @click="handleClose"></i>
   </div>
 </template>
 <script>
@@ -50,7 +50,7 @@ export default {
     font-size: 12px;
   }
 
-  .el-icon-circle-close {
+  .icon-base-circle-close {
     cursor: pointer;
     padding: 4px;
     position: absolute;

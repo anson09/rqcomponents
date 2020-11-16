@@ -24,7 +24,7 @@
           @click="themeChange(mode.value)"
         >
           <div class="rq-header-theme__dropdown--pic">
-            <i class="el-icon-success"></i>
+            <i class="icon-base icon-base-success"></i>
             <img :src="mode.img" alt="" />
           </div>
           <p>{{ mode.label }}</p>
@@ -155,7 +155,7 @@ export default {
       img {
         width: 100%;
       }
-      .el-icon-success {
+      .icon-base-success {
         position: absolute;
         @include t-center-vertical;
         right: 0;
@@ -176,7 +176,7 @@ export default {
       cursor: pointer;
       &.is-active {
         color: rqthemify(--primary-color);
-        .el-icon-success {
+        .icon-base-success {
           opacity: 1;
         }
       }
