@@ -41,7 +41,7 @@ $component: null;
       margin: 0;
     }
     &,
-    [class^="rq"] {
+    * {
       box-sizing: border-box;
     }
   }
