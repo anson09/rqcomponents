@@ -2,8 +2,10 @@
   <div id="app">
     <!-- :config="config" -->
     <RqHeader :opacity="true" :before-logout="logout" @auth="log"> </RqHeader>
-    <RqLoggedHeader />
     <RqFooter></RqFooter>
+    <RqLoggedHeader />
+    <RqMaintenance date="2019-11-9 10:00" />
+    <RqNotFound />
   </div>
 </template>
 
@@ -17,13 +19,19 @@
 /* --------  */
 
 /* build from source */
-import { RqFooter, RqHeader, RqLoggedHeader } from "../packages";
+import {
+  RqFooter,
+  RqHeader,
+  RqLoggedHeader,
+  RqMaintenance,
+  RqNotFound,
+} from "../packages";
 import "../packages/common/style";
 /* --------  */
 
 export default {
   name: "App",
-  components: { RqFooter, RqHeader, RqLoggedHeader },
+  components: { RqFooter, RqHeader, RqLoggedHeader, RqMaintenance, RqNotFound },
   data() {
     return {
       config: {
@@ -33,11 +41,7 @@ export default {
       },
     };
   },
-  watch: {
-    $route() {
-      console.log("watch route", this.$route);
-    },
-  },
+
   mounted() {},
   methods: {
     log(...params) {
