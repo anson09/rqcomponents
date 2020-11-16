@@ -175,8 +175,7 @@ export default {
       },
     ].map((item) => ({
       ...item,
-      // isActive: window.location.pathname.startsWith(item.link.href),
-      isActive: "/ams/".startsWith(item.link.href),
+      isActive: this.getPath().startsWith(item.link.href),
     }));
   },
   methods: {
@@ -218,6 +217,10 @@ export default {
   ::-webkit-scrollbar-thumb {
     background-color: rqthemify(--border-primary);
     border-radius: 3px;
+  }
+  &-wrapper {
+    position: relative;
+    z-index: 1000;
   }
 }
 

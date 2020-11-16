@@ -38,10 +38,7 @@ const methods = {
       window.location.href = prefix + href;
     }
   },
-  getFirstPath() {
-    const path = this.getPath();
-    return path.match(/\/(.*?)(\/|$)/)?.[1] ?? path;
-  },
+
   handleEvent(event) {
     const dialogModes = ["login", "forget", "register"];
     if (!dialogModes.includes(event)) {
