@@ -110,75 +110,77 @@ export default {
   },
   async mounted() {
     this.account = await getAccount();
-    // TODO
-    this.products = [
-      {
-        link: {
-          href: "/quant",
-          outer: true,
-        },
-
-        label: "Quant 量化协作平台",
-        name: "Quant",
-      },
-
-      {
-        link: {
-          href: "/ams",
-          outer: true,
-        },
-        label: "RQAMS 资管平台",
-        name: "RQAMS",
-        links: [
-          {
-            label: "投后分析",
-            icon: "performance-analysis",
-            link: "/post-investment-analysis",
-          },
-          {
-            label: "风险管理",
-            icon: "risk-management",
-            link: "/risk-management",
-          },
-          {
-            label: "投资驾驶舱",
-            icon: "investment-cockpit",
-            link: "/investment-cockpit",
-          },
-          {
-            label: "组合管理",
-            icon: "portfolio-management",
-            link: "/portfolio-management",
-          },
-          {
-            label: "分享给我",
-            icon: "share-me",
-            link: "/sharing-management",
-          },
-        ],
-      },
-      {
-        link: {
-          href: "/fof",
-          outer: true,
-        },
-        label: "RQFund 基金投研",
-        name: "RQFund",
-      },
-      {
-        link: {
-          href: "/bond",
-          outer: true,
-        },
-        label: "RQBond 债券投研",
-        name: "RQBond",
-      },
-    ].map((item) => ({
-      ...item,
-      isActive: this.getPath().startsWith(item.link.href),
-    }));
+    this.initProducts();
   },
   methods: {
+    initProducts() {
+      this.products = [
+        {
+          link: {
+            href: "/quant",
+            outer: true,
+          },
+
+          label: "Quant 量化协作平台",
+          name: "Quant",
+        },
+
+        {
+          link: {
+            href: "/ams",
+            outer: true,
+          },
+          label: "RQAMS 资管平台",
+          name: "RQAMS",
+          links: [
+            {
+              label: "投后分析",
+              icon: "performance-analysis",
+              link: "/post-investment-analysis",
+            },
+            {
+              label: "风险管理",
+              icon: "risk-management",
+              link: "/risk-management",
+            },
+            {
+              label: "投资驾驶舱",
+              icon: "investment-cockpit",
+              link: "/investment-cockpit",
+            },
+            {
+              label: "组合管理",
+              icon: "portfolio-management",
+              link: "/portfolio-management",
+            },
+            {
+              label: "分享给我",
+              icon: "share-me",
+              link: "/sharing-management",
+            },
+          ],
+        },
+        {
+          link: {
+            href: "/fof",
+            outer: true,
+          },
+          label: "RQFund 基金投研",
+          name: "RQFund",
+        },
+        {
+          link: {
+            href: "/bond",
+            outer: true,
+          },
+          label: "RQBond 债券投研",
+          name: "RQBond",
+        },
+      ].map((item) => ({
+        ...item,
+        isActive: this.getPath().startsWith(item.link.href),
+      }));
+    },
     handleEvent(name, data) {
       this.$emit(name, data);
     },
