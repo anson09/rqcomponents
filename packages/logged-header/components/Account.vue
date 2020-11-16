@@ -5,7 +5,7 @@
       @click="toggleDropdownVisible"
     >
       <img
-        class="account__avatar"
+        class="rq-header-avatar__img"
         :src="avatarShow"
         alt=""
         @error="handleAvatarLoadError"
