@@ -82,7 +82,7 @@ router: use vue-router or window.location.href in handleLink.
 
 admin: use vue-events(auth) or redirect when click login or register button.
 
-ankaPrefix: anka publick path.
+ankaPrefix: anka public path.
 
 #### before-logout: function(done: function) {}
 
@@ -90,7 +90,7 @@ Default: null
 
 Custom way to handle logout event.
 
-### mode: string
+#### mode: string
 
 Default: default
 
@@ -128,7 +128,7 @@ router: use vue-router or window.location.href in handleLink.
 
 admin: use vue-events(auth) or redirect when click login or register button.
 
-ankaPrefix: anka publick path.
+ankaPrefix: anka public path.
 
 #### opacity: boolean
 
