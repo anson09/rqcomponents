@@ -1,8 +1,6 @@
 {
   "rqcomponents": "./packages/index.js",
   "rq-header": "./packages/header/index.js",
-  "rq-footer": "./packages/footer/index.js",
-  "rq-logged-header": "./packages/logged-header/index.js",
   "rq-not-found": "./packages/not-found/index.js",
   "rq-maintenance": "./packages/maintenance/index.js"
 }
