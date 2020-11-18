@@ -223,8 +223,8 @@ export default {
   @include f-center;
   width: 100%;
   min-width: $medium-vw;
-  height: 41px;
-  border-bottom: 1px solid rqthemify(--border-primary);
+  height: 40px;
+  box-shadow: 0px 2px 4px rqthemify(--primary-color-1);
   padding-left: 24px;
   padding-right: 10px;
   background: rqthemify(--background-final);
