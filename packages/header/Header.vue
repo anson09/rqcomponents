@@ -48,7 +48,6 @@
   </div>
 </template>
 <script>
-import { getAccount } from "../common/util/account";
 import { rootMixin } from "../common/util/mixin";
 import Tooltip from "./components/Tooltip.vue";
 import ProductMenu from "./components/ProductMenu.vue";
@@ -58,9 +57,9 @@ import Document from "./components/Document.vue";
 import ThemeSwitch from "./components/ThemeSwitch.vue";
 import Message from "./components/Message.vue";
 import Account from "./components/Account.vue";
-import { logout } from "./api/index";
-import { removeStorage } from "../common/util";
-import Notification from "../common/components/Notification.vue";
+import { logout, getAccount } from "./api/index";
+import { removeStorage, setStorage } from "../common/util";
+import Notification from "./components/Notification.vue";
 
 export default {
   name: "RqHeader",
@@ -109,10 +108,28 @@ export default {
     },
   },
   async mounted() {
-    this.account = await getAccount();
+    this.getAccount();
     this.initProducts();
   },
   methods: {
+    async getAccount() {
+      try {
+        const { data } = await getAccount();
+        if (data.code === 0) {
+          setStorage("account", {
+            isLogin: true,
+            fullname: data.fullname,
+            avatar: data.avatar,
+            phone: data.phone,
+            email: data.email,
+            userId: data.userId,
+          });
+          this.account = data;
+        }
+      } catch {
+        //
+      }
+    },
     initProducts() {
       this.products = [
         {
