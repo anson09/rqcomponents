@@ -1,32 +1,6 @@
-@use "sass:meta";
-$max-vw: 1440px;
 $medium-vw: 1280px;
-$min-vw: 1024px;
 $namespace: rq;
 $component: null;
-
-@mixin desktop {
-  @media screen and (min-width: $medium-vw) {
-    @content;
-  }
-}
-@mixin laptop {
-  @media screen and (max-width: $medium-vw) {
-    @content;
-  }
-}
-
-@mixin pad {
-  @media screen and (max-width: $min-vw) {
-    @content;
-  }
-}
-
-@mixin pc {
-  @media screen and (min-width: $min-vw) {
-    @content;
-  }
-}
 
 @mixin reset {
   ::v-deep {
@@ -50,7 +24,7 @@ $component: null;
 @mixin block($block) {
   $name: $namespace;
 
-  @if ($component) {
+  @if $component {
     $name: $name + "-" + $component;
   }
   @if $block {
@@ -77,22 +51,15 @@ $component: null;
   transform: translateX(-50%) translateY(-50%);
 }
 
-@mixin f-center($justify-content: center, $align-items: center) {
+@mixin f-center($justify-content: center) {
   display: flex;
   justify-content: $justify-content;
-  align-items: $align-items;
+  align-items: center;
 }
 
-@mixin f-column($align-item: center) {
+@mixin f-column($align-items: center) {
   display: flex;
   justify-content: center;
-  align-items: $align-item;
+  align-items: $align-items;
   flex-direction: column;
-}
-
-@mixin click-scale {
-  transition: all 0.2s;
-  &:active {
-    transform: scale(1.1);
-  }
 }

@@ -46,7 +46,7 @@ export default {
     height: 4px;
   }
 
-  @include laptop {
+  @media screen and (max-width: $medium-vw) {
     font-size: 12px;
   }
 

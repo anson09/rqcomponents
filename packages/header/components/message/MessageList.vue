@@ -134,7 +134,7 @@ export default {
     border-bottom: 1px solid rqthemify(--border-primary);
     padding: 14px 0;
     color: inherit;
-    @include f-center;
+    @include f-column(flex-start);
     text-align: left;
     text-decoration: none;
   }
