@@ -1,5 +1,5 @@
 <template>
-  <div v-if="visible" class="rq-notification">
+  <div v-if="visible" class="rq-header-notification">
     <slot v-if="$slots.default"></slot>
     <template v-else>
       {{ text }}
