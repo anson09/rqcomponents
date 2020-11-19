@@ -21,17 +21,17 @@
 // import "../lib/theme/rqcomponents.css";
 
 /* partial import */
-// import RqHeader from '../lib/rq-header;
-// import '../lib/theme/rq-header.css
-// import RqNotFound from '../lib/rq-not-found;
-// import '../lib/theme/rq-not-found.css
-// import RqMaintenance from '../lib/rq-maintenance;
-// import '../lib/theme/rq-maintenance.css
+// import RqHeader from "../lib/rq-header";
+// import "../lib/theme/rq-header.css";
+// import RqNotFound from "../lib/rq-not-found";
+// import "../lib/theme/rq-not-found.css";
+// import RqMaintenance from "../lib/rq-maintenance";
+// import "../lib/theme/rq-maintenance.css";
 
 // import "../lib/theme/base.css";
 /* --------  */
 
-/* build from source */
+// /* build from source */
 import { RqHeader, RqMaintenance, RqNotFound } from "../packages";
 import "../packages/common/style";
 /* --------  */
