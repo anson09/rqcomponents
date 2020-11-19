@@ -211,11 +211,11 @@ export default {
     &:active,
     &.is-dropdown-active {
       .icon-base-caret-bottom {
-        color: rqthemify(--text-hover);
+        color: rqthemify(--primary-color);
         transform: rotate(180deg);
       }
       .icon-set-up {
-        color: rqthemify(--text-hover);
+        color: rqthemify(--primary-color);
         display: none;
         &.active-icon {
           display: inline-block;
@@ -259,7 +259,7 @@ export default {
       &:active,
       &:focus {
         background-color: rqthemify(--background-white-hover);
-        color: rqthemify(--text-hover);
+        color: rqthemify(--primary-color);
       }
     }
     &__btn {

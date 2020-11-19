@@ -221,7 +221,7 @@ export default {
     width: 100%;
     color: rqthemify(--text-normal);
     &:hover {
-      color: rqthemify(--text-hover);
+      color: rqthemify(--primary-color);
       background-color: rqthemify(--background-primary);
     }
     &.not-link {

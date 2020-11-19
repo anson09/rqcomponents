@@ -66,7 +66,7 @@ export default {
 
     &.is-active,
     &:active {
-      color: rqthemify(--text-hover);
+      color: rqthemify(--primary-color);
       .icon-base-colorful {
         filter: none;
         opacity: 1;

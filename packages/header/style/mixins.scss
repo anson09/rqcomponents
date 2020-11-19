@@ -20,7 +20,7 @@ $component: header;
   &:hover,
   &:active,
   &.is-icon-active {
-    color: rqthemify(--text-hover);
+    color: rqthemify(--primary-color);
     .#{$icon-name} {
       display: none;
       &.active-icon {

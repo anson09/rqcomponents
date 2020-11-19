@@ -153,7 +153,7 @@ export default {
       margin-bottom: 0;
     }
     &:hover {
-      color: rqthemify(--text-hover);
+      color: rqthemify(--primary-color);
       background-color: rqthemify(--dropdown-hover-background);
     }
   }

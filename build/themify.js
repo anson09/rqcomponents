@@ -10,7 +10,7 @@ var defaultOptions = {
 /** supported color variations */
 var ColorVariation = {
   DARK: "dark",
-  PRODUCT: "product",
+  LIGHT: "light",
 };
 function buildOptions(options) {
   if (!options) {
@@ -23,7 +23,7 @@ function buildOptions(options) {
   return Object.assign({}, defaultOptions, options);
 }
 /** Define the default variation */
-var defaultVariation = ColorVariation.PRODUCT;
+var defaultVariation = ColorVariation.LIGHT;
 /** An array of variation values  */
 var variationValues = Object.values(ColorVariation);
 /** An array of all non-default variations */
@@ -54,7 +54,7 @@ function themify(options) {
           }
           parsedValue = {
             dark: [color, alpha],
-            product: [color, alpha],
+            light: [color, alpha],
           };
         } else {
           parsedValue = JSON.parse(value);
