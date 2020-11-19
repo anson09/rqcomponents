@@ -1,4 +1,4 @@
-@import "../../common//style//mixins.scss";
+@import "../../common/style/mixins.scss";
 $component: header;
 
 @mixin icon-container($icon-name, $font-size: 20, $padding: 5) {
