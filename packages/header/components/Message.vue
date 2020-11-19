@@ -253,7 +253,7 @@ export default {
     height: 8px;
     border-radius: 50%;
     background-color: rqthemify(--remove-hover-color);
-    left: 7px;
+    left: 5px;
     top: 18px;
   }
   &__btn {
