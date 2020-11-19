@@ -68,12 +68,6 @@ Default: null
 
 Custom way to handle logout event.
 
-#### mode: string
-
-Default: default
-
-which header to show when logged.
-
 ### events
 
 #### create-workspace
