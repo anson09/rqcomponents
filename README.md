@@ -1,4 +1,4 @@
-# Import:
+# Import
 
 ## Full Import（NOT RECOMMANDED）
 
@@ -14,11 +14,11 @@ import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 rqcomponnets only exports esm standard packages now.
 
 ```js
-import RqHeader from "@rqjs/rqcomponents/lib/[componentName]";
+import RqHeader from "@rqjs/rqcomponents/lib/[component-name]";
 // Or import all components and deconstruction.
 // import { RqHeader } from "@rqjs/rqcomponents";
 
-import "@rqjs/rqcomponents/lib/theme/[componentName].css";
+import "@rqjs/rqcomponents/lib/theme/[component-name].css";
 import "@rqjs/rqcomponents/lib/theme/base";
 import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 ```
@@ -28,7 +28,7 @@ import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 ## Global Registration
 
 ```js
-import RqHeader from "@rqjs/rqcomponents/lib/[componentName]";
+import RqHeader from "@rqjs/rqcomponents/lib/[component-name]";
 
 Vue.use(RqHeader);
 
@@ -41,7 +41,7 @@ new Vue({
 ## Local Registration
 
 ```js
-import RqHeader from "@rqjs/rqcomponents/lib/[componentName]";
+import RqHeader from "@rqjs/rqcomponents/lib/[component-name]";
 
 new Vue({
   el: "#rq-header",
@@ -54,35 +54,13 @@ new Vue({
 
 ## RqHeader
 
-### props:
+### props
 
 #### notification: string | slot
 
 Default: ""
 
 Raise a warning on the top of the header.
-
-#### opacity: boolean
-
-Default: false
-
-Set background opacity with white font-color.
-
-#### topic: string
-
-Default: ""
-
-A clear header with a topic text only.
-
-#### config: object
-
-Default: { router: false, admin: flase, ankaPrefix: '/welcome' }
-
-router: use vue-router or window.location.href in handleLink.
-
-admin: use vue-events(auth) or redirect when click login or register button.
-
-ankaPrefix: anka public path.
 
 #### before-logout: function(done: function) {}
 
@@ -96,13 +74,7 @@ Default: default
 
 which header to show when logged.
 
-### events:
-
-#### auth
-
-Parameters: mode(login|register)
-
-Triggers when user click login or register button.
+### events
 
 #### create-workspace
 
@@ -116,22 +88,14 @@ Parameters: currentWorkspaceId
 
 Triggers when current workspace change.
 
-## RqFooter
+## RqNotFound
 
-### props:
+## RqMaintenance
 
-#### config: object
+### props
 
-Default: { router: false, admin: flase, ankaPrefix: '/welcome' }
+#### date: string
 
-router: use vue-router or window.location.href in handleLink.
+Default: ""
 
-admin: use vue-events(auth) or redirect when click login or register button.
-
-ankaPrefix: anka public path.
-
-#### opacity: boolean
-
-Default: false
-
-Set background opacity with white font-color.
+The maintenance time.
