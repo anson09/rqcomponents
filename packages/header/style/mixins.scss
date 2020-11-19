@@ -51,15 +51,17 @@ $component: header;
 
 @mixin tooltip-wrapper {
   position: relative;
-  &,
-  &.is-tooltip-hidden {
-    @include block(tooltip) {
-      display: none;
-    }
+  @include block(tooltip) {
+    display: none;
   }
   &:hover {
     @include block(tooltip) {
       display: block;
+    }
+  }
+  &.is-tooltip-hidden {
+    @include block(tooltip) {
+      display: none;
     }
   }
 }
