@@ -48,7 +48,6 @@
   </div>
 </template>
 <script>
-import { rootMixin } from "../common/util/mixin";
 import Tooltip from "./components/Tooltip.vue";
 import ProductMenu from "./components/ProductMenu.vue";
 import WorkspaceSwitch from "./components/WorkspaceSwitch.vue";
@@ -58,7 +57,7 @@ import ThemeSwitch from "./components/ThemeSwitch.vue";
 import Message from "./components/Message.vue";
 import Account from "./components/Account.vue";
 import { logout, getAccount } from "./api/index";
-import { removeStorage, setStorage } from "../common/util";
+import { removeStorage, setStorage, handleLink } from "../common/util";
 import Notification from "./components/Notification.vue";
 
 export default {
@@ -74,7 +73,6 @@ export default {
     Account,
     Notification,
   },
-  mixins: [rootMixin],
   props: {
     notification: {
       default: "",
@@ -91,14 +89,11 @@ export default {
       account: {},
       roadShow: {
         label: "预约路演",
-        link: {
-          href: "/trial/road-show",
-          event: "roadShow",
-        },
+        link: { path: "/welcome/trial/road-show", outer: true },
       },
       home: {
         tooltipText: "回到米筐官网首页",
-        link: "/",
+        link: { path: "/", outer: true },
       },
     };
   },
@@ -112,6 +107,7 @@ export default {
     this.initProducts();
   },
   methods: {
+    handleLink,
     async getAccount() {
       try {
         const { data } = await getAccount();
@@ -134,7 +130,7 @@ export default {
       this.products = [
         {
           link: {
-            href: "/quant",
+            path: "/quant",
             outer: true,
           },
 
@@ -144,7 +140,7 @@ export default {
 
         {
           link: {
-            href: "/ams",
+            path: "/ams",
             outer: true,
           },
           label: "RQAMS 资管平台",
@@ -179,7 +175,7 @@ export default {
         },
         {
           link: {
-            href: "/fof",
+            path: "/fof",
             outer: true,
           },
           label: "RQFund 基金投研",
@@ -187,7 +183,7 @@ export default {
         },
         {
           link: {
-            href: "/bond",
+            path: "/bond",
             outer: true,
           },
           label: "RQBond 债券投研",
@@ -195,7 +191,7 @@ export default {
         },
       ].map((item) => ({
         ...item,
-        isActive: this.getPath().startsWith(item.link.href),
+        isActive: window.location.pathname.startsWith(item.link.path),
       }));
     },
     handleEvent(name, data) {
@@ -206,7 +202,7 @@ export default {
         const { code } = await logout();
         if (code === 0) {
           removeStorage("account");
-          this.handleLink("/");
+          this.handleLink({ outer: true, path: "/" });
         }
       };
       if (this.beforeLogout) this.beforeLogout(done);

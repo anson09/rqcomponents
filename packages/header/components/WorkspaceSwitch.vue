@@ -66,15 +66,14 @@
 </template>
 <script>
 import { getWorksapces, getWorksapcesProducts } from "../api/index";
-import { setStorage, getStorage, getDate } from "../../common/util";
-import mixin from "../../common/util/mixin";
+import { setStorage, getStorage, getDate, handleLink } from "../../common/util";
 import dropdownMixin from "./dropdown-mixin";
 import Tooltip from "./Tooltip.vue";
 
 export default {
   name: "WorkspaceSwitch",
   components: { Tooltip },
-  mixins: [mixin, dropdownMixin],
+  mixins: [dropdownMixin],
   data() {
     const localStorageAccount = getStorage("account");
     const storageKey = "workspace";
@@ -117,8 +116,8 @@ export default {
   methods: {
     handleClick() {
       if (this.settingVisible) {
-        this.handleLink({
-          href: `/dashboard/workspace/${this.curWs.id}`,
+        handleLink({
+          path: `/dashboard/workspace/${this.curWs.id}`,
           outer: true,
         });
       }
@@ -167,13 +166,13 @@ export default {
     },
 
     createWorkspace() {
-      const link = { href: "/dashboard", hash: "#createWs" };
+      const link = { path: "/dashboard", hash: "#createWs" };
 
-      if (this.getPath().includes(link.href)) {
+      if (window.location.pathname.startsWith(link.path)) {
         this.$emit("create-workspace");
       } else {
-        this.handleLink({
-          href: `${link.href}${link.hash}`,
+        handleLink({
+          path: `${link.path}${link.hash}`,
           outer: true,
         });
       }

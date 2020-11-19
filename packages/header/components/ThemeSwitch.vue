@@ -46,7 +46,6 @@ import darkImg from "../assets/img/theme-dark.png";
 import Tooltip from "./Tooltip.vue";
 
 import { getStorage, setStorage, isCssVarSupported } from "../../common/util";
-import mixin from "../../common/util/mixin";
 import dropdownMixin from "./dropdown-mixin";
 
 const THEME_MODE = ["dark", "light"];
@@ -54,7 +53,7 @@ const THEME_MODE = ["dark", "light"];
 export default {
   name: "ThemeSwitch",
   components: { Tooltip },
-  mixins: [mixin, dropdownMixin],
+  mixins: [dropdownMixin],
   inheritAttrs: false,
   data() {
     return {

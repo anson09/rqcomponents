@@ -19,14 +19,13 @@
   </div>
 </template>
 <script>
+import { handleLink } from "../../common/util";
+
 export default {
   name: "ProductNav",
   props: { config: { type: Object, default: () => ({}) } },
   methods: {
-    //  在产品内部项目，可以使用 $router
-    handleLink(link) {
-      this.$router.push(link);
-    },
+    handleLink,
   },
 };
 </script>

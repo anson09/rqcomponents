@@ -28,12 +28,12 @@
 </template>
 <script>
 import defaultAvatar from "../assets/img/default-avatar.png";
-import mixin from "../../common/util/mixin";
+import { handleLink } from "../../common/util";
 import dropdownMixin from "./dropdown-mixin";
 
 export default {
   name: "Account",
-  mixins: [mixin, dropdownMixin],
+  mixins: [dropdownMixin],
   props: {
     avatar: {
       default: "",
@@ -48,21 +48,15 @@ export default {
     return {
       links: [
         {
-          link: {
-            href: "/dashboard",
-            outer: true,
-          },
+          link: { path: "/dashboard", outer: true },
           label: "个人主页",
         },
         {
-          link: {
-            href: "/dashboard/account#setting",
-            outer: true,
-          },
+          link: { path: "/dashboard/account#setting", outer: true },
           label: "账号中心",
         },
         {
-          link: "/",
+          link: { path: "/", outer: true },
           label: "回到首页",
         },
         {
@@ -88,7 +82,7 @@ export default {
       if (cfg.event === "logout") {
         this.$emit("logout");
       } else if (cfg.link) {
-        this.handleLink(cfg.link);
+        handleLink(cfg.link);
       }
     },
   },

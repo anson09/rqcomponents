@@ -8,7 +8,7 @@
           'rq-header-menu__dropdown-item',
           { 'is-active': item.isActive },
         ]"
-        @click="handleClick(item)"
+        @click="handleLink(item.link)"
       >
         <span
           v-if="item.isActive"
@@ -32,12 +32,12 @@
 <script>
 import Tooltip from "./Tooltip.vue";
 import dropdownMixin from "./dropdown-mixin";
-import mixin from "../../common/util/mixin";
+import { handleLink } from "../../common/util";
 
 export default {
   name: "ProductMenu",
   components: { Tooltip },
-  mixins: [mixin, dropdownMixin],
+  mixins: [dropdownMixin],
   props: {
     config: { type: Array, required: true },
   },
@@ -47,10 +47,7 @@ export default {
     };
   },
   methods: {
-    handleClick(item) {
-      if (item.isActive) return;
-      this.handleLink(item.link);
-    },
+    handleLink,
   },
 };
 </script>

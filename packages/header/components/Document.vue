@@ -54,6 +54,7 @@
 </template>
 <script>
 import dropdownMixin from "./dropdown-mixin";
+import { handleLink } from "../../common/util";
 
 export default {
   name: "Document",
@@ -63,30 +64,30 @@ export default {
       config: [
         {
           label: "RQAMS文档",
-          link: "/doc/rqams/",
+          link: { path: "/doc/rqams/", newBlock: true },
         },
 
         {
           label: "量化平台文档",
-          link: "/doc/quant/",
+          link: { path: "/doc/quant/", newBlock: true },
         },
         {
           label: "RQSDK使用文档",
           links: [
             {
               label: "Ricequant SDK快速上手",
-              link: "/doc/rqsdk/",
+              link: { path: "/doc/rqsdk/", newBlock: true },
             },
             {
               label: "RQData - 金融数据 API",
               links: [
                 {
                   label: "Python API文档",
-                  link: "/doc/rqdata/python/",
+                  link: { path: "/doc/rqdata/python/", newBlock: true },
                 },
                 {
                   label: "Http API文档",
-                  link: "/doc/rqdata/http/",
+                  link: { path: "/doc/rqdata/http/", newBlock: true },
                 },
               ],
             },
@@ -95,11 +96,14 @@ export default {
               links: [
                 {
                   label: "使用教程",
-                  link: "/doc/rqalpha-plus/tutorial.html",
+                  link: {
+                    path: "/doc/rqalpha-plus/tutorial.html",
+                    newBlock: true,
+                  },
                 },
                 {
                   label: "API使用手册",
-                  link: "/doc/rqalpha-plus/api/",
+                  link: { path: "/doc/rqalpha-plus/api/", newBlock: true },
                 },
               ],
             },
@@ -108,11 +112,11 @@ export default {
               links: [
                 {
                   label: "使用教程",
-                  link: "/doc/rqfactor/manual.html",
+                  link: { path: "/doc/rqfactor/manual.html", newBlock: true },
                 },
                 {
                   label: "API使用手册",
-                  link: "/doc/rqfactor/api.html",
+                  link: { path: "/doc/rqfactor/api.html", newBlock: true },
                 },
               ],
             },
@@ -121,11 +125,11 @@ export default {
               links: [
                 {
                   label: "使用教程",
-                  link: "/doc/rqoptimize/manual.html",
+                  link: { path: "/doc/rqoptimize/manual.html", newBlock: true },
                 },
                 {
                   label: "API使用手册",
-                  link: "/doc/rqoptimizer/api/",
+                  link: { path: "/doc/rqoptimizer/api/", newBlock: true },
                 },
               ],
             },
@@ -133,7 +137,7 @@ export default {
         },
         {
           label: "帮助中心",
-          link: "/doc/faq/",
+          link: { path: "/doc/faq/", newBlock: true },
         },
 
         // {
@@ -148,10 +152,7 @@ export default {
     };
   },
   methods: {
-    // TODO
-    handleLink(link) {
-      window.open(link);
-    },
+    handleLink,
   },
 };
 </script>

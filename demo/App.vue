@@ -50,6 +50,6 @@ export default {
 <style lang="scss" scoped>
 #app {
   height: 100vh;
-  background: pink;
+  background: white;
 }
 </style>
