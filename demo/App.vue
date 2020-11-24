@@ -16,9 +16,10 @@
 /* eslint-disable no-console */
 /* build from lib */
 /* full import */
-// import { RqHeader, RqNotFound, RqMaintenance } from "../lib/rqcomponents";
+// import { RqHeader, RqNotFound, RqMaintenance } from "../lib/index";
+// import "../lib/theme/index.css";
 // import "../lib/theme/base";
-// import "../lib/theme/rqcomponents.css";
+// import "../lib/theme/base.css";
 
 /* partial import */
 // import RqHeader from "../lib/rq-header";
@@ -28,6 +29,7 @@
 // import RqMaintenance from "../lib/rq-maintenance";
 // import "../lib/theme/rq-maintenance.css";
 
+// import "../lib/theme/base";
 // import "../lib/theme/base.css";
 /* --------  */
 

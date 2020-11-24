@@ -1,7 +1,5 @@
-import babel from "@rollup/plugin-babel";
-import json from "@rollup/plugin-json";
-import resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
+import { getBabelOutputPlugin } from "@rollup/plugin-babel";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import url from "@rollup/plugin-url";
 import postcss from "rollup-plugin-postcss";
 import vue from "rollup-plugin-vue";
@@ -22,36 +20,30 @@ const componentsConfig = Object.entries(componentsList).map(
       sourcemap: true,
     },
     plugins: [
-      json(),
       images(),
       vue({
         css: false,
-        needMap: false,
       }),
       postcss({
         extract: `lib/theme/${fileName}.css`,
         plugins: postcssPlugins,
       }),
-      resolve(),
-      babel({
-        exclude: "node_modules/**",
-        babelHelpers: "runtime",
-        presets: [["@babel/preset-env", { modules: false }]],
+      nodeResolve(),
+      getBabelOutputPlugin({
+        presets: [["@babel/preset-env", { targets: "defaults" }]],
         plugins: [
           [
             "@babel/plugin-transform-runtime",
             {
               useESModules: true,
-              // corejs: 3,
-              // proposals: true,
-              version: "^7.9.6",
+              corejs: { version: 3, proposals: true },
+              version: "^7.12.5",
             },
           ],
         ],
       }),
-      commonjs(),
       filesize(),
-    ].filter(Boolean),
+    ],
     external: (id) =>
       new RegExp(
         `^(${Object.keys({
@@ -67,7 +59,6 @@ const baseCssConfig = {
   output: {
     file: "lib/theme/base.js",
   },
-  onwarn: () => {},
   plugins: [
     url({
       include: [

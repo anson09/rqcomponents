@@ -4,7 +4,7 @@
 
 ```js
 import UI from "@rqjs/rqcomponents";
-import "@rqjs/rqcomponents/lib/theme/rqcomponents.css";
+import "@rqjs/rqcomponents/lib/theme/index.css";
 import "@rqjs/rqcomponents/lib/theme/base";
 import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 ```
@@ -14,11 +14,11 @@ import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 rqcomponnets only exports esm standard packages now.
 
 ```js
-import RqHeader from "@rqjs/rqcomponents/lib/[component-name]";
+import RqHeader from "@rqjs/rqcomponents/lib/[rq-component-name]";
 // Or import all components and deconstruction.
 // import { RqHeader } from "@rqjs/rqcomponents";
 
-import "@rqjs/rqcomponents/lib/theme/[component-name].css";
+import "@rqjs/rqcomponents/lib/theme/[rq-component-name].css";
 import "@rqjs/rqcomponents/lib/theme/base";
 import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 ```
@@ -28,25 +28,25 @@ import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
 ## Global Registration
 
 ```js
-import RqHeader from "@rqjs/rqcomponents/lib/[component-name]";
+import RqHeader from "@rqjs/rqcomponents/lib/[rq-component-name]";
 
 Vue.use(RqHeader);
 
 new Vue({
   el: "#rq-header",
-  render: (h) => h("RqHeader"),
+  render: (h) => h(RqHeader),
 });
 ```
 
 ## Local Registration
 
 ```js
-import RqHeader from "@rqjs/rqcomponents/lib/[component-name]";
+import RqHeader from "@rqjs/rqcomponents/lib/[rq-component-name]";
 
 new Vue({
   el: "#rq-header",
   components: { RqHeader },
-  render: (h) => h("RqHeader"),
+  render: (h) => h(RqHeader),
 });
 ```
 
