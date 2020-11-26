@@ -51,15 +51,15 @@
             class="icon-base icon-base-set-up icon-set-up"
             @click.stop="handleClick"
           ></i>
-          <Tooltip class="set-up-tooltip" mode="dark" text="进入该工作空间" />
+          <Tooltip mode="dark" text="进入该工作空间" />
         </template>
       </span>
       <span class="rq-header-ws-btn__label-wrapper">
         <span ref="curWsLabel" class="rq-header-ws-btn__label">
           {{ curWs.name }}
         </span>
+        <Tooltip v-show="tooltipVisible" mode="light" :text="curWs.name" />
       </span>
-      <Tooltip v-show="tooltipVisible" mode="light" :text="curWs.name" />
       <i class="icon-base icon-base-caret-bottom"> </i>
     </div>
   </div>
@@ -202,8 +202,13 @@ export default {
       height: 24px;
       position: relative;
       @include icon-container("icon-set-up", 16, 4);
-      &:hover .set-up-tooltip {
-        display: block;
+      @include block(tooltip) {
+        transform: translate(-50%, 8px);
+      }
+      &:hover {
+        @include block(tooltip) {
+          display: block;
+        }
       }
     }
 
@@ -315,8 +320,10 @@ export default {
         font-size: 14px;
         overflow: hidden;
         color: rqthemify(--text-normal);
-        &:hover + .#{$namespace + $component}-tooltip {
-          display: block;
+        &:hover {
+          @include block(tooltip) {
+            display: block;
+          }
         }
       }
     }
