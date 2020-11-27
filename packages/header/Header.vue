@@ -218,7 +218,7 @@ export default {
   position: relative;
   @include f-center;
   width: 100%;
-  min-width: $medium-vw;
+
   height: 40px;
   box-shadow: 0px 2px 4px rqthemify(--primary-color-1);
   padding-left: 24px;
@@ -237,6 +237,7 @@ export default {
     position: relative;
     z-index: 1000;
     width: 100%;
+    min-width: $medium-vw;
   }
 }
 
