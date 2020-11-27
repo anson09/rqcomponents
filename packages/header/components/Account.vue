@@ -28,7 +28,7 @@
 </template>
 <script>
 import defaultAvatar from "../assets/img/default-avatar.png";
-import { handleLink } from "../../common/util";
+import { handleLink } from "../../common/util/index";
 import dropdownMixin from "./dropdown-mixin";
 
 export default {

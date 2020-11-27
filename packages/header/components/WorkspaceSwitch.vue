@@ -66,7 +66,12 @@
 </template>
 <script>
 import { getWorksapces, getWorksapcesProducts } from "../api/index";
-import { setStorage, getStorage, getDate, handleLink } from "../../common/util";
+import {
+  setStorage,
+  getStorage,
+  getDate,
+  handleLink,
+} from "../../common/util/index";
 import dropdownMixin from "./dropdown-mixin";
 import Tooltip from "./Tooltip.vue";
 

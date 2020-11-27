@@ -1,5 +1,4 @@
 import { getBabelOutputPlugin } from "@rollup/plugin-babel";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
 import url from "@rollup/plugin-url";
 import postcss from "rollup-plugin-postcss";
 import vue from "rollup-plugin-vue";
@@ -21,14 +20,11 @@ const componentsConfig = Object.entries(componentsList).map(
     },
     plugins: [
       images(),
-      vue({
-        css: false,
-      }),
+      vue({ css: false }),
       postcss({
-        extract: `lib/theme/${fileName}.css`,
+        extract: `theme/${fileName}.css`,
         plugins: postcssPlugins,
       }),
-      nodeResolve(),
       getBabelOutputPlugin({
         presets: [["@babel/preset-env", { targets: "defaults" }]],
         plugins: [
@@ -61,21 +57,13 @@ const baseCssConfig = {
   },
   plugins: [
     url({
-      include: [
-        "**/*.eot",
-        "**/*.woff",
-        "**/*.woff2",
-        "**/*.ttf",
-        "**/*.svg",
-        "**/*.png",
-        "**/*.jpg",
-      ],
+      include: ["**/*.eot", "**/*.woff", "**/*.woff2", "**/*.ttf", "**/*.svg"],
       limit: 0,
-      fileName: "iconfont[extname]",
+      fileName: "[name][extname]",
       destDir: "lib/theme",
     }),
     postcss({
-      extract: "lib/theme/base.css",
+      extract: "base.css",
     }),
   ],
 };

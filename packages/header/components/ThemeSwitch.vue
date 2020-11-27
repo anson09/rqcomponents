@@ -45,7 +45,11 @@ import lightImg from "../assets/img/theme-light.png";
 import darkImg from "../assets/img/theme-dark.png";
 import Tooltip from "./Tooltip.vue";
 
-import { getStorage, setStorage, isCssVarSupported } from "../../common/util";
+import {
+  getStorage,
+  setStorage,
+  isCssVarSupported,
+} from "../../common/util/index";
 import dropdownMixin from "./dropdown-mixin";
 
 const THEME_MODE = ["dark", "light"];

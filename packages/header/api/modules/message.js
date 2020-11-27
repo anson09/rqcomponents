@@ -1,4 +1,4 @@
-import { axios } from "../../../common/api";
+import { axios } from "../../../common/api/index";
 
 const baseUrl = "api/rqmessager/v1";
 

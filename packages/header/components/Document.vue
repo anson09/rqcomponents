@@ -54,7 +54,7 @@
 </template>
 <script>
 import dropdownMixin from "./dropdown-mixin";
-import { handleLink } from "../../common/util";
+import { handleLink } from "../../common/util/index";
 
 export default {
   name: "Document",
