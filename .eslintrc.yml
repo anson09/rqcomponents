@@ -34,10 +34,3 @@ rules:
   no-plusplus:
     - error
     - allowForLoopAfterthoughts: true
-  import/no-extraneous-dependencies:
-    - off
-  # parcel support
-  import/no-absolute-path:
-    - off
-  import/no-unresolved:
-    - off

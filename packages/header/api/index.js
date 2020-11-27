@@ -1,4 +1,4 @@
-import { axios, urlencodePost } from "../../common/api";
+import { axios, urlencodePost } from "../../common/api/index";
 import * as message from "./modules/message";
 
 const getAccount = () => {

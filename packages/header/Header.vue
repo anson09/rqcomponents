@@ -57,7 +57,7 @@ import ThemeSwitch from "./components/ThemeSwitch.vue";
 import Message from "./components/Message.vue";
 import Account from "./components/Account.vue";
 import { logout, getAccount } from "./api/index";
-import { removeStorage, setStorage, handleLink } from "../common/util";
+import { removeStorage, setStorage, handleLink } from "../common/util/index";
 import Notification from "./components/Notification.vue";
 
 export default {

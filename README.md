@@ -1,15 +1,23 @@
-# Import
+# RQCOMPONENTS
 
-## Full Import（NOT RECOMMANDED）
+> ricequant common vue componenets
+
+## Release
+
+master: https://www.npmjs.com/package/@rqjs/rqcomponents
+
+## Import
+
+### Full Import（NOT RECOMMANDED）
 
 ```js
 import UI from "@rqjs/rqcomponents";
 import "@rqjs/rqcomponents/lib/theme/index.css";
 import "@rqjs/rqcomponents/lib/theme/base";
-import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
+import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont
 ```
 
-## Partial Import
+### Partial Import
 
 rqcomponnets only exports esm standard packages now.
 
@@ -20,12 +28,12 @@ import RqHeader from "@rqjs/rqcomponents/lib/[rq-component-name]";
 
 import "@rqjs/rqcomponents/lib/theme/[rq-component-name].css";
 import "@rqjs/rqcomponents/lib/theme/base";
-import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont and transition
+import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont
 ```
 
-# Registration
+## Registration
 
-## Global Registration
+### Global Registration
 
 ```js
 import RqHeader from "@rqjs/rqcomponents/lib/[rq-component-name]";
@@ -38,7 +46,7 @@ new Vue({
 });
 ```
 
-## Local Registration
+### Local Registration
 
 ```js
 import RqHeader from "@rqjs/rqcomponents/lib/[rq-component-name]";
@@ -50,46 +58,74 @@ new Vue({
 });
 ```
 
-# Components Description
+## Components Description
 
-## RqHeader
+### RqHeader
 
-### props
+#### props
 
-#### notification: string | slot
+##### notification: string | slot
 
 Default: ""
 
 Raise a warning on the top of the header.
 
-#### before-logout: function(done: function) {}
+##### before-logout: function(done: function) {}
 
 Default: null
 
 Custom way to handle logout event.
 
-### events
+#### events
 
-#### create-workspace
+##### create-workspace
 
 Parameters:
 
 Triggers when user click create workspace button.
 
-#### switch-workspace
+##### switch-workspace
 
 Parameters: currentWorkspaceId
 
 Triggers when current workspace change.
 
-## RqNotFound
+### RqNotFound
 
-## RqMaintenance
+### RqMaintenance
 
-### props
+#### props
 
-#### date: string
+##### date: string
 
 Default: ""
 
 The maintenance time.
+
+## Developer
+
+### Commands
+
+```bash
+npm run start: preview components, need configure `nginx.sample.conf`,visit http://<host>/rqcomponents
+
+npm run dev : generating publish files use watch mode
+
+npm run build : generating publish files
+
+npm run lint : audit code style
+
+npm run clean : clear demo cache
+```
+
+### Contributions
+
+1. colors vars in themes files is **maintained by designer**.
+
+2. [`git 规范`](http://wiki.ricequant.com/pages/viewpage.action?pageId=17269198)
+
+3. [`lint 规范`](http://wiki.ricequant.com/pages/viewpage.action?pageId=45875427)
+
+4. [`npm 规范`](http://wiki.ricequant.com/pages/viewpage.action?pageId=52232790)
+
+5. [`icon 规范`](http://wiki.ricequant.com/pages/viewpage.action?pageId=19562729)

@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import { handleLink } from "../../common/util";
+import { handleLink } from "../../common/util/index";
 
 export default {
   name: "ProductNav",

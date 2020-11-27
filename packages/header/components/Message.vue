@@ -73,7 +73,7 @@
 </template>
 <script>
 import MessageList from "./message/MessageList.vue";
-import { message as messageApi } from "../api";
+import { message as messageApi } from "../api/index";
 import dropdownMixin from "./dropdown-mixin";
 
 export default {
