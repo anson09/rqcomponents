@@ -21,8 +21,8 @@
   },
   "scripts": {
     "start": "./scripts/updep.sh && parcel watch ./demo/index.html --no-autoinstall --out-dir demo/dist --cache-dir demo/.cache --public-url /rqcomponents/",
-    "dev": "./scripts/updep.sh && rollup -w -c build/rollup.config.js",
-    "build": "./scripts/updep.sh && rm -rf lib && rollup -c build/rollup.config.js ",
+    "dev": "./scripts/updep.sh && rollup -w -c build/rollup.config.js && ./scripts/postbuild.sh",
+    "build": "./scripts/updep.sh && rm -rf lib && rollup -c build/rollup.config.js && ./scripts/postbuild.sh",
     "lint": "./scripts/lint.sh",
     "clean": "rm -rf demo/.cache demo/dist",
     "release": "standard-version --no-verify",
@@ -49,6 +49,7 @@
     "lint-staged": "^10.5.2",
     "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.3",
+    "postcss-css-variables": "^0.17.0",
     "prettier": "^2.2.1",
     "regenerator-runtime": "^0.13.7",
     "rollup": "^2.34.0",
@@ -68,6 +69,7 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.12.5",
+    "@rqjs/rqthemes": "^2.0.0-next.1",
     "axios": "^0.21.0",
     "lodash": "^4.17.20"
   },

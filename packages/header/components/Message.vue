@@ -243,7 +243,6 @@ export default {
   width: 30px;
   position: relative;
   @include f-center;
-  color: rqthemify(--text-primary);
   .icon-base-message-center-fill {
     display: none;
   }
@@ -252,7 +251,7 @@ export default {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: rqthemify(--remove-hover-color);
+    background-color: var(--error-color);
     left: 5px;
     top: 18px;
   }
@@ -271,10 +270,10 @@ export default {
     padding: 0 20px;
     font-size: 12px;
     line-height: 1.5;
-    color: rqthemify(--text-normal);
+    color: var(--text-normal);
     height: 53px;
     @include f-center(space-between);
-    border-bottom: 1px solid rqthemify(--border-primary);
+    border-bottom: 1px solid var(--border-primary);
     > div {
       position: relative;
     }
@@ -291,30 +290,30 @@ export default {
       height: 11px;
       content: "";
       display: block;
-      background: rqthemify(--text-normal);
+      background: var(--text-normal);
     }
     &:first-child {
       margin-left: 0;
     }
     &.is-active {
-      color: rqthemify(--primary-color);
+      color: var(--primary-color);
       font-weight: 600;
     }
     &:hover,
     &:focus,
     &:active {
-      color: rqthemify(--primary-color);
+      color: var(--primary-color);
       font-weight: 600;
     }
   }
   &__settings {
     position: absolute;
     z-index: 10;
-    border: 1px solid rqthemify(--border-primary);
-    background-color: rqthemify(--background-final);
+    border: 1px solid var(--border-primary);
+    background-color: var(--bg-primary);
     border-radius: 4px;
     right: 0;
-    box-shadow: 0px 0px 20px 0px rqthemify(--shadow-primary);
+    box-shadow: var(--bg-shadows-tabs);
   }
   &__setting {
     display: block;
@@ -324,14 +323,14 @@ export default {
     width: 76px;
     line-height: 46px;
     border: none;
-    color: rqthemify(--text-normal);
+    color: var(--text-normal);
     outline: none;
     background-color: transparent;
     &:hover,
     &:active,
     &:focus {
-      color: rqthemify(--primary-color);
-      background-color: rqthemify(--background-primary);
+      color: var(--primary-color);
+      background-color: var(--bg-secondary);
     }
   }
   .icon-base-message-border {
@@ -340,7 +339,7 @@ export default {
     &:focus,
     &.is-active,
     &:active {
-      color: rqthemify(--primary-color);
+      color: var(--primary-color);
     }
   }
 }

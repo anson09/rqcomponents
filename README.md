@@ -14,7 +14,7 @@ master: https://www.npmjs.com/package/@rqjs/rqcomponents
 import UI from "@rqjs/rqcomponents";
 import "@rqjs/rqcomponents/lib/theme/index.css";
 import "@rqjs/rqcomponents/lib/theme/base";
-import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont
+import "@rqjs/rqcomponents/lib/theme/base.css";
 ```
 
 ### Partial Import
@@ -28,7 +28,7 @@ import RqHeader from "@rqjs/rqcomponents/lib/[rq-component-name]";
 
 import "@rqjs/rqcomponents/lib/theme/[rq-component-name].css";
 import "@rqjs/rqcomponents/lib/theme/base";
-import "@rqjs/rqcomponents/lib/theme/base.css"; // iconfont
+import "@rqjs/rqcomponents/lib/theme/base.css";
 ```
 
 ## Registration

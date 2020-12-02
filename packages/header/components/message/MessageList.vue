@@ -115,32 +115,32 @@ export default {
     display: none;
     @include t-center-vertical;
     font-size: 16px;
-    color: rqthemify(--text-secondary);
+    color: var(--text-secondary);
     &:hover {
-      color: rqthemify(--remove-hover-color);
+      color: var(--error-color);
     }
     &:active,
     &:focus {
-      color: rqthemify(--remove-active-color);
+      color: var(--error-color-6);
     }
   }
   &:hover {
-    background-color: rqthemify(--background-white-hover);
+    background-color: var(--bg-secondary);
     .icon-base-remove-outline {
       display: inline-block;
     }
   }
   &__link {
-    border-bottom: 1px solid rqthemify(--border-primary);
+    border-bottom: 1px solid var(--border-primary);
     padding: 14px 0;
-    color: inherit;
+    color: var(--text-title);
     @include f-column(flex-start);
     text-align: left;
     text-decoration: none;
   }
 
   &__text {
-    color: rqthemify(--text-normal);
+    color: var(--text-normal);
     font-size: 14px;
     letter-spacing: 0.4px;
     line-height: 22px;

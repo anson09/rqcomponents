@@ -220,17 +220,16 @@ export default {
   width: 100%;
 
   height: 40px;
-  box-shadow: 0px 2px 4px rqthemify(--primary-color-1);
+  box-shadow: 0px 2px 4px var(--primary-color-1);
   padding-left: 24px;
   padding-right: 10px;
-  background: rqthemify(--background-final);
+  background: var(--bg-primary);
   z-index: 1;
-  color: rqthemify(--shadow-primary);
   ::-webkit-scrollbar {
     width: 6px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: rqthemify(--border-primary);
+    background-color: var(--border-primary);
     border-radius: 3px;
   }
   &-wrapper {
@@ -248,9 +247,9 @@ export default {
   height: 30px;
   text-align: center;
   border-radius: 4px;
-  color: rqthemify(--primary-color);
+  color: var(--primary-color);
   line-height: 30px;
-  background-color: rqthemify(--background-minor);
+  background-color: var(--bg-minor);
   @include tooltip-wrapper;
   .icon-home {
     font-size: 20px;
@@ -267,36 +266,37 @@ export default {
     }
   }
 
-  #{$namespace}-tooltip {
-    top: 110%;
+  @include block(tooltip) {
+    transform: translate(-50%, 6px);
   }
 }
 
 @include block(name) {
-  color: rqthemify(--text-remind);
+  color: var(--text-title);
   font-size: 16px;
   width: 60px;
   font-weight: 500;
   margin: 0 10px 0 4px;
 }
 @include block(road-show) {
-  background-color: rqthemify(--background-gray);
+  background-color: var(--text-normal);
   border-radius: 16px;
-  color: rqthemify(--text-button);
-  font-weight: 600;
+  color: var(--road-show-text);
+  font-weight: 400;
+  letter-spacing: 2px;
   font-size: 14px;
   line-height: 1;
   padding: 6px 20px;
   margin: 0 13px;
-  box-shadow: 0px 4px 4px rqthemify(--shadow-button);
+  box-shadow: var(--bg-shadows);
   &:hover,
   &:active {
-    color: rqthemify(--white);
-    background-color: rqthemify(--primary-color);
-    box-shadow: 0px 4px 4px rqthemify(--shadow-dropdown);
+    color: var(--white);
+    background-color: var(--primary-color);
+    box-shadow: 0px 4px 4px var(--primary-color-2);
   }
   &:active {
-    background-color: rqthemify(--background-active);
+    background-color: var(--road-show-active-bg);
   }
 }
 </style>

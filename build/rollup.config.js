@@ -8,8 +8,6 @@ import filesize from "rollup-plugin-filesize";
 import componentsList from "./components.json";
 import pkg from "../package.json";
 
-const { plugins: postcssPlugins } = require("../.postcssrc.js");
-
 const componentsConfig = Object.entries(componentsList).map(
   ([fileName, filePath]) => ({
     input: filePath,
@@ -23,7 +21,6 @@ const componentsConfig = Object.entries(componentsList).map(
       vue({ css: false }),
       postcss({
         extract: `theme/${fileName}.css`,
-        plugins: postcssPlugins,
       }),
       getBabelOutputPlugin({
         presets: [["@babel/preset-env", { targets: "defaults" }]],

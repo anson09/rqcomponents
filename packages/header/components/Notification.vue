@@ -36,10 +36,10 @@ export default {
   margin: 0;
   position: relative;
   padding-right: 24px;
-  color: rqthemify(--warning-color);
+  color: var(--text-title);
   font-size: 16px;
   line-height: 24px;
-  background: rqthemify(--warning-background);
+  background: var(--warning-bg);
   display: flex;
 
   ::-webkit-scrollbar {
@@ -59,7 +59,6 @@ export default {
     align-items: center;
     height: 100%;
     top: 0;
-    background: rqthemify(--warning-background-secondary);
   }
 }
 </style>

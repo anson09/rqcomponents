@@ -25,11 +25,11 @@ export default {
 @import "../common/style/mixins.scss";
 @include reset;
 @include block(maintenance) {
-  background: rqthemify(--background-final);
+  background: var(--bg-primary);
   width: 100%;
   height: 100%;
   @include f-column;
-  color: rqthemify(--text-normal);
+  color: var(--text-normal);
   font-size: 16px;
   line-height: 44px;
   &__img {

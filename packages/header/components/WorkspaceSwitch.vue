@@ -51,14 +51,19 @@
             class="icon-base icon-base-set-up icon-set-up"
             @click.stop="handleClick"
           ></i>
-          <Tooltip mode="dark" text="进入该工作空间" />
+          <Tooltip mode="weak" text="进入该工作空间" />
         </template>
       </span>
-      <span class="rq-header-ws-btn__label-wrapper">
+      <span
+        :class="[
+          'rq-header-ws-btn__label-wrapper',
+          { 'is-tooltip-hidden': dropdownVisible },
+        ]"
+      >
         <span ref="curWsLabel" class="rq-header-ws-btn__label">
           {{ curWs.name }}
         </span>
-        <Tooltip v-show="tooltipVisible" mode="light" :text="curWs.name" />
+        <Tooltip v-show="tooltipVisible" mode="strong" :text="curWs.name" />
       </span>
       <i class="icon-base icon-base-caret-bottom"> </i>
     </div>
@@ -190,7 +195,7 @@ export default {
 
 @include block(ws) {
   &-container {
-    color: rqthemify(--text-normal);
+    color: var(--text-normal);
     position: relative;
     cursor: pointer;
     height: 100%;
@@ -221,11 +226,11 @@ export default {
     &:active,
     &.is-dropdown-active {
       .icon-base-caret-bottom {
-        color: rqthemify(--primary-color);
+        color: var(--primary-color);
         transform: rotate(180deg);
       }
       .icon-set-up {
-        color: rqthemify(--primary-color);
+        color: var(--primary-color);
         display: none;
         &.active-icon {
           display: inline-block;
@@ -247,7 +252,7 @@ export default {
       line-height: 20px;
       padding: 10px 60px 10px 20px;
       @include f-center(flex-start);
-      color: rqthemify(--text-normal);
+      color: var(--text-normal);
       .icon-base-enterprise {
         font-size: 16px;
       }
@@ -258,7 +263,7 @@ export default {
         margin-left: 8px;
       }
       .icon-base-success {
-        color: rqthemify(--primary-color-3);
+        color: var(--primary-color-3);
         @include t-center-vertical;
         font-size: 16px;
         right: 12px;
@@ -268,18 +273,18 @@ export default {
       &:hover,
       &:active,
       &:focus {
-        background-color: rqthemify(--background-white-hover);
-        color: rqthemify(--primary-color);
+        background-color: var(--bg-secondary);
+        color: var(--primary-color);
       }
     }
     &__btn {
       @include f-center;
-      background-color: rqthemify(--background-secondary);
+      background-color: var(--primary-color-1);
       border: none;
       border-radius: 4px;
       padding: 3px 14px 3px 8px;
       line-height: 20px;
-      color: rqthemify(--text-normal);
+      color: var(--text-normal);
       font-size: 14px;
       cursor: pointer;
       outline: none;
@@ -289,14 +294,14 @@ export default {
       }
 
       &:hover {
-        background-color: rqthemify(--primary-color);
-        color: rqthemify(--white);
+        background-color: var(--primary-color);
+        color: var(--white);
       }
 
       &-wrapper {
         padding: 12px 0 0 4px;
         margin: 10px 12px 12px;
-        border-top: 1px solid rqthemify(--border-primary);
+        border-top: 1px solid var(--border-primary);
       }
     }
   }
@@ -309,7 +314,7 @@ export default {
     width: 214px;
     position: relative;
     z-index: 9;
-    background: rqthemify(--background-minor);
+    background-color: var(--bg-minor);
     border-radius: 4px;
     &__label {
       display: inline-block;
@@ -324,8 +329,8 @@ export default {
         height: 100%;
         font-size: 14px;
         overflow: hidden;
-        color: rqthemify(--text-normal);
-        &:hover {
+        color: var(--text-normal);
+        &:not(.is-tooltip-hidden):hover {
           @include block(tooltip) {
             display: block;
           }

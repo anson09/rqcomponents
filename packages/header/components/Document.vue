@@ -160,7 +160,7 @@ export default {
 @import "./../style/mixins.scss";
 @include block(doc) {
   margin: 0 8px;
-  color: rqthemify(--text-normal);
+  color: var(--text-normal);
   display: flex;
   align-items: center;
   position: relative;
@@ -174,8 +174,8 @@ export default {
 }
 
 @mixin container {
-  background-color: rqthemify(--background-final);
-  box-shadow: 0px 0px 8px rqthemify(--shadow-dropdown);
+  background-color: var(--bg-primary);
+  box-shadow: 0px 0px 8px var(--primary-color-2);
   border-radius: 4px;
   padding: 8px 0;
 }
@@ -204,7 +204,7 @@ export default {
       padding: 6px 0;
 
       & + & {
-        border-top: 1px solid rqthemify(--border-primary);
+        border-top: 1px solid var(--border-primary);
       }
     }
   }
@@ -219,10 +219,10 @@ export default {
     line-height: 36px;
     padding-left: 15px;
     width: 100%;
-    color: rqthemify(--text-normal);
+    color: var(--text-normal);
     &:hover {
-      color: rqthemify(--primary-color);
-      background-color: rqthemify(--background-primary);
+      color: var(--primary-color);
+      background-color: var(--bg-secondary);
     }
     &.not-link {
       cursor: initial;

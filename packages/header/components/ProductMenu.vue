@@ -66,10 +66,10 @@ export default {
     position: absolute;
     left: -24px;
     top: 100%;
-    background: rqthemify(--background-final);
-    box-shadow: 0px 2px 4px rqthemify(--primary-color-1);
+    background: var(--bg-primary);
+    box-shadow: 0px 2px 4px var(--primary-color-1);
     border-radius: 4px;
-    color: rqthemify(--text-normal);
+    color: var(--text-normal);
     transform: translateY(8px);
     line-height: 20px;
     &-item {
@@ -77,10 +77,10 @@ export default {
       padding: 12px 34px;
       cursor: pointer;
       &:hover {
-        background-color: rqthemify(--background-primary);
+        background-color: var(--bg-secondary);
       }
       &.is-active {
-        color: rqthemify(--primary-color);
+        color: var(--primary-color);
       }
     }
     &-annulus {
@@ -90,8 +90,8 @@ export default {
       height: 8px;
       left: 16px;
       border-radius: 50%;
-      box-shadow: 0px 0px 4px rqthemify(--primary-color);
-      background: rqthemify(--primary-color);
+      box-shadow: 0px 0px 4px var(--primary-color);
+      background: var(--primary-color);
       &:after {
         content: "";
         width: 4px;
@@ -100,7 +100,7 @@ export default {
         position: absolute;
         @include t-center;
         border-radius: 50%;
-        background: rqthemify(--background-final);
+        background: var(--bg-primary);
       }
     }
   }
@@ -110,13 +110,13 @@ export default {
   @include f-column;
   @include tooltip-wrapper;
   @include icon-container("icon-base-switch-products", 18);
-  color: rqthemify(--primary-color-4);
+  color: var(--primary-color-4);
   .icon-base-switch-products.active-icon {
     display: inline-block;
   }
   &.is-icon-active {
-    background-color: rqthemify(--primary-color-1);
-    box-shadow: 0px 4px 4px rqthemify(--primary-color-2);
+    background-color: var(--primary-color-1);
+    box-shadow: 0px 4px 4px var(--primary-color-2);
   }
   ::v-deep {
     @include block(tooltip) {

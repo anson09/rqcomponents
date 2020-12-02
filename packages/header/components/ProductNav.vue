@@ -35,7 +35,7 @@ export default {
   height: 100%;
   flex: 1;
   @include f-center;
-  color: rqthemify(--text-normal);
+  color: var(--text-normal);
   font-size: 14px;
   &__item {
     @include f-center;
@@ -60,19 +60,19 @@ export default {
     }
     &:hover {
       &:after {
-        background-color: rqthemify(--primary-color-4);
+        background-color: var(--primary-color-4);
       }
     }
 
     &.is-active,
     &:active {
-      color: rqthemify(--primary-color);
+      color: var(--primary-color);
       .icon-base-colorful {
         filter: none;
         opacity: 1;
       }
       &:after {
-        background-color: rqthemify(--primary-color);
+        background-color: var(--primary-color);
       }
     }
   }

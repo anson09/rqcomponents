@@ -91,7 +91,7 @@ export default {
 <style lang="scss" scoped>
 @import "../style/mixins.scss";
 @include block(account) {
-  color: rqthemify(--text-normal);
+  color: var(--text-normal);
   height: 100%;
   margin: 0 13px;
   @include f-center;
@@ -120,7 +120,7 @@ export default {
     position: absolute;
     height: 30px;
     width: 30px;
-    background: rqthemify(--primary-color-3);
+    background: var(--primary-color-3);
     border-radius: 50%;
     opacity: 0;
     @include t-center;
@@ -137,7 +137,7 @@ export default {
       height: 34px;
     }
     &:hover:after {
-      background: rqthemify(--primary-color-4);
+      background: var(--primary-color-4);
     }
   }
 }
@@ -153,8 +153,8 @@ export default {
       margin-bottom: 0;
     }
     &:hover {
-      color: rqthemify(--primary-color);
-      background-color: rqthemify(--dropdown-hover-background);
+      color: var(--primary-color);
+      background-color: var(--primary-color-1);
     }
   }
   &__label {
@@ -166,7 +166,7 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-bottom: 1px solid rqthemify(--border-primary);
+    border-bottom: 1px solid var(--border-primary);
     &:after {
       content: "";
       position: absolute;
@@ -177,7 +177,7 @@ export default {
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: rqthemify(--succeed-color);
+      background: var(--green);
     }
   }
 }

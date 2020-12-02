@@ -32,7 +32,7 @@
             v-if="mode.tooltipText"
             :text="mode.tooltipText"
             :class="{ 'is-ie': !isBrowerSupported }"
-            mode="dark"
+            mode="weak"
           />
         </div>
       </div>
@@ -129,7 +129,7 @@ export default {
 <style lang="scss" scoped>
 @import "./../style/mixins.scss";
 @include block(theme) {
-  color: rqthemify(--text-normal);
+  color: var(--text-normal);
   margin: 0 8px;
   position: relative;
   height: 100%;
@@ -144,7 +144,7 @@ export default {
     @include dropdown;
     padding: 16px 14px;
     padding-top: 16px;
-    color: rqthemify(--text-normal);
+    color: var(--text-normal);
     width: 110px;
     border: none;
     cursor: default;
@@ -165,7 +165,7 @@ export default {
         left: 0;
         font-size: 16px;
         line-height: 100%;
-        color: rqthemify(--succeed-color);
+        color: var(--green);
         text-align: center;
         opacity: 0;
       }
@@ -174,11 +174,11 @@ export default {
       position: relative;
       font-size: 14px;
       margin: 14px 0;
-      color: rqthemify(--text-normal);
+      color: var(--text-normal);
       text-align: center;
       cursor: pointer;
       &.is-active {
-        color: rqthemify(--primary-color);
+        color: var(--primary-color);
         .icon-base-success {
           opacity: 1;
         }
