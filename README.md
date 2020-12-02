@@ -19,7 +19,7 @@ import "@rqjs/rqcomponents/lib/theme/base.css";
 
 ### Partial Import
 
-rqcomponnets only exports esm standard packages now.
+rqcomponent only exports esm packages.
 
 ```js
 import RqHeader from "@rqjs/rqcomponents/lib/[rq-component-name]";
@@ -58,49 +58,7 @@ new Vue({
 });
 ```
 
-## Components Description
-
-### RqHeader
-
-#### props
-
-##### notification: string | slot
-
-Default: ""
-
-Raise a warning on the top of the header.
-
-##### before-logout: function(done: function) {}
-
-Default: null
-
-Custom way to handle logout event.
-
-#### events
-
-##### create-workspace
-
-Parameters:
-
-Triggers when user click create workspace button.
-
-##### switch-workspace
-
-Parameters: currentWorkspaceId
-
-Triggers when current workspace change.
-
-### RqNotFound
-
-### RqMaintenance
-
-#### props
-
-##### date: string
-
-Default: ""
-
-The maintenance time.
+## [Components Description Link](./COMPONENTS_DOC.md)
 
 ## Developer
 

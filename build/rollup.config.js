@@ -57,7 +57,6 @@ const baseCssConfig = {
       include: ["**/*.eot", "**/*.woff", "**/*.woff2", "**/*.ttf", "**/*.svg"],
       limit: 0,
       fileName: "[name][extname]",
-      destDir: "lib/theme",
     }),
     postcss({
       extract: "base.css",
