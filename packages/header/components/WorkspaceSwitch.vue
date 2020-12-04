@@ -85,9 +85,9 @@ export default {
   components: { Tooltip },
   mixins: [dropdownMixin],
   data() {
-    const localStorageAccount = getStorage("account");
+    const localStorageAccount = getStorage("account") || {};
     const storageKey = "workspace";
-    const localStorageWorkspaces = getStorage(storageKey);
+    const localStorageWorkspaces = getStorage(storageKey) || {};
     return {
       tooltipVisible: false,
       workspaces: [],

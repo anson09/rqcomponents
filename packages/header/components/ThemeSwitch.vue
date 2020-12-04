@@ -64,7 +64,7 @@ export default {
       value: "light",
       isBrowerSupported: true,
       isProductSupported: true,
-      productsSupported: ["/ams", "/quant"],
+      productsSupported: ["/ams", "/quant", "/rqcomponents"],
     };
   },
   computed: {
@@ -98,7 +98,7 @@ export default {
     );
 
     if (this.isBrowerSupported && this.isProductSupported) {
-      const theme = getStorage("theme", "string");
+      const theme = getStorage("theme");
       this.value = THEME_MODE.includes(theme) ? theme : "light";
       this.themeRender(this.value);
     }

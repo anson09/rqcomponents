@@ -1,15 +1,17 @@
 const storageKeys = {
   account: "common_account",
-  userDefaultProduct: "common_user_default_product",
-  theme: "theme",
+  theme: "common_theme",
   workspace: "common_workspace",
 };
 
-const getStorage = (name, type = "object") =>
-  type === "object"
-    ? JSON.parse(localStorage[storageKeys[name]] || "{}")
-    : localStorage[storageKeys[name]];
-
+const getStorage = (name) => {
+  const val = localStorage[storageKeys[name]];
+  try {
+    return JSON.parse(val);
+  } catch {
+    return val;
+  }
+};
 const setStorage = (name, val) =>
   localStorage.setItem(
     storageKeys[name],
