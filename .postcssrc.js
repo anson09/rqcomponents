@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const file = path.resolve(__dirname, `packages/common/style/variables.css`);
+const file = path.resolve(__dirname, `packages/common/style/variables.scss`);
 
 function parseClass2Json(filePath, selector) {
   const source = fs.readFileSync(filePath, "utf8");
