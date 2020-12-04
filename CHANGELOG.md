@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-next.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.0-next.0&sourceBranch=refs/tags/v0.2.0-next.1) (2020-12-04)
+
+
+### Bug Fixes
+
+* eslint cli ([4d11008](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/4d110088267ce5032c6ed23f83080600e5337a22))
+
+
+### Chores
+
+* delete element-ui dep ([aa9e676](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/aa9e67612b6c3d8a2c6a453acedf16e49cd04b9d))
+
+
+### Docs
+
+* split components params doc ([53ea419](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/53ea4194e084d90591319bb49df3523ee006e72a))
+
+
+### Build Flow
+
+* auto fetch export components ([c3aa010](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/c3aa010a57526c9b89b4350714f4e4c8d5779c71))
+
+
+### Refactors
+
+* localstorage theme -> common_theme ([6cf01cb](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6cf01cbb39ff6cf2916a5e392736b3e0803ae0ca))
+* use css var instead of rqthemify ([536f97a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/536f97aace9942ca9993dab5811a8557e4792cf5))
+
 ## [0.2.0-next.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.1.13&sourceBranch=refs/tags/v0.2.0-next.0) (2020-11-27)
 
 
