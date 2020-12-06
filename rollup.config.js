@@ -2,12 +2,10 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import { getBabelOutputPlugin } from "@rollup/plugin-babel";
 import url from "@rollup/plugin-url";
 import postcss from "rollup-plugin-postcss";
 import vue from "rollup-plugin-vue";
 import images from "rollup-plugin-image-files";
-import filesize from "rollup-plugin-filesize";
 
 import meta from "./package.json";
 
@@ -41,20 +39,6 @@ const componentsConfig = exportPackages.map(([fileName, filePath]) => ({
     postcss({
       extract: `theme/${fileName}.css`,
     }),
-    getBabelOutputPlugin({
-      presets: [["@babel/preset-env", { targets: "defaults" }]],
-      plugins: [
-        [
-          "@babel/plugin-transform-runtime",
-          {
-            useESModules: true,
-            corejs: { version: 3, proposals: true },
-            version: "^7.12.5",
-          },
-        ],
-      ],
-    }),
-    filesize(),
   ],
   external: (id) =>
     new RegExp(

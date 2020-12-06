@@ -1,9 +1,7 @@
 import { axios, urlencodePost } from "../../common/api/index";
 import * as message from "./modules/message";
 
-const getAccount = () => {
-  return urlencodePost("api/user/isLogin.do", {});
-};
+const getAccount = () => urlencodePost("api/user/isLogin.do", {});
 
 const logout = async () => {
   const url = "api/user/logout.do";

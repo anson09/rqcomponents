@@ -148,14 +148,13 @@ export default {
       );
       this.workspaces = res.data.map((item) => ({
         ...item,
-        isQuantEnterprise: !!wsProductsDict[item.id].find((pro) => {
-          return (
+        isQuantEnterprise: !!wsProductsDict[item.id].find(
+          (pro) =>
             pro.product.name === "QUANT" &&
             pro.product.version === "Enterprise" &&
             getDate(pro.start) < new Date() &&
             getDate(pro.expire) > new Date()
-          );
-        }),
+        ),
       }));
       if (!this.workspaces.length) {
         delete this.localStorageWorkspaces[this.account.userId];
