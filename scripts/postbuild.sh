@@ -9,5 +9,5 @@ do
 done
 
 echo -e "\n------ bundle size ------"
-ls -lh lib/*|awk '{printf "%s\t%s\n",$5,$9}'|grep -v '^\t'|sort -rh
+ls -lh lib/*|awk '{printf "%s\t%s\n",$5,$9}'|egrep -v '^\t|map$'|sort -rh
 echo "------ ----------- ------"
