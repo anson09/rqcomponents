@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-next.2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.0-next.1&sourceBranch=refs/tags/v0.2.0-next.2) (2020-12-06)
+
+
+### Build Flow
+
+* drop babel, rewrite filesize ([af4720a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/af4720a4dbccca4b49c1a6e8516d36b2bdc1abeb))
+
 ## [0.2.0-next.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.0-next.0&sourceBranch=refs/tags/v0.2.0-next.1) (2020-12-04)
 
 
