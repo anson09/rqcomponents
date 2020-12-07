@@ -8,7 +8,7 @@ const getStorage = (name) => {
   const val = localStorage[storageKeys[name]];
   try {
     return JSON.parse(val);
-  } catch {
+  } catch (e) {
     return val;
   }
 };

@@ -109,21 +109,17 @@ export default {
   methods: {
     handleLink,
     async getAccount() {
-      try {
-        const { data } = await getAccount();
-        if (data.code === 0) {
-          setStorage("account", {
-            isLogin: true,
-            fullname: data.fullname,
-            avatar: data.avatar,
-            phone: data.phone,
-            email: data.email,
-            userId: data.userId,
-          });
-          this.account = data;
-        }
-      } catch {
-        //
+      const { data } = await getAccount();
+      if (data.code === 0) {
+        setStorage("account", {
+          isLogin: true,
+          fullname: data.fullname,
+          avatar: data.avatar,
+          phone: data.phone,
+          email: data.email,
+          userId: data.userId,
+        });
+        this.account = data;
       }
     },
     initProducts() {

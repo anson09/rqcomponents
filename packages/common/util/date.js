@@ -7,8 +7,8 @@ const getDate = (string) => {
     const [year, month, date] = dateStr.split("-");
     const [hour, minute, second] = timeStr.split(":");
     return new Date(year, month - 1, date, hour, minute, second);
-  } catch (err) {
-    throw Error("日期格式不对");
+  } catch (e) {
+    throw new Error("日期格式不对");
   }
 };
 
