@@ -72,6 +72,10 @@ export default {
           link: { path: "/doc/quant/", newBlock: true },
         },
         {
+          label: "RQFUND文档",
+          link: { path: "/doc/rqfund/", newBlock: true },
+        },
+        {
           label: "RQSDK使用文档",
           links: [
             {
