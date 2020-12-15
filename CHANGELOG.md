@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.0-next.2&sourceBranch=refs/tags/v0.2.0) (2020-12-15)
+
+
+### Features
+
+* add rqfund doc link ([f5b29df](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/f5b29dff60bb956892c11cb4cd10712127f056b1))
+* clear some catch behavior ([06387d9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/06387d931632a528e77587e1f16d90edfe6a9205))
+
+
+### Build Flow
+
+* exclude mapfile size ([c1593ef](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/c1593efd4cdf70885afce196de35de39c0178cee))
+
 ## [0.2.0-next.2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.0-next.1&sourceBranch=refs/tags/v0.2.0-next.2) (2020-12-06)
 
 
