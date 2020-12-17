@@ -1,15 +1,26 @@
-const { CLIEngine } = require("eslint");
+const { ESLint } = require("eslint");
+const eslintCli = new ESLint();
 
-const cli = new CLIEngine({});
+const asyncFilter = async (arr, predicate) => {
+  const results = await Promise.all(arr.map(predicate));
+  return arr.filter((_v, index) => results[index]);
+};
 
-const eslint = (files) =>
-  "eslint --fix --max-warnings=0 " +
-  files.filter((file) => !cli.isPathIgnored(file)).join(" ");
+const removeIgnoredFiles = async (files) => {
+  const filteredFiles = await asyncFilter(files, async (file) => {
+    const isIgnored = await eslintCli.isPathIgnored(file);
+    return !isIgnored;
+  });
+  return filteredFiles.join(" ");
+};
+
+const eslint = async (files) =>
+  "eslint --fix --max-warnings=0 " + (await removeIgnoredFiles(files));
 const stylelint = (files) => `stylelint --fix --mw 0 ${files.join(" ")}`;
 const prettier = (files) => `prettier --write ${files.join(" ")}`;
 
 function rules(...args) {
-  return (files) => args.map((f) => f(files));
+  return async (files) => Promise.all(args.map((f) => f(files)));
 }
 
 module.exports = {
