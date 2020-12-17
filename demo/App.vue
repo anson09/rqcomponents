@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <RqLogin @finish-login="handleFinishLogin" />
     <RqHeader
       :notification="notification"
       :before-logout="handleLogout"
@@ -16,7 +17,7 @@
 /* eslint-disable no-console */
 /* build from lib */
 /* full import */
-// import { RqHeader, RqNotFound, RqMaintenance } from "../lib/index";
+// import { RqHeader, RqNotFound, RqMaintenance, RqLogin } from "../lib/index";
 // import "../lib/theme/index.css";
 // import "../lib/theme/base";
 // import "../lib/theme/base.css";
@@ -28,18 +29,20 @@
 // import "../lib/theme/rq-not-found.css";
 // import RqMaintenance from "../lib/rq-maintenance";
 // import "../lib/theme/rq-maintenance.css";
+// import RqLogin from "../lib/rq-login";
+// import "../lib/theme/rq-login.css";
 // import "../lib/theme/base";
 // import "../lib/theme/base.css";
 /* --------  */
 
 /* build from source */
-import { RqHeader, RqMaintenance, RqNotFound } from "../packages";
+import { RqHeader, RqMaintenance, RqNotFound, RqLogin } from "../packages";
 import "../packages/common/style";
 /* --------  */
 
 export default {
   name: "App",
-  components: { RqHeader, RqMaintenance, RqNotFound },
+  components: { RqHeader, RqMaintenance, RqNotFound, RqLogin },
   data() {
     return {
       maintenanceDate: "2019-11-9 10:00",
@@ -49,6 +52,9 @@ export default {
 
   mounted() {},
   methods: {
+    handleFinishLogin() {
+      console.log("handle finish login");
+    },
     handleLogout(done) {
       console.log("do cometime before logout");
       done();
