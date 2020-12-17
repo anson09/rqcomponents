@@ -152,6 +152,11 @@ export default {
       color: var(--text-btn);
       font-size: 16px;
       margin-top: 18px;
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: var(--primary-color-8);
+      }
     }
     &__error {
       color: var(--error-color);
