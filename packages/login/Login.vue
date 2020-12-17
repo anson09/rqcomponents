@@ -9,7 +9,7 @@
         <p class="rq-login-form__title">账号登录</p>
         <input
           v-model.trim="username"
-          placeholder="账号"
+          placeholder="手机号或邮箱"
           type="text"
           class="rq-login-form__input"
         />
@@ -57,7 +57,7 @@ export default {
       const rules = [
         {
           isValid: this.isUsernamePhone || this.isUsernameEmail,
-          message: "请输入正确账号信息",
+          message: "请输入正确手机号或邮箱",
         },
         { isValid: this.password, message: "请输入密码" },
       ];
