@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1-next.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.0&sourceBranch=refs/tags/v0.2.1-next.0) (2020-12-17)
+
+
+### Features
+
+* add rqLogin ([2f5f883](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/2f5f8837831188369bd16c38a36459cb081f1056))
+* finish-login rename to after-login ([6cbbc59](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6cbbc595595a1f0fa1195ff8a4664bdc70caf0c0))
+* login button background ([bd6ecdf](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/bd6ecdf8ad6fe2abe30543ab6e1f7ec97022ce73))
+* update demo ([204d7cf](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/204d7cf6cc386e253409afaf551ec61e80207d92))
+
+
+### Bug Fixes
+
+* login username text ([e935594](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/e9355941954903c4dfbdf44f73febc0b73d93e99))
+* watch mode sourcemap error ([a7bf204](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a7bf204357d5bfefb45a0d6354fd67d27c134a47))
+
+
+### Docs
+
+* update components docs ([2d1f5a1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/2d1f5a1a3331b1b1f6e5665005929ccbd85df237))
+* update description of rqlogin props logo ([c9a6ac3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/c9a6ac3b67e4c2497e72c5c5a4b1bc0206de9c72))
+
 ## [0.2.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.0-next.2&sourceBranch=refs/tags/v0.2.0) (2020-12-15)
 
 
