@@ -39,3 +39,21 @@ Triggers when current workspace change.
 Default: ""
 
 The maintenance time.
+
+# RqLogin
+
+## props
+
+### logo: string
+
+Default: ricequant logo
+
+The specified logo.
+
+## events
+
+### finish-login
+
+Parameters:
+
+Triggers when user login in.
