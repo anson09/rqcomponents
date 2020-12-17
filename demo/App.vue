@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <RqLogin @finish-login="handleFinishLogin" />
+    <RqLogin @after-login="handleAfterLogin" />
     <RqHeader
       :notification="notification"
       :before-logout="handleLogout"
@@ -52,8 +52,8 @@ export default {
 
   mounted() {},
   methods: {
-    handleFinishLogin() {
-      console.log("handle finish login");
+    handleAfterLogin() {
+      console.log("handle after login");
     },
     handleLogout(done) {
       console.log("do cometime before logout");

@@ -74,7 +74,7 @@ export default {
         if (res.code !== 0) {
           throw new Error(res.message);
         }
-        this.$emit("finish-login");
+        this.$emit("after-login");
       } catch (err) {
         this.errorMessage = err.message;
       }

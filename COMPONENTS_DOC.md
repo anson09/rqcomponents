@@ -52,7 +52,7 @@ The specified logo.
 
 ## events
 
-### finish-login
+### after-login
 
 Parameters:
 
