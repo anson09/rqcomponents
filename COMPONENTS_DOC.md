@@ -44,7 +44,7 @@ The maintenance time.
 
 ## props
 
-### logo: string
+### logo: file path with hash
 
 Default: ricequant logo
 
