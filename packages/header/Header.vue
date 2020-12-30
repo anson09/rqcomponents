@@ -194,16 +194,15 @@ export default {
     handleEvent(name, data) {
       this.$emit(name, data);
     },
-    handleLogout() {
-      const done = async () => {
-        const { code } = await logout();
-        if (code === 0) {
-          removeStorage("account");
-          this.handleLink({ outer: true, path: "/" });
-        }
-      };
-      if (this.beforeLogout) this.beforeLogout(done);
-      else done();
+    async handleLogout() {
+      if (this.beforeLogout) {
+        await this.beforeLogout();
+      }
+      const { code } = await logout();
+      if (code === 0) {
+        removeStorage("account");
+        this.handleLink({ outer: true, path: "/" });
+      }
     },
   },
 };
