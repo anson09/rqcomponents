@@ -23,6 +23,7 @@
       }}</span>
       <!-- 工作空间 -->
       <WorkspaceSwitch
+        :user-id="account.userId"
         @switch-workspace="handleEvent('switch-workspace', $event)"
         @create-workspace="handleEvent('create-workspace')"
       />

@@ -84,15 +84,18 @@ export default {
   name: "WorkspaceSwitch",
   components: { Tooltip },
   mixins: [dropdownMixin],
+  props: {
+    // 原来 userId 直接从 localstorage 中取，可能会取不到
+    // 改成 header 调用 isLogin.do 接口后，传过来的参数
+    userId: { type: Number, default: null },
+  },
   data() {
-    const localStorageAccount = getStorage("account") || {};
     const storageKey = "workspace";
     const localStorageWorkspaces = getStorage(storageKey) || {};
     return {
       tooltipVisible: false,
       workspaces: [],
       curWs: {},
-      account: localStorageAccount,
       storageKey,
       localStorageWorkspaces,
     };
@@ -100,10 +103,13 @@ export default {
 
   computed: {
     settingVisible() {
-      return this.curWs.admin === this.account.userId;
+      return this.curWs.admin === this.userId;
     },
   },
   watch: {
+    userId() {
+      this.setDefaultWorkspace();
+    },
     curWs() {
       this.$nextTick(() => {
         this.tooltipVisible =
@@ -153,17 +159,22 @@ export default {
         ),
       }));
       if (!this.workspaces.length) {
-        delete this.localStorageWorkspaces[this.account.userId];
+        delete this.localStorageWorkspaces[this.userId];
         setStorage(this.storageKey, this.localStorageWorkspaces);
-        return;
       }
-      const localStorageWs = this.localStorageWorkspaces[this.account.userId];
-      const ws = this.workspaces.find((item) => item.id === localStorageWs);
-      this.setWorkspace(ws || this.workspaces[0]);
+      this.setDefaultWorkspace();
     },
-
+    // 根据 localstorage 里存的 workspaceId 设置默认的 workspace
+    setDefaultWorkspace() {
+      // 要有 userId, workspace 列表，以及没有被手动选择过
+      if (this.userId && this.workspaces.length && !this.curWs?.id) {
+        const localStorageWs = this.localStorageWorkspaces[this.userId];
+        const ws = this.workspaces.find((item) => item.id === localStorageWs);
+        this.setWorkspace(ws || this.workspaces[0]);
+      }
+    },
     setWorkspace(ws) {
-      this.localStorageWorkspaces[this.account.userId] = ws.id;
+      this.localStorageWorkspaces[this.userId] = ws.id;
       this.curWs = ws;
       setStorage(this.storageKey, this.localStorageWorkspaces);
       this.$emit("switch-workspace", ws.id);
