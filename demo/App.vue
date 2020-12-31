@@ -49,15 +49,12 @@ export default {
       notification: "notification",
     };
   },
-
-  mounted() {},
   methods: {
     handleAfterLogin() {
       console.log("handle after login");
     },
-    handleLogout(done) {
+    handleLogout() {
       console.log("do cometime before logout");
-      done();
     },
     handleCreateWorkspace() {
       console.log("handle create workspace");

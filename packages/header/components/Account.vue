@@ -40,7 +40,7 @@ export default {
       type: String,
     },
     username: {
-      default: "",
+      default: "未登陆",
       type: String,
     },
   },
