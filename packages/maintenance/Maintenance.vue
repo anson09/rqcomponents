@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "Maintenance",
+  name: "RqMaintenance",
   props: {
     date: { type: String, default: undefined },
   },

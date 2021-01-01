@@ -1,7 +1,7 @@
-import RqLogin from "./Login.vue";
+import Login from "./Login.vue";
 
-RqLogin.install = function (Vue) {
-  Vue.component(RqLogin.name, RqLogin);
+Login.install = function (Vue) {
+  Vue.component(Login.name, Login);
 };
 
-export default RqLogin;
+export default Login;

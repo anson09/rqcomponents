@@ -32,7 +32,7 @@ import { login } from "./api/index";
 import logo from "./assets/img/logo.png";
 
 export default {
-  name: "Login",
+  name: "RqLogin",
   props: {
     logo: { type: String, default: logo },
   },

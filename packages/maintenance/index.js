@@ -1,7 +1,7 @@
-import RqMaintenance from "./Maintenance.vue";
+import Maintenance from "./Maintenance.vue";
 
-RqMaintenance.install = function (Vue) {
-  Vue.component(RqMaintenance.name, RqMaintenance);
+Maintenance.install = function (Vue) {
+  Vue.component(Maintenance.name, Maintenance);
 };
 
-export default RqMaintenance;
+export default Maintenance;

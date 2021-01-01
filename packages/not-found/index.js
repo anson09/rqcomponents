@@ -1,7 +1,7 @@
-import RqNotFound from "./NotFound.vue";
+import NotFound from "./NotFound.vue";
 
-RqNotFound.install = function (Vue) {
-  Vue.component(RqNotFound.name, RqNotFound);
+NotFound.install = function (Vue) {
+  Vue.component(NotFound.name, NotFound);
 };
 
-export default RqNotFound;
+export default NotFound;

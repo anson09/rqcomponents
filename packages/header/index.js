@@ -1,7 +1,7 @@
-import RqHeader from "./Header.vue";
+import Header from "./Header.vue";
 
-RqHeader.install = function (Vue) {
-  Vue.component(RqHeader.name, RqHeader);
+Header.install = function (Vue) {
+  Vue.component(Header.name, Header);
 };
 
-export default RqHeader;
+export default Header;
