@@ -85,3 +85,5 @@ npm run clean : clear demo cache
 3. [`npm 规范`](http://wiki.ricequant.com/pages/viewpage.action?pageId=52232790)
 
 4. [`icon 规范`](http://wiki.ricequant.com/pages/viewpage.action?pageId=19562729)
+
+5. please keep sync `COMPONENTS_DOC.md` and `demo/App.vue` with `packages/<package-name>/`
