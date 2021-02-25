@@ -58,7 +58,12 @@ import ThemeSwitch from "./components/ThemeSwitch.vue";
 import Message from "./components/Message.vue";
 import Account from "./components/Account.vue";
 import { logout, getAccount } from "./api/index";
-import { removeStorage, setStorage, handleLink } from "../common/util/index";
+import {
+  removeStorage,
+  setStorage,
+  handleLink,
+  globalGuard,
+} from "../common/util/index";
 import Notification from "./components/Notification.vue";
 
 export default {
@@ -121,6 +126,9 @@ export default {
           userId: data.userId,
         });
         this.account = data;
+        globalGuard("gio", "setUserId", data.userId);
+      } else {
+        removeStorage("account");
       }
     },
     initProducts() {
