@@ -120,12 +120,10 @@ export default {
 
   mounted() {
     this.getWorkspaces();
-    try {
-      const refresh = (e) => e.name === "refresh" && this.getWorkspaces();
+    const refresh = (e) => e.name === "refresh" && this.getWorkspaces();
+    if (window.rqevent) {
       rqevent.on("workspace", refresh);
       this.$once("hook:beforeDestroy", () => rqevent.off(refresh));
-    } catch {
-      //
     }
   },
 

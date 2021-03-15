@@ -8,7 +8,7 @@ Default: ""
 
 Raise a warning on the top of the header.
 
-### before-logout: function(done: function) {}
+### before-logout: function(return promise to do aync job)
 
 Default: null
 
