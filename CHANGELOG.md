@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1-next.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.1-next.0&sourceBranch=refs/tags/v0.2.1-next.1) (2021-03-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* pass nothing to beforeLogout, do logout in header
+
+### Features
+
+* [WEB-937] temporary scheme of products entry hiding ([872ca86](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/872ca86ae8486921730326288a2a517326a19ff3))
+* do logout after handle beforeLogout ([cdbc96b](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/cdbc96ba82e9c24bd8c55f3dcaa82c5ffdc45003))
+* gio reports user ([1e322b5](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1e322b594af9da3a78d8cb0bb445256911057959))
+* ignore error of rqevent ([1b28593](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1b28593d027bdea426ad3f337f3e0da556a3e6ef))
+
+
+### Bug Fixes
+
+* demo usage ([2bb817a](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/2bb817aa6426131f49c9b7e26285b845cbd945d4))
+* pass userId to workspaceSwitch ([7f52be4](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7f52be4f164cc1c9c12bd48bcfdd1ec775f63301))
+* pr ([a38f4ce](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a38f4ceeb84a37f2482f11e73eeb73d04c37525f))
+
+
+### Chores
+
+* .eslintignore ([1319ac7](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1319ac7aea590f979b8b72726c20ec8f2b9f9958))
+
+
+### CI
+
+* async lint stage ([37b9408](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/37b9408c4dd69ded50f8a3464acb60911445878e))
+* auto demo dev ([dc7c744](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/dc7c7442cd855eae72d11e156dc730b0e7a4e506))
+* updep version robust ([e0d4952](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/e0d4952cf65475d1df4889fc997e4db6fd1e5d8f))
+
+
+### Refactors
+
+* package inner name ([a243bbf](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a243bbfa898bf7a6151ce570d5d8353b3134aafc))
+
+
+### Docs
+
+* contribution note ([051c377](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/051c377744077d2c6b8815a7e9a6c6c5a39e6aa1))
+
 ### [0.2.1-next.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.0&sourceBranch=refs/tags/v0.2.1-next.0) (2020-12-17)
 
 
