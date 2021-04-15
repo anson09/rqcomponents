@@ -157,11 +157,6 @@ export default {
               link: "/post-investment-analysis",
             },
             {
-              label: "风险管理",
-              icon: "risk-management",
-              link: "/risk-management",
-            },
-            {
               label: "投资驾驶舱",
               icon: "investment-cockpit",
               link: "/investment-cockpit",
