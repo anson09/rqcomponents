@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.1-next.1&sourceBranch=refs/tags/v0.2.1) (2021-04-15)
+
+
+### Features
+
+* drop ams risk-management router ([46d44c9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/46d44c958d5b907dd4c87c838647645edef032a2))
+
+
+### Chores
+
+* add vetur dep ([b12a175](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/b12a175b293adb54056538fb6dab66c80c876c51))
+
 ### [0.2.1-next.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.1-next.0&sourceBranch=refs/tags/v0.2.1-next.1) (2021-03-16)
 
 
