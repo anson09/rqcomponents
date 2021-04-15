@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.1&sourceBranch=refs/tags/v0.2.2) (2021-04-15)
+
+
+### Features
+
+* delete rqbond router ([5e93406](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/5e93406074be2916accd6f1372d55bc2989a877b))
+
 ### [0.2.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.1-next.1&sourceBranch=refs/tags/v0.2.1) (2021-04-15)
 
 
