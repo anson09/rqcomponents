@@ -66,7 +66,6 @@ export default {
         quant: "/quant",
         ams: "/ams",
         fof: "/fof",
-        bond: "/bond",
       };
       let fullpath = "";
       // TODO 旧的因子消息 type 为 factor 且 没有 action 字段

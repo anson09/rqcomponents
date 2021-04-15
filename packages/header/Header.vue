@@ -181,14 +181,6 @@ export default {
           label: "RQFund 基金投研",
           name: "RQFund",
         },
-        {
-          link: {
-            path: "/bond",
-            outer: true,
-          },
-          label: "RQBond 债券投研",
-          name: "RQBond",
-        },
       ].map((item) => ({
         ...item,
         isActive: window.location.pathname.startsWith(item.link.path),

@@ -143,15 +143,6 @@ export default {
           label: "帮助中心",
           link: { path: "/doc/faq/", newBlock: true },
         },
-
-        // {
-        //   label: "RQFUND米筐公募基金文档",
-        //   link: "/doc/quant/"
-        // },
-        // {
-        //   label: "RQBOND米筐债券文档",
-        //   link: "/doc/quant/"
-        // },
       ],
     };
   },

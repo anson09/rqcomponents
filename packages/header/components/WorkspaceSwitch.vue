@@ -143,21 +143,14 @@ export default {
         getWorksapcesProducts(),
       ]);
       if (!res?.data) return;
-      //! 过渡方案函数，rqfund和bond下线后删除此IIFE函数
+      //! 过渡方案函数，rqfund下线后删除此IIFE函数
       (function () {
         const hasFund = wsProRes.data.some((i) =>
           i.product.some((j) => j.product.name === "RQFUND")
         );
-        const hasBond = wsProRes.data.some((i) =>
-          i.product.some((j) => j.product.name === "RQBOND")
-        );
         hasFund ||
           (document.querySelector(
             ".rq-header-menu__dropdown-item:nth-of-type(3)"
-          ).style.display = "none");
-        hasBond ||
-          (document.querySelector(
-            ".rq-header-menu__dropdown-item:nth-of-type(4)"
           ).style.display = "none");
       })();
       //! end
