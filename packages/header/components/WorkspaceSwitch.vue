@@ -146,7 +146,12 @@ export default {
       //! 过渡方案函数，rqfund下线后删除此IIFE函数
       (function () {
         const hasFund = wsProRes.data.some((i) =>
-          i.product.some((j) => j.product.name === "RQFUND")
+          i.product.some(
+            (j) =>
+              j.product.name === "RQFUND" &&
+              getDate(j.start) < new Date() &&
+              getDate(j.expire) > new Date()
+          )
         );
         hasFund ||
           (document.querySelector(
