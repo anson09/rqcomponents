@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3-next.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.2&sourceBranch=refs/tags/v0.2.3-next.0) (2021-04-22)
+
+
+### Bug Fixes
+
+* rqfund entry toggle logic ([106ecc0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/106ecc0109fbe1ed0b81ecb8eb320b6477eef1f1))
+
 ### [0.2.2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.1&sourceBranch=refs/tags/v0.2.2) (2021-04-15)
 
 
