@@ -1,13 +1,4 @@
-import snakeCase from "lodash/snakeCase";
 import axios from "./axios";
-
-function snakeCaseConvert(data) {
-  const params = {};
-  Object.entries(data).forEach(([k, v]) => {
-    params[snakeCase(k)] = v;
-  });
-  return params;
-}
 
 function queryStringify(data) {
   return Object.entries(data)
@@ -27,4 +18,4 @@ async function urlencodePost(url, params) {
   return data;
 }
 
-export { queryStringify, snakeCaseConvert, urlencodePost, axios };
+export { queryStringify, urlencodePost, axios };

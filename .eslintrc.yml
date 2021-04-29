@@ -2,9 +2,6 @@ extends:
   - airbnb-base
   - plugin:vue/recommended
   - prettier
-  - prettier/vue
-parserOptions:
-  parser: babel-eslint
 globals:
   rqevent: true
 rules:

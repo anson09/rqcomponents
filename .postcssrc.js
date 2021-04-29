@@ -11,16 +11,21 @@ function parseClass2Json(filePath, selector) {
 }
 
 module.exports = {
-  plugins: [
-    require("autoprefixer")({ grid: true }),
-    require("postcss-css-variables")({
-      preserve: true,
-      preserveInjectedVariables: false,
-      variables: Object.assign(
-        {},
-        parseClass2Json(file, ".theme-light"),
-        require("@rqjs/rqthemes/lib/light.json")
-      ),
-    }),
-  ],
+  plugins: []
+    .concat(
+      process.env.PARCEL_AUTOINSTALL === "false"
+        ? []
+        : require("autoprefixer")({ grid: true })
+    )
+    .concat(
+      require("postcss-css-variables")({
+        preserve: true,
+        preserveInjectedVariables: false,
+        variables: Object.assign(
+          {},
+          parseClass2Json(file, ".theme-light"),
+          require("@rqjs/rqthemes/lib/light.json")
+        ),
+      })
+    ),
 };
