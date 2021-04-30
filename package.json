@@ -29,9 +29,7 @@
     "clean": "rm -rf demo/.cache demo/dist",
     "release": "standard-version --no-verify",
     "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable && npm run build &&  mv .browserslistrc.tpl .browserslistrc",
-    "postpublish": "pinst --enable && mv .browserslistrc .browserslistrc.tpl",
-    "prepack": "pinst --disable && mv .browserslistrc.tpl .browserslistrc",
+    "prepack": "pinst --disable && npm run build && mv .browserslistrc.tpl .browserslistrc",
     "postpack": "pinst --enable && mv .browserslistrc .browserslistrc.tpl"
   },
   "devDependencies": {
