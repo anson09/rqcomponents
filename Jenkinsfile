@@ -7,7 +7,7 @@ pipeline {
                 steps {
                     sh "rm -rf dist"
                     sh "npm run build"
-                    sh "npx parcel build demo/index.html --public-url /rqcomponents/ --no-cache --no-minify"
+                    sh "PARCEL_AUTOINSTALL=false npx parcel build demo/index.html --public-url /rqcomponents/ --no-cache --no-minify"
                 }
             }
             stage('Deploy') {
