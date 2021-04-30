@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3-next.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.3-next.0&sourceBranch=refs/tags/v0.2.3-next.1) (2021-04-30)
+
+
+### Bug Fixes
+
+* demo build mode minify svg error ([94f6c32](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/94f6c32ae6ffc4d3ab5318efb3fd8a2e19b1319b))
+* parcel not transforms optional-chaining in client ([adce63c](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/adce63c52e56f96731c33fc8ee0727d3bfaa2ee2))
+* publish will active pack hook ([7caaa02](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7caaa024bb2b73213d0e67bb136127772d46cb6a))
+
+
+### Chores
+
+* updep ([500cd8e](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/500cd8e59d6a0c6b60c2c6dce6730248875854ae))
+
 ### [0.2.3-next.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.2&sourceBranch=refs/tags/v0.2.3-next.0) (2021-04-22)
 
 
