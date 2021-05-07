@@ -30,6 +30,12 @@ link.path: string, required
 link.newBlock: boolean, optional, open in new tab  
 link.outer: boolean, optional, use location instead of vue router
 
+### has-message boolean
+
+Default: true
+
+rqmessage switch
+
 ## events
 
 ### create-workspace

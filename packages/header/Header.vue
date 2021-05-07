@@ -38,7 +38,7 @@
       <!-- 主题 -->
       <ThemeSwitch />
       <!-- 消息 -->
-      <Message />
+      <Message v-if="hasMessage" />
       <!-- 头像 -->
       <Account
         :avatar="account.avatar"
@@ -96,6 +96,10 @@ export default {
           link: { path: "/", outer: true },
         };
       },
+    },
+    hasMessage: {
+      default: true,
+      type: Boolean,
     },
   },
   data() {

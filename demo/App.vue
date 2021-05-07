@@ -5,6 +5,7 @@
       :notification="notification"
       :before-logout="handleLogout"
       :home="home"
+      :has-message="hasMessage"
       @create-workspce="handleCreateWorkspace"
       @switch-workspace="handleSwitchWorkspace"
     >
@@ -50,6 +51,7 @@ export default {
         tooltipText: "回到测试首页",
         link: { path: "/test", outer: true },
       },
+      hasMessage: false,
       maintenanceDate: "2019-11-9 10:00",
       notification: "notification",
     };
