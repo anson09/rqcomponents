@@ -79,3 +79,23 @@ The specified logo.
 Parameters:
 
 Triggers when user login in.
+
+# RqPicture
+
+> A component for using pictures in avif and webp formats on broswers supporting them while not affecting their display on others.
+
+## props
+
+### src(required): String | Object
+
+Be careful that the src can't be the direct path of picture, like `<RqPicture src="/assets/img/404.png"/>`❎. We recommand using pictures by importing, such as `import imgs from "/path/*.*"`✅ or `import imgs from "/path/name.*"`✅, which import and use pictures as variables . If you insists on using path, you can use picture tag directly in your components, just as the RqPicture components do.
+
+#### string
+
+the path of single picture
+
+#### object attributes
+
+- avif: the path of avif picture
+- webp: the path of webp picture
+- fallback: the path of default picture when browser don't support the formats above

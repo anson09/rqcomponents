@@ -12,6 +12,29 @@
     </RqHeader>
     <RqMaintenance :date="maintenanceDate" />
     <RqNotFound />
+    <div class="picture-example">
+      <RqPicture
+        :src="{
+          avif: imgs.avif,
+          webp: imgs.webp,
+          fallback: imgs.png,
+        }"
+        class="picture"
+        alt="picture"
+      />
+      <div class="description">
+        <p>
+          If you are viewing this page on Chrome later than version 85 or
+          Firefox later than version 89,
+        </p>
+        <p>the picture left is in avif format and its size is 12KB.</p>
+        <p>If you view using other browsers expect IE,</p>
+        <p>the picture left is in webp format and its size is 27KB.</p>
+        <p>If you use IE,</p>
+        <p>the picture left is in png format and its size is 245KB.</p>
+        <p>This is why we use this component.</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -38,13 +61,21 @@
 /* --------  */
 
 /* build from source */
-import { RqHeader, RqMaintenance, RqNotFound, RqLogin } from "../packages";
+import {
+  RqHeader,
+  RqMaintenance,
+  RqNotFound,
+  RqLogin,
+  RqPicture,
+} from "../packages";
 import "../packages/common/style";
+// eslint-disable-next-line import/no-unresolved
+import imgs from "./assets/example.*";
 /* --------  */
 
 export default {
   name: "App",
-  components: { RqHeader, RqMaintenance, RqNotFound, RqLogin },
+  components: { RqHeader, RqMaintenance, RqNotFound, RqLogin, RqPicture },
   data() {
     return {
       home: {
@@ -54,6 +85,7 @@ export default {
       hasMessage: false,
       maintenanceDate: "2019-11-9 10:00",
       notification: "notification",
+      imgs,
     };
   },
   methods: {
@@ -76,5 +108,20 @@ export default {
 #app {
   height: 100vh;
   background: pink;
+  .picture-example {
+    position: relative;
+    .picture {
+      position: absolute;
+      top: 0;
+      left: calc(50vw - 400px);
+      width: 400px;
+    }
+    .description {
+      position: absolute;
+      top: 0;
+      left: calc(50vw + 20px);
+      width: 400px;
+    }
+  }
 }
 </style>
