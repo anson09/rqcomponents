@@ -4,6 +4,7 @@
     <RqHeader
       :notification="notification"
       :before-logout="handleLogout"
+      :home="home"
       @create-workspce="handleCreateWorkspace"
       @switch-workspace="handleSwitchWorkspace"
     >
@@ -45,6 +46,10 @@ export default {
   components: { RqHeader, RqMaintenance, RqNotFound, RqLogin },
   data() {
     return {
+      home: {
+        tooltipText: "回到测试首页",
+        link: { path: "/test", outer: true },
+      },
       maintenanceDate: "2019-11-9 10:00",
       notification: "notification",
     };

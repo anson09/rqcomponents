@@ -8,11 +8,27 @@ Default: ""
 
 Raise a warning on the top of the header.
 
-### before-logout: function(return promise to do aync job)
+### before-logout: function(return promise to do async job)
 
 Default: null
 
 Custom way to handle logout event.
+
+### home: object
+
+Default:
+
+```js
+{
+    tooltipText: "回到米筐官网首页",
+    link: { path: "/", outer: true }
+}
+```
+
+tooltipText: string, required  
+link.path: string, required  
+link.newBlock: boolean, optional, open in new tab  
+link.outer: boolean, optional, use location instead of vue router
 
 ## events
 

@@ -88,6 +88,15 @@ export default {
       default: null,
       type: Function,
     },
+    home: {
+      type: Object,
+      default() {
+        return {
+          tooltipText: "回到米筐官网首页",
+          link: { path: "/", outer: true },
+        };
+      },
+    },
   },
   data() {
     return {
@@ -96,10 +105,6 @@ export default {
       roadShow: {
         label: "预约路演",
         link: { path: "/welcome/trial/road-show", outer: true },
-      },
-      home: {
-        tooltipText: "回到米筐官网首页",
-        link: { path: "/", outer: true },
       },
     };
   },
