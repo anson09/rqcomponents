@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.3-next.1&sourceBranch=refs/tags/v0.2.3) (2021-05-08)
+
+
+### Features
+
+* add RqPicture components ([fd51a23](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/fd51a23a8b5ab01d9b93e0877155e0c1d31821f2))
+* header add rqmessage switch ([20f37bf](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/20f37bf4aa0bb50f32ab4c2bf308cadcf8ce65e6))
+* header support home config ([b8dd429](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/b8dd429824ddd83bb7e5127bcd6ee09a602d4f77))
+
+
+### CI
+
+* fix jenkins build ([9431656](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/9431656d5d41a2452620fa0771e5b60b1b494ac4))
+
 ### [0.2.3-next.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.3-next.0&sourceBranch=refs/tags/v0.2.3-next.1) (2021-04-30)
 
 
