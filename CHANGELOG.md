@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4-next.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.3&sourceBranch=refs/tags/v0.2.4-next.0) (2021-05-25)
+
+
+### Bug Fixes
+
+* not found component more universal ([6113c08](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6113c08f15d67efafac2924dddb17a7b5c8ef9c1))
+
 ### [0.2.3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.3-next.1&sourceBranch=refs/tags/v0.2.3) (2021-05-08)
 
 
