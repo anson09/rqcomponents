@@ -12,7 +12,7 @@
     </RqHeader>
     <RqMaintenance :date="maintenanceDate" />
     <RqNotFound />
-    <div class="picture-example">
+    <div class="rq-picture-example">
       <RqPicture
         :src="{
           avif: imgs.avif,
@@ -42,7 +42,13 @@
 /* eslint-disable no-console */
 /* build from lib */
 /* full import */
-// import { RqHeader, RqNotFound, RqMaintenance, RqLogin } from "../lib/index";
+// import {
+//   RqHeader,
+//   RqNotFound,
+//   RqMaintenance,
+//   RqLogin,
+//   RqPicture,
+// } from "../lib/index";
 // import "../lib/theme/index.css";
 // import "../lib/theme/base";
 // import "../lib/theme/base.css";
@@ -56,6 +62,7 @@
 // import "../lib/theme/rq-maintenance.css";
 // import RqLogin from "../lib/rq-login";
 // import "../lib/theme/rq-login.css";
+// import RqPicture from "../lib/rq-picture";
 // import "../lib/theme/base";
 // import "../lib/theme/base.css";
 /* --------  */
@@ -69,9 +76,10 @@ import {
   RqPicture,
 } from "../packages";
 import "../packages/common/style";
+/* --------  */
+
 // eslint-disable-next-line import/no-unresolved
 import imgs from "./assets/example.*";
-/* --------  */
 
 export default {
   name: "App",
@@ -108,7 +116,7 @@ export default {
 #app {
   height: 100vh;
   background: pink;
-  .picture-example {
+  .rq-picture-example {
     position: relative;
     .picture {
       position: absolute;

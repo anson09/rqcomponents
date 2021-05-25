@@ -34,7 +34,7 @@ const componentsConfig = exportPackages.map(([fileName, filePath]) => ({
     sourcemap: true,
   },
   plugins: [
-    images(),
+    images({ extensions: ["png", "avif", "webp"] }),
     vue({ css: false, needMap: false }),
     postcss({
       extract: `theme/${fileName}.css`,

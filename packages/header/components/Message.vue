@@ -12,7 +12,10 @@
         class="icon-base icon-base-message-center-border icon-message-center"
       ></i>
       <i
-        class="icon-base icon-base-message-center-fill icon-message-center active-icon"
+        class="
+          icon-base icon-base-message-center-fill icon-message-center
+          active-icon
+        "
       ></i>
       <span v-show="unreadMsgNum > 0" class="rq-header-msgs__dot"></span>
     </div>

@@ -40,7 +40,9 @@
               <p
                 v-for="(leastItem, leastIndex) in subitem.links"
                 :key="leastIndex"
-                class="rq-header-dropdown__label rq-header-dropdown__label--mini"
+                class="
+                  rq-header-dropdown__label rq-header-dropdown__label--mini
+                "
                 @click="handleLink(leastItem.link)"
               >
                 {{ leastItem.label }}

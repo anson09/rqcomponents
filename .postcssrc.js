@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const postcss = require("postcss");
 
 const file = path.resolve(__dirname, `packages/common/style/variables.scss`);
 
@@ -11,21 +12,23 @@ function parseClass2Json(filePath, selector) {
 }
 
 module.exports = {
-  plugins: []
-    .concat(
-      process.env.PARCEL_AUTOINSTALL === "false"
-        ? []
-        : require("autoprefixer")({ grid: true })
-    )
-    .concat(
-      require("postcss-css-variables")({
-        preserve: true,
-        preserveInjectedVariables: false,
-        variables: Object.assign(
-          {},
-          parseClass2Json(file, ".theme-light"),
-          require("@rqjs/rqthemes/lib/light.json")
-        ),
-      })
-    ),
+  plugins:
+    process.env.PARCEL_AUTOINSTALL === "false"
+      ? [
+          postcss.plugin("postcss-none", function () {
+            return () => {};
+          }),
+        ]
+      : [
+          require("autoprefixer")({ grid: true }),
+          require("postcss-css-variables")({
+            preserve: true,
+            preserveInjectedVariables: false,
+            variables: Object.assign(
+              {},
+              parseClass2Json(file, ".theme-light"),
+              require("@rqjs/rqthemes/lib/light.json")
+            ),
+          }),
+        ],
 };
