@@ -49,7 +49,7 @@ export default {
       links: [
         {
           link: { path: "/dashboard", outer: true },
-          label: "个人主页",
+          label: "工作空间",
         },
         {
           link: { path: "/dashboard/account#setting", outer: true },
