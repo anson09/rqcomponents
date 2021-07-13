@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4-next.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.0&sourceBranch=refs/tags/v0.2.4-next.1) (2021-07-13)
+
+
+### Features
+
+* update text ([1fc3481](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/1fc3481585d72a92783da8e780d7bbc4b80e5d27))
+
+
+### CI
+
+* new anka machine ([574070d](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/574070dc498fcd1f65ebd5b6bff9625b10423013))
+
+
+### Chores
+
+* updep ([c9d0025](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/c9d00257c8b602744ead68c1efa6294325f9992f))
+* updep ([72f6751](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/72f67514b021bd00e6679d174df133707ea9f2fe))
+
 ### [0.2.4-next.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.3&sourceBranch=refs/tags/v0.2.4-next.0) (2021-05-25)
 
 
