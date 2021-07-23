@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4-next.2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.1&sourceBranch=refs/tags/v0.2.4-next.2) (2021-07-23)
+
+
+### Features
+
+* remove ams share link ([88ae281](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/88ae2815b0e453ac204216cd554649a87f7c489f))
+
 ### [0.2.4-next.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.0&sourceBranch=refs/tags/v0.2.4-next.1) (2021-07-13)
 
 
