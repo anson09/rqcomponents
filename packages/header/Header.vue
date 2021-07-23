@@ -171,14 +171,9 @@ export default {
               link: "/investment-cockpit",
             },
             {
-              label: "组合管理",
+              label: "数据管理",
               icon: "portfolio-management",
               link: "/portfolio-management",
-            },
-            {
-              label: "分享给我",
-              icon: "share-me",
-              link: "/sharing-management",
             },
           ],
         },
