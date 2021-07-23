@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4-next.3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.2&sourceBranch=refs/tags/v0.2.4-next.3) (2021-07-23)
+
 ### [0.2.4-next.2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.1&sourceBranch=refs/tags/v0.2.4-next.2) (2021-07-23)
 
 
