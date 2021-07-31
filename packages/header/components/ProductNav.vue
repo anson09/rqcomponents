@@ -11,9 +11,9 @@
       ]"
       @click="handleLink(item.link)"
     >
-      <svg aria-hidden="true" class="icon-base-colorful">
+      <!-- <svg aria-hidden="true" class="icon-base-colorful">
         <use :xlink:href="`#icon-base-colorful-${item.icon}`"></use>
-      </svg>
+      </svg> -->
       <span> {{ item.label }} </span>
     </div>
   </div>
@@ -41,27 +41,16 @@ export default {
     @include f-center;
     position: relative;
     height: 100%;
-    padding: 0px 16px 0 10px;
+    padding: 0px 20px 0 20px;
     cursor: pointer;
     .icon-base-colorful {
       filter: grayscale(80%);
       opacity: 0.6;
       margin-right: 4px;
     }
-    &:after {
-      content: "";
-      display: block;
-      position: absolute;
-      bottom: -1px;
-      @include t-center-horizontal;
-      width: 100%;
-      height: 2px;
-      border-radius: 1px;
-    }
+
     &:hover {
-      &:after {
-        background-color: var(--primary-color-4);
-      }
+      color: var(--primary-color-6);
     }
 
     &.is-active,
@@ -70,9 +59,6 @@ export default {
       .icon-base-colorful {
         filter: none;
         opacity: 1;
-      }
-      &:after {
-        background-color: var(--primary-color);
       }
     }
   }
