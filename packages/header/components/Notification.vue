@@ -36,10 +36,10 @@ export default {
   margin: 0;
   position: relative;
   padding-right: 24px;
-  color: var(--text-title);
+  color: #51515d;
   font-size: 16px;
   line-height: 24px;
-  background: var(--warning-bg);
+  background: var(--orange);
   display: flex;
 
   ::-webkit-scrollbar {

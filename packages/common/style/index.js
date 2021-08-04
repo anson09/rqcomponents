@@ -6,4 +6,4 @@ import "../assets/icon/iconfont.ttf";
 import "../assets/icon/iconfont.svg";
 import "../assets/icon-svg/iconfont";
 import "../assets/icon-svg/iconfont.css";
-import "./variables.scss";
+import "@rqjs/rqthemes/lib/vars.css";

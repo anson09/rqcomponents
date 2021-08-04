@@ -54,14 +54,14 @@ export default {
   &.strong {
     @include block(tooltip) {
       &__text {
-        border: 1px solid var(--tooltip-border);
+        border: 1px solid var(--bg-tip);
         color: var(--text-title);
         background: var(--bg-primary);
       }
       &__arrow {
         z-index: 9;
-        border-right: 4px solid var(--tooltip-border);
-        border-bottom: 4px solid var(--tooltip-border);
+        border-right: 4px solid var(--bg-tip);
+        border-bottom: 4px solid var(--bg-tip);
         &:after {
           position: absolute;
           content: "";
@@ -77,11 +77,11 @@ export default {
     @include block(tooltip) {
       &__text {
         color: var(--border-secondary);
-        background: var(--tooltip-weak-bg);
+        background: var(--bg-tip);
       }
       &__arrow {
-        border-right: 4px solid var(--tooltip-weak-bg);
-        border-bottom: 4px solid var(--tooltip-weak-bg);
+        border-right: 4px solid var(--bg-tip);
+        border-bottom: 4px solid var(--bg-tip);
       }
     }
   }

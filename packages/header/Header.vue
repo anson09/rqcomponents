@@ -274,9 +274,9 @@ export default {
   margin: 0 10px 0 4px;
 }
 @include block(road-show) {
-  background-color: var(--text-normal);
+  background-color: var(--bg-minor);
   border-radius: 16px;
-  color: var(--road-show-text);
+  color: var(--text-title);
   font-weight: 400;
   letter-spacing: 2px;
   font-size: 14px;
@@ -291,7 +291,7 @@ export default {
     box-shadow: 0px 4px 4px var(--primary-color-2);
   }
   &:active {
-    background-color: var(--road-show-active-bg);
+    background-color: var(--primary-color);
   }
 }
 </style>
