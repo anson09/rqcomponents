@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4-next.5](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.4&sourceBranch=refs/tags/v0.2.4-next.5) (2021-08-05)
+
+
+### Chores
+
+* updep ([7b2b242](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7b2b242b59e19510fee32e80978935d04c084b94))
+
+
+### Refactors
+
+* delete local variables ([23ebfb1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/23ebfb18b2f23f109628ade665a6fce968446dd4))
+
 ### [0.2.4-next.4](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.3&sourceBranch=refs/tags/v0.2.4-next.4) (2021-07-31)
 
 
