@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4-next.8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.7&sourceBranch=refs/tags/v0.2.4-next.8) (2021-08-20)
+
+
+### Chores
+
+* up theme ([29a35c3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/29a35c32a123f07948111ea88d3269a51c3d3170))
+
 ### [0.2.4-next.7](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.6&sourceBranch=refs/tags/v0.2.4-next.7) (2021-08-14)
 
 
