@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4-next.9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.8&sourceBranch=refs/tags/v0.2.4-next.9) (2021-08-26)
+
+
+### Features
+
+* add switch theme event ([ea6e615](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/ea6e615126c61e10d26f161db56b1714d3a47035))
+
 ### [0.2.4-next.8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.7&sourceBranch=refs/tags/v0.2.4-next.8) (2021-08-20)
 
 
