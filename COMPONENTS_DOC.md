@@ -42,13 +42,19 @@ rqmessage switch
 
 Parameters:
 
-Triggers when user click create workspace button.
+Triggers when user click create workspace button (dashboard url only).
 
 ### switch-workspace
 
 Parameters: currentWorkspaceId
 
 Triggers when current workspace change.
+
+### switch-theme
+
+Parameters: current-theme
+
+Triggers when current theme change.
 
 # RqNotFound
 

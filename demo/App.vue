@@ -8,6 +8,7 @@
       :has-message="hasMessage"
       @create-workspce="handleCreateWorkspace"
       @switch-workspace="handleSwitchWorkspace"
+      @switch-theme="handleSwitchTheme"
     >
     </RqHeader>
     <RqMaintenance :date="maintenanceDate" />
@@ -107,7 +108,10 @@ export default {
       console.log("handle create workspace");
     },
     handleSwitchWorkspace(id) {
-      console.log("handle switch workspace", id);
+      console.log("handle switch workspace:", id);
+    },
+    handleSwitchTheme(theme) {
+      console.log("handle switch theme:", theme);
     },
   },
 };

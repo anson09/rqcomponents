@@ -108,19 +108,19 @@ export default {
       if (!THEME_MODE.includes(theme)) return;
       const bodyClassList = document.body.classList;
       bodyClassList.add(`theme-${theme}`);
-      [...bodyClassList]
-        .filter(
-          (className) =>
-            className.includes("theme") && !className.includes(theme)
-        )
-        .map((className) => bodyClassList.remove(className));
+      bodyClassList.forEach((i) => {
+        if (i.includes("theme") && !i.includes(theme)) {
+          bodyClassList.remove(i);
+        }
+      });
     },
     themeChange(theme) {
       if (!this.isBrowerSupported || !this.isProductSupported) return;
       if (!THEME_MODE.includes(theme)) return;
-      setStorage("theme", theme);
       this.themeRender(theme);
       this.value = theme;
+      this.$emit("switch-theme", theme);
+      setStorage("theme", theme);
     },
   },
 };

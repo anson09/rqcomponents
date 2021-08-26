@@ -36,7 +36,7 @@
       <!-- 文档 -->
       <Document />
       <!-- 主题 -->
-      <ThemeSwitch />
+      <ThemeSwitch @switch-theme="handleEvent('switch-theme', $event)" />
       <!-- 消息 -->
       <Message v-if="hasMessage" />
       <!-- 头像 -->
