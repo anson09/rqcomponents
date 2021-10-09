@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v1.0.0&sourceBranch=refs/tags/v1.0.1) (2021-10-09)
+
+
+### CI
+
+* update server address ([bbe1b3f](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/bbe1b3f6967d4ff31dade5fd66561027e85e2af6))
+
+
+### Chores
+
+* updep ([7aeeb14](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7aeeb140e0fbb2074ec10a26ce2bcc51794ee9f0))
+
 ## [1.0.0](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v0.2.4-next.9&sourceBranch=refs/tags/v1.0.0) (2021-08-27)
 
 
