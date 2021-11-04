@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v1.0.1&sourceBranch=refs/tags/v1.0.2) (2021-11-04)
+
+
+### Chores
+
+* update stylelint 14 & nodejs 16 ([6a919e3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/6a919e3a01db1d50db331b476d9b3ca2d3512f9d))
+
 ### [1.0.1](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v1.0.0&sourceBranch=refs/tags/v1.0.1) (2021-10-09)
 
 
