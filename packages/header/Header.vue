@@ -207,26 +207,29 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "./style/mixins.scss";
+@import "./style/mixins";
 @include reset;
 @include block(null) {
   position: relative;
   @include f-center;
-  width: 100%;
 
+  width: 100%;
   height: 40px;
-  box-shadow: 0px 2px 4px var(--primary-color-1);
+  box-shadow: 0 2px 4px var(--primary-color-1);
   padding-left: 24px;
   padding-right: 10px;
   background: var(--bg-primary);
   z-index: 1;
+
   ::-webkit-scrollbar {
     width: 6px;
   }
+
   ::-webkit-scrollbar-thumb {
     background-color: var(--border-primary);
     border-radius: 3px;
   }
+
   &-wrapper {
     position: relative;
     z-index: 1000;
@@ -246,16 +249,20 @@ export default {
   line-height: 30px;
   background-color: var(--bg-minor);
   @include tooltip-wrapper;
+
   .icon-home {
     font-size: 20px;
   }
+
   .icon-base-back-website {
     display: none;
   }
+
   &:hover {
     .icon-base-back-website {
       display: inline-block;
     }
+
     .icon-base-ricequant {
       display: none;
     }
@@ -284,12 +291,14 @@ export default {
   padding: 6px 20px;
   margin: 0 13px;
   box-shadow: var(--bg-shadows);
+
   &:hover,
   &:active {
     color: var(--white);
     background-color: var(--primary-color);
-    box-shadow: 0px 4px 4px var(--primary-color-2);
+    box-shadow: 0 4px 4px var(--primary-color-2);
   }
+
   &:active {
     background-color: var(--primary-color);
   }

@@ -83,7 +83,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../common/style/mixins.scss";
+@import "../common/style/mixins";
 @include reset;
 @include block(login) {
   width: 100vw;
@@ -94,25 +94,31 @@ export default {
   &-header {
     background: var(--bg-primary);
     @include f-center(flex-start);
+
     padding-left: 24px;
     width: 100%;
+
     &__logo {
       width: 194px;
       margin: 10px 0;
     }
   }
+
   &-form {
     width: 620px;
     padding: 63px 100px 54px;
     background-color: var(--bg-primary);
     @include f-column;
+
     box-shadow: var(--bg-shadows);
     border-radius: 4px;
+
     &__wrapper {
       flex: 1 auto;
       width: 100%;
       @include f-center;
     }
+
     &__logo {
       width: 240px;
     }
@@ -124,6 +130,7 @@ export default {
       font-weight: 500;
       margin: 48px 0 24px;
     }
+
     &__input {
       width: 100%;
       border: 1px solid var(--border-primary);
@@ -135,15 +142,18 @@ export default {
       color: var(--text-title);
       outline: none;
       font-size: 14px;
+
       &:active,
       &:focus {
         border-color: var(--primary-color);
       }
     }
+
     ::placeholder {
       color: var(--border-primary);
       font-size: 14px;
     }
+
     &__button {
       width: 100%;
       background-color: var(--primary-color-5);
@@ -152,12 +162,14 @@ export default {
       color: var(--text-btn);
       font-size: 16px;
       margin-top: 18px;
+
       &:hover,
       &:active,
       &:focus {
         background-color: var(--primary-color-8);
       }
     }
+
     &__error {
       color: var(--error-color);
       font-size: 12px;

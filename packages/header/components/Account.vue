@@ -89,18 +89,20 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../style/mixins.scss";
+@import "../style/mixins";
 @include block(account) {
   color: var(--text-normal);
   height: 100%;
   margin: 0 13px;
   @include f-center;
+
   position: relative;
   cursor: pointer;
   font-size: 14px;
+
   &:hover {
     &::after {
-      opacity: 1;
+      opacity: 100%;
     }
   }
 }
@@ -111,10 +113,12 @@ export default {
     height: 30px;
     border-radius: 50%;
   }
+
   border-radius: 50%;
   position: relative;
   @include f-center;
-  &:after {
+
+  &::after {
     content: "";
     display: block;
     position: absolute;
@@ -122,21 +126,24 @@ export default {
     width: 30px;
     background: var(--primary-color-3);
     border-radius: 50%;
-    opacity: 0;
+    opacity: 0%;
     @include t-center;
   }
+
   &:hover {
-    &:after {
-      opacity: 1;
+    &::after {
+      opacity: 100%;
     }
   }
+
   &.is-active {
-    &:after {
-      opacity: 1;
+    &::after {
+      opacity: 100%;
       width: 34px;
       height: 34px;
     }
-    &:hover:after {
+
+    &:hover::after {
       background: var(--primary-color-4);
     }
   }
@@ -144,19 +151,23 @@ export default {
 
 @include block(dropdown) {
   @include dropdown;
+
   &__link {
     cursor: pointer;
     margin-bottom: -8px;
     padding: 12px 20px;
     text-align: center;
+
     &:last-child {
       margin-bottom: 0;
     }
+
     &:hover {
       color: var(--primary-color);
       background-color: var(--primary-color-1);
     }
   }
+
   &__label {
     position: relative;
     font-size: 14px;
@@ -167,7 +178,8 @@ export default {
     text-overflow: ellipsis;
     white-space: nowrap;
     border-bottom: 1px solid var(--border-primary);
-    &:after {
+
+    &::after {
       content: "";
       position: absolute;
       display: block;

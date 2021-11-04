@@ -52,7 +52,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../style/mixins.scss";
+@import "../style/mixins";
 
 @include block(menu) {
   position: relative;
@@ -67,38 +67,45 @@ export default {
     left: -24px;
     top: 100%;
     background: var(--bg-primary);
-    box-shadow: 0px 2px 4px var(--primary-color-1);
+    box-shadow: 0 2px 4px var(--primary-color-1);
     border-radius: 4px;
     color: var(--text-normal);
     transform: translateY(8px);
     line-height: 20px;
+
     &-item {
       position: relative;
       padding: 12px 34px;
       cursor: pointer;
+
       &:hover {
         background-color: var(--bg-secondary);
       }
+
       &.is-active {
         color: var(--primary-color);
       }
     }
+
     &-annulus {
       position: absolute;
       @include t-center-vertical;
+
       width: 8px;
       height: 8px;
       left: 16px;
       border-radius: 50%;
-      box-shadow: 0px 0px 4px var(--primary-color);
+      box-shadow: 0 0 4px var(--primary-color);
       background: var(--primary-color);
-      &:after {
+
+      &::after {
         content: "";
         width: 4px;
         height: 4px;
         display: block;
         position: absolute;
         @include t-center;
+
         border-radius: 50%;
         background: var(--bg-primary);
       }
@@ -110,17 +117,22 @@ export default {
   @include f-column;
   @include tooltip-wrapper;
   @include icon-container("icon-base-switch-products", 18);
+
   color: var(--primary-color-4);
+
   .icon-base-switch-products.active-icon {
     display: inline-block;
   }
+
   &.is-icon-active {
     background-color: var(--primary-color-1);
-    box-shadow: 0px 4px 4px var(--primary-color-2);
+    box-shadow: 0 4px 4px var(--primary-color-2);
   }
+
   ::v-deep {
     @include block(tooltip) {
       left: 28px;
+
       &__arrow {
         left: 30%;
       }

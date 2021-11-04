@@ -238,7 +238,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "./../style/mixins.scss";
+@import "./../style/mixins";
 @include block(msgs) {
   padding: 0;
   margin: 0 8px;
@@ -246,9 +246,11 @@ export default {
   width: 30px;
   position: relative;
   @include f-center;
+
   .icon-base-message-center-fill {
     display: none;
   }
+
   &__dot {
     position: absolute;
     width: 8px;
@@ -258,6 +260,7 @@ export default {
     left: 5px;
     top: 18px;
   }
+
   &__btn {
     position: relative;
     height: 30px;
@@ -267,6 +270,7 @@ export default {
 
 @include block(dropdown) {
   @include dropdown;
+
   width: 438px;
 
   &__header {
@@ -276,32 +280,40 @@ export default {
     color: var(--text-normal);
     height: 53px;
     @include f-center(space-between);
+
     border-bottom: 1px solid var(--border-primary);
+
     > div {
       position: relative;
     }
   }
+
   &__type {
     margin: 0 12px;
     cursor: pointer;
     position: relative;
-    &:not(:last-child):after {
+
+    &:not(:last-child)::after {
       position: absolute;
       width: 1px;
       right: -12px;
       @include t-center-vertical;
+
       height: 11px;
       content: "";
       display: block;
       background: var(--text-normal);
     }
+
     &:first-child {
       margin-left: 0;
     }
+
     &.is-active {
       color: var(--primary-color);
       font-weight: 600;
     }
+
     &:hover,
     &:focus,
     &:active {
@@ -309,6 +321,7 @@ export default {
       font-weight: 600;
     }
   }
+
   &__settings {
     position: absolute;
     z-index: 10;
@@ -318,10 +331,11 @@ export default {
     right: 0;
     box-shadow: var(--bg-shadows-tabs);
   }
+
   &__setting {
     display: block;
     cursor: pointer;
-    padding: 0px;
+    padding: 0;
     font-size: 14px;
     width: 76px;
     line-height: 46px;
@@ -329,6 +343,7 @@ export default {
     color: var(--text-normal);
     outline: none;
     background-color: transparent;
+
     &:hover,
     &:active,
     &:focus {
@@ -336,9 +351,11 @@ export default {
       background-color: var(--bg-secondary);
     }
   }
+
   .icon-base-message-border {
     font-size: 14px;
     cursor: pointer;
+
     &:focus,
     &.is-active,
     &:active {

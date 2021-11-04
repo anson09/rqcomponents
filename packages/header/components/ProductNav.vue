@@ -30,22 +30,26 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../style/mixins.scss";
+@import "../style/mixins";
 @include block(nav) {
   height: 100%;
   flex: 1;
   @include f-center;
+
   color: var(--text-normal);
   font-size: 14px;
+
   &__item {
     @include f-center;
+
     position: relative;
     height: 100%;
-    padding: 0px 20px 0 20px;
+    padding: 0 20px;
     cursor: pointer;
+
     .icon-base-colorful {
       filter: grayscale(80%);
-      opacity: 0.6;
+      opacity: 60%;
       margin-right: 4px;
     }
 
@@ -56,9 +60,10 @@ export default {
     &.is-active,
     &:active {
       color: var(--primary-color);
+
       .icon-base-colorful {
         filter: none;
-        opacity: 1;
+        opacity: 100%;
       }
     }
   }

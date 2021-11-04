@@ -127,7 +127,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./../style/mixins.scss";
+@import "./../style/mixins";
 @include block(theme) {
   color: var(--text-normal);
   margin: 0 8px;
@@ -140,8 +140,10 @@ export default {
     height: 30px;
     @include icon-container("icon-base-theme", 18);
   }
+
   &__dropdown {
     @include dropdown;
+
     padding: 16px 14px;
     padding-top: 16px;
     color: var(--text-normal);
@@ -155,21 +157,25 @@ export default {
       position: relative;
       width: 57px;
       margin: 0 auto;
+
       img {
         width: 100%;
       }
+
       .icon-base-success {
         position: absolute;
         @include t-center-vertical;
+
         right: 0;
         left: 0;
         font-size: 16px;
         line-height: 100%;
         color: var(--green);
         text-align: center;
-        opacity: 0;
+        opacity: 0%;
       }
     }
+
     &--choice {
       position: relative;
       font-size: 14px;
@@ -177,27 +183,35 @@ export default {
       color: var(--text-normal);
       text-align: center;
       cursor: pointer;
+
       &.is-active {
         color: var(--primary-color);
+
         .icon-base-success {
-          opacity: 1;
+          opacity: 100%;
         }
       }
+
       + & {
         margin-top: 20px;
       }
       @include tooltip-wrapper;
+
       ::v-deep {
         @include block(tooltip) {
           left: -22px;
+
           &.is-ie {
             left: -36px;
           }
+
           transform: translate(0, -102px);
+
           &__arrow {
             top: 30px;
             transform: translate(-50%, -100%) rotate(45deg);
           }
+
           &__text {
             padding-left: 20px;
             padding-right: 20px;

@@ -31,7 +31,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "./../style/mixins.scss";
+@import "./../style/mixins";
 @include block(notification) {
   margin: 0;
   position: relative;

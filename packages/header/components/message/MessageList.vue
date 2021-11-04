@@ -90,7 +90,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../style/mixins.scss";
+@import "../../style/mixins";
 @include block(msgs) {
   min-height: 100px;
   max-height: 522px;
@@ -107,33 +107,41 @@ export default {
   cursor: pointer;
   padding: 0 20px;
   position: relative;
+
   .icon-base-remove-outline {
     z-index: 9;
     position: absolute;
     right: 20px;
     display: none;
     @include t-center-vertical;
+
     font-size: 16px;
     color: var(--text-secondary);
+
     &:hover {
       color: var(--error-color);
     }
+
     &:active,
     &:focus {
       color: var(--error-color-6);
     }
   }
+
   &:hover {
     background-color: var(--bg-secondary);
+
     .icon-base-remove-outline {
       display: inline-block;
     }
   }
+
   &__link {
     border-bottom: 1px solid var(--border-primary);
     padding: 14px 0;
     color: var(--text-title);
     @include f-column(flex-start);
+
     text-align: left;
     text-decoration: none;
   }
@@ -148,15 +156,18 @@ export default {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
   &__title {
     line-height: 20px;
     font-size: 12px;
     margin-bottom: 8px;
     @include f-center(flex-start);
+
     span {
       margin-left: 10px;
     }
   }
+
   &__avatar {
     width: 20px;
     height: 20px;

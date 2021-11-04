@@ -154,7 +154,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "./../style/mixins.scss";
+@import "./../style/mixins";
 @include block(doc) {
   margin: 0 8px;
   color: var(--text-normal);
@@ -166,37 +166,43 @@ export default {
 
   &__icon-wrapper {
     @include icon-container("icon-base");
+
     height: 30px;
   }
 }
 
 @mixin container {
   background-color: var(--bg-primary);
-  box-shadow: 0px 0px 8px var(--primary-color-2);
+  box-shadow: 0 0 8px var(--primary-color-2);
   border-radius: 4px;
   padding: 8px 0;
 }
 
 @include block(dropdown) {
   @include container;
+
   width: 196px;
   left: 0;
   position: absolute;
   bottom: -2px;
   transform: translateY(100%);
+
   &__item {
     position: relative;
     cursor: pointer;
     @include f-center;
   }
+
   &__more {
     position: absolute;
     top: 0;
     width: 240px;
     @include container;
+
     left: 0;
     transform: translateX(-100%);
     display: none;
+
     &-item {
       padding: 6px 0;
 
@@ -209,6 +215,7 @@ export default {
   &__item:hover &__more {
     display: block;
   }
+
   &__label {
     position: relative;
     font-size: 14px;
@@ -217,10 +224,12 @@ export default {
     padding-left: 15px;
     width: 100%;
     color: var(--text-normal);
+
     &:hover {
       color: var(--primary-color);
       background-color: var(--bg-secondary);
     }
+
     &.not-link {
       cursor: initial;
     }
@@ -229,11 +238,13 @@ export default {
       position: absolute;
       right: 12px;
       @include t-center-vertical;
+
       transform: translateY(-50%) rotate(90deg);
       color: inherit;
       font-size: 8px;
     }
   }
+
   &__label--mini {
     font-size: 12px;
     line-height: 30px;

@@ -215,7 +215,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "./../style/mixins.scss";
+@import "./../style/mixins";
 
 @include block(ws) {
   &-container {
@@ -225,6 +225,7 @@ export default {
     height: 100%;
     padding: 6px 0;
     margin-left: 10px;
+
     .icon-base-caret-bottom {
       font-size: 10px;
     }
@@ -239,6 +240,7 @@ export default {
       @include block(tooltip) {
         transform: translate(-50%, 8px);
       }
+
       &:hover {
         @include block(tooltip) {
           display: block;
@@ -253,15 +255,18 @@ export default {
         color: var(--primary-color);
         transform: rotate(180deg);
       }
+
       .icon-set-up {
         color: var(--primary-color);
         display: none;
+
         &.active-icon {
           display: inline-block;
         }
       }
     }
   }
+
   &-dropdown {
     width: 100%;
     left: 0;
@@ -276,19 +281,24 @@ export default {
       line-height: 20px;
       padding: 10px 60px 10px 20px;
       @include f-center(flex-start);
+
       color: var(--text-normal);
+
       .icon-base-enterprise {
         font-size: 16px;
       }
+
       &-label {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         margin-left: 8px;
       }
+
       .icon-base-success {
         color: var(--primary-color-3);
         @include t-center-vertical;
+
         font-size: 16px;
         right: 12px;
         position: absolute;
@@ -301,8 +311,10 @@ export default {
         color: var(--primary-color);
       }
     }
+
     &__btn {
       @include f-center;
+
       background-color: var(--primary-color-1);
       border: none;
       border-radius: 4px;
@@ -312,6 +324,7 @@ export default {
       font-size: 14px;
       cursor: pointer;
       outline: none;
+
       .icon-base-circle-plus {
         font-size: 16px;
         margin-right: 8px;
@@ -333,6 +346,7 @@ export default {
   &-btn {
     color: inherit;
     @include f-center(space-between);
+
     height: 100%;
     padding: 0 11px 0 4px;
     width: 214px;
@@ -340,20 +354,24 @@ export default {
     z-index: 9;
     background-color: var(--bg-minor);
     border-radius: 4px;
+
     &__label {
       display: inline-block;
       width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
       &-wrapper {
         flex: 1;
         margin-left: 4px;
         @include f-center;
+
         height: 100%;
         font-size: 14px;
         overflow: hidden;
         color: var(--text-normal);
+
         &:not(.is-tooltip-hidden):hover {
           @include block(tooltip) {
             display: block;

@@ -17,15 +17,17 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../style/mixins.scss";
+@import "../style/mixins";
 @include block(tooltip) {
   font-size: 12px;
   text-align: center;
   position: absolute;
   top: 100%;
   @include t-center-horizontal(6px);
-  box-shadow: 0px 2px 4px var(--primary-color-1);
+
+  box-shadow: 0 2px 4px var(--primary-color-1);
   border: none;
+
   &__text {
     border-radius: 2px;
     box-sizing: border-box;
@@ -36,14 +38,15 @@ export default {
     width: max-content;
     position: relative;
     z-index: 9;
-    box-shadow: 0px 2px 4px var(--primary-color-1);
+    box-shadow: 0 2px 4px var(--primary-color-1);
   }
+
   &__arrow {
     left: 50%;
     content: "";
     display: block;
     top: 5px;
-    box-shadow: 0px 2px 4px var(--primary-color-1);
+    box-shadow: 0 2px 4px var(--primary-color-1);
     transform: translate(-50%, -100%) rotate(-135deg);
     position: absolute;
     border-top: 4px solid var(--bg-primary);
@@ -58,11 +61,13 @@ export default {
         color: var(--text-title);
         background: var(--bg-primary);
       }
+
       &__arrow {
         z-index: 9;
         border-right: 4px solid var(--bg-tip);
         border-bottom: 4px solid var(--bg-tip);
-        &:after {
+
+        &::after {
           position: absolute;
           content: "";
           border: 4px solid var(--bg-primary);
@@ -73,12 +78,14 @@ export default {
       }
     }
   }
+
   &.weak {
     @include block(tooltip) {
       &__text {
         color: var(--border-secondary);
         background: var(--bg-tip);
       }
+
       &__arrow {
         border-right: 4px solid var(--bg-tip);
         border-bottom: 4px solid var(--bg-tip);
