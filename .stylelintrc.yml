@@ -2,9 +2,9 @@ extends:
   - stylelint-config-standard-scss
   - stylelint-config-prettier
 overrides:
-  files:
-    - "**/*.vue"
-  customSyntax: postcss-html
+  - files:
+      - "**/*.vue"
+    customSyntax: postcss-html
 rules:
   selector-pseudo-element-no-unknown:
     - true
