@@ -49,7 +49,7 @@ export default {
 
     .icon-base-colorful {
       filter: grayscale(80%);
-      opacity: 60%;
+      opacity: 0.6;
       margin-right: 4px;
     }
 
@@ -63,7 +63,7 @@ export default {
 
       .icon-base-colorful {
         filter: none;
-        opacity: 100%;
+        opacity: 1;
       }
     }
   }

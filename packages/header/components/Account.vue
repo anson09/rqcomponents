@@ -102,7 +102,7 @@ export default {
 
   &:hover {
     &::after {
-      opacity: 100%;
+      opacity: 1;
     }
   }
 }
@@ -126,19 +126,19 @@ export default {
     width: 30px;
     background: var(--primary-color-3);
     border-radius: 50%;
-    opacity: 0%;
+    opacity: 0;
     @include t-center;
   }
 
   &:hover {
     &::after {
-      opacity: 100%;
+      opacity: 1;
     }
   }
 
   &.is-active {
     &::after {
-      opacity: 100%;
+      opacity: 1;
       width: 34px;
       height: 34px;
     }

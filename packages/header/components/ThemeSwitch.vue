@@ -172,7 +172,7 @@ export default {
         line-height: 100%;
         color: var(--green);
         text-align: center;
-        opacity: 0%;
+        opacity: 0;
       }
     }
 
@@ -188,7 +188,7 @@ export default {
         color: var(--primary-color);
 
         .icon-base-success {
-          opacity: 100%;
+          opacity: 1;
         }
       }
 
