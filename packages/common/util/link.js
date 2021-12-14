@@ -1,9 +1,9 @@
 const handleLink = function (params) {
+  if (!params) return;
   let link = params;
   if (typeof params === "string") {
     link = { path: params };
   }
-  if (!params) return;
   const { outer, newBlock, path } = link;
   if (!path) return;
   if (newBlock) {
