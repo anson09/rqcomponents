@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v1.0.2&sourceBranch=refs/tags/v1.0.3) (2021-12-31)
+
+
+### Bug Fixes
+
+* depVersion ([7ff5251](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/7ff525101555e1ade899527e015db03be7c50b50))
+* stylelint config structure ([085cab5](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/085cab5fd091323a90defbdf47b75a7364622325))
+
+
+### Code Style
+
+* update stylelint rules ([a906671](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/a906671abfd52e77b276150b778940070965bf83))
+
+
+### Refactors
+
+* picture component fallback mode ([2756ff8](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/2756ff8c004f2f6969da33b63529779ed8f9eae7))
+
+
+### Chores
+
+* updep ([176f864](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/176f86404f19911bccb7187d76d32f9144281d46))
+* uptheme ([4f5624d](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/4f5624d221c550b14854f7325b92c7b3c3940a39))
+
 ### [1.0.2](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v1.0.1&sourceBranch=refs/tags/v1.0.2) (2021-11-04)
 
 
