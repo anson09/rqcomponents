@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v1.0.3&sourceBranch=refs/tags/v1.0.4) (2022-01-07)
+
+
+### Bug Fixes
+
+* merge rqthems 2.0.7 fix for ie ([9610aa9](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/9610aa93f8363211ebf976695694bcdf6b5b608f))
+
 ### [1.0.3](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v1.0.2&sourceBranch=refs/tags/v1.0.3) (2021-12-31)
 
 
