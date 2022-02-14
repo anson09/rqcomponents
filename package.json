@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "@rqjs/rqthemes": "^2.0.6",
-    "axios": "^0.24.0",
+    "axios": "^0.26.0",
     "lodash": "^4.17.21"
   },
   "peerDependencies": {
