@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v1.0.4&sourceBranch=refs/tags/v1.0.5) (2022-05-24)
+
+
+### Bug Fixes
+
+* generating invalid empty selector ([ff1c28d](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/ff1c28d2a7c7b6f89f95a99d3ddd63a731b69ec2))
+
+
+### Chores
+
+* updep ([bcb2771](http://git.ricequant.com/projects/NODE/repos/rqcomponents/commits/bcb2771e2d9bf46ec047f2475add96c43ab6fe45))
+
 ### [1.0.4](http://git.ricequant.com/projects/NODE/repos/rqcomponents/compare/diff?targetBranch=refs/tags/v1.0.3&sourceBranch=refs/tags/v1.0.4) (2022-01-07)
 
 
