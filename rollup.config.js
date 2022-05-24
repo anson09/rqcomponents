@@ -66,6 +66,7 @@ const baseCssConfig = {
       sourceMap: true,
     }),
   ],
+  external: ["@rqjs/rqthemes/lib/vars.css"],
 };
 
 export default [...componentsConfig, baseCssConfig];

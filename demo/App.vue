@@ -120,14 +120,17 @@ export default {
 #app {
   height: 100vh;
   background: pink;
+
   .rq-picture-example {
     position: relative;
+
     .picture {
       position: absolute;
       top: 0;
       left: calc(50vw - 400px);
       width: 400px;
     }
+
     .description {
       position: absolute;
       top: 0;

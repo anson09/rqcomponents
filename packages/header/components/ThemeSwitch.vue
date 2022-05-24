@@ -192,9 +192,6 @@ export default {
         }
       }
 
-      + & {
-        margin-top: 20px;
-      }
       @include tooltip-wrapper;
 
       ::v-deep {
